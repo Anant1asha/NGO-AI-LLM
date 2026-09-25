@@ -35,6 +35,7 @@ Before performing any bulk file moves, renames, or deletions, you must:
 2. Never chain a destructive command immediately after a move/copy command in a shell script without explicitly checking the success (exit code and verifying target file existence) of the preceding command.
 3. Always prefer safe, atomic file operations or built-in tools over raw PowerShell/Bash scripting for file management.
 4. When writing code, JSON, or documentation containing backticks or LaTeX formulas via Windows PowerShell, always use verbatim here-strings (`@' ... '@ | Set-Content -Encoding UTF8`) to prevent accidental shell interpolation and variable expansion.
+5. When executing shell commands via `run_command` on Windows PowerShell, NEVER use `&&` to chain commands (e.g., `cmd1 && cmd2`). Execute commands as separate tool calls or separate them with `;`. Always verify `.gitignore` presence before staging files in repositories containing sub-repositories or `node_modules` to prevent index corruption.
 
 ### AASHA Universal Teaching Language System
 When transforming or creating educational content, you must strictly adhere to the guidelines established in the AASHA Universal Teaching Language System.
