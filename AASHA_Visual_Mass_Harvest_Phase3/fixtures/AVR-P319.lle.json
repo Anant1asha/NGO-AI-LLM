@@ -1,0 +1,13 @@
+{
+  "resource_id": "AVR-P319",
+  "version": "1.0.0",
+  "locale": "en-IN",
+  "mode": "tap_to_reveal",
+  "hindi_cues": [
+    "\u0926\u0947\u0916\u0947\u0902",
+    "\u0938\u092e\u091d\u0947\u0902",
+    "\u092c\u0926\u0932\u0947\u0902",
+    "\u091c\u093e\u0901\u091a\u0947\u0902"
+  ],
+  "audio_asset_ids": []
+}

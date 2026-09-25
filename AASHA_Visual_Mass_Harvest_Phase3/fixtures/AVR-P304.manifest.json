@@ -1,0 +1,55 @@
+{
+  "resource_id": "AVR-P304",
+  "version": "1.0.0",
+  "family": "timeline",
+  "name": "Timeline Scrubber",
+  "source_patterns": [
+    "PhET/SceneryStack",
+    "all-science-sims",
+    "myPhysicsLab",
+    "Pashasan",
+    "SimuTutor"
+  ],
+  "implementation": {
+    "aasha_native": true,
+    "bundled_third_party_code": [],
+    "bundled_third_party_assets": []
+  },
+  "contracts": {
+    "tln": {
+      "content_injection": true,
+      "mastery_decision": false
+    },
+    "lle": {
+      "locale": "en-IN",
+      "tap_to_reveal": true,
+      "content_injected": true
+    },
+    "teas": {
+      "evidence_only": true,
+      "mastery_decision": false,
+      "sequence_monotonic": true
+    }
+  },
+  "offline": {
+    "network_required": false,
+    "external_urls": 0,
+    "external_assets": 0
+  },
+  "bundle": {
+    "production_bytes": 2370,
+    "sha256": "02964f53ee754ed41a2f3caf71042b37c21f3c40bb8b57accdee853d43c51dc2",
+    "ceiling_bytes": 20971520,
+    "pass": true
+  },
+  "verification": {
+    "static": "PASS",
+    "js_syntax": "PASS",
+    "browser_smoke": "NOT_CERTIFIED"
+  },
+  "license": {
+    "aasha_code": "original",
+    "third_party_runtime": "none",
+    "source_licenses_not_relicensed": true
+  }
+}

@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build and Temp outputs
+dist/
+**/dist/
+.scratch/
+**/.scratch/
+tmp/
+*.tmp
+
+# IDE / System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Graphify & Antigravity artifacts
+graphify-out/
+.gemini/
+
+# Test output logs
+*.log

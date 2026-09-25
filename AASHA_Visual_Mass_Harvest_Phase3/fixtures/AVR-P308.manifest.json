@@ -1,0 +1,55 @@
+{
+  "resource_id": "AVR-P308",
+  "version": "1.0.0",
+  "family": "anatomy",
+  "name": "Node Connector",
+  "source_patterns": [
+    "PhET/SceneryStack",
+    "all-science-sims",
+    "myPhysicsLab",
+    "Pashasan",
+    "SimuTutor"
+  ],
+  "implementation": {
+    "aasha_native": true,
+    "bundled_third_party_code": [],
+    "bundled_third_party_assets": []
+  },
+  "contracts": {
+    "tln": {
+      "content_injection": true,
+      "mastery_decision": false
+    },
+    "lle": {
+      "locale": "en-IN",
+      "tap_to_reveal": true,
+      "content_injected": true
+    },
+    "teas": {
+      "evidence_only": true,
+      "mastery_decision": false,
+      "sequence_monotonic": true
+    }
+  },
+  "offline": {
+    "network_required": false,
+    "external_urls": 0,
+    "external_assets": 0
+  },
+  "bundle": {
+    "production_bytes": 2224,
+    "sha256": "1a8d57a74f0de70bb6ccbe678b4e92b18310c3fcdcec2c5a9fe4c73c4de8a2e8",
+    "ceiling_bytes": 20971520,
+    "pass": true
+  },
+  "verification": {
+    "static": "PASS",
+    "js_syntax": "PASS",
+    "browser_smoke": "NOT_CERTIFIED"
+  },
+  "license": {
+    "aasha_code": "original",
+    "third_party_runtime": "none",
+    "source_licenses_not_relicensed": true
+  }
+}

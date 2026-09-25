@@ -1,0 +1,66 @@
+{
+  "RationalNumbers_Class8_MDS.html": {
+    "filename": "RationalNumbers_Class8_MDS.html",
+    "filePath": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\RationalNumbers_Class8_MDS.html",
+    "finalScore": 100,
+    "passedChecksCount": 12,
+    "failedChecksCount": 0,
+    "stats": {
+      "totalNodes": 5,
+      "totalSteps": 25,
+      "totalQuestions": 15,
+      "totalMisconceptions": 45,
+      "spoilerViolations": 0,
+      "missingMisconceptions": 0,
+      "mathRtCollisions": 0,
+      "ruleViolations": 0
+    },
+    "passedChecks": [
+      "Rule #1 (Zero-Spoiler Misconceptions): 100% compliant. No correct answers leaked.",
+      "Math-rt Isolation: Math expressions and variables are insulated from bilingual dictionary collision.",
+      "Rule #2: All assessment options are shuffled using randomized sorting.",
+      "Rule #3: Tap-only interaction enforced (zero HTML5 drag-and-drop events).",
+      "Rule #4: Clean execution without browser-freezing alert(), confirm(), or prompt().",
+      "Rule #5: Skip action present on interactive canvas / drag-drop activities.",
+      "Rule #6: Primary navigation buttons (Back / Continue) properly anchored.",
+      "Rule #7: _weCheckRendered flag present for multi-phase Worked Example check flow.",
+      "Rule #8: localStorage safely wrapped in bounds-checked try-catch blocks.",
+      "Rule #9: exit() resets state immediately without modal dialogs.",
+      "Rule #10: 100% Offline-First compliant. Zero external script or stylesheet CDN dependencies.",
+      "Know-Stage Pedagogy: Every concept node follows proven Intro -> Concept Text -> Verification flow."
+    ],
+    "failedChecks": []
+  },
+  "ExponentsPowers_Class8_MDS.html": {
+    "filename": "ExponentsPowers_Class8_MDS.html",
+    "filePath": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\ExponentsPowers_Class8_MDS.html",
+    "finalScore": 100,
+    "passedChecksCount": 12,
+    "failedChecksCount": 0,
+    "stats": {
+      "totalNodes": 5,
+      "totalSteps": 25,
+      "totalQuestions": 15,
+      "totalMisconceptions": 45,
+      "spoilerViolations": 0,
+      "missingMisconceptions": 0,
+      "mathRtCollisions": 0,
+      "ruleViolations": 0
+    },
+    "passedChecks": [
+      "Rule #1 (Zero-Spoiler Misconceptions): 100% compliant. No correct answers leaked.",
+      "Math-rt Isolation: Math expressions and variables are insulated from bilingual dictionary collision.",
+      "Rule #2: All assessment options are shuffled using randomized sorting.",
+      "Rule #3: Tap-only interaction enforced (zero HTML5 drag-and-drop events).",
+      "Rule #4: Clean execution without browser-freezing alert(), confirm(), or prompt().",
+      "Rule #5: Skip action present on interactive canvas / drag-drop activities.",
+      "Rule #6: Primary navigation buttons (Back / Continue) properly anchored.",
+      "Rule #7: _weCheckRendered flag present for multi-phase Worked Example check flow.",
+      "Rule #8: localStorage safely wrapped in bounds-checked try-catch blocks.",
+      "Rule #9: exit() resets state immediately without modal dialogs.",
+      "Rule #10: 100% Offline-First compliant. Zero external script or stylesheet CDN dependencies.",
+      "Know-Stage Pedagogy: Every concept node follows proven Intro -> Concept Text -> Verification flow."
+    ],
+    "failedChecks": []
+  }
+}

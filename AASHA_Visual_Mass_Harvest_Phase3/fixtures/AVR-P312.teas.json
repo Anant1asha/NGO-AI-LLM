@@ -1,0 +1,12 @@
+{
+  "resource_id": "AVR-P312",
+  "evidence_only": true,
+  "events": [
+    "interaction",
+    "parameter_change",
+    "state_change",
+    "reveal",
+    "step_change"
+  ],
+  "mastery_decision": false
+}

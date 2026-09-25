@@ -1,0 +1,452 @@
+[
+  {
+    "id": "ad_1a_q1_a",
+    "q": "Add the rational numbers: 5/2 and -11/2",
+    "ans": "-3",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_b",
+    "q": "Add the rational numbers: 7/5 and 13/5",
+    "ans": "4",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_c",
+    "q": "Add the rational numbers: -7/8 and 12/-8",
+    "ans": "-19/8",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_d",
+    "q": "Add the rational numbers: -11/5 and -9/5",
+    "ans": "-4",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_e",
+    "q": "Add the rational numbers: 4/-7 and -5/8",
+    "ans": "-67/56",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_f",
+    "q": "Add the rational numbers: -13/7 and 12/-5",
+    "ans": "-149/35",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_g",
+    "q": "Add the rational numbers: -15/9 and -17/11",
+    "ans": "-106/33",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q1_h",
+    "q": "Add the rational numbers: -9/-33 and 5/11",
+    "ans": "8/11",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_a",
+    "q": "Subtract: (-18/5) - (-8/5)",
+    "ans": "-2",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_b",
+    "q": "Subtract: (-19/15) - (-6/30)",
+    "ans": "-16/15",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_c",
+    "q": "Subtract: (-6/11) - (-7/11)",
+    "ans": "1/11",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_d",
+    "q": "Subtract: (-1/4) - (-2/8)",
+    "ans": "0",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_e",
+    "q": "Subtract: (-59/5) - (19/5)",
+    "ans": "-78/5",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_f",
+    "q": "Subtract: (-4/7) - (-8/9)",
+    "ans": "20/63",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_g",
+    "q": "Subtract: (7/24) - (-13/-26)",
+    "ans": "-5/24",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q2_h",
+    "q": "Subtract: (7/25) - (-6/15)",
+    "ans": "17/25",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q1_a",
+    "q": "Fill in the blank using Commutative Property of Addition: (-3/7) + (4/9) = _____ + (-3/7)",
+    "ans": "4/9",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q1_b",
+    "q": "Fill in the blank using Commutative Property of Addition: (2/3) + (-5/6) = (-5/6) + _____",
+    "ans": "2/3",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q1_c",
+    "q": "Fill in the blank using Commutative Property of Addition: [(-11/29)] + [(-5/31)] = [(-5/31)] + _____",
+    "ans": "-11/29",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q1_d",
+    "q": "Fill in the blank using Commutative Property of Addition: (-7/13) + (11/23) = (11/23) + _____",
+    "ans": "-7/13",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_a",
+    "q": "Fill in the blank: [(-9/16) * (11/7)] = (11/7) * [_____]",
+    "ans": "-9/16",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_b",
+    "q": "Fill in the blank: [_____] * [(-7/9)] = [(-7/9)] * [(-5/8)]",
+    "ans": "-5/8",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_c",
+    "q": "Fill in the blank: (-7/13) * _____ = (-7/13)",
+    "ans": "1",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_d",
+    "q": "Fill in the blank: _____ * (-19/47) = 0",
+    "ans": "0",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_e",
+    "q": "Fill in the blank: (-3/4) * [1/3 + (-5/6)] = [(-3/4) * _____] + [(-3/4) * (-5/6)]",
+    "ans": "1/3",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_f",
+    "q": "Fill in the blank: (-2/5) * [(6/7) * (-8/9)] = [(-2/5) * _____] * (-8/9)",
+    "ans": "6/7",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_g",
+    "q": "Fill in the blank: (3/8) / (3/8) = _____",
+    "ans": "1",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_h",
+    "q": "Fill in the blank: (7/13) / [_____] = -1",
+    "ans": "-7/13",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_i",
+    "q": "Fill in the blank: (14/19) / _____ = 14/19",
+    "ans": "1",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q5_j",
+    "q": "Fill in the blank: [_____] / [(-13/15)] = 1",
+    "ans": "-13/15",
+    "optMatch": true
+  },
+  {
+    "id": "ad_presc_3",
+    "q": "Complete the statement: The product of two rational numbers is always a _______",
+    "ans": "rational number",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q3_a",
+    "q": "Multiply: (4/7) by (-2/5)",
+    "ans": "-8/35",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q3_b",
+    "q": "Multiply: (-3/8) by (-12/15)",
+    "ans": "3/10",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q3_c",
+    "q": "Multiply: (11/-13) by (-39/22)",
+    "ans": "3/2",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q3_d",
+    "q": "Multiply: (-5/9) by (81/35)",
+    "ans": "-9/7",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q3_e",
+    "q": "Multiply: (-9/25) by (-35/27)",
+    "ans": "7/15",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q3_f",
+    "q": "Multiply: (-18/25) by (40/-36)",
+    "ans": "4/5",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q4_a",
+    "q": "Divide: (16/7) by (-8/14)",
+    "ans": "-4",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q4_b",
+    "q": "Divide: (-7/8) by (-21)",
+    "ans": "1/24",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q4_c",
+    "q": "Divide: (3/8) by (-4/5)",
+    "ans": "-15/32",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q4_d",
+    "q": "Divide: (-1/15) by (8/3)",
+    "ans": "-1/40",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q4_e",
+    "q": "Divide: (-3/26) by (9/78)",
+    "ans": "-1",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q4_f",
+    "q": "Divide: (-22/26) by (-33/39)",
+    "ans": "1",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q2_a",
+    "q": "Fill in the blank using Associative Property of Addition: [(1/11) + (2/13)] + (7/6) = (1/11) + [_____ + (7/6)]",
+    "ans": "2/13",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q2_b",
+    "q": "Fill in the blank using Associative Property of Addition: (17/21) + [(-5/13) + (9/16)] = [(17/21) + _____] + (9/16)",
+    "ans": "-5/13",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q2_c",
+    "q": "Fill in the blank using Associative Property of Addition: [(-31/41)] + [(9/14) + (8/15)] = [_____ + (9/14)] + (8/15)",
+    "ans": "-31/41",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q2_d",
+    "q": "Fill in the blank using Associative Property of Addition: [(2/7) + (3/8)] + (-9/14) = (2/7) + [(3/8) + _____]",
+    "ans": "-9/14",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q3_a",
+    "q": "State the property used in: (-2/5) + (3/7) = (3/7) + (-2/5)",
+    "ans": "Commutative Property of Addition",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q3_b",
+    "q": "State the property used in: (2/5) + [(9/7) + (-3/8)] = [(2/5) + (9/7)] + (-3/8)",
+    "ans": "Associative Property of Addition",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q3_c",
+    "q": "State the property used in: (-3/7) + [(-5/8) + (9/4)] = [(-3/7) + (-5/8)] + (9/4)",
+    "ans": "Associative Property of Addition",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q3_d",
+    "q": "State the property used in: (3/10) + [(-11/15) + (9/-7)] = [(3/10) + (-11/15)] + (9/-7)",
+    "ans": "Associative Property of Addition",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q4_a",
+    "q": "State the property used in: (2/7) * (13/11) = (13/11) * (2/7)",
+    "ans": "Commutative Property of Multiplication",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q4_b",
+    "q": "State the property used in: (-5/7) * [(6/11) * (7/13)] = [(-5/7) * (6/11)] * (7/13)",
+    "ans": "Associative Property of Multiplication",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q4_c",
+    "q": "State the property used in: (1/7) * (3/5) = 3/35 is a rational number",
+    "ans": "Closure Property of Multiplication",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q4_d",
+    "q": "State the property used in: (7/11) * [(1/6) + (2/13)] = [(7/11) * (1/6)] + [(7/11) * (2/13)]",
+    "ans": "Distributive Property of Multiplication over Addition",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q4_e",
+    "q": "State the property used in: (-9/8) * 0 = 0 = 0 * (-9/8)",
+    "ans": "Multiplicative Property of Zero",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q4_f",
+    "q": "State the property used in: 1 * (7/9) = 7/9",
+    "ans": "Multiplicative Identity (Property of 1)",
+    "optMatch": true
+  },
+  {
+    "id": "ad_presc_1_i",
+    "q": "Name the property under multiplication used in: (-4/5) * 1 = 1 * (-4/5) = -4/5",
+    "ans": "1 is the Multiplicative Identity",
+    "optMatch": true
+  },
+  {
+    "id": "ad_presc_1_ii",
+    "q": "Name the property under multiplication used in: (-13/17) * (-2/7) = (-2/7) * (-13/17)",
+    "ans": "Commutative Property of Multiplication",
+    "optMatch": true
+  },
+  {
+    "id": "ad_presc_1_iii",
+    "q": "Name the property under multiplication used in: (-19/29) * (29/-19) = 1",
+    "ans": "Multiplicative Inverse (Reciprocal Property)",
+    "optMatch": true
+  },
+  {
+    "id": "ad_presc_2",
+    "q": "Tell what property allows you to compute (1/3) * [6 * (4/3)] as [(1/3) * 6] * (4/3)",
+    "ans": "Associative Property of Multiplication",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q5_a",
+    "q": "Simplify: [(3/2) * (-7/4) * (8/9)] - [(-15/2) * (3/7) * (8/14)]",
+    "ans": "-73/147",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1a_q5_b",
+    "q": "Simplify: [(7/3) * (9/11)] + [(4/3) * (7/22)] - [(3/-11) * (-7/9)]",
+    "ans": "70/33",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1b_q4",
+    "q": "If a = 8/9 and b = -3/8, verify that a + b = b + a. What is the verified value of both sides?",
+    "ans": "37/72",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q1_a",
+    "q": "Find the product and verify the Commutative Property of Multiplication: (1/11) * (6/7)",
+    "ans": "6/77",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q1_b",
+    "q": "Find the product and verify the Commutative Property of Multiplication: (3/5) * [(-7/8)]",
+    "ans": "-21/40",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q1_c",
+    "q": "Find the product and verify the Commutative Property of Multiplication: [(-13/19)] * (7/8)",
+    "ans": "-91/152",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q1_d",
+    "q": "Find the product and verify the Commutative Property of Multiplication: (-5/9) * [(-11/32)]",
+    "ans": "55/288",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q2_a",
+    "q": "Find the product and verify the Associative Property of Multiplication: [(7/20) * (5/21)] * (1/3)",
+    "ans": "1/36",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q2_b",
+    "q": "Find the product and verify the Associative Property of Multiplication: (2/7) * [(-7/3) * (6/-11)]",
+    "ans": "4/11",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q2_c",
+    "q": "Find the product and verify the Associative Property of Multiplication: [(-7/15) * (-2/9)] * [(-3/7)]",
+    "ans": "-2/45",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q2_d",
+    "q": "Find the product and verify the Associative Property of Multiplication: (8/9) * [(-8/5) * (6/7)]",
+    "ans": "-128/105",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q3_a",
+    "q": "Simplify and verify Distributive Property of Multiplication over Addition: (5/4) * [(-6/7) + (2/5)]",
+    "ans": "-4/7",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q3_b",
+    "q": "Simplify and verify Distributive Property of Multiplication over Addition: 3 * [(1/3) + (-5/11)]",
+    "ans": "-4/11",
+    "optMatch": true
+  },
+  {
+    "id": "ad_1c_q3_c",
+    "q": "Simplify and verify Distributive Property of Multiplication over Addition: 0 * [(1/2) + (2/5)]",
+    "ans": "0",
+    "optMatch": true
+  }
+]

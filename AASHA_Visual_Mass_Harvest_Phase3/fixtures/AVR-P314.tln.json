@@ -1,0 +1,11 @@
+{
+  "tln_id": "FIXTURE-AVR-P314",
+  "version": "1.0.0",
+  "concept": "Switch Circuit",
+  "grade_level": "ANY",
+  "learning_objective": "Interact with and explain the represented relationship.",
+  "evaluation_logic": {
+    "owned_by": "TEAS",
+    "resource_role": "evidence_only"
+  }
+}

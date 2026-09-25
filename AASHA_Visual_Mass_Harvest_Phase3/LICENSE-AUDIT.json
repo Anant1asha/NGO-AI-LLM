@@ -1,0 +1,7 @@
+{
+  "bundled_third_party_code": false,
+  "bundled_third_party_assets": false,
+  "note": "Source repositories are pattern references; no source code/assets were copied into AASHA artifacts.",
+  "geoGebra": "separate license audit required",
+  "phET": "source license/dependency audit required before any direct reuse"
+}
