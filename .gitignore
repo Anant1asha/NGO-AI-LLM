@@ -7,8 +7,12 @@ dist/
 **/dist/
 .scratch/
 **/.scratch/
+scratch/
+**/scratch/
 tmp/
 *.tmp
+*cookie*
+*.cookie
 
 # IDE / System
 .vscode/
@@ -22,3 +26,13 @@ graphify-out/
 
 # Test output logs
 *.log
+
+# Environment, Secrets, and Cryptographic Private Keys
+.env
+.env.*
+*.pem
+*.key
+*.pkcs8
+*private_key*
+.keys/
+secrets/

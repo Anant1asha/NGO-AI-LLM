@@ -50,7 +50,7 @@ Level 5: Model knowledge (NEVER overrides Levels 0–4)
 - Default routing is Tier 1 OpenRouter free pool rotating keys (`meta-llama/llama-3.1-8b-instruct:free`, `nvidia/nemotron-3.5-lightning:free`, `google/gemini-2.0-flash-exp:free`).
 - Coding tasks route to Tier 2 OpenRouter free coding models (`qwen/qwen-2.5-coder-32b-instruct:free`).
 - Gemini paid keys are strictly reserved for explicit PDF vision ingestion and authorized QA certification.
-- **Memory Tier Policy**: Mem0 cloud active until October 7, 2026, paired with Graphify (`graphify-out/graph.json`) as 100% free open-source AST knowledge graph; local stores (`.scratch/mem0_store.json` and `aasha_local_memory.json`) serve as permanent zero-cost offline storage.
+- **Memory Tier Policy**: Serena MCP (`.serena/memories/`) serves as the permanent, primary default local semantic memory; paired with Graphify (`graphify-out/graph.json`) as 100% free open-source AST knowledge graph; local stores (`.scratch/mem0_store.json` and `aasha_operational.db`) serve as zero-cost offline storage.
 
 ## 7. Multi-Dimension Certification Law & Epistemic Boundaries
 

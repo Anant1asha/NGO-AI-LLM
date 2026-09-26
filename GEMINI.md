@@ -106,9 +106,12 @@ Implementation: `packages/llm-router/openrouter_client.ts` | Guard: `assertGemin
 1. **Explicit System Instructions**: All LLM model API calls, subagent prompts, and pipeline invocations MUST pass explicit system instructions defining role parameters, JSON output schemas, and strict truth-seeking reasoning standards to eliminate hallucinations.
 2. **Schema Verification**: All JSON outputs (chapter specs, content maps, assessment items, LLE dictionary entries) must be verified against their TypeScript interfaces / JSON schemas (`ContextBus.validateOutput()`) before file persistence.
 
-### Mem0 & Graphify AGI Agentic Memory Invariant
-1. **Local Agentic Memory First**: Subagents and pipeline tasks MUST query the local Graphify AST knowledge graph (`graphify-out/graph.json`) and local Mem0 episodic store (`.scratch/mem0_store.json`) before making external context requests.
-2. **Zero-Bleed Memory Sharing**: Context sharing across multi-agent turns reuses persistent local memory snapshots, avoiding redundant prompt tokens and third-party API costs.
+### Serena & Local Agentic Memory Invariant (Default Local Memory)
+1. **Serena Default Local Memory First**: Serena MCP (`.serena/memories/` via `read_memory`, `write_memory`, `list_memories`) is the **primary default local memory** for the entire ecosystem. It persists architectural decisions, conventions, task completion criteria, and domain rules. Subagents and pipeline tasks MUST query Serena memories first before making external context requests.
+2. **AST & Offline Stores**: Graphify AST (`graphify-out/graph.json`) provides symbol-level codebase AST graphs; local episodic stores (`.scratch/mem0_store.json`, `aasha_operational.db`) store offline user/learner preferences and telemetry.
+3. **Zero-Bleed Memory Sharing**: Context sharing across multi-agent turns reuses persistent local Serena memory snapshots, avoiding redundant prompt tokens and third-party API costs.
+4. **Self-Healing Auto-Activation**: If Serena MCP ever returns `No active project` due to an arbitrary launch directory, agents MUST automatically call `activate_project: { "project": "NGO AI LLM" }` and immediately retry the operation in the same turn without user disruption.
+5. **Master Wake-up Intent (`/jagiye-maakiran`)**: The `/jagiye-maakiran` slash command (or phrase `jagiye maakiran` / `जागिए माँ किरण`) triggers an instant full-system priming, memory graph health audit, and AST verification.
 
 ### Pre-LLE Mathematical Insulation Invariant
 Before applying bilingual dictionary wrapping (`rt()` / `window.WM`), all LaTeX mathematical expressions (`\( ... \)`, `$$ ... $$`, `$...$`) and algebraic single-letter variables must be shielded using `__AASHA_MATH_X__` placeholders via `packages/aasha-rules/math_insulator.ts` and `<span class="math-var" data-math="true">` to prevent math symbol corruption and false dictionary lookups.
@@ -346,3 +349,13 @@ When developing or distributing desktop or classroom tooling:
 1. **Repository Boundary**: Open-source public tools (`aasha-studio`) must be completely isolated from internal research, monolithic zip archives, and private training datasets.
 2. **Hardware-Encrypted BYOK Vault**: User API credentials must never be written to `.env` files within repository trees. Keys must be stored exclusively in `%USERPROFILE%\.aasha\config.json` (mode `0600`) or the Windows Credential Manager via Windows DPAPI (`keyring`).
 3. **Git Author Privacy**: When initializing or pushing open-source repositories from personal workstations, git commits must strictly use the GitHub private no-reply email (`<username>@users.noreply.github.com`) to prevent scraper exposure of real developer emails.
+
+### Universal Simulation Navigation & Non-Freezing Progression Invariant
+1. **Bubbling Telemetry Clearance**: All interactive simulations (`<aasha-sim>`) must bubble completion telemetry events (`isCorrect: true` or `competencyAchieved: true`) upon goal satisfaction. The parent container must celebrate, update the CTA button text to `"Solved! Start Assessment ➜"`, and unlock immediate progression.
+2. **Graceful Fallback Routing**: In `v6_compiler.ts`, `advance(trigger)` must never freeze or loop on completed states. If `walker.forceNext()` returns `false`, the runtime must automatically advance to `_renderAssessment()` if assessment items exist, or to `_renderComplete()`.
+3. **Inclusive Assessment State Types**: The runtime state switch must natively recognize `teas_assessment`, `assessment_gate`, `assessment`, and `quiz` as first-class assessment states.
+
+### Universal Multi-Step Game Engine & Subject Collision Guard Invariant
+1. **Never Fall Back to Toy Code**: Chapters without a specialized physical manipulative (Ten-Frame, Pizza Fraction, Number Line Hunter, Symmetry Fold) must default to the high-production visual `MultiStepArenaEngine` (`generateMultiStepArenaSim`). The engine features 60 FPS Canvas/SVG graphics, radial timer gauges, combo multipliers ($\times 2, \times 3$), floating particle sparks, and victory celebrations.
+2. **Dynamic 3-Tier Multi-Step Ingestion**: The engine dynamically ingests ANY curriculum topic into 3 structured steps (Step 1: Formula/Hook $\rightarrow$ Step 2: Intermediate Application $\rightarrow$ Step 3: Boss Verification) with full bilingual Hindi + English text, or directly ingests custom chapter assessment items (`initialParams.rounds`).
+3. **Compound Subject Collision Guard**: When routing by subject name, compound subjects (e.g. "Social Science", "Social Studies") must be evaluated prior to substring matches (e.g. "science") to prevent curriculum domain cross-contamination.

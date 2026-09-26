@@ -259,14 +259,14 @@ export class PedagogicalAuditor {
     const advisories: string[] = [];
     let score = 100;
 
-    // Rule 11: Air-Gapped Offline Bundle Size Ceiling (<= 20 MB = 20,971,520 bytes)
-    const MAX_BUNDLE_BYTES = 20971520;
+    // Rule 11: Air-Gapped Offline Bundle Size Ceiling (<= 40 MB = 41,943,040 bytes per AASHA-SPEC-02-TRD)
+    const MAX_BUNDLE_BYTES = 41943040;
     if (htmlPath && fs.existsSync(htmlPath)) {
       try {
         const fileSizeBytes = fs.statSync(htmlPath).size;
         if (fileSizeBytes > MAX_BUNDLE_BYTES) {
           critical.push(
-            `Rule 11 Violation (Bundle Ceiling Exceeded): Artifact file size (${fileSizeBytes} bytes / ${(fileSizeBytes / (1024 * 1024)).toFixed(2)} MB) exceeds hard 20 MB ceiling (${MAX_BUNDLE_BYTES} bytes). Release is BLOCKED.`
+            `Rule 11 Violation (Bundle Ceiling Exceeded): Artifact file size (${fileSizeBytes} bytes / ${(fileSizeBytes / (1024 * 1024)).toFixed(2)} MB) exceeds hard 40 MB ceiling (${MAX_BUNDLE_BYTES} bytes). Release is BLOCKED.`
           );
           score = 0;
         }

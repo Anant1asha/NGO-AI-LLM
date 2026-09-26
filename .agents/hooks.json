@@ -1,0 +1,10 @@
+{
+  "jagiye-maakiran": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "powershell -ExecutionPolicy Bypass -File ./scripts/jagiye_maakiran_startup.ps1"
+      }
+    ]
+  }
+}

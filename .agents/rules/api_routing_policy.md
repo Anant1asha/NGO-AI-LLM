@@ -101,10 +101,10 @@ All model requests (across Tier 1, Tier 2, and Tier 3) MUST:
 
 ---
 
-## Mem0 & Graphify AGI Agentic Memory Protocol
+## Serena, Graphify & Local Memory Protocol (Default Local Memory)
 
-1. **Local Memory Queries First**: Subagents and agents MUST query local Graphify AST subgraphs (`graphify-out/graph.json`) and local Mem0 vector memory (`.scratch/mem0_store.json`) before making external model context queries.
-2. **Zero-Bleed Memory Sharing**: Share state and memory across agent turns using persistent local memory snapshots to eliminate redundant API token overhead.
+1. **Serena Default Local Memory First**: Subagents and agents MUST query Serena MCP memories (`.serena/memories/` via `read_memory`) and local Graphify AST subgraphs (`graphify-out/graph.json`) before making external model context queries.
+2. **Zero-Bleed Memory Sharing**: Share state, rules, and memory across agent turns using persistent local Serena memories (`.serena/memories/`) and local episodic stores (`.scratch/mem0_store.json`, `aasha_operational.db`) to eliminate redundant API token overhead.
 
 ---
 
