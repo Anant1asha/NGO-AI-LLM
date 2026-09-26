@@ -37,6 +37,17 @@ Before performing any bulk file moves, renames, or deletions, you must:
 4. When writing code, JSON, or documentation containing backticks or LaTeX formulas via Windows PowerShell, always use verbatim here-strings (`@' ... '@ | Set-Content -Encoding UTF8`) to prevent accidental shell interpolation and variable expansion.
 5. When executing shell commands via `run_command` on Windows PowerShell, NEVER use `&&` to chain commands (e.g., `cmd1 && cmd2`). Execute commands as separate tool calls or separate them with `;`. Always verify `.gitignore` presence before staging files in repositories containing sub-repositories or `node_modules` to prevent index corruption.
 
+### Public Repository Zero-Leakage & Privacy Invariant
+1. **Public Repository Default Assumption**: Assume all ecosystem repositories (`NGO-AI-LLM`, `Aasha-AI`, `aasha-studio`, `NGOweb`, `web`) are **100% PUBLIC**. Never assume any repository or branch is private.
+2. **Absolute Zero-Secret Staging Policy**: Strictly forbidden from staging, committing, or pushing:
+   - Provider API keys (OpenAI `sk-...`, OpenRouter `sk-or-v1-...`, Google Gemini `AIzaSy...`, Anthropic `sk-ant-...`, Hugging Face `hf_...`).
+   - GitHub Personal Access Tokens (`github_pat_...`, `ghp_...`).
+   - Cryptographic private keys (`*.pem`, `*.key`, `*.pkcs8`, `id_rsa`, `id_ed25519`).
+   - Session cookies and browser dumps (`*cookie*`, `*.cookie`, `cookie.json`, `Cookies_copy`).
+   - Active environment files (`.env`, `.env.local`, `.env.production`). Only sanitized `.env.example` templates with empty placeholder values are permitted.
+   - Personal private identifiable information (PII), phone numbers, or private internal credentials.
+3. **Mandatory Pre-Commit Scrubbing Protocol**: Always verify that `.gitignore` actively blocks `node_modules/`, `scratch/`, `**/.scratch/`, `*cookie*`, `*.cookie`, `*.zip`, `.env`, and `secrets/` before staging files. Never use `git add .` or `git add -A` blindly when untracked sensitive files exist.
+
 ### AASHA Universal Teaching Language System
 When transforming or creating educational content, you must strictly adhere to the guidelines established in the AASHA Universal Teaching Language System.
 Reference: [AASHA_TEACHING_GUIDE.md](./docs/AASHA_TEACHING_GUIDE.md)
