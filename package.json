@@ -1,0 +1,26 @@
+{
+  "name": "aasha-learning-ecosystem-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AASHA Learning & Impact Ecosystem — Unified Root Orchestrator",
+  "scripts": {
+    "start": "node scripts/aasha_root_orchestrator.js",
+    "orchestrator": "node scripts/aasha_root_orchestrator.js",
+    "studio": "npm --prefix aasha-studio run studio",
+    "studio:ui": "npm --prefix aasha-studio/apps/studio-ui run dev",
+    "studio:build": "npm --prefix aasha-studio run build",
+    "studio:package": "npm --prefix aasha-studio/apps/desktop-tauri run build",
+    "dev:learner": "npm --prefix Aasha-AI run dev:learner",
+    "dev:api": "npm --prefix Aasha-AI run dev:api",
+    "admin:status": "npm --prefix Aasha-AI run admin:status",
+    "chapter:init": "npm --prefix Aasha-AI run chapter:init --",
+    "test:ltruth": "npm --prefix Aasha-AI run validate",
+    "test:master": "npm --prefix Aasha-AI run test:master",
+    "test:all": "npm --prefix Aasha-AI test && npm --prefix aasha-studio test && npm --prefix multi-agent-tui test",
+    "tui": "npm --prefix multi-agent-tui run dev",
+    "setup:rust": "powershell -ExecutionPolicy Bypass -File ./scripts/setup_rust_windows.ps1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

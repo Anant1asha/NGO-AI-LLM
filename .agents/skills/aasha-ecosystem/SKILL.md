@@ -377,8 +377,28 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    - **Governed Registry Ingestion Engine (`RegistryIngestionEngine`)**: Candidate components undergo 11 mandatory gates (`FUNCTIONAL`, `CAPABILITY_CONTRACT`, `BROWSER_RUNTIME`, `OFFLINE`, `PROVENANCE`, `LICENSE`, `ACCESSIBILITY`, `PERFORMANCE`, `SECURITY_CHILD_SAFETY`, `MAINTAINABILITY`, `AASHA_INTEGRATION`). If ANY gate is `FAIL` or `UNKNOWN`, candidate promotion is `BLOCKED`.
    - **Certification Separation Invariant**: `CHAPTER_CERTIFICATION !== COMPONENT_CERTIFICATION`. A passing chapter test does not automatically certify components inside it; component promotion requires an explicit benchmark evidence SHA-256 digest.
 
-7. **Universal PDF File Resolver & Real Source Byte Hashing**:
-   - **Real PDF Content Hashing**: PDF content hashes are calculated directly from source file bytes (`crypto.createHash('sha256').update(fs.readFileSync(pdfPath)).digest('hex')`). Placeholder/basename hashes or hardcoded strings are forbidden in production.
-   - **Multi-Location Path Resolution (`resolvePdfFilePath`)**: PDF references passed via CLI or ingestion jobs are smartly resolved across absolute paths, relative paths, `content/pdfs/` directory matches, and fuzzy filename matching for dirty string inputs.
-   - **Fail-Closed Protection**: If a specified PDF file cannot be located on disk in any valid path, the orchestrator fails closed with an explicit diagnostic error log to prevent unverified source hashes.
+8. **AASHA Interactive Experience Compiler (IEC) & Production Governance**:
+   - **Dual Authority Invariants**:
+     - *Canonical IR*: Sole learning-source authority.
+     - *TEAS Engine*: Sole mastery and difficulty decision authority ($LEARNING\_STATE \neq TELEMETRY\_STATE$). Experience code and telemetry never directly mutate learner mastery.
+   - **Multi-Provider Capability Model**:
+     - *AASHA Native (`AASHA_NATIVE`)*: Procedural Canvas 2D/3D projection engines.
+     - *AASHA Foundations (`AASHA_FOUNDATION`)*: In-tree F01–F20 foundation adapters from `experience_registry/registry.json`.
+     - *OpenMAIC (`APPROVED_EXTERNAL_CAPABILITY_PROVIDER`)*: Pinned parameter slider generation primitives (Commit `21d83ec51b908a4b169ee2be7498a29da213c74d`, MIT, 0 runtime npm dependencies; classroom UI and PPTX rejected).
+     - *Composite (`COMPOSE`)*: Implementation strategy (never a provider class). Unified under `iec:composite:harness` with isolated `#iec-slot-*` boundaries, single `AashaExperienceContract`, and unified telemetry pipeline.
+   - **Provider-Blind Capability Fitness Scoring**:
+     $$\text{CapabilityFitness} = \text{MechanicFit}(30) + \text{PedagogicalFit}(20) + \text{OfflineFit}(15) + \text{LicenseFit}(15) + \text{TouchMobileFit}(10) + \text{TraceabilityFit}(10)$$
+     - *Mechanic Match Dominance*: $\Delta_{\text{MechanicPenalty}} (30) > \Delta_{\text{AdaptationMax}} (15)$. An exact mechanic match always dominates over adaptation class prior.
+   - **Full 19-Gate Validation Pipeline & Bounded Failure Containment**:
+     - Raw artifacts must pass 19 gates: HTML structure, single document inlining, script syntax, widget config schema, interaction selectors, state machine, reset method, rAF throttling/cancel, mobile layout, touch targets ($\ge 44\text{px}$), accessibility, offline zero-CDN, procedural assets, bundle size ($\le 20\text{ MB}$), AashaExperienceContract, Canonical IR traceability, LLE math insulation, evidence contract, and license/SHA integrity.
+     - Autonomous repairs are strictly bounded to $\le 2$ iterations. If unrepairable, execution halts and triggers `QuarantineError`, blocking downstream `QAAgent` stages.
+   - **7-Step Atomic Registry Promotion Protocol**:
+     - Target: `experience_registry/registry.json`
+     - Sequence: (1) `validate_existing_registry`, (2) `create_automatic_bak_snapshot`, (3) `write_candidate_tmp`, (4) `validate_candidate`, (5) `verify_integrity`, (6) `atomic_swap`, (7) `retain_bak_for_recovery`.
+     - *Platform Atomicity*: Uses Windows-safe atomic buffer overwrite (`copyFileSync` + `unlinkSync`) to prevent cross-handle file collisions.
+     - *Deduplication*: Identical component/hash returns `IDEMPOTENT_SUCCESS` with zero duplicate entries.
+   - **DesignAgent Integration & `useIEC` Backwards Compatibility**:
+     - `useIEC: true` (default when bridge is available): sequences and compiles certified interactive manipulative into `designResult.chapter_spec`.
+     - `useIEC: false`: executes legacy deterministic DesignAgent path completely unchanged.
+
 

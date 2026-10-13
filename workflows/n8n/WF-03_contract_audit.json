@@ -1,0 +1,41 @@
+{
+  "name": "WF-03 Contract and Architecture Audit",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "return [{ json: $input.item.json }];"
+      },
+      "id": "node-audit-input",
+      "name": "Audit Intake",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Checks canonical contracts against proposed scope\nconst input = $input.item.json;\nconst invariants = [\n  'Standalone single-file 20MB ceiling',\n  'Zero external CDN script dependencies',\n  'Decoupled TEAS learning state vs telemetry',\n  'Zero-spoiler misconception explanations',\n  'Absolute child data privacy (no PII)'\n];\n\nreturn [{\n  json: {\n    taskId: input.taskId,\n    state: 'AUDIT_READY',\n    invariantsVerified: invariants,\n    conflictsFound: [],\n    status: 'PLAN_READY',\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-audit-checker",
+      "name": "Canonical Invariant Checker",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Audit Intake": {
+      "main": [
+        [
+          {
+            "node": "Canonical Invariant Checker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -48,6 +48,15 @@ Before performing any bulk file moves, renames, or deletions, you must:
    - Personal private identifiable information (PII), phone numbers, or private internal credentials.
 3. **Mandatory Pre-Commit Scrubbing Protocol**: Always verify that `.gitignore` actively blocks `node_modules/`, `scratch/`, `**/.scratch/`, `*cookie*`, `*.cookie`, `*.zip`, `.env`, and `secrets/` before staging files. Never use `git add .` or `git add -A` blindly when untracked sensitive files exist.
 
+### Hosted Orchestration Network Boundary Invariant
+1. Developer workstations must NEVER expose unauthenticated inbound listening ports or reverse tunnels (`ngrok`, open HTTP/TCP listeners) to hosted n8n or cloud orchestrators.
+2. All orchestration with hosted n8n (`https://airtribe.app.n8n.cloud`) must operate strictly via authenticated outbound MCP (`mcp-remote` with Bearer auth) or GitHub-mediated workflows (webhooks, issues, pull requests). Pre-authenticated OAuth callbacks (`http://127.0.0.1:...`) are strictly transient client redirects and must never maintain lingering listening services.
+
+### Node.js v24 ESM Type-Import & Path Invariant
+1. All TypeScript interface/type imports in ESM files must use explicit `import { type ... }` syntax to prevent Node.js v24 runtime `SyntaxError: Does not provide an export named` failures.
+2. Ensure runtime stub exports exist for dual-role symbols (`export const Symbol = {}`).
+3. Guard directory paths in ESM scripts using `(typeof __dirname !== 'undefined' ? path.resolve(__dirname, '..') : process.cwd())` or `fileURLToPath(import.meta.url)`.
+
 ### AASHA Universal Teaching Language System
 When transforming or creating educational content, you must strictly adhere to the guidelines established in the AASHA Universal Teaching Language System.
 Reference: [AASHA_TEACHING_GUIDE.md](./docs/AASHA_TEACHING_GUIDE.md)
@@ -104,6 +113,14 @@ ONLY for:
 4. Tasks explicitly authorized by user with the `/boost` slash command
 
 **NEVER use Gemini paid API for**: chat, file reads, grep, code edits under 200 lines, registry lookups, admin commands, plugin/MCP status checks, any task covered by Tier 1 or Tier 2.
+
+#### Dual Gemini API Keys Structure & Scope
+- **Gemini Key A (Multimodal Vision & Long-Context Reserve)**:
+  - Scope: Strictly reserved for textbook PDF multimodal vision ingestion and >100k token full-chapter synthesis.
+  - Policy: Strictly locked out for routine chat, minor code edits, and unapproved executions.
+- **Gemini Key B (Super Admin Deep Reasoning & Agent Building)**:
+  - Scope: Authorized for high-efficiency, complex Super Admin architecture synthesis, multi-agent development agent builds, and deep reasoning tasks.
+  - Policy: Super Admin tasks only. Routine day-to-day code tasks, lookups, and basic edits must still route through Tier 1 OpenRouter free models to ensure zero token bleed.
 
 #### Cascade Rules (Strict — No Exceptions)
 - Tier 1 to Tier 2: on code task, 3x 429 retries, or edit >200 lines

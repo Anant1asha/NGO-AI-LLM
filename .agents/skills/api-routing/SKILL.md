@@ -115,11 +115,25 @@ Attempt 4 → throw → ESCALATE to Tier 2 (Claude Code), NOT Gemini paid
 
 ## Setup: Gemini API as Reserve (Tier 3)
 
+### Dual Gemini API Keys Structure & Scope
+1. **Gemini Key A (`GEMINI_API_KEY_A` / Reserve Key)**:
+   - **Scope**: Dedicated strictly to textbook PDF multimodal vision ingestion and >100K token full-chapter synthesis.
+   - **Policy**: Kept in deep reserve; locked out of routine chat, basic edits, and routine scripts.
+2. **Gemini Key B (`GEMINI_API_KEY_B` / Super Admin Deep Reasoning Key)**:
+   - **Scope**: Dedicated to high-efficiency, complex Super Admin architecture synthesis, dev-agent multi-agent builds, and deep reasoning tasks.
+   - **Policy**: Authorized for Super Admin development workflows. Routine tasks still route through Tier 1 OpenRouter free models to ensure zero token bleed.
+
 ### 1. Add to `Aasha-AI/.env`
 ```env
+# Key A: Reserve for PDF vision extraction & long-context certification
+GEMINI_API_KEY_A=AIzaSy...
+# Key B: Super Admin deep reasoning & agent building
+GEMINI_API_KEY_B=AIzaSy...
+# Primary active key mapping
 GEMINI_API_KEY=AIzaSy...
+
 ALLOW_PAID_GEMINI_FALLBACK=false
-GEMINI_RESERVE_TASKS=pdf_ingestion,final_qa_certification,super_admin_boost
+GEMINI_RESERVE_TASKS=pdf_ingestion,final_qa_certification,super_admin_boost,agent_architecture_build
 GEMINI_DEFAULT_RESERVE_MODEL=gemini-2.0-flash
 GEMINI_PRO_RESERVE_MODEL=gemini-1.5-pro
 ```

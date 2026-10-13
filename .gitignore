@@ -24,6 +24,7 @@ Thumbs.db
 # Graphify & Antigravity artifacts
 graphify-out/
 .gemini/
+.superbrain/
 
 # Test output logs
 *.log

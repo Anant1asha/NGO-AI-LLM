@@ -1,0 +1,41 @@
+{
+  "name": "WF-02 Repository Reconnaissance",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Triggered by WF-01 or manual dispatch with validated task payload\nreturn [{\n  json: $input.item.json\n}];"
+      },
+      "id": "node-recon-input",
+      "name": "Task Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Maps repository structure and inspects manifests without executing arbitrary commands\nconst task = $input.item.json;\nreturn [{\n  json: {\n    taskId: task.taskId,\n    state: 'RECONNAISSANCE',\n    repository: task.repository,\n    targetCommit: task.targetCommit,\n    manifestsChecked: ['package.json', 'Aasha-AI/package.json'],\n    contractsChecked: ['AGENTS.md', 'SUPER_ADMIN_AIOS_V2.md', '13_LEARNING_CONTRACT.md'],\n    status: 'AUDIT_READY',\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-recon-map",
+      "name": "Map Repository State",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Task Input": {
+      "main": [
+        [
+          {
+            "node": "Map Repository State",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

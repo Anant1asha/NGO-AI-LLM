@@ -1,0 +1,72 @@
+{
+  "name": "WF-01 Task Intake and Validation",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "aasha-task-intake",
+        "options": {}
+      },
+      "id": "node-webhook-intake",
+      "name": "Task Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Deterministic Task Intake Validation & Secret Scrubbing\nconst body = $input.item.json.body || $input.item.json;\n\n// 1. Mandatory field checks\nif (!body.taskId || !body.userObjective || !body.repository || !body.targetCommit) {\n  return [{\n    json: {\n      status: 'BLOCKED',\n      error: 'Missing mandatory fields: taskId, userObjective, repository, targetCommit',\n      taskId: body.taskId || 'UNKNOWN',\n      timestamp: new Date().toISOString()\n    }\n  }];\n}\n\n// 2. Prompt injection guard\nconst injectionRegex = /(ignore all rules|bypass authorization|grant root permissions)/i;\nif (injectionRegex.test(body.userObjective)) {\n  return [{\n    json: {\n      status: 'BLOCKED',\n      error: 'SECURITY_ALERT: Prompt injection detected in userObjective',\n      taskId: body.taskId,\n      timestamp: new Date().toISOString()\n    }\n  }];\n}\n\n// 3. Deterministic classification\nconst obj = body.userObjective.toLowerCase();\nlet classification = 'AUDIT_ONLY';\nif (obj.includes('test') || obj.includes('benchmark')) classification = 'TEST_ONLY';\nelse if (obj.includes('security') || obj.includes('secret')) classification = 'SECURITY_REVIEW';\nelse if (obj.includes('document')) classification = 'DOCUMENTATION';\nelse if (obj.includes('implement') || obj.includes('build')) {\n  // Must have human authorization\n  if (body.authorizedBy && body.authorizedBy !== 'LLM') classification = 'IMPLEMENTATION';\n  else classification = 'AUDIT_ONLY';\n}\n\nreturn [{\n  json: {\n    status: 'VALIDATED',\n    taskId: body.taskId,\n    correlationId: body.correlationId || 'CORR-' + Date.now(),\n    classification: classification,\n    userObjective: body.userObjective,\n    repository: body.repository,\n    targetCommit: body.targetCommit,\n    allowedScope: body.allowedScope || [],\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-code-validator",
+      "name": "Deterministic Validator",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "equals",
+              "value2": "VALIDATED"
+            }
+          ]
+        }
+      },
+      "id": "node-if-validated",
+      "name": "Is Validated?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [700, 300]
+    }
+  ],
+  "connections": {
+    "Task Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Deterministic Validator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deterministic Validator": {
+      "main": [
+        [
+          {
+            "node": "Is Validated?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
