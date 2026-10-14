@@ -38,3 +38,9 @@ graphify-out/
 *private_key*
 .keys/
 secrets/
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+
