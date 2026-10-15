@@ -1,7 +1,10 @@
 # Conventions & Invariants
 
-1. **Zero-Token Bleed**: Never chain fallbacks into paid Gemini keys. Always use Tier 1 OpenRouter free models or Tier 2 Claude Code.
-2. **Mathematical Insulation**: Shield all LaTeX math (`\( ... \)`, `$$ ... $$`, `$...$`) and single-letter variables via `__AASHA_MATH_X__` before applying bilingual dictionary wrapping (`rt()` / `window.WM`).
-3. **Symbolic Operations First**: In Serena, use AST/symbolic tools (`find_symbol`, `get_symbols_overview`, `replace_symbol_body`, `rename_symbol`) over raw line replacements whenever manipulating classes or methods.
-4. **Zero-Spoiler Assessment**: Misconception diagnostics (`m`) and 4-tier progressive hints (`H1` to `H4`) must never leak answers or verbatim calculations evaluating to target values.
-5. **Responsiveness**: Concept cards and `<aasha-sim>` canvas viewports must fit within mobile viewports without vertical scroll (`scrollH <= winH + 5`). Minimum touch target 44x44px.
+1. **Zero-Token Bleed & Laya Pre-Router**: Never chain fallbacks into paid Gemini keys. Always route unclassified requests through Laya System 1 (`packages/llm-router/laya_classifier.ts`) locally to isolate Indic scripts in <1ms and classify task domains without spending API tokens.
+2. **TypeScript Dual-Root Bundler Resolution**: Maintain synchronized `tsconfig.json` files at workspace root and package subroots specifying `"types": ["node"]` and `"moduleResolution": "bundler"`, preventing language server degradation into DOM-only mode and avoiding false `.js` extension errors in `tsx` projects.
+3. **CanonicalIR Schema v1.1.0 Contract**: Enforce structured `chapter_metadata: { chapter_id, ... }`, `{ canonicalIR, validationErrors }` assembly returns, and static `V6Compiler.compile(ir)` calls.
+4. **Mathematical Insulation**: Shield all LaTeX math (`\( ... \)`, `$$ ... $$`, `$...$`) and single-letter variables via `__AASHA_MATH_X__` before applying bilingual dictionary wrapping (`rt()` / `window.WM`).
+5. **Symbolic Operations First**: In Serena, use AST/symbolic tools (`find_symbol`, `get_symbols_overview`, `replace_symbol_body`, `rename_symbol`) over raw line replacements whenever manipulating classes or methods.
+6. **Zero-Spoiler Assessment**: Misconception diagnostics (`m`) and 4-tier progressive hints (`H1` to `H4`) must never leak answers or verbatim calculations evaluating to target values.
+7. **Responsiveness**: Concept cards and `<aasha-sim>` canvas viewports must fit within mobile viewports without vertical scroll (`scrollH <= winH + 5`). Minimum touch target 44x44px.
+8. **Canonical Source Textbook Repository**: All source curriculum textbook PDFs reside at `Aasha-AI/content/pdfs/` (e.g. `AD class 8th math rational number.pdf`, `square and cube RL public school and ncert.pdf`). Both CLI (`aasha.cli --pdf`) and pipeline orchestrator auto-discovery (`_find_source_pdf`) automatically index and resolve from this directory.

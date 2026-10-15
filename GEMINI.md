@@ -57,6 +57,10 @@ Before performing any bulk file moves, renames, or deletions, you must:
 2. Ensure runtime stub exports exist for dual-role symbols (`export const Symbol = {}`).
 3. Guard directory paths in ESM scripts using `(typeof __dirname !== 'undefined' ? path.resolve(__dirname, '..') : process.cwd())` or `fileURLToPath(import.meta.url)`.
 
+### TypeScript Dual-Root Bundler Resolution Invariant
+1. In multi-folder workspaces (e.g. `NGO AI LLM` containing `Aasha-AI`), both the workspace root and the package directory MUST contain a synchronized `tsconfig.json` specifying `"types": ["node"]` to prevent IDE language server degradation into DOM-only mode.
+2. For scripts executed via `tsx` or modern ESM runners, use `"moduleResolution": "bundler"` and `"allowImportingTsExtensions": true`. Never force artificial `.js` extensions on uncompiled `.ts` imports.
+
 ### AASHA Universal Teaching Language System
 When transforming or creating educational content, you must strictly adhere to the guidelines established in the AASHA Universal Teaching Language System.
 Reference: [AASHA_TEACHING_GUIDE.md](./docs/AASHA_TEACHING_GUIDE.md)
@@ -129,6 +133,11 @@ ONLY for:
 - **Auto-fallback to Gemini paid on any error: PROHIBITED**
 
 Implementation: `packages/llm-router/openrouter_client.ts` | Guard: `assertGeminiAuthorized(taskType)` | Config: `Aasha-AI/.env` | Skill: `.agents/skills/api-routing/SKILL.md`
+
+### Laya System 1 Zero-Token Pre-Router Invariant
+1. **Zero-Token Task Classification**: All unclassified incoming user prompts and pipeline requests must be evaluated by the local resident Laya System 1 classifier (`packages/llm-router/laya_classifier.ts`) before any external LLM completion call.
+2. **Sub-Millisecond Indic Script Isolation**: Indic scripts (Devanagari, Bengali, Tamil, Telugu, etc.) must be detected via `laya.detect_script()` in <1ms, immediately routing tasks to `'lle-indic'` without consuming tokenizer or LLM tokens.
+3. **Resident Daemon Resilience**: In production and development runs, Laya executes as a persistent stdio daemon (`laya_task_classifier.py --daemon`) to guarantee sub-50ms repeat inference on CPU, backed by an instant in-memory regex fallback if the process is unavailable.
 
 ### System Instructions & Structured JSON Invariant
 1. **Explicit System Instructions**: All LLM model API calls, subagent prompts, and pipeline invocations MUST pass explicit system instructions defining role parameters, JSON output schemas, and strict truth-seeking reasoning standards to eliminate hallucinations.
@@ -387,3 +396,18 @@ When developing or distributing desktop or classroom tooling:
 1. **Never Fall Back to Toy Code**: Chapters without a specialized physical manipulative (Ten-Frame, Pizza Fraction, Number Line Hunter, Symmetry Fold) must default to the high-production visual `MultiStepArenaEngine` (`generateMultiStepArenaSim`). The engine features 60 FPS Canvas/SVG graphics, radial timer gauges, combo multipliers ($\times 2, \times 3$), floating particle sparks, and victory celebrations.
 2. **Dynamic 3-Tier Multi-Step Ingestion**: The engine dynamically ingests ANY curriculum topic into 3 structured steps (Step 1: Formula/Hook $\rightarrow$ Step 2: Intermediate Application $\rightarrow$ Step 3: Boss Verification) with full bilingual Hindi + English text, or directly ingests custom chapter assessment items (`initialParams.rounds`).
 3. **Compound Subject Collision Guard**: When routing by subject name, compound subjects (e.g. "Social Science", "Social Studies") must be evaluated prior to substring matches (e.g. "science") to prevent curriculum domain cross-contamination.
+
+### Multi-Stage Pipeline Job Resumption & Prerequisite Invariant
+1. **Explicit Job Pointer**: All multi-stage batch pipelines (Python and TypeScript) must support resuming existing job runs via an explicit `--job-id <id>` argument rather than unconditionally creating new job UUIDs with empty directories.
+2. **Deterministic Prerequisite Gate & Seamless Auto-Rewind**: Before executing any stage via `--from-stage`, the orchestrator validates prerequisite intermediate artifacts via `_validate_stage_prerequisites()`. By default (`auto_rewind=True`), if prerequisites are missing, the pipeline seamlessly auto-rewinds to the nearest stage whose prerequisites are satisfied (e.g. rewinds to `analyze` or `ingest`), backfills missing intermediate artifacts in-flight, and continues execution to the desired stage without error. In strict mode (`--no-auto-rewind` / `auto_rewind=False`), it halts with `RESUME_PREREQUISITES_MISSING` and provides recovery guidance.
+3. **Resilient Work Directory & Source Recovery**: If a job's work directory (`work/<id>`) was deleted or its `source.pdf` was removed, the orchestrator automatically reconstructs the directory and restores `source.pdf` from the source file path or samples directory using SHA-256 and filename resolution.
+4. **Adaptive Cross-Mode Bridging & Legacy Stage Aliases**: When resuming across different pipeline modes (`v5-engine` vs. `full-synthesis`), the orchestrator non-destructively adapts intermediate structures (`content_map.json` $\leftrightarrow$ `pedagogy_map.json`, `assessment_bank.json` $\rightarrow$ `assessment_suite.json`) and auto-detects mode switches (`synthesize`, `assemble`, `lle`). Legacy stage aliases (`extract` $\rightarrow$ `ingest`, `structure` $\rightarrow$ `analyze`, `pedagogy` $\rightarrow$ `design`, `assessment` $\rightarrow$ `assess`) are automatically normalized.
+
+### In-Process Fastify In-Memory Testing Invariant
+1. **Sub-Millisecond Zero-Port Testing**: Fastify and Express servers must guard network listener startup using `if (require.main === module)` and export `{ fastify, db }` (or equivalent app instances).
+2. **Zero Socket Conflicts**: Automated server unit and integration tests must execute via in-process request injection (`fastify.inject()`). Never bind physical TCP ports (e.g. 3000) during test runs to prevent socket leaks, port collisions, and lingering background processes.
+
+### Authoritative Local Storage & Offline Durability Invariant
+1. **Local Authoritative Plane**: Local SQLite databases (`offline_sync.db`, `aasha_operational.db`) and local immutable snapshots (`.scratch/versions/`) constitute the primary authoritative transactional plane for student progress, evidence ledgers, and artifact recovery.
+2. **External Cloud Adapters**: Remote databases (PostgreSQL/Hatchable) are strictly optional outbound replication adapters. Their presence or absence must never block local execution, offline learning, or automated verification runs.
+

@@ -23,8 +23,8 @@ This skill guides agents and developers in operating the Annanth AASHA Foundatio
    ```
    This automatically queries the 20+ foundations, creates `content/contracts/<Subject>_Class<Class>_<Topic>.yaml`, embeds the Resource Match Report, and binds the simulation adapter. The `AASHAGatekeeper` automatically enforces this in the background.
 
-3. **Zero-Token Bleed Circuit Breaker**:
-   Keep `ALLOW_PAID_GEMINI_FALLBACK=false` in `Aasha-AI/.env` to prevent cascading billing leakage during automated tasks. Automated batch jobs route through free OpenRouter models with 3s backoff on 429s.
+3. **Zero-Token Bleed Circuit Breaker & Laya System 1 Pre-Router**:
+   Keep `ALLOW_PAID_GEMINI_FALLBACK=false` in `Aasha-AI/.env` to prevent cascading billing leakage during automated tasks. Automated batch jobs route through free OpenRouter models with 3s backoff on 429s. All unclassified incoming requests are evaluated locally by the resident Laya System 1 decision engine (`packages/llm-router/laya_classifier.ts`) in ~33ms, providing sub-1ms Indic script isolation and zero-token task classification.
 
 4. **Pre-LLE Math Insulation**:
    Always insulate LaTeX math (`\( ... \)`, `$$ ... $$`, `$...$`) and single-letter algebraic variables with `__AASHA_MATH_X__` using `packages/aasha-rules/math_insulator.ts` before bilingual dictionary wrapping.
@@ -400,5 +400,47 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    - **DesignAgent Integration & `useIEC` Backwards Compatibility**:
      - `useIEC: true` (default when bridge is available): sequences and compiles certified interactive manipulative into `designResult.chapter_spec`.
      - `useIEC: false`: executes legacy deterministic DesignAgent path completely unchanged.
+
+### 28. Multi-Stage Pipeline Resumption, Cross-Mode Bridging & Offline Durability
+
+1. **Pipeline Resumption, Auto-Rewind & Work Directory Recovery (`cli.py` & `orchestrator.py`)**:
+   - **Job Directory Binding & Recovery**: Resuming an execution via `--from-stage <stage>` requires specifying the existing job ID via `--job-id <id>` (e.g., `python -m aasha.cli --from-stage assemble --job-id <uuid>`). If the job's work directory (`work/<id>`) was deleted, the orchestrator automatically reconstructs it and restores `source.pdf` from disk/samples via SHA-256 and filename matching.
+   - **Seamless Stage Auto-Rewind**: If prerequisite artifacts are missing when resuming from a later stage (e.g. stage 4 or later), by default (`auto_rewind=True`) the orchestrator automatically walks backwards to the earliest stage whose prerequisites are satisfied (e.g. `analyze` or `ingest`), backfills all missing intermediate artifacts in-flight, and continues execution through to completion without error. Passing `--no-auto-rewind` or `auto_rewind=False` activates strict validation.
+   - **Stage Prerequisite Mapping**:
+     - `ingest`: requires `source.pdf`
+     - `analyze` / `extract`: requires `source.pdf`, `raw_extract.json`
+     - `design` / `pedagogy`: requires `content_map.json` (V5) or `pedagogy_map.json` (FS)
+     - `assess`: requires `content_map.json` (V5) or `pedagogy_map.json` + `experience_plan.json` (FS)
+     - `synthesize`: requires `pedagogy_map.json`, `experience_plan.json`, `assessment_suite.json`
+     - `lle`: requires `chapter_spec.json`
+     - `assemble`: requires `chapter_spec.json`, `lle.json`
+     - `qa`: requires `chapter.html`
+   - **Legacy Stage Aliases**: Canonical mapping handles legacy aliases seamlessly: `extract` $\rightarrow$ `ingest`, `structure` $\rightarrow$ `analyze`, `pedagogy` $\rightarrow$ `design`, `assessment` $\rightarrow$ `assess`, `synthesis` $\rightarrow$ `synthesize`.
+
+2. **Cross-Mode Adaptive Resumption (`v5-engine` $\leftrightarrow$ `full-synthesis`)**:
+   - **Mode Auto-Detection**: Resuming `--from-stage synthesize` automatically aligns runtime mode to `full-synthesis`; resuming `--from-stage assemble` or `lle` automatically aligns to `v5-engine`.
+   - **Non-Destructive Artifact Adaptation**:
+     - When switching from `v5-engine` to `full-synthesis`, if `pedagogy_map.json` is missing, the orchestrator automatically derives it from existing `content_map.json` and `exercise_bank.json` using `enrich_content_map()` without re-running extraction.
+     - When switching from `full-synthesis` to `v5-engine`, missing `content_map.json` is derived directly from `pedagogy_map.json`.
+
+3. **Authoritative Local Storage & In-Process Testing**:
+   - **SQLite Local Primary Plane**: `offline_sync.db` in `Aasha-AI/server/` is the authoritative offline transactional store for telemetry and learning evidence. Cloud / remote sync services are optional background replicates.
+   - **Fastify In-Process Testing (`fastify.inject`)**: In-process integration tests (`Aasha-AI/server/tests/server_crud.test.js`) test server endpoints directly via Fastify's native `fastify.inject()` method. Tests run sub-millisecond without binding TCP ports (`3000`), avoiding port collision errors and lingering background server daemons.
+
+4. **Multi-Domain Unified Test Matrix Commands**:
+   ```bash
+   # Run full ecosystem multi-domain test matrix
+   npm run test:all
+
+   # In-process server CRUD & evidence ledger tests
+   cd Aasha-AI/server && npm test
+
+   # Studio Core schema validator & contract manager tests
+   cd aasha-studio/packages/core && npm test
+
+   # Multi-stage pipeline resumption & prerequisite unit tests
+   cd Aasha-AI/aasha-pipeline-with-master-json && venv/Scripts/pytest tests/test_resume_prerequisites.py
+   ```
+
 
 
