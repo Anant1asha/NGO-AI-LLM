@@ -23,9 +23,9 @@ Ensures 100% adherence to the Zero-Token Bleed & Circuit Breaker Mandate.
 # 1. Verify environment locking
 node -e "require('dotenv').config({path:'Aasha-AI/.env'}); console.log('ALLOW_PAID_GEMINI_FALLBACK:', process.env.ALLOW_PAID_GEMINI_FALLBACK)"
 
-# 2. Test OpenRouter Free Tier Connection
-node Aasha-AI/packages/llm-router/openrouter_client.ts --test
+# 2. Test 9Router / OpenRouter Gateway Connection
+npx --prefix Aasha-AI tsx Aasha-AI/packages/llm-router/openrouter_client.ts --test
 
 # 3. Test Laya System 1 Zero-Token Pre-Router
-npx --prefix Aasha-AI tsx tests/laya_router.test.ts
+npx --prefix Aasha-AI tsx Aasha-AI/tests/laya_router.test.ts
 ```
