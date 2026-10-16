@@ -17,7 +17,9 @@ $userCargoBin = Join-Path $env:USERPROFILE ".cargo\bin"
 $userCargoExe = Join-Path $userCargoBin "cargo.exe"
 
 if (-not $cargoInPath -and (Test-Path $userCargoExe)) {
-    $env:PATH = $userCargoBin + ";" + $env:PATH
+    if ($env:PATH -split ';' -notcontains $userCargoBin) {
+        $env:PATH = $userCargoBin + ";" + $env:PATH
+    }
     $cargoInPath = Get-Command "cargo.exe" -ErrorAction SilentlyContinue
 }
 
@@ -34,7 +36,8 @@ if (Test-Path $vswhere) {
     if ($vsPath) {
         $hasMsvc = $true
     }
-} else {
+}
+if (-not $hasMsvc) {
     $clInPath = Get-Command "cl.exe" -ErrorAction SilentlyContinue
     if ($clInPath) { $hasMsvc = $true }
 }
@@ -94,10 +97,20 @@ if (-not $cargoInPath) {
     Write-Host "Installing Rustup via winget..." -ForegroundColor Yellow
     winget install Rustlang.Rustup --accept-package-agreements --accept-source-agreements
     if (Test-Path $userCargoExe) {
-        $env:PATH = $userCargoBin + ";" + $env:PATH
-        $currentUserPath = [System.Environment]::GetEnvironmentVariable("PATH", "User")
-        [System.Environment]::SetEnvironmentVariable("PATH", $userCargoBin + ";" + $currentUserPath, "User")
-        Write-Host "Rustup installed! Cargo is now available in session." -ForegroundColor Green
+        if ($env:PATH -split ';' -notcontains $userCargoBin) {
+            $env:PATH = $userCargoBin + ";" + $env:PATH
+        }
+        try {
+            $currentUserPath = [System.Environment]::GetEnvironmentVariable("PATH", "User")
+            $pathParts = if ($currentUserPath) { $currentUserPath -split ';' } else { @() }
+            if ($pathParts -notcontains $userCargoBin) {
+                $newPath = if ($currentUserPath) { "$userCargoBin;$currentUserPath" } else { $userCargoBin }
+                [System.Environment]::SetEnvironmentVariable("PATH", $newPath, "User")
+            }
+            Write-Host "Rustup installed! Cargo is now available in session and persisted to User PATH." -ForegroundColor Green
+        } catch {
+            Write-Host "Rustup installed! Cargo is available in session. (Note: Persistent User PATH update skipped - session lacks write access to HKCU:\Environment)" -ForegroundColor Yellow
+        }
     }
 }
 

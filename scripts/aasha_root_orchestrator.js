@@ -48,7 +48,7 @@ function runTask(task, callback) {
   child.on('close', (code) => {
     console.log(`\n✓ Process finished with exit code: ${code}`);
     if (callback) {
-      setTimeout(callback, 1200);
+      setTimeout(() => callback(code), 1200);
     }
   });
 }
@@ -56,7 +56,7 @@ function runTask(task, callback) {
 const directArg = process.argv[2];
 if (directArg) {
   if (COMMANDS[directArg]) {
-    runTask(COMMANDS[directArg], () => process.exit(0));
+    runTask(COMMANDS[directArg], (code) => process.exit(code ?? 0));
   } else {
     // Check shortcuts
     const shortcuts = {
@@ -71,7 +71,7 @@ if (directArg) {
       'rust': COMMANDS['9']
     };
     if (shortcuts[directArg]) {
-      runTask(shortcuts[directArg], () => process.exit(0));
+      runTask(shortcuts[directArg], (code) => process.exit(code ?? 0));
     } else {
       console.log(`Unknown command: ${directArg}`);
       console.log('Available arguments: studio, learner, tui, status, test, master, all, build, rust');

@@ -61,6 +61,20 @@ Before performing any bulk file moves, renames, or deletions, you must:
 1. In multi-folder workspaces (e.g. `NGO AI LLM` containing `Aasha-AI`), both the workspace root and the package directory MUST contain a synchronized `tsconfig.json` specifying `"types": ["node"]` to prevent IDE language server degradation into DOM-only mode.
 2. For scripts executed via `tsx` or modern ESM runners, use `"moduleResolution": "bundler"` and `"allowImportingTsExtensions": true`. Never force artificial `.js` extensions on uncompiled `.ts` imports.
 
+### Daemon Process & Node.js Event Loop Invariant
+1. Any long-lived or resident daemon process spawned by Node.js (`spawn(pythonBin, ['--daemon'], ...)`) must immediately call `this.proc.unref()` along with `stdout?.unref?.()`, `stderr?.unref?.()`, and `stdin?.unref?.()`.
+2. Daemon client wrappers must expose an explicit `stop()` / `shutdown()` lifecycle hook to allow test harnesses and CLI tools to terminate without event loop hangs.
+3. Classifiers and pre-routers must support dual-path resilience: a zero-token local heuristic/regex path (<1ms) for cold or unactivated Python environments, alongside the resident daemon pipeline.
+
+### Windows Registry Environment Access Invariant
+1. All scripts attempting to write persistent user environment variables (e.g., `[System.Environment]::SetEnvironmentVariable("PATH", ..., "User")` targeting `HKCU:\Environment`) must wrap the registry call in a `try / catch` block.
+2. If write access is restricted, the script must report an advisory note and continue by applying the changes to the active session environment (`$env:PATH`), preventing setup failures.
+3. Registry paths must always be deduplicated (`-split ';' -notcontains $binDir`) before appending or prepending to prevent string overflow.
+
+### Python CLI Runner PYTHONPATH Injection Invariant
+1. When TypeScript/Node.js runners spawn Python using `-m <package.cli>`, they must explicitly prepend the target source directory (e.g. `path.resolve(pipelineDir, 'src')`) to `env.PYTHONPATH` in `resolveEnvironment()`.
+2. Never assume the active Python interpreter has the package installed in editable (`-e`) mode.
+
 ### AASHA Universal Teaching Language System
 When transforming or creating educational content, you must strictly adhere to the guidelines established in the AASHA Universal Teaching Language System.
 Reference: [AASHA_TEACHING_GUIDE.md](./docs/AASHA_TEACHING_GUIDE.md)

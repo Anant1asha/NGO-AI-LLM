@@ -2,6 +2,7 @@ import { spawn, spawnSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import chalk from 'chalk';
+import * as dotenv from 'dotenv';
 
 export interface PipelineEvent {
   event: string;
@@ -115,18 +116,19 @@ export class PipelineRunner {
     const aashaEnvFile = path.resolve(pipelineDir, '../.env');
     if (fs.existsSync(aashaEnvFile)) {
       try {
-        const content = fs.readFileSync(aashaEnvFile, 'utf-8');
-        for (const line of content.split(/\r?\n/)) {
-          const trimmed = line.trim();
-          if (!trimmed || trimmed.startsWith('#')) continue;
-          const eqIdx = trimmed.indexOf('=');
-          if (eqIdx > 0) {
-            const key = trimmed.slice(0, eqIdx).trim();
-            const val = trimmed.slice(eqIdx + 1).trim().replace(/^['"]|['"]$/g, '');
-            if (!env[key] && val) env[key] = val;
-          }
+        const content = fs.readFileSync(aashaEnvFile);
+        const parsed = dotenv.parse(content);
+        for (const [key, val] of Object.entries(parsed)) {
+          if (!env[key] && val) env[key] = val;
         }
       } catch {}
+    }
+
+    // 3. Ensure PYTHONPATH includes pipeline src directory
+    const srcDir = path.resolve(pipelineDir, 'src');
+    const existingPyPath = env.PYTHONPATH || '';
+    if (!existingPyPath.split(path.delimiter).includes(srcDir)) {
+      env.PYTHONPATH = existingPyPath ? `${srcDir}${path.delimiter}${existingPyPath}` : srcDir;
     }
 
     return env;
@@ -221,16 +223,17 @@ export class PipelineRunner {
         const durationSeconds = eventDuration || ((Date.now() - startTime) / 1000);
         const htmlMatch = outputText.match(/Output:\s*([^\r\n]+)/);
         const costMatch = outputText.match(/LLM Cost:\s*\$([0-9.]+)/);
-        const htmlPath = eventHtmlPath || (htmlMatch ? htmlMatch[1].trim() : '');
+        const rawHtmlPath = eventHtmlPath || (htmlMatch ? htmlMatch[1].trim() : '');
+        const resolvedHtmlPath = rawHtmlPath ? (path.isAbsolute(rawHtmlPath) ? rawHtmlPath : path.resolve(pipelineDir, rawHtmlPath)) : '';
         const costUsd = eventCostUsd || (costMatch ? parseFloat(costMatch[1]) : 0);
-        const workDir = htmlPath ? path.dirname(htmlPath) : '';
+        const workDir = resolvedHtmlPath ? path.dirname(resolvedHtmlPath) : '';
 
-        const success = (code === 0 || isSuccess) && !!htmlPath && fs.existsSync(htmlPath);
+        const success = (code === 0 || isSuccess) && !!resolvedHtmlPath && fs.existsSync(resolvedHtmlPath);
 
         if (success) {
           resolve({
             success: true,
-            htmlPath,
+            htmlPath: resolvedHtmlPath,
             workDir,
             costUsd,
             durationSeconds
@@ -238,7 +241,7 @@ export class PipelineRunner {
         } else {
           resolve({
             success: false,
-            htmlPath,
+            htmlPath: resolvedHtmlPath || rawHtmlPath,
             workDir,
             costUsd,
             durationSeconds,
