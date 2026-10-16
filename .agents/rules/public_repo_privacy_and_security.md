@@ -11,6 +11,7 @@ All repositories in the AASHA ecosystem (`NGO-AI-LLM`, `Aasha-AI`, `aasha-studio
 Never stage, commit, or push any of the following to Git:
 1. **API Keys & Tokens**:
    - OpenAI (`sk-...`), OpenRouter (`sk-or-v1-...`), Google Gemini (`AIzaSy...`), Anthropic (`sk-ant-...`), Hugging Face (`hf_...`).
+   - Local AI proxy keys (e.g., 9Router dashboard keys `sk-...` from `http://localhost:20128`). Even though local, they must reside exclusively in `.env` and never be committed as code fallbacks to avoid tripping push protection and secret scanners.
    - GitHub Personal Access Tokens (`github_pat_...`, `ghp_...`).
 2. **Cryptographic Keys & Certificates**:
    - Private keys (`*.pem`, `*.key`, `*.pkcs8`, `id_rsa`, `id_ed25519`).

@@ -119,6 +119,18 @@ All model requests (across Tier 1, Tier 2, and Tier 3) MUST:
 
 ---
 
+## 4. 9Router Gateway Resilience & Local Proxy Invariant
+
+When routing through 9Router (local port 20128) as the primary zero-bleed gateway:
+1. **Local Proxy Key Hygiene**: Local proxy keys (such as `sk-d672920e9d3d1993-...` issued by `http://localhost:20128/dashboard`) must reside exclusively in `.env` (git-ignored). Never hardcode proxy keys as fallback defaults in source code.
+2. **Placeholder Sanitization**: Default template strings (e.g. `YOUR_9ROUTER_API_KEY_HERE`, `placeholder`) must be stripped before sending requests so unauthenticated proxies receive clean anonymous requests.
+3. **Gateway-Level Fast-Fail Circuit Breaker**:
+   - If 9Router returns HTTP 401/403 or connection is refused (`ECONNREFUSED`), the router must NOT retry other models in the pool.
+   - It must log an actionable developer warning and immediately cascade to Tier 1 OpenRouter free models without delay.
+4. **Dual-Root `.env` Resolution**: In multi-root workspaces, router modules must load both `process.cwd()/.env` and package-level `Aasha-AI/.env` so keys are available regardless of execution root.
+
+---
+
 ## Enforcement
 
 This rule applies to:
