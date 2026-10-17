@@ -36,6 +36,7 @@ Before performing any bulk file moves, renames, or deletions, you must:
 3. Always prefer safe, atomic file operations or built-in tools over raw PowerShell/Bash scripting for file management.
 4. When writing code, JSON, or documentation containing backticks or LaTeX formulas via Windows PowerShell, always use verbatim here-strings (`@' ... '@ | Set-Content -Encoding UTF8`) to prevent accidental shell interpolation and variable expansion.
 5. When executing shell commands via `run_command` on Windows PowerShell, NEVER use `&&` to chain commands (e.g., `cmd1 && cmd2`). Execute commands as separate tool calls or separate them with `;`. Always verify `.gitignore` presence before staging files in repositories containing sub-repositories or `node_modules` to prevent index corruption.
+6. When automating non-interactive Git rebases (`git rebase -i`) on Windows via `$env:GIT_SEQUENCE_EDITOR`, never use default `[System.Text.Encoding]::UTF8` or standard PowerShell 5.1 `Set-Content -Encoding UTF8` on the rebase todo file, as both emit a UTF-8 Byte Order Mark (BOM `\uFEFF`) that breaks Git's line parser (`error: invalid command '﻿edit'`). Always write sequence files using UTF-8 without BOM (`New-Object System.Text.UTF8Encoding $false`). Pass the modifier script via `$env:GIT_SEQUENCE_EDITOR = "powershell -ExecutionPolicy Bypass -File <path_to_script>"` to ensure reliable headless execution.
 
 ### Public Repository Zero-Leakage & Privacy Invariant
 1. **Public Repository Default Assumption**: Assume all ecosystem repositories (`NGO-AI-LLM`, `Aasha-AI`, `aasha-studio`, `NGOweb`, `web`) are **100% PUBLIC**. Never assume any repository or branch is private.
@@ -47,6 +48,8 @@ Before performing any bulk file moves, renames, or deletions, you must:
    - Active environment files (`.env`, `.env.local`, `.env.production`). Only sanitized `.env.example` templates with empty placeholder values are permitted.
    - Personal private identifiable information (PII), phone numbers, or private internal credentials.
 3. **Mandatory Pre-Commit Scrubbing Protocol**: Always verify that `.gitignore` actively blocks `node_modules/`, `scratch/`, `**/.scratch/`, `*cookie*`, `*.cookie`, `*.zip`, `.env`, and `secrets/` before staging files. Never use `git add .` or `git add -A` blindly when untracked sensitive files exist.
+4. **Mock Token Concatenation in Test Fixtures**: When authoring unit tests, mock fixtures, or evidence scrubber assertions, never write intact mock tokens or fake secret strings matching provider formats (`github_pat_...`, `sk-...`, `ghp_...`). Always split the token literal using string concatenation (`'github_pat_' + 'dummy_token_...'`) so runtime regex validation passes while static secret scanners and GitHub push protection are not triggered.
+5. **Unpushed Git History Sanitization Protocol**: If an unpushed local commit introduces a static-scanner pattern, rewrite it before pushing via `git rebase -i <parent_sha>`, amending the sanitized fixture and continuing, ensuring zero commit blobs in git history retain the literal scanner pattern.
 
 ### Hosted Orchestration Network Boundary Invariant
 1. Developer workstations must NEVER expose unauthenticated inbound listening ports or reverse tunnels (`ngrok`, open HTTP/TCP listeners) to hosted n8n or cloud orchestrators.
