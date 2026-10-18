@@ -18,6 +18,9 @@
     "test:master": "npm --prefix Aasha-AI run test:master",
     "test:all": "npm --prefix Aasha-AI test && npm --prefix aasha-studio test && npm --prefix multi-agent-tui test",
     "tui": "npm --prefix multi-agent-tui run dev",
+    "laya:test": "npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/laya_router.test.ts",
+    "audit:gateway": "node scripts/check_gateway_status.js",
+    "chapter:compile": "npm --prefix Aasha-AI run build:chapter",
     "setup:rust": "powershell -ExecutionPolicy Bypass -File ./scripts/setup_rust_windows.ps1"
   },
   "engines": {

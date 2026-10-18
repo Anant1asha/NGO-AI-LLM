@@ -28,6 +28,17 @@ Format every response like this:
 - Confidence: a score from 0.0 to 1.0, with one line on why.
 - Caveats: any assumptions, missing information, conflicting evidence, or claims that still need verifying
 
+### Ecosystem Identity Invariant (Autonomous AI Agent System vs. Building LLM)
+1. **Definitive Build Purpose**: Despite the nominal workspace folder name `NGO AI LLM` and git remote URL `https://github.com/Anant1asha/NGO-AI-LLM.git`, this ecosystem **DOES NOT BUILD, PRE-TRAIN, OR FINE-TUNE LARGE LANGUAGE MODELS**.
+2. **AI Agent Operating System (AASHA AIOS)**: The build consists strictly of an **Autonomous AI Agent Ecosystem** implementing:
+   - **Multi-Agent Orchestration**: 7 specialized agents (`IngestAgent`, `AnalysisAgent`, `DesignAgent`, `AssessmentAgent`, `LLEAgent`, `QAAgent`, `BrowserTesterAgent` in `agents.json`) governed by Pāṇinian Kāraka decision compilation and Chāṇakya HIL guardrails.
+   - **Multi-Tier Persistent Memory**: Serena MCP local memory (`.serena/memories/`), Mem0 dual-write episodic store (`.scratch/mem0_store.json`), SQLite Operational Knowledge Graph (`aasha_operational.db`), and AST Codebase Graph (`graphify-out/graph.json`).
+   - **Deterministic Multi-Tools & Foundation Engines**: PyMuPDF extraction, LaTeX math insulator (`packages/aasha-rules/math_insulator.ts`), KaTeX typography inliners, procedural Web Audio tone generator, Headless Chrome CDP automation (`scripts/automated_browser_verification.js`), and 20+ prebuilt simulation foundations (F01–F20 catalog in `experience_registry/registry.json`).
+   - **Curated Resources & Reusable Contracts**: Section 24 YAML Reusable Content Contracts (`content/contracts/`), bilingual Hindi dictionary databases (`aasha_dictionary_db.json`), and NCERT textbook syllabus catalogs (`ncert_books.json`).
+   - **Procedural Skills**: Capability runbooks in `.agents/skills/` (`aasha-ecosystem`, `aasha-aios-orchestrator`, `aasha-prompt-compiler`, `anti-bleed`, `chapter-compile`, `karaka-compiler`, `universal-sim-engine`).
+3. **External LLM Consumption Model**: External models (`llama-3.1-8b`, `nemotron-3.5`, `claude-3-5-sonnet`, `gemini-2.0-flash-exp`) are consumed strictly as *swappable reasoning engines* via the 3-Tier Anti-Bleed LLM Router (`packages/llm-router/openrouter_client.ts`). They are intelligence utilities, NOT the system being built.
+4. **Anti-Hallucination Policy**: Any subagent, automated script, or reasoning turn that assumes or claims that this repository is training, building, or fine-tuning an LLM violates this invariant.
+
 ### Safe File Operations Constraint
 You are strictly forbidden from executing destructive shell commands (e.g., `Remove-Item`, `rm -rf`) in bulk without explicit safeguards.
 Before performing any bulk file moves, renames, or deletions, you must:
@@ -212,6 +223,28 @@ Every question in textbook exercise banks and gamified assessments must pass `Qu
 4. **Insulated Math Comparison**: All comparisons must normalize Unicode dashes, LaTeX formatting (`\frac`, `\sqrt`), and match short tokens using regex word boundaries.
 5. **No Evaluation Leakage**: Misconception explanations (`m` attribute) must never include arithmetic calculations that evaluate to the correct answer value (e.g., avoid "yields 2", "gives 4", or "= -5" when that value matches the target answer).
 6. **Pre-Ingestion L-Truth Quality Gate**: Validate distractor explanations (`m` attribute) against zero-spoiler regex `/\b(is|giving|becomes|instead of|to get|yielding|result is|should be)\b/i` **before** persisting questions to `contract.yaml`, gating compilation until all 4 hint tiers ($H_1 \rightarrow H_4$) pass L-Truth standards.
+
+### Dual Execution Topology: Heavy CLI vs. Extension 9Router Operations
+To eliminate token bleed, prevent slash-command parsing errors, and preserve workflow state across sessions, the ecosystem enforces a **strict dual execution topology**:
+
+1. **Scenario A: Standalone Claude Code CLI Terminal (Direct Anthropic Key / Heavy Operations)**
+   - **Environment**: Native OS terminal (`cmd`, `powershell`, or `bash`) running the standalone `claude` binary with `ANTHROPIC_API_KEY` set directly.
+   - **Assigned Scope**:
+     - Multi-agent long-running workflows (`Workflow({ name: "deep-research" })`, `/deep-research`, `/workflows`).
+     - Heavy multi-chapter refactoring, full AST graph rebuilds (`graphify`), and multi-agent team reviews.
+     - Live TUI progress monitoring via the native `/workflows` panel and subagent telemetry.
+   - **Rule**: Never run heavy ephemeral multi-agent workflows inside third-party extension proxies where process boundary recycling can abort subagents.
+
+2. **Scenario B: VS Code Native Extension (9Router Local Gateway / Routine Development & Pipeline Control)**
+   - **Environment**: VS Code Claude Code native extension routed through the local `9router` proxy gateway (`http://localhost:20128/v1` → `ag/gemini-3.8-flash` / `claude-combo`).
+   - **Assigned Scope**:
+     - Routine development, coding tasks, targeted bug fixes, and file edits.
+     - Zero-token task pre-routing via Laya System 1 (`npm run laya:test`, `laya_task_classifier.py`).
+     - Deterministic pipeline execution and status reporting via the Unified Root Orchestrator:
+       - `npm run orchestrator` / `npm start` (interactive terminal hub across all projects).
+       - Direct shortcuts: `npm run tui` (`multi-agent-tui`), `npm run test:all`, `npm run test:ltruth`, `npm run chapter:compile`, `npm run audit:gateway`.
+     - In-editor context inspection, Serena memory persistence, and local tests.
+   - **Rule**: Do not issue CLI-only terminal slash commands (e.g. `/workflows`) in this environment; all pipeline orchestration, execution gates, and progress reporting are fully driven through native scripts and the root orchestrator.
 
 ### Multi-Aspect Ratio Same-Frame Responsiveness Invariant (16:9, 19.5:9, 20:9)
 All chapter concept cards and interactive simulations must fit in the exact same viewport frame without scrolling across all mobile device aspect ratios:

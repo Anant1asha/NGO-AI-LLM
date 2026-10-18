@@ -6,6 +6,10 @@ Guidance for Claude Code when working in this repository.
 
 A collection of **five independent projects** serving one mission: converting Indian K-12 textbook PDFs (NCERT and other boards) into interactive, gamified, offline HTML5 learning modules.
 
+> [!IMPORTANT]
+> **Ecosystem Identity Invariant (Autonomous AI Agent System vs. Building LLM)**:
+> Despite the nominal directory name `NGO AI LLM` and remote URL `https://github.com/Anant1asha/NGO-AI-LLM.git`, this ecosystem **DOES NOT BUILD, PRE-TRAIN, OR FINE-TUNE LLMs**. It is an **Autonomous AI Agent Ecosystem (AASHA AIOS)** featuring multi-agent orchestration (`agents.json`), multi-tier memory (Serena MCP, Mem0, SQLite, AST graph), multi-tools & simulation engines (F01–F20 catalog, PyMuPDF, LaTeX math insulator, Headless Chrome CDP automation), curated resources, and procedural skills. External LLMs are consumed strictly as swappable reasoning engines via an anti-bleed router (`packages/llm-router/openrouter_client.ts`). Any assumption that this project builds or trains an LLM is an anti-pattern hallucination.
+
 There is **no single root orchestrator binary**. `scripts/aasha_root_orchestrator.js` exists and root `package.json:7-21` fans out to each sub-project via `npm --prefix`, but each project is separately runnable and separately testable.
 
 Authoritative context documents (read these before large changes):
@@ -54,6 +58,24 @@ cd Aasha-AI/aasha-pipeline-with-master-json && python -m aasha.cli --help
 ```
 
 Install and test are **separate steps**. A test claim requires output showing tests actually executed — exit code 0 alone proves nothing (a filter matching nothing exits 0).
+
+## Dual Execution Topology (Heavy CLI vs. VS Code Extension)
+
+To avoid token bleed, command parsing errors, and interrupted background tasks, adhere to this environment split:
+
+- **Scenario A: Standalone Claude Code CLI Terminal (Direct `ANTHROPIC_API_KEY`)**
+  - Reserved for heavy multi-agent workflows (`Workflow({ name: "deep-research" })`, `/deep-research`), multi-agent reviews, and full codebase AST indexing.
+  - Native TUI commands (such as the interactive `/workflows` progress panel) run exclusively in this environment.
+- **Scenario B: VS Code Extension (via 9Router Proxy & Local Scripts)**
+  - Use for routine development, coding, bug fixing, and continuous pipeline orchestration.
+  - Pipeline control, stage execution, and test certifications are driven via the Unified Root Orchestrator:
+    - Interactive Hub: `npm run orchestrator` / `npm start`
+    - Laya Zero-Token Audit: `npm run laya:test`
+    - Teacher Console: `npm run tui`
+    - Chapter V6 Build: `npm run chapter:compile`
+    - All Tests: `npm run test:all`
+    - Gateway Check: `npm run audit:gateway`
+  - Do not type CLI-specific TUI slash commands (like `/workflows`) in the extension chat.
 
 ## Invariants you must not violate
 

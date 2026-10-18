@@ -13,6 +13,9 @@ This skill guides agents and developers in operating the Annanth AASHA Foundatio
 
 ## Core Mandates & Golden Invariants
 
+0. **Ecosystem Identity Invariant (Autonomous AI Agent System vs. Building LLM)**:
+   Despite the nominal workspace folder name `NGO AI LLM` and git remote URL `https://github.com/Anant1asha/NGO-AI-LLM.git`, this ecosystem **DOES NOT BUILD, PRE-TRAIN, OR FINE-TUNE LARGE LANGUAGE MODELS**. It is an **Autonomous AI Agent Ecosystem (AASHA AIOS)** implementing multi-agent orchestration (7 pipeline agents in `agents.json`), multi-tier persistent memory (Serena MCP, Mem0, SQLite, AST graph), multi-tools & simulation engines (F01–F20 catalog, PyMuPDF, math insulator, CDP automation), curated resources, and procedural skills. External LLMs are consumed strictly as swappable reasoning engines via the 3-tier anti-bleed router (`packages/llm-router/openrouter_client.ts`). Any claim that this repository trains or builds an LLM is a hallucination.
+
 1. **Never Build From Scratch**:
    Always query the 20+ prebuilt open-source experience foundations in `Aasha-AI/experience_registry/registry.json` before designing any new simulation, game, or interactive exercise. Adapt foundations under `AashaExperienceContract`.
 
