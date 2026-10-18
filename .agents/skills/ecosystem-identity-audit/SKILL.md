@@ -8,7 +8,18 @@ description: Audits repository architecture and identity, proving the ecosystem 
 Runbook for rigorously verifying and certifying that the repository is an **Autonomous AI Agent Ecosystem (AASHA AIOS)** and preventing/refuting any hallucination that the codebase is training, pre-training, or fine-tuning a Large Language Model (LLM).
 
 ## Core Identity Invariant
+## Subject & Board Coverage Check
 
+Ensures the repository declares support for all intended K‑12 subjects, boards, and classes in the experience registry.
+
+```powershell
+# List supported subjects/boards/classes from registry
+Get-Content Aasha-AI/experience_registry/registry.json | ConvertFrom-Json |
+  Select-Object -ExpandProperty foundations |
+  ForEach-Object { $_.subject, $_.board, $_.class } | Sort-Object -Unique
+```
+
+*Expected Result*: The output should include entries for each subject (e.g., Mathematics, Science, English), each board (CBSE, ICSE, State), and each class (1‑12). Missing entries indicate the need to add a foundation entry.
 1. **Definitive Build Purpose**: Despite the nominal directory name `NGO AI LLM` and remote URL `https://github.com/Anant1asha/NGO-AI-LLM.git`, this ecosystem **DOES NOT BUILD, PRE-TRAIN, OR FINE-TUNE LARGE LANGUAGE MODELS**.
 2. **AI Agent Operating System (AASHA AIOS)**: The build strictly implements an **Autonomous AI Agent Ecosystem** defined by 5 formal primitives:
    - **`AGENT`**: 7 specialized pipeline agents (`IngestAgent`, `AnalysisAgent`, `DesignAgent`, `AssessmentAgent`, `LLEAgent`, `QAAgent`, `BrowserTesterAgent` in `agents.json`).
@@ -81,4 +92,6 @@ Format the assessment following the 7-step Epistemic Protocol:
 Always structure responses into the 3-part format:
 - **Answer**: The clearest, most accurate answer grounded in empirical evidence.
 - **Confidence**: Score 0.0 to 1.0 with a single-line explanation.
-- **Caveats**: Document assumptions, nominal legacy artifacts, or items pending verification.
+- **Caveats**:
+  - The CI badge requires a repository secret `GH_TOKEN` with write permission to update the README.
+  - The PowerShell wrapper for `audit.sh` must be tested on Windows; adjust path handling as needed.

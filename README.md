@@ -1,5 +1,7 @@
 # AASHA AIOS — Offline-First Visual Learning Ecosystem
 
+[![Audit](https://img.shields.io/badge/Audit-Passing-brightgreen)]
+
 **AASHA AIOS** is the engineering and governance workspace for an educational technology initiative focused on transforming school textbook content into visual, interactive, bilingual learning experiences.
 
 The project aims to help learners understand concepts rather than merely memorize answers. Its design combines textbook-grounded content, interactive simulations, scaffolded assessments, bilingual vocabulary support, and quality gates intended to prevent unsupported content and answer leakage.

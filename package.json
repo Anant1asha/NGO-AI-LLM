@@ -4,6 +4,9 @@
   "private": true,
   "description": "AASHA Learning & Impact Ecosystem — Unified Root Orchestrator",
   "scripts": {
+    "audit:identity": "powershell -ExecutionPolicy Bypass -File C:/Users/admin/.gemini/antigravity-ide/brain/7e576486-b3c6-4e3a-a202-07519c8394d7/audit_wrapper.ps1",
+    "laya:default": "bash C:/Users/admin/.gemini/antigravity-ide/brain/7e576486-b3c6-4e3a-a202-07519c8394d7/set_laya_default_wrapper.sh",
+
     "start": "node scripts/aasha_root_orchestrator.js",
     "orchestrator": "node scripts/aasha_root_orchestrator.js",
     "studio": "npm --prefix aasha-studio run studio",
