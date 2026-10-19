@@ -1,7 +1,7 @@
 # VERIFICATION_REPORT.md
 # AASHA AIOS Development Agent — Phase 1 & Phase 2 Complete Verification Report
 **Authority**: Senior QA Lead, Technical Product Manager & Systems Architect  
-**Date**: 2026-10-12  
+**Date**: 2026-10-20  
 **Evaluation Scope**: Phase 1 (Governed Prototype) & Phase 2 (Bounded Implementation & Verification)  
 **Status**: **ALL TESTS PASSED (100% SUCCESS RATE — ZERO FAILURES)**  
 
@@ -65,8 +65,9 @@ Key operational milestones certified:
 ---
 
 ### 2.3 Ecosystem Regression Verification
-- **L-Truth Ground Truth Benchmark**: `node benchmarks/qa_ltruth_benchmark.js` $\rightarrow$ **100/100 PASS** (10 chapters, 140 questions, 0 spoilers).
-- **Master Unified E2E Multi-Chapter Suite**: `node ../tests/e2e_all_chapters_suite.js` $\rightarrow$ **36/36 PASS** (20MB ceiling, zero CDN dependencies, mobile responsiveness).
+- **L-Truth Ground Truth Benchmark**: `node benchmarks/qa_ltruth_benchmark.js` $\rightarrow$ **100/100 PASS** (13 chapters, 184 questions, 531 misconceptions, 0 spoilers, 0 math-rt collisions).
+- **Master Unified E2E Multi-Chapter Suite**: `node ../tests/e2e_all_chapters_suite.js` $\rightarrow$ **48/48 PASS** (8 production chapters: 20MB ceiling, zero CDN dependencies, mobile responsiveness, formula insulation).
+- **Laya System 1 Router Dual-Path Suite**: `npm run laya:test` $\rightarrow$ **12/12 PASS** (0 token bleed, <1ms local classification latency across cold and adaptive paths).
 - **Fault Injection Hardening Suite**: `npx tsx tests/test_fault_injection_hardening.ts` $\rightarrow$ **10/10 PASS** (quarantine exhaustion, spoiler detection, timeout retry).
 - **Registry Protocol Suite**: `npx tsx tests/test_registry_protocol_suite.ts` $\rightarrow$ **11/11 PASS** (offline gate, SHA-256 hashing).
 

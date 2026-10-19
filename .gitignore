@@ -18,8 +18,9 @@ tmp/
 # IDE / System
 .vscode/
 .idea/
+.claude/
 .DS_Store
-Thumbs.db
+.Thumbs.db
 
 # Graphify & Antigravity artifacts
 graphify-out/

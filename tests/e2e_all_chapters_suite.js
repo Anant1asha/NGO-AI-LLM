@@ -50,7 +50,9 @@ const TARGET_PRODUCTION_CHAPTERS = [
   'ExponentsPowers_Class8_Gamified_v5_Enhanced_v6.html',
   'LinearEquations_Class8_v6.html',
   'RationalNumbers_Class8_Gamified_v5_Enhanced_v6.html',
-  'quadratic_systems_lab_Class8_v6.html'
+  'quadratic_systems_lab_Class8_v6.html',
+  'AlgebraicExpressions_Class7_BETA_v6.html',
+  'financial_accounting_Class12_v6.html'
 ];
 
 const chapterFiles = TARGET_PRODUCTION_CHAPTERS

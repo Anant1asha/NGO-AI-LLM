@@ -1,6 +1,6 @@
 # AASHA AIOS — Offline-First Visual Learning Ecosystem
 
-[![Audit](https://img.shields.io/badge/Audit-Passing-brightgreen)]
+[![Audit](https://github.com/Anant1asha/NGO-AI-LLM/actions/workflows/audit-badge.yml/badge.svg)](https://github.com/Anant1asha/NGO-AI-LLM/actions/workflows/audit-badge.yml)
 ⚠️ **CI badge requires a `GH_TOKEN` secret with write permissions** to update the audit status.
 **AASHA AIOS** is the engineering and governance workspace for an educational technology initiative focused on transforming school textbook content into visual, interactive, bilingual learning experiences.
 
