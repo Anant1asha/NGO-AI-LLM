@@ -12,9 +12,12 @@ Runbook for verifying 9Router local proxy connectivity, ensuring zero-secret sta
 Run all checks from the workspace root or `Aasha-AI`:
 
 ```powershell
+# 0. Start 9Router Headless on Windows (Local-Only Daemon) if port 20128 is offline
+$env:PORT='20128'; $env:HOSTNAME='127.0.0.1'; node "$env:APPDATA\npm\node_modules\9router\app\custom-server.js"
+
 # 1. Zero-Secret Staging Audit (Must return 0 matches)
-git grep -i "sk-d672920e9d3d1993"
-git -C Aasha-AI grep -i "sk-d672920e9d3d1993"
+git grep -i "NINEROUTER_API_KEY="
+git -C Aasha-AI grep -i "NINEROUTER_API_KEY="
 
 # 2. Dual-Root Environment Check (Verify NINEROUTER_API_KEY is detected)
 node -e "require('dotenv').config({path:'Aasha-AI/.env'}); console.log('9Router Key Configured:', Boolean(process.env.NINEROUTER_API_KEY))"
@@ -36,8 +39,8 @@ npm --prefix multi-agent-tui test
 ## Gateway Behavioral Invariants
 
 1. **Local Proxy Key Hygiene (`http://localhost:20128/dashboard`)**:
-   - The default key `sk-d672920e9d3d1993-xq1kzx-afac3200` must reside exclusively in `Aasha-AI/.env`.
-   - Never commit `sk-...` strings as code defaults; `.env` is shielded by `.gitignore`.
+   - The key must reside exclusively in `Aasha-AI/.env` as `NINEROUTER_API_KEY`.
+   - Never commit API key strings as code defaults; `.env` is shielded by `.gitignore`.
 
 2. **Fast-Fail Circuit Breaker**:
    - On HTTP 401/403 or `ECONNREFUSED`, the router aborts multi-model retries immediately and fast-cascades to the Tier 1 OpenRouter free pool.
