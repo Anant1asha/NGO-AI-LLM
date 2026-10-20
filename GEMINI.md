@@ -485,9 +485,9 @@ When developing or distributing desktop or classroom tooling:
 3. **Artifact ID Requirement for Signing**: Any action consuming uploaded release artifacts (e.g., `SignPath/github-action-submit-signing-request`) must be preceded by `actions/upload-artifact@v4` with `id: upload-step` and explicitly supply `github-artifact-id: ${{ steps.upload-step.outputs.artifact-id }}`.
 
 ### GitHub Actions Dynamic Secret Indirection Invariant
-1. **Dynamic Secret Indexing for IDE Resilience**: When referencing custom repository secrets that may not be statically cached in the local IDE extension, use dynamic expression formatting:
-   `env: KEY: ${{ secrets[format('{0}', 'SECRET_NAME')] }}`
-   This eliminates IDE language server warnings (`Context access might be invalid: <SECRET>`) while resolving identically to `secrets.SECRET_NAME` on GitHub Actions runners.
+1. **Dynamic Secret Indexing for IDE Resilience**: When referencing custom repository secrets that are not statically known to the local editor language service, wrap the access in dynamic JSON evaluation:
+   `env: KEY: ${{ fromJSON(toJSON(secrets))['SECRET_NAME'] }}`
+   This completely detaches expression evaluation from the rigid static `ContextObject` schema, eliminating IDE false-positive warnings (`Context access might be invalid: <SECRET>`) while resolving identically to `secrets.SECRET_NAME` on GitHub Actions runners.
 2. **Preserve Job-Level Scoping**: Combine dynamic indexing with job-level `env:` scoping to maintain clean separation between secret declaration and conditional execution logic (`if: env.KEY != ''`).
 
 ### Mandatory Artifact Markdownlint Formatting Invariant
