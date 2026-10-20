@@ -1,7 +1,7 @@
 # ADR-PROPOSED-001: Provider-Neutral, Capability-Driven Agent Runtime
 
-- **Status:** PROPOSED — AWAITING HUMAN REVIEW / NOT APPROVED
-- **Date:** 2026-10-10
+- **Status:** ACCEPTED — APPROVED BY SUPER ADMIN
+- **Date:** 2026-10-10 (Approved: 2026-10-20)
 - **Scope:** AASHA AIOS agent orchestration across NGO-AI-LLM and Aasha-AI
 - **Evidence basis:** [AASHA-AUDIT-2026-10-10-01](../audits/2026-10-10_any-tool-agent_source_audit.md)
 
@@ -118,10 +118,8 @@ This is a target boundary, not a claim that the diagram is already implemented.
 
 ## Approval record
 
-- Human decision: **PENDING**
-- Approved by: **NOT RECORDED**
-- Date: **NOT RECORDED**
-- Scope approved: **NONE**
-- Implementation authorized by this ADR: **NO**
-
-Do not change the status to ACCEPTED without an explicit human decision.
+- Human decision: **ACCEPTED**
+- Approved by: **Super Admin (Human Authority)**
+- Date: **2026-10-20**
+- Scope approved: **Option C — Provider-neutral adapter layer under existing AASHA AIOS control plane**
+- Implementation authorized by this ADR: **YES (Bounded, Incremental Provider-Neutral Capability Runtime)**

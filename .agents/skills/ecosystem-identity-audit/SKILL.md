@@ -94,4 +94,4 @@ Always structure responses into the 3-part format:
 - **Confidence**: Score 0.0 to 1.0 with a single-line explanation.
 - **Caveats**:
   - The CI badge requires a repository secret `GH_TOKEN` with write permission to update the README.
-  - The PowerShell wrapper for `audit.sh` must be tested on Windows; adjust path handling as needed.
+  - The cross-platform audit runner `scripts/audit_identity.mjs` is executed via `npm run audit:identity`.

@@ -21,9 +21,11 @@ This skill guides agents and developers in operating the Annanth AASHA Foundatio
 
 2. **Automated Chapter Contract & Resource Matcher**:
    Before generating or updating any chapter, initialize its Section 24 contract and matched foundation via:
+
    ```bash
    npm run chapter:init -- "<Subject>" <Class> "<Topic>"
    ```
+
    This automatically queries the 20+ foundations, creates `content/contracts/<Subject>_Class<Class>_<Topic>.yaml`, embeds the Resource Match Report, and binds the simulation adapter. The `AASHAGatekeeper` automatically enforces this in the background.
 
 3. **Zero-Token Bleed Circuit Breaker & Laya System 1 Pre-Router**:
@@ -107,6 +109,12 @@ This skill guides agents and developers in operating the Annanth AASHA Foundatio
     - Viewport overflow is strictly prohibited (`scrollH <= winH + 5`).
     - Touch targets must remain $\ge 44\times 44\text{px}$ across all viewports.
 
+18. **Continuous Open-Source Research & Harvesting Engine**:
+    Classrooms and mobile clients operate 100% offline from the Local CDN (`assets/cdn/interactives/`) and Local Vendor Library (`assets/cdn/vendor/`). The ecosystem is backed by an autonomous harvesting engine (`npm run harvest:run`, `npm run harvest:search`) that continuously sources, refines, and admits simulations from PhET, JSXGraph, KingsMath, CinePhysicsHQ, GeoGebra, and Escapp through the automated 5-point quality gate (100% offline integrity, < 20MB ceiling, cleanroom license compliance / GPL isolation under `<aasha-sim>`, mobile viewport clamping, and AASHA telemetry compliance).
+
+19. **HIL Beta Model & Headless Orchestration Boundary**:
+    Routine development, testing, asset indexing, and background tasks operate with pre-authorized full autonomous access (0 interruptions). Human-in-the-Loop (HIL) reviews are reserved exclusively for Gate 6 release promotions. Hosted n8n and MCP integrations must operate headlessly over stdio (`scripts/n8n_mcp_server.mjs`) without initiating interactive browser OAuth redirects.
+
 ---
 
 ## 20+ Prebuilt Open-Source Foundations Catalog
@@ -175,6 +183,7 @@ npm run test:all
 Whenever manual verification is requested or needed before chapter release, execute the automated headless Chrome CDP verification suite (`node verify_all_manual_steps.js`):
 
 ### Architecture & Runtime
+
 1. **In-Process HTTP Server**: Spawns an internal HTTP server on an ephemeral or dedicated port (e.g. `3333`) serving HTML, JS modules, CSS, JSON, and web assets with correct MIME types and CORS headers.
 2. **Headless Chrome CDP Harness**:
    - Launches Chrome with flags: `--remote-debugging-port=9223`, `--headless=new`, `--disable-gpu`, `--no-sandbox`.
@@ -183,6 +192,7 @@ Whenever manual verification is requested or needed before chapter release, exec
 3. **Execution Invariant**: Every `Runtime.evaluate` script payload MUST be enclosed in block scope `{ ... }` or IIFE `(() => { ... })()` to eliminate global identifier collision errors across multi-step browser evaluations.
 
 ### 7-Stage Verification Checklist
+
 1. **Profile Onboarding**: Input learner details (`learnerName`, `classLevel`) and verify greeting rendering.
 2. **Dynamic Chapter Switching**: Verify smooth switching across curriculum catalog (e.g. Fractions, Rational Numbers, Electric Circuits, Algebra) with dynamic DOM updates.
 3. **Bilingual LLE Word-Tap**: Click vocabulary terms; verify `#wordDialog` modal displays correct Indic (Hindi) translation, definition, and phonetics. Verify math insulation prevents symbol corruption.
@@ -190,18 +200,22 @@ Whenever manual verification is requested or needed before chapter release, exec
 5. **3-Tier Gamified Assessment & Hints**: Verify 4-tier scaffolding hint state machine ($H_1 \rightarrow H_4$) with strict 0-spoiler adherence; submit answer and verify XP/coin rewards.
 6. **60 FPS Practice Loop**: Verify game loop HUD maintaining steady 60 FPS under active simulation and tactile card pairing mechanics in Match Arena.
 7. **Evidence Ledger**: Verify auditable telemetry and assessment event persistence.
-8. **Live Screenshot Artifacts**: Capture PNG screenshots (`Page.captureScreenshot`) at each milestone, save them into the active conversation artifact directory, and embed them in `walkthrough.md` via GFM ````carousel ```` components.
+8. **Live Screenshot Artifacts**: Capture PNG screenshots (`Page.captureScreenshot`) at each milestone, save them into the active conversation artifact directory, and embed them in `walkthrough.md` via GFM ````carousel```` components.
 
 ### 18. TypeScript Test Runner Standard (`npx tsx`)
+
 When executing standalone TypeScript test files or modules (e.g. `packages/canonical-ir/test_canonical_ir.ts`), use `npx tsx` rather than `npx ts-node`. On Node v24+, `ts-node` without local `tsconfig.json` bindings can crash with `TypeError: Cannot read properties of undefined (reading 'fileExists')`. `npx tsx` provides fast, zero-config ESM and CommonJS TypeScript execution.
 
 ### 19. Canonical Prototype IR & Stateful V6 Engine Runbook
+
 1. **Pipeline Execution**: Specialist agent proposals in YAML (`chapter_spec.yaml`) are compiled into Canonical IR (`canonical_ir.json`) via `IRAssembler.assemble()` (`packages/canonical-ir/ir_assembler.ts`).
 2. **Stateful Compilation**: Canonical IR instances are compiled into single-file offline V6 HTML5 packages via `V6Compiler.compile()` (`packages/v6-engine/v6_compiler.ts`).
 3. **Runtime Event Bus**: Client interaction state and TEAS mastery are managed by `V6RuntimeBus` (`packages/v6-engine/v6_runtime_bus.ts`) with offline event ledger persistence.
 
 ### 20. External Resource Discovery & Controlled Adapter Integration
+
 When integrating external learning repositories (e.g. CinePhysics, PhET, OpenSourcePhysics):
+
 1. **Strict Non-Negotiable Scope**: Focus only on Interactive Labs, Simulation Mechanics, Micro-Topic Mappings, and Math Rendering. Exclude external AI tutors, worksheet builders, site CSS, branding, and curriculum authorities.
 2. **Audit Sequence**: `UNDERSTAND AASHA` -> `DISCOVER EXTERNAL RESOURCES` -> `RESOURCE MATCH REPORT` -> `LICENSE & OFFLINE AUDIT` -> `FOUR-CAPABILITY MATRIX` -> `MINIMAL ADAPTER INTEGRATION`.
 3. **Experience Contract Compliance**: Wrap external simulations into ES6 classes extending `AashaExperienceAdapter` (`mount`, `getState`, `pause`, `resume`, `reset`, `destroy`, `emitTelemetry`).
@@ -209,24 +223,33 @@ When integrating external learning repositories (e.g. CinePhysics, PhET, OpenSou
 5. **Curriculum Authority Invariant**: AASHA remains the sole canonical curriculum authority (`Class -> Subject -> Chapter -> Topic -> Experience`). External taxonomy datasets are mapped as supporting metadata under `content/mappings/`.
 
 ### 21. Compiler Inline Event Handler Quote Insulation (Dataset Pattern)
+
 When writing code generators or HTML compilers (such as `v6_compiler.ts`) that produce inline event handlers inside template literals:
+
 1. **Never nest quoted arguments**: Avoid `onclick="exp.action('${var}')"` inside template strings, as nested single/double quotes collapse or collide across compiler template strings.
 2. **Use Dataset Attributes**: Pass dynamic values via HTML5 `data-*` attributes and read them in the handler:
+
    ```html
    <button data-optid="${opt.id}" onclick="exp.checkOption(this.dataset.optid)">
    ```
+
 3. **Zero-Argument Helpers**: For static actions, expose dedicated zero-argument methods on the runtime bus (e.g. `exp.retry()`, `exp.startLab()`, `exp.simReset()`).
 
 ### 22. Zero-Dependency Headless Chrome CDP Verification Pattern
+
 For offline, local, and air-gapped environments:
+
 1. Standardize on Node.js native `WebSocket` (Node v22+) connecting directly to Chrome's `--remote-debugging-port`.
 2. Do not require Puppeteer or Playwright for standard milestone verification.
 3. Enforce the CDP Evaluation Scope Invariant: All scripts sent via `Runtime.evaluate` must be wrapped in an IIFE `(() => { ... })()` to prevent `Identifier has already been declared` syntax crashes across sequential evaluations.
 
 ### 23. Windows PowerShell Verbatim File Writing Invariant
+
 When writing multi-line code files, JSON payloads, or Markdown with backticks or LaTeX symbols in Windows PowerShell:
+
 1. Never pipe multi-line strings through `node -e "..."` or inline double quotes.
 2. Always use a PowerShell verbatim here-string with single quotes (`@' ... '@`) to prevent PowerShell from stripping backticks or expanding `$variable` expressions:
+
    ```powershell
    @'
    <verbatim content with `backticks` and $symbols>
@@ -234,7 +257,9 @@ When writing multi-line code files, JSON payloads, or Markdown with backticks or
    ```
 
 ### 24. Certified Testing & Verification Commands
+
 The following certified commands serve as operational runbook entries (note: commands are operational entries, not proof of execution by themselves):
+
 ```bash
 # 1. L-Truth Ground Truth Benchmark (10-Chapter Batch Regression)
 cd Aasha-AI && npm run test:ltruth
@@ -250,6 +275,7 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
 ```
 
 ### 25. Bounded 2-Tier Repair Loop & Fork-Join Concurrency Invariants
+
 1. **Bounded Repair & Quarantine**: `INITIAL_INVOCATION = 1`, `MAX_AUTONOMOUS_REPAIR_ATTEMPTS = 2`, `MAX_TOTAL_ATTEMPTS = 3`. On repair exhaustion: activate quarantine, emit structured `QuarantinePacket` (`actionRequired: "SUPER_ADMIN_INTERVENTION"`), raise `QuarantineError`, block downstream stages, and suppress memory banking (quarantined output must never enter `ContextBus` experience memory).
 2. **Fork-Join Concurrency**: Eligible parallel branches are `DesignAgent`, `AssessmentAgent`, and `LLEAgent` executed via `Promise.all()`. Precondition: `AnalysisAgent` must complete first.
 3. **Recursive Deep-Freeze Barrier**: Upstream analysis snapshot must be deeply cloned and recursively frozen via `deepFreeze()`. Shallow `Object.freeze()` is strictly insufficient; verified recursive freezing of all nested mutable structures is mandatory.
@@ -257,6 +283,7 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
 5. **Failure & Non-Cancellation Semantics**: If any parallel branch fails, downstream synthesis halts, failure state is preserved in the quarantine packet, and unverified output is not propagated. Standard `Promise.all()` does not cancel already-running sibling branches; halting downstream synthesis is required, but sibling execution cancellation is NOT claimed.
 
 ### 26. Canonical AASHA AIOS Autonomous Orchestrator & Integration Adapters
+
 1. **The 8 Typed Integration Contracts (`packages/adapters/contracts.ts`)**:
    - `JobContract`: Durable lifecycle state model (`CREATED` ➔ `QUEUED` ➔ `INGESTING` ➔ `STRUCTURING` ➔ `GENERATING` ➔ `COMPILING` ➔ `QA` ➔ `READY_FOR_REVIEW` ➔ `APPROVED` ➔ `DEPLOYED`, `QUARANTINED`, `FAILED`).
    - `HandoffEnvelope`: Standardized ingress payload across n8n webhook and Teacher Studio.
@@ -292,6 +319,7 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    - **Scope-Locked 20 MB Gate**: `CHILD_HTML5_BUNDLE_MAX_BYTES = 20_971_520` (20 MB). Enforced strictly on `CHILD_HTML5_BUNDLE` distributable artifacts; does not constrain PDFs, contracts, ASTs, DBs, or server infrastructure.
    - **Local Recovery Layer**: Stored in `.scratch/versions/<artifact_id>/` with immutable `<artifact_hash>.html` and append-only `version_ledger.json`.
    - **CLI Commands (Verified)**:
+
      ```bash
      # Snapshot a compiled chapter to the immutable ledger
      npm run version:snapshot -- <filePath> [status]
@@ -314,6 +342,7 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    - **Performance Target**: Telemetry emission must be non-blocking and sufficiently lightweight that learning interaction is not perceptibly blocked (operational target $<2\text{ms}$).
    - **Async Batch Sync**: Transmits batches in background when connectivity is available with bounded exponential backoff; never infinite loops.
    - **Interface**:
+
      ```typescript
      import { AashaTelemetryClient } from './packages/v6-engine/aasha_telemetry_client';
 
@@ -380,7 +409,7 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    - **Governed Registry Ingestion Engine (`RegistryIngestionEngine`)**: Candidate components undergo 11 mandatory gates (`FUNCTIONAL`, `CAPABILITY_CONTRACT`, `BROWSER_RUNTIME`, `OFFLINE`, `PROVENANCE`, `LICENSE`, `ACCESSIBILITY`, `PERFORMANCE`, `SECURITY_CHILD_SAFETY`, `MAINTAINABILITY`, `AASHA_INTEGRATION`). If ANY gate is `FAIL` or `UNKNOWN`, candidate promotion is `BLOCKED`.
    - **Certification Separation Invariant**: `CHAPTER_CERTIFICATION !== COMPONENT_CERTIFICATION`. A passing chapter test does not automatically certify components inside it; component promotion requires an explicit benchmark evidence SHA-256 digest.
 
-8. **AASHA Interactive Experience Compiler (IEC) & Production Governance**:
+7. **AASHA Interactive Experience Compiler (IEC) & Production Governance**:
    - **Dual Authority Invariants**:
      - *Canonical IR*: Sole learning-source authority.
      - *TEAS Engine*: Sole mastery and difficulty decision authority ($LEARNING\_STATE \neq TELEMETRY\_STATE$). Experience code and telemetry never directly mutate learner mastery.
@@ -431,6 +460,7 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    - **Fastify In-Process Testing (`fastify.inject`)**: In-process integration tests (`Aasha-AI/server/tests/server_crud.test.js`) test server endpoints directly via Fastify's native `fastify.inject()` method. Tests run sub-millisecond without binding TCP ports (`3000`), avoiding port collision errors and lingering background server daemons.
 
 4. **Multi-Domain Unified Test Matrix Commands**:
+
    ```bash
    # Run full ecosystem multi-domain test matrix
    npm run test:all
@@ -444,6 +474,3 @@ cd Aasha-AI && npx tsx packages/v6-engine/compile_linear_equations_class8.ts
    # Multi-stage pipeline resumption & prerequisite unit tests
    cd Aasha-AI/aasha-pipeline-with-master-json && venv/Scripts/pytest tests/test_resume_prerequisites.py
    ```
-
-
-

@@ -40,16 +40,22 @@ Runbook for executing the daily high-rigor development cadence across the AASHA 
    ```bash
    npm run test:ltruth
    ```
+4. Run Fork-Join concurrency wiring & fault injection hardening suites:
+   ```bash
+   npm --prefix Aasha-AI exec -- tsx tests/test_concurrency_wiring.ts
+   npm --prefix Aasha-AI exec -- tsx tests/test_fault_injection_hardening.ts
+   ```
 
-### Phase 4: Surgical Optimization & Remediation
-1. Inspect any benchmark warnings or spoiler leaks (Rule #1).
-2. Apply diagnostic, non-spoiling explanations that clarify the misconception without revealing numerical answers.
-3. Keep individual chapters compliant with the 20MB ceiling, zero external CDNs, math insulation, and mobile viewport clamping.
+### Phase 4: Surgical Optimization & Multi-Repo Alignment
+1. Check git remote status across repositories (`NGO-AI-LLM`, `Aasha-AI`, `aasha-studio`); fast-forward upstream PR merges cleanly using safe stash-pull-pop.
+2. In unit test harnesses evaluating deterministic byte-for-byte equivalence, isolate dynamic timestamp generators via `useIEC: false`.
+3. Inspect benchmark warnings or spoiler leaks (Rule #1) and apply non-spoiling explanations that clarify the misconception without revealing numerical answers.
+4. Keep individual chapters compliant with the 20MB ceiling, zero external CDNs, math insulation, and mobile viewport clamping.
 
 ### Phase 5: Re-Verification & Telemetry Ledger
 1. Re-run all test suites (`npm run test:master`, `npm run test:ltruth`, `npm run laya:test`).
 2. Verify 100% pass rate (0 failures).
-3. Record execution telemetry into `VERIFICATION_REPORT.md` and `.scratch/daily_laya_digest.md`.
+3. Record verified execution telemetry into both `VERIFICATION_REPORT.md` and `.scratch/daily_laya_digest.md`.
 
 ## Multi-Repo Safe Promotion & Zero-Leakage Git Protocol
 1. Verify `.gitignore` actively blocks `.scratch/`, `**/.scratch/`, `*cookie*`, `*.zip`, `.claude/`, `.env`, and `secrets/`.

@@ -1,0 +1,1776 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-10-20T10:32:31.939Z",
+  "local_cdn_root": "assets/cdn",
+  "statistics": {
+    "interactives_count": 26,
+    "foundations_count": 26,
+    "harvest_candidates_count": 40,
+    "substrates_count": 3,
+    "total_interactives_bundle_bytes": 490182
+  },
+  "interactives": [
+    {
+      "id": "AVR-P301",
+      "name": "Number Line Marker",
+      "family": "number-line",
+      "filename": "AVR-P301-number-line-marker.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P301-number-line-marker.html",
+      "bundle_bytes": 2416,
+      "sha256": "cd6ef3778544abfa6c94b99cc3cdf991194f970f67dfbd4a68e68e48247b5a30",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "topics": [
+        "Number Line",
+        "Fractions",
+        "Integers",
+        "Decimals"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P302",
+      "name": "Fraction Strip",
+      "family": "number-line",
+      "filename": "AVR-P302-fraction-strip.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P302-fraction-strip.html",
+      "bundle_bytes": 2491,
+      "sha256": "be7f4c01e5f821990646809dc8a154da92866d815a2e8a1608de9e6d50e60f04",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "topics": [
+        "Fraction Strips",
+        "Parts of a Whole",
+        "Equivalent Fractions"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P303",
+      "name": "Shape Transformer",
+      "family": "geometry",
+      "filename": "AVR-P303-shape-transformer.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P303-shape-transformer.html",
+      "bundle_bytes": 2313,
+      "sha256": "699fa6faa9136b79722f88eb9290c55c20e42327894ae79be894bcfdbb2d02f3",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "topics": [
+        "Geometry",
+        "Polygons",
+        "Symmetry",
+        "Transformations"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P304",
+      "name": "Timeline Scrubber",
+      "family": "timeline",
+      "filename": "AVR-P304-timeline-scrubber.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P304-timeline-scrubber.html",
+      "bundle_bytes": 2370,
+      "sha256": "02964f53ee754ed41a2f3caf71042b37c21f3c40bb8b57accdee853d43c51dc2",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Cross-Curricular",
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "History Timelines",
+        "Science Sequences",
+        "Chronology"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P305",
+      "name": "Process Branch",
+      "family": "process",
+      "filename": "AVR-P305-process-branch.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P305-process-branch.html",
+      "bundle_bytes": 2678,
+      "sha256": "ee786cf6aefdece6bae0f2ed6df1baee009bd68a20280519effb1c0781826fe2",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Science",
+      "classes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Decision Trees",
+        "Process Branching",
+        "Taxonomy",
+        "Flows"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P306",
+      "name": "Hotspot Reveal",
+      "family": "diagram",
+      "filename": "AVR-P306-hotspot-reveal.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P306-hotspot-reveal.html",
+      "bundle_bytes": 2199,
+      "sha256": "3d6109f7de548d6b982add1108bff29f4a41c9d1f8fd336bfd848def436a08ca",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Science",
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Hotspot Reveal",
+        "Anatomy",
+        "Apparatus Diagrams"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P307",
+      "name": "Layer Reveal",
+      "family": "diagram",
+      "filename": "AVR-P307-layer-reveal.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P307-layer-reveal.html",
+      "bundle_bytes": 2382,
+      "sha256": "e4d02f015514b65bbf79752f271a460361eaba5b7acb5aef3f24da9836e5f58f",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Science",
+      "classes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "topics": [
+        "Earth Layers",
+        "Atmosphere",
+        "Cell Structure",
+        "Layer Reveal"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P308",
+      "name": "Node Connector",
+      "family": "anatomy",
+      "filename": "AVR-P308-node-connector.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P308-node-connector.html",
+      "bundle_bytes": 2224,
+      "sha256": "1a8d57a74f0de70bb6ccbe678b4e92b18310c3fcdcec2c5a9fe4c73c4de8a2e8",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Biology",
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "topics": [
+        "Circulatory System",
+        "Nervous System",
+        "Food Web Connectors"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P309",
+      "name": "Grid Coordinate Picker",
+      "family": "spatial",
+      "filename": "AVR-P309-grid-coordinate-picker.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P309-grid-coordinate-picker.html",
+      "bundle_bytes": 2260,
+      "sha256": "ab4cae31cda9e44d24409711732edfa165e717ffc18d9ca8f36e4b518d03821a",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Cartesian Coordinates",
+        "Grid Mapping",
+        "Linear Graphs"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P310",
+      "name": "Distance Ruler",
+      "family": "spatial",
+      "filename": "AVR-P310-distance-ruler.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P310-distance-ruler.html",
+      "bundle_bytes": 2121,
+      "sha256": "1b9e0f586cb22739aae18daf653cae1ebbefa7fa9e6f539a380ad236082388c4",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "topics": [
+        "Measurement",
+        "Metric Scale",
+        "Distance Ruler"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P311",
+      "name": "Particle Temperature",
+      "family": "molecule",
+      "filename": "AVR-P311-particle-temperature.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P311-particle-temperature.html",
+      "bundle_bytes": 2048,
+      "sha256": "9a0e80c410f1eebc83933b247a83734b2fb52485794311042d00b8df1660dcad",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Chemistry",
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "topics": [
+        "States of Matter",
+        "Kinetic Energy",
+        "Temperature & Heat"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P312",
+      "name": "Particle Diffusion",
+      "family": "molecule",
+      "filename": "AVR-P312-particle-diffusion.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P312-particle-diffusion.html",
+      "bundle_bytes": 2507,
+      "sha256": "41b5b7cac942a49ecb6f1118f74588e76d8a089f239365e4ae09fd42dd85de61",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Chemistry",
+      "classes": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "topics": [
+        "Particle Diffusion",
+        "Brownian Motion",
+        "Concentration Gradient"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P313",
+      "name": "Atom Builder",
+      "family": "molecule",
+      "filename": "AVR-P313-atom-builder.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P313-atom-builder.html",
+      "bundle_bytes": 2298,
+      "sha256": "0f7bc3b6c90f72c0f0d157aa29529ff5814f3421b1489a99d249cb3512ebf939",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Chemistry",
+      "classes": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "topics": [
+        "Atom Builder",
+        "Protons Neutrons Electrons",
+        "Atomic Mass"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P314",
+      "name": "Switch Circuit",
+      "family": "circuit",
+      "filename": "AVR-P314-switch-circuit.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P314-switch-circuit.html",
+      "bundle_bytes": 2590,
+      "sha256": "fe137790b37a6ace7616185d9eea80e58a6150afb30900473f21f5879809870b",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ],
+      "topics": [
+        "Current Electricity",
+        "Series & Parallel",
+        "Switch Circuit"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P315",
+      "name": "Logic Gate",
+      "family": "circuit",
+      "filename": "AVR-P315-logic-gate.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P315-logic-gate.html",
+      "bundle_bytes": 2333,
+      "sha256": "bbc7d816d07c56afc4db101b2beb7396f64e1f6992a15363a4f9a9753f96e2d7",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "topics": [
+        "Logic Gates",
+        "Boolean Algebra",
+        "AND OR NOT Gates"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P316",
+      "name": "System Flow",
+      "family": "circuit",
+      "filename": "AVR-P316-system-flow.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P316-system-flow.html",
+      "bundle_bytes": 2210,
+      "sha256": "9eb87c03ae3c82cd81e01be399bdc007b19e9c1164784506c27f5125021b344b",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "topics": [
+        "System Flow",
+        "Hydraulic Circuits",
+        "Conservation of Energy"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P317",
+      "name": "Parameterized Spring",
+      "family": "simulation",
+      "filename": "AVR-P317-parameterized-spring.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P317-parameterized-spring.html",
+      "bundle_bytes": 2311,
+      "sha256": "32d615cc340ab5d687cf934b349511477339a8e10876431b25e44ee25cd82656",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "topics": [
+        "Hookes Law",
+        "Oscillations",
+        "Spring Constant",
+        "Elasticity"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P318",
+      "name": "Population Growth",
+      "family": "simulation",
+      "filename": "AVR-P318-population-growth.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P318-population-growth.html",
+      "bundle_bytes": 2317,
+      "sha256": "7f3b4c5133c7314873f23e80b47af6e4f3d295d4cff8dc1812e786b80a86fdde",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Biology",
+      "classes": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "topics": [
+        "Population Growth",
+        "Ecology",
+        "Carrying Capacity",
+        "Exponential Growth"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P319",
+      "name": "Projectile Explorer",
+      "family": "simulation",
+      "filename": "AVR-P319-projectile-explorer.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P319-projectile-explorer.html",
+      "bundle_bytes": 2340,
+      "sha256": "990a2c804e3c2914c39018d3d03556dcb987623dfda1b96105958501e9031e2b",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        9,
+        10,
+        11
+      ],
+      "topics": [
+        "Projectile Motion",
+        "Trajectory",
+        "Velocity & Angle",
+        "Gravity"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P320",
+      "name": "Bar Data Manipulator",
+      "family": "data-viz",
+      "filename": "AVR-P320-bar-data-manipulator.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P320-bar-data-manipulator.html",
+      "bundle_bytes": 2195,
+      "sha256": "b1e6d5aeed04263c97eb23ca23789a3663c0eb2a1f2d9227f17c70b168d7b5c9",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Data Handling",
+        "Bar Graphs",
+        "Histograms",
+        "Frequency"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P321",
+      "name": "Cause Effect Reveal",
+      "family": "animation",
+      "filename": "AVR-P321-cause-effect-reveal.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P321-cause-effect-reveal.html",
+      "bundle_bytes": 2356,
+      "sha256": "5781687404c50f2517b6b738b970d790e235a206131418a700644615f1477684",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Cross-Curricular",
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Cause and Effect",
+        "Physical Reactions",
+        "Chain Events"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P401",
+      "name": "vernier caliper virtual lab",
+      "family": "interactive",
+      "filename": "AVR-P401-vernier-caliper-virtual-lab.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P401-vernier-caliper-virtual-lab.html",
+      "bundle_bytes": 24988,
+      "sha256": "8c68b81f48810854fca9e1d277011c20bbd054be9a3a55c422946b5f66793b64",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        9,
+        10,
+        11
+      ],
+      "topics": [
+        "Vernier Calipers",
+        "Least Count",
+        "Zero Error",
+        "Precision Measurement"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P402",
+      "name": "magnetic lorentz force simulator",
+      "family": "interactive",
+      "filename": "AVR-P402-magnetic-lorentz-force-simulator.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P402-magnetic-lorentz-force-simulator.html",
+      "bundle_bytes": 67619,
+      "sha256": "5dc1ef615a511dbd05bf89571f029a4fb45117822096d2af9a93c07b327d4228",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        11,
+        12
+      ],
+      "topics": [
+        "Lorentz Force",
+        "Magnetic Field",
+        "Cyclotron Motion",
+        "Electrodynamics"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P403",
+      "name": "error analysis virtual lab",
+      "family": "interactive",
+      "filename": "AVR-P403-error-analysis-virtual-lab.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P403-error-analysis-virtual-lab.html",
+      "bundle_bytes": 113467,
+      "sha256": "aba2ed3f56d90f0d0e6b5a05494fdd5e6d11379cd5ded2bc188ab3d148efb980",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        11,
+        12
+      ],
+      "topics": [
+        "Error Analysis",
+        "Percentage Error",
+        "Propagation of Errors",
+        "Significant Figures"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P404",
+      "name": "dimensional analysis virtual lab",
+      "family": "interactive",
+      "filename": "AVR-P404-dimensional-analysis-virtual-lab.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P404-dimensional-analysis-virtual-lab.html",
+      "bundle_bytes": 181022,
+      "sha256": "8432cb2e31c853c1003033e7d56fe23c383f0a3e8a5ec48b193bcac9a28ce75c",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Physics",
+      "classes": [
+        11
+      ],
+      "topics": [
+        "Dimensional Analysis",
+        "Dimensions of Physical Quantities",
+        "Unit Conversion"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P405",
+      "name": "ten frame place value mastery",
+      "family": "interactive",
+      "filename": "AVR-P405-ten-frame-place-value-mastery.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P405-ten-frame-place-value-mastery.html",
+      "bundle_bytes": 54127,
+      "sha256": "ef8285cbf6ce445fd777fd9bbda70d93dc52900c739a3a7a5f5c03991b43aa6c",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "topics": [
+        "Place Value",
+        "Ten Frames",
+        "Base 10",
+        "Number Sense"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    }
+  ],
+  "foundations": [
+    {
+      "id": "F01",
+      "name": "Escape Run",
+      "repo": "https://github.com/abhas9/escape-run",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics",
+        "General"
+      ],
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "mechanics": [
+        "adaptive_practice",
+        "mastery_gating",
+        "spaced_repetition",
+        "pwa_offline",
+        "local_persistence",
+        "micro_skills"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F02",
+      "name": "MicroSims",
+      "repo": "https://github.com/dmccreary/microsims",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Science",
+        "Computer Science"
+      ],
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "concept_simulations",
+        "interactive_diagrams",
+        "visual_models",
+        "algorithm_visualization",
+        "parameter_sliders"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F03",
+      "name": "All Science Sims",
+      "repo": "https://github.com/listyantidewi1/all-science-sims",
+      "license": "OpenSource",
+      "subjects": [
+        "Science",
+        "Physics",
+        "Chemistry",
+        "Biology"
+      ],
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "science_simulations",
+        "offline_browser_models",
+        "bilingual_discovery"
+      ],
+      "reuse_strategy": "INSPIRE"
+    },
+    {
+      "id": "F04",
+      "name": "PhET Interactive Simulations",
+      "repo": "https://github.com/phetsims",
+      "license": "GPL-3.0 / CC-BY-4.0 (attribution required)",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology"
+      ],
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "fractions_intro",
+        "fraction_matcher",
+        "number_line_integers",
+        "equality_explorer",
+        "friction",
+        "density",
+        "buoyancy",
+        "neuron",
+        "molecule_builder",
+        "states_of_matter"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F05",
+      "name": "Lightbot",
+      "repo": "https://github.com/haan/Lightbot",
+      "license": "MIT",
+      "subjects": [
+        "Computer Science",
+        "Coding",
+        "Mathematics"
+      ],
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "command_sequencing",
+        "loops",
+        "conditionals",
+        "problem_decomposition",
+        "puzzle_progression"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F06",
+      "name": "MathFluency",
+      "repo": "https://github.com/CarnegieLearning/MathFluency",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics"
+      ],
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "mechanics": [
+        "fluency_drills",
+        "learning_evidence_tracking",
+        "misconception_diagnosis",
+        "progression_gating"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F07",
+      "name": "Wiki Physics Game",
+      "repo": "https://github.com/cometsinthesky/wiki-physics-game",
+      "license": "MIT",
+      "subjects": [
+        "Science",
+        "Physics"
+      ],
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "story_concept_interaction_simulation_feedback_loop",
+        "visual_novels",
+        "parameter_sliders"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F08",
+      "name": "Physics Notebook",
+      "repo": "https://github.com/CasberryIndia/Physics-Notebook",
+      "license": "MIT",
+      "subjects": [
+        "Science",
+        "Physics"
+      ],
+      "classes": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "canvas_visualization",
+        "real_time_formulas",
+        "interactive_experiment_notebook"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F09",
+      "name": "Escapp",
+      "repo": "https://github.com/ging/escapp",
+      "license": "GPL-3.0 (audit required)",
+      "subjects": [
+        "Cross-Curricular",
+        "Science",
+        "Math",
+        "Social"
+      ],
+      "classes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "escape_room",
+        "room_puzzle_hint_solution_evidence_flow",
+        "team_challenge"
+      ],
+      "reuse_strategy": "INSPIRE"
+    },
+    {
+      "id": "F10",
+      "name": "QuestJS",
+      "repo": "https://github.com/ThePix/QuestJS",
+      "license": "MIT",
+      "subjects": [
+        "Language",
+        "Social Science",
+        "Life Skills"
+      ],
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "interactive_fiction",
+        "state_choice_consequence_loop",
+        "branching_story"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F11",
+      "name": "Squiffy",
+      "repo": "https://github.com/textadventures/squiffy",
+      "license": "MIT",
+      "subjects": [
+        "Language",
+        "Social Science",
+        "Life Skills",
+        "Ethics"
+      ],
+      "classes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "branching_scenarios",
+        "dilemma_decisions",
+        "narrative_learning"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F12",
+      "name": "GeoGuess",
+      "repo": "https://github.com/Geoguess/Geoguess",
+      "license": "MIT",
+      "subjects": [
+        "Geography",
+        "Social Science"
+      ],
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "spatial_reasoning",
+        "map_landmarks",
+        "indian_geography_adaptation"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F13",
+      "name": "Learn Worldmap",
+      "repo": "https://github.com/koljapluemer/learn-worldmap",
+      "license": "MIT",
+      "subjects": [
+        "Geography",
+        "Social Science"
+      ],
+      "classes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "spaced_repetition_geography",
+        "retrieval_practice",
+        "map_memory"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F14",
+      "name": "Geographical Adventures",
+      "repo": "https://github.com/SebLague/Geographical-Adventures",
+      "license": "MIT",
+      "subjects": [
+        "Geography",
+        "Science"
+      ],
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "spatial_exploration",
+        "mission_route_planning",
+        "country_learning"
+      ],
+      "reuse_strategy": "INSPIRE"
+    },
+    {
+      "id": "F15",
+      "name": "The Long Game",
+      "repo": "https://github.com/smcgrath-coder/the-long-game",
+      "license": "MIT",
+      "subjects": [
+        "Financial Literacy",
+        "Mathematics",
+        "Life Skills"
+      ],
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "saving_risk_budgeting",
+        "rupees_upi_adaptation",
+        "needs_vs_wants_decisions"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F16",
+      "name": "FinanceGame / LearnBu",
+      "repo": "https://github.com/ayazhankadessova/FinanceGame",
+      "license": "MIT",
+      "subjects": [
+        "Financial Literacy",
+        "Social Science"
+      ],
+      "classes": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "scenario_budgeting",
+        "credit_savings_investing",
+        "household_decisions"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F17",
+      "name": "Code for Life",
+      "repo": "https://github.com/ocadotechnology/codeforlife-portal",
+      "license": "GPL-3.0 (audit required)",
+      "subjects": [
+        "Coding",
+        "Computer Science"
+      ],
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "coding_progression",
+        "computational_thinking_portal",
+        "puzzle_levels"
+      ],
+      "reuse_strategy": "INSPIRE"
+    },
+    {
+      "id": "F18",
+      "name": "Secure Code Game",
+      "repo": "https://github.com/valentinvarbanov/skills-secure-code-game",
+      "license": "MIT",
+      "subjects": [
+        "Cybersecurity",
+        "Computer Science",
+        "Digital Literacy"
+      ],
+      "classes": [
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "vulnerability_spotting",
+        "secure_thinking",
+        "indian_digital_safety_scenarios"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F19",
+      "name": "Chocolate Broccoli Challenge",
+      "repo": "https://github.com/funksoup/chocolate-broccoli-challenge",
+      "license": "MIT",
+      "subjects": [
+        "Cross-Curricular",
+        "Design Quality Gate"
+      ],
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "observe_decide_act_result_gate",
+        "authentic_subject_mastery_evaluator"
+      ],
+      "reuse_strategy": "QUALITY_GATE"
+    },
+    {
+      "id": "F20",
+      "name": "GameBox / Mini Browser Games",
+      "repo": "https://github.com/saiuttejr/GameBox",
+      "license": "MIT",
+      "subjects": [
+        "Cross-Curricular",
+        "Touch Primitives"
+      ],
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "mechanics": [
+        "touch_interaction_primitives",
+        "offline_mini_game_loops",
+        "responsive_layout"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F21",
+      "name": "CinePhysics Vernier Caliper Virtual Lab",
+      "repo": "https://github.com/Abhijit-CinePhysics/CinePhysicsHQ-Labs",
+      "license": "MIT",
+      "subjects": [
+        "Physics",
+        "Science"
+      ],
+      "classes": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "mechanics": [
+        "vernier_caliper_measurement",
+        "least_count_calculation",
+        "zero_error_calibration",
+        "interactive_jaw_physics",
+        "observation_notebook",
+        "magnifier_lens_overlay"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F22",
+      "name": "CinePhysics Dimensional Analysis Lab",
+      "repo": "https://github.com/Abhijit-CinePhysics/CinePhysicsHQ-Labs",
+      "license": "MIT",
+      "subjects": [
+        "Physics",
+        "Science"
+      ],
+      "classes": [
+        11,
+        12
+      ],
+      "mechanics": [
+        "dimensional_formula_building",
+        "buckingham_pi_derivation",
+        "unit_consistency_verification",
+        "chaos_dimensioneer_challenge"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F23",
+      "name": "King's Math 10-Frame & Place Value Manipulative",
+      "repo": "https://kingsmath.com/?lang=en",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics"
+      ],
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "mechanics": [
+        "ten_frame_counting",
+        "place_value_bundling",
+        "hybrid_touch_stepper_controls",
+        "bilingual_instant_toggle",
+        "same_frame_mobile_viewport"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F24",
+      "name": "King's Math Dynamic Fraction & Decimal Slices",
+      "repo": "https://kingsmath.com/?lang=en",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics"
+      ],
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "mechanics": [
+        "fraction_pizza_slices",
+        "equivalent_fractions",
+        "decimal_fraction_synchronous_sync",
+        "hybrid_touch_stepper_controls",
+        "bilingual_instant_toggle"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F25",
+      "name": "King's Math Number-Line Hunter & Factor Finder",
+      "repo": "https://kingsmath.com/?lang=en",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics"
+      ],
+      "classes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "mechanics": [
+        "zoomable_number_line",
+        "target_number_hunting",
+        "high_tempo_60s_boss_fluency",
+        "hybrid_touch_stepper_controls",
+        "bilingual_instant_toggle"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F26",
+      "name": "King's Math Interactive Symmetry & Geometry Fold",
+      "repo": "https://kingsmath.com/?lang=en",
+      "license": "MIT",
+      "subjects": [
+        "Mathematics",
+        "Geometry"
+      ],
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "mechanics": [
+        "2d_reflection_axis",
+        "geometry_shape_folding",
+        "line_of_symmetry_verification",
+        "hybrid_touch_stepper_controls",
+        "bilingual_instant_toggle"
+      ],
+      "reuse_strategy": "EXTRACT"
+    }
+  ],
+  "harvest_candidates": [
+    {
+      "harvest_id": "HARV-0001",
+      "source": "PhET",
+      "resource": "Graphing Lines",
+      "family": "graph",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0002",
+      "source": "PhET",
+      "resource": "Build an Atom",
+      "family": "molecule",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0003",
+      "source": "PhET",
+      "resource": "Build a Molecule",
+      "family": "molecule",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0004",
+      "source": "PhET",
+      "resource": "States of Matter",
+      "family": "particle",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0005",
+      "source": "PhET",
+      "resource": "pH Scale",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0006",
+      "source": "PhET",
+      "resource": "Projectile Data Lab",
+      "family": "graph/parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0007",
+      "source": "all-science-sims",
+      "resource": "Projectile Motion",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0008",
+      "source": "all-science-sims",
+      "resource": "Logic Gates & Circuits",
+      "family": "circuit/system",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0009",
+      "source": "all-science-sims",
+      "resource": "Cell Explorer",
+      "family": "diagram/anatomy",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0010",
+      "source": "all-science-sims",
+      "resource": "DNA Transcription & Translation",
+      "family": "process/diagram",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0011",
+      "source": "all-science-sims",
+      "resource": "Moon Phases",
+      "family": "timeline/spatial",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0012",
+      "source": "all-science-sims",
+      "resource": "Hydrologic Cycle",
+      "family": "process",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0013",
+      "source": "all-science-sims",
+      "resource": "Sorting Visualizer",
+      "family": "data visualization",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0014",
+      "source": "all-science-sims",
+      "resource": "Linear Regression Playground",
+      "family": "graph",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0015",
+      "source": "myPhysicsLab",
+      "resource": "Pendulum",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0016",
+      "source": "myPhysicsLab",
+      "resource": "Spring",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0017",
+      "source": "GeoGebra",
+      "resource": "Geometry construction",
+      "family": "geometry",
+      "decision": "AUDIT",
+      "evidence_status": "license/source audit required"
+    },
+    {
+      "harvest_id": "HARV-0018",
+      "source": "Pashasan",
+      "resource": "Fit-line slider",
+      "family": "graph interaction",
+      "decision": "EXTRACT",
+      "evidence_status": "pattern source"
+    },
+    {
+      "harvest_id": "HARV-0019",
+      "source": "SimuTutor",
+      "resource": "Electric field",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "pattern source"
+    },
+    {
+      "harvest_id": "HARV-0020",
+      "source": "SimuTutor",
+      "resource": "Pendulum",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "pattern source"
+    },
+    {
+      "harvest_id": "HARV-0021",
+      "source": "PhET",
+      "resource": "Projectile Motion",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; individual dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0022",
+      "source": "PhET",
+      "resource": "Wave Interference",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0023",
+      "source": "PhET",
+      "resource": "Circuit Construction Kit: DC",
+      "family": "circuit/system",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0024",
+      "source": "PhET",
+      "resource": "Circuit Construction Kit Common",
+      "family": "circuit/system",
+      "decision": "EXTRACT",
+      "evidence_status": "shared component; inspect for reusable mechanics"
+    },
+    {
+      "harvest_id": "HARV-0025",
+      "source": "PhET",
+      "resource": "Build an Atom",
+      "family": "molecule/particle",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0026",
+      "source": "PhET",
+      "resource": "Forces and Motion: Basics",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0027",
+      "source": "PhET",
+      "resource": "Bending Light",
+      "family": "optics/parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0028",
+      "source": "PhET",
+      "resource": "Natural Selection",
+      "family": "process/population",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0029",
+      "source": "PhET",
+      "resource": "Plinko Probability",
+      "family": "probability/data visualization",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0030",
+      "source": "PhET",
+      "resource": "Geometric Optics: Basics",
+      "family": "geometry/optics",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; GPL-3.0 shown on repository page; asset/dependency audit pending"
+    },
+    {
+      "harvest_id": "HARV-0031",
+      "source": "PhET",
+      "resource": "pH Scale",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; GPL-3.0 shown on repository page; asset/dependency audit pending"
+    },
+    {
+      "harvest_id": "HARV-0032",
+      "source": "PhET",
+      "resource": "pH Scale: Basics",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; GPL-3.0 shown on repository page; asset/dependency audit pending"
+    },
+    {
+      "harvest_id": "HARV-0033",
+      "source": "PhET",
+      "resource": "Charges and Fields",
+      "family": "field/diagram",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0034",
+      "source": "PhET",
+      "resource": "States of Matter: Basics",
+      "family": "molecule/particle",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0035",
+      "source": "PhET",
+      "resource": "Area Model Introduction",
+      "family": "geometry/visual math",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0036",
+      "source": "PhET",
+      "resource": "Number Line: Operations",
+      "family": "number-line",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub org/repository identified; shared number-line component worth inspecting"
+    },
+    {
+      "harvest_id": "HARV-0037",
+      "source": "PhET",
+      "resource": "Number Line: Distance",
+      "family": "number-line",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub org/repository identified; shared number-line component worth inspecting"
+    },
+    {
+      "harvest_id": "HARV-0038",
+      "source": "PhET",
+      "resource": "Ratio and Proportion",
+      "family": "ratio/visual math",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub org/repository identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0039",
+      "source": "GeoGebra",
+      "resource": "Graphing Calculator",
+      "family": "graph/geometry",
+      "decision": "AUDIT",
+      "evidence_status": "GitHub mirror identified; licensing explicitly requires separate audit"
+    },
+    {
+      "harvest_id": "HARV-0040",
+      "source": "GeoGebra",
+      "resource": "Geometry App",
+      "family": "geometry",
+      "decision": "AUDIT",
+      "evidence_status": "GitHub mirror identified; licensing explicitly requires separate audit"
+    }
+  ],
+  "substrates": [
+    {
+      "id": "SUB-MATH",
+      "name": "KaTeX & LaTeX Math Insulator",
+      "type": "typography_and_math",
+      "location": "Aasha-AI/packages/aasha-rules/math_insulator.ts",
+      "offline_certified": true,
+      "description": "Isolates LaTeX and algebraic variables before bilingual wrapping to prevent mathematical symbol corruption."
+    },
+    {
+      "id": "SUB-LLE",
+      "name": "Bilingual Indic Dictionary Substrate",
+      "type": "language_dictionary",
+      "location": "Aasha-AI/aasha_dictionary_db.json",
+      "offline_certified": true,
+      "description": "Zero-latency offline word-tap dictionary for Hindi/English bilingual conceptual bridge."
+    },
+    {
+      "id": "SUB-AUDIO",
+      "name": "Procedural Web Audio Tone Synthesizer",
+      "type": "audio_engine",
+      "location": "Inline Web Audio API",
+      "offline_certified": true,
+      "description": "Generates feedback frequencies (success, error, reveal) deterministically without external audio files."
+    }
+  ]
+}
