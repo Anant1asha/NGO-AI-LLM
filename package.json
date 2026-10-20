@@ -5,6 +5,7 @@
   "description": "AASHA Learning & Impact Ecosystem — Unified Root Orchestrator",
   "scripts": {
     "audit:identity": "node scripts/audit_identity.mjs",
+    "lint:workflows": "node scripts/lint_workflows.mjs",
     "laya:default": "node scripts/set_laya_default.mjs",
     "assets:orchestrate": "node scripts/orchestrate_local_cdn.mjs",
     "harvest:run": "node scripts/harvest_engine.mjs --run",
