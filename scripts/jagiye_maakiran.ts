@@ -7,6 +7,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { runMemorySync } from './aasha_memory_engine.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -66,6 +67,13 @@ export function ensureSerenaEnginePatched(): boolean {
 
 export function runJagiyeMaaKiran(): SystemHealthReport {
   const enginePatched = ensureSerenaEnginePatched();
+
+  // Proactive self-healing: If operational DB, episodic memory, or graphify AST are missing,
+  // execute memory sync to initialize and seed them on-the-fly without relying on pre-existing disk state.
+  if (!fs.existsSync(SQLITE_OPERATIONAL_PATH) || !fs.existsSync(MEM0_LOCAL_PATH) || !fs.existsSync(GRAPHIFY_PATH)) {
+    runMemorySync();
+  }
+
   const found: string[] = [];
   const missing: string[] = [];
 

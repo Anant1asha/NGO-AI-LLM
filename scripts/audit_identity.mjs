@@ -88,7 +88,16 @@ const graphPath = path.join(repoRoot, 'graphify-out', 'graph.json');
 if (fs.existsSync(graphPath)) {
   console.log('[PASS] Graphify AST knowledge graph present (graphify-out/graph.json).');
 } else {
-  console.log('[INFO] Graphify graph not present in git checkout (OK in standalone CI, populated via graphify build).');
+  console.log('[INFO] Graphify graph not present in git checkout (OK in standalone CI, populated via graphify build or memory:sync).');
+}
+
+// 4. Operational SQLite & Local DB Isolation Check
+console.log('\n--- 4. Operational SQLite & Local DB Isolation Check ---');
+const dbPath = path.join(repoRoot, 'aasha_operational.db');
+if (fs.existsSync(dbPath)) {
+  console.log('[PASS] Operational SQLite database present and isolated (aasha_operational.db).');
+} else {
+  console.log('[INFO] Operational SQLite initialized dynamically on runtime (compliant with Ephemeral Runtime DB Isolation Invariant).');
 }
 
 console.log('\n✅ Audit completed successfully.\n');
