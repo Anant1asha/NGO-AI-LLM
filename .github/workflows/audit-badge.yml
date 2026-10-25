@@ -17,6 +17,8 @@ jobs:
           node-version: '20'
       - name: Run audit script
         run: npm run audit:identity
+      - name: Run Superbrain rule parity audit
+        run: npm run lint:superbrain
       - name: Update badge status (placeholder)
         if: success()
         run: |

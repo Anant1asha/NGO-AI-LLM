@@ -1,0 +1,11 @@
+// Lint configuration for SUPERBRAIN.md and the migrated .superbrain/rules/.
+// MD013 (line length) is disabled: these are instruction documents, and
+// wrapping prose inside them changes what the agent reads. MD060 is disabled
+// because it is a rarer table style and not one GEMINI.md ever asked for.
+{
+  "config": {
+    "MD013": false,
+    "MD060": false,
+    "MD041": false
+  }
+}

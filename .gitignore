@@ -25,7 +25,8 @@ tmp/
 # Graphify & Antigravity artifacts
 graphify-out/
 .gemini/
-.superbrain/
+.superbrain/*
+!.superbrain/rules/
 
 # Test output logs
 *.log
