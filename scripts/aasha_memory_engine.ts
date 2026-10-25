@@ -12,6 +12,7 @@
 
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import * as child_process from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 
@@ -319,6 +320,24 @@ export function autoHealBaselineGraphify(): { nodesCount: number; action: string
   const graphDir = path.dirname(GRAPHIFY_FILE);
   if (!fs.existsSync(graphDir)) {
     fs.mkdirSync(graphDir, { recursive: true });
+  }
+
+  // Attempt official graphify build if graphify CLI is available in PATH
+  try {
+    child_process.execSync('graphify build', { cwd: PROJECT_ROOT, stdio: 'ignore', timeout: 15000 });
+    if (fs.existsSync(GRAPHIFY_FILE)) {
+      const raw = fs.readFileSync(GRAPHIFY_FILE, 'utf-8');
+      const data = JSON.parse(raw);
+      const count = data.nodes?.length || data.graph?.nodes?.length || 0;
+      if (count > 0) {
+        return {
+          nodesCount: count,
+          action: `Generated AST knowledge graph via graphify build (${count} nodes)`,
+        };
+      }
+    }
+  } catch {
+    // graphify CLI not in PATH or build timed out; proceed with baseline synthesis
   }
 
   const nodes: any[] = [];

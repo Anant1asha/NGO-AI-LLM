@@ -60,6 +60,24 @@ if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
 - Ensure all workflows use `actions/setup-node@v4` with explicit Node version matching project root engines (e.g. `node-version: 20` or `node-version: 22`).
 
+### 5. Multi-Agent Instruction Directory Tracking & Parity in CI
+
+- **Problem**: When ignoring IDE/agent configuration folders (e.g. `.superbrain/` or `.gemini/`), instruction rules needed by CI runners or multi-tool setups are omitted during Git checkout, breaking automated parity tests.
+- **Solution**: Use selective un-ignoring in `.gitignore` to track rules while keeping transient runtime dumps ignored:
+
+```gitignore
+# Track agent rules while ignoring transient telemetry/explore dumps
+.superbrain/*
+!.superbrain/rules/
+```
+
+- **Verification in CI**: Incorporate automated parity linters into repository verification workflows:
+
+```yaml
+- name: Run Superbrain rule parity audit
+  run: npm run lint:superbrain
+```
+
 ## Automated Verification
 
 Run the ecosystem workflow linter:

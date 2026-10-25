@@ -37,3 +37,9 @@ This rule governs all interactions involving custom skills, prompt compilers, an
    - The primary top-level user-facing command is `/chapter-compile`. The AIOS orchestrator autonomously composes internal skills without requiring the Super Admin to manually chain them.
    - Runtime operational state is maintained in local Native SQLite (<2ms latency), while SQLite MCP serves Super Admin inspection, diagnostics, and reporting.
 
+6. **Cross-IDE Rule Parity & Modern Skill Standard**:
+   - Every rule in `.agents/rules/<snake_case>.md` must maintain an identical 1:1 counterpart in `.superbrain/rules/<kebab-case>.md`.
+   - All rule files must include valid YAML frontmatter specifying `description` and execution triggers (`alwaysApply: true|false` or `globs: [...]`).
+   - Legacy workflow files (`.agents/workflows/*.md`) are deprecated; all reusable agent capabilities must reside exclusively in `.agents/skills/<name>/SKILL.md`.
+   - Rule parity must be validated via `npm run lint:superbrain` prior to staging changes.
+
