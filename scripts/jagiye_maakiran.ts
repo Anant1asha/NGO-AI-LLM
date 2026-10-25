@@ -14,6 +14,7 @@ const PROJECT_ROOT = path.resolve(__dirname, '..');
 const SERENA_MEMORIES_DIR = path.join(PROJECT_ROOT, '.serena', 'memories');
 const GRAPHIFY_PATH = path.join(PROJECT_ROOT, 'graphify-out', 'graph.json');
 const MEM0_LOCAL_PATH = path.join(PROJECT_ROOT, '.scratch', 'mem0_store.json');
+const SQLITE_OPERATIONAL_PATH = path.join(PROJECT_ROOT, 'aasha_operational.db');
 
 const CORE_MEMORIES = [
   'core',
@@ -34,6 +35,7 @@ export interface SystemHealthReport {
   memoriesMissing: string[];
   graphifyNodes: number;
   offlineEpisodicActive: boolean;
+  operationalDbActive: boolean;
   status: 'PRIMED' | 'DEGRADED';
 }
 
@@ -87,6 +89,7 @@ export function runJagiyeMaaKiran(): SystemHealthReport {
   }
 
   const episodicActive = fs.existsSync(MEM0_LOCAL_PATH);
+  const operationalDbActive = fs.existsSync(SQLITE_OPERATIONAL_PATH);
 
   const report: SystemHealthReport = {
     project: 'NGO AI LLM',
@@ -97,7 +100,8 @@ export function runJagiyeMaaKiran(): SystemHealthReport {
     memoriesMissing: missing,
     graphifyNodes,
     offlineEpisodicActive: episodicActive,
-    status: missing.length === 0 ? 'PRIMED' : 'DEGRADED',
+    operationalDbActive,
+    status: missing.length === 0 && operationalDbActive ? 'PRIMED' : 'DEGRADED',
   };
 
   return report;
@@ -121,6 +125,7 @@ export function printJagiyeMaaKiranReport(report: SystemHealthReport): void {
   }
   console.log(`• Graphify AST     : ${report.graphifyNodes > 0 ? `✅ Active (${report.graphifyNodes} nodes)` : '⚠️ Needs update (`graphify update .`)'}`);
   console.log(`• Offline Episodic : ${report.offlineEpisodicActive ? '✅ Active (.scratch/mem0_store.json)' : 'ℹ️ Initializing local store'}`);
+  console.log(`• Operational DB   : ${report.operationalDbActive ? '✅ Active (aasha_operational.db)' : '⚠️ Run npm run memory:sync'}`);
   console.log(`• Anti-Bleed Tier  : ✅ Tier 1 OpenRouter Free Pool Enforced`);
   console.log('======================================================\n');
 }

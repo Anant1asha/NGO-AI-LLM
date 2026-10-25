@@ -46,3 +46,12 @@ secrets/
 venv/
 ENV/
 
+# Ephemeral Local Databases & Runtime Caches (Isolation Invariant)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+aasha_operational.db
+offline_sync.db
+aasha_local_memory.json
+

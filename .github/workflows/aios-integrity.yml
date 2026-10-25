@@ -1,0 +1,39 @@
+name: AASHA AIOS System & Memory Integrity
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  integrity:
+    name: Core AIOS & Multi-Tier Memory Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js v24 (Native SQLite Runtime)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install Dependencies
+        run: npm install --ignore-scripts
+
+      - name: Audit GitHub Actions Workflows Schema
+        run: npm run lint:workflows
+
+      - name: Audit Ecosystem Identity Invariants
+        run: npm run audit:identity
+
+      - name: Audit Superbrain Parity & Secret Isolation
+        run: npm run lint:superbrain
+
+      - name: Verify & Synchronize 4-Tier Memory System
+        run: npm run memory:sync
+
+      - name: Verify Master Priming (Jagiye Maa Kiran)
+        run: npm run memory:prime
