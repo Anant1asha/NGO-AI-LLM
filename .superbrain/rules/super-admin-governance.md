@@ -73,7 +73,7 @@ TEST:                   [TEST_VERIFIED, PARTIALLY_TESTED, NOT_TESTED]
 EXTERNAL OBSERVABILITY: [OBSERVABLE, LOCAL_ONLY, NOT_OBSERVABLE]
 ```
 
-### Absolute Epistemic Invariants
+### Absolute Epistemic Invariants:
 
 1. `INVARIANT_001`: `DESIGN_VERIFIED != RUNTIME_VERIFIED` (Governance/spec does not prove live execution).
 2. `INVARIANT_002`: `CODE_VERIFIED != FAILURE_PATH_TEST_VERIFIED` (Existing error handlers do not prove synthetic fault behavior).
@@ -94,13 +94,13 @@ If a capability is designed but unwired, if test coverage is partial, or if exte
 - DO NOT auto-implement the missing capability during an audit/certification pass (`IMPLEMENTATION_AUTHORITY = DISABLED_FOR_OPEN_ITEMS`).
 - MUST register a formal item with minimum schema: `ID`, `TYPE` (`OI-XXX` or `RG-XXX`), `TITLE`, `STATUS`, `CURRENT_EVIDENCE`, `LIMITATION`, `NEXT_ACTION`.
 
-### Canonical Open Items
+### Canonical Open Items:
 
 - `OI-001`: Upstream Billing Telemetry (`STATUS: OPEN / EXTERNAL OBSERVABILITY LIMITATION`).
 - `OI-002`: Async Fork-Join Concurrency (`STATUS: OPEN / IMPLEMENTATION PENDING`).
 - `OI-003`: Synthetic Fault Injection Test Coverage (`STATUS: OPEN / TEST-COVERAGE GAP`). Required test sequence: `INJECT -> CLASSIFY -> REPAIR 1 -> REPAIR 2 -> EXHAUSTION -> QUARANTINE -> DOWNSTREAM BLOCK -> HIL PACKET -> ASSERT FINAL STATE`.
 
-### Canonical Runtime Gaps
+### Canonical Runtime Gaps:
 
 - `RG-001`: Async Runtime Concurrency (`STATUS: OPEN / IMPLEMENTATION GAP`, current: sequential).
 - `RG-002`: Subprocess Ingestion (`STATUS: ACCEPTED CURRENT IMPLEMENTATION / RUNTIME-VERIFIED`, Python + PyMuPDF).
