@@ -1,19 +1,22 @@
 ---
 description: >-
-  Universal 3-Tier API Routing Policy. Governs ALL model API calls across
+  Universal 4-Tier Anti-Bleed API Routing Policy. Governs ALL model API calls across
   interactive chat, VS Code coding tasks, plugin calls, MCP tool invocations,
   and automated pipelines. Gemini paid API is RESERVE-only — not a default,
-  not a convenience fallback. Cascade path: Tier 1 (OpenRouter free) →
-  Tier 2 (Claude Code) → Tier 3 (Gemini, authorized only).
+  not a convenience fallback. Cascade path: Tier 0 (Deterministic Offline & Deep Vectorizer) →
+  Tier 1 (OpenRouter free) → Tier 2 (Claude Code) → Tier 3 (Gemini, authorized only).
 globs: **/*
 alwaysApply: true
 ---
 
-# Universal 3-Tier API Routing Policy
+# Universal 4-Tier Anti-Bleed API Routing Policy
 
 ## Decision Tree (Apply Before EVERY API Call)
 
 ```
+Is offline mode requested (--offline, AASHA_OFFLINE=1, or network/keys unavailable)?
+  YES → Tier 0 (Deterministic Offline Synthesizer & Deep Offline Vectorizer). 0 tokens, 0ms latency.
+  NO  ↓
 Is this task in the explicit Tier 3 authorized list below?
   YES → Use Gemini API (paid). Log usage. Require explicit user authorization.
   NO  ↓
@@ -24,8 +27,23 @@ Is this a multi-file code synthesis, chapter HTML generation, TS scripting,
 Route to OpenRouter Free Pool (Tier 1).
   → Rotate: llama-3.1-8b:free → nemotron-3.5:free → gemini-2.0-flash-exp:free
   → 3s mandatory backoff on 429. Max 3 retries.
-  → After 3 failures → escalate to Tier 2 (Claude Code). NEVER to Tier 3.
+  → If rate-limited or circuit breaker trips (20s) → auto-fallback to Tier 0. NEVER escalate to Tier 3.
 ```
+
+---
+
+## Tier 0 — Deterministic Offline Synthesizer & Deep Vectorizer (Method B Foundation)
+
+Route here when:
+- `--offline` flag is passed to `python -m aasha.cli` or `run_pipeline.ps1`
+- `AASHA_OFFLINE=1` is set in the runtime environment
+- OpenRouter free pool returns 429 rate limits or circuit-breaker trips
+- Ingesting scanned PDFs with non-text raster drawings, geometric sketches, or handwriting without network access
+
+**Capabilities**:
+- `DeepOfflineVectorizer`: PyMuPDF native vector drawing extraction (`get_drawings()`), Pillow adaptive stroke thresholding, geometric diagram classification (`number_line`, `balance_scale`, `geometric_circle`, `coordinate_graph`), and topological glyph OCR.
+- `OfflineSynthesizer`: 3–5 core concept generation, worked examples, 0-spoiler assessments with 4-tier progressive hints ($H_1 \to H_4$), and local bilingual Hindi dictionary DB lookup (`aasha_dictionary_db.json`).
+- Auto-scrubbing of distractor misconception answer leaks (`sanitize_spec_misconceptions`).
 
 ---
 

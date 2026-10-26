@@ -111,6 +111,48 @@ if (fs.existsSync(superbrainRulesDir)) {
 }
 
 // ---------------------------------------------------------------------------
+// 2b. YAML Frontmatter Schema Validation in .agents/rules/*.md (Antigravity)
+// ---------------------------------------------------------------------------
+console.log('\n--- 2b. YAML Frontmatter Schema Validation (.agents/rules/*.md) ---');
+
+if (fs.existsSync(agentsRulesDir)) {
+  const agentFiles = fs.readdirSync(agentsRulesDir).filter(f => f.endsWith('.md'));
+  for (const file of agentFiles) {
+    const filePath = path.join(agentsRulesDir, file);
+    const content = fs.readFileSync(filePath, 'utf8');
+
+    if (!content.startsWith('---')) {
+      reportFail(`.agents/rules/${file}: Missing opening YAML frontmatter delimiter (---)`);
+      continue;
+    }
+
+    const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!match) {
+      reportFail(`.agents/rules/${file}: Malformed or unclosed YAML frontmatter`);
+      continue;
+    }
+
+    const frontmatter = match[1];
+
+    // Assert scalar globs (prohibit sequence arrays that crash Go language server)
+    if (/globs:\s*\[/m.test(frontmatter)) {
+      reportFail(`.agents/rules/${file}: Invalid array 'globs: [...]' detected. Must be scalar string 'globs: "**/*"' to prevent Go language server unmarshaling errors.`);
+    } else if (!/^globs:\s*.+/m.test(frontmatter)) {
+      reportFail(`.agents/rules/${file}: Missing required scalar 'globs' definition`);
+    } else {
+      reportPass(`.agents/rules/${file}: Scalar 'globs' schema verified`);
+    }
+
+    // Assert trigger: always_on or trigger: model_decision
+    if (!/^trigger:\s*(always_on|model_decision)/m.test(frontmatter)) {
+      reportFail(`.agents/rules/${file}: Frontmatter should specify 'trigger: always_on' or 'trigger: model_decision'`);
+    } else {
+      reportPass(`.agents/rules/${file}: Valid trigger configured`);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // 3. SUPERBRAIN.md Core Invariant Cross-Check
 // ---------------------------------------------------------------------------
 console.log('\n--- 3. SUPERBRAIN.md Core Invariant Audit ---');
@@ -174,6 +216,11 @@ const filesToScan = [
 if (fs.existsSync(superbrainRulesDir)) {
   const sbRules = fs.readdirSync(superbrainRulesDir).map(f => path.join(superbrainRulesDir, f));
   filesToScan.push(...sbRules);
+}
+
+if (fs.existsSync(agentsRulesDir)) {
+  const agentRules = fs.readdirSync(agentsRulesDir).map(f => path.join(agentsRulesDir, f));
+  filesToScan.push(...agentRules);
 }
 
 for (const fPath of filesToScan) {
