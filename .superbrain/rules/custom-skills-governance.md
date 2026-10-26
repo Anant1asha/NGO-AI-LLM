@@ -40,6 +40,6 @@ This rule governs all interactions involving custom skills, prompt compilers, an
 
 6. **Cross-IDE Rule Parity & Modern Skill Standard**:
    - Every rule in `.agents/rules/<snake_case>.md` must maintain an identical 1:1 counterpart in `.superbrain/rules/<kebab-case>.md`.
-   - All rule files must include valid YAML frontmatter specifying `description` and execution triggers (`alwaysApply: true|false` or `globs: [...]`).
+   - All rule files in `.agents/rules/*.md` must include valid YAML frontmatter specifying `trigger: always_on` (or `trigger: model_decision`), `description: ...`, and scalar string `globs: "**/*"`. NEVER use YAML sequence arrays (`globs: [...]`), as Antigravity's Go language server (`language_server.exe`) unmarshals frontmatter into `struct { Globs string }` and fails with `cannot unmarshal !!seq into string`.
    - Legacy workflow files (`.agents/workflows/*.md`) are deprecated; all reusable agent capabilities must reside exclusively in `.agents/skills/<name>/SKILL.md`.
    - Rule parity must be validated via `npm run lint:superbrain` prior to staging changes.
