@@ -62,4 +62,5 @@ jobs/
 output/
 work/
 config/defaults.json/
+.worktrees/
 
