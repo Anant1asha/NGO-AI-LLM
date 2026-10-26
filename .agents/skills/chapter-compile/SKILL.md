@@ -31,3 +31,9 @@ KARAKA DECIDES ➔ PROMPT COMPILER COMPILES ➔ ROUTER ROUTES ➔ AGENT EXECUTES
 /chapter-compile "Mathematics" 8 "Rational Numbers"
 /chapter-compile "Science" 7 "Acids and Bases"
 ```
+
+## Stage 1 Ingest Invariants (High-Throughput Vision)
+
+1. **Hybrid Per-Page Ingestion**: Pages with $\ge 50$ digital characters must be parsed locally via PyMuPDF vector blocks (<1ms). Only low-text pages (<50 chars) are routed to multimodal vision.
+2. **Downscaled Web-Optimized JPEG**: Pages are rendered at max width 1000px, JPEG quality 80 with `alpha=False` (~80–120KB per page), reducing bandwidth by ~90% compared to 150 DPI uncompressed PNG.
+3. **Resilient Pagination**: If upstream vision traffic is congested, individual degraded pages fall back to structural placeholder blocks, ensuring `raw_extract.json` retains 100% of chapter pages without crashing downstream compilation.

@@ -69,6 +69,12 @@ Before performing any bulk file moves, renames, or deletions, you must:
 ### Ephemeral Runtime Cache & Local DB Isolation Invariant
 1. Local databases, caches, and sync files (`aasha_local_memory.json`, `offline_sync.db`, `aasha_operational.db`, `.scratch/mem0_store.json`) contain active runtime state from test executions.
 2. These files are strictly transient runtime artifacts and MUST remain untracked and git-ignored. Staging or committing active cache databases to Git history is strictly prohibited.
+3. Runtime pipeline generation directories (`.llm_cache/`, `.plugin_cache/`, `jobs/`, `output/`, `work/`, `config/defaults.json/`) are ephemeral execution outputs and MUST remain untracked in `.gitignore` to prevent repository debris and index corruption.
+
+### Test-Harness Memory Banking & Multi-Repo Path Invariant
+1. **Offline Test-Mode Fast-Path**: In all unit, integration, and concurrency test suites (`test_concurrency_wiring.ts`, `test_fault_injection_hardening.ts`), the execution environment MUST bind `NODE_ENV=test` and `MEMO0_OFFLINE=1`.
+2. **Synchronous Network Avoidance in Tests**: When `MEMO0_OFFLINE=1` or `NODE_ENV=test`, `Memo0DualProvider` and `memo0_bridge.py` MUST bypass external Python child-process spawning and Mem0 Cloud HTTPS network calls, executing directly in-memory/local-JSON. This prevents process table thrashing on Windows, eliminates false concurrency speedup failures, and drops test turn latency from ~85s to <10ms.
+3. **Multi-Repo Script Path Resolution**: When executing Node.js/TypeScript scripts in sub-repositories via `npm --prefix <subrepo> exec -- tsx <script>`, the execution working directory remains the workspace root. Script path arguments must be passed relative to the root workspace (e.g. `npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/...`), or executed via an explicit directory switch (`cd <subrepo>; ...`), preventing Node.js `ERR_MODULE_NOT_FOUND` resolution errors.
 
 ### Hosted Orchestration Network Boundary Invariant
 1. Developer workstations must NEVER expose unauthenticated inbound listening ports or reverse tunnels (`ngrok`, open HTTP/TCP listeners) to hosted n8n or cloud orchestrators.
@@ -96,6 +102,17 @@ Before performing any bulk file moves, renames, or deletions, you must:
 ### Python CLI Runner PYTHONPATH Injection Invariant
 1. When TypeScript/Node.js runners spawn Python using `-m <package.cli>`, they must explicitly prepend the target source directory (e.g. `path.resolve(pipelineDir, 'src')`) to `env.PYTHONPATH` in `resolveEnvironment()`.
 2. Never assume the active Python interpreter has the package installed in editable (`-e`) mode.
+
+### Scanned Textbook Vision Ingest & OpenRouter Direct Resilience Invariant
+1. **Web-Optimized Image Downsampling**: All scanned PDF page rendering via PyMuPDF must use max width 1000px, JPEG quality 80, and `alpha=False` (`pix.tobytes("jpeg", jpg_quality=80)`). Uncompressed PNG or >150 DPI rendering is strictly prohibited for bulk OCR ingestion to prevent payload bloat (~80–120KB per page vs. 2.5MB PNG).
+2. **Hybrid Per-Page Text Layer Isolation**: Every page must be assessed individually before invoking multimodal vision. If `len(page_text.strip()) >= 50`, digital text, headings, and layout blocks must be extracted locally in <1ms without LLM calls. Only scanned/low-text pages (<50 characters) may be routed to vision models.
+3. **OpenRouter Direct Model ID Syntax**: When invoking OpenRouter directly (`https://openrouter.ai/api/v1`), model IDs must NEVER include the `openrouter/` prefix (e.g., use `nvidia/nemotron-3.5-super-vl:free`, not `openrouter/nvidia/...`). The `openrouter/` prefix is strictly reserved for internal 9Router gateway routing.
+4. **Multi-Model Round-Robin & 20s Circuit-Breaker**:
+   - To prevent 429 rate-limit collisions over the public internet, direct OpenRouter vision calls must rotate round-robin across the verified free multimodal pool (`nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free`, `nvidia/nemotron-3.5-super-vl:free`, `google/gemma-4-31b-it:free`, `google/gemma-4-26b-a4b-it:free`, `dots-studio/dots-3-note-preview:free`, `thinkingmachines/inkling:free`).
+   - If any model returns HTTP 429 or rate-limit errors, the system must trip an in-memory 20-second circuit breaker (`_vision_model_cooldowns`) and instantly switch to the next available model without blocking worker threads with static sleep delays.
+5. **Collision-Free Page Caching & Resilient Fallback**:
+   - Vision disk cache keys must hash the full SHA-256 fingerprint of the base64 image data to guarantee collision-free cache hits.
+   - If an individual page fails all vision retries during extreme upstream congestion, `IngestAgent` must synthesize a structural fallback block, preserving complete document pagination (`len(pages) == page_count`) so downstream chapter compilation never fails.
 
 ### AASHA Universal Teaching Language System
 When transforming or creating educational content, you must strictly adhere to the guidelines established in the AASHA Universal Teaching Language System.

@@ -40,11 +40,12 @@ Runbook for executing the daily high-rigor development cadence across the AASHA 
    ```bash
    npm run test:ltruth
    ```
-4. Run Fork-Join concurrency wiring & fault injection hardening suites:
+4. Run Fork-Join concurrency wiring & fault injection hardening suites (with offline memory fast-path):
    ```bash
    npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_concurrency_wiring.ts
    npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fault_injection_hardening.ts
    ```
+   *Note: Both test harnesses automatically bind `NODE_ENV=test` and `MEMO0_OFFLINE=1` to guarantee local-only memory execution (<10ms) and prevent child-process thrashing.*
 
 ### Phase 4: Surgical Optimization & Multi-Repo Alignment
 1. Check git remote status across repositories (`NGO-AI-LLM`, `Aasha-AI`, `aasha-studio`); fast-forward upstream PR merges cleanly using safe stash-pull-pop.

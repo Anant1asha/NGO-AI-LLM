@@ -26,11 +26,12 @@ tools_required:
 | File read, grep, dir list | 1 | OpenRouter free |
 | Registry queries, graphify | 1 | OpenRouter free (`nemotron:free`) |
 | Simple code edit <200 lines | 1 | OpenRouter free |
+| Scanned textbook vision ingest (0 cost) | 1 | 9Router (`ag/gemini-3.8-flash`) / OpenRouter Free Pool |
 | Multi-file refactor / chapter HTML | 2 | Claude Code (sonnet) |
 | TypeScript synthesis, benchmarks | 2 | Claude Code (sonnet/haiku) |
 | MCP / VS Code plugin dev | 2 | Claude Code (sonnet) |
 | CDP automation scripts | 2 | Claude Code (sonnet) |
-| Textbook PDF vision ingestion | 3 | Gemini 2.0 Flash (authorized) |
+| High-res archival vision ingestion (>100K context) | 3 | Gemini 2.0 Flash (authorized reserve) |
 | Final QA certification (L-Truth + CDP) | 3 | Gemini 1.5 Pro (authorized) |
 | `/boost` session | 3 | Gemini Pro (user-authorized) |
 
@@ -110,6 +111,25 @@ Attempt 2 (3s wait) → nemotron-3.5-lightning:free
 Attempt 3 (3s wait) → gemini-2.0-flash-exp:free
 Attempt 4 → throw → ESCALATE to Tier 2 (Claude Code), NOT Gemini paid
 ```
+
+### 5. Multimodal Vision Pool (Tier 1 & 9Router)
+
+When processing textbook PDFs with scanned pages or figures:
+1. **Primary Path (9Router local gateway, port 20128)**:
+   - Uses zero-cost local proxies: `ag/gemini-3.8-flash`, `gc/gemini-2.5-flash-lite`, `ag/gemini-3.7-flash-medium`.
+   - Max concurrency: 8 worker threads.
+2. **Public Internet / Direct OpenRouter Fallback**:
+   - Rotates round-robin across:
+     - `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free`
+     - `nvidia/nemotron-3.5-super-vl:free`
+     - `google/gemma-4-31b-it:free`
+     - `google/gemma-4-26b-a4b-it:free`
+     - `dots-studio/dots-3-note-preview:free`
+     - `thinkingmachines/inkling:free`
+   - Active 20s circuit breaker on HTTP 429: instantly routes to next healthy model with 0ms thread sleep.
+   - Micro-pacer: 120ms inter-request gap to prevent burst blocking.
+   - Max concurrency: 4 worker threads.
+3. **Collision-Free Page Caching**: Full SHA-256 image base64 fingerprint prevents re-querying previously digitized pages.
 
 ---
 
