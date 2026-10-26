@@ -1,6 +1,7 @@
 ---
+trigger: always_on
 description: Enforces Method B (Local Stack / Offline-First) architecture. Forbids gcloud CLI installation, disables cloud SDK setup prompts, and routes all storage, database, and analytics to local engines.
-globs: ["**/*"]
+globs: "**/*"
 ---
 
 # Local Stack & Offline-First Invariant (Method B)

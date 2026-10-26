@@ -1,11 +1,12 @@
 ---
+trigger: always_on
 description: >-
   Universal 4-Tier Anti-Bleed API Routing Policy. Governs ALL model API calls across
   interactive chat, VS Code coding tasks, plugin calls, MCP tool invocations,
   and automated pipelines. Gemini paid API is RESERVE-only — not a default,
   not a convenience fallback. Cascade path: Tier 0 (Deterministic Offline & Deep Vectorizer) →
   Tier 1 (OpenRouter free) → Tier 2 (Claude Code) → Tier 3 (Gemini, authorized only).
-globs: ["**/*"]
+globs: "**/*"
 ---
 
 # Universal 4-Tier Anti-Bleed API Routing Policy

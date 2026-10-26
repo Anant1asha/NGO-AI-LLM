@@ -1,6 +1,7 @@
 ---
+trigger: always_on
 description: Governance and safe execution rules for custom skills and prompt compilers in the AASHA ecosystem.
-globs: ["**/*"]
+globs: "**/*"
 ---
 
 # Custom Skills Governance: Read & Evaluate First, Never Auto-Mutate

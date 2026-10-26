@@ -1,6 +1,7 @@
 ---
+trigger: always_on
 description: Mandatory zero-secret leakage and privacy guardrails for public GitHub repositories.
-globs: ["**/*", ".git/**"]
+globs: "**/*"
 ---
 
 # Public Repository Privacy & Zero-Secret Security Invariant

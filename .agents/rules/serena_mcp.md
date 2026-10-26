@@ -1,3 +1,9 @@
+---
+trigger: always_on
+description: Serena MCP parameter schemas, default local memory mandate, and memory onboarding standards.
+globs: "**/*"
+---
+
 # Serena MCP Parameter & Memory Invariants
 
 This rule defines the exact tool parameter schemas and memory onboarding standards for Serena MCP server interactions in this workspace.

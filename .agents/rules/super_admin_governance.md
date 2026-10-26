@@ -1,6 +1,7 @@
 ---
+trigger: always_on
 description: Universal Super Admin Epistemic & Execution Governance Rule for AASHA
-always_on: true
+globs: "**/*"
 ---
 
 # Super Admin Autonomous Governance & Epistemic Enforcement Layer
