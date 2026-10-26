@@ -30,10 +30,13 @@ KARAKA DECIDES ➔ PROMPT COMPILER COMPILES ➔ ROUTER ROUTES ➔ AGENT EXECUTES
 # Example invocation syntax:
 /chapter-compile "Mathematics" 8 "Rational Numbers"
 /chapter-compile "Science" 7 "Acids and Bases"
+
+# 100% Offline Fast-Path:
+python -m aasha.cli --pdf chapter.pdf --subject math --grade 8 --offline
 ```
 
-## Stage 1 Ingest Invariants (High-Throughput Vision)
+## Stage 1 Ingest Invariants (High-Throughput Vision & Deep Offline Vectorization)
 
-1. **Hybrid Per-Page Ingestion**: Pages with $\ge 50$ digital characters must be parsed locally via PyMuPDF vector blocks (<1ms). Only low-text pages (<50 chars) are routed to multimodal vision.
+1. **Hybrid Per-Page Ingestion**: Pages with $\ge 50$ digital characters must be parsed locally via PyMuPDF vector blocks (<1ms). Only low-text pages (<50 chars) are routed to multimodal vision or the deep offline vectorizer.
 2. **Downscaled Web-Optimized JPEG**: Pages are rendered at max width 1000px, JPEG quality 80 with `alpha=False` (~80–120KB per page), reducing bandwidth by ~90% compared to 150 DPI uncompressed PNG.
-3. **Resilient Pagination**: If upstream vision traffic is congested, individual degraded pages fall back to structural placeholder blocks, ensuring `raw_extract.json` retains 100% of chapter pages without crashing downstream compilation.
+3. **Tier-0 Deep Offline Vectorizer**: If offline (`--offline`) or when upstream vision traffic hits rate limits or circuit breakers, scanned pages engage `DeepOfflineVectorizer`. This extracts native vector paths via `page.get_drawings()`, performs Pillow stroke segmentation, classifies diagrams (`number_line`, `balance_scale`, `geometric_circle`, `coordinate_graph`), and runs topological glyph invariant OCR, ensuring high-fidelity visual diagrams and KaTeX formulas without generic placeholders.

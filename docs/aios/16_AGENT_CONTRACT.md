@@ -84,3 +84,17 @@ Every agent operating within the Aasha AIOS runs under strict least-privilege bo
 - **PROHIBITIONS**: Cannot mutate chapter source code to force a pass.
 - **MODEL**: NONE (Deterministic Node.js / JSDOM harness).
 - **ESCALATION RULES**: Emits immediate alert with exact failing check name and line number.
+
+---
+
+### AGENT CONTRACT: AGT-007 BrowserTesterAgent
+- **AGENT ID**: AGT-007
+- **ROLE**: Headless Chrome CDP Verification & Action-Simulation Specialist
+- **PURPOSE**: Execute automated headless browser interaction tests, verify mobile viewport invariants (390x844px), enforce touch target minimums (>=44x44px), and certify zero browser console errors.
+- **INPUT**: Compiled `.html` file, chapter manifest.
+- **OUTPUT**: `browser_test_report.json`, screenshot evidence captures.
+- **TOOLS**: Headless Chrome DevTools Protocol (CDP), Puppeteer, Playwright MCP runner.
+- **AUTHORITY**: Blocking HIL gate for production release — flags layout shifts, overflow, or broken JavaScript.
+- **PROHIBITIONS**: Cannot approve a build without running the complete headless interaction sequence.
+- **MODEL**: NONE (Deterministic Chrome CDP automation).
+- **ESCALATION RULES**: Emits alert if touch targets are smaller than 44x44px, if canvas fails to render, or if unhandled JavaScript errors occur in the console.

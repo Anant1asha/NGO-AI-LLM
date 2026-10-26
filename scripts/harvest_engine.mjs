@@ -204,13 +204,16 @@ export function auditQualityGate(id, name, content) {
     details: hasTelemetry ? 'PASS (AASHA telemetry contract active)' : 'FAIL (Telemetry bridge missing)'
   };
 
-  // 5. License & Cleanroom Verification
+  // 5. License & Cleanroom Verification (Zero GPL-3.0 Copyleft Contagion)
+  const hasGplContagion = /GNU GENERAL PUBLIC LICENSE|GNU Affero General Public License|\bGPL-3\.0\b|\bGPLv3\b/i.test(content);
   audit.checks.licenseCleanroom = {
-    pass: true,
-    details: 'PASS (MIT cleanroom / extracted mechanics)'
+    pass: !hasGplContagion,
+    details: !hasGplContagion
+      ? 'PASS (MIT cleanroom / extracted mechanics; zero GPL copyleft contagion)'
+      : 'FAIL (Raw GPL-3.0 copyleft license declaration detected in interactive HTML; use EXTRACT strategy only)'
   };
 
-  audit.passed = audit.checks.offlineIntegrity.pass && audit.checks.bundleCeiling.pass && audit.checks.telemetryContract.pass;
+  audit.passed = audit.checks.offlineIntegrity.pass && audit.checks.bundleCeiling.pass && audit.checks.telemetryContract.pass && audit.checks.licenseCleanroom.pass;
   return audit;
 }
 

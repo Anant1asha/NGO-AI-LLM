@@ -21,3 +21,18 @@ Whenever a task requires storage, database, or analytics capabilities, use only 
 
 ## 3. Remote Automation Boundary
 - If external cloud automation or curriculum ingress is explicitly requested by the user, route strictly through the hosted **n8n gateway** (`https://airtribe.app.n8n.cloud/`) via outbound webhooks using the `/n8n-trigger` skill. Never attempt to orchestrate cloud workloads from the local developer terminal.
+
+## 4. Tier-0 Deep Offline Vectorization & Synthesis Invariant
+- **No Network Dependency for Chapter Generation**: The pipeline must be capable of generating 100% compliant, interactive HTML5 chapters completely offline via `--offline` using `DeepOfflineVectorizer` and `OfflineSynthesizer`.
+- **Zero Placeholder Guarantee**: Scanned pages or pages with drawings must never degrade to generic placeholder strings (`"[Page X: Visual diagram or illustration content]"`). They must extract vector SVG geometry, classified diagrams (`number_line`, `balance_scale`, `geometric_circle`, `coordinate_graph`), and KaTeX formulas.
+- **Thread-Safe PyMuPDF Operations**: When accessing PDF documents in parallel worker pools, always open per-thread document handles (`fitz.open(str(pdf_path))`) to prevent C-level concurrency faults.
+
+## 5. Copyleft Cleanroom Isolation Invariant (GPL-3.0 Guardrail)
+- Foundations or libraries licensed under GPL-3.0 (e.g. PhET, Escapp, Code for Life) must strictly follow the **EXTRACT** or **INSPIRE** cleanroom strategy:
+  1. Extract only mathematical formulas, physical parameters, and public game mechanics.
+  2. Implement simulations inside isolated `<aasha-sim>` Web Component adapters.
+  3. Never copy raw GPL-3.0 source code or bundled assets directly into MIT-licensed chapter templates.
+
+## 6. Distractor Anti-Spoiler Sanitization Invariant (L-Truth Rule #1)
+- Misconception explanations in assessment distractors must NEVER reveal or quote the correct target answer or numerical value.
+- The pipeline orchestrator must enforce `sanitize_spec_misconceptions()` before HTML assembly, replacing accidental answer leaks with pedagogical reasoning clues.
