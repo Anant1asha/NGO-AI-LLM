@@ -6,6 +6,7 @@
   "scripts": {
     "audit:identity": "node scripts/audit_identity.mjs",
     "lint:superbrain": "node scripts/lint_superbrain_parity.mjs",
+    "lint:superbrain:py": "python scripts/lint_superbrain_parity.py",
     "lint:workflows": "node scripts/lint_workflows.mjs",
     "memory:sync": "npx tsx scripts/aasha_memory_engine.ts",
     "memory:prime": "npx tsx scripts/jagiye_maakiran.ts",

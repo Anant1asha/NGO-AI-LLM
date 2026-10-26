@@ -3,6 +3,7 @@
 ## Chapter & Contract CLI
 - Initialize Chapter Contract: `npm run chapter:init -- <Subject> <Class> <Topic>`
 - Match Foundations: `npm run admin:match -- <Subject> <Class> <Topic>`
+- Rule Parity & Schema Audit: `npm run lint:superbrain` (validates 1:1 cross-IDE parity and verifies 0 `!!seq` arrays in `.agents/rules/*.md`)
 - Graphify Update (AST): `graphify update .`
 - Graphify Query: `graphify query "<question>"`
 

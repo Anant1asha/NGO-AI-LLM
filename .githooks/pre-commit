@@ -1,0 +1,133 @@
+#!/bin/sh
+# Git Pre-Commit Hook: Automated Superbrain Parity & Rule Schema Verification
+# Automatically intercepts git commit to guarantee zero accidental YAML sequence list (!!seq)
+# errors in .agents/rules/*.md and ensures 1:1 cross-IDE parity with .superbrain/rules/*.md.
+# Resilient across environments where Node.js is NOT on host PATH (Cascade: Node.js -> Python -> Native Shell).
+
+STAGED_RULES=$(git diff --cached --name-only | grep -E '^(\.agents|\.superbrain)/rules/.*\.md$')
+
+if [ -z "$STAGED_RULES" ]; then
+    exit 0
+fi
+
+echo "Rule modifications detected in staging area:"
+echo "$STAGED_RULES"
+
+# ---------------------------------------------------------------------------
+# 1. Resolve Node.js Binary (PATH or well-known locations)
+# ---------------------------------------------------------------------------
+NODE_BIN=""
+if command -v node >/dev/null 2>&1; then
+    NODE_BIN="node"
+elif [ -x "C:/Program Files/nodejs/node.exe" ]; then
+    NODE_BIN="C:/Program Files/nodejs/node.exe"
+elif [ -x "C:/Program Files (x86)/nodejs/node.exe" ]; then
+    NODE_BIN="C:/Program Files (x86)/nodejs/node.exe"
+elif [ -n "$LOCALAPPDATA" ] && [ -x "$LOCALAPPDATA/Programs/node/node.exe" ]; then
+    NODE_BIN="$LOCALAPPDATA/Programs/node/node.exe"
+elif [ -x "/usr/local/bin/node" ]; then
+    NODE_BIN="/usr/local/bin/node"
+elif [ -x "/usr/bin/node" ]; then
+    NODE_BIN="/usr/bin/node"
+elif [ -x "/opt/homebrew/bin/node" ]; then
+    NODE_BIN="/opt/homebrew/bin/node"
+fi
+
+if [ -n "$NODE_BIN" ]; then
+    echo "Running rule verification using Node.js ($NODE_BIN)..."
+    "$NODE_BIN" scripts/lint_superbrain_parity.mjs
+    EXIT_CODE=$?
+    if [ $EXIT_CODE -ne 0 ]; then
+        echo "❌ Pre-commit hook failed: Invalid rule frontmatter or missing parity."
+        exit 1
+    fi
+    echo "✅ Rule verification passed (0 !!seq, 100% compliant)."
+    exit 0
+fi
+
+# ---------------------------------------------------------------------------
+# 2. Fallback to Python if Node.js is not on host PATH
+# ---------------------------------------------------------------------------
+PYTHON_BIN=""
+if command -v python >/dev/null 2>&1; then
+    PYTHON_BIN="python"
+elif command -v python3 >/dev/null 2>&1; then
+    PYTHON_BIN="python3"
+elif command -v py >/dev/null 2>&1; then
+    PYTHON_BIN="py"
+elif [ -x ".venv/Scripts/python.exe" ]; then
+    PYTHON_BIN=".venv/Scripts/python.exe"
+elif [ -x ".venv/bin/python" ]; then
+    PYTHON_BIN=".venv/bin/python"
+fi
+
+if [ -n "$PYTHON_BIN" ] && [ -f "scripts/lint_superbrain_parity.py" ]; then
+    echo "Node.js not detected on host PATH; cascading to Python verification ($PYTHON_BIN)..."
+    "$PYTHON_BIN" scripts/lint_superbrain_parity.py
+    EXIT_CODE=$?
+    if [ $EXIT_CODE -ne 0 ]; then
+        echo "❌ Pre-commit hook failed: Invalid rule frontmatter or missing parity."
+        exit 1
+    fi
+    echo "✅ Rule verification passed via Python fallback (0 !!seq, 100% compliant)."
+    exit 0
+fi
+
+# ---------------------------------------------------------------------------
+# 3. Pure POSIX Shell Verification Fallback (Zero external runtime dependencies)
+# ---------------------------------------------------------------------------
+echo "Neither Node.js nor Python detected on PATH; executing native POSIX shell rule validator..."
+HOOK_FAILED=0
+
+for rfile in $STAGED_RULES; do
+    if [ ! -f "$rfile" ]; then
+        continue
+    fi
+
+    # Check 1: Opening delimiter
+    FIRST_LINE=$(head -n 1 "$rfile" | tr -d '')
+    if [ "$FIRST_LINE" != "---" ]; then
+        echo "  [FAIL] $rfile: Missing opening '---' delimiter"
+        HOOK_FAILED=1
+    fi
+
+    # Check 2: Prohibit YAML sequence arrays for globs (the !!seq crash)
+    if grep -q -E '^globs:[[:space:]]*\[' "$rfile"; then
+        echo "  [FAIL] $rfile: Prohibited array 'globs: [...]' detected. Must be scalar string 'globs: "**/*"'."
+        HOOK_FAILED=1
+    fi
+
+    # Check 3: Description exists
+    if ! grep -q -E '^description:' "$rfile"; then
+        echo "  [FAIL] $rfile: Missing required 'description:' field"
+        HOOK_FAILED=1
+    fi
+
+    # Check 4: Cross-IDE counterpart exists
+    case "$rfile" in
+        .agents/rules/*)
+            BASE=$(basename "$rfile" | sed 's/_/-/g')
+            COUNTERPART=".superbrain/rules/$BASE"
+            if [ ! -f "$COUNTERPART" ]; then
+                echo "  [FAIL] Missing cross-IDE counterpart: $COUNTERPART"
+                HOOK_FAILED=1
+            fi
+            ;;
+        .superbrain/rules/*)
+            BASE=$(basename "$rfile" | sed 's/-/_/g')
+            COUNTERPART=".agents/rules/$BASE"
+            if [ ! -f "$COUNTERPART" ]; then
+                echo "  [FAIL] Missing cross-IDE counterpart: $COUNTERPART"
+                HOOK_FAILED=1
+            fi
+            ;;
+    esac
+done
+
+if [ $HOOK_FAILED -ne 0 ]; then
+    echo "❌ Pure shell validation failed. Please correct YAML frontmatter before committing."
+    exit 1
+fi
+
+echo "✅ Rule verification passed via native POSIX shell fallback (0 !!seq, 100% compliant)."
+exit 0
