@@ -42,8 +42,8 @@ Runbook for executing the daily high-rigor development cadence across the AASHA 
    ```
 4. Run Fork-Join concurrency wiring & fault injection hardening suites:
    ```bash
-   npm --prefix Aasha-AI exec -- tsx tests/test_concurrency_wiring.ts
-   npm --prefix Aasha-AI exec -- tsx tests/test_fault_injection_hardening.ts
+   npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_concurrency_wiring.ts
+   npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fault_injection_hardening.ts
    ```
 
 ### Phase 4: Surgical Optimization & Multi-Repo Alignment
