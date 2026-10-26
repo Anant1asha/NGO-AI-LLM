@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AASHA AIOS — Universal Gamified Assessment Engine (AVR-P406)</title>
+  <style>
+    :root {
+      --bg-dark: #020617;
+      --card-bg: #0f172a;
+      --panel-bg: #1e293b;
+      --accent-blue: #38bdf8;
+      --accent-green: #4ade80;
+      --accent-yellow: #facc15;
+      --accent-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 12px;
+    }
+    .aasha-shell {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    /* Header & Bar */
+    .aasha-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(30, 41, 59, 0.9);
+      border-bottom: 2px solid var(--border-color);
+      z-index: 10;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .aasha-title-tag {
+      font-weight: 700;
+      color: var(--accent-blue);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .aasha-stats-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+    }
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+    /* Controls Bar */
+    .aasha-mode-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: var(--panel-bg);
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .aasha-select-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    select, .aasha-btn-sm {
+      background: #0f172a;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      min-height: 44px;
+    }
+    select:focus, .aasha-btn-sm:hover {
+      border-color: var(--accent-blue);
+      background: #1e293b;
+    }
+    /* Prompt Card */
+    .aasha-prompt-panel {
+      padding: 14px 20px;
+      background: #131d31;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+    .prompt-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .prompt-text {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #ffffff;
+    }
+    .hint-box {
+      display: none;
+      margin-top: 8px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid var(--accent-red);
+      color: #fca5a5;
+    }
+    /* Stage Viewport */
+    .aasha-viewport {
+      position: relative;
+      min-height: 380px;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* Touch Bar */
+    .aasha-touch-ctrls {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+    }
+    .touch-btn {
+      flex: 1;
+      max-width: 130px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--panel-bg);
+      border: 2px solid var(--accent-blue);
+      color: var(--accent-blue);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.1s ease;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    .touch-btn:active {
+      transform: scale(0.96);
+      background: var(--accent-blue);
+      color: #020617;
+    }
+    .aasha-footer {
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-color);
+      background: #090d16;
+    }
+    .aasha-footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aasha-shell" id="aasha-engine-root">
+    <!-- Top HUD -->
+    <div class="aasha-topbar">
+      <div class="aasha-title-tag">
+        <span id="ui-mode-name">🏎️ SPEED RACER</span>
+        <div id="ui-lives-display" style="margin-left: 8px; font-size: 16px;">❤️❤️❤️</div>
+      </div>
+      <div class="aasha-stats-group">
+        <div class="stat-badge" style="color: var(--accent-yellow);">
+          ⏱️ <span id="ui-timer-text">60s</span>
+        </div>
+        <div class="stat-badge" style="color: var(--accent-green);">
+          ⭐ Score: <span id="ui-score-text">0</span>
+        </div>
+        <button id="ui-sound-toggle" class="aasha-btn-sm" style="min-height: 36px; padding: 4px 10px;">🔊</button>
+      </div>
+    </div>
+
+    <!-- Mode & Subject Selector Bar -->
+    <div class="aasha-mode-bar">
+      <div class="aasha-select-group">
+        <label for="sel-mode" style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Mode:</label>
+        <select id="sel-mode">
+          <option value="speed_racer">🏎️ Speed Racer (Lane Dodger)</option>
+          <option value="lilypad_hopper">🐸 Lilypad Hopper (River Step)</option>
+          <option value="category_sorter">📦 Category Classifier (Sorter)</option>
+          <option value="memory_match">🃏 Memory Matcher (Flip Pairs)</option>
+        </select>
+      </div>
+      <div class="aasha-select-group">
+        <label for="sel-subject" style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Subject:</label>
+        <select id="sel-subject">
+          <option value="science">🔬 Science: Physics & Biology</option>
+          <option value="math">📐 Mathematics: Numbers & Geometry</option>
+          <option value="history">🏛️ Social Studies: History & Civics</option>
+          <option value="grammar">📚 English Grammar: Speech Parts</option>
+        </select>
+      </div>
+      <button id="btn-engine-reset" class="aasha-btn-sm" style="min-height: 36px;">🔄 Restart</button>
+    </div>
+
+    <!-- Prompt Area -->
+    <div class="aasha-prompt-panel">
+      <div class="prompt-meta" id="ui-prompt-meta">Question 1 of 3</div>
+      <div class="prompt-text" id="ui-prompt-text">What force pulls objects toward the center of the Earth?</div>
+      <div class="hint-box" id="ui-hint-box"></div>
+    </div>
+
+    <!-- Main Viewport Stage -->
+    <div class="aasha-viewport" id="aasha-viewport-stage"></div>
+
+    <!-- Responsive Touch Controls Bar -->
+    <div class="aasha-touch-ctrls" id="aasha-touch-container"></div>
+
+    <!-- Attribution Footer -->
+    <div class="aasha-footer">
+      <span>AASHA Universal Gamified Engine (AVR-P406 / Foundation F27)</span>
+      <span>Powered by <a href="https://kingsmath.com" target="_blank" rel="noopener">KingsMath.com</a> (CC BY-NC 4.0)</span>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // AASHA LOCAL PRIVACY & EVENT BUS CONTRACT (100% Offline)
+    // =========================================================================
+    window.__AASHA_EVENTS__ = window.__AASHA_EVENTS__ || [];
+    window.AASHA = window.AASHA || {
+      emit: function(type, payload) {
+        const evt = { timestamp: Date.now(), type, payload };
+        window.__AASHA_EVENTS__.push(evt);
+        window.dispatchEvent(new CustomEvent('aasha:telemetry', { detail: evt }));
+      }
+    };
+
+    // =========================================================================
+    // PROCEDURAL WEB AUDIO SYNTHESIZER (Zero External Assets)
+    // =========================================================================
+    class ProceduralAudioEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+      init() {
+        if (!this.ctx) {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          if (AC) this.ctx = new AC();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+      play(type) {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+
+        try {
+          if (type === 'move' || type === 'select') {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, now);
+            gain.gain.setValueAtTime(0.06, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.08);
+          } else if (type === 'correct') {
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+              const osc = this.ctx.createOscillator();
+              const gain = this.ctx.createGain();
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(freq, now + i * 0.06);
+              gain.gain.setValueAtTime(0.07, now + i * 0.06);
+              gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.15);
+              osc.connect(gain);
+              gain.connect(this.ctx.destination);
+              osc.start(now + i * 0.06);
+              osc.stop(now + i * 0.06 + 0.16);
+            });
+          } else if (type === 'wrong') {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(180, now);
+            osc.frequency.linearRampToValueAtTime(80, now + 0.2);
+            gain.gain.setValueAtTime(0.09, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.21);
+          } else if (type === 'hop') {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(320, now);
+            osc.frequency.exponentialRampToValueAtTime(700, now + 0.1);
+            gain.gain.setValueAtTime(0.08, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.11);
+          } else if (type === 'win') {
+            [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach((freq, i) => {
+              const osc = this.ctx.createOscillator();
+              const gain = this.ctx.createGain();
+              osc.type = 'square';
+              osc.frequency.setValueAtTime(freq, now + i * 0.1);
+              gain.gain.setValueAtTime(0.06, now + i * 0.1);
+              gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.2);
+              osc.connect(gain);
+              gain.connect(this.ctx.destination);
+              osc.start(now + i * 0.1);
+              osc.stop(now + i * 0.1 + 0.22);
+            });
+          }
+        } catch (e) {}
+      }
+    }
+
+    // =========================================================================
+    // MULTI-SUBJECT CURRICULUM PRESETS
+    // =========================================================================
+    const CURRICULA = {
+      science: [
+        {
+          id: 'sci_1',
+          prompt: 'What force pulls objects toward the center of the Earth?',
+          options: ['Gravity', 'Friction', 'Magnetism', 'Tension'],
+          correctAnswer: 'Gravity',
+          category: 'Physics',
+          hints: ['Think of an apple falling from a tree.'],
+          misconceptions: { 'Friction': 'Friction opposes surface motion, not gravity.' }
+        },
+        {
+          id: 'sci_2',
+          prompt: 'Which cellular organelle is the "Powerhouse of the Cell"?',
+          options: ['Mitochondria', 'Nucleus', 'Ribosome', 'Vacuole'],
+          correctAnswer: 'Mitochondria',
+          category: 'Biology',
+          hints: ['It produces ATP energy.']
+        },
+        {
+          id: 'sci_3',
+          prompt: 'What is the pH level of pure distilled water at 25°C?',
+          options: ['pH 7 (Neutral)', 'pH 2 (Acidic)', 'pH 14 (Basic)', 'pH 0'],
+          correctAnswer: 'pH 7 (Neutral)',
+          category: 'Chemistry',
+          hints: ['Exactly neutral between acids and bases.']
+        }
+      ],
+      math: [
+        {
+          id: 'math_1',
+          prompt: 'Find the perimeter of a square with side length 7 cm.',
+          options: ['28 cm', '49 cm²', '14 cm', '21 cm'],
+          correctAnswer: '28 cm',
+          category: 'Geometry',
+          hints: ['Perimeter = 4 × side.'],
+          misconceptions: { '49 cm²': '49 cm² is the area (7 × 7), not the perimeter.' }
+        },
+        {
+          id: 'math_2',
+          prompt: 'What is 15% of 200?',
+          options: ['30', '20', '35', '15'],
+          correctAnswer: '30',
+          category: 'Arithmetic',
+          hints: ['10% is 20, 5% is 10.']
+        },
+        {
+          id: 'math_3',
+          prompt: 'Which integer is neither positive nor negative?',
+          options: ['0', '1', '-1', 'Infinity'],
+          correctAnswer: '0',
+          category: 'Number System',
+          hints: ['The origin on the number line.']
+        }
+      ],
+      history: [
+        {
+          id: 'hist_1',
+          prompt: 'Who was the Chairperson of the Drafting Committee of the Indian Constitution?',
+          options: ['Dr. B.R. Ambedkar', 'Mahatma Gandhi', 'Jawaharlal Nehru', 'Dr. Rajendra Prasad'],
+          correctAnswer: 'Dr. B.R. Ambedkar',
+          category: 'Civics',
+          hints: ['Chief architect of the Indian Constitution.']
+        },
+        {
+          id: 'hist_2',
+          prompt: 'In which year did India adopt its Constitution, becoming a Republic?',
+          options: ['1950', '1947', '1857', '1942'],
+          correctAnswer: '1950',
+          category: 'History',
+          hints: ['26th January, celebrated as Republic Day.']
+        }
+      ],
+      grammar: [
+        {
+          id: 'gram_1',
+          prompt: 'Identify the Part of Speech: "The cheetah runs QUICKLY."',
+          options: ['Adverb', 'Adjective', 'Noun', 'Verb'],
+          correctAnswer: 'Adverb',
+          category: 'Grammar',
+          hints: ['Modifies the verb "runs".']
+        },
+        {
+          id: 'gram_2',
+          prompt: 'Identify the Part of Speech: "HIMALAYAS are towering mountains."',
+          options: ['Proper Noun', 'Pronoun', 'Conjunction', 'Preposition'],
+          correctAnswer: 'Proper Noun',
+          category: 'Grammar',
+          hints: ['A specific named entity.']
+        }
+      ]
+    };
+
+    // =========================================================================
+    // GAME ENGINE ORCHESTRATOR
+    // =========================================================================
+    class GamifiedEngine {
+      constructor() {
+        this.audio = new ProceduralAudioEngine();
+        this.mode = 'speed_racer';
+        this.subject = 'science';
+        this.questions = CURRICULA.science;
+        this.currentIndex = 0;
+        this.score = 0;
+        this.streak = 0;
+        this.lives = 3;
+        this.timer = 60;
+        this.timerId = null;
+        this.animId = null;
+        this.isGameOver = false;
+
+        // Mode State
+        this.racerState = { lane: 1, targetLane: 1, playerX: 300, gateZ: 0.1, options: [] };
+      }
+
+      init() {
+        this._bindUI();
+        this.reset();
+      }
+
+      _bindUI() {
+        document.getElementById('sel-mode').addEventListener('change', (e) => {
+          this.mode = e.target.value;
+          this.reset();
+        });
+        document.getElementById('sel-subject').addEventListener('change', (e) => {
+          this.subject = e.target.value;
+          this.questions = CURRICULA[this.subject] || CURRICULA.science;
+          this.reset();
+        });
+        document.getElementById('btn-engine-reset').addEventListener('click', () => this.reset());
+        document.getElementById('ui-sound-toggle').addEventListener('click', () => {
+          this.audio.enabled = !this.audio.enabled;
+          document.getElementById('ui-sound-toggle').textContent = this.audio.enabled ? '🔊' : '🔇';
+        });
+
+        // Keyboard Arrow / WASD Controls for Racer
+        window.addEventListener('keydown', (e) => {
+          if (this.mode !== 'speed_racer' || this.isGameOver) return;
+          if (e.key === 'ArrowLeft' || e.key === 'a') this._setLane(Math.max(0, this.racerState.lane - 1));
+          if (e.key === 'ArrowRight' || e.key === 'd') this._setLane(Math.min(2, this.racerState.lane + 1));
+          if (e.key === 'ArrowUp' || e.key === 'w') this._setLane(1);
+        });
+      }
+
+      reset() {
+        clearInterval(this.timerId);
+        if (this.animId) cancelAnimationFrame(this.animId);
+
+        this.currentIndex = 0;
+        this.score = 0;
+        this.streak = 0;
+        this.lives = 3;
+        this.timer = 60;
+        this.isGameOver = false;
+
+        this._updateHUD();
+        this._startTimer();
+        this._launchMode();
+        window.AASHA.emit('game_reset', { mode: this.mode, subject: this.subject });
+      }
+
+      _startTimer() {
+        this.timerId = setInterval(() => {
+          if (this.isGameOver) return;
+          this.timer--;
+          document.getElementById('ui-timer-text').textContent = `${this.timer}s`;
+          if (this.timer <= 0) this._endGame(false, 'Time Expired!');
+        }, 1000);
+      }
+
+      _updateHUD() {
+        document.getElementById('ui-score-text').textContent = this.score;
+        document.getElementById('ui-lives-display').textContent = '❤️'.repeat(Math.max(0, this.lives));
+        document.getElementById('ui-timer-text').textContent = `${this.timer}s`;
+
+        const q = this.questions[this.currentIndex] || this.questions[0];
+        document.getElementById('ui-prompt-meta').textContent = `Question ${this.currentIndex + 1} of ${this.questions.length}`;
+        document.getElementById('ui-prompt-text').textContent = q.prompt;
+        document.getElementById('ui-hint-box').style.display = 'none';
+
+        const modeNames = {
+          speed_racer: '🏎️ SPEED RACER',
+          lilypad_hopper: '🐸 LILYPAD HOPPER',
+          category_sorter: '📦 CATEGORY CLASSIFIER',
+          memory_match: '🃏 MEMORY MATCHER'
+        };
+        document.getElementById('ui-mode-name').textContent = modeNames[this.mode] || 'AASHA GAME';
+      }
+
+      _launchMode() {
+        const stage = document.getElementById('aasha-viewport-stage');
+        const touch = document.getElementById('aasha-touch-container');
+        touch.innerHTML = '';
+
+        if (this.mode === 'speed_racer') this._runSpeedRacer(stage, touch);
+        else if (this.mode === 'lilypad_hopper') this._runLilypadHopper(stage);
+        else if (this.mode === 'category_sorter') this._runCategorySorter(stage);
+        else if (this.mode === 'memory_match') this._runMemoryMatch(stage);
+      }
+
+      // --- Mode 1: Speed Racer ---
+      _runSpeedRacer(stage, touch) {
+        stage.innerHTML = `<canvas id="racer-canvas" width="600" height="380" style="width: 100%; height: 100%; object-fit: contain;"></canvas>`;
+        touch.innerHTML = `
+          <button class="touch-btn" id="btn-left">◀ LEFT</button>
+          <button class="touch-btn" id="btn-mid">▲ MID</button>
+          <button class="touch-btn" id="btn-right">RIGHT ▶</button>
+        `;
+        document.getElementById('btn-left').addEventListener('click', () => this._setLane(0));
+        document.getElementById('btn-mid').addEventListener('click', () => this._setLane(1));
+        document.getElementById('btn-right').addEventListener('click', () => this._setLane(2));
+
+        const canvas = document.getElementById('racer-canvas');
+        const ctx = canvas.getContext('2d');
+        this.racerState = {
+          lane: 1, targetLane: 1, playerX: 300, gateZ: 0.1, roadStripe: 0,
+          options: this._prepareOptions()
+        };
+
+        const loop = () => {
+          if (this.isGameOver) return;
+          this._renderRacer(canvas, ctx);
+          this.animId = requestAnimationFrame(loop);
+        };
+        this.animId = requestAnimationFrame(loop);
+      }
+
+      _setLane(idx) {
+        if (this.racerState.lane !== idx) {
+          this.racerState.targetLane = idx;
+          this.audio.play('move');
+        }
+      }
+
+      _prepareOptions() {
+        const q = this.questions[this.currentIndex] || this.questions[0];
+        const opts = [...q.options];
+        while (opts.length < 3) opts.push('--');
+        const shuffled = opts.slice(0, 3).sort(() => Math.random() - 0.5);
+        if (!shuffled.includes(q.correctAnswer)) shuffled[Math.floor(Math.random() * 3)] = q.correctAnswer;
+        return shuffled;
+      }
+
+      _renderRacer(canvas, ctx) {
+        const w = canvas.width, h = canvas.height, st = this.racerState;
+        const targets = [w * 0.25, w * 0.5, w * 0.75];
+        st.lane = st.targetLane;
+        st.playerX += (targets[st.lane] - st.playerX) * 0.2;
+        st.gateZ += 0.007;
+        st.roadStripe = (st.roadStripe + 8) % 40;
+
+        ctx.fillStyle = '#090d16'; ctx.fillRect(0, 0, w, h);
+        ctx.fillStyle = '#047857'; ctx.fillRect(0, h * 0.45, w, h * 0.55);
+
+        // Road
+        ctx.beginPath();
+        ctx.moveTo(w * 0.38, h * 0.45); ctx.lineTo(w * 0.62, h * 0.45);
+        ctx.lineTo(w * 0.95, h); ctx.lineTo(w * 0.05, h); ctx.closePath();
+        ctx.fillStyle = '#1e293b'; ctx.fill();
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
+
+        // Dividers
+        [w * 0.35, w * 0.65].forEach(tx => {
+          ctx.strokeStyle = '#facc15'; ctx.lineWidth = 2; ctx.setLineDash([16, 16]);
+          ctx.lineDashOffset = -st.roadStripe; ctx.beginPath();
+          ctx.moveTo(w * 0.5 + (tx - w * 0.5) * 0.2, h * 0.45); ctx.lineTo(tx, h); ctx.stroke();
+          ctx.setLineDash([]);
+        });
+
+        // Gates
+        const z = st.gateZ;
+        if (z > 0.05 && z < 1.1) {
+          const gy = h * 0.45 + (h * 0.55) * (z * z);
+          const sc = 0.2 + z * 0.8;
+          const xs = [w * 0.5 + (w * 0.25 - w * 0.5) * sc, w * 0.5, w * 0.5 + (w * 0.75 - w * 0.5) * sc];
+
+          st.options.forEach((opt, i) => {
+            const bw = 150 * sc, bh = 46 * sc;
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.9)'; ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = Math.max(1, 3 * sc);
+            ctx.beginPath(); ctx.roundRect(xs[i] - bw / 2, gy - bh, bw, bh, 6 * sc);
+            ctx.fill(); ctx.stroke();
+            ctx.fillStyle = '#ffffff'; ctx.font = `bold ${Math.max(10, Math.floor(13 * sc))}px sans-serif`;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(opt, xs[i], gy - bh / 2, bw - 8);
+          });
+        }
+
+        // Car
+        const carY = h * 0.86;
+        ctx.fillStyle = '#38bdf8'; ctx.beginPath();
+        ctx.roundRect(st.playerX - 30, carY, 60, 32, 8); ctx.fill();
+        ctx.fillStyle = '#0f172a'; ctx.fillRect(st.playerX - 18, carY + 4, 36, 10);
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(st.playerX - 34, carY + 4, 4, 10); ctx.fillRect(st.playerX + 30, carY + 4, 4, 10);
+        ctx.fillRect(st.playerX - 34, carY + 18, 4, 10); ctx.fillRect(st.playerX + 30, carY + 18, 4, 10);
+
+        // Collision Check
+        if (st.gateZ >= 0.92) {
+          const chosen = st.options[st.lane];
+          const isCorrect = chosen === this.questions[this.currentIndex].correctAnswer;
+          this._submitAnswer(isCorrect, chosen);
+          st.gateZ = 0.05;
+          st.options = this._prepareOptions();
+        }
+      }
+
+      // --- Mode 2: Lilypad Hopper ---
+      _runLilypadHopper(stage) {
+        const q = this.questions[this.currentIndex] || this.questions[0];
+        stage.innerHTML = `
+          <div style="width: 100%; height: 100%; min-height: 380px; background: radial-gradient(circle, #0284c7, #075985); display: flex; flex-direction: column; justify-content: space-between; padding: 16px;">
+            <div style="background: #15803d; border-radius: 8px; padding: 8px; text-align: center; font-weight: 700; color: #dcfce7; font-size: 13px;">🌿 OPPOSITE RIVER BANK 🌿</div>
+            <div style="display: flex; justify-content: space-around; gap: 10px; flex-wrap: wrap;">
+              ${q.options.map(opt => `
+                <button class="lily-pad-btn" data-val="${encodeURIComponent(opt)}" style="
+                  width: 110px; height: 110px; border-radius: 50%; background: #16a34a; border: 4px solid #4ade80;
+                  color: #fff; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; flex-direction: column;
+                  align-items: center; justify-content: center; padding: 8px; transition: transform 0.15s; outline: none;
+                ">
+                  <span style="font-size: 20px;">🍀</span>
+                  <span style="text-align: center; word-break: break-word;">${opt}</span>
+                </button>
+              `).join('')}
+            </div>
+            <div style="position: relative; height: 48px; background: #166534; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <div id="frog-avatar" style="font-size: 32px; position: absolute; bottom: 8px; transition: transform 0.3s ease;">🐸</div>
+            </div>
+          </div>
+        `;
+        stage.querySelectorAll('.lily-pad-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const chosen = decodeURIComponent(btn.getAttribute('data-val'));
+            const isCorrect = chosen === q.correctAnswer;
+            this.audio.play('hop');
+            const frog = document.getElementById('frog-avatar');
+            if (frog) {
+              const rect = btn.getBoundingClientRect(), fRect = frog.getBoundingClientRect();
+              frog.style.transform = `translate(${rect.left + rect.width / 2 - (fRect.left + fRect.width / 2)}px, -130px) scale(1.2)`;
+            }
+            setTimeout(() => {
+              this._submitAnswer(isCorrect, chosen);
+              if (!this.isGameOver) this._runLilypadHopper(stage);
+            }, 300);
+          });
+        });
+      }
+
+      // --- Mode 3: Category Sorter ---
+      _runCategorySorter(stage) {
+        const q = this.questions[this.currentIndex] || this.questions[0];
+        const cats = Array.from(new Set(this.questions.map(item => item.category || 'General')));
+        if (cats.length < 2) cats.push('General');
+
+        stage.innerHTML = `
+          <div style="width: 100%; height: 100%; min-height: 380px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
+            <div style="text-align: center;">
+              <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Tap the correct category bin:</div>
+              <div style="display: inline-block; background: #1e293b; border: 2px solid #38bdf8; border-radius: 12px; padding: 14px 24px; font-size: 18px; font-weight: 700;">${q.prompt}</div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+              ${cats.map(c => `
+                <button class="cat-bin-btn" data-cat="${encodeURIComponent(c)}" style="
+                  min-width: 130px; height: 100px; background: #1e293b; border: 3px dashed #64748b; border-radius: 14px;
+                  color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; flex-direction: column;
+                  align-items: center; justify-content: center; gap: 6px;
+                ">
+                  <span style="font-size: 24px;">📦</span>
+                  <span>${c}</span>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        stage.querySelectorAll('.cat-bin-btn').forEach(b => {
+          b.addEventListener('click', () => {
+            const chosen = decodeURIComponent(b.getAttribute('data-cat'));
+            const isCorrect = chosen === (q.category || cats[0]);
+            b.style.borderColor = isCorrect ? '#4ade80' : '#ef4444';
+            setTimeout(() => {
+              this._submitAnswer(isCorrect, chosen);
+              if (!this.isGameOver) this._runCategorySorter(stage);
+            }, 250);
+          });
+        });
+      }
+
+      // --- Mode 4: Memory Matcher ---
+      _runMemoryMatch(stage) {
+        const pairs = this.questions.slice(0, 4).map((q, i) => [
+          { id: `p_${i}`, text: q.prompt, pair: i },
+          { id: `a_${i}`, text: q.correctAnswer, pair: i }
+        ]).flat().sort(() => Math.random() - 0.5);
+
+        let flipped = [], matchedCount = 0;
+        stage.innerHTML = `
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; max-width: 600px; padding: 16px;">
+            ${pairs.map(p => `
+              <div class="mem-card" data-pair="${p.pair}" style="height: 90px; background: #1e293b; border: 2px solid #38bdf8; border-radius: 10px; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; padding: 8px;">
+                <span class="card-q">❓</span>
+                <span class="card-ans" style="display: none;">${p.text}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        stage.querySelectorAll('.mem-card').forEach(card => {
+          card.addEventListener('click', () => {
+            if (flipped.length >= 2 || card.classList.contains('locked') || card.classList.contains('active')) return;
+            card.classList.add('active');
+            card.querySelector('.card-q').style.display = 'none';
+            card.querySelector('.card-ans').style.display = 'block';
+            card.style.background = '#334155';
+            this.audio.play('select');
+            flipped.push(card);
+
+            if (flipped.length === 2) {
+              const [c1, c2] = flipped;
+              if (c1.getAttribute('data-pair') === c2.getAttribute('data-pair')) {
+                this.audio.play('correct');
+                c1.classList.add('locked'); c2.classList.add('locked');
+                c1.style.borderColor = '#4ade80'; c2.style.borderColor = '#4ade80';
+                this.score += 150;
+                document.getElementById('ui-score-text').textContent = this.score;
+                matchedCount++;
+                flipped = [];
+                if (matchedCount >= Math.min(4, this.questions.length)) {
+                  setTimeout(() => this._endGame(true, 'All pairs successfully matched!'), 500);
+                }
+              } else {
+                this.audio.play('wrong');
+                setTimeout(() => {
+                  c1.classList.remove('active'); c2.classList.remove('active');
+                  c1.querySelector('.card-q').style.display = 'block'; c1.querySelector('.card-ans').style.display = 'none';
+                  c2.querySelector('.card-q').style.display = 'block'; c2.querySelector('.card-ans').style.display = 'none';
+                  c1.style.background = '#1e293b'; c2.style.background = '#1e293b';
+                  flipped = [];
+                }, 750);
+              }
+            }
+          });
+        });
+      }
+
+      _submitAnswer(isCorrect, answer) {
+        const q = this.questions[this.currentIndex];
+        const hintEl = document.getElementById('ui-hint-box');
+
+        if (isCorrect) {
+          this.audio.play('correct');
+          this.streak++;
+          this.score += 100 + this.streak * 25;
+          window.AASHA.emit('answer_submitted', { qId: q.id, isCorrect: true, answer, score: this.score });
+
+          this.currentIndex++;
+          if (this.currentIndex >= this.questions.length) {
+            this._endGame(true, 'Curriculum Assessment Mastered!');
+            return;
+          }
+        } else {
+          this.audio.play('wrong');
+          this.streak = 0;
+          this.lives--;
+          const misc = q.misconceptions && q.misconceptions[answer];
+          const hint = (q.hints && q.hints[0]) || 'Review key concept properties.';
+          hintEl.textContent = misc ? `💡 Clue: ${misc}` : `💡 Hint: ${hint}`;
+          hintEl.style.display = 'block';
+          window.AASHA.emit('answer_submitted', { qId: q.id, isCorrect: false, answer, lives: this.lives });
+
+          if (this.lives <= 0) {
+            this._endGame(false, 'Out of Lives!');
+            return;
+          }
+        }
+        this._updateHUD();
+      }
+
+      _endGame(isWin, msg) {
+        this.isGameOver = true;
+        clearInterval(this.timerId);
+        if (this.animId) cancelAnimationFrame(this.animId);
+
+        if (isWin) this.audio.play('win');
+        else this.audio.play('wrong');
+
+        const stage = document.getElementById('aasha-viewport-stage');
+        stage.innerHTML = `
+          <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 52px; margin-bottom: 6px;">${isWin ? '🏆' : '💥'}</div>
+            <div style="font-size: 24px; font-weight: 800; color: ${isWin ? '#4ade80' : '#ef4444'}; margin-bottom: 8px;">
+              ${isWin ? 'LEVEL COMPLETED!' : 'GAME OVER'}
+            </div>
+            <div style="color: var(--text-muted); font-size: 15px; margin-bottom: 18px;">${msg}</div>
+            <div style="font-size: 20px; font-weight: 700; color: var(--accent-green); margin-bottom: 18px;">
+              Final Score: ${this.score}
+            </div>
+            <button id="btn-replay" style="
+              padding: 10px 24px; border-radius: 8px; background: var(--accent-blue);
+              color: #020617; font-weight: 700; border: none; cursor: pointer;
+            ">PLAY AGAIN 🔄</button>
+          </div>
+        `;
+        document.getElementById('btn-replay').addEventListener('click', () => this.reset());
+        window.AASHA.emit('game_completed', { isWin, score: this.score });
+      }
+    }
+
+    // Launch Engine on Load
+    const engine = new GamifiedEngine();
+    window.addEventListener('DOMContentLoaded', () => engine.init());
+  </script>
+</body>
+</html>

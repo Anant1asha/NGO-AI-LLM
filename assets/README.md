@@ -60,14 +60,15 @@ assets/
         ├── AVR-P402-magnetic-lorentz-force-simulator.html (Physics, Cl 11-12)
         ├── AVR-P403-error-analysis-virtual-lab.html      (Physics, Cl 11-12)
         ├── AVR-P404-dimensional-analysis-virtual-lab.html(Physics, Cl 11)
-        └── AVR-P405-ten-frame-place-value-mastery.html   (Mathematics, Cl 1-4)
+        ├── AVR-P405-ten-frame-place-value-mastery.html   (Mathematics, Cl 1-4)
+        └── AVR-P406-kingsmath-universal-gamified-assessment.html (Cross-Curricular, Cl 1-12)
 ```
 
 ---
 
 ## Catalog Summary
-- **Certified Ingested Interactives**: 26 HTML5 simulations (21 core AVR-P301–P321 + 5 harvested labs AVR-P401–P405)
-- **Prebuilt Experience Foundations**: 26 cataloged open-source foundations (F01–F26: PhET, KingsMath, JSXGraph, Escapp, QuestJS, Lightbot, CinePhysicsHQ, etc.)
+- **Certified Ingested Interactives**: 27 HTML5 simulations (21 core AVR-P301–P321 + 6 harvested labs AVR-P401–P406)
+- **Prebuilt Experience Foundations**: 27 cataloged open-source foundations (F01–F27: PhET, KingsMath, JSXGraph, Escapp, QuestJS, Lightbot, CinePhysicsHQ, Universal Gamified Engine, etc.)
 - **Harvest Research Candidates**: 40 mapped candidate patterns (HARV-0001–HARV-0040)
 - **Core Shared Substrates**: 4 offline substrates (KaTeX math, Indic dictionary, Web Audio tone synthesizer, Local Vendor chart/math cache)
 

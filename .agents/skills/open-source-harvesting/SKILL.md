@@ -96,5 +96,49 @@ assets/
     │   └── katex.min.css        # KaTeX styles
     └── interactives/            # Certified Standalone Visual Interactives (100% Offline)
         ├── AVR-P301 to AVR-P321 # Core AVR interactives
-        └── AVR-P401 to AVR-P405 # Harvested and quality-certified labs
+        └── AVR-P401 to AVR-P406 # Harvested and quality-certified labs
 ```
+
+---
+
+## 3-Tier Resource Library Ingestion & Preservation Standards
+
+Whenever researching, harvesting, or reverse-engineering an upstream open-source educational repository (e.g., KingsMath, CinePhysicsHQ, PhET):
+
+### Tier 1: Raw Harvested Source Ingestion (`external_sources/<library-name>/`)
+1. **Permanent Storage**: Raw upstream source code must be stored permanently in `external_sources/<library-name>/` (e.g., `external_sources/kingsmath-web-games/`), NEVER left only in ephemeral `.scratch/`.
+2. **Archive & Nested Zip Scrubbing Rule**:
+   - `*.zip` files are strictly blocked by `.gitignore`.
+   - When extracting upstream distribution archives into `external_sources/`, filter out all nested `.zip` archives (e.g. internal backup zips in dashboards) to maintain zero-secret and zero-archive git compliance.
+3. **Mandatory Provenance Documentation**:
+   - Include `README.md` identifying the upstream repository URL, catalog description, and AASHA cleanroom integration role.
+   - Include `LICENSE` with verbatim upstream license text (e.g., CC BY-NC 4.0 or MIT) and explicit author attribution.
+
+### Tier 2: Certified Standalone Offline Interactive (`assets/cdn/interactives/`)
+1. Refine and package a single-file, 100% offline HTML interactive named with the canonical prefix:
+   `assets/cdn/interactives/AVR-P4xx-<name>.html`
+2. Ensure zero remote script/link tags, inlined procedural Web Audio synthesis, and standard event bus bindings (`window.AASHA.emit` and `window.__AASHA_EVENTS__`).
+3. Compute exact byte size and SHA-256 checksum:
+   ```powershell
+   python -c "import hashlib, os; path='assets/cdn/interactives/AVR-P4xx.html'; print(os.path.getsize(path), hashlib.sha256(open(path, 'rb').read()).hexdigest())"
+   ```
+
+### Tier 3: Reusable Engine Adapter (`Aasha-AI/experience_registry/adapters/`)
+1. Synthesize a reusable cleanroom adapter (`aasha_<name>_adapter.js`) implementing `AashaExperienceContract` (`mount`, `getState`, `pause`, `resume`, `reset`, `destroy`, `emitTelemetry`).
+2. Register the foundation ID (e.g., `F27`) in `Aasha-AI/experience_registry/registry.json`.
+
+---
+
+## Prestack Manifest & Local CDN Synchronization Workflow
+Whenever a new interactive is added to `assets/cdn/interactives/`:
+1. **Manifest Registration (`assets/prestack_manifest.json`)**:
+   - Add entry under `interactives[]` with `id` (e.g., `AVR-P406`), `name`, `family`, `filename`, `local_cdn_path`, `bundle_bytes`, `sha256`, `ceiling_bytes: 20971520`, `offline_certified: true`, `subject`, `classes`, `topics`, `board`, `contract`, `license`, `provenance`, and `foundation_source`.
+   - Increment `statistics.interactives_count`.
+   - Update `statistics.total_interactives_bundle_bytes` ($+ \text{bundle\_bytes}$).
+2. **Documentation Sync (`assets/README.md`)**:
+   - Add the interactive under `assets/cdn/interactives/` file list.
+   - Update the **Catalog Summary** counts (`Certified Ingested Interactives` and `Prebuilt Experience Foundations`).
+3. **Automated Verification Suite (`Aasha-AI/tests/verify_*_integration.js`)**:
+   - Assert `external_sources/<name>/` exists with expected file and directory counts.
+   - Assert `assets/cdn/interactives/AVR-P4xx.html` exists and is indexed in `prestack_manifest.json`.
+
