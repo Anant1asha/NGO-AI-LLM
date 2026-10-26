@@ -141,6 +141,21 @@ This skill guides agents and developers in operating the Annanth AASHA Foundatio
 | **F18** | **Secure Code Game** | Digital safety, cybersecurity awareness, phishing prevention | Digital Literacy, Computer Science (Grades 6–10) |
 | **F19** | **Chocolate Broccoli Challenge** | Quality-gated learning loops: Observe $\rightarrow$ Decide $\rightarrow$ Act $\rightarrow$ Result | All Subjects (Grades 1–10) |
 | **F20** | **GameBox / Mini Games** | Offline touch interaction loops, mini-canvas tactile exercises | Math, Logic, Science (Grades 1–6) |
+| **F21** | **CinePhysics Vernier Caliper Lab** | Precision physical measurement, zero error, least count verification | Physics, Science (Grades 6–12) |
+| **F22** | **CinePhysics Dimensional Analysis** | Dimensional consistency, unit conversion balancing | Physics, Math (Grades 8–12) |
+| **F23** | **King's Math 10-Frame Manipulative** | Concrete visual counting, tactile 10-frame place value tokens | Mathematics (Grades 1–5) |
+| **F24** | **King's Math Fraction Slices** | Dynamic part-to-whole visual slicing, decimal fraction equivalency | Mathematics (Grades 3–8) |
+| **F25** | **King's Math Number-Line Hunter** | Step-by-step coordinate leaping, integer factor hunting | Mathematics (Grades 1–8) |
+| **F26** | **King's Math Symmetry & Geometry Fold** | Interactive 2D axis reflection, bilateral geometry shape folding | Mathematics (Grades 3–8) |
+| **F27** | **King's Math Universal Gamified Assessment Engine** | Multi-mode gamified evaluation (Speed Racer, Lilypad Hopper, Category Classifier, Card Memory Matcher), procedural Web Audio, multi-subject question normalization | All Subjects & Grades (Classes 1–12) |
+
+### Dual-Manifest Foundation Scaling Invariant
+Whenever a new foundation (e.g. F27+) is registered:
+1. Update `Aasha-AI/experience_registry/registry.json` under `foundations` with `id`, `name`, `repo`, `license`, `subjects`, `classes`, `mechanics`, `reuse_strategy`, and `adapter`.
+2. Synchronize `assets/prestack_manifest.json` in lockstep:
+   - Increment `statistics.foundations_count`.
+   - Add the foundation entry matching the schema in `foundations[]`.
+3. Verify with `node Aasha-AI/tests/verify_gamified_assessment_integration.js`.
 
 ---
 

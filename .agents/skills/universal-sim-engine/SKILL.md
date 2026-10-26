@@ -35,3 +35,18 @@ node Aasha-AI/benchmarks/test_kingsmath_foundations.js
 node Aasha-AI/benchmarks/qa_ltruth_benchmark.js
 ```
 All suites must score 100/100 with 0 failures, 0 spoilers, and 0 console errors.
+
+## REA MCP Web Game Reverse-Engineering & Decoupling Protocol
+When reverse-engineering open-source educational games (such as KingsMath single-file HTML collections or HTML5 Canvas/WebGL games) via REA MCP:
+1. **Targeting Rule**: `analyze_javascript_application` must target the extracted application directory (`input_path: "<dir>"`), NOT a loose `.html` file.
+2. **Inline Script Parsing**: Inspect the `parse-html-inline-scripts` observation to locate line ranges of classic inline scripts (e.g. lines 699–1572 in `index.html`) for AST deconstruction.
+3. **Decoupling Architecture**:
+   - Isolate rendering loops, collision math, and input handlers.
+   - Replace hardcoded problem generators (`generateProblemType`) with the open `GamifiedAssessmentSpec` schema (`prompt`, `options`, `correctAnswer`, `hints`, `misconceptions`).
+4. **Procedural Zero-Asset Audio**:
+   - Do NOT load external MP3/WAV files.
+   - Synthesize all UI audio via `window.AudioContext` oscillators (`sine` 587Hz for navigation, `triangle` arpeggio chords `[523Hz, 659Hz, 783Hz, 1046Hz]` for correct, `sawtooth` descending buzz for misconceptions, `square` chords for victory fanfare).
+5. **Headless Node.js Test Safety Invariant**:
+   - Always guard DOM and Canvas calls with optional chaining (`stage.querySelector?.(...)`, `ctx?.roundRect`, `requestAnimationFrame` checks).
+   - This allows Node.js integration tests (`verify_*_integration.js`) to exercise the `AashaExperienceContract` lifecycle (`mount`, `getState`, `pause`, `resume`, `reset`, `destroy`) in headless CI environments without DOM exceptions.
+
