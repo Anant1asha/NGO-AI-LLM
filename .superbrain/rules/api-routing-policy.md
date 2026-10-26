@@ -13,7 +13,7 @@ alwaysApply: true
 
 ## Decision Tree (Apply Before EVERY API Call)
 
-```text
+```
 Is this task in the explicit Tier 3 authorized list below?
   YES → Use Gemini API (paid). Log usage. Require explicit user authorization.
   NO  ↓
@@ -44,7 +44,7 @@ Route here first for:
 
 **Approved free models** (rotate in order on failure):
 
-```text
+```
 meta-llama/llama-3.1-8b-instruct:free
 nvidia/nemotron-3.5-lightning:free
 google/gemini-2.0-flash-exp:free
@@ -68,7 +68,7 @@ Route here for:
 
 **Default Model Pool (0 Cost via OpenRouter)**:
 
-```text
+```
 qwen/qwen-2.5-coder-32b-instruct:free
 nvidia/nemotron-3.5-lightning:free
 google/gemini-2.0-flash-exp:free

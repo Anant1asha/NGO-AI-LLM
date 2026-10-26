@@ -2,10 +2,15 @@
 // MD013 (line length) is disabled: these are instruction documents, and
 // wrapping prose inside them changes what the agent reads. MD060 is disabled
 // because it is a rarer table style and not one GEMINI.md ever asked for.
+// MD041, MD040 and MD026 are disabled so migrated rule files keep the source's
+// exact text: its H2-first layout, its bare code fences, and the trailing ':'
+// on headings. Normalising those silently rewrites the rule's own wording.
 {
   "config": {
     "MD013": false,
     "MD060": false,
-    "MD041": false
+    "MD041": false,
+    "MD040": false,
+    "MD026": false
   }
 }

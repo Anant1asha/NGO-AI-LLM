@@ -11,7 +11,7 @@ This rule governs all agent sessions in this workspace. It does not hardcode sta
 
 At every session, resolve truth dynamically from canonical evidence:
 
-```text
+```
 Level 0: User explicit current instruction
 Level 1: Committed canonical documents (GEMINI.md, docs/CANONICAL_GLOSSARY.md, PRDs)
 Level 2: Current implementation code, tests, and schemas
