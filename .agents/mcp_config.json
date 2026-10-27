@@ -1,0 +1,39 @@
+﻿{
+    "mcpServers":  {
+                       "sequential-thinking":  {
+                                                   "args":  [
+                                                                "-y",
+                                                                "@modelcontextprotocol/server-sequential-thinking"
+                                                            ],
+                                                   "env":  {
+                                                               "DISABLE_THOUGHT_LOGGING":  "false"
+                                                           },
+                                                   "command":  "npx"
+                                               },
+                       "context7":  {
+                                        "args":  [
+                                                     "-y",
+                                                     "@upstash/context7-mcp",
+                                                     "--api-key",
+                                                     "${CONTEXT7_API_KEY}"
+                                                 ],
+                                        "command":  "npx"
+                                    },
+                       "playwright":  {
+                                          "args":  [
+                                                       "@playwright/mcp@latest",
+                                                       "--isolated",
+                                                       "--headless"
+                                                   ],
+                                          "command":  "npx"
+                                      },
+                       "filesystem":  {
+                                          "args":  [
+                                                       "C:/Users/admin/Downloads/NGO AI LLM",
+                                                       "C:/Users/admin/Downloads/NGO AI LLM/Aasha-AI",
+                                                       "C:/Users/admin/Downloads/NGO AI LLM/AASHA_Visual_Mass_Harvest_Phase3"
+                                                   ],
+                                          "command":  "mcp-filesystem-server"
+                                      }
+                   }
+}
