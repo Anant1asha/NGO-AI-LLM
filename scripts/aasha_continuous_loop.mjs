@@ -37,6 +37,10 @@ const INTERVAL_MINUTES = intervalIdx !== -1 && args[intervalIdx + 1]
   : (IS_FREQUENT ? 15 : 60);
 const IS_ONCE = args.includes('--once') || (!args.includes('--interval') && !args.includes('--watch') && !IS_FREQUENT);
 
+// Branch promotion policy: Default is strict non-main task branch isolation (zero automated pushes to master/main).
+// Promotion to main/master is strictly gated behind explicit CLI flag --promote-trunk AND environment variable.
+const ALLOW_TRUNK_PUSH = args.includes('--promote-trunk') && process.env.AASHA_PROMOTE_TRUNK === 'true';
+
 function logBanner(title) {
   console.log('\n======================================================================');
   console.log(` 🌟 AASHA CONTINUOUS LOOP: ${title}`);
