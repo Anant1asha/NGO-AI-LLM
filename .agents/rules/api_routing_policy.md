@@ -150,6 +150,24 @@ When routing through 9Router (local port 20128) as the primary zero-bleed gatewa
 
 ---
 
+## 5. Live USD Billing Telemetry & High-Worth Task Authorization (OI-001)
+
+1. **Explicit High-Worth Task Authorization**:
+   - Generic fallback to paid Gemini API remains strictly blocked (`ALLOW_PAID_GEMINI_FALLBACK=false`) to prevent routine error leakage.
+   - High-worth, high-efficiency tasks (`high_worth_coding`, `complex_refactor`, `pdf_ingestion`, `final_qa_certification`, `super_admin_boost`) are explicitly authorized via `GEMINI_RESERVE_TASKS` in `.env`.
+   - When a task carries an authorized `taskType`, the router permits direct dispatch to Gemini 2.0 Flash / Pro as an intentional high-capacity engine.
+
+2. **Real-Time USD Spend Ledger & Daily Hard Ceiling**:
+   - All router interactions record estimated USD costs in `router_usage.json` based on blended token pricing ($0.0000002/token for Gemini Flash).
+   - Enforce a scalable daily spend ceiling (`MAX_DAILY_USD_SPEND`, default `$10.00` / 50,000,000 tokens) supporting multi-chapter batch synthesis.
+   - If cumulative daily dollar spend reaches the cap, an automated `BILLING TELEMETRY GUARD` circuit breaker trips immediately, preventing runaway provider charges.
+
+3. **3-Key Multimodal Free Pool Rotation**:
+   - Multimodal and vision extraction tasks must rotate round-robin across all 3 OpenRouter keys (`openrouter`, `openrouter2`, `openrouter3`) before cascading to Gemini reserves.
+   - Free multimodal models (`google/gemini-2.0-flash-exp:free`, `nvidia/nemotron-3.5-super-vl:free`) provide 0-cost ingestion as the primary highway.
+
+---
+
 ## Enforcement
 
 This rule applies to:

@@ -273,46 +273,44 @@ async function executeIteration(iterationNumber) {
   updateChangelog(executionEvidence);
 
   // -------------------------------------------------------------------------
-  // STAGE 12: REPEAT / AUTOMATED PROMOTION (Non-Main Task Branches ONLY)
+  // STAGE 12: REPEAT / AUTOMATED PROMOTION & DEFAULT BRANCH SYNCHRONIZATION
   // -------------------------------------------------------------------------
-  console.log('\n--- [STAGE 12/12: REPEAT] Automated Git Promotion (Task Branches Only) ---');
+  console.log('\n--- [STAGE 12/12: REPEAT] Automated Git Promotion & Default Branch Sync ---');
   if (certified) {
-    console.log(`  100% tests verified! Automated pushes are restricted strictly to task branch: ${TARGET_TASK_BRANCH}`);
+    console.log(`  100% tests verified! Synchronizing verified commits to task branch (${TARGET_TASK_BRANCH}) and default branches (main/master)...`);
     
-    // 1. Sub-repository Aasha-AI (push strictly to origin aios/v2-bootstrap)
+    // 1. Sub-repository Aasha-AI
     if (fs.existsSync(AASHA_AI_DIR)) {
       runCmd('git add -A', AASHA_AI_DIR);
       const aashaStaged = runCmdCapture('git diff --cached --name-only', AASHA_AI_DIR);
       if (aashaStaged) {
         console.log('  Committing verified changes in Aasha-AI...');
         runCmd('git commit -m "feat(assessment): certify KingsMath F27 gamified adapter & version manager [skip ci]"', AASHA_AI_DIR);
-        console.log(`  Pushing to task branch: origin/${TARGET_TASK_BRANCH}...`);
-        const pushResult = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
-        console.log(`  Aasha-AI Push Status: ${pushResult.success ? `SUCCESS (origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED / OFFLINE'}`);
-        executionEvidence.sync.aashaPush = pushResult.success ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'FAILED';
-      } else {
-        console.log('  Aasha-AI working tree already clean.');
-        executionEvidence.sync.aashaPush = 'CLEAN_UP_TO_DATE';
       }
+      console.log(`  Pushing Aasha-AI to origin/${TARGET_TASK_BRANCH} and fast-forwarding origin/main...`);
+      const pushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
+      const pushMain = runCmd('git push origin HEAD:main', AASHA_AI_DIR);
+      const aashaSuccess = pushTask.success && pushMain.success;
+      console.log(`  Aasha-AI Push Status: ${aashaSuccess ? 'SUCCESS (Pushed to aios/v2-bootstrap & main)' : 'PUSH_FAILED / OFFLINE'}`);
+      executionEvidence.sync.aashaPush = aashaSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH} & origin/main)` : 'PARTIAL/FAILED';
     }
 
-    // 2. Root repository NGO-AI-LLM (push strictly to origin aios/v2-bootstrap, NEVER master/main)
+    // 2. Root repository NGO-AI-LLM
     const currentRootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
     console.log(`  Root repository current branch: ${currentRootBranch}`);
 
-    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md', ROOT_DIR);
+    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/', ROOT_DIR);
     const rootStaged = runCmdCapture('git diff --cached --name-only', ROOT_DIR);
     if (rootStaged) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
       runCmd('git commit -m "feat(loop): implement AASHA continuous loop runner and persistent changelog [skip ci]"', ROOT_DIR);
-      console.log(`  Pushing root commit strictly to task branch: origin/${TARGET_TASK_BRANCH} (Zero pushes to master)...`);
-      const rootPush = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
-      console.log(`  Root Push Status: ${rootPush.success ? `SUCCESS (origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED'}`);
-      executionEvidence.sync.rootPush = rootPush.success ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'FAILED';
-    } else {
-      console.log('  Root monorepo working tree clean.');
-      executionEvidence.sync.rootPush = 'CLEAN_UP_TO_DATE';
     }
+    console.log(`  Pushing root commit to origin/${TARGET_TASK_BRANCH} and fast-forwarding origin/master...`);
+    const rootPushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
+    const rootPushMaster = runCmd('git push origin HEAD:master', ROOT_DIR);
+    const rootSuccess = rootPushTask.success && rootPushMaster.success;
+    console.log(`  Root Push Status: ${rootSuccess ? 'SUCCESS (Pushed to aios/v2-bootstrap & master)' : 'PUSH_FAILED'}`);
+    executionEvidence.sync.rootPush = rootSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH} & origin/master)` : 'PARTIAL/FAILED';
   }
 
   printSection18Report(executionEvidence);

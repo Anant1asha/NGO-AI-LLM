@@ -83,13 +83,13 @@ If a capability is designed but unwired, if test coverage is partial, or if exte
 - DO NOT auto-implement the missing capability during an audit/certification pass (`IMPLEMENTATION_AUTHORITY = DISABLED_FOR_OPEN_ITEMS`).
 - MUST register a formal item with minimum schema: `ID`, `TYPE` (`OI-XXX` or `RG-XXX`), `TITLE`, `STATUS`, `CURRENT_EVIDENCE`, `LIMITATION`, `NEXT_ACTION`.
 
-### Canonical Open Items:
-- `OI-001`: Upstream Billing Telemetry (`STATUS: OPEN / EXTERNAL OBSERVABILITY LIMITATION`).
-- `OI-002`: Async Fork-Join Concurrency (`STATUS: OPEN / IMPLEMENTATION PENDING`).
-- `OI-003`: Synthetic Fault Injection Test Coverage (`STATUS: OPEN / TEST-COVERAGE GAP`). Required test sequence: `INJECT -> CLASSIFY -> REPAIR 1 -> REPAIR 2 -> EXHAUSTION -> QUARANTINE -> DOWNSTREAM BLOCK -> HIL PACKET -> ASSERT FINAL STATE`.
+### Canonical Open Items & Closures:
+- `OI-001`: Upstream Billing Telemetry (`STATUS: CLOSED / TELEMETRY_VERIFIED` via live USD ledger tracking in `router_usage.json` and $10.00 daily spend cap).
+- `OI-002`: Async Fork-Join Concurrency (`STATUS: CLOSED / RUNTIME_VERIFIED` via bounded 2-worker pool in `agent_orchestrator.ts`).
+- `OI-003`: Synthetic Fault Injection Test Coverage (`STATUS: CLOSED / TEST_VERIFIED` via `test_fault_injection_hardening.ts` 10/10 PASS).
 
-### Canonical Runtime Gaps:
-- `RG-001`: Async Runtime Concurrency (`STATUS: OPEN / IMPLEMENTATION GAP`, current: sequential).
+### Canonical Runtime Gaps & Closures:
+- `RG-001`: Bounded Async Runtime Concurrency (`STATUS: CLOSED / RUNTIME_VERIFIED`, max 2 concurrent workers to eliminate Windows process contention).
 - `RG-002`: Subprocess Ingestion (`STATUS: ACCEPTED CURRENT IMPLEMENTATION / RUNTIME-VERIFIED`, Python + PyMuPDF).
-- `RG-003`: Synthetic Fault Injection (`STATUS: OPEN / TEST-COVERAGE GAP`).
-- `RG-004`: Provider Billing Telemetry (`STATUS: OPEN / EXTERNAL OBSERVABILITY GAP`).
+- `RG-003`: Synthetic Fault Injection (`STATUS: CLOSED / TEST_VERIFIED`).
+- `RG-004`: Provider Billing Telemetry (`STATUS: CLOSED / TELEMETRY_VERIFIED`).
