@@ -1,17 +1,17 @@
 # AASHA AIOS Sprint Verification Report
 
-- **Timestamp**: `2026-10-27 04:59:29 UTC`
+- **Timestamp**: `2026-10-27 05:03:13 UTC`
 - **Mode**: `QUICK (Static Linters Only)`
-- **Execution Time**: `1.22s`
+- **Execution Time**: `1.45s`
 - **Overall Status**: ✅ **SPRINT CERTIFIED (PASS)**
 
 ## Scorecard
 
 | Pillar | Check | Target Invariant | Result | Latency |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pillar 4: Zero Secrets** | Pre-Commit Secret Scanner (`SEC-002`) | No uninsulated tokens or private credentials staged | ✅ PASS | `505ms` |
-| **Pillar 5: Rule Parity** | Superbrain Schema & Parity Audit (`RULE-PARITY`) | 100% schema compliance, 0 !!seq errors, 1:1 cross-IDE sync | ✅ PASS | `363ms` |
-| **CI Resilience** | GitHub Actions Workflow Lint (`CI-WORKFLOWS`) | Zero expression syntax warnings, dynamic secret indirection | ✅ PASS | `347ms` |
+| **Pillar 4: Zero Secrets** | Pre-Commit Secret Scanner (`SEC-002`) | No uninsulated tokens or private credentials staged | ✅ PASS | `695ms` |
+| **Pillar 5: Rule Parity** | Superbrain Schema & Parity Audit (`RULE-PARITY`) | 100% schema compliance, 0 !!seq errors, 1:1 cross-IDE sync | ✅ PASS | `371ms` |
+| **CI Resilience** | GitHub Actions Workflow Lint (`CI-WORKFLOWS`) | Zero expression syntax warnings, dynamic secret indirection | ✅ PASS | `387ms` |
 
 ---
 
