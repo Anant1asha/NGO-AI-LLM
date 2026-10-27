@@ -32,6 +32,9 @@ jobs:
       - name: Audit Superbrain Parity & Secret Isolation
         run: npm run lint:superbrain
 
+      - name: Verify Sprint Integrity (Fast Static Pass)
+        run: npm run verify:sprint:quick
+
       - name: Verify & Synchronize 4-Tier Memory System
         run: npm run memory:sync
 
