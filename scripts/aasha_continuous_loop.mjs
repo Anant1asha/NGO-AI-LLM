@@ -408,7 +408,7 @@ function printSection18Report(evidence) {
   console.log('\n## C. Work completed');
   console.log('1. Enforced unified task-branch push policy (origin/aios/v2-bootstrap on both root and sub-repos; zero automated pushes to master/main).');
   console.log('2. Grounded execution strictly in Mode D direct local PC workspace authority.');
-  console.log('3. Verified all test suites (${evidence.tests.filter(t => t.pass).length}/${evidence.tests.length}) including Master E2E, L-Truth, Concurrency & Fault Hardening, and KingsMath F27 Gamified Assessment Engine Adapter & Version Manager.');
+  console.log(`3. Verified all test suites (${evidence.tests.filter(t => t.pass).length}/${evidence.tests.length}) including Master E2E, L-Truth, Concurrency & Fault Hardening, and KingsMath F27 Gamified Assessment Engine Adapter & Version Manager.`);
 
   console.log('\n## D. Verification');
   evidence.tests.forEach(t => {
