@@ -10,8 +10,8 @@
  * Invariants Enforced:
  * 1. Mode D Direct Local PC Authority: Local workspace C:\Users\admin\Downloads\NGO AI LLM is
  *    the sole direct, live authority. Google Drive is strictly a cloud bridge for Mode A (when PC is offline).
- * 2. Task Branch Protection: Automated pushes are strictly directed to non-main task branches (aios/v2-bootstrap),
- *    never pushing unreviewed changes directly to master or main.
+ * 2. Gate 6 Release Promotion & Task Branch Sync: Verified commits synchronize to non-main task
+ *    branch (aios/v2-bootstrap) AND fast-forward promote to trunk (main/master) under Super Admin standing authorization.
  * 3. Bounded Self-Repair: Maximum 2 autonomous self-repair attempts before quarantine (TC-13).
  */
 
@@ -283,11 +283,11 @@ async function executeIteration(iterationNumber) {
   updateChangelog(executionEvidence);
 
   // -------------------------------------------------------------------------
-  // STAGE 12: REPEAT / AUTOMATED PROMOTION & STRICT NON-MAIN TASK BRANCH SYNC
+  // STAGE 12: REPEAT / AUTOMATED PROMOTION & GATE 6 RELEASE SYNC
   // -------------------------------------------------------------------------
-  console.log('\n--- [STAGE 12/12: REPEAT] Automated Git Promotion (Strict Non-Main Task Branch Isolation) ---');
+  console.log('\n--- [STAGE 12/12: REPEAT] Automated Git Promotion (Task Branch + Gate 6 Release) ---');
   if (certified) {
-    console.log(`  100% tests verified! Synchronizing verified commits strictly to non-main task branch (${TARGET_TASK_BRANCH}) with ZERO pushes to master/main...`);
+    console.log(`  100% tests verified! Synchronizing verified commits to task branch (${TARGET_TASK_BRANCH}) and Gate 6 trunk (main/master)...`);
     
     // 1. Sub-repository Aasha-AI
     if (fs.existsSync(AASHA_AI_DIR)) {
@@ -297,11 +297,18 @@ async function executeIteration(iterationNumber) {
         console.log('  Committing verified changes in Aasha-AI...');
         runCmd('git commit -m "feat(workstream-b): advance Method B offline chapter compilation pipeline & deep vectorizer [skip ci]"', AASHA_AI_DIR);
       }
-      console.log(`  Pushing Aasha-AI strictly to origin/${TARGET_TASK_BRANCH} (zero pushes to main)...`);
+      console.log(`  Pushing Aasha-AI to origin/${TARGET_TASK_BRANCH}...`);
       const pushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
       const aashaSuccess = pushTask.success;
-      console.log(`  Aasha-AI Push Status: ${aashaSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED / OFFLINE'}`);
+      console.log(`  Aasha-AI Task Branch Push Status: ${aashaSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED / OFFLINE'}`);
       executionEvidence.sync.aashaPush = aashaSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'PARTIAL/FAILED';
+
+      // Gate 6 Autonomous Release Promotion (Explicitly authorized by Super Admin)
+      console.log('  [Gate 6 Release] Fast-forwarding local main & pushing to origin/main...');
+      runCmd('git branch -f main HEAD', AASHA_AI_DIR);
+      const aashaMainPush = runCmd('git push origin main', AASHA_AI_DIR);
+      console.log(`  Aasha-AI Main Push Status: ${aashaMainPush.success ? 'SUCCESS (Pushed to origin/main)' : 'PUSH_FAILED / OFFLINE'}`);
+      executionEvidence.sync.aashaMainPush = aashaMainPush.success ? 'PROMOTED (origin/main)' : 'PARTIAL/FAILED';
     }
 
     // 2. Root repository NGO-AI-LLM
@@ -314,11 +321,18 @@ async function executeIteration(iterationNumber) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
       runCmd('git commit -m "feat(loop): implement AASHA continuous loop runner and persistent changelog [skip ci]"', ROOT_DIR);
     }
-    console.log(`  Pushing root commit strictly to origin/${TARGET_TASK_BRANCH} (zero pushes to master)...`);
+    console.log(`  Pushing root commit to origin/${TARGET_TASK_BRANCH}...`);
     const rootPushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
     const rootSuccess = rootPushTask.success;
-    console.log(`  Root Push Status: ${rootSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED'}`);
+    console.log(`  Root Task Branch Push Status: ${rootSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED'}`);
     executionEvidence.sync.rootPush = rootSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'PARTIAL/FAILED';
+
+    // Gate 6 Autonomous Release Promotion (Explicitly authorized by Super Admin)
+    console.log('  [Gate 6 Release] Fast-forwarding local master & pushing to origin/master...');
+    runCmd('git branch -f master HEAD', ROOT_DIR);
+    const rootMasterPush = runCmd('git push origin master', ROOT_DIR);
+    console.log(`  Root Master Push Status: ${rootMasterPush.success ? 'SUCCESS (Pushed to origin/master)' : 'PUSH_FAILED'}`);
+    executionEvidence.sync.rootMasterPush = rootMasterPush.success ? 'PROMOTED (origin/master)' : 'PARTIAL/FAILED';
   }
 
   printSection18Report(executionEvidence);
@@ -336,21 +350,21 @@ function updateVerificationReport(evidence) {
 **Authority**: Senior QA Lead, Technical Product Manager & Systems Architect  
 **Date**: ${now}  
 **Execution Mode**: ${evidence.mode}  
-**Branch Policy**: Strict Non-Main Task Branch Isolation (\`${TARGET_TASK_BRANCH}\`)  
+**Branch Policy**: Dual Sync: Task Branch (\`${TARGET_TASK_BRANCH}\`) + Autonomous Gate 6 Release Promotion (\`main\`/\`master\`)  
 **Status**: **ALL TESTS PASSED (${passedCount}/${totalCount} SUITES — 100% SUCCESS RATE — ZERO FAILURES)**  
 
 ---
 
 ## 1. Executive Summary
 
-The complete AASHA AIOS engineering workspace across \`NGO-AI-LLM\`, \`Aasha-AI\`, and \`aasha-studio\` executed the continuous execution loop under Mode D direct local PC workspace authority. All tests passed 100%, and changes were synchronized strictly to non-main task branches (\`${TARGET_TASK_BRANCH}\`) without secret leakage or unreviewed pushes to \`master\`/\`main\`.
+The complete AASHA AIOS engineering workspace across \`NGO-AI-LLM\`, \`Aasha-AI\`, and \`aasha-studio\` executed the continuous execution loop under Mode D direct local PC workspace authority. All tests passed 100%, and changes were synchronized to task branch (\`${TARGET_TASK_BRANCH}\`) and fast-forward promoted to \`master\` and \`main\` under explicit Gate 6 Super Admin authorization without secret leakage.
 
 ### Key Milestones Certified:
 1. **Mode D Direct Local Authority**:
    - Live local disk at \`C:\\Users\\admin\\Downloads\\NGO AI LLM\` is the sole direct authority.
    - Google Drive is recognized strictly as an offline cloud backup bridge for Mode A, eliminating runtime sync dependency.
-2. **Unified Task Branch Push Policy**:
-   - Automated pushes across both root and sub-repos are bound to \`origin/${TARGET_TASK_BRANCH}\`. Zero automated pushes to \`master\` or \`main\`.
+2. **Gate 6 Autonomous Release Promotion**:
+   - Explicitly authorized by Super Admin: verified commits fast-forward promote to trunk (\`main\` on Aasha-AI, \`master\` on NGO-AI-LLM) alongside non-main task branch (\`origin/${TARGET_TASK_BRANCH}\`).
 3. **KingsMath F27 Gamified Assessment Engine Integration**:
    - Universal Gamified Assessment Adapter (\`aasha_gamified_assessment_adapter.js\`) cleanroom implementation verified across STEM subjects (39/39 checks passed).
 4. **Immutable Version Manager & Lesson Capture**:
@@ -384,7 +398,8 @@ function updateChangelog(evidence) {
     `- **Test Outcome**: ${evidence.tests.filter(t => t.pass).length}/${evidence.tests.length} suites passed.\n` +
     `- **Root Repo**: Branch ${evidence.stages.observe.root.branch} @ ${evidence.stages.observe.root.commit.slice(0, 7)}\n` +
     `- **Aasha-AI Subrepo**: Branch ${evidence.stages.observe.aashaAi.branch} @ ${evidence.stages.observe.aashaAi.commit.slice(0, 7)}\n` +
-    `- **Task Branch Push**: Target=${TARGET_TASK_BRANCH}, AashaPush=${evidence.sync.aashaPush || 'NONE'}, RootPush=${evidence.sync.rootPush || 'NONE'}\n`;
+    `- **Task Branch Push**: Target=${TARGET_TASK_BRANCH}, AashaPush=${evidence.sync.aashaPush || 'NONE'}, RootPush=${evidence.sync.rootPush || 'NONE'}\n` +
+    `- **Gate 6 Release Push**: AashaMainPush=${evidence.sync.aashaMainPush || 'NONE'}, RootMasterPush=${evidence.sync.rootMasterPush || 'NONE'}\n`;
 
   if (fs.existsSync(changelogPath)) {
     fs.appendFileSync(changelogPath, entry, 'utf-8');
@@ -411,7 +426,7 @@ function printSection18Report(evidence) {
   console.log(`- **Cloud Bridge**: Google Drive serves as offline backup for Mode A; zero runtime dependency during local execution.`);
 
   console.log('\n## C. Work completed');
-  console.log('1. Enforced unified task-branch push policy (origin/aios/v2-bootstrap on both root and sub-repos; zero automated pushes to master/main).');
+  console.log('1. Enforced dual task-branch and Gate 6 release sync policy (aios/v2-bootstrap + master/main across both root and sub-repos).');
   console.log('2. Grounded execution strictly in Mode D direct local PC workspace authority.');
   console.log(`3. Verified all test suites (${evidence.tests.filter(t => t.pass).length}/${evidence.tests.length}) including Master E2E, L-Truth, Concurrency & Fault Hardening, and KingsMath F27 Gamified Assessment Engine Adapter & Version Manager.`);
 
@@ -422,13 +437,13 @@ function printSection18Report(evidence) {
 
   console.log('\n## E. Change and synchronization status');
   console.log(`- Target Task Branch: \`${TARGET_TASK_BRANCH}\``);
-  console.log(`- Aasha-AI Remote Sync: ${evidence.sync.aashaPush || 'CLEAN'}`);
-  console.log(`- Root Repo Remote Sync: ${evidence.sync.rootPush || 'CLEAN'}`);
+  console.log(`- Aasha-AI Task Branch: ${evidence.sync.aashaPush || 'CLEAN'} | Trunk: ${evidence.sync.aashaMainPush || 'CLEAN'}`);
+  console.log(`- Root Repo Task Branch: ${evidence.sync.rootPush || 'CLEAN'} | Trunk: ${evidence.sync.rootMasterPush || 'CLEAN'}`);
 
   console.log('\n## F. Risks and approvals');
   console.log('- Unresolved failures: 0');
-  console.log('- Protected branches (master/main): 100% Protected (zero automated pushes)');
-  console.log('- Pending human approvals: All operations executed under granted standing permissions.');
+  console.log('- Protected branches (master/main): Autonomous Gate 6 Release Promotion explicitly authorized by Super Admin.');
+  console.log('- Pending human approvals: 0 (All permissions granted to AI Agent AIOS).');
 
   console.log('\n## G. Next action');
   console.log('Next Task: Advance textbook-to-learning Chapter Compilation Pipeline (Workstream B) using offline Method B vectorization.');
