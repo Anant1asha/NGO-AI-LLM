@@ -63,6 +63,7 @@ ENV/
 aasha_operational.db
 offline_sync.db
 aasha_local_memory.json
+router_usage.json
 .llm_cache/
 .plugin_cache/
 jobs/

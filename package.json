@@ -39,6 +39,8 @@
     "test:concurrency": "cd Aasha-AI && npx tsx tests/test_concurrency_wiring.ts",
     "test:faults": "cd Aasha-AI && npx tsx tests/test_fault_injection_hardening.ts",
     "test:billing": "cd Aasha-AI && npx tsx tests/test_billing_observability_and_gemini_authorization.ts",
+    "verify:sprint": "node scripts/verify_sprint_integrity.mjs",
+    "verify:sprint:quick": "node scripts/verify_sprint_integrity.mjs --quick",
     "test:all": "npm --prefix Aasha-AI test && npm --prefix aasha-studio test && npm --prefix multi-agent-tui test",
     "tui": "npm --prefix multi-agent-tui run dev",
     "laya:test": "npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/laya_router.test.ts",

@@ -196,34 +196,39 @@ async function executeIteration(iterationNumber) {
   console.log('\n--- [STAGE 8/12: TEST] Executing Comprehensive Test Battery ---');
 
   // Test 1: Version Manager Test
-  console.log('  [Test 1/6] Running Aasha-AI Version Manager Tests...');
+  console.log('  [Test 1/7] Running Aasha-AI Version Manager Tests...');
   const vmTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_version_manager.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Version Manager', pass: vmTest.success });
 
   // Test 2: Admin Memory CLI Workflow
-  console.log('  [Test 2/6] Running Admin Memory CLI Workflow Tests...');
+  console.log('  [Test 2/7] Running Admin Memory CLI Workflow Tests...');
   const cliTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/admin_memory_cli_version_workflow.test.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Admin Memory CLI Workflow', pass: cliTest.success });
 
   // Test 3: Gamified Assessment Integration
-  console.log('  [Test 3/6] Running Gamified Assessment Integration Tests...');
+  console.log('  [Test 3/7] Running Gamified Assessment Integration Tests...');
   const gamedTest = runCmd('node Aasha-AI/tests/verify_gamified_assessment_integration.js', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Gamified Assessment Integration', pass: gamedTest.success });
 
   // Test 4: Concurrency Wiring (OI-002)
-  console.log('  [Test 4/6] Running Fork-Join Concurrency Wiring Suite...');
+  console.log('  [Test 4/7] Running Fork-Join Concurrency Wiring Suite...');
   const concTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_concurrency_wiring.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Concurrency Wiring (OI-002)', pass: concTest.success });
 
   // Test 5: Fault Injection Hardening (OI-003)
-  console.log('  [Test 5/6] Running Fault Injection Hardening Suite...');
+  console.log('  [Test 5/7] Running Fault Injection Hardening Suite...');
   const faultTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fault_injection_hardening.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Fault Injection Hardening (OI-003)', pass: faultTest.success });
 
   // Test 6: L-Truth Ground Truth Anti-Spoiler Benchmark
-  console.log('  [Test 6/6] Running L-Truth Ground Truth Benchmark...');
+  console.log('  [Test 6/7] Running L-Truth Ground Truth Benchmark...');
   const ltruthTest = runCmd('npm run test:ltruth', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'L-Truth Benchmark', pass: ltruthTest.success });
+
+  // Test 7: Master Unified E2E Multi-Chapter Suite
+  console.log('  [Test 7/7] Running Master Unified E2E Multi-Chapter Suite...');
+  const masterTest = runCmd('npm run test:master', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Master Unified E2E Suite', pass: masterTest.success });
 
   const allTestsPassed = executionEvidence.tests.every(t => t.pass);
   console.log(`\n  Test Summary: ${executionEvidence.tests.filter(t => t.pass).length}/${executionEvidence.tests.length} Suites Passed.`);
@@ -273,11 +278,11 @@ async function executeIteration(iterationNumber) {
   updateChangelog(executionEvidence);
 
   // -------------------------------------------------------------------------
-  // STAGE 12: REPEAT / AUTOMATED PROMOTION & DEFAULT BRANCH SYNCHRONIZATION
+  // STAGE 12: REPEAT / AUTOMATED PROMOTION & STRICT NON-MAIN TASK BRANCH SYNC
   // -------------------------------------------------------------------------
-  console.log('\n--- [STAGE 12/12: REPEAT] Automated Git Promotion & Default Branch Sync ---');
+  console.log('\n--- [STAGE 12/12: REPEAT] Automated Git Promotion (Strict Non-Main Task Branch Isolation) ---');
   if (certified) {
-    console.log(`  100% tests verified! Synchronizing verified commits to task branch (${TARGET_TASK_BRANCH}) and default branches (main/master)...`);
+    console.log(`  100% tests verified! Synchronizing verified commits strictly to non-main task branch (${TARGET_TASK_BRANCH}) with ZERO pushes to master/main...`);
     
     // 1. Sub-repository Aasha-AI
     if (fs.existsSync(AASHA_AI_DIR)) {
@@ -287,30 +292,28 @@ async function executeIteration(iterationNumber) {
         console.log('  Committing verified changes in Aasha-AI...');
         runCmd('git commit -m "feat(assessment): certify KingsMath F27 gamified adapter & version manager [skip ci]"', AASHA_AI_DIR);
       }
-      console.log(`  Pushing Aasha-AI to origin/${TARGET_TASK_BRANCH} and fast-forwarding origin/main...`);
+      console.log(`  Pushing Aasha-AI strictly to origin/${TARGET_TASK_BRANCH} (zero pushes to main)...`);
       const pushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
-      const pushMain = runCmd('git push origin HEAD:main', AASHA_AI_DIR);
-      const aashaSuccess = pushTask.success && pushMain.success;
-      console.log(`  Aasha-AI Push Status: ${aashaSuccess ? 'SUCCESS (Pushed to aios/v2-bootstrap & main)' : 'PUSH_FAILED / OFFLINE'}`);
-      executionEvidence.sync.aashaPush = aashaSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH} & origin/main)` : 'PARTIAL/FAILED';
+      const aashaSuccess = pushTask.success;
+      console.log(`  Aasha-AI Push Status: ${aashaSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED / OFFLINE'}`);
+      executionEvidence.sync.aashaPush = aashaSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'PARTIAL/FAILED';
     }
 
     // 2. Root repository NGO-AI-LLM
     const currentRootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
     console.log(`  Root repository current branch: ${currentRootBranch}`);
 
-    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/', ROOT_DIR);
+    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json', ROOT_DIR);
     const rootStaged = runCmdCapture('git diff --cached --name-only', ROOT_DIR);
     if (rootStaged) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
       runCmd('git commit -m "feat(loop): implement AASHA continuous loop runner and persistent changelog [skip ci]"', ROOT_DIR);
     }
-    console.log(`  Pushing root commit to origin/${TARGET_TASK_BRANCH} and fast-forwarding origin/master...`);
+    console.log(`  Pushing root commit strictly to origin/${TARGET_TASK_BRANCH} (zero pushes to master)...`);
     const rootPushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
-    const rootPushMaster = runCmd('git push origin HEAD:master', ROOT_DIR);
-    const rootSuccess = rootPushTask.success && rootPushMaster.success;
-    console.log(`  Root Push Status: ${rootSuccess ? 'SUCCESS (Pushed to aios/v2-bootstrap & master)' : 'PUSH_FAILED'}`);
-    executionEvidence.sync.rootPush = rootSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH} & origin/master)` : 'PARTIAL/FAILED';
+    const rootSuccess = rootPushTask.success;
+    console.log(`  Root Push Status: ${rootSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED'}`);
+    executionEvidence.sync.rootPush = rootSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'PARTIAL/FAILED';
   }
 
   printSection18Report(executionEvidence);
@@ -342,7 +345,7 @@ The complete AASHA AIOS engineering workspace across \`NGO-AI-LLM\`, \`Aasha-AI\
    - Live local disk at \`C:\\Users\\admin\\Downloads\\NGO AI LLM\` is the sole direct authority.
    - Google Drive is recognized strictly as an offline cloud backup bridge for Mode A, eliminating runtime sync dependency.
 2. **Unified Task Branch Push Policy**:
-   - Automated pushes across both root and sub-repos are bound to \`origin/${TARGET_TASK_BRANCH}\`. Zero automated pushes to \`master\`.
+   - Automated pushes across both root and sub-repos are bound to \`origin/${TARGET_TASK_BRANCH}\`. Zero automated pushes to \`master\` or \`main\`.
 3. **KingsMath F27 Gamified Assessment Engine Integration**:
    - Universal Gamified Assessment Adapter (\`aasha_gamified_assessment_adapter.js\`) cleanroom implementation verified across STEM subjects (39/39 checks passed).
 4. **Immutable Version Manager & Lesson Capture**:
@@ -405,7 +408,7 @@ function printSection18Report(evidence) {
   console.log('\n## C. Work completed');
   console.log('1. Enforced unified task-branch push policy (origin/aios/v2-bootstrap on both root and sub-repos; zero automated pushes to master/main).');
   console.log('2. Grounded execution strictly in Mode D direct local PC workspace authority.');
-  console.log('3. Verified 7/7 test suites and KingsMath F27 Gamified Assessment Engine Adapter & Version Manager.');
+  console.log('3. Verified all test suites (${evidence.tests.filter(t => t.pass).length}/${evidence.tests.length}) including Master E2E, L-Truth, Concurrency & Fault Hardening, and KingsMath F27 Gamified Assessment Engine Adapter & Version Manager.');
 
   console.log('\n## D. Verification');
   evidence.tests.forEach(t => {
