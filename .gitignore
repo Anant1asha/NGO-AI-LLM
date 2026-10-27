@@ -21,6 +21,13 @@ tmp/
 .claude/
 .DS_Store
 .Thumbs.db
+Thumbs.db
+desktop.ini
+Desktop.ini
+*.gdoc
+*.gsheet
+*.gslides
+.tmp.driveupload/
 
 # Graphify & Antigravity artifacts
 graphify-out/*
