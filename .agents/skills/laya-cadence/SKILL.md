@@ -61,5 +61,5 @@ Runbook for executing the daily high-rigor development cadence across the AASHA 
 ## Multi-Repo Safe Promotion & Zero-Leakage Git Protocol
 1. Verify `.gitignore` actively blocks `.scratch/`, `**/.scratch/`, `*cookie*`, `*.zip`, `.claude/`, `.env`, and `secrets/`.
 2. Run pre-commit regex scanning across diffs for secrets (`sk-`, `ghp_`, `github_pat_`, `AIzaSy`).
-3. Coordinate staging and committing across `NGO-AI-LLM` (`origin/master`) and `Aasha-AI` (`origin/aios/v2-bootstrap`).
-4. Push clean commits to remotes with explicit human authorization.
+3. Coordinate staging and committing across `NGO-AI-LLM` (`origin/master`) and `Aasha-AI` (`origin/main`).
+4. Under Super Admin standing Gate 6 release authorization, push clean, 100% test-verified commits to both task branch (`origin/aios/v2-bootstrap`) and trunk (`origin/master` / `origin/main`) autonomously.

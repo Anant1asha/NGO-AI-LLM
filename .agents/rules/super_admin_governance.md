@@ -93,3 +93,12 @@ If a capability is designed but unwired, if test coverage is partial, or if exte
 - `RG-002`: Subprocess Ingestion (`STATUS: ACCEPTED CURRENT IMPLEMENTATION / RUNTIME-VERIFIED`, Python + PyMuPDF).
 - `RG-003`: Synthetic Fault Injection (`STATUS: CLOSED / TEST_VERIFIED`).
 - `RG-004`: Provider Billing Telemetry (`STATUS: CLOSED / TELEMETRY_VERIFIED`).
+
+## 9. Standing Gate 6 Autonomous Release Promotion Protocol (ADR-001)
+
+1. **Standing Release Authorization**: Per explicit Super Admin grant, AI Agent AIOS possesses standing authorization to promote verified commits from task branch `aios/v2-bootstrap` directly to production/trunk branches (`main` on `Aasha-AI`, `master` on `NGO-AI-LLM`).
+2. **Strict Automated Pre-Conditions**: Autonomous Gate 6 promotion to `main`/`master` triggers ONLY when:
+   - 100% of the verification test battery passes (Laya System 1 Router, Master E2E, L-Truth, Concurrency OI-002, Fault Hardening OI-003, Method B offline compilation).
+   - Zero secrets are detected by pre-commit scanners (`lint_staged_secrets.mjs`).
+   - All chapter bundles strictly comply with the $\le 20\text{MB}$ single-file ceiling.
+3. **Dual-Sync Enforcement**: The orchestrator always syncs both the active task branch (`origin/aios/v2-bootstrap`) and trunk (`origin/main` / `origin/master`), maintaining an immutable Git DAG.
