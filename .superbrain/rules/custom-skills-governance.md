@@ -22,10 +22,14 @@ This rule governs all interactions involving custom skills, prompt compilers, an
      3. **Step 3 (Propose)**: Emit an isolated developer proposal (`.proposal.md`) and a non-technical Hindi teacher summary (`शिक्षक के लिए सारांश`).
      4. **Step 4 (Await Explicit Approval)**: Never apply code changes until the proposal has been explicitly reviewed and approved by the user.
 
-3. **Node.js 24 Native TypeScript Execution Invariants**:
+3. **Node.js 24 Native Execution & Companion Script Invariants**:
    - When writing or invoking `.ts` scripts directly with `node script.ts`:
      - Relative imports between TypeScript files must explicitly include the `.ts` extension (`import { x } from './y.ts'`).
      - In ESM scope, `__dirname` must be derived via `path.dirname(fileURLToPath(import.meta.url))`.
+   - **Pure JavaScript ESM Constraint for `*.mjs` Companion Scripts**:
+     - Scripts authored with the `.mjs` extension (e.g., `scripts/*.mjs`) and executed directly via `node script.mjs` must remain 100% pure standard ECMAScript JavaScript.
+     - TypeScript syntax (such as `interface`, `type` aliases, enum declarations, or type annotations like `(err: any)`) is strictly prohibited in `.mjs` files to prevent Node.js runtime `SyntaxError` crashes.
+     - Use standard JSDoc comments (`/** @type {...} */`) for typing in `.mjs`, or author the file as `.ts` executed via `tsx`.
 
 4. **Antigravity Tool Calling Protocol**:
    - `ArtifactMetadata` is reserved strictly for artifact files written to `<appDataDir>/brain/<conversation-id>/`.
