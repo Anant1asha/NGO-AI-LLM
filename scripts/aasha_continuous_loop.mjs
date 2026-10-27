@@ -158,8 +158,8 @@ async function executeIteration(iterationNumber) {
   // -------------------------------------------------------------------------
   console.log('\n--- [STAGE 4/12: PRIORITIZE] Selecting Next Milestone Task ---');
   let selectedTask = {
-    id: 'TASK-F27-ASSESSMENT-INTEGRATION',
-    name: 'KingsMath F27 Universal Gamified Assessment & Version Manager Certification',
+    id: 'TASK-WB-OFFLINE-CHAPTER-COMPILATION',
+    name: 'Workstream B: Offline Method B Chapter Compilation Pipeline & PyMuPDF Vectorizer Certification',
     component: 'Aasha-AI'
   };
   console.log(`  Selected Task: [${selectedTask.id}] ${selectedTask.name}`);
@@ -196,39 +196,44 @@ async function executeIteration(iterationNumber) {
   console.log('\n--- [STAGE 8/12: TEST] Executing Comprehensive Test Battery ---');
 
   // Test 1: Version Manager Test
-  console.log('  [Test 1/7] Running Aasha-AI Version Manager Tests...');
+  console.log('  [Test 1/8] Running Aasha-AI Version Manager Tests...');
   const vmTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_version_manager.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Version Manager', pass: vmTest.success });
 
   // Test 2: Admin Memory CLI Workflow
-  console.log('  [Test 2/7] Running Admin Memory CLI Workflow Tests...');
+  console.log('  [Test 2/8] Running Admin Memory CLI Workflow Tests...');
   const cliTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/admin_memory_cli_version_workflow.test.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Admin Memory CLI Workflow', pass: cliTest.success });
 
   // Test 3: Gamified Assessment Integration
-  console.log('  [Test 3/7] Running Gamified Assessment Integration Tests...');
+  console.log('  [Test 3/8] Running Gamified Assessment Integration Tests...');
   const gamedTest = runCmd('node Aasha-AI/tests/verify_gamified_assessment_integration.js', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Gamified Assessment Integration', pass: gamedTest.success });
 
   // Test 4: Concurrency Wiring (OI-002)
-  console.log('  [Test 4/7] Running Fork-Join Concurrency Wiring Suite...');
+  console.log('  [Test 4/8] Running Fork-Join Concurrency Wiring Suite...');
   const concTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_concurrency_wiring.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Concurrency Wiring (OI-002)', pass: concTest.success });
 
   // Test 5: Fault Injection Hardening (OI-003)
-  console.log('  [Test 5/7] Running Fault Injection Hardening Suite...');
+  console.log('  [Test 5/8] Running Fault Injection Hardening Suite...');
   const faultTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fault_injection_hardening.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Fault Injection Hardening (OI-003)', pass: faultTest.success });
 
   // Test 6: L-Truth Ground Truth Anti-Spoiler Benchmark
-  console.log('  [Test 6/7] Running L-Truth Ground Truth Benchmark...');
+  console.log('  [Test 6/8] Running L-Truth Ground Truth Benchmark...');
   const ltruthTest = runCmd('npm run test:ltruth', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'L-Truth Benchmark', pass: ltruthTest.success });
 
   // Test 7: Master Unified E2E Multi-Chapter Suite
-  console.log('  [Test 7/7] Running Master Unified E2E Multi-Chapter Suite...');
+  console.log('  [Test 7/8] Running Master Unified E2E Multi-Chapter Suite...');
   const masterTest = runCmd('npm run test:master', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Master Unified E2E Suite', pass: masterTest.success });
+
+  // Test 8: Offline Method B Chapter Compilation Pipeline (Workstream B)
+  console.log('  [Test 8/8] Running Offline Method B Chapter Compilation Suite (Workstream B)...');
+  const offlinePipelineTest = runCmd('npm run chapter:test:offline', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Offline Chapter Compilation (Workstream B)', pass: offlinePipelineTest.success });
 
   const allTestsPassed = executionEvidence.tests.every(t => t.pass);
   console.log(`\n  Test Summary: ${executionEvidence.tests.filter(t => t.pass).length}/${executionEvidence.tests.length} Suites Passed.`);
@@ -290,7 +295,7 @@ async function executeIteration(iterationNumber) {
       const aashaStaged = runCmdCapture('git diff --cached --name-only', AASHA_AI_DIR);
       if (aashaStaged) {
         console.log('  Committing verified changes in Aasha-AI...');
-        runCmd('git commit -m "feat(assessment): certify KingsMath F27 gamified adapter & version manager [skip ci]"', AASHA_AI_DIR);
+        runCmd('git commit -m "feat(workstream-b): advance Method B offline chapter compilation pipeline & deep vectorizer [skip ci]"', AASHA_AI_DIR);
       }
       console.log(`  Pushing Aasha-AI strictly to origin/${TARGET_TASK_BRANCH} (zero pushes to main)...`);
       const pushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
