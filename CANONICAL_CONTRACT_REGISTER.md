@@ -43,3 +43,15 @@ No AI agent, LLM prompt, n8n workflow, or external tool may modify governance au
    - Mark the affected task as `BLOCKED`.
    - Escalate to the Super Admin via the Human Approval Gate.
 2. **Immutability Invariant**: Approved Topic Learning Nodes (TLNs) and certification evidence hashes are strictly immutable. Updates require publishing a new version; in-place mutation of approved artifacts is forbidden.
+
+---
+
+## 4. Epistemic Status & Canonical Open Items Closure Register
+
+| Item ID | Classification | Title | Status | Evidentiary Basis | Invariant / Boundary |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **RG-001** | RUNTIME GAP | Bounded 2-Worker Async Concurrency | **CLOSED / RUNTIME_VERIFIED** | `runWithWorkerPool` in `agent_orchestrator.ts`; `test_concurrency_wiring.ts` (6/6 PASS). | Workers capped at max 2 to eliminate Windows process table thrashing. |
+| **OI-003** | OPEN ITEM | Synthetic Fault Injection Quarantine | **CLOSED / TEST_VERIFIED** | `test_fault_injection_hardening.ts` (10/10 PASS). | Validated complete 2-repair failure path and downstream stage blocking. |
+| **OI-001** | OPEN ITEM | Upstream Provider Billing Telemetry & High-Worth Routing | **CLOSED / TELEMETRY_VERIFIED** | Live USD cost tracking in `router_usage.json`, $1.00 daily spend cap circuit breaker, and authorized task whitelist (`coding`, `high_worth_coding`, `pdf_ingestion`) via `test_billing_observability_and_gemini_authorization.ts` (5/5 PASS). | Eliminates runaway spend risk while unlocking full Gemini power for high-worth tasks. |
+| **SEC-002** | SECURITY | Pre-Commit Zero-Secret Scrubbing | **ACTIVE / AUTOMATED** | `scripts/lint_staged_secrets.mjs` wired into `.githooks/pre-commit`. | Blocks staged API keys, PATs, private keys, cookies, and active `.env` files. |
+

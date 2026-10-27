@@ -23,7 +23,8 @@ const COMMANDS = {
   '9': { label: 'Setup Native Rust Toolchain for Windows (.exe / .msi)', cmd: 'powershell', args: ['-ExecutionPolicy', 'Bypass', '-File', './scripts/setup_rust_windows.ps1'] },
   '10': { label: 'Laya System 1 Pre-Router Dual-Path Audit (Zero-Token Bleed)', cmd: 'npm', args: ['--prefix', 'Aasha-AI', 'exec', '--', 'tsx', 'Aasha-AI/tests/laya_router.test.ts'] },
   '11': { label: 'Compile Standalone Beta Chapter (V6 Engine <20MB Bundle)', cmd: 'npm', args: ['--prefix', 'Aasha-AI', 'run', 'build:chapter'] },
-  '12': { label: 'Audit Local 9Router Gateway Status', cmd: 'node', args: ['scripts/check_gateway_status.js'] }
+  '12': { label: 'Audit Local 9Router Gateway Status', cmd: 'node', args: ['scripts/check_gateway_status.js'] },
+  '13': { label: 'AASHA Continuous Loop (12-Stage Laya Engineering Cadence)', cmd: 'node', args: ['scripts/aasha_continuous_loop.mjs', '--once'] }
 };
 
 function printBanner() {
@@ -74,13 +75,14 @@ if (directArg) {
       'rust': COMMANDS['9'],
       'laya': COMMANDS['10'],
       'compile': COMMANDS['11'],
-      'gateway': COMMANDS['12']
+      'gateway': COMMANDS['12'],
+      'loop': COMMANDS['13']
     };
     if (shortcuts[directArg]) {
       runTask(shortcuts[directArg], (code) => process.exit(code ?? 0));
     } else {
       console.log(`Unknown command: ${directArg}`);
-      console.log('Available arguments: studio, learner, tui, status, test, master, all, build, rust, laya, compile, gateway');
+      console.log('Available arguments: studio, learner, tui, status, test, master, all, build, rust, laya, compile, gateway, loop');
       process.exit(1);
     }
   }
