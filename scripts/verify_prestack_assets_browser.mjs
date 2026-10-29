@@ -167,7 +167,7 @@ async function verifyInteractiveInChrome(htmlFilePath) {
 
     await sleep(1000);
 
-    // Evaluate viewport, scroll height, and console errors
+    // Evaluate viewport, scroll height, console errors, and Shadow DOM touch targets
     const evalRes = await client.send('Runtime.evaluate', {
       expression: `
         (() => {
@@ -175,7 +175,17 @@ async function verifyInteractiveInChrome(htmlFilePath) {
           const html = document.documentElement;
           const scrollH = Math.max(body.scrollHeight, html.scrollHeight);
           const innerH = window.innerHeight;
-          const buttons = Array.from(document.querySelectorAll('button, input, select, .touch-target'));
+          function collectTargets(root) {
+            let targets = Array.from(root.querySelectorAll('button, input, select, textarea, [role="button"], .touch-target, .opt, .nav-btn, .hint-btn, .opt-btn'));
+            const elements = root.querySelectorAll('*');
+            for (const el of elements) {
+              if (el.shadowRoot) {
+                targets = targets.concat(collectTargets(el.shadowRoot));
+              }
+            }
+            return targets;
+          }
+          const buttons = collectTargets(document);
           const smallTargets = buttons.filter(el => {
             const rect = el.getBoundingClientRect();
             return (rect.width < 44 || rect.height < 44) && (rect.width > 0 && rect.height > 0);
@@ -185,6 +195,7 @@ async function verifyInteractiveInChrome(htmlFilePath) {
             scrollH,
             innerH,
             sameFrameFits: scrollH <= innerH + 40,
+            totalTargets: buttons.length,
             smallTargets,
             hasEvents
           };
@@ -260,9 +271,15 @@ async function main() {
 
   console.log(`[PASS] Static Offline Verification: ${passedStatic}/${files.length} interactives 100% offline certified.`);
 
-  // Pick sample representative interactive for real browser execution
-  const targetFileArg = process.argv.indexOf('--file') !== -1 ? process.argv[process.argv.indexOf('--file') + 1] : null;
-  const sampleInteractive = targetFileArg ? path.join(cdnInteractivesDir, targetFileArg) : path.join(cdnInteractivesDir, 'AVR-P402-magnetic-lorentz-force-simulator.html');
+  // Pick sample representative interactive or chapter for real browser execution
+  const fileArgIdx = process.argv.indexOf('--file') !== -1 ? process.argv.indexOf('--file') : process.argv.indexOf('--chapter');
+  const targetFileArg = fileArgIdx !== -1 ? process.argv[fileArgIdx + 1] : null;
+  let sampleInteractive = path.join(cdnInteractivesDir, 'AVR-P402-magnetic-lorentz-force-simulator.html');
+  if (targetFileArg) {
+    if (path.isAbsolute(targetFileArg)) sampleInteractive = targetFileArg;
+    else if (fs.existsSync(path.resolve(process.cwd(), targetFileArg))) sampleInteractive = path.resolve(process.cwd(), targetFileArg);
+    else sampleInteractive = path.join(cdnInteractivesDir, targetFileArg);
+  }
   const browserResult = await verifyInteractiveInChrome(sampleInteractive);
 
   console.log('\n--- Full Automation Verification Summary ---');

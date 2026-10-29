@@ -36,12 +36,94 @@ async function handleRun(pdfPath: string, subject: string, grade: number) {
   }
 
   console.log(chalk.cyan.bold('\n=== AASHA Autonomous Chapter Generation ===\n'));
-  const result = await PipelineRunner.run({
-    pdfPath: absPdf,
-    subject,
-    grade,
-    mode: 'full-synthesis'
-  });
+  console.log(chalk.yellow('Interactive Hotkeys: [p] Pause  [r] Resume  [a] Approve HIL Override  [q] Inspect Quarantine\n'));
+
+  let activeWorkDir = '';
+  let activeJobId = '';
+
+  const onKeypress = (_str: string, key: any) => {
+    if (!key) return;
+    if (key.ctrl && key.name === 'c') {
+      if (activeWorkDir) {
+        PipelineRunner.sendControlSignal(activeWorkDir, 'abort', 'tui_user', 'Interrupted via Ctrl+C');
+      }
+      process.exit(0);
+    }
+
+    const char = (key.name || '').toLowerCase();
+    if (char === 'p') {
+      if (activeWorkDir) {
+        PipelineRunner.sendControlSignal(activeWorkDir, 'pause', 'tui_user');
+        console.log(chalk.yellow('\n⏸ [TUI] Pause signal sent to orchestrator.'));
+      }
+    } else if (char === 'r') {
+      if (activeWorkDir) {
+        PipelineRunner.sendControlSignal(activeWorkDir, 'resume', 'tui_user');
+        console.log(chalk.green('\n▶ [TUI] Resume signal sent to orchestrator.'));
+      }
+    } else if (char === 'a') {
+      if (activeWorkDir) {
+        PipelineRunner.sendControlSignal(activeWorkDir, 'approve_intervention', 'tui_educator', 'Approved in Multi-Agent TUI');
+        console.log(chalk.cyan('\n✔ [TUI] Human Intervention Approved! Quarantine cleared.'));
+      }
+    } else if (char === 'q') {
+      if (activeWorkDir) {
+        const packet = PipelineRunner.getQuarantinePacket(activeWorkDir);
+        if (packet) {
+          console.log(chalk.red.bold('\n╔═══════════════════════════════════════════════════════════════════╗'));
+          console.log(chalk.red.bold('║                QUARANTINE DIAGNOSTIC PACKET                       ║'));
+          console.log(chalk.red.bold('╚═══════════════════════════════════════════════════════════════════╝'));
+          console.log(chalk.white(JSON.stringify(packet, null, 2)));
+          console.log(chalk.yellow('Press [a] to approve human intervention override.\n'));
+        } else {
+          console.log(chalk.gray('\n[TUI] No active quarantine packet found for current job.'));
+        }
+      }
+    }
+  };
+
+  if (process.stdin.isTTY) {
+    try {
+      readline.emitKeypressEvents(process.stdin);
+      process.stdin.setRawMode(true);
+      process.stdin.on('keypress', onKeypress);
+    } catch {}
+  }
+
+  let result;
+  try {
+    result = await PipelineRunner.run({
+      pdfPath: absPdf,
+      subject,
+      grade,
+      mode: 'full-synthesis',
+      onJobStarted: (jobId, workDir) => {
+        activeJobId = jobId;
+        activeWorkDir = workDir;
+      }
+    });
+  } finally {
+    if (process.stdin.isTTY) {
+      try {
+        process.stdin.removeListener('keypress', onKeypress);
+        process.stdin.setRawMode(false);
+      } catch {}
+    }
+  }
+
+  if (result.quarantined) {
+    console.log(chalk.red.bold('\n╔═══════════════════════════════════════════════════════════════════╗'));
+    console.log(chalk.red.bold('║  ⛔ QUARANTINE ACTIVATED — Bounded Self-Repair Budget Exhausted    ║'));
+    console.log(chalk.red.bold('╚═══════════════════════════════════════════════════════════════════╝'));
+    console.log(chalk.yellow(`Job ID: ${activeJobId}`));
+    console.log(chalk.yellow(`Reason: ${result.errorMessage}`));
+    if (result.quarantinePacket) {
+      console.log(chalk.white(`Violations: ${JSON.stringify(result.quarantinePacket.violations || result.quarantinePacket, null, 2)}`));
+    }
+    console.log(chalk.cyan('\nTo approve and release downstream bundle via API:'));
+    console.log(chalk.gray(`curl -X POST http://localhost:3000/api/jobs/${activeJobId}/control -H "Content-Type: application/json" -d '{"action": "approve_intervention"}'\n`));
+    process.exit(1);
+  }
 
   if (!result.success) {
     console.error(chalk.red(`\nPipeline failed: ${result.errorMessage}`));

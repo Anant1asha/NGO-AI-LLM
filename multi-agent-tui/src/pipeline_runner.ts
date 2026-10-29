@@ -14,6 +14,8 @@ export interface PipelineEvent {
   html_path?: string;
   error_stage?: string;
   error_message?: string;
+  quarantined?: boolean;
+  quarantine_packet?: any;
   [key: string]: any;
 }
 
@@ -25,6 +27,7 @@ export interface PipelineRunOptions {
   pythonPath?: string;
   pipelineDir?: string;
   onEvent?: (event: PipelineEvent) => void;
+  onJobStarted?: (jobId: string, workDir: string) => void;
 }
 
 export interface PipelineResult {
@@ -33,10 +36,55 @@ export interface PipelineResult {
   workDir: string;
   costUsd: number;
   durationSeconds: number;
+  quarantined?: boolean;
+  quarantinePacket?: any;
   errorMessage?: string;
 }
 
 export class PipelineRunner {
+  /**
+   * Dispatches a control signal (pause, resume, approve_intervention, abort) via work_dir/control.json
+   */
+  public static sendControlSignal(
+    workDir: string,
+    action: 'pause' | 'resume' | 'approve_intervention' | 'abort',
+    issuer = 'multi_agent_tui',
+    reason = ''
+  ): boolean {
+    if (!workDir || !fs.existsSync(workDir)) {
+      return false;
+    }
+    const controlPath = path.join(workDir, 'control.json');
+    const signal = {
+      action,
+      issuer,
+      timestamp: new Date().toISOString(),
+      status: 'pending',
+      reason: reason || `Action '${action}' dispatched from multi-agent-tui`
+    };
+    try {
+      fs.writeFileSync(controlPath, JSON.stringify(signal, null, 2), 'utf-8');
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Reads quarantine packet if present in workDir
+   */
+  public static getQuarantinePacket(workDir: string): any | null {
+    if (!workDir) return null;
+    const packetPath = path.join(workDir, 'quarantine_packet.json');
+    if (fs.existsSync(packetPath)) {
+      try {
+        return JSON.parse(fs.readFileSync(packetPath, 'utf-8'));
+      } catch {
+        return null;
+      }
+    }
+    return null;
+  }
   /**
    * Resiliently discovers a working Python interpreter across virtual environments,
    * Windows Python launcher (py.exe), and system PATH.
@@ -169,7 +217,11 @@ export class PipelineRunner {
       let eventCostUsd = 0;
       let eventDuration = 0;
       let isSuccess = false;
+      let isQuarantined = false;
       let eventErrorMsg = '';
+      let activeJobId = '';
+      let activeWorkDir = '';
+      let activeQuarantinePacket: any = null;
 
       child.stdout.on('data', (data) => {
         const text = data.toString();
@@ -191,12 +243,34 @@ export class PipelineRunner {
               }
 
               if (event.event === 'job_created') {
+                activeJobId = event.job_id || '';
+                activeWorkDir = path.resolve(pipelineDir, 'work', activeJobId);
                 console.log(chalk.blue(`[IPC] Job Created: ${event.job_id} (${event.subject} Grade ${event.grade})`));
+                if (options.onJobStarted && activeJobId) {
+                  options.onJobStarted(activeJobId, activeWorkDir);
+                }
+              } else if (event.event === 'job_paused') {
+                console.log(chalk.yellow(`\n⏸ [ControlPlane] Job ${event.job_id} PAUSED. Press [r] to resume.`));
+              } else if (event.event === 'job_resumed') {
+                console.log(chalk.green(`\n▶ [ControlPlane] Job ${event.job_id} RESUMED.`));
+              } else if (event.event === 'intervention_approved') {
+                console.log(chalk.cyan(`\n✔ [ControlPlane] Human intervention APPROVED for job ${event.job_id}.`));
+              } else if (event.event === 'quarantine_activated') {
+                isQuarantined = true;
+                activeQuarantinePacket = event.violations || event;
+                console.log(chalk.red.bold(`\n⛔ [ControlPlane] QUARANTINE ACTIVATED for job ${event.job_id}.`));
               } else if (event.event === 'log') {
                 console.log(chalk.gray(`  • ${event.message}`));
               } else if (event.event === 'pipeline_complete') {
                 isSuccess = true;
                 eventHtmlPath = event.html_path || '';
+                eventCostUsd = event.cost_usd || 0;
+                eventDuration = event.duration || 0;
+              } else if (event.event === 'pipeline_quarantined') {
+                isQuarantined = true;
+                isSuccess = false;
+                eventErrorMsg = event.error_message || 'Pipeline quarantined after repair budget exhaustion.';
+                activeQuarantinePacket = event.quarantine_packet || null;
                 eventCostUsd = event.cost_usd || 0;
                 eventDuration = event.duration || 0;
               } else if (event.event === 'pipeline_failed') {
@@ -226,9 +300,9 @@ export class PipelineRunner {
         const rawHtmlPath = eventHtmlPath || (htmlMatch ? htmlMatch[1].trim() : '');
         const resolvedHtmlPath = rawHtmlPath ? (path.isAbsolute(rawHtmlPath) ? rawHtmlPath : path.resolve(pipelineDir, rawHtmlPath)) : '';
         const costUsd = eventCostUsd || (costMatch ? parseFloat(costMatch[1]) : 0);
-        const workDir = resolvedHtmlPath ? path.dirname(resolvedHtmlPath) : '';
+        const workDir = activeWorkDir || (resolvedHtmlPath ? path.dirname(resolvedHtmlPath) : '');
 
-        const success = (code === 0 || isSuccess) && !!resolvedHtmlPath && fs.existsSync(resolvedHtmlPath);
+        const success = (code === 0 || isSuccess) && !isQuarantined && !!resolvedHtmlPath && fs.existsSync(resolvedHtmlPath);
 
         if (success) {
           resolve({
@@ -245,7 +319,9 @@ export class PipelineRunner {
             workDir,
             costUsd,
             durationSeconds,
-            errorMessage: eventErrorMsg || errorText || 'Pipeline exited with non-zero code.'
+            quarantined: isQuarantined,
+            quarantinePacket: activeQuarantinePacket || PipelineRunner.getQuarantinePacket(workDir),
+            errorMessage: eventErrorMsg || errorText || (isQuarantined ? 'Pipeline quarantined awaiting human intervention.' : 'Pipeline exited with non-zero code.')
           });
         }
       });
