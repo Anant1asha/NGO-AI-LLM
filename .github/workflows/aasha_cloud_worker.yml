@@ -1,0 +1,67 @@
+name: AASHA AIOS Mode A Autonomous Cloud Worker
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0,6,12,18 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  cloud_worker:
+    name: Autonomous Loop & Chapter Compilation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Root Repository
+        uses: actions/checkout@v4
+        with:
+          ref: aios/v2-bootstrap
+          fetch-depth: 0
+
+      - name: Checkout Sub-Repository Aasha-AI
+        uses: actions/checkout@v4
+        with:
+          repository: Anant1asha/Aasha-AI
+          ref: aios/v2-bootstrap
+          path: Aasha-AI
+          fetch-depth: 0
+
+      - name: Setup Node.js v24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install System & Python Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pymupdf pytest pillow requests
+
+      - name: Install Node Dependencies
+        run: |
+          npm install --ignore-scripts
+          npm --prefix Aasha-AI install --ignore-scripts
+
+      - name: Configure Cloud Worker Git Identity
+        run: |
+          git config --global user.name "AASHA AIOS Autonomous Cloud Worker"
+          git config --global user.email "cloud-worker@aasha-aios.org"
+
+      - name: Execute 12-Stage Continuous Engineering Loop (Mode A)
+        env:
+          AASHA_EXECUTION_MODE: "Mode A (Autonomous Cloud Worker - GitHub Actions)"
+          NODE_ENV: test
+          MEMO0_OFFLINE: "1"
+          ALLOW_PAID_GEMINI_FALLBACK: "false"
+        run: |
+          node scripts/aasha_continuous_loop.mjs --once
+
+      - name: Audit Zero Secrets & Verify Branch Pushes
+        run: |
+          npm run lint:secrets
+          echo "Cloud worker execution cycle verified on aios/v2-bootstrap."
