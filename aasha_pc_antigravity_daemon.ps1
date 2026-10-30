@@ -34,11 +34,15 @@ function Register-AashaStartupTask {
     $TaskName = "AASHA_Antigravity_PC_Bridge"
     $ArgList = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ScriptFullPath`" -WorkspaceRoot `"$RootPath`""
     $Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $ArgList
-    $Trigger = New-ScheduledTaskTrigger -AtLogOn
-    Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger `
-        -Description "Auto-starts AASHA Antigravity PC infrastructure and syncs state whenever the PC is on." `
-        -Force | Out-Null
-    Write-Host "[AASHA-BRIDGE] Registered Windows Startup Task: $TaskName" -ForegroundColor Green
+    $Trigger = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME
+    try {
+        Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -User $env:USERNAME `
+            -Description "Auto-starts AASHA Antigravity PC infrastructure and syncs state whenever the PC is on." `
+            -Force | Out-Null
+        Write-Host "[AASHA-BRIDGE] Registered Windows Startup Task: $TaskName" -ForegroundColor Green
+    } catch {
+        Write-Warning "[AASHA-BRIDGE] Could not register scheduled task: $($_.Exception.Message)"
+    }
 }
 
 function Ensure-AntigravityMcpConfig {
