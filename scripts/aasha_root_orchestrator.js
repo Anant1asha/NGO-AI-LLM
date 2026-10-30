@@ -8,6 +8,10 @@
 const { spawn } = require('child_process');
 const path = require('path');
 const readline = require('readline');
+const { ensure9Router } = require('./ensure_9router');
+
+// Asynchronously ensure 9Router local gateway is alive without blocking interactive UI
+ensure9Router({ silent: true }).catch(() => {});
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 

@@ -329,11 +329,11 @@ async function executeIteration(iterationNumber) {
     const currentRootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
     console.log(`  Root repository current branch: ${currentRootBranch}`);
 
-    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py .github/workflows/aasha_cloud_worker.yml TEST_READY.md', ROOT_DIR);
+    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs scripts/ensure_9router.js scripts/check_gateway_status.js aasha_pc_antigravity_daemon.ps1 .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py .github/workflows/aasha_cloud_worker.yml TEST_READY.md', ROOT_DIR);
     const rootStaged = runCmdCapture('git diff --cached --name-only', ROOT_DIR);
     if (rootStaged) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
-      runCmd('git commit -m "feat(cloud-worker): configure Mode A Colab notebook, bridge & GitHub Actions worker [skip ci]"', ROOT_DIR);
+      runCmd('git commit -m "feat(gateway): auto-enable local 9Router on system start and harden probe resilience [skip ci]"', ROOT_DIR);
     }
     console.log(`  Pushing root commit to origin/${TARGET_TASK_BRANCH}...`);
     const rootPushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
