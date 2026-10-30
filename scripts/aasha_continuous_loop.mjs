@@ -79,10 +79,11 @@ async function executeIteration(iterationNumber) {
   const timestamp = new Date().toISOString();
   logBanner(`ITERATION #${iterationNumber} [${timestamp}]`);
 
+  const activeMode = process.env.AASHA_EXECUTION_MODE || 'Mode D (Direct Local PC Workspace - Live & Authoritative)';
   const executionEvidence = {
     iteration: iterationNumber,
     timestamp,
-    mode: 'Mode D (Direct Local PC Workspace - Live & Authoritative)',
+    mode: activeMode,
     status: 'IN_PROGRESS',
     stages: {},
     tests: [],
@@ -91,11 +92,11 @@ async function executeIteration(iterationNumber) {
   };
 
   // -------------------------------------------------------------------------
-  // STAGE 1: OBSERVE (Mode D: Direct Local PC Authority)
+  // STAGE 1: OBSERVE (Mode D / Mode A Auto-Detected)
   // -------------------------------------------------------------------------
-  console.log('--- [STAGE 1/12: OBSERVE] Direct Local PC Workspace (Mode D) ---');
-  console.log(`  Operating Mode: Mode D (Direct Local PC Workspace). Ground truth is local disk: ${ROOT_DIR}`);
-  console.log('  Cloud Bridge Notice: Google Drive is strictly an offline-backup bridge for Mode A (PC offline). Zero runtime dependency during local execution.');
+  console.log(`--- [STAGE 1/12: OBSERVE] Active Environment: ${activeMode} ---`);
+  console.log(`  Operating Mode: ${activeMode}. Ground truth is local execution directory: ${ROOT_DIR}`);
+  console.log('  Cloud Bridge Notice: Google Colab / Drive serves as the Mode A autonomous worker bridge when workstation is offline.');
 
   const rootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
   const rootCommit = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
@@ -328,11 +329,11 @@ async function executeIteration(iterationNumber) {
     const currentRootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
     console.log(`  Root repository current branch: ${currentRootBranch}`);
 
-    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/', ROOT_DIR);
+    runCmd('git add .gitignore scripts/aasha_continuous_loop.mjs .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py', ROOT_DIR);
     const rootStaged = runCmdCapture('git diff --cached --name-only', ROOT_DIR);
     if (rootStaged) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
-      runCmd('git commit -m "feat(loop): implement AASHA continuous loop runner and persistent changelog [skip ci]"', ROOT_DIR);
+      runCmd('git commit -m "feat(colab): add Mode A cloud worker notebook & bridge runner [skip ci]"', ROOT_DIR);
     }
     console.log(`  Pushing root commit to origin/${TARGET_TASK_BRANCH}...`);
     const rootPushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
