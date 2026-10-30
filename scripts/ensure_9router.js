@@ -77,29 +77,36 @@ function find9RouterServerPath() {
   return null;
 }
 
+let hookChecked = false;
+
 /**
  * Register Windows User Logon Auto-Start hook in HKCU Run registry (wrapped in try/catch).
+ * Runs asynchronously to prevent blocking fast gateway probes.
  */
 function ensureWindowsStartupHook() {
-  if (process.platform !== 'win32') return;
-  try {
-    const hiddenScript = path.resolve(__dirname, 'start_9router_hidden.ps1');
-    if (!fs.existsSync(hiddenScript)) return;
+  if (hookChecked || process.platform !== 'win32') return;
+  hookChecked = true;
 
-    const psCmd = `powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "${hiddenScript}"`;
-    const regCheckCmd = `powershell -NoProfile -Command "Get-ItemPropertyValue -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name 'AASHA_9Router_Gateway' -ErrorAction SilentlyContinue"`;
-    let currentVal = '';
+  setTimeout(() => {
     try {
-      currentVal = execSync(regCheckCmd, { encoding: 'utf-8', stdio: 'pipe' }).trim();
-    } catch {}
+      const hiddenScript = path.resolve(__dirname, 'start_9router_hidden.ps1');
+      if (!fs.existsSync(hiddenScript)) return;
 
-    if (currentVal !== psCmd) {
-      const setRegCmd = `powershell -NoProfile -Command "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name 'AASHA_9Router_Gateway' -Value '${psCmd.replace(/'/g, "''")}'"`;
-      execSync(setRegCmd, { stdio: 'pipe' });
+      const psCmd = `powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "${hiddenScript}"`;
+      const regCheckCmd = `powershell -NoProfile -Command "Get-ItemPropertyValue -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name 'AASHA_9Router_Gateway' -ErrorAction SilentlyContinue"`;
+      let currentVal = '';
+      try {
+        currentVal = execSync(regCheckCmd, { encoding: 'utf-8', stdio: 'pipe' }).trim();
+      } catch {}
+
+      if (currentVal !== psCmd) {
+        const setRegCmd = `powershell -NoProfile -Command "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name 'AASHA_9Router_Gateway' -Value '${psCmd.replace(/'/g, "''")}'"`;
+        execSync(setRegCmd, { stdio: 'pipe' });
+      }
+    } catch (err) {
+      // Advisory note as per Windows Registry Environment Access Invariant
     }
-  } catch (err) {
-    // Advisory note as per Windows Registry Environment Access Invariant
-  }
+  }, 100);
 }
 
 /**
