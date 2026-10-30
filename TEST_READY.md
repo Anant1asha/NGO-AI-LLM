@@ -1,7 +1,7 @@
 # TEST_READY: Class 8 Square and Cube Roots Chapter
 
 ## Publication Timestamp
-`2026-09-25T22:49:31.955Z`
+`2026-10-30T17:50:59.154Z`
 
 ## Test Infrastructure Status
 - **Status**: **READY FOR EXECUTION & CI/CD**
