@@ -128,6 +128,40 @@ function Invoke-AashaInfrastructureWakeAndSync {
         }
     }
 
+    # 2b. Check and auto-enable 9Router local gateway on port 20128 if not responding
+    $NineRouterActive = $false
+    try {
+        $tcpClient = New-Object System.Net.Sockets.TcpClient
+        $asyncResult = $tcpClient.BeginConnect("127.0.0.1", 20128, $null, $null)
+        $waitHandle = $asyncResult.AsyncWaitHandle.WaitOne(800, $false)
+        if ($waitHandle -and $tcpClient.Connected) {
+            $tcpClient.EndConnect($asyncResult)
+            $NineRouterActive = $true
+        }
+        $tcpClient.Close()
+    } catch {
+        $NineRouterActive = $false
+    }
+
+    if (-not $NineRouterActive) {
+        $NineRouterCandidates = @(
+            (Join-Path $env:APPDATA "npm\node_modules\9router\app\custom-server.js"),
+            (Join-Path $env:USERPROFILE "AppData\Roaming\npm\node_modules\9router\app\custom-server.js")
+        )
+        foreach ($serverScript in $NineRouterCandidates) {
+            if (Test-Path $serverScript) {
+                Write-Host "[AASHA-BRIDGE] 9Router offline on port 20128. Auto-enabling background daemon..." -ForegroundColor Yellow
+                $NodeExe = (Get-Command node -ErrorAction SilentlyContinue).Source
+                if (-not $NodeExe) { $NodeExe = "node.exe" }
+                Start-Process -FilePath $NodeExe -ArgumentList "`"$serverScript`"" `
+                    -Environment @{ PORT = "20128"; HOSTNAME = "127.0.0.1" } `
+                    -WindowStyle Hidden
+                $NineRouterActive = $true
+                break
+            }
+        }
+    }
+
     $AntigravityActive = [bool](Get-Process -Name "Antigravity*","agy*" -ErrorAction SilentlyContinue)
 
     # 3. Inspect Git state in Root (NGO AI LLM) and Nested (Aasha-AI)
@@ -158,6 +192,7 @@ function Invoke-AashaInfrastructureWakeAndSync {
             antigravity_running  = $AntigravityActive
             docker_running       = $DockerActive
             gemini_proxy_running = $GeminiProxyActive
+            ninerouter_running   = $NineRouterActive
             node_version         = (node -v 2>$null)
             python_version       = (python --version 2>$null)
         }
