@@ -28,7 +28,8 @@ const COMMANDS = {
   '10': { label: 'Laya System 1 Pre-Router Dual-Path Audit (Zero-Token Bleed)', cmd: 'npm', args: ['--prefix', 'Aasha-AI', 'exec', '--', 'tsx', 'Aasha-AI/tests/laya_router.test.ts'] },
   '11': { label: 'Compile Standalone Beta Chapter (V6 Engine <20MB Bundle)', cmd: 'npm', args: ['--prefix', 'Aasha-AI', 'run', 'build:chapter'] },
   '12': { label: 'Audit Local 9Router Gateway Status', cmd: 'node', args: ['scripts/check_gateway_status.js'] },
-  '13': { label: 'AASHA Continuous Loop (12-Stage Laya Engineering Cadence)', cmd: 'node', args: ['scripts/aasha_continuous_loop.mjs', '--once'] }
+  '13': { label: 'AASHA Continuous Loop (12-Stage Laya Engineering Cadence)', cmd: 'node', args: ['scripts/aasha_continuous_loop.mjs', '--once'] },
+  '14': { label: 'Universal Learning & Gamified Assessment Builder (Any Subject/Class/Board)', cmd: 'node', args: ['scripts/aasha_build_runner.mjs'] }
 };
 
 function printBanner() {
@@ -80,13 +81,15 @@ if (directArg) {
       'laya': COMMANDS['10'],
       'compile': COMMANDS['11'],
       'gateway': COMMANDS['12'],
-      'loop': COMMANDS['13']
+      'loop': COMMANDS['13'],
+      'universal': COMMANDS['14'],
+      'aasha:build': COMMANDS['14']
     };
     if (shortcuts[directArg]) {
       runTask(shortcuts[directArg], (code) => process.exit(code ?? 0));
     } else {
       console.log(`Unknown command: ${directArg}`);
-      console.log('Available arguments: studio, learner, tui, status, test, master, all, build, rust, laya, compile, gateway, loop');
+      console.log('Available arguments: studio, learner, tui, status, test, master, all, build, rust, laya, compile, gateway, loop, universal, aasha:build');
       process.exit(1);
     }
   }
@@ -99,7 +102,7 @@ if (directArg) {
 
   function promptMenu() {
     printBanner();
-    rl.question('\nSelect an option [1-12, 0 to exit]: ', (ans) => {
+    rl.question('\nSelect an option [1-14, 0 to exit]: ', (ans) => {
       const choice = ans.trim();
       if (choice === '0' || choice.toLowerCase() === 'q') {
         console.log('\nGoodbye!\n');

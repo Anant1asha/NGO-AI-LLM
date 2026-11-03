@@ -25,6 +25,7 @@
     "harvest:vendor": "node scripts/harvest_engine.mjs --vendor",
     "n8n:check": "node scripts/n8n_headless_client.mjs --check",
     "test:browser": "node scripts/verify_prestack_assets_browser.mjs",
+    "aasha:build": "node scripts/aasha_build_runner.mjs",
 
     "start": "node scripts/aasha_root_orchestrator.js",
     "orchestrator": "node scripts/aasha_root_orchestrator.js",

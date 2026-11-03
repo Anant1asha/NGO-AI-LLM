@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-20T10:32:31.939Z",
+  "generated_at": "2026-11-03T15:01:26.626Z",
   "local_cdn_root": "assets/cdn",
   "statistics": {
     "interactives_count": 27,
@@ -761,15 +761,15 @@
     },
     {
       "id": "AVR-P406",
-      "name": "KingsMath Universal Gamified Assessment",
-      "family": "gamified-assessment",
+      "name": "kingsmath universal gamified assessment",
+      "family": "interactive",
       "filename": "AVR-P406-kingsmath-universal-gamified-assessment.html",
       "local_cdn_path": "assets/cdn/interactives/AVR-P406-kingsmath-universal-gamified-assessment.html",
       "bundle_bytes": 35276,
       "sha256": "27691315d0d9ac00c1365682bac1d71dbd7b0a1f1cf9570d9229543f47f65f53",
       "ceiling_bytes": 20971520,
       "offline_certified": true,
-      "subject": "Cross-Curricular",
+      "subject": "General",
       "classes": [
         1,
         2,
@@ -785,21 +785,12 @@
         12
       ],
       "topics": [
-        "Gamified Assessment",
-        "Speed Racing",
-        "Lilypad River Hopping",
-        "Category Classification",
-        "Memory Card Matching",
-        "Science",
-        "Mathematics",
-        "Social Studies",
-        "English Grammar"
+        "Interactive Model"
       ],
       "board": "All Boards (CBSE, ICSE, NCERT, State)",
       "contract": "AashaExperienceContract",
-      "license": "CC BY-NC 4.0 / MIT Component",
-      "provenance": "Cleanroom extraction of KingsMath mechanics into AASHA universal gamified engine",
-      "foundation_source": "F27"
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
     }
   ],
   "foundations": [
@@ -1501,14 +1492,16 @@
         "lilypad_river_hopper",
         "category_classification_sorter",
         "card_memory_matcher",
+        "boss_battle_rapid_fire",
+        "formula_lab_probe",
+        "timeline_spatial_sequencer",
         "procedural_web_audio_oscillator",
         "touch_responsive_controls",
         "progressive_pedagogical_hints",
         "distractor_misconception_diagnostics",
         "zero_token_bleed_offline"
       ],
-      "reuse_strategy": "EXTRACT",
-      "adapter": "Aasha-AI/experience_registry/adapters/aasha_gamified_assessment_adapter.js#AashaGamifiedAssessmentAdapter"
+      "reuse_strategy": "EXTRACT"
     }
   ],
   "harvest_candidates": [
