@@ -1,17 +1,17 @@
 # AASHA AIOS Sprint Verification Report
 
-- **Timestamp**: `2026-10-29 11:36:50 UTC`
+- **Timestamp**: `2026-11-03 19:46:12 UTC`
 - **Mode**: `QUICK (Static Linters Only)`
-- **Execution Time**: `1.24s`
+- **Execution Time**: `1.20s`
 - **Overall Status**: ✅ **SPRINT CERTIFIED (PASS)**
 
 ## Scorecard
 
 | Pillar | Check | Target Invariant | Result | Latency |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pillar 4: Zero Secrets** | Pre-Commit Secret Scanner (`SEC-002`) | No uninsulated tokens or private credentials staged | ✅ PASS | `528ms` |
-| **Pillar 5: Rule Parity** | Superbrain Schema & Parity Audit (`RULE-PARITY`) | 100% schema compliance, 0 !!seq errors, 1:1 cross-IDE sync | ✅ PASS | `397ms` |
-| **CI Resilience** | GitHub Actions Workflow Lint (`CI-WORKFLOWS`) | Zero expression syntax warnings, dynamic secret indirection | ✅ PASS | `317ms` |
+| **Pillar 4: Zero Secrets** | Pre-Commit Secret Scanner (`SEC-002`) | No uninsulated tokens or private credentials staged | ✅ PASS | `508ms` |
+| **Pillar 5: Rule Parity** | Superbrain Schema & Parity Audit (`RULE-PARITY`) | 100% schema compliance, 0 !!seq errors, 1:1 cross-IDE sync | ✅ PASS | `362ms` |
+| **CI Resilience** | GitHub Actions Workflow Lint (`CI-WORKFLOWS`) | Zero expression syntax warnings, dynamic secret indirection | ✅ PASS | `327ms` |
 
 ---
 
@@ -36,7 +36,8 @@
 <details><summary>Output Log (Click to expand)</summary>
 
 ```
-ity.md: Scalar 'globs' schema verified
+ules/local_stack_offline_first.md: Valid trigger configured
+  [PASS] .agents/rules/public_repo_privacy_and_security.md: Scalar 'globs' schema verified
   [PASS] .agents/rules/public_repo_privacy_and_security.md: Valid trigger configured
   [PASS] .agents/rules/serena_mcp.md: Scalar 'globs' schema verified
   [PASS] .agents/rules/serena_mcp.md: Valid trigger configured
@@ -54,7 +55,6 @@ ity.md: Scalar 'globs' schema verified
   [PASS] Clean secret scan: .markdownlint-cli2.jsonc
   [PASS] Clean secret scan: .superbrain/rules/api-routing-policy.md
   [PASS] Clean secret scan: .superbrain/rules/custom-skills-governance.md
-  [PASS] Clean secret scan: .superbrain/rules/desktop.ini
   [PASS] Clean secret scan: .superbrain/rules/graphify.md
   [PASS] Clean secret scan: .superbrain/rules/local-stack-offline-first.md
   [PASS] Clean secret scan: .superbrain/rules/public-repo-privacy-and-security.md
@@ -62,7 +62,6 @@ ity.md: Scalar 'globs' schema verified
   [PASS] Clean secret scan: .superbrain/rules/super-admin-governance.md
   [PASS] Clean secret scan: .agents/rules/api_routing_policy.md
   [PASS] Clean secret scan: .agents/rules/custom_skills_governance.md
-  [PASS] Clean secret scan: .agents/rules/desktop.ini
   [PASS] Clean secret scan: .agents/rules/graphify.md
   [PASS] Clean secret scan: .agents/rules/local_stack_offline_first.md
   [PASS] Clean secret scan: .agents/rules/public_repo_privacy_and_security.md
@@ -70,8 +69,8 @@ ity.md: Scalar 'globs' schema verified
   [PASS] Clean secret scan: .agents/rules/super_admin_governance.md
 
 === Audit Summary ===
-Total checks: 64
-Passed: 64
+Total checks: 62
+Passed: 62
 Failed: 0
 
 ✅ Superbrain instruction architecture & parity audit PASSED.
@@ -88,6 +87,7 @@ Failed: 0
 ```
 🔍 Auditing GitHub Actions workflows for syntax & schema resilience...
 
+✅ .github/workflows/aasha_cloud_worker.yml (Clean)
 ✅ .github/workflows/aios-integrity.yml (Clean)
 ✅ .github/workflows/audit-badge.yml (Clean)
 ✅ .github/workflows/datadog-synthetics.yml (Clean)
@@ -97,7 +97,7 @@ Failed: 0
 ✅ aasha-studio/.github/workflows/release-desktop.yml (Clean)
 
 ----------------------------------------
-Workflows checked: 7
+Workflows checked: 8
 Issues detected:   0
 ----------------------------------------
 ✨ All workflows passed CI syntax and schema resilience audit!
