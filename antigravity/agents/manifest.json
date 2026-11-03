@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "ecosystem": "Annanth Aasha AIOS (Antigravity Environment)",
+  "description": "Unified Operational & Strategy Agent Registry for AASHA AIOS",
+  "agents": [
+    {
+      "id": "OPS-001",
+      "name": "chief_of_staff",
+      "role": "Super Admin & AIOS Coordinator",
+      "spec_file": "output/chief_of_staff.md",
+      "status": "standby",
+      "runtime": "antigravity/python/node",
+      "responsibilities": [
+        "Executive alignment and milestone tracking",
+        "Cross-agent task orchestration",
+        "Gate 0-6 release governance",
+        "Resource and token budget management"
+      ]
+    },
+    {
+      "id": "OPS-002",
+      "name": "market_researcher",
+      "role": "EdTech & Ecosystem Intelligence Analyst",
+      "spec_file": "output/market_researcher.md",
+      "status": "standby",
+      "runtime": "antigravity/python",
+      "responsibilities": [
+        "NCERT/State board curriculum demand mapping",
+        "Competitive EdTech benchmarking",
+        "Rural/semi-urban device constraint analysis",
+        "CSR and NGO grant discovery"
+      ]
+    },
+    {
+      "id": "OPS-003",
+      "name": "marketer",
+      "role": "Impact Storytelling & Community Growth Strategist",
+      "spec_file": "output/marketer.md",
+      "status": "standby",
+      "runtime": "antigravity/node",
+      "responsibilities": [
+        "Value proposition crafting for offline learning",
+        "Teacher onboarding and pedagogical storytelling",
+        "NGO/school partner adoption playbooks",
+        "Public portal and impact proposal authoring"
+      ]
+    },
+    {
+      "id": "OPS-004",
+      "name": "full_stack_developer",
+      "role": "System & Product Engineer",
+      "spec_file": "output/full_stack_developer.md",
+      "status": "standby",
+      "runtime": "antigravity/node/ts/python",
+      "responsibilities": [
+        "Unified hybrid responsive mobile/desktop architecture",
+        "Procedural Canvas 2D and WebGL simulation synthesis",
+        "F01-F20 foundation wrapping (<aasha-sim>)",
+        "Zero-CDN 20MB bundle offline self-containment"
+      ]
+    },
+    {
+      "id": "OPS-005",
+      "name": "run_debug_test",
+      "role": "QA Automation, CDP Verifier & Debugging Engineer",
+      "spec_file": "output/run_debug_test.md",
+      "status": "standby",
+      "runtime": "antigravity/puppeteer/playwright/node",
+      "responsibilities": [
+        "End-to-end test suite orchestration",
+        "Headless Chrome CDP 5-viewport verification",
+        "44x44px touch target ergonomics oracle",
+        "Bug isolation, root-cause reproduction, and regression defense"
+      ]
+    }
+  ]
+}

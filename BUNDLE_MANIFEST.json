@@ -1,0 +1,109 @@
+{
+  "bundle": "AASHA_Antigravity_Agent_Team_Bundle",
+  "version": "1.0.0",
+  "created_scope": "workspace configuration package",
+  "agents_invoked": false,
+  "builds_or_tests_run": false,
+  "remote_repositories_modified": false,
+  "agents": [
+    "delivery-coordinator",
+    "market-researcher",
+    "growth-marketer",
+    "full-stack-developer",
+    "debug-test-engineer"
+  ],
+  "runtime_agent_path": ".agents/agents/",
+  "review_copy_path": "output/agent-team/",
+  "files": [
+    {
+      "path": ".agents/agents/debug-test-engineer.md",
+      "bytes": 3252,
+      "sha256": "ce4ddf703dcb4de61cb002215109fa445ea61ab173509ee3db1ff6dc54e836bc"
+    },
+    {
+      "path": ".agents/agents/delivery-coordinator.md",
+      "bytes": 3435,
+      "sha256": "e4abcba69b7767121998a2720a9a0138af27131a824823f0b5ae1bbfcd4f2d9d"
+    },
+    {
+      "path": ".agents/agents/full-stack-developer.md",
+      "bytes": 4064,
+      "sha256": "5aec61bc55c1b7f37dad37d32c9a22adb47e24871e7c6c4b1a0bf06a5d3e95e7"
+    },
+    {
+      "path": ".agents/agents/growth-marketer.md",
+      "bytes": 3173,
+      "sha256": "c8b9dba0f8a85a74160ff10555a31caa0e84e7186f563eea4f1bf51c68a1ef1b"
+    },
+    {
+      "path": ".agents/agents/market-researcher.md",
+      "bytes": 3176,
+      "sha256": "03659859895ab8899aca984a37a83510efe5cb57d42f45d3ec4b3164844d7699"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 10391,
+      "sha256": "857525dcbe537cb3f125ff1172540033dc4e8b9ef4f63d82ebee4e1a87789492"
+    },
+    {
+      "path": "INSTALLATION.md",
+      "bytes": 2507,
+      "sha256": "064628cdfd5ff53af1bcd78dd5d934692e7af659171bb70660607afde40263bc"
+    },
+    {
+      "path": "agent-startup-spec.md",
+      "bytes": 24071,
+      "sha256": "e7c58b88c4a6b816b23b4990b292ecddd653338d2839deae839f497545ece7b7"
+    },
+    {
+      "path": "output/AGENTS.md",
+      "bytes": 10391,
+      "sha256": "857525dcbe537cb3f125ff1172540033dc4e8b9ef4f63d82ebee4e1a87789492"
+    },
+    {
+      "path": "output/AGENT_REGISTRY_AND_BOUNDARIES.md",
+      "bytes": 2622,
+      "sha256": "b572ef80e1d542c9e6855ddc2175c97ea4036c6f4cc8774cd3fac6a89d52cd7e"
+    },
+    {
+      "path": "output/UNIFIED_MVP_PLAN.md",
+      "bytes": 15527,
+      "sha256": "cdb7cbbfda94776900ec942513e1a7a3abb9556b9def98d8cd557f71f0cae563"
+    },
+    {
+      "path": "output/agent-team/README.md",
+      "bytes": 708,
+      "sha256": "a83f1357087816b7a71f757cf1b4a4db157a46d851df8d1968782a813ec6db0e"
+    },
+    {
+      "path": "output/agent-team/debug-test-engineer.md",
+      "bytes": 3252,
+      "sha256": "ce4ddf703dcb4de61cb002215109fa445ea61ab173509ee3db1ff6dc54e836bc"
+    },
+    {
+      "path": "output/agent-team/delivery-coordinator.md",
+      "bytes": 3435,
+      "sha256": "e4abcba69b7767121998a2720a9a0138af27131a824823f0b5ae1bbfcd4f2d9d"
+    },
+    {
+      "path": "output/agent-team/full-stack-developer.md",
+      "bytes": 4064,
+      "sha256": "5aec61bc55c1b7f37dad37d32c9a22adb47e24871e7c6c4b1a0bf06a5d3e95e7"
+    },
+    {
+      "path": "output/agent-team/growth-marketer.md",
+      "bytes": 3173,
+      "sha256": "c8b9dba0f8a85a74160ff10555a31caa0e84e7186f563eea4f1bf51c68a1ef1b"
+    },
+    {
+      "path": "output/agent-team/market-researcher.md",
+      "bytes": 3176,
+      "sha256": "03659859895ab8899aca984a37a83510efe5cb57d42f45d3ec4b3164844d7699"
+    },
+    {
+      "path": "startup.md",
+      "bytes": 11121,
+      "sha256": "1d65efbf40147b443d35f20ff4fa9a4f6cc9bb0b9ff50e106535ef432801f411"
+    }
+  ]
+}
