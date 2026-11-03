@@ -10,7 +10,6 @@ tools:
   - view_file
   - grep_search
   - find_by_name
-  - code_search
   - send_message
 subagent: true
 mainAgent: false

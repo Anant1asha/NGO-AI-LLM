@@ -11,7 +11,6 @@ tools:
   - view_file
   - grep_search
   - find_by_name
-  - code_search
   - replace_file_content
   - run_command
   - send_message
