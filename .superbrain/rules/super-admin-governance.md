@@ -115,3 +115,23 @@ If a capability is designed but unwired, if test coverage is partial, or if exte
    - Zero secrets are detected by pre-commit scanners (`lint_staged_secrets.mjs`).
    - All chapter bundles strictly comply with the $\le 20\text{MB}$ single-file ceiling.
 3. **Dual-Sync Enforcement**: The orchestrator always syncs both the active task branch (`origin/aios/v2-bootstrap`) and trunk (`origin/main` / `origin/master`), maintaining an immutable Git DAG.
+
+## 10. Operational Subagent Governance & Least-Privilege Invariants (ADR-002)
+
+1. **Least-Privilege Scoping**:
+   - All workspace operational subagents (`.agents/agents/*.md`) must strictly configure `inheritMcp: false` by default, preventing unconstrained MCP tool execution.
+   - Read-only agents (`delivery-coordinator`, `market-researcher`, `growth-marketer`) must enforce `commandExecutionPolicy: off`.
+   - Engineering and test subagents (`full-stack-developer`, `debug-test-engineer`) must enforce `commandExecutionPolicy: sandbox`.
+2. **Direct Orchestration Only (Zero Nested Spawning)**:
+   - All workspace operational subagents are spawned and delegated directly by the Super Admin AIOS / main agent.
+   - Nested subagent-to-subagent spawning is strictly prohibited. `delivery-coordinator` coordinates handoffs, milestone mapping, and sequencing recommendations, but cannot autonomously invoke other subagents.
+3. **Standby Default Invariant**:
+   - Operational subagents are definitions on disk with `subagent: true` and `mainAgent: false`.
+   - They remain in **STANDBY** (not invoked / no background task dispatched) until an explicit, bounded task brief is issued by the Super Admin AIOS.
+4. **Empirical Evidence & Discrete Arithmetic Law**:
+   - Verification reports must never rely on unverified assertions or summarized claims.
+   - Reports must provide the commit SHA, working-tree status, raw command output, exit codes, and discrete mathematical breakdown of assertion counts.
+5. **Additive Merging & Pre-Change Hash Protocol**:
+   - Constitutional files (`AGENTS.md`, `startup.md`) must be modified additively.
+   - Agents must record pre-change SHA-256 hashes and verify that all 7 Invariant Operating Laws, Superbrain rules, and founder interview Q1–Q4 answers remain 100% intact.
+
