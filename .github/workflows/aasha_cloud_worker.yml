@@ -3,7 +3,19 @@ name: AASHA AIOS Mode A Autonomous Cloud Worker
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,6,12,18 * * *'
+    # Autonomous hourly cadence (24 runs/day in the background)
+    - cron: '0 * * * *'
+  push:
+    branches:
+      - master
+      - aios/v2-bootstrap
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
+concurrency:
+  group: aasha-cloud-worker-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -12,6 +24,8 @@ jobs:
   cloud_worker:
     name: Autonomous Loop & Chapter Compilation
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+
     steps:
       - name: Checkout Root Repository
         uses: actions/checkout@v4
@@ -38,11 +52,13 @@ jobs:
           python-version: '3.11'
 
       - name: Install System & Python Dependencies
+        timeout-minutes: 5
         run: |
           pip install --upgrade pip
           pip install pymupdf pytest pillow requests
 
       - name: Install Node Dependencies
+        timeout-minutes: 5
         run: |
           npm install --ignore-scripts
           npm --prefix Aasha-AI install --ignore-scripts
@@ -53,6 +69,7 @@ jobs:
           git config --global user.email "cloud-worker@aasha-aios.org"
 
       - name: Execute 12-Stage Continuous Engineering Loop (Mode A)
+        timeout-minutes: 10
         env:
           AASHA_EXECUTION_MODE: "Mode A (Autonomous Cloud Worker - GitHub Actions)"
           NODE_ENV: test
@@ -62,6 +79,7 @@ jobs:
           node scripts/aasha_continuous_loop.mjs --once
 
       - name: Audit Zero Secrets & Verify Branch Pushes
+        timeout-minutes: 2
         run: |
           npm run lint:secrets
           echo "Cloud worker execution cycle verified on aios/v2-bootstrap."

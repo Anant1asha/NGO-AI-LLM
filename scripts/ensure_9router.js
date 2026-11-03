@@ -80,7 +80,9 @@ function find9RouterServerPath() {
 let hookChecked = false;
 
 /**
- * Register Windows User Logon Auto-Start hook in HKCU Run registry (wrapped in try/catch).
+ * Register Windows User Logon Auto-Start hook:
+ * 1. Windows Scheduled Task ("AASHA_9Router_Gateway") with -AtLogOn trigger.
+ * 2. HKCU Run Registry key as dual-layer defense.
  * Runs asynchronously to prevent blocking fast gateway probes.
  */
 function ensureWindowsStartupHook() {
@@ -93,6 +95,21 @@ function ensureWindowsStartupHook() {
       if (!fs.existsSync(hiddenScript)) return;
 
       const psCmd = `powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "${hiddenScript}"`;
+
+      // 1. Ensure Windows Scheduled Task exists for the active user session
+      const schedCheckCmd = `powershell -NoProfile -Command "
+        $t = Get-ScheduledTask -TaskName 'AASHA_9Router_Gateway' -ErrorAction SilentlyContinue;
+        if (-not $t) {
+          $act = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \\"${hiddenScript}\\"';
+          $trig = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME;
+          Register-ScheduledTask -TaskName 'AASHA_9Router_Gateway' -Action $act -Trigger $trig -User $env:USERNAME -Description 'Auto-starts AASHA 9Router gateway on port 20128' -Force | Out-Null;
+        }
+      "`;
+      try {
+        execSync(schedCheckCmd, { stdio: 'pipe' });
+      } catch {}
+
+      // 2. Ensure HKCU Run entry as dual-layer defense
       const regCheckCmd = `powershell -NoProfile -Command "Get-ItemPropertyValue -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name 'AASHA_9Router_Gateway' -ErrorAction SilentlyContinue"`;
       let currentVal = '';
       try {
