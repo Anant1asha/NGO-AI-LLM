@@ -125,7 +125,7 @@ async function main() {
 
   // Step 3: Create squashed commit using git commit-tree
   console.log('2. Synthesizing consolidated commit...');
-  const tipTree = runCmd(`git rev-parse ${SPAM_TIP_COMMIT}^{tree}`).stdout;
+  const tipTree = runCmd(`git log -1 --format=%T ${SPAM_TIP_COMMIT}`).stdout;
   const parentSha = runCmd(`git rev-parse ${BASE_PARENT_COMMIT}`).stdout;
   const squashedMsg = SPAM_MESSAGE;
   
