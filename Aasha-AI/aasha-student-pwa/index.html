@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f766e" />
+  <link rel="manifest" href="/manifest.json" />
+  <title>Aasha Learn — आशा ऑफ़लाइन शिक्षण और पुरस्कार (26 Certified Chapters)</title>
+  <style>
+    :root { --bg: #f8fafc; --primary: #0f766e; --text: #0f172a; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: calc(96px + env(safe-area-inset-bottom, 16px));
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 68px;
+      padding-bottom: env(safe-area-inset-bottom, 12px);
+      background: #ffffff;
+      border-top: 1px solid #cbd5e1;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      z-index: 1000;
+    }
+    .nav-btn {
+      min-width: 44px;
+      min-height: 44px;
+      border: none;
+      background: transparent;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <strong>🌟 Aasha Learn (26 Chapters Offline • 544 Hindi LLE Terms)</strong>
+    <button id="btn-toggle-facilitator" style="min-width:44px;min-height:44px;padding:8px 12px;border-radius:8px;border:none;background:#ffffff;color:#0f766e;font-weight:700;cursor:pointer;">
+      🏫 Facilitator View
+    </button>
+  </header>
+  <div id="toast-mount" style="padding:0 16px;"></div>
+  <main id="app-mount" style="padding:16px;"></main>
+  <div id="modal-mount"></div>
+  <nav class="bottom-nav" aria-label="Primary Student Navigation">
+    <button class="nav-btn" data-tab="home">🏠 Home</button>
+    <button class="nav-btn" data-tab="learn">📚 Learn</button>
+    <button class="nav-btn" data-tab="practice">🎯 Practice</button>
+    <button class="nav-btn" data-tab="rewards">🏆 Rewards</button>
+    <button class="nav-btn" data-tab="store">🏪 Store</button>
+  </nav>
+  <script type="module">
+    import {
+      renderActiveTab,
+      renderChapterPlayerModal,
+      renderFacilitatorPinModal,
+      handleChapterMasteryMessage,
+      handlePinModalConfirm,
+      exportStudentProgressSnapshot,
+      syncNowWithServer
+    } from './src/app.js';
+
+    const STORAGE_KEY = 'aasha_student_pwa_state_v2';
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (_) {}
+    const state = saved || {
+      studentId: 'stu_local_01',
+      studentName: 'Aasha Scholar',
+      coins: 150,
+      progress: {},
+      redemptions: [],
+      syncOutbox: [],
+      activeSubject: 'ALL',
+      activeGrade: 'ALL',
+      searchQuery: ''
+    };
+    let currentTab = 'home';
+    const mount = document.getElementById('app-mount');
+    const modalMount = document.getElementById('modal-mount');
+    const toastMount = document.getElementById('toast-mount');
+
+    function persistAndRefresh() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
+      mount.innerHTML = renderActiveTab(state, currentTab);
+    }
+    persistAndRefresh();
+
+    document.querySelectorAll('.nav-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        currentTab = btn.getAttribute('data-tab') || 'home';
+        persistAndRefresh();
+      });
+    });
+
+    document.getElementById('btn-toggle-facilitator').addEventListener('click', () => {
+      currentTab = currentTab === 'facilitator' ? 'home' : 'facilitator';
+      persistAndRefresh();
+    });
+
+    document.body.addEventListener('input', (e) => {
+      if (e.target && e.target.id === 'learn-chapter-search-input') {
+        state.searchQuery = e.target.value || '';
+        persistAndRefresh();
+      }
+    });
+
+    document.body.addEventListener('click', async (e) => {
+      const redeemBtn = e.target.closest('.btn-redeem');
+      if (redeemBtn && !redeemBtn.disabled) {
+        const itemId = redeemBtn.getAttribute('data-item-id');
+        modalMount.innerHTML = renderFacilitatorPinModal('Fulfill Store Order', itemId);
+        return;
+      }
+      if (e.target && e.target.id === 'btn-sync-outbox') {
+        await syncNowWithServer(state);
+        persistAndRefresh();
+        return;
+      }
+      const target = e.target.closest('[data-action]');
+      if (!target) return;
+      const action = target.getAttribute('data-action');
+      if (action === 'launch-chapter' || action === 'launch-practice') {
+        const chId = target.getAttribute('data-chapter-id');
+        modalMount.innerHTML = renderChapterPlayerModal(chId);
+      } else if (action === 'close-chapter-player' || action === 'cancel-pin-modal') {
+        modalMount.innerHTML = '';
+        persistAndRefresh();
+      } else if (action === 'confirm-pin-modal') {
+        const itemId = target.getAttribute('data-item-id');
+        const pinInput = document.getElementById('facilitator-pin-input');
+        const enteredPin = pinInput ? pinInput.value : '';
+        const res = handlePinModalConfirm(state, itemId, enteredPin);
+        toastMount.innerHTML = res.toastHtml || '';
+        if (res.ok) modalMount.innerHTML = '';
+        persistAndRefresh();
+      } else if (action === 'filter-subject') {
+        state.activeSubject = target.getAttribute('data-subject') || 'ALL';
+        persistAndRefresh();
+      } else if (action === 'filter-grade') {
+        state.activeGrade = target.getAttribute('data-grade') || 'ALL';
+        persistAndRefresh();
+      } else if (action === 'export-student-snapshot') {
+        const snap = exportStudentProgressSnapshot(state);
+        const blob = new Blob([JSON.stringify(snap, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${snap.studentId}_aasha_backup.json`;
+        a.click();
+      }
+    });
+
+    window.addEventListener('message', (ev) => {
+      if (ev.data && ev.data.type === 'TEAS_CHAPTER_MASTERY') {
+        handleChapterMasteryMessage(state, ev.data);
+        persistAndRefresh();
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>

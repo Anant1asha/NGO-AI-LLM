@@ -1,0 +1,1302 @@
+{
+  "account": {
+    "translation": "खाता (अकाउंट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "accurately": {
+    "translation": "सटीकता से (एक्युरेटली)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "added": {
+    "translation": "जोड़ दिया (ऐडेड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "adding": {
+    "translation": "जोड़ना (ऐडिंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "adjust": {
+    "translation": "समायोजित करना (अजस्ट)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "allows": {
+    "translation": "अनुमति देता है (अलाउज़)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "along": {
+    "translation": "साथ में (अलोंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "alphabetic": {
+    "translation": "अक्षरात्मक (अल्फाबेटिक)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "alphanumeric": {
+    "translation": "अल्फान्यूमेरिक (अल्फान्यूमेरिक)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "application": {
+    "translation": "आवेदन (एप्लिकेशन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "apply": {
+    "translation": "लागू करना (अप्लाई)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "approves": {
+    "translation": "मंजूर करता है (अप्रूव्ज़)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "approving": {
+    "translation": "मंजूरी दे रहा है (अप्रूविंग)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "authority": {
+    "translation": "प्राधिकरण (ऑथॉरिटी)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "balance": {
+    "translation": "संतुलन (बैलन्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "balanced": {
+    "translation": "संतुलित (बैलेंस्ड)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "bars": {
+    "translation": "बार (बार्ज)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "between": {
+    "translation": "बीच में (बिटवीन)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "cannot": {
+    "translation": "नहीं कर सकता (कैनॉट)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "characters": {
+    "translation": "अक्षर (करैक्टरज़)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "clause": {
+    "translation": "धारा (क्लॉज़)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "combine": {
+    "translation": "मिलाना (कम्बाइन)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "commissioner": {
+    "translation": "आयुक्त (कमिशनर)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "comparing": {
+    "translation": "तुलना करना (कम्पैरिंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "components": {
+    "translation": "घटक (कम्पोनेंट्स)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "consists": {
+    "translation": "शामिल है (कन्सिस्ट्स)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "continuous": {
+    "translation": "निरंतर (कंटीन्युअस)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "converts": {
+    "translation": "परिवर्तित करता है (कन्वर्ट्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "core": {
+    "translation": "मूल (कोर)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "correctly": {
+    "translation": "सही ढंग से (करेक्टली)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "denominators": {
+    "translation": "हर (डिनॉमिनेटर्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "department": {
+    "translation": "विभाग (डिपार्टमेंट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "describes": {
+    "translation": "वर्णन करता है (डिस्क्राइब्स)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "designation": {
+    "translation": "पदनाम (डिज़िग्नेशन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "determine": {
+    "translation": "निर्धारित करना (डिटरमाइन)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "digit": {
+    "translation": "अंक (डिजिट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "digits": {
+    "translation": "अंकों (डिजिट्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "directly": {
+    "translation": "सीधे (डायरेक्टली)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "discover": {
+    "translation": "खोज करना (डिस्कवर)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "discovery": {
+    "translation": "खोज (डिस्कवरी)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "document": {
+    "translation": "दस्तावेज़ (डॉक्युमेंट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "down": {
+    "translation": "नीचे (डाउन)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "due": {
+    "translation": "देय (ड्यू)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "encodes": {
+    "translation": "कोड करता है (एन्कोड्स)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "equals": {
+    "translation": "बराबर है (ईक्वॉल्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "evaluating": {
+    "translation": "मूल्यांकन कर रहा है (इवैल्यूएटिंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "examine": {
+    "translation": "जांच करना (एकसैमइन)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "exemption": {
+    "translation": "छूट (एग्जेम्प्शन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "financial": {
+    "translation": "वित्तीय (फाइनेंशियल)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "finding": {
+    "translation": "पाना (फाइंडइंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "format": {
+    "translation": "प्रारूप (फ़ॉर्मैट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "forward": {
+    "translation": "आगे (फॉरवर्ड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "fourths": {
+    "translation": "चौथाई (फॉर्थ्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "get": {
+    "translation": "पाना (गेट)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "given": {
+    "translation": "दिया गया (गिवन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "governing": {
+    "translation": "नियंत्रित करने वाला (गवर्निंग)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "granting": {
+    "translation": "दे रहा है (ग्रैंटिंग)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "hands": {
+    "translation": "हाथों से / व्यावहारिक (हैंड्स)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "helps": {
+    "translation": "मदद करता है (हेल्प्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "highlight": {
+    "translation": "उजागर करना (हाइलाइट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "identification": {
+    "translation": "पहचान (आइडेंटिफिकेशन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "identifier": {
+    "translation": "पहचानकर्ता (आइडेंटिफायर)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "identify": {
+    "translation": "पहचानना (आइडेंटिफाइ)",
+    "frequency": 8,
+    "chapters": [
+      "Understanding Tax Identification Numbers",
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "identifying": {
+    "translation": "पहचानते हुए (आइडेंटिफाइइंग)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "income": {
+    "translation": "आय (इन्कम)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "indicate": {
+    "translation": "दर्शाना (इंडिकेट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "indicates": {
+    "translation": "दर्शाता है (इंडिकेट्स)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "interactive": {
+    "translation": "संवादात्मक (इंटरैक्टिव)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "introduction": {
+    "translation": "परिचय (इंट्रोडक्शन)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "issued": {
+    "translation": "जारी किया गया (इशूड)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "key": {
+    "translation": "मुख्य (की)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "last": {
+    "translation": "पिछला (लास्ट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "letter": {
+    "translation": "पत्र (लेटर)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "letters": {
+    "translation": "पत्र (लेटर्स)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "like": {
+    "translation": "जैसे (लाइक)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "locate": {
+    "translation": "ढूँढना/स्थित करना (लोकेट)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "locating": {
+    "translation": "ढूँढ रहा है/स्थित कर रहा है (लोकेटइंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "look": {
+    "translation": "देखना (लुक)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "mark": {
+    "translation": "निशान (मार्क)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "marked": {
+    "translation": "निशान लगा हुआ (मार्क्ड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "marker": {
+    "translation": "मार्कर (मारकर)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "mathematical": {
+    "translation": "गणितीय (मैथमैटिकल)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "multiplied": {
+    "translation": "गुणा किया गया (मल्टिप्लाइड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "multiplier": {
+    "translation": "गुणक (मल्टिप्लायर)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "multiplying": {
+    "translation": "गुणा कर रहा है (मल्टिप्लाइइंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "name": {
+    "translation": "नाम (नेम)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "numbers": {
+    "translation": "संख्याएँ (नंबर्स)",
+    "frequency": 8,
+    "chapters": [
+      "Understanding Tax Identification Numbers",
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "numerators": {
+    "translation": "अंश (न्यूमेरएटर्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "observe": {
+    "translation": "अवलोकन करना (ऑब्ज़र्व)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "occupy": {
+    "translation": "स्थान घेरना (ऑक्यूपाइ)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "once": {
+    "translation": "एक बार (वन्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "operations": {
+    "translation": "संक्रियाएँ (ऑपरेशन्स)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "opposite": {
+    "translation": "विपरीत (ऑपोज़िट)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "order": {
+    "translation": "आदेश (ऑर्डर)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "outcome": {
+    "translation": "परिणाम (आउटकम)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "page": {
+    "translation": "पृष्ठ (पेज)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "permanent": {
+    "translation": "स्थायी (परमेनेंट)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "portion": {
+    "translation": "भाग (पोर्शन)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "position": {
+    "translation": "स्थिति (पोज़ीशन)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "positions": {
+    "translation": "स्थितियाँ (पोज़ीशन्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "precise": {
+    "translation": "सटीक (प्रिसाइज़)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "primary": {
+    "translation": "प्राथमिक (प्राइमरी)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "principles": {
+    "translation": "सिद्धांत (प्रिंसिपल्स)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "products": {
+    "translation": "गुणनफल / उत्पाद (प्रोडक्ट्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "properties": {
+    "translation": "गुणधर्म (प्रॉपर्टीज़)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "quickly": {
+    "translation": "तेज़ी से (क्विकली)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "range": {
+    "translation": "सीमा (रेन्ज)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "reading": {
+    "translation": "पढ़ाई (रीडिंग)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "registration": {
+    "translation": "पंजीकरण (रजिस्ट्रेशन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "rejected": {
+    "translation": "अस्वीकृत (रिजेक्टेड)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "relating": {
+    "translation": "संबंधित (रिलेटिंग)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "relative": {
+    "translation": "सापेक्ष (रिलेटिव)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "remain": {
+    "translation": "बना रहना (रिमेन)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "represent": {
+    "translation": "दर्शाना (रेप्रज़ेंट)",
+    "frequency": 8,
+    "chapters": [
+      "Understanding Tax Identification Numbers",
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "representations": {
+    "translation": "निरूपण (रिप्रेज़ेंटेशन्स)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "represents": {
+    "translation": "दर्शाता है (रिप्रेज़ेंट्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "reviews": {
+    "translation": "समीक्षा (रीव्यूज़)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "revision": {
+    "translation": "समीक्षा (रीविज़न)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "scale": {
+    "translation": "पैमाना (स्केल)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "second": {
+    "translation": "दूसरा (सेकंड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "section": {
+    "translation": "खंड (सेक्शन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "segments": {
+    "translation": "रेखाखंड / भाग (सेगमेंट्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "selected": {
+    "translation": "चुना हुआ (सिलेक्टेड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "sequence": {
+    "translation": "क्रम (सीक्वेंस)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "series": {
+    "translation": "श्रृंखला (सीरीज़)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "simply": {
+    "translation": "सरलता से (सिंपली)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "sizes": {
+    "translation": "आकार (साइज़ेज़)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "slide": {
+    "translation": "फिसलना / खिसकना (स्लाइड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "solving": {
+    "translation": "हल करना (सॉल्विंग)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "spot": {
+    "translation": "स्थान / बिंदु (स्पॉट)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "statement": {
+    "translation": "कथन (स्टेटमेंट)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "tax": {
+    "translation": "कर (टैक्स)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "ten": {
+    "translation": "दस (टेन)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "transformation": {
+    "translation": "रूपांतरण (ट्रांसफॉर्मेशन)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "unchanged": {
+    "translation": "अपरिवर्तित (अनचेंज्ड)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "under": {
+    "translation": "नीचे (अंडर)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "understanding": {
+    "translation": "समझ (अंडरस्टैंडिंग)",
+    "frequency": 95,
+    "chapters": [
+      "Understanding Tax Identification Numbers",
+      "Page 1"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "unique": {
+    "translation": "अद्वितीय (यूनिक)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "unlike": {
+    "translation": "असमान (अनलाइक)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "using": {
+    "translation": "उपयोग करते हुए (यूज़िंग)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "verify": {
+    "translation": "सत्यापित करना (वेरिफाई)",
+    "frequency": 93,
+    "chapters": [
+      "Page 1"
+    ],
+    "first_seen": "2026-10-27 05:43:22 UTC",
+    "last_seen": "2026-10-31 01:23:43 UTC"
+  },
+  "weights": {
+    "translation": "भार (वेट्स)",
+    "frequency": 6,
+    "chapters": [
+      "Rational Numbers and Fractions"
+    ],
+    "first_seen": "2026-10-26 07:45:07 UTC",
+    "last_seen": "2026-10-29 13:33:18 UTC"
+  },
+  "who": {
+    "translation": "कौन (हू)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  },
+  "year": {
+    "translation": "वर्ष (यर)",
+    "frequency": 2,
+    "chapters": [
+      "Understanding Tax Identification Numbers"
+    ],
+    "first_seen": "2026-10-14 18:40:07 UTC",
+    "last_seen": "2026-10-14 18:41:26 UTC"
+  }
+}
