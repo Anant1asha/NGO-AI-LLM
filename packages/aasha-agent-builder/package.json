@@ -1,0 +1,17 @@
+{
+  "name": "@aasha/agent-builder",
+  "version": "1.0.0",
+  "description": "AASHA Autonomous Agent Builder & Coordinator Engine",
+  "type": "module",
+  "main": "src/ingest_subagent.mjs",
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0"
+  },
+  "license": "AGPL-3.0"
+}
