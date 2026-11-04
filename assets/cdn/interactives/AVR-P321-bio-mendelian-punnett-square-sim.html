@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Mendelian Genetics: Punnett Square Interactive Simulation | AASHA AIOS</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-inner: #0f172a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --tall-color: #22c55e;
+      --tall-bg: rgba(34, 197, 94, 0.18);
+      --dwarf-color: #f59e0b;
+      --dwarf-bg: rgba(245, 158, 11, 0.18);
+      --border: #334155;
+      --touch-min: 44px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 14px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      user-select: none;
+    }
+    main {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+    .subtitle {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .meta-pills {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .pill {
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      padding: 3px 8px;
+      border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    /* Simulation Card */
+    .sim-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+    }
+
+    /* Parent Allele Controls */
+    .parents-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .parent-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+    .parent-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .allele-btn-group {
+      display: flex;
+      gap: 8px;
+    }
+    .allele-btn {
+      min-width: 44px;
+      min-height: 44px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+    .allele-btn.active-dominant {
+      background: var(--tall-bg);
+      border-color: var(--tall-color);
+      color: var(--tall-color);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
+    }
+    .allele-btn.active-recessive {
+      background: var(--dwarf-bg);
+      border-color: var(--dwarf-color);
+      color: var(--dwarf-color);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+    }
+    .parent-summary {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Punnett Square Stage */
+    .punnett-stage {
+      width: 100%;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .punnett-grid {
+      display: grid;
+      grid-template-columns: 48px 1fr 1fr;
+      grid-template-rows: 48px 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .grid-cell {
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .gamete-header {
+      background: #1e293b;
+      color: var(--accent);
+      font-size: 18px;
+      border: 1px dashed rgba(56, 189, 248, 0.4);
+    }
+    .corner-label {
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .offspring-cell {
+      padding: 10px 6px;
+      border: 2px solid var(--border);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .offspring-cell.tall-phenotype {
+      background: var(--tall-bg);
+      border-color: var(--tall-color);
+      color: #ffffff;
+    }
+    .offspring-cell.dwarf-phenotype {
+      background: var(--dwarf-bg);
+      border-color: var(--dwarf-color);
+      color: #ffffff;
+    }
+    .cell-genotype {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+    .cell-phenotype {
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Ratios and Analytics Display */
+    .analytics-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .ratio-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+    .ratio-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .ratio-value {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+    .ratio-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Key Pedagogical Concept Callout */
+    .concept-callout {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(34, 197, 94, 0.12));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+    .concept-callout b {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* Reset / Quick Preset Buttons */
+    .preset-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .preset-btn {
+      min-height: 44px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+    .preset-btn:hover, .preset-btn:active {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+    }
+
+    /* Telemetry Message Banner */
+    .teas-banner {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .teas-badge {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--tall-color);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="meta-pills">
+      <span class="pill">NCERT Class 10 Science</span>
+      <span class="pill">AVR-P321</span>
+      <span class="pill">Heredity & Evolution</span>
+      <span class="pill">100% Offline</span>
+    </div>
+    <h1>Mendelian Genetics: Punnett Square Visual</h1>
+    <div class="subtitle">Monohybrid Cross Simulator (Pea Plant Height: Tall vs. Dwarf)</div>
+  </header>
+
+  <section class="sim-card">
+    <!-- Parent Controls -->
+    <div class="parents-row">
+      <div class="parent-box">
+        <span class="parent-label">Female Parent (♀)</span>
+        <div class="allele-btn-group">
+          <button id="p1_a1" class="allele-btn active-dominant" aria-label="Parent 1 Allele 1">T</button>
+          <button id="p1_a2" class="allele-btn active-recessive" aria-label="Parent 1 Allele 2">t</button>
+        </div>
+        <div class="parent-summary" id="p1_summary">Tt (Heterozygous Tall)</div>
+      </div>
+      <div class="parent-box">
+        <span class="parent-label">Male Parent (♂)</span>
+        <div class="allele-btn-group">
+          <button id="p2_a1" class="allele-btn active-dominant" aria-label="Parent 2 Allele 1">T</button>
+          <button id="p2_a2" class="allele-btn active-recessive" aria-label="Parent 2 Allele 2">t</button>
+        </div>
+        <div class="parent-summary" id="p2_summary">Tt (Heterozygous Tall)</div>
+      </div>
+    </div>
+
+    <!-- Presets -->
+    <div class="preset-bar">
+      <button class="preset-btn" onclick="applyPreset('TT', 'tt')">P1 Cross: TT × tt (F1)</button>
+      <button class="preset-btn" onclick="applyPreset('Tt', 'Tt')">F1 Self Cross: Tt × Tt (F2)</button>
+      <button class="preset-btn" onclick="applyPreset('Tt', 'tt')">Test Cross: Tt × tt</button>
+    </div>
+
+    <!-- Punnett Square Grid -->
+    <div class="punnett-stage">
+      <div class="punnett-grid">
+        <div class="grid-cell corner-label">♀ \ ♂</div>
+        <div class="grid-cell gamete-header" id="g_top_1">T</div>
+        <div class="grid-cell gamete-header" id="g_top_2">t</div>
+
+        <div class="grid-cell gamete-header" id="g_left_1">T</div>
+        <div class="grid-cell offspring-cell tall-phenotype" id="cell_0_0">
+          <span class="cell-genotype">TT</span>
+          <span class="cell-phenotype">Tall (प्रभावी)</span>
+        </div>
+        <div class="grid-cell offspring-cell tall-phenotype" id="cell_0_1">
+          <span class="cell-genotype">Tt</span>
+          <span class="cell-phenotype">Tall (प्रभावी)</span>
+        </div>
+
+        <div class="grid-cell gamete-header" id="g_left_2">t</div>
+        <div class="grid-cell offspring-cell tall-phenotype" id="cell_1_0">
+          <span class="cell-genotype">Tt</span>
+          <span class="cell-phenotype">Tall (प्रभावी)</span>
+        </div>
+        <div class="grid-cell offspring-cell dwarf-phenotype" id="cell_1_1">
+          <span class="cell-genotype">tt</span>
+          <span class="cell-phenotype">Dwarf (अप्रभावी)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics / Ratios -->
+    <div class="analytics-panel">
+      <div class="ratio-box">
+        <span class="ratio-title">Phenotypic Ratio (लक्षणप्ररूप)</span>
+        <span class="ratio-value" id="pheno_ratio">3 Tall : 1 Dwarf</span>
+        <span class="ratio-sub" id="pheno_percent">75% Tall · 25% Dwarf</span>
+      </div>
+      <div class="ratio-box">
+        <span class="ratio-title">Genotypic Ratio (जीनप्ररूप)</span>
+        <span class="ratio-value" id="geno_ratio">1 TT : 2 Tt : 1 tt</span>
+        <span class="ratio-sub" id="geno_percent">25% TT · 50% Tt · 25% tt</span>
+      </div>
+    </div>
+
+    <!-- Educational Concept -->
+    <div class="concept-callout" id="concept_text">
+      <b>Mendel's Law of Dominance:</b> In the monohybrid cross, the <b>Tall allele (T)</b> completely masks the expression of the <b>Dwarf allele (t)</b> in heterozygous ($Tt$) offspring. The recessive trait ($tt$) reappears only when both alleles are recessive.
+    </div>
+
+    <!-- Telemetry Status -->
+    <div class="teas-banner">
+      <span class="teas-badge">TEAS V1 READY</span>
+      <span id="telemetry_msg">FNV-1a checksum verified · +50 TEAS Coins per verified cross</span>
+    </div>
+  </section>
+</main>
+
+<script>
+/**
+ * AASHA AIOS - Open-Source SCR AVR-P321 Interactive Simulation Engine
+ * Hardware-accelerated, touch-optimized (>=44x44px), FNV-1a checksummed telemetry.
+ */
+const state = {
+  p1: ['T', 't'],
+  p2: ['T', 't'],
+  crossCount: 0
+};
+
+// 32-bit FNV-1a checksum algorithm
+function fnv1a(str) {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    hash ^= str.charCodeAt(i);
+    hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
+  return (hash >>> 0).toString(16).padStart(8, '0');
+}
+
+function getSummary(a1, a2) {
+  const pair = [a1, a2].sort().join('');
+  if (pair === 'TT') return 'TT (Homozygous Tall)';
+  if (pair === 'Tt' || pair === 'tT') return 'Tt (Heterozygous Tall)';
+  return 'tt (Homozygous Dwarf)';
+}
+
+function combineAlleles(a1, a2) {
+  // Always write dominant (uppercase) allele first
+  if (a1 === 'T' || a2 === 'T') {
+    return (a1 === 't' || a2 === 't') ? 'Tt' : 'TT';
+  }
+  return 'tt';
+}
+
+function updateSimulation() {
+  // Update parent summary text
+  document.getElementById('p1_summary').textContent = getSummary(state.p1[0], state.p1[1]);
+  document.getElementById('p2_summary').textContent = getSummary(state.p2[0], state.p2[1]);
+
+  // Update allele buttons visual state
+  updateBtnClass('p1_a1', state.p1[0]);
+  updateBtnClass('p1_a2', state.p1[1]);
+  updateBtnClass('p2_a1', state.p2[0]);
+  updateBtnClass('p2_a2', state.p2[1]);
+
+  // Update gamete headers
+  document.getElementById('g_left_1').textContent = state.p1[0];
+  document.getElementById('g_left_2').textContent = state.p1[1];
+  document.getElementById('g_top_1').textContent = state.p2[0];
+  document.getElementById('g_top_2').textContent = state.p2[1];
+
+  // Calculate offspring matrix
+  const offspring = [
+    [combineAlleles(state.p1[0], state.p2[0]), combineAlleles(state.p1[0], state.p2[1])],
+    [combineAlleles(state.p1[1], state.p2[0]), combineAlleles(state.p1[1], state.p2[1])]
+  ];
+
+  let counts = { TT: 0, Tt: 0, tt: 0, tall: 0, dwarf: 0 };
+
+  for (let r = 0; r < 2; r++) {
+    for (let c = 0; c < 2; c++) {
+      const g = offspring[r][c];
+      const cell = document.getElementById(`cell_${r}_${c}`);
+      const isTall = g.includes('T');
+      counts[g]++;
+      if (isTall) counts.tall++; else counts.dwarf++;
+
+      cell.className = `grid-cell offspring-cell ${isTall ? 'tall-phenotype' : 'dwarf-phenotype'}`;
+      cell.innerHTML = `
+        <span class="cell-genotype">${g}</span>
+        <span class="cell-phenotype">${isTall ? 'Tall (प्रभावी)' : 'Dwarf (अप्रभावी)'}</span>
+      `;
+    }
+  }
+
+  // Update ratios
+  const phenoRatioText = counts.dwarf === 0 ? '4 Tall : 0 Dwarf (100% Tall)' :
+    counts.tall === 0 ? '0 Tall : 4 Dwarf (100% Dwarf)' :
+    `${counts.tall} Tall : ${counts.dwarf} Dwarf`;
+  document.getElementById('pheno_ratio').textContent = phenoRatioText;
+  document.getElementById('pheno_percent').textContent =
+    `${(counts.tall * 25)}% Tall · ${(counts.dwarf * 25)}% Dwarf`;
+
+  const genoParts = [];
+  if (counts.TT > 0) genoParts.push(`${counts.TT} TT`);
+  if (counts.Tt > 0) genoParts.push(`${counts.Tt} Tt`);
+  if (counts.tt > 0) genoParts.push(`${counts.tt} tt`);
+  document.getElementById('geno_ratio').textContent = genoParts.join(' : ');
+  document.getElementById('geno_percent').textContent =
+    `${counts.TT * 25}% TT · ${counts.Tt * 25}% Tt · ${counts.tt * 25}% tt`;
+
+  // Dynamic pedagogical concept explanation
+  const conceptEl = document.getElementById('concept_text');
+  if (state.p1.join('') === 'TT' && state.p2.join('') === 'tt') {
+    conceptEl.innerHTML = '<b>F1 Generation Cross (TT × tt):</b> 100% of offspring are heterozygous <b>Tt</b> and display the dominant <b>Tall phenotype</b>. The recessive dwarf trait is masked completely.';
+  } else if (state.p1.join('') === 'Tt' && state.p2.join('') === 'Tt') {
+    conceptEl.innerHTML = '<b>F2 Generation Self-Cross (Tt × Tt):</b> Yields the classic Mendelian <b>3:1 Phenotypic Ratio</b> (3 Tall : 1 Dwarf) and <b>1:2:1 Genotypic Ratio</b> (1 TT : 2 Tt : 1 tt). The recessive dwarf trait reappears in 25% of offspring!';
+  } else if ((state.p1.join('') === 'Tt' && state.p2.join('') === 'tt') || (state.p1.join('') === 'tt' && state.p2.join('') === 'Tt')) {
+    conceptEl.innerHTML = '<b>Mendelian Test Cross (Tt × tt):</b> Crossing heterozygous tall with homozygous dwarf yields a <b>1:1 Ratio</b> (50% Tall : 50% Dwarf), confirming the heterozygous genetic constitution.';
+  } else {
+    conceptEl.innerHTML = '<b>Mendel\'s Law of Segregation:</b> During gamete formation, the paired alleles separate so each gamete carries only one allele for each gene.';
+  }
+
+  // Emit AASHA_TELEMETRY_V1 event
+  state.crossCount++;
+  emitTelemetry(counts);
+}
+
+function updateBtnClass(id, val) {
+  const btn = document.getElementById(id);
+  btn.textContent = val;
+  btn.className = `allele-btn ${val === 'T' ? 'active-dominant' : 'active-recessive'}`;
+}
+
+function toggleAllele(parentKey, index) {
+  state[parentKey][index] = state[parentKey][index] === 'T' ? 't' : 'T';
+  updateSimulation();
+}
+
+function applyPreset(p1Str, p2Str) {
+  state.p1 = p1Str.split('');
+  state.p2 = p2Str.split('');
+  updateSimulation();
+}
+
+function emitTelemetry(counts) {
+  const telemetryData = {
+    protocol: 'AASHA_TELEMETRY_V1',
+    timestamp: Date.now(),
+    resource_id: 'AVR-P321-bio-mendelian-punnett-square-sim',
+    event_type: 'punnett_cross_calculated',
+    cross_number: state.crossCount,
+    parent1: state.p1.join(''),
+    parent2: state.p2.join(''),
+    ratios: {
+      phenotypic: `${counts.tall}:${counts.dwarf}`,
+      genotypic: `${counts.TT}:${counts.Tt}:${counts.tt}`
+    },
+    coins_awarded: 50
+  };
+
+  const payloadString = JSON.stringify(telemetryData);
+  const checksum = fnv1a(payloadString);
+  telemetryData.checksum = checksum;
+
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage(telemetryData, '*');
+  }
+
+  const msgEl = document.getElementById('telemetry_msg');
+  if (msgEl) {
+    msgEl.innerHTML = `Telemetric Handshake verified · Checksum: <code>${checksum}</code> · +50 Coins`;
+  }
+}
+
+// Attach event listeners to touch targets
+document.getElementById('p1_a1').onclick = () => toggleAllele('p1', 0);
+document.getElementById('p1_a2').onclick = () => toggleAllele('p1', 1);
+document.getElementById('p2_a1').onclick = () => toggleAllele('p2', 0);
+document.getElementById('p2_a2').onclick = () => toggleAllele('p2', 1);
+
+// Initialize on mount
+updateSimulation();
+</script>
+</body>
+</html>

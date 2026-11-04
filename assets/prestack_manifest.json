@@ -3,11 +3,11 @@
   "generated_at": "2026-11-03T20:40:01.688Z",
   "local_cdn_root": "assets/cdn",
   "statistics": {
-    "interactives_count": 27,
+    "interactives_count": 28,
     "foundations_count": 27,
     "harvest_candidates_count": 40,
     "substrates_count": 3,
-    "total_interactives_bundle_bytes": 525458
+    "total_interactives_bundle_bytes": 544177
   },
   "interactives": [
     {
@@ -791,6 +791,31 @@
       "contract": "AashaExperienceContract",
       "license": "MIT",
       "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P321-bio",
+      "name": "Mendelian Genetics: Punnett Square Interactive Sim",
+      "family": "genetics-biology",
+      "filename": "AVR-P321-bio-mendelian-punnett-square-sim.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P321-bio-mendelian-punnett-square-sim.html",
+      "bundle_bytes": 18719,
+      "sha256": "8e8bca0c23cfcbd130a8b2bc4075a5cdbc6bb04475363f72ab06c14231bac7a3",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Science",
+      "classes": [
+        10
+      ],
+      "topics": [
+        "Heredity",
+        "Mendelian Genetics",
+        "Monohybrid Cross",
+        "Punnett Square"
+      ],
+      "board": "All Boards (NCERT, CBSE, ICSE, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested AVR-P321 mechanic"
     }
   ],
   "foundations": [
