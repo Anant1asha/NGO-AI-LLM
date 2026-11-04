@@ -163,8 +163,8 @@ async function executeIteration(iterationNumber) {
   // -------------------------------------------------------------------------
   console.log('\n--- [STAGE 4/12: PRIORITIZE] Selecting Next Milestone Task ---');
   let selectedTask = {
-    id: 'TASK-WB-OFFLINE-CHAPTER-COMPILATION',
-    name: 'Workstream B: Offline Method B Chapter Compilation Pipeline & PyMuPDF Vectorizer Certification',
+    id: 'FOCUS-UNIT-PHASE-H-027',
+    name: 'Phase H-027: 35th Certified Chapter (Heredity_Mendelian_Genetics_Punnett_Square_Class10_Gamified_v5.html), AVR-P321 (MendelianPunnettSquareVisual), 607-Word Hindi Dictionary & teas_content.db.gz',
     component: 'Aasha-AI'
   };
   console.log(`  Selected Task: [${selectedTask.id}] ${selectedTask.name}`);
@@ -334,7 +334,7 @@ async function executeIteration(iterationNumber) {
     const currentRootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
     console.log(`  Root repository current branch: ${currentRootBranch}`);
 
-    runCmd('git add Aasha-AI AGENTS.md startup.md agent-startup-spec.md BUNDLE_MANIFEST.json INSTALLATION.md antigravity/ .agents/agents/ .agents/skills/ docs/superpowers/ .gitignore scripts/aasha_continuous_loop.mjs scripts/ensure_9router.js scripts/check_gateway_status.js scripts/start_9router_hidden.ps1 aasha_pc_antigravity_daemon.ps1 .githooks/pre-commit scripts/lint_staged_secrets.mjs CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py .github/workflows/aasha_cloud_worker.yml TEST_READY.md ARCHITECTURE_GRAPH.md docs/teacher-resources/', ROOT_DIR);
+    runCmd('git add Aasha-AI AGENTS.md startup.md agent-startup-spec.md BUNDLE_MANIFEST.json INSTALLATION.md antigravity/ .agents/agents/ .agents/skills/ docs/superpowers/ .gitignore scripts/ aasha_pc_antigravity_daemon.ps1 .githooks/pre-commit CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py .github/workflows/aasha_cloud_worker.yml TEST_READY.md ARCHITECTURE_GRAPH.md docs/ assets/', ROOT_DIR);
     const rootStaged = runCmdCapture('git diff --cached --name-only', ROOT_DIR);
     if (rootStaged) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
