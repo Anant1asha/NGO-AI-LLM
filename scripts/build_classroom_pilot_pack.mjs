@@ -778,7 +778,7 @@ const launcherHtml = `<!DOCTYPE html>
 
     <footer>
       <p><strong>AASHA Learning Ecosystem</strong> — Annanth Aasha Foundation (अन्नत आशा फाउंडेशन)</p>
-      <p>100% ऑफ़लाइन शिक्षण तकनीक • शून्य इंटरनेट निर्भरता • सभी फ़ाइलें &le; 20 MiB • 0-स्पॉइलर शिक्षाशास्त्र</p>
+      <p>100% ऑफ़लाइन शिक्षण तकनीक • शून्य इंटरनेट निर्भरता • प्रत्येक फ़ाइल व्यक्तिगत रूप से अधिकतम 20 MiB के अंतर्गत (&le; 20 MiB Hard Ceiling per File Individually) • 0-स्पॉइलर शिक्षाशास्त्र</p>
     </footer>
   </div>
 
