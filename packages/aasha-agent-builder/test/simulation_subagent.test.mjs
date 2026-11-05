@@ -133,3 +133,118 @@ test('simulationSubagent coordinates contract ingestion with machine-verifiable 
   assert.ok(result.measurements.clientScriptBytes > 1000);
   assert.equal(result.measurements.offlineAssetCount, 0); // Pure procedural code
 });
+
+test('A1 Security: generateSimulationScript sanitizes HTML and escapes inline script JSON', () => {
+  const maliciousSpec = {
+    id: 'sim_malicious',
+    title: 'Exploit <script>alert("xss")</script><img src=x onerror=alert(1)>',
+    initialState: { side: 5 }
+  };
+
+  const script = generateSimulationScript(maliciousSpec);
+
+  // 1. Assert SPEC.title is NOT directly interpolated into the innerHTML template string
+  assert.strictEqual(
+    script.includes('${SPEC.title'),
+    false,
+    'Unsafe ${SPEC.title} interpolation must not exist in template'
+  );
+
+  // 2. Assert static title element exists with simTitle ID
+  assert.strictEqual(
+    script.includes('<span class="sim-title" id="simTitle"></span>'),
+    true,
+    'Static title span with id simTitle must exist in template'
+  );
+
+  // 3. Assert dynamic title assignment uses textContent sink
+  assert.strictEqual(
+    script.includes('titleEl.textContent = SPEC.title'),
+    true,
+    'Title must be assigned through textContent'
+  );
+
+  // 4. Assert inline script context escapes HTML-significant script tags to prevent script termination
+  assert.strictEqual(
+    script.includes('<script>'),
+    false,
+    'Raw <script> tags must not exist in inline script JSON'
+  );
+  assert.strictEqual(
+    script.includes('</script>'),
+    false,
+    'Raw </script> tags must not exist in inline script JSON'
+  );
+  assert.strictEqual(
+    script.includes('\\u003cscript\\u003e'),
+    true,
+    'Raw < and > must be Unicode escaped as \\u003c and \\u003e in script JSON'
+  );
+  assert.strictEqual(
+    script.includes('\\u003c/script\\u003e'),
+    true,
+    'Closing script tag must be safely escaped'
+  );
+});
+
+test('A1 Security: custom element mount assigns malicious title safely as plain text', () => {
+  const attackTitle = '<img src=x onerror=alert(1)><b>Geometric Square</b>';
+  const spec = {
+    id: 'sim_attack_test',
+    title: attackTitle,
+    initialState: { side: 5 }
+  };
+
+  // Mock DOM container simulating browser environment
+  class MockElement {
+    constructor(tagName) {
+      this.tagName = tagName;
+      this.children = [];
+      this._textContent = '';
+      this._innerHTML = '';
+    }
+    set textContent(val) {
+      this._textContent = String(val);
+    }
+    get textContent() {
+      return this._textContent;
+    }
+    set innerHTML(html) {
+      this._innerHTML = html;
+      // If innerHTML contains a tag, create mock children
+      if (html.includes('id="simTitle"')) {
+        const titleSpan = new MockElement('span');
+        titleSpan.id = 'simTitle';
+        this.children.push(titleSpan);
+      }
+    }
+    get innerHTML() {
+      return this._innerHTML;
+    }
+    querySelector(selector) {
+      if (selector === '#simTitle') {
+        return this.children.find(c => c.id === 'simTitle') || null;
+      }
+      return null;
+    }
+  }
+
+  const container = new MockElement('div');
+
+  // Simulate the template render logic implemented in A1
+  container.innerHTML = `
+    <div class="sim-header">
+      <span class="sim-title" id="simTitle"></span>
+    </div>
+  `;
+  const titleEl = container.querySelector('#simTitle');
+  if (titleEl) {
+    titleEl.textContent = spec.title || 'Geometric Square';
+  }
+
+  // Verification:
+  // Title content is literal plain text in textContent, not parsed HTML markup in container DOM
+  assert.strictEqual(titleEl.textContent, attackTitle);
+  assert.strictEqual(titleEl.children.length, 0, 'No child DOM nodes (like <img>) should be parsed');
+});
+

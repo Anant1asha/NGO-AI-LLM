@@ -249,7 +249,11 @@ export function selectAdaptiveRenderer(req = {}) {
  * @returns {string} Self-contained browser-compatible JavaScript
  */
 export function generateSimulationScript(spec) {
-  const specJson = JSON.stringify(spec).replace(/</g, '\\u003c');
+  const specJson = JSON.stringify(spec)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/ /g, '\\u2028')
+    .replace(/ /g, '\\u2029');
 
   return `
 (function() {
@@ -546,7 +550,7 @@ export function generateSimulationScript(spec) {
         </style>
         <div class="sim-root" role="region" aria-label="Square Gnomon Interactive Simulation">
           <div class="sim-header">
-            <span class="sim-title">\${SPEC.title || 'Geometric Square & Gnomon Visualizer'}</span>
+            <span class="sim-title" id="simTitle"></span>
             <button class="btn-touch btn-secondary" id="btnMute" aria-label="Toggle Sound" style="width:44px;padding:0">🔊</button>
           </div>
           <div class="sim-readout" id="simReadout" aria-live="polite">Side = 5 | Total Area = 25</div>
@@ -562,6 +566,10 @@ export function generateSimulationScript(spec) {
           </div>
         </div>
       \`;
+      const titleEl = this.container.querySelector('#simTitle');
+      if (titleEl) {
+        titleEl.textContent = SPEC.title || 'Geometric Square & Gnomon Visualizer';
+      }
       this.updateUI();
     }
 
