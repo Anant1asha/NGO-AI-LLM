@@ -252,8 +252,8 @@ export function generateSimulationScript(spec) {
   const specJson = JSON.stringify(spec)
     .replace(/</g, '\\u003c')
     .replace(/>/g, '\\u003e')
-    .replace(/ /g, '\\u2028')
-    .replace(/ /g, '\\u2029');
+    .replace(new RegExp('\\u2028', 'g'), '\\u2028')
+    .replace(new RegExp('\\u2029', 'g'), '\\u2029');
 
   return `
 (function() {
@@ -280,6 +280,19 @@ export function generateSimulationScript(spec) {
 
     setMuted(muted) {
       this.isMuted = !!muted;
+    }
+
+    close() {
+      if (this.ctx) {
+        try {
+          if (typeof this.ctx.close === 'function') {
+            this.ctx.close();
+          }
+        } catch (e) {
+          // Gracefully ignore close error
+        }
+        this.ctx = null;
+      }
     }
 
     playTone(frequency = 440, duration = 0.08, type = 'sine') {
@@ -312,6 +325,7 @@ export function generateSimulationScript(spec) {
       this.foundationId = 'F02';
       this.experienceId = SPEC.id || 'square_gnomon_sim';
       this.container = null;
+      this._abortController = null;
       this.state = {
         side: SPEC.initialState?.side || 5,
         peeledLayers: 0,
@@ -364,6 +378,13 @@ export function generateSimulationScript(spec) {
 
     destroy() {
       this.pause();
+      if (this._abortController) {
+        this._abortController.abort();
+        this._abortController = null;
+      }
+      if (this.audio) {
+        this.audio.close();
+      }
       if (this.container) {
         this.container.innerHTML = '';
         this.container = null;
@@ -372,18 +393,22 @@ export function generateSimulationScript(spec) {
 
     emitTelemetry(eventType, payload) {
       if (!this.container) return;
-      const event = new CustomEvent('aasha:telemetry', {
-        bubbles: true,
-        composed: true,
-        detail: {
-          timestamp: Date.now(),
-          foundationId: this.foundationId,
-          experienceId: this.experienceId,
-          eventType,
-          payload
-        }
-      });
-      this.container.dispatchEvent(event);
+      try {
+        const event = new CustomEvent('aasha:telemetry', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            timestamp: Date.now(),
+            foundationId: this.foundationId,
+            experienceId: this.experienceId,
+            eventType,
+            payload
+          }
+        });
+        this.container.dispatchEvent(event);
+      } catch (err) {
+        // Telemetry listener throw must never crash simulation execution
+      }
     }
 
     updateUI() {
@@ -574,6 +599,12 @@ export function generateSimulationScript(spec) {
     }
 
     bindEvents() {
+      if (typeof AbortController !== 'undefined') {
+        this._abortController = new AbortController();
+      }
+      const signal = this._abortController ? this._abortController.signal : undefined;
+      const opts = signal ? { signal } : {};
+
       const btnInc = this.container.querySelector('#btnInc');
       const btnDec = this.container.querySelector('#btnDec');
       const sideRange = this.container.querySelector('#sideRange');
@@ -591,7 +622,7 @@ export function generateSimulationScript(spec) {
           this.updateUI();
           this.emitTelemetry('side_change', { side: this.state.side });
         }
-      });
+      }, opts);
 
       if (btnDec) btnDec.addEventListener('click', () => {
         triggerAudio();
@@ -602,7 +633,7 @@ export function generateSimulationScript(spec) {
           this.updateUI();
           this.emitTelemetry('side_change', { side: this.state.side });
         }
-      });
+      }, opts);
 
       if (sideRange) sideRange.addEventListener('input', (e) => {
         triggerAudio();
@@ -611,7 +642,7 @@ export function generateSimulationScript(spec) {
         this.audio.playIncrement();
         this.updateUI();
         this.emitTelemetry('side_change', { side: this.state.side });
-      });
+      }, opts);
 
       if (btnPeel) btnPeel.addEventListener('click', () => {
         triggerAudio();
@@ -623,18 +654,18 @@ export function generateSimulationScript(spec) {
         this.audio.playPeel();
         this.updateUI();
         this.emitTelemetry('peel_gnomon', { peeledLayers: this.state.peeledLayers });
-      });
+      }, opts);
 
       if (btnReset) btnReset.addEventListener('click', () => {
         triggerAudio();
         this.reset();
-      });
+      }, opts);
 
       if (btnMute) btnMute.addEventListener('click', () => {
         this.state.audioEnabled = !this.state.audioEnabled;
         this.audio.setMuted(!this.state.audioEnabled);
         btnMute.textContent = this.state.audioEnabled ? '🔊' : '🔇';
-      });
+      }, opts);
     }
   }
 

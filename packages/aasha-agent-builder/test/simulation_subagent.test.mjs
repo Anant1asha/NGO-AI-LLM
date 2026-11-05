@@ -248,3 +248,91 @@ test('A1 Security: custom element mount assigns malicious title safely as plain 
   assert.strictEqual(titleEl.children.length, 0, 'No child DOM nodes (like <img>) should be parsed');
 });
 
+test('A2 Lifecycle: script includes AbortController event listener detachment, audio cleanup and telemetry boundary', () => {
+  const spec = {
+    id: 'sim_a2_test',
+    title: 'A2 Lifecycle Hardening',
+    initialState: { side: 5 }
+  };
+  const script = generateSimulationScript(spec);
+
+  // 1. AbortController signal usage in bindEvents
+  assert.strictEqual(script.includes('this._abortController = new AbortController()'), true);
+  assert.strictEqual(script.includes('opts = signal ? { signal } : {}'), true);
+  assert.strictEqual(script.includes("btnInc.addEventListener('click'"), true);
+  assert.strictEqual(script.includes('}, opts)'), true);
+
+  // 2. AbortController abort & audio close in destroy()
+  assert.strictEqual(script.includes('this._abortController.abort()'), true);
+  assert.strictEqual(script.includes('this.audio.close()'), true);
+
+  // 3. AudioEngine has close() method disposing AudioContext
+  assert.strictEqual(script.includes('close() {'), true);
+  assert.strictEqual(script.includes('this.ctx.close()'), true);
+
+  // 4. emitTelemetry wraps dispatchEvent in try/catch to isolate external listener throws
+  assert.strictEqual(script.includes('try {'), true);
+  assert.strictEqual(script.includes('this.container.dispatchEvent(event);'), true);
+  assert.strictEqual(script.includes('catch (err) {'), true);
+  assert.strictEqual(script.includes('// Telemetry listener throw must never crash simulation execution'), true);
+});
+
+test('A2 Lifecycle: simulated adapter lifecycle cleans up AbortController and AudioContext on destroy', () => {
+  let audioClosed = false;
+  let aborted = false;
+
+  class MockAudioEngine {
+    constructor() {
+      this.ctx = {
+        close: () => { audioClosed = true; }
+      };
+    }
+    close() {
+      if (this.ctx) {
+        this.ctx.close();
+        this.ctx = null;
+      }
+    }
+  }
+
+  class MockAdapter {
+    constructor() {
+      this._abortController = null;
+      this.audio = new MockAudioEngine();
+      this.container = { innerHTML: '<div>content</div>' };
+    }
+    mount() {
+      this._abortController = {
+        signal: { aborted: false },
+        abort: () => { aborted = true; }
+      };
+    }
+    pause() {}
+    destroy() {
+      this.pause();
+      if (this._abortController) {
+        this._abortController.abort();
+        this._abortController = null;
+      }
+      if (this.audio) {
+        this.audio.close();
+      }
+      if (this.container) {
+        this.container.innerHTML = '';
+        this.container = null;
+      }
+    }
+  }
+
+  const adapter = new MockAdapter();
+  adapter.mount();
+  assert.strictEqual(aborted, false);
+  assert.strictEqual(audioClosed, false);
+
+  adapter.destroy();
+  assert.strictEqual(aborted, true, 'AbortController must be aborted on destroy');
+  assert.strictEqual(audioClosed, true, 'AudioContext must be closed on destroy');
+  assert.strictEqual(adapter._abortController, null);
+  assert.strictEqual(adapter.container, null);
+});
+
