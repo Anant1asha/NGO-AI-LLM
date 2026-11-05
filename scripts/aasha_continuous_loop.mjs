@@ -311,9 +311,14 @@ async function executeIteration(iterationNumber) {
         console.log('  Committing verified changes in Aasha-AI...');
         runCmd('git commit -m "feat(workstream-b): advance Method B offline chapter compilation pipeline & deep vectorizer [skip ci]"', AASHA_AI_DIR);
       }
+      runCmd(`git fetch origin ${TARGET_TASK_BRANCH}`, AASHA_AI_DIR, { silent: true });
+      const aashaBehind = runCmdCapture(`git rev-list --count HEAD..origin/${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
+      if (parseInt(aashaBehind, 10) > 0) {
+        runCmd(`git rebase origin/${TARGET_TASK_BRANCH}`, AASHA_AI_DIR, { silent: true });
+      }
       console.log(`  Pushing Aasha-AI to origin/${TARGET_TASK_BRANCH}...`);
       const pushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
-      const aashaSuccess = pushTask.success;
+      const aashaSuccess = pushTask.success || runCmdCapture('git rev-parse HEAD', AASHA_AI_DIR) === runCmdCapture(`git rev-parse origin/${TARGET_TASK_BRANCH}`, AASHA_AI_DIR);
       console.log(`  Aasha-AI Task Branch Push Status: ${aashaSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED / OFFLINE'}`);
       executionEvidence.sync.aashaPush = aashaSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'PARTIAL/FAILED';
 
@@ -334,15 +339,20 @@ async function executeIteration(iterationNumber) {
     const currentRootBranch = runCmdCapture('git rev-parse --abbrev-ref HEAD', ROOT_DIR);
     console.log(`  Root repository current branch: ${currentRootBranch}`);
 
-    runCmd('git add Aasha-AI AGENTS.md startup.md agent-startup-spec.md BUNDLE_MANIFEST.json INSTALLATION.md antigravity/ .agents/agents/ .agents/skills/ docs/superpowers/ .gitignore scripts/ aasha_pc_antigravity_daemon.ps1 .githooks/pre-commit CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py .github/workflows/aasha_cloud_worker.yml TEST_READY.md ARCHITECTURE_GRAPH.md docs/ assets/ packages/ SIMULATION_COMPETITOR_BENCHMARK.md AASHA_TASK2_*.md', ROOT_DIR);
+    runCmd('git add Aasha-AI AGENTS.md startup.md agent-startup-spec.md BUNDLE_MANIFEST.json INSTALLATION.md antigravity/ .agents/agents/ .agents/skills/ docs/superpowers/ .gitignore scripts/ aasha_pc_antigravity_daemon.ps1 .githooks/pre-commit CHANGELOG.md VERIFICATION_REPORT.md package.json scripts/aasha_root_orchestrator.js CANONICAL_CONTRACT_REGISTER.md .agents/rules/ .superbrain/rules/ PC_ANTIGRAVITY_STATE.json scripts/verify_sprint_integrity.mjs SPRINT_VERIFICATION_REPORT.md .agents/skills/sprint-verifier/ notebooks/aasha_cloud_worker.ipynb scripts/aasha_colab_bridge.py .github/workflows/aasha_cloud_worker.yml TEST_READY.md ARCHITECTURE_GRAPH.md docs/ assets/ packages/ SIMULATION_COMPETITOR_BENCHMARK.md AASHA_TASK2_*.md TASK2_*.md', ROOT_DIR);
     const rootStaged = runCmdCapture('git diff --cached --name-only', ROOT_DIR);
     if (rootStaged) {
       console.log('  Committing verified orchestrator loop scripts in root monorepo...');
       runCmd('git commit -m "feat(aios): sync continuous 12-stage engineering loop, deep vectorizer & multi-agent topology [skip ci]"', ROOT_DIR);
     }
+    runCmd(`git fetch origin ${TARGET_TASK_BRANCH}`, ROOT_DIR, { silent: true });
+    const rootBehind = runCmdCapture(`git rev-list --count HEAD..origin/${TARGET_TASK_BRANCH}`, ROOT_DIR);
+    if (parseInt(rootBehind, 10) > 0) {
+      runCmd(`git rebase origin/${TARGET_TASK_BRANCH}`, ROOT_DIR, { silent: true });
+    }
     console.log(`  Pushing root commit to origin/${TARGET_TASK_BRANCH}...`);
     const rootPushTask = runCmd(`git push origin HEAD:${TARGET_TASK_BRANCH}`, ROOT_DIR);
-    const rootSuccess = rootPushTask.success;
+    const rootSuccess = rootPushTask.success || runCmdCapture('git rev-parse HEAD', ROOT_DIR) === runCmdCapture(`git rev-parse origin/${TARGET_TASK_BRANCH}`, ROOT_DIR);
     console.log(`  Root Task Branch Push Status: ${rootSuccess ? `SUCCESS (Pushed to origin/${TARGET_TASK_BRANCH})` : 'PUSH_FAILED'}`);
     executionEvidence.sync.rootPush = rootSuccess ? `PUSHED (origin/${TARGET_TASK_BRANCH})` : 'PARTIAL/FAILED';
 
