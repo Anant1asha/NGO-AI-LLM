@@ -283,16 +283,27 @@ export function generateSimulationScript(spec) {
     }
 
     close() {
-      if (this.ctx) {
-        try {
-          if (typeof this.ctx.close === 'function') {
-            this.ctx.close();
-          }
-        } catch (e) {
-          // Gracefully ignore close error
-        }
-        this.ctx = null;
+      if (!this.ctx) {
+        return this._closePromise || Promise.resolve();
       }
+
+      const ctx = this.ctx;
+      this.ctx = null;
+
+      try {
+        const closeResult = ctx.close();
+        if (closeResult && typeof closeResult.then === 'function') {
+          this._closePromise = Promise.resolve(closeResult)
+            .catch(() => {})
+            .then(() => {});
+        } else {
+          this._closePromise = Promise.resolve();
+        }
+      } catch (_) {
+        this._closePromise = Promise.resolve();
+      }
+
+      return this._closePromise;
     }
 
     playTone(frequency = 440, duration = 0.08, type = 'sine') {
