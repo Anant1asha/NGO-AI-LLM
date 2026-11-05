@@ -1,6 +1,6 @@
 ﻿{
     "schema_version":  "1.0.0",
-    "timestamp_utc":  "2026-11-05T21:00:10.2459215Z",
+    "timestamp_utc":  "2026-11-05T21:18:29.2874868Z",
     "pc_hostname":  "DESKTOP-7RHB41C",
     "workspace_root":  "C:\\Users\\admin\\Downloads\\NGO AI LLM",
     "infrastructure":  {
@@ -14,21 +14,30 @@
     "repositories":  {
                          "ngo_ai_llm_root":  {
                                                  "branch":  "aios/v2-bootstrap",
-                                                 "head_commit":  "3699882da8e3edb4c4ca67944b0d5a96d539f8a0",
-                                                 "dirty_file_count":  7,
+                                                 "head_commit":  "035b3b57117870cf63fa88783114f6b8cecfd0f3",
+                                                 "dirty_file_count":  16,
                                                  "dirty_files_sample":  [
+                                                                            "A  AASHA_TASK2_CANONICAL_SIMULATION_CONTRACT_PROPOSAL.md",
+                                                                            "A  AASHA_TASK2_CROSS_CODEBASE_ARCHITECTURE_VERIFICATION.md",
+                                                                            "A  AASHA_TASK2_HALLUCINATION_RESISTANCE_AND_EVIDENCE_POLICY.md",
+                                                                            "A  AASHA_TASK2_LEGACY_ENGINE_MIGRATION_MATRIX.md",
+                                                                            "A  AASHA_TASK2_R2F_UNIFIED_ARCHITECTURE_EVIDENCE_VERIFICATION.md",
+                                                                            "A  AASHA_TASK2_SIMULATION_ENGINE_OWNERSHIP_MATRIX.md",
+                                                                            "A  AASHA_TASK2_UNIFIED_SIMULATION_ARCHITECTURE.md",
+                                                                            "M  AASHA_TASK2_WORKSPACE_WIDE_REMEDIATION_PLAN.md",
                                                                             " M PC_ANTIGRAVITY_STATE.json",
                                                                             " M scripts/aasha_continuous_loop.mjs",
-                                                                            "?? AASHA_TASK2_CROSS_CODEBASE_ARCHITECTURE_VERIFICATION.md",
-                                                                            "?? AASHA_TASK2_CROSS_CODEBASE_DEPENDENCY_MAP.md",
-                                                                            "?? AASHA_TASK2_SIMULATION_ENGINE_OWNERSHIP_MATRIX.md",
-                                                                            "?? AASHA_TASK2_WORKSPACE_INVENTORY_REPORT.md",
-                                                                            "?? AASHA_TASK2_WORKSPACE_WIDE_REMEDIATION_PLAN.md"
+                                                                            "?? TASK2_COMPETITOR_BENCHMARK.md",
+                                                                            "?? TASK2_DELIVERY_CAPABILITY_SCORECARD.md",
+                                                                            "?? TASK2_FINAL_SCOPE_AND_GAP_REPORT.md",
+                                                                            "?? TASK2_ROLLBACK_AND_BASELINE_RECONCILIATION.md",
+                                                                            "?? TASK2_STANDARD_SIMULATION_TEST_SUITE.md",
+                                                                            "?? TASK2_UNIFIED_ENGINE_CAPABILITY_MATRIX.md"
                                                                         ]
                                              },
                          "aasha_ai_monorepo":  {
                                                    "branch":  "aios/v2-bootstrap",
-                                                   "head_commit":  "18800ee1f913ed4f835dd7cf33946e300fd565ca",
+                                                   "head_commit":  "615d20158dcb62af91a147f8068910cc10d22226",
                                                    "dirty_file_count":  1,
                                                    "dirty_files_sample":  " M aasha-pipeline-with-master-json/config/candidate_dictionary_hi.json"
                                                }
