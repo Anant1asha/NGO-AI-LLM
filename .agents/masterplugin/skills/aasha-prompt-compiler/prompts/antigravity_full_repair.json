@@ -1,0 +1,175 @@
+{
+  "artifact_id": "aasha.antigravity.full-repair.v1",
+  "compiled_by": "aasha-prompt-compiler",
+  "compiler_version": "1.0.0",
+  "target_runtime": "antigravity",
+  "target_runtime_compatibility": ["antigravity", "claude-code", "freebuff", "nodejs"],
+  "mode": "READ_AND_EVALUATE_FIRST",
+  "authority": "PROPOSAL_ONLY_UNTIL_HUMAN_APPROVAL",
+  "one_click": true,
+
+  "karta": "Antigravity autonomous repair agent",
+  "karma": "Every defect in the Aasha-AIOS repository: issues, bugs, breaks, chokes",
+  "karana": [
+    "read_file / search / list_directory (discovery)",
+    "project toolchains: npm exec -- (Node), go test ./... (Go), python -m pytest (Python)",
+    "aasha-prompt-compiler evidence classes and verification gate",
+    "git working tree (reversible local edits only)"
+  ],
+  "sampradana": "Aasha Foundation maintainers and the K-12 students served by the delivered child HTML5 bundles",
+  "apadana": [
+    "NEVER auto-mutate before producing the proposal and receiving explicit human approval",
+    "NEVER mark a fix as done without a real analyzer or test run reporting it",
+    "NEVER claim absence from an empty search result",
+    "NEVER invent a file path or line number not returned by a tool",
+    "NEVER force-push, reset --hard, amend published commits, or delete branches",
+    "NEVER apply the 20 MB ceiling outside CHILD_HTML5_BUNDLE scope",
+    "NEVER delete required educational functionality merely to satisfy a size gate",
+    "NEVER re-download an identical open-source resource already present locally",
+    "NEVER treat SKILL as SYSTEM: this run changes no architecture or build plan",
+    "NEVER fold max_tokens, daily budget, diff budget, or payload budget into the 20 MB rule"
+  ],
+  "adhikarana": "Local checkout, offline-capable, Node 24 + Go + Python present",
+
+  "evidence": {
+    "karta": "SAFE_DEFAULT",
+    "karma": "UNKNOWN",
+    "karana": "FACT",
+    "sampradana": "STRONG_INFERENCE",
+    "apadana": "FACT",
+    "adhikarana": "FACT"
+  },
+
+  "invariants": {
+    "skill_not_system": "This is a pluggable execution skill. Zero changes to build plan, core runtime, or architecture. Output is proposals plus isolated fixes.",
+    "kid_own_book_first": "All pedagogical content derives from the child's prescribed textbook as authoritative source of truth.",
+    "refine_not_reinvent": "Multi-turn repair increases precision without intent drift or mutated architectural constraints.",
+    "read_evaluate_first": "Read, then evaluate, then propose, then await approval. No exceptions.",
+    "resource_first_reuse": "EXACT_REUSE -> PARAMETRIC_ADAPT -> COMPOSE -> LOCAL_ADAPTATION -> CERTIFIED_GENERATION -> SAFE_FALLBACK. Code generation is a LAST RESORT.",
+    "local_first_precedence": "LOCAL RESOURCE > LOCAL REGISTRY > LOCAL VOCABULARY > LOCAL EXPERIENCE > LOCAL AST/GRAPH > EXISTING CACHE > REMOTE MODEL. Never invoke an LLM to recreate information already available locally.",
+    "twenty_mb_scope_lock": {
+      "constant": "CHILD_HTML5_BUNDLE_MAX_BYTES = 20971520",
+      "applies_only_to": "child-facing standalone offline HTML5 learning bundle",
+      "excluded": [
+        "source PDFs and textbook sources",
+        "Graphify AST",
+        "Section-24 contracts",
+        "Hatchable storage",
+        "telemetry databases",
+        "evidence ledgers",
+        "server-side artifacts",
+        "resource libraries",
+        "global vocabulary",
+        "backend infrastructure",
+        "QA reports",
+        "version history"
+      ],
+      "note": "Resource libraries may exceed 20 MB. The compiler bundles only selected, deduplicated assets per chapter.",
+      "on_violation": "CERTIFICATION = FAIL, RELEASE = BLOCKED. Prefer deterministic optimization (resource selection, deduplication, font subsetting, asset compression, dead-code elimination) before removing functionality."
+    },
+    "distinct_budgets_do_not_conflate": [
+      { "name": "LLM completion max_tokens", "scope": "token output length, not bytes" },
+      { "name": "provider daily token budget", "scope": "spend throttle, skip provider at 80%" },
+      { "name": "bounded diff budget", "scope": "agent patch size, <= 2000 lines" },
+      { "name": "mobile sync payload budget", "scope": "grade-delta response, < 50 KB" }
+    ]
+  },
+
+  "instruction": "Perform a complete defect sweep of this repository and produce a single machine-applicable repair plan, then apply it only after approval. For every defect found, supply the root cause, the minimal fix, the exact file and line, and the command that proves the fix.",
+
+  "pipeline": [
+    { "stage": 1, "name": "Observe", "action": "Enumerate the real tree with list_directory. Read manifests (package.json, pyproject.toml, go.mod). Record every declared entry point and every declared script. Do not guess paths." },
+    { "stage": 2, "name": "Understand", "action": "For each subsystem, identify its entry point and trace the flow to its outputs using call linkage before reading bodies." },
+    { "stage": 3, "name": "Decompose", "action": "Map every discovered defect into the six Kāraka roles so ownership (karta), target (karma), tool (karana), and constraint (apadana) are explicit." },
+    { "stage": 4, "name": "Classify Evidence", "action": "Tag every claim FACT / STRONG_INFERENCE / SAFE_DEFAULT / ASSUMPTION / UNKNOWN / CONFLICT. A defect is only FACT when a tool this run showed it." },
+    { "stage": 5, "name": "Gap and Conflict Resolution", "action": "Where a manifest and its code disagree (scaffold drift), record both sides and flag CONFLICT. Where a path is referenced but missing, record UNKNOWN and verify with a listing before reporting." },
+    { "stage": 6, "name": "Harden Invariants", "action": "Attach the invariants block to every fix. Reject any fix that violates an apadana entry." },
+    { "stage": 7, "name": "Mode Select", "action": "For each defect choose REPAIR (clear fix), CLARIFY (ambiguous), or BLOCK (unsafe or architectural)." },
+    { "stage": 8, "name": "Compute Delta", "action": "Emit ADDED / REMOVED / CHANGED / PRESERVED / SUPERSEDED per defect." },
+    { "stage": 9, "name": "Compile Targets", "action": "Produce the ordered repair_plan and the teacher-facing summary." },
+    { "stage": 10, "name": "Verify", "action": "Verdict PASS / REPAIR / CLARIFY / BLOCK with a confidence score in 0.0 to 1.0." }
+  ],
+
+  "defect_classes": [
+    { "id": "D1", "name": "Broken entry point", "detect": "Declared script or binary that fails to resolve or start", "prove_with": "run the declared command and capture the error" },
+    { "id": "D2", "name": "Stub presented as working", "detect": "Command or handler that prints success without performing the work", "prove_with": "read the body and show no side effect occurs" },
+    { "id": "D3", "name": "Missing path or import", "detect": "Referenced file, module, or workspace absent from disk", "prove_with": "list_directory on the parent, not an empty search" },
+    { "id": "D4", "name": "Manifest-code drift", "detect": "Documented scripts or deps disagree with the actual manifest", "prove_with": "read both and diff them" },
+    { "id": "D5", "name": "Unverified dependency", "detect": "Code that requires an absent key, venv, binary, or backend", "prove_with": "read the guard and confirm the precondition" },
+    { "id": "D6", "name": "Hardcoded environment path", "detect": "Absolute or machine-specific path that throws off this machine", "prove_with": "read the literal and test resolution" },
+    { "id": "D7", "name": "Invariant violation", "detect": "Code or content breaching a declared invariant", "prove_with": "cite the invariant and the offending line" },
+    { "id": "D8", "name": "Size-gate misapplication", "detect": "The 20 MB child-bundle ceiling applied outside its scope", "prove_with": "show the target is not CHILD_HTML5_BUNDLE and is on the exclusion list" },
+    { "id": "D9", "name": "Redundant regeneration", "detect": "Re-downloading, re-deriving, or re-generating something locally available", "prove_with": "point to the local registry, cache, or dictionary entry" },
+    { "id": "D10", "name": "Failing or absent test", "detect": "Test suite missing, uncollectable, or failing", "prove_with": "run the suite and quote the executed-and-passed counts" }
+  ],
+
+  "repair_plan_schema": {
+    "id": "R-<zero padded index>",
+    "defect_class": "D1..D10",
+    "severity": "BLOCKER | MAJOR | MINOR",
+    "karta": "owning subsystem or component",
+    "karma": "exact artifact being changed",
+    "karana": "tool or method used for the fix",
+    "apadana": "invariants the fix must not breach",
+    "adhikarana": "substrate: file, runtime, or layer",
+    "evidence_class": "FACT | STRONG_INFERENCE | SAFE_DEFAULT | ASSUMPTION | UNKNOWN | CONFLICT",
+    "location": { "file": "<repo-relative path>", "line": "<line number>" },
+    "symptom": "<observed behavior, quoted from tool output>",
+    "root_cause": "<why it happens, not what the name suggests>",
+    "fix": "<minimal change, described as a patch>",
+    "fix_kind": "READ_AND_EVALUATE | LOCAL_REUSE | EXACT_REUSE | PARAMETRIC_ADAPT | COMPOSE | CERTIFIED_GENERATION | SAFE_FALLBACK",
+    "blast_radius": "<callers and dependents that must be re-verified>",
+    "verify": { "command": "<exact command>", "expect": "<the output that proves the fix>" },
+    "reversible": true,
+    "depends_on": ["R-000"]
+  },
+
+  "output_contract": {
+    "single_json_document": true,
+    "top_level_keys": [
+      "run_metadata",
+      "repo_inventory",
+      "kara_ir",
+      "evidence_ledger",
+      "conflicts",
+      "unknowns",
+      "repair_plan",
+      "verification_audit",
+      "shikshak_saaransh"
+    ],
+    "run_metadata": { "repository_root": "<abs path>", "scanned_at": "<iso8601>", "toolchain": ["node", "go", "python"], "verdict": "PASS | REPAIR | CLARIFY | BLOCK", "confidence": "<0.0-1.0>" },
+    "verification_audit": {
+      "math_insulation_status": "Verified shielded (__AASHA_MATH_X__)",
+      "zero_spoiler_check": "Pass | Fail with leak sites",
+      "offline_integrity": "100% self-contained or list offending URLs",
+      "twenty_mb_scope_check": "confirm applied only to CHILD_HTML5_BUNDLE",
+      "tests_executed": "<count reported by the runner>",
+      "note": "A fix counts as verified only when a tool this run reported it. Exit code 0 alone is not evidence."
+    },
+    "shikshak_saaransh": {
+      "language": "hi",
+      "review_status": "<स्वीकृत | संशोधन आवश्यक>",
+      "confidence_percentage": "<0-100>",
+      "sections": ["विद्यार्थी एवं कक्षा विवरण", "शैक्षणिक संकल्पना", "सुरक्षा, गोपनीयता एवं नियम", "शिक्षक अनुमोदन"]
+    }
+  },
+
+  "execution_protocol": {
+    "phase_1": "Sweep and report. Emit the single JSON document. Apply nothing.",
+    "phase_2": "Await explicit human approval of the repair_plan. Approval is bound to the exact plan hash and never carries across revisions.",
+    "phase_3": "Apply approved repairs in dependency order, smallest reversible patch first.",
+    "phase_4": "After each patch, run its verify command and record the actual output, not an expectation.",
+    "phase_5": "On repeated failure, quarantine that repair and continue. Never retry an identical action expecting a different result."
+  },
+
+  "forbidden_shortcuts": [
+    "Deleting tests or checks to make a suite pass",
+    "Removing functionality to satisfy a size gate",
+    "Marking a defect fixed without a real verifying run",
+    "Broad refactors framed as bug fixes",
+    "Silent dependency upgrades outside the request",
+    "Rewriting a file wholesale when a targeted patch suffices"
+  ],
+
+  "final_line": "Do not mutate this repository. Produce the JSON, stop, and wait for approval."
+}
