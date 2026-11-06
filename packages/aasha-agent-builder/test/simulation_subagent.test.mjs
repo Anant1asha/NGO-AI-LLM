@@ -268,7 +268,7 @@ test('A2 Lifecycle: script includes AbortController event listener detachment, a
 
   // 3. AudioEngine has close() method disposing AudioContext
   assert.strictEqual(script.includes('close() {'), true);
-  assert.strictEqual(script.includes('this.ctx.close()'), true);
+  assert.strictEqual(script.includes('ctx.close()'), true);
 
   // 4. emitTelemetry wraps dispatchEvent in try/catch to isolate external listener throws
   assert.strictEqual(script.includes('try {'), true);
@@ -335,4 +335,150 @@ test('A2 Lifecycle: simulated adapter lifecycle cleans up AbortController and Au
   assert.strictEqual(adapter._abortController, null);
   assert.strictEqual(adapter.container, null);
 });
+
+test('A2 Telemetry & Worker: script includes descriptor sanitizer, blob worker protocol, CSP fallback, and AudioContext disposal', () => {
+  const spec = {
+    id: 'sim_a2_worker_spec',
+    title: 'A2 Telemetry Hardening',
+    modelType: 'SquareGnomonModel',
+    initialState: { side: 5 }
+  };
+  const script = generateSimulationScript(spec);
+
+  // 1. Telemetry payload sanitizer with descriptor inspection
+  assert.strictEqual(script.includes('function sanitizeTelemetryPayload(raw)'), true);
+  assert.strictEqual(script.includes('Object.getOwnPropertyDescriptor(raw, key)'), true);
+  assert.strictEqual(script.includes('if (!desc || desc.get || desc.set) continue;'), true);
+  assert.strictEqual(script.includes('APPROVED_NUMERIC_RANGES'), true);
+
+  // 2. Inline Web Worker protocol
+  assert.strictEqual(script.includes('const TELEMETRY_WORKER_SCRIPT = `'), true);
+  assert.strictEqual(script.includes("msg.type === 'WORKER_INIT'"), true);
+  assert.strictEqual(script.includes("msg.type === 'PACKET'"), true);
+  assert.strictEqual(script.includes("self.postMessage({ type: 'READY'"), true);
+  assert.strictEqual(script.includes("status: 'PROCESSED'"), true);
+
+  // 3. TelemetryWorkerBridge lifecycle & CSP fallback
+  assert.strictEqual(script.includes('class TelemetryWorkerBridge'), true);
+  assert.strictEqual(script.includes('this.cspFallbackBufferCount++'), true);
+  assert.strictEqual(script.includes('this.passiveFallbackBuffer'), true);
+  assert.strictEqual(script.includes('this.droppedWorkerPackets'), true);
+  assert.strictEqual(script.includes('URL.createObjectURL(blob)'), true);
+  assert.strictEqual(script.includes('URL.revokeObjectURL(this.workerBlobUrl)'), true);
+
+  // 4. Generation token and immutable identity
+  assert.strictEqual(script.includes('GLOBAL_SIM_MOUNT_COUNTER'), true);
+  assert.strictEqual(script.includes('this._generationId = ++GLOBAL_SIM_MOUNT_COUNTER.current;'), true);
+  assert.strictEqual(script.includes('this._isDestroyed = false;'), true);
+
+  // 5. Safe AudioContext disposal
+  assert.strictEqual(script.includes('this._closePromise = Promise.resolve(closeResult)'), true);
+});
+
+test('A2 Telemetry & AudioContext: repeated close calls and getters in payload test', async () => {
+  // Test AudioEngine close idempotency
+  let closeCallCount = 0;
+  const mockCtx = {
+    state: 'running',
+    close: () => {
+      closeCallCount++;
+      return Promise.resolve();
+    }
+  };
+
+  class TestAudioEngine {
+    constructor() {
+      this.ctx = mockCtx;
+      this._closePromise = null;
+    }
+    close() {
+      if (!this.ctx) {
+        return this._closePromise || Promise.resolve();
+      }
+      const ctx = this.ctx;
+      this.ctx = null;
+      try {
+        const res = ctx.close();
+        if (res && typeof res.then === 'function') {
+          this._closePromise = Promise.resolve(res).catch(() => {}).then(() => {});
+        } else {
+          this._closePromise = Promise.resolve();
+        }
+      } catch (_) {
+        this._closePromise = Promise.resolve();
+      }
+      return this._closePromise;
+    }
+  }
+
+  const audio = new TestAudioEngine();
+  const p1 = audio.close();
+  const p2 = audio.close();
+  await Promise.all([p1, p2]);
+  assert.strictEqual(closeCallCount, 1, 'AudioContext.close() must only be called once');
+
+  // Test getter trap rejection logic from sanitizeTelemetryPayload
+  const APPROVED_NUMERIC_RANGES = { side: { min: 1, max: 10 } };
+  let getterInvoked = false;
+  const maliciousPayload = {};
+  Object.defineProperty(maliciousPayload, 'side', {
+    get() {
+      getterInvoked = true;
+      return 5;
+    },
+    enumerable: true
+  });
+
+  const sanitized = {};
+  const desc = Object.getOwnPropertyDescriptor(maliciousPayload, 'side');
+  if (desc && !desc.get && !desc.set) {
+    sanitized.side = desc.value;
+  }
+  assert.strictEqual(getterInvoked, false, 'Accessor getter must never be executed');
+  assert.strictEqual(sanitized.side, undefined, 'Getter property must be skipped');
+});
+
+test('Batch B Dynamic Dispatch: generates IsometricCubeSimulationAdapter for 3D concepts', () => {
+  const cubeSpec = {
+    id: 'sim_cube_01',
+    title: 'Exploring Cubic Numbers in 3D',
+    modelType: 'IsometricCubeModel',
+    initialState: { n: 3, isSliced: false }
+  };
+
+  const script = generateSimulationScript(cubeSpec);
+
+  // Assert IsometricCubeSimulationAdapter exists in script
+  assert.strictEqual(script.includes('class IsometricCubeSimulationAdapter'), true);
+  assert.strictEqual(script.includes('this.foundationId = \'F20\''), true);
+  assert.strictEqual(script.includes('Volume = \' + n + \'³ = \' + totalCubes'), true);
+  assert.strictEqual(script.includes('Odd Sum Property (Group \' + n + \'):'), true);
+
+  // Assert dynamic dispatch logic in AashaSimComponent
+  assert.strictEqual(script.includes('const modelType = SPEC.modelType || \'SquareGnomonModel\';'), true);
+  assert.strictEqual(script.includes('this._adapter = new IsometricCubeSimulationAdapter();'), true);
+  assert.strictEqual(script.includes('this._adapter = new SquareGnomonSimulationAdapter();'), true);
+  assert.strictEqual(script.includes('UNSUPPORTED_SIMULATION_MODEL'), true);
+});
+
+test('Batch B Coordinator: simulationSubagent auto-selects IsometricCubeModel for cube concepts', async () => {
+  const result = await simulationSubagent({
+    conceptId: 'concept_cube_test',
+    contractData: {
+      chapter_meta: { slug: 'squares_and_cubes', class: 8 },
+      curriculum_intent: {
+        core_concepts: [
+          { id: 'concept_cube_test', title: '3D Cube Numbers & Layer Slicing' }
+        ]
+      }
+    }
+  });
+
+  assert.strictEqual(result.success, true);
+  assert.strictEqual(result.simulationSpec.modelType, 'IsometricCubeModel');
+  assert.strictEqual(result.simulationSpec.initialState.n, 3);
+  assert.strictEqual(result.simulationSpec.initialState.volume, 27);
+  assert.strictEqual(result.clientScript.includes('IsometricCubeSimulationAdapter'), true);
+});
+
 

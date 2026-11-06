@@ -201,49 +201,64 @@ async function executeIteration(iterationNumber) {
   console.log('\n--- [STAGE 8/12: TEST] Executing Comprehensive Test Battery ---');
 
   // Test 1: Version Manager Test
-  console.log('  [Test 1/9] Running Aasha-AI Version Manager Tests...');
+  console.log('  [Test 1/12] Running Aasha-AI Version Manager Tests...');
   const vmTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_version_manager.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Version Manager', pass: vmTest.success });
 
   // Test 2: Admin Memory CLI Workflow
-  console.log('  [Test 2/9] Running Admin Memory CLI Workflow Tests...');
+  console.log('  [Test 2/12] Running Admin Memory CLI Workflow Tests...');
   const cliTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/admin_memory_cli_version_workflow.test.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Admin Memory CLI Workflow', pass: cliTest.success });
 
   // Test 3: Gamified Assessment Integration
-  console.log('  [Test 3/9] Running Gamified Assessment Integration Tests...');
+  console.log('  [Test 3/12] Running Gamified Assessment Integration Tests...');
   const gamedTest = runCmd('node Aasha-AI/tests/verify_gamified_assessment_integration.js', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Gamified Assessment Integration', pass: gamedTest.success });
 
   // Test 4: Concurrency Wiring (OI-002)
-  console.log('  [Test 4/9] Running Fork-Join Concurrency Wiring Suite...');
+  console.log('  [Test 4/12] Running Fork-Join Concurrency Wiring Suite...');
   const concTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_concurrency_wiring.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Concurrency Wiring (OI-002)', pass: concTest.success });
 
   // Test 5: Fault Injection Hardening (OI-003)
-  console.log('  [Test 5/9] Running Fault Injection Hardening Suite...');
+  console.log('  [Test 5/12] Running Fault Injection Hardening Suite...');
   const faultTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fault_injection_hardening.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Fault Injection Hardening (OI-003)', pass: faultTest.success });
 
   // Test 6: L-Truth Ground Truth Anti-Spoiler Benchmark
-  console.log('  [Test 6/9] Running L-Truth Ground Truth Benchmark...');
+  console.log('  [Test 6/12] Running L-Truth Ground Truth Benchmark...');
   const ltruthTest = runCmd('npm run test:ltruth', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'L-Truth Benchmark', pass: ltruthTest.success });
 
   // Test 7: Master Unified E2E Multi-Chapter Suite
-  console.log('  [Test 7/9] Running Master Unified E2E Multi-Chapter Suite...');
+  console.log('  [Test 7/12] Running Master Unified E2E Multi-Chapter Suite...');
   const masterTest = runCmd('npm run test:master', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Master Unified E2E Suite', pass: masterTest.success });
 
   // Test 8: Offline Method B Chapter Compilation Pipeline (Workstream B)
-  console.log('  [Test 8/9] Running Offline Method B Chapter Compilation Suite (Workstream B)...');
+  console.log('  [Test 8/12] Running Offline Method B Chapter Compilation Suite (Workstream B)...');
   const offlinePipelineTest = runCmd('npm run chapter:test:offline', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Offline Chapter Compilation (Workstream B)', pass: offlinePipelineTest.success });
 
   // Test 9: Foundation F24 Dynamic Fraction Slice Sim (Workstream B)
-  console.log('  [Test 9/9] Running Foundation F24 Dynamic Fraction Slice Sim Suite...');
+  console.log('  [Test 9/12] Running Foundation F24 Dynamic Fraction Slice Sim Suite...');
   const f24Test = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fraction_slice_sim.ts', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Foundation F24 Fraction Slice Sim', pass: f24Test.success });
+
+  // Test 10: Billing Observability & Gemini Authorization Suite (OI-001)
+  console.log('  [Test 10/12] Running Billing Observability & Gemini Auth Suite (OI-001)...');
+  const billingTest = runCmd('npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_billing_observability_and_gemini_authorization.ts', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Billing Observability (OI-001)', pass: billingTest.success });
+
+  // Test 11: Aasha Agent Builder Simulation Engine Unit Suite
+  console.log('  [Test 11/12] Running Simulation Engine Unit Suite...');
+  const simSubTest = runCmd('node packages/aasha-agent-builder/test/simulation_subagent.test.mjs', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Simulation Engine Unit Suite', pass: simSubTest.success });
+
+  // Test 12: Aasha Agent Builder Headless Chrome CDP & Scope-Locked Ceiling Suite
+  console.log('  [Test 12/12] Running Simulation Headless Chrome CDP & Ceiling Suite...');
+  const simCdpTest = runCmd('node packages/aasha-agent-builder/test/simulation_browser_cdp.test.mjs', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Simulation Headless Chrome CDP Suite', pass: simCdpTest.success });
 
   const allTestsPassed = executionEvidence.tests.every(t => t.pass);
   console.log(`\n  Test Summary: ${executionEvidence.tests.filter(t => t.pass).length}/${executionEvidence.tests.length} Suites Passed.`);

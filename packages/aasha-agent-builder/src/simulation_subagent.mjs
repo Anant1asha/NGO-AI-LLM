@@ -259,6 +259,300 @@ export function generateSimulationScript(spec) {
 (function() {
   const SPEC = ${specJson};
 
+  // --- A2 Telemetry Security & Validation Specification ---
+  const APPROVED_NUMERIC_RANGES = Object.freeze({
+    side: { min: 1, max: 10 },
+    peeledLayers: { min: 0, max: 9 },
+    activeSide: { min: 1, max: 10 },
+    totalArea: { min: 1, max: 100 },
+    activeArea: { min: 1, max: 100 },
+    gnomonUnits: { min: 1, max: 19 },
+    n: { min: 1, max: 5 },
+    volume: { min: 1, max: 125 }
+  });
+  const APPROVED_BOOLEAN_KEYS = Object.freeze(new Set(['isPaused', 'audioEnabled', 'isSliced']));
+  const APPROVED_STRING_KEYS = Object.freeze(new Set(['conceptId', 'action']));
+
+  function sanitizeTelemetryPayload(raw) {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return Object.freeze({});
+    const proto = Object.getPrototypeOf(raw);
+    if (proto !== Object.prototype && proto !== null) return Object.freeze({});
+
+    const sanitized = Object.create(null);
+    const ownProps = Object.getOwnPropertyNames(raw);
+    for (let i = 0; i < ownProps.length; i++) {
+      const key = ownProps[i];
+      const desc = Object.getOwnPropertyDescriptor(raw, key);
+      if (!desc || desc.get || desc.set) continue;
+      const val = desc.value;
+
+      if (Object.prototype.hasOwnProperty.call(APPROVED_NUMERIC_RANGES, key)) {
+        const range = APPROVED_NUMERIC_RANGES[key];
+        if (typeof val === 'number' && Number.isInteger(val) && val >= range.min && val <= range.max) {
+          sanitized[key] = val;
+        }
+        continue;
+      }
+      if (APPROVED_BOOLEAN_KEYS.has(key) && typeof val === 'boolean') {
+        sanitized[key] = val;
+        continue;
+      }
+      if (APPROVED_STRING_KEYS.has(key) && typeof val === 'string' && val.length <= 64) {
+        sanitized[key] = val;
+        continue;
+      }
+    }
+    return Object.freeze(sanitized);
+  }
+
+  const TELEMETRY_WORKER_SCRIPT = \`
+    let isInitialized = false;
+    let sequenceNumber = 0;
+    const ledger = [];
+    const MAX_LEDGER_ENTRIES = 128;
+
+    self.onmessage = function(e) {
+      const msg = e.data;
+      if (!msg || typeof msg !== 'object') return;
+
+      if (msg.type === 'WORKER_INIT') {
+        isInitialized = true;
+        self.postMessage({ type: 'READY', initTimestamp: Date.now() });
+        return;
+      }
+
+      if (msg.type === 'PACKET') {
+        if (!isInitialized) {
+          self.postMessage({
+            type: 'PROCESSING_ERROR',
+            packetId: msg.packetId,
+            generationId: msg.generationId,
+            error: 'WORKER_NOT_INITIALIZED'
+          });
+          return;
+        }
+
+        try {
+          sequenceNumber++;
+          const ledgerRecord = {
+            seq: sequenceNumber,
+            packetId: msg.packetId,
+            generationId: msg.generationId,
+            eventType: msg.eventType,
+            payload: msg.payload,
+            receivedAt: Date.now()
+          };
+          if (ledger.length >= MAX_LEDGER_ENTRIES) {
+            ledger.shift();
+          }
+          ledger.push(ledgerRecord);
+
+          self.postMessage({
+            type: 'ACK',
+            packetId: msg.packetId,
+            generationId: msg.generationId,
+            status: 'PROCESSED',
+            ackState: 'PROCESSED_IN_MEMORY_LEDGER',
+            seq: sequenceNumber,
+            timestamp: Date.now()
+          });
+        } catch (err) {
+          self.postMessage({
+            type: 'PROCESSING_ERROR',
+            packetId: msg.packetId,
+            generationId: msg.generationId,
+            error: err && err.message ? err.message : 'UNKNOWN_PROCESSING_ERROR'
+          });
+        }
+      }
+    };
+  \`;
+
+  class TelemetryWorkerBridge {
+    constructor(generationId) {
+      this.generationId = generationId;
+      this.worker = null;
+      this.workerBlobUrl = null;
+      this.isWorkerReady = false;
+      this.isTerminated = false;
+      this.inFlight = new Map();
+      this.packetCounter = 0;
+      this.droppedWorkerPackets = 0;
+      this.cspFallbackBufferCount = 0;
+      this.passiveFallbackBuffer = [];
+      this.MAX_FALLBACK_BUFFER = 64;
+      this.MAX_IN_FLIGHT = 8;
+      this.ACK_STATES = Object.freeze({
+        SENT: 'SENT',
+        ACCEPTED: 'ACCEPTED',
+        PROCESSED: 'PROCESSED',
+        PERSISTED: 'PERSISTED',
+        DROPPED: 'DROPPED'
+      });
+      this.init();
+    }
+
+    init() {
+      if (typeof window === 'undefined' || typeof Worker === 'undefined' || typeof Blob === 'undefined' || typeof URL === 'undefined') {
+        return;
+      }
+      try {
+        const blob = new Blob([TELEMETRY_WORKER_SCRIPT], { type: 'application/javascript' });
+        this.workerBlobUrl = URL.createObjectURL(blob);
+        this.worker = new Worker(this.workerBlobUrl);
+
+        this.worker.onmessage = (e) => {
+          if (this.isTerminated) return;
+          const data = e.data;
+          if (!data || typeof data !== 'object') return;
+
+          if (data.type === 'READY') {
+            this.isWorkerReady = true;
+            return;
+          }
+
+          if (data.type === 'ACK') {
+            if (data.generationId !== this.generationId) return;
+            const entry = this.inFlight.get(data.packetId);
+            if (entry) {
+              if (entry.timeoutId) clearTimeout(entry.timeoutId);
+              entry.state = this.ACK_STATES.PROCESSED;
+              this.inFlight.delete(data.packetId);
+            }
+            return;
+          }
+
+          if (data.type === 'PROCESSING_ERROR') {
+            if (data.generationId !== this.generationId) return;
+            const entry = this.inFlight.get(data.packetId);
+            if (entry) {
+              if (entry.timeoutId) clearTimeout(entry.timeoutId);
+              entry.state = this.ACK_STATES.DROPPED;
+              this.droppedWorkerPackets++;
+              this.inFlight.delete(data.packetId);
+            }
+          }
+        };
+
+        this.worker.onerror = () => {
+          this.terminate();
+        };
+
+        this.worker.postMessage({ type: 'WORKER_INIT', generationId: this.generationId });
+      } catch (err) {
+        this.worker = null;
+        if (this.workerBlobUrl) {
+          URL.revokeObjectURL(this.workerBlobUrl);
+          this.workerBlobUrl = null;
+        }
+      }
+    }
+
+    send(eventType, rawPayload) {
+      if (this.isTerminated) return;
+      const sanitized = sanitizeTelemetryPayload(rawPayload);
+
+      if (!this.worker) {
+        this.cspFallbackBufferCount++;
+        if (this.passiveFallbackBuffer.length >= this.MAX_FALLBACK_BUFFER) {
+          this.passiveFallbackBuffer.shift();
+        }
+        this.passiveFallbackBuffer.push(Object.freeze({
+          generationId: this.generationId,
+          eventType,
+          payload: sanitized,
+          bufferedAt: Date.now()
+        }));
+        return;
+      }
+
+      if (this.inFlight.size >= this.MAX_IN_FLIGHT) {
+        this.droppedWorkerPackets++;
+        return;
+      }
+
+      const packetId = ++this.packetCounter;
+      const packet = {
+        type: 'PACKET',
+        packetId,
+        generationId: this.generationId,
+        eventType,
+        payload: sanitized,
+        timestamp: Date.now()
+      };
+
+      const entry = {
+        packet,
+        retries: 0,
+        state: this.ACK_STATES.SENT,
+        timeoutId: null
+      };
+
+      const scheduleRetry = (attempt) => {
+        if (this.isTerminated) return;
+        const delay = attempt === 0 ? 1500 : (attempt === 1 ? 1500 : 1500);
+        entry.timeoutId = setTimeout(() => {
+          if (this.isTerminated) return;
+          if (entry.retries < 2) {
+            entry.retries++;
+            try {
+              if (this.worker) this.worker.postMessage(packet);
+              scheduleRetry(entry.retries);
+            } catch (_) {
+              entry.state = this.ACK_STATES.DROPPED;
+              this.droppedWorkerPackets++;
+              this.inFlight.delete(packetId);
+            }
+          } else {
+            entry.state = this.ACK_STATES.DROPPED;
+            this.droppedWorkerPackets++;
+            this.inFlight.delete(packetId);
+          }
+        }, delay);
+      };
+
+      this.inFlight.set(packetId, entry);
+
+      try {
+        this.worker.postMessage(packet);
+        scheduleRetry(0);
+      } catch (err) {
+        if (entry.timeoutId) clearTimeout(entry.timeoutId);
+        entry.state = this.ACK_STATES.DROPPED;
+        this.droppedWorkerPackets++;
+        this.inFlight.delete(packetId);
+      }
+    }
+
+    terminate() {
+      if (this.isTerminated) return;
+      this.isTerminated = true;
+      this.isWorkerReady = false;
+
+      for (const [, entry] of this.inFlight) {
+        if (entry.timeoutId) clearTimeout(entry.timeoutId);
+        entry.state = this.ACK_STATES.DROPPED;
+      }
+      this.inFlight.clear();
+
+      if (this.worker) {
+        try {
+          this.worker.terminate();
+        } catch (_) {}
+        this.worker = null;
+      }
+
+      if (this.workerBlobUrl && typeof URL !== 'undefined') {
+        try {
+          URL.revokeObjectURL(this.workerBlobUrl);
+        } catch (_) {}
+        this.workerBlobUrl = null;
+      }
+    }
+  }
+
+  const GLOBAL_SIM_MOUNT_COUNTER = { current: 0 };
+
   // 1. Procedural Web Audio Synthesizer (Zero external audio files, mute toggle)
   class AashaAudioEngine {
     constructor() {
@@ -337,6 +631,8 @@ export function generateSimulationScript(spec) {
       this.experienceId = SPEC.id || 'square_gnomon_sim';
       this.container = null;
       this._abortController = null;
+      this._generationId = ++GLOBAL_SIM_MOUNT_COUNTER.current;
+      this._isDestroyed = false;
       this.state = {
         side: SPEC.initialState?.side || 5,
         peeledLayers: 0,
@@ -344,9 +640,11 @@ export function generateSimulationScript(spec) {
       };
       this.isPaused = false;
       this.audio = new AashaAudioEngine();
+      this.telemetryBridge = new TelemetryWorkerBridge(this._generationId);
     }
 
     mount(container, config = {}) {
+      if (this._isDestroyed) return;
       this.container = container;
       if (config.initialSide) this.state.side = config.initialSide;
       this.render();
@@ -374,12 +672,14 @@ export function generateSimulationScript(spec) {
     }
 
     resume() {
+      if (this._isDestroyed) return;
       this.isPaused = false;
       this.drawCanvas();
       this.emitTelemetry('resume', this.getState());
     }
 
     reset() {
+      if (this._isDestroyed) return;
       this.state.side = SPEC.initialState?.side || 5;
       this.state.peeledLayers = 0;
       this.audio.playReset();
@@ -388,6 +688,8 @@ export function generateSimulationScript(spec) {
     }
 
     destroy() {
+      if (this._isDestroyed) return;
+      this._isDestroyed = true;
       this.pause();
       if (this._abortController) {
         this._abortController.abort();
@@ -396,6 +698,9 @@ export function generateSimulationScript(spec) {
       if (this.audio) {
         this.audio.close();
       }
+      if (this.telemetryBridge) {
+        this.telemetryBridge.terminate();
+      }
       if (this.container) {
         this.container.innerHTML = '';
         this.container = null;
@@ -403,6 +708,10 @@ export function generateSimulationScript(spec) {
     }
 
     emitTelemetry(eventType, payload) {
+      if (this._isDestroyed) return;
+      if (this.telemetryBridge) {
+        this.telemetryBridge.send(eventType, payload);
+      }
       if (!this.container) return;
       try {
         const event = new CustomEvent('aasha:telemetry', {
@@ -410,10 +719,11 @@ export function generateSimulationScript(spec) {
           composed: true,
           detail: {
             timestamp: Date.now(),
+            generationId: this._generationId,
             foundationId: this.foundationId,
             experienceId: this.experienceId,
             eventType,
-            payload
+            payload: sanitizeTelemetryPayload(payload)
           }
         });
         this.container.dispatchEvent(event);
@@ -680,7 +990,402 @@ export function generateSimulationScript(spec) {
     }
   }
 
-  // 3. Register Custom Web Component <aasha-sim>
+  // 3. Concrete 3D Isometric Cube Adapter (Batch B)
+  class IsometricCubeSimulationAdapter {
+    constructor() {
+      this.foundationId = 'F20';
+      this.experienceId = SPEC.id || 'isometric_cube_sim';
+      this.container = null;
+      this._abortController = null;
+      this._generationId = ++GLOBAL_SIM_MOUNT_COUNTER.current;
+      this._isDestroyed = false;
+      this.state = {
+        n: SPEC.initialState?.n || 3,
+        isSliced: !!SPEC.initialState?.isSliced,
+        audioEnabled: true
+      };
+      this.isPaused = false;
+      this.audio = new AashaAudioEngine();
+      this.telemetryBridge = new TelemetryWorkerBridge(this._generationId);
+    }
+
+    mount(container, config = {}) {
+      if (this._isDestroyed) return;
+      this.container = container;
+      if (config.initialN) this.state.n = config.initialN;
+      this.render();
+      this.bindEvents();
+      this.emitTelemetry('mount', this.getState());
+    }
+
+    getState() {
+      const n = this.state.n;
+      const volume = n * n * n;
+      const layerCount = n;
+      const cubesPerLayer = n * n;
+      const firstOdd = n * (n - 1) + 1;
+      const consecutiveOdds = [];
+      for (let i = 0; i < n; i++) {
+        consecutiveOdds.push(firstOdd + 2 * i);
+      }
+      return {
+        n,
+        volume,
+        layerCount,
+        cubesPerLayer,
+        consecutiveOdds,
+        isSliced: this.state.isSliced,
+        isPaused: this.isPaused
+      };
+    }
+
+    pause() {
+      this.isPaused = true;
+      this.emitTelemetry('pause', this.getState());
+    }
+
+    resume() {
+      if (this._isDestroyed) return;
+      this.isPaused = false;
+      this.drawCanvas();
+      this.emitTelemetry('resume', this.getState());
+    }
+
+    reset() {
+      if (this._isDestroyed) return;
+      this.state.n = SPEC.initialState?.n || 3;
+      this.state.isSliced = false;
+      this.audio.playReset();
+      this.updateUI();
+      this.emitTelemetry('reset', this.getState());
+    }
+
+    destroy() {
+      if (this._isDestroyed) return;
+      this._isDestroyed = true;
+      this.pause();
+      if (this._abortController) {
+        this._abortController.abort();
+        this._abortController = null;
+      }
+      if (this.audio) {
+        this.audio.close();
+      }
+      if (this.telemetryBridge) {
+        this.telemetryBridge.terminate();
+      }
+      if (this.container) {
+        this.container.innerHTML = '';
+        this.container = null;
+      }
+    }
+
+    emitTelemetry(eventType, payload) {
+      if (this._isDestroyed) return;
+      if (this.telemetryBridge) {
+        this.telemetryBridge.send(eventType, payload);
+      }
+      if (!this.container) return;
+      try {
+        const event = new CustomEvent('aasha:telemetry', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            timestamp: Date.now(),
+            generationId: this._generationId,
+            foundationId: this.foundationId,
+            experienceId: this.experienceId,
+            eventType,
+            payload: sanitizeTelemetryPayload(payload)
+          }
+        });
+        this.container.dispatchEvent(event);
+      } catch (err) {
+        // Telemetry listener throw must never crash simulation execution
+      }
+    }
+
+    updateUI() {
+      const readout = this.container.querySelector('#simReadout');
+      const nInput = this.container.querySelector('#nRange');
+      const sliceBtn = this.container.querySelector('#btnSlice');
+      const n = this.state.n;
+      const volume = n * n * n;
+      const firstOdd = n * (n - 1) + 1;
+      const oddList = [];
+      for (let k = 0; k < n; k++) oddList.push(firstOdd + 2 * k);
+
+      if (readout) {
+        readout.textContent = 'n = ' + n + ' | Volume = ' + n + '³ = ' + volume + ' unit cubes | Odd Sum: ' + oddList.join(' + ') + ' = ' + volume;
+      }
+      if (nInput) nInput.value = n;
+      if (sliceBtn) {
+        sliceBtn.textContent = this.state.isSliced ? 'Assemble Cube' : 'Slice Layers';
+      }
+      this.drawCanvas();
+    }
+
+    drawCanvas() {
+      const canvas = this.container.querySelector('#simCanvas');
+      if (!canvas || this.isPaused) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const n = Math.max(1, Math.min(5, this.state.n || 3));
+      const sliced = this.state.isSliced;
+      const totalCubes = n * n * n;
+      const cos30 = 0.8660254;
+      const sin30 = 0.5;
+      const layerGap = sliced ? 12 : 0;
+      let blockSize = Math.min(17, Math.floor((h - 28) / (n + n * sin30 + (sliced ? (n - 1) * 0.7 : 0))));
+      blockSize = Math.max(8, blockSize);
+
+      const cx = Math.floor(w * 0.28);
+      const cy = Math.floor(h * 0.54) + (sliced ? Math.floor((n * layerGap) / 3) : 0);
+
+      const layerPalettes = [
+        { top: '#93c5fd', left: '#3b82f6', right: '#1d4ed8' },
+        { top: '#86efac', left: '#22c55e', right: '#15803d' },
+        { top: '#fde047', left: '#eab308', right: '#a16207' },
+        { top: '#f472b6', left: '#ec4899', right: '#be185d' },
+        { top: '#c084fc', left: '#a855f7', right: '#7e22ce' }
+      ];
+
+      for (let z = 0; z < n; z++) {
+        const zOffset = z * blockSize + (sliced ? z * layerGap : 0);
+        const palette = layerPalettes[z % layerPalettes.length];
+
+        for (let y = 0; y < n; y++) {
+          for (let x = 0; x < n; x++) {
+            const u = cx + (x - y) * blockSize * cos30;
+            const v = cy + (x + y) * blockSize * sin30 - zOffset;
+
+            ctx.fillStyle = palette.top;
+            ctx.beginPath();
+            ctx.moveTo(u, v);
+            ctx.lineTo(u + blockSize * cos30, v + blockSize * sin30);
+            ctx.lineTo(u, v + 2 * blockSize * sin30);
+            ctx.lineTo(u - blockSize * cos30, v + blockSize * sin30);
+            ctx.closePath();
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(15, 23, 42, 0.3)'; ctx.lineWidth = 0.8; ctx.stroke();
+
+            ctx.fillStyle = palette.left;
+            ctx.beginPath();
+            ctx.moveTo(u - blockSize * cos30, v + blockSize * sin30);
+            ctx.lineTo(u, v + 2 * blockSize * sin30);
+            ctx.lineTo(u, v + 2 * blockSize * sin30 + blockSize);
+            ctx.lineTo(u - blockSize * cos30, v + blockSize * sin30 + blockSize);
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+
+            ctx.fillStyle = palette.right;
+            ctx.beginPath();
+            ctx.moveTo(u, v + 2 * blockSize * sin30);
+            ctx.lineTo(u + blockSize * cos30, v + blockSize * sin30);
+            ctx.lineTo(u + blockSize * cos30, v + blockSize * sin30 + blockSize);
+            ctx.lineTo(u, v + 2 * blockSize * sin30 + blockSize);
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+          }
+        }
+      }
+
+      const rx = Math.floor(w * 0.52);
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui, sans-serif';
+      ctx.fillText('Volume = ' + n + '³ = ' + totalCubes + ' unit cubes', rx, 18);
+
+      ctx.fillStyle = '#2563eb'; ctx.font = 'bold 11px system-ui, sans-serif';
+      const cubesPerLayer = n * n;
+      ctx.fillText(n + ' layers of ' + cubesPerLayer + ' cubes = ' + totalCubes, rx, 36);
+
+      const firstOdd = n * (n - 1) + 1;
+      const oddList = [];
+      for (let ok = 0; ok < n; ok++) oddList.push(firstOdd + 2 * ok);
+
+      ctx.fillStyle = '#d97706'; ctx.font = 'bold 11px system-ui, sans-serif';
+      ctx.fillText('Odd Sum Property (Group ' + n + '):', rx, 54);
+
+      ctx.fillStyle = '#1e3a8a'; ctx.font = '10px system-ui, sans-serif';
+      ctx.fillText(oddList.join(' + ') + ' = ' + totalCubes, rx, 70);
+
+      ctx.fillStyle = '#64748b'; ctx.font = '10px system-ui, sans-serif';
+      if (sliced) {
+        ctx.fillText('✓ Sliced: ' + n + ' slabs of ' + cubesPerLayer + ' unit cubes each', rx, 88);
+      } else {
+        ctx.fillText('Consecutive odds sum equals volume', rx, 88);
+      }
+    }
+
+    render() {
+      this.container.innerHTML = \`
+        <style>
+          .sim-root {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: system-ui, sans-serif;
+          }
+          .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .sim-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #1e293b;
+          }
+          .sim-readout {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+          }
+          .sim-canvas-wrap {
+            width: 100%;
+            height: 160px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .sim-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+          }
+          .btn-touch {
+            min-width: 44px;
+            min-height: 44px;
+            padding: 8px 16px;
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            touch-action: manipulation;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .btn-touch:active {
+            transform: scale(0.97);
+          }
+          .btn-secondary {
+            background: #64748b;
+          }
+          .slider-touch {
+            min-height: 44px;
+            height: 44px;
+            flex: 1;
+            min-width: 120px;
+          }
+        </style>
+        <div class="sim-root" role="region" aria-label="Isometric Cube Interactive Simulation">
+          <div class="sim-header">
+            <span class="sim-title" id="simTitle"></span>
+            <button class="btn-touch btn-secondary" id="btnMute" aria-label="Toggle Sound" style="width:44px;padding:0">🔊</button>
+          </div>
+          <div class="sim-readout" id="simReadout" aria-live="polite">n = 3 | Volume = 27</div>
+          <div class="sim-canvas-wrap">
+            <canvas id="simCanvas" width="380" height="160"></canvas>
+          </div>
+          <div class="sim-controls">
+            <button class="btn-touch" id="btnDec" aria-label="Decrease Dimension">-</button>
+            <input type="range" class="slider-touch" id="nRange" min="1" max="5" value="\${this.state.n}" aria-label="Cube Dimension Slider">
+            <button class="btn-touch" id="btnInc" aria-label="Increase Dimension">+</button>
+            <button class="btn-touch btn-secondary" id="btnSlice" aria-label="Toggle Layer Slice">Slice Layers</button>
+            <button class="btn-touch btn-secondary" id="btnReset" aria-label="Reset Simulation">Reset</button>
+          </div>
+        </div>
+      \`;
+      const titleEl = this.container.querySelector('#simTitle');
+      if (titleEl) {
+        titleEl.textContent = SPEC.title || '3D Isometric Cube Visualizer';
+      }
+      this.updateUI();
+    }
+
+    bindEvents() {
+      if (typeof AbortController !== 'undefined') {
+        this._abortController = new AbortController();
+      }
+      const signal = this._abortController ? this._abortController.signal : undefined;
+      const opts = signal ? { signal } : {};
+
+      const btnInc = this.container.querySelector('#btnInc');
+      const btnDec = this.container.querySelector('#btnDec');
+      const nRange = this.container.querySelector('#nRange');
+      const btnSlice = this.container.querySelector('#btnSlice');
+      const btnReset = this.container.querySelector('#btnReset');
+      const btnMute = this.container.querySelector('#btnMute');
+
+      const triggerAudio = () => this.audio.init();
+
+      if (btnInc) btnInc.addEventListener('click', () => {
+        triggerAudio();
+        if (this.state.n < 5) {
+          this.state.n += 1;
+          this.audio.playIncrement();
+          this.updateUI();
+          this.emitTelemetry('dimension_change', { n: this.state.n, volume: this.state.n * this.state.n * this.state.n });
+        }
+      }, opts);
+
+      if (btnDec) btnDec.addEventListener('click', () => {
+        triggerAudio();
+        if (this.state.n > 1) {
+          this.state.n -= 1;
+          this.audio.playDecrement();
+          this.updateUI();
+          this.emitTelemetry('dimension_change', { n: this.state.n, volume: this.state.n * this.state.n * this.state.n });
+        }
+      }, opts);
+
+      if (nRange) nRange.addEventListener('input', (e) => {
+        triggerAudio();
+        this.state.n = parseInt(e.target.value, 10);
+        this.audio.playIncrement();
+        this.updateUI();
+        this.emitTelemetry('dimension_change', { n: this.state.n, volume: this.state.n * this.state.n * this.state.n });
+      }, opts);
+
+      if (btnSlice) btnSlice.addEventListener('click', () => {
+        triggerAudio();
+        this.state.isSliced = !this.state.isSliced;
+        this.audio.playPeel();
+        this.updateUI();
+        this.emitTelemetry('slice_toggle', { isSliced: this.state.isSliced, n: this.state.n });
+      }, opts);
+
+      if (btnReset) btnReset.addEventListener('click', () => {
+        triggerAudio();
+        this.reset();
+      }, opts);
+
+      if (btnMute) btnMute.addEventListener('click', () => {
+        this.state.audioEnabled = !this.state.audioEnabled;
+        this.audio.setMuted(!this.state.audioEnabled);
+        btnMute.textContent = this.state.audioEnabled ? '🔊' : '🔇';
+      }, opts);
+    }
+  }
+
+  // 4. Register Custom Web Component <aasha-sim> with Dynamic Dispatch
   class AashaSimComponent extends HTMLElement {
     constructor() {
       super();
@@ -690,7 +1395,14 @@ export function generateSimulationScript(spec) {
     connectedCallback() {
       this.style.display = 'block';
       this.style.width = '100%';
-      this._adapter = new SquareGnomonSimulationAdapter();
+      const modelType = SPEC.modelType || 'SquareGnomonModel';
+      if (modelType === 'SquareGnomonModel') {
+        this._adapter = new SquareGnomonSimulationAdapter();
+      } else if (modelType === 'IsometricCubeModel') {
+        this._adapter = new IsometricCubeSimulationAdapter();
+      } else {
+        throw new Error('UNSUPPORTED_SIMULATION_MODEL: Unknown model type ' + modelType);
+      }
       this._adapter.mount(this, SPEC.initialState || {});
     }
 
