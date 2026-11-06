@@ -6,6 +6,51 @@
  * validators, Foundation F27 cleanroom adaptation, and Web Component scripts.
  */
 
+// ---------------------------------------------------------------------------
+// Constants & Lexicons for Anti-Spoiler Validation (ported from L-Truth)
+// ---------------------------------------------------------------------------
+
+export const STOPWORDS = new Set([
+  'the', 'is', 'at', 'which', 'on', 'a', 'an', 'and', 'or', 'in', 'of', 'to',
+  'it', 'its', 'by', 'for', 'with', 'as', 'are', 'was', 'were', 'be', 'this',
+  'that', 'from', 'into', 'than', 'more', 'less', 'will', 'can', 'not', 'no'
+]);
+
+export const LEAK_PREDICATES = [
+  'is', 'equals', 'equal to', 'equals to', 'gives', 'giving', 'yields',
+  'yielded', 'produces', 'produced', 'results in', 'resulting in',
+  'is equal to', 'would be', 'should be', 'comes to', 'simplifies to',
+  'evaluates to', 'evaluated to', 'becomes', 'became', 'which is', 'giving us',
+  'result is', 'answer is', 'correct is'
+];
+
+export const SPOILER_PHRASES = [
+  'correct answer',
+  'correct option',
+  'the answer is',
+  'the result is',
+  'the true value is',
+  'which gives',
+  'which gives us',
+  'leading to',
+  'yielding',
+  'giving',
+  'resulting in'
+];
+
+function escapeRegex(str) {
+  return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function normalizeMathText(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/\\(?:text|mathrm|mathbf)\{([^}]+)\}/g, '$1')
+    .replace(/[\$\{\}\\]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 /**
  * Headless Assessment Bank Model
  * Manages question categorization, active pointers, and progressive hint disclosures.
@@ -142,4 +187,324 @@ export class GamifiedScoringEngine {
     this.correctCount = 0;
     return this.getState();
   }
+}
+
+// ---------------------------------------------------------------------------
+// L-Truth Ground-Truth Anti-Spoiler & 4-Tier Scaffolding Validator Functions
+// ---------------------------------------------------------------------------
+
+/**
+ * Validates Rule #1 Zero-Spoiler Invariant for an option against the correct answer.
+ */
+export function validateZeroSpoilerInvariant(option, correctOption, qId = 'UNKNOWN', optIdx = 0) {
+  const errors = [];
+  if (!option || typeof option !== 'object') return errors;
+
+  // Correct options must have empty misconception
+  if (option.c === true) {
+    if (option.m && String(option.m).trim().length > 0) {
+      errors.push({
+        questionId: qId,
+        ruleId: 'RULE_1_CORRECT_OPTION_MISCONCEPTION',
+        severity: 'ERROR',
+        message: `Correct option #${optIdx + 1} ('${option.t}') must not have misconception explanation. Found: "${option.m}"`,
+        context: qId
+      });
+    }
+    return errors;
+  }
+
+  // Distractors must have non-empty misconception explanations (> 5 chars)
+  const mText = String(option.m || '').trim();
+  if (mText.length < 5) {
+    errors.push({
+      questionId: qId,
+      ruleId: 'RULE_1_DISTRACTOR_MISSING_MISCONCEPTION',
+      severity: 'ERROR',
+      message: `Distractor #${optIdx + 1} ('${option.t}') is missing a diagnostic misconception explanation.`,
+      context: qId
+    });
+    return errors;
+  }
+
+  if (!correctOption || !correctOption.t) return errors;
+
+  const rawCorrect = String(correctOption.t).trim();
+  const normCorrect = normalizeMathText(rawCorrect).toLowerCase();
+  const normM = normalizeMathText(mText).toLowerCase();
+
+  // 1. Boolean leakage check
+  const isBooleanTarget = /^(?:true|false)$/i.test(normCorrect);
+  if (isBooleanTarget) {
+    const boolLeakRegex = new RegExp(
+      '(?:\\b(?:' + LEAK_PREDICATES.map(p => escapeRegex(p).replace(/\s+/g, '\\s+(?:[a-z]+\\s+)?')).join('|') + '|statement\\s+is|claim\\s+is|option\\s+is|actually)\\b)\\s*(?:[a-z]+\\s*){0,3}[:=]?\\s*\\b' + escapeRegex(normCorrect) + '\\b',
+      'i'
+    );
+    if (boolLeakRegex.test(normM)) {
+      errors.push({
+        questionId: qId,
+        ruleId: 'RULE_1_SPOILER_BOOLEAN_LEAK',
+        severity: 'ERROR',
+        message: `Distractor #${optIdx + 1} ('${option.t}') reveals target boolean answer '${rawCorrect}' in: "${mText}".`,
+        context: qId
+      });
+      return errors;
+    }
+  }
+
+  // 2. Verbatim answer leakage (for non-pure numbers)
+  const isPureNumber = /^-?\d+(?:\.\d+)?$/.test(normCorrect);
+  if (!isPureNumber && normCorrect.length > 0 && !STOPWORDS.has(normCorrect)) {
+    let verbatimMatch = false;
+    if (normCorrect.length >= 3) {
+      verbatimMatch = normM.includes(normCorrect);
+    } else {
+      const shortRegex = new RegExp(`(?:^|[\\s,;:(])${escapeRegex(normCorrect)}(?:$|[\\s,;:).!?])`, 'i');
+      verbatimMatch = shortRegex.test(normM);
+    }
+    if (verbatimMatch) {
+      errors.push({
+        questionId: qId,
+        ruleId: 'RULE_1_SPOILER_VERBATIM_ANSWER',
+        severity: 'ERROR',
+        message: `Distractor #${optIdx + 1} ('${option.t}') leaks verbatim answer '${rawCorrect}' in: "${mText}".`,
+        context: qId
+      });
+      return errors;
+    }
+  }
+
+  // 3. Numerical value leakage patterns with leak predicates
+  const nums = normCorrect.match(/-?\d+(?:\.\d+)?/g) || [];
+  for (const n of nums) {
+    const escapedN = escapeRegex(n);
+    const leakPattern = new RegExp(
+      '(?:\\b(?:' + LEAK_PREDICATES.map(p => escapeRegex(p).replace(/\s+/g, '\\s+(?:[a-z]+\\s+)?')).join('|') + ')\\b)\\s*(?:[a-z]+\\s*){0,4}[:=]?\\s*\\b' + escapedN + '\\b',
+      'i'
+    );
+    if (leakPattern.test(normM)) {
+      errors.push({
+        questionId: qId,
+        ruleId: 'RULE_1_SPOILER_NUMERICAL_LEAK',
+        severity: 'ERROR',
+        message: `Distractor #${optIdx + 1} explicitly reveals target numerical value '${n}' in: "${mText}".`,
+        context: qId
+      });
+      return errors;
+    }
+
+    for (const phrase of SPOILER_PHRASES) {
+      const phraseLeakPattern = new RegExp(`(?:${escapeRegex(phrase)})\\s*(?:[a-z]+\\s*){0,3}[:=]?\\s*\\b${escapedN}\\b`, 'i');
+      if (phraseLeakPattern.test(normM)) {
+        errors.push({
+          questionId: qId,
+          ruleId: 'RULE_1_SPOILER_PHRASE_LEAK',
+          severity: 'ERROR',
+          message: `Distractor #${optIdx + 1} contains revealing phrase '${phrase}' disclosing value '${n}' in: "${mText}".`,
+          context: qId
+        });
+        return errors;
+      }
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * Validates 4-Tier Progressive Scaffolding Hints for an item.
+ */
+export function validate4TierHints(hints, correctOption, qId = 'UNKNOWN') {
+  const errors = [];
+  if (!hints || typeof hints !== 'object') {
+    errors.push({
+      questionId: qId,
+      ruleId: 'RULE_12_MISSING_HINTS_STRUCTURE',
+      severity: 'ERROR',
+      message: `Question '${qId}' is missing hints dictionary.`,
+      context: qId
+    });
+    return errors;
+  }
+
+  const hintKeys = ['h1', 'h2', 'h3', 'h4'];
+  for (let i = 0; i < hintKeys.length; i++) {
+    const key = hintKeys[i];
+    const val = hints[key] || hints[`hint_${i + 1}`];
+    if (!val || String(val).trim().length < 5) {
+      errors.push({
+        questionId: qId,
+        ruleId: 'RULE_12_HINT_TOO_SHORT',
+        severity: 'ERROR',
+        message: `Progressive Hint Tier ${i + 1} (${key}) in '${qId}' is missing or too short.`,
+        context: qId
+      });
+    }
+  }
+
+  if (!correctOption || !correctOption.t) return errors;
+
+  const rawCorrect = String(correctOption.t).trim();
+  const normCorrect = normalizeMathText(rawCorrect).toLowerCase();
+  const nums = normCorrect.match(/-?\d+(?:\.\d+)?/g) || [];
+  const isStopword = STOPWORDS.has(normCorrect);
+  const isBooleanTarget = /^(?:true|false)$/i.test(normCorrect);
+
+  hintKeys.forEach((key, hIdx) => {
+    const hintText = hints[key] || hints[`hint_${hIdx + 1}`];
+    if (!hintText) return;
+
+    const normH = normalizeMathText(hintText).toLowerCase();
+
+    // Boolean leak in hints
+    if (isBooleanTarget) {
+      const boolHintPattern = new RegExp(
+        '(?:\\b(?:' + LEAK_PREDICATES.map(p => escapeRegex(p).replace(/\s+/g, '\\s+(?:[a-z]+\\s+)?')).join('|') + '|statement\\s+is|claim\\s+is|actually)\\b)\\s*(?:[a-z]+\\s*){0,3}[:=]?\\s*\\b' + escapeRegex(normCorrect) + '\\b',
+        'i'
+      );
+      if (boolHintPattern.test(normH)) {
+        errors.push({
+          questionId: qId,
+          ruleId: 'RULE_12_HINT_SPOILER_BOOLEAN',
+          severity: 'ERROR',
+          message: `Progressive Hint Tier ${hIdx + 1} reveals boolean answer '${rawCorrect}' in: "${hintText}".`,
+          context: qId
+        });
+      }
+    }
+
+    // Verbatim answer leakage in hints
+    if (normCorrect.length > 0 && !isStopword) {
+      let verbatimHint = false;
+      if (normCorrect.length >= 3) {
+        verbatimHint = normH.includes(normCorrect);
+      } else {
+        const shortRegex = new RegExp(`(?:^|[\\s,;:(])${escapeRegex(normCorrect)}(?:$|[\\s,;:).!?])`, 'i');
+        verbatimHint = shortRegex.test(normH);
+      }
+      if (verbatimHint) {
+        errors.push({
+          questionId: qId,
+          ruleId: 'RULE_12_HINT_SPOILER',
+          severity: 'ERROR',
+          message: `Progressive Hint Tier ${hIdx + 1} leaks target answer '${rawCorrect}' in: "${hintText}".`,
+          context: qId
+        });
+      }
+    }
+
+    // Numerical value leakage with leak predicates
+    for (const n of nums) {
+      const escapedN = escapeRegex(n);
+      const leakPattern = new RegExp(
+        '(?:\\b(?:' + LEAK_PREDICATES.map(p => escapeRegex(p).replace(/\s+/g, '\\s+(?:[a-z]+\\s+)?')).join('|') + ')\\b)\\s*(?:[a-z]+\\s*){0,4}[:=]?\\s*\\b' + escapedN + '\\b',
+        'i'
+      );
+      if (leakPattern.test(normH)) {
+        errors.push({
+          questionId: qId,
+          ruleId: 'RULE_12_HINT_SPOILER_VALUE',
+          severity: 'ERROR',
+          message: `Progressive Hint Tier ${hIdx + 1} reveals answer value '${n}' in: "${hintText}".`,
+          context: qId
+        });
+      }
+    }
+  });
+
+  return errors;
+}
+
+/**
+ * Validates complete schema for a single assessment question.
+ */
+export function validateQuestionSchema(q, index = 0) {
+  const qId = q.id || `Q_${index + 1}`;
+  const errors = [];
+
+  if (!q.q || String(q.q).trim().length < 5) {
+    errors.push({
+      questionId: qId,
+      ruleId: 'SCHEMA_INVALID_QUESTION_PROMPT',
+      severity: 'ERROR',
+      message: `Question '${qId}' has missing or too short question prompt.`,
+      context: qId
+    });
+  }
+
+  if (!Array.isArray(q.opts) || q.opts.length < 3 || q.opts.length > 4) {
+    errors.push({
+      questionId: qId,
+      ruleId: 'SCHEMA_INVALID_OPTION_COUNT',
+      severity: 'ERROR',
+      message: `Question '${qId}' must have exactly 3 to 4 options. Found: ${Array.isArray(q.opts) ? q.opts.length : 0}`,
+      context: qId
+    });
+    return errors;
+  }
+
+  const correctOpts = q.opts.filter(o => o && o.c === true);
+  if (correctOpts.length !== 1) {
+    errors.push({
+      questionId: qId,
+      ruleId: 'SCHEMA_CORRECT_OPTION_COUNT',
+      severity: 'ERROR',
+      message: `Question '${qId}' must have EXACTLY ONE correct option marked (c: true). Found: ${correctOpts.length}`,
+      context: qId
+    });
+    return errors;
+  }
+
+  const correctOption = correctOpts[0];
+
+  // Validate duplicate options
+  const seenTexts = new Set();
+  q.opts.forEach((o, oIdx) => {
+    const text = String(o.t || '').trim().toLowerCase();
+    if (seenTexts.has(text)) {
+      errors.push({
+        questionId: qId,
+        ruleId: 'SCHEMA_DUPLICATE_OPTION_TEXT',
+        severity: 'ERROR',
+        message: `Question '${qId}' has duplicate option text '${o.t}'.`,
+        context: qId
+      });
+    }
+    seenTexts.add(text);
+
+    // Validate Rule #1 for each option
+    const optErrors = validateZeroSpoilerInvariant(o, correctOption, qId, oIdx);
+    errors.push(...optErrors);
+  });
+
+  // Validate 4-tier progressive hints if present
+  if (q.hints) {
+    const hintErrors = validate4TierHints(q.hints, correctOption, qId);
+    errors.push(...hintErrors);
+  }
+
+  return errors;
+}
+
+/**
+ * Audits an entire assessment exercise bank.
+ */
+export function validateAssessmentBank(questions = []) {
+  const errors = [];
+  let spoilersFound = 0;
+
+  questions.forEach((q, idx) => {
+    const qErrors = validateQuestionSchema(q, idx);
+    for (const err of qErrors) {
+      if (err.ruleId.includes('SPOILER')) spoilersFound++;
+      errors.push(err);
+    }
+  });
+
+  return {
+    valid: errors.length === 0,
+    totalQuestions: questions.length,
+    spoilersFound,
+    errors
+  };
 }

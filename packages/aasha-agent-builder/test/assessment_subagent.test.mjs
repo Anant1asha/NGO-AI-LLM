@@ -3,7 +3,11 @@ import assert from 'node:assert/strict';
 
 import {
   AssessmentBankModel,
-  GamifiedScoringEngine
+  GamifiedScoringEngine,
+  validateQuestionSchema,
+  validateZeroSpoilerInvariant,
+  validate4TierHints,
+  validateAssessmentBank
 } from '../src/assessment_subagent.mjs';
 
 test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () => {
@@ -14,7 +18,8 @@ test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () =
       q: 'What is 5²?',
       opts: [
         { t: '25', c: true, m: '' },
-        { t: '10', c: false, m: 'Doubled base instead of squaring' }
+        { t: '10', c: false, m: 'Doubled base instead of squaring' },
+        { t: '15', c: false, m: 'Added 10 to 5 instead of squaring base' }
       ],
       hints: {
         h1: 'Look at exponent',
@@ -29,7 +34,8 @@ test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () =
       q: 'Evaluate √144',
       opts: [
         { t: '12', c: true, m: '' },
-        { t: '72', c: false, m: 'Divided by 2 instead of taking root' }
+        { t: '72', c: false, m: 'Divided by 2 instead of taking root' },
+        { t: '14', c: false, m: 'Estimated near 200 without checking factors' }
       ],
       hints: {
         h1: 'Area to side',
@@ -44,7 +50,8 @@ test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () =
       q: 'Is 1729 taxicab?',
       opts: [
         { t: 'Yes', c: true, m: '' },
-        { t: 'No', c: false, m: 'Ramanujan sum misconception' }
+        { t: 'No', c: false, m: 'Ramanujan sum misconception' },
+        { t: 'Cannot be determined', c: false, m: 'Lacks formula knowledge' }
       ],
       hints: {
         h1: 'Two cubes sum',
@@ -95,4 +102,45 @@ test('GamifiedScoringEngine handles streaks, multipliers, lives and XP', () => {
   assert.equal(engine.getState().lives, 2);
   assert.equal(engine.getState().streak, 0);
   assert.equal(engine.getState().multiplier, 1.0);
+});
+
+test('Anti-Spoiler Linter catches answer leaks in distractor misconceptions and hints', () => {
+  const leakingQuestion = {
+    id: 'leak_01',
+    q: 'What is 7 multiplied by 7?',
+    opts: [
+      { t: '49', c: true, m: '' },
+      { t: '14', c: false, m: 'Added 7 and 7 giving 49 instead of multiplying.' }, // Leaks '49'
+      { t: '42', c: false, m: 'Multiplied 7 by 6 rather than 7.' }
+    ],
+    hints: {
+      h1: 'Recall 7 times table.',
+      h2: 'Multiply the base by itself.',
+      h3: 'The answer is 49.', // Leaks answer in hint!
+      h4: 'Calculate 7 * 7.'
+    }
+  };
+  const errors = validateQuestionSchema(leakingQuestion);
+  assert.ok(errors.some(e => e.ruleId === 'RULE_1_SPOILER_NUMERICAL_LEAK' || e.ruleId === 'RULE_1_SPOILER_VALUE' || e.ruleId === 'RULE_1_SPOILER_VERBATIM_ANSWER'));
+  assert.ok(errors.some(e => e.ruleId === 'RULE_12_HINT_SPOILER' || e.ruleId === 'RULE_12_HINT_SPOILER_VALUE'));
+});
+
+test('Anti-Spoiler Linter approves clean 4-tier diagnostic questions without spoilers', () => {
+  const cleanQuestion = {
+    id: 'clean_01',
+    q: 'What is the square root of 64?',
+    opts: [
+      { t: '8', c: true, m: '' },
+      { t: '32', c: false, m: 'Divided the radicand by 2 instead of finding the repeated square factor.' },
+      { t: '16', c: false, m: 'Divided by 4 or confused square root with halving twice.' }
+    ],
+    hints: {
+      h1: 'Look at the square root symbol above 64.',
+      h2: 'Recall which single integer multiplied by itself reproduces 64.',
+      h3: 'Test consecutive digits between 5 and 10.',
+      h4: 'Notice that prime factors group into identical pairs.'
+    }
+  };
+  const errors = validateQuestionSchema(cleanQuestion);
+  assert.equal(errors.length, 0, 'Clean question must have 0 validation errors');
 });
