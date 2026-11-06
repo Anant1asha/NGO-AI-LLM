@@ -8,7 +8,8 @@ import {
   validateZeroSpoilerInvariant,
   validate4TierHints,
   validateAssessmentBank,
-  loadAndAdaptExerciseBank
+  loadAndAdaptExerciseBank,
+  generateAssessmentScript
 } from '../src/assessment_subagent.mjs';
 
 test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () => {
@@ -154,4 +155,39 @@ test('loadAndAdaptExerciseBank loads and verifies complete 34 textbook questions
   assert.equal(bank.boss.length, 8);
   assert.equal(bank.validation.errors.length, 0);
   assert.equal(bank.validation.spoilersFound, 0);
+});
+
+test('generateAssessmentScript produces valid self-contained client Web Component', () => {
+  const spec = {
+    id: 'asmt_test_01',
+    title: 'Squares & Cubes 3-Tier Assessment',
+    gameMode: 'boss_battle_rapid_fire',
+    questions: [
+      {
+        id: 'q1',
+        tier: 'warmup',
+        q: 'What is 3²?',
+        opts: [
+          { t: '9', c: true, m: '' },
+          { t: '6', c: false, m: 'Multiplied by 2 instead of squaring.' }
+        ],
+        hints: {
+          h1: 'Look at exponent 2',
+          h2: '3 times 3',
+          h3: 'Repeated multiplication',
+          h4: 'Evaluate 3 * 3'
+        }
+      }
+    ]
+  };
+  const script = generateAssessmentScript(spec);
+  assert.ok(script.includes("customElements.define('aasha-assessment'"));
+  assert.ok(script.includes('class AashaGamifiedAssessmentAdapter'));
+  assert.ok(script.includes('class AashaAudioEngine'));
+  assert.ok(script.includes('min-width: 44px'));
+  assert.ok(script.includes('min-height: 44px'));
+  assert.ok(!script.includes('http://'));
+  assert.ok(!script.includes('https://'));
+  // XSS safety
+  assert.ok(!script.includes('${SPEC.title}'));
 });

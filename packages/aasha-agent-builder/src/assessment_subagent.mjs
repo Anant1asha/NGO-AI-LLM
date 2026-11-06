@@ -580,3 +580,305 @@ export async function loadAndAdaptExerciseBank(contractOrJsonPath) {
     validation
   };
 }
+
+// ---------------------------------------------------------------------------
+// Web Component Client Script Generator (<aasha-assessment>)
+// ---------------------------------------------------------------------------
+
+/**
+ * Generates self-contained client JavaScript bundle with `<aasha-assessment>` Web Component.
+ * Integrates Foundation F27 cleanroom adaptation, procedural Web Audio,
+ * 4-tier progressive hint disclosure, and misconception diagnosis modal.
+ */
+export function generateAssessmentScript(spec = {}) {
+  const specJson = JSON.stringify(spec)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(new RegExp('\\u2028', 'g'), '\\u2028')
+    .replace(new RegExp('\\u2029', 'g'), '\\u2029');
+
+  return `
+(function() {
+  const SPEC = ${specJson};
+
+  // 1. Procedural Web Audio Synthesizer (Zero external audio files, mute toggle)
+  class AashaAudioEngine {
+    constructor() {
+      this.ctx = null;
+      this.isMuted = false;
+      this.hasUserInteracted = false;
+    }
+
+    init() {
+      if (!this.ctx && typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext)) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        this.ctx = new AudioCtx();
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+      this.hasUserInteracted = true;
+    }
+
+    setMuted(muted) {
+      this.isMuted = !!muted;
+    }
+
+    close() {
+      if (!this.ctx) return Promise.resolve();
+      const ctx = this.ctx;
+      this.ctx = null;
+      try {
+        const res = ctx.close();
+        return (res && typeof res.then === 'function') ? Promise.resolve(res).catch(() => {}) : Promise.resolve();
+      } catch (_) {
+        return Promise.resolve();
+      }
+    }
+
+    playChime(isCorrect) {
+      if (this.isMuted || !this.hasUserInteracted || !this.ctx) return;
+      try {
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        if (isCorrect) {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(587.33, now); // D5
+          osc.frequency.setValueAtTime(880.00, now + 0.1); // A5
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.setValueAtTime(164.81, now + 0.08);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        }
+      } catch (_) {}
+    }
+  }
+
+  // 2. Foundation F27 Gamified Assessment Engine Adapter
+  class AashaGamifiedAssessmentAdapter {
+    constructor(metadata = {}) {
+      this.foundationId = 'F27';
+      this.foundationName = "King's Math Universal Gamified Assessment Engine";
+      this.experienceId = metadata.id || 'gamified_assessment';
+      this.gameMode = metadata.gameMode || 'boss_battle_rapid_fire';
+      this.container = null;
+      this.questions = metadata.questions || [];
+      this.currentIndex = 0;
+      this.score = 0;
+      this.streak = 0;
+      this.lives = 3;
+      this.audio = new AashaAudioEngine();
+      this.currentHintLevel = 0;
+      this._abortController = null;
+      this.isPaused = false;
+    }
+
+    mount(container) {
+      this.container = container;
+      this._abortController = new AbortController();
+      this.render();
+      this.bindEvents();
+    }
+
+    getState() {
+      return {
+        currentIndex: this.currentIndex,
+        totalQuestions: this.questions.length,
+        score: this.score,
+        streak: this.streak,
+        lives: this.lives,
+        isGameOver: this.lives <= 0 || this.currentIndex >= this.questions.length
+      };
+    }
+
+    pause() { this.isPaused = true; }
+    resume() { this.isPaused = false; }
+    reset() {
+      this.currentIndex = 0;
+      this.score = 0;
+      this.streak = 0;
+      this.lives = 3;
+      this.currentHintLevel = 0;
+      this.render();
+    }
+
+    destroy() {
+      if (this._abortController) {
+        this._abortController.abort();
+        this._abortController = null;
+      }
+      if (this.audio) {
+        this.audio.close();
+      }
+      if (this.container) {
+        this.container.innerHTML = '';
+        this.container = null;
+      }
+    }
+
+    emitTelemetry(type, payload) {
+      if (!this.container || typeof this.container.dispatchEvent !== 'function') return;
+      try {
+        const ev = new CustomEvent('aasha:telemetry', {
+          bubbles: true,
+          composed: true,
+          detail: { type, payload, timestamp: Date.now() }
+        });
+        this.container.dispatchEvent(ev);
+      } catch (_) {}
+    }
+
+    render() {
+      if (!this.container) return;
+      const q = this.questions[this.currentIndex];
+      if (!q) {
+        this.container.innerHTML = '<div class="asmt-card"><h3>Assessment Completed!</h3><p>Score: ' + this.score + '</p></div>';
+        return;
+      }
+
+      const signal = this._abortController ? this._abortController.signal : null;
+      const optsHtml = (q.opts || []).map((o, idx) => {
+        return '<button type="button" class="asmt-opt-btn" data-opt-idx="' + idx + '" style="min-width: 44px; min-height: 44px; display: block; width: 100%; margin: 8px 0; padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer; text-align: left;"></button>';
+      }).join('');
+
+      this.container.innerHTML = [
+        '<div class="asmt-card" style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 16px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">',
+        '  <div class="asmt-hud" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-weight: bold;">',
+        '    <span class="asmt-title" id="asmtTitle"></span>',
+        '    <div><span>❤️ <span id="asmtLives">' + this.lives + '</span></span> &nbsp; <span>⭐ <span id="asmtScore">' + this.score + '</span></span> &nbsp; <span>🔥 <span id="asmtStreak">' + this.streak + '</span></span></div>',
+        '  </div>',
+        '  <div class="asmt-q-box" style="margin-bottom: 16px; font-size: 18px; line-height: 1.4;"><span id="asmtQuestion"></span></div>',
+        '  <div class="asmt-options">' + optsHtml + '</div>',
+        '  <div style="margin-top: 16px; display: flex; gap: 8px;">',
+        '    <button type="button" id="btnHint" class="asmt-btn-touch" style="min-width: 44px; min-height: 44px; padding: 8px 16px; border-radius: 8px; background: #f8fafc; border: 1px solid #94a3b8; cursor: pointer;">💡 Hint (' + this.currentHintLevel + '/4)</button>',
+        '    <button type="button" id="btnSound" class="asmt-btn-touch" style="min-width: 44px; min-height: 44px; padding: 8px 16px; border-radius: 8px; background: #f8fafc; border: 1px solid #94a3b8; cursor: pointer;">🔊 Sound</button>',
+        '  </div>',
+        '  <div id="hintBox" style="display: none; margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 8px; font-size: 14px;"></div>',
+        '  <div id="miscModal" style="display: none; margin-top: 12px; padding: 12px; background: #fee2e2; border-radius: 8px; font-size: 14px; color: #991b1b;"></div>',
+        '</div>'
+      ].join('');
+
+      // Safe plain text injection to avoid XSS
+      const titleEl = this.container.querySelector('#asmtTitle');
+      if (titleEl) titleEl.textContent = SPEC.title || 'Gamified Assessment';
+      const qEl = this.container.querySelector('#asmtQuestion');
+      if (qEl) qEl.textContent = q.q || '';
+
+      const btnEls = this.container.querySelectorAll('.asmt-opt-btn');
+      btnEls.forEach((btn, idx) => {
+        if (q.opts[idx]) btn.textContent = q.opts[idx].t;
+      });
+    }
+
+    bindEvents() {
+      if (!this.container) return;
+      const signal = this._abortController ? this._abortController.signal : null;
+      const opts = signal ? { signal } : {};
+
+      const btnEls = this.container.querySelectorAll('.asmt-opt-btn');
+      btnEls.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          this.audio.init();
+          const optIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+          this.handleAnswer(optIdx);
+        }, opts);
+      });
+
+      const btnHint = this.container.querySelector('#btnHint');
+      if (btnHint) {
+        btnHint.addEventListener('click', () => {
+          this.audio.init();
+          this.revealHint();
+        }, opts);
+      }
+
+      const btnSound = this.container.querySelector('#btnSound');
+      if (btnSound) {
+        btnSound.addEventListener('click', () => {
+          this.audio.setMuted(!this.audio.isMuted);
+          btnSound.textContent = this.audio.isMuted ? '🔇 Muted' : '🔊 Sound';
+        }, opts);
+      }
+    }
+
+    revealHint() {
+      const q = this.questions[this.currentIndex];
+      if (!q || !q.hints || this.currentHintLevel >= 4) return;
+      this.currentHintLevel++;
+      const hintKey = 'h' + this.currentHintLevel;
+      const hintText = q.hints[hintKey];
+      const hintBox = this.container.querySelector('#hintBox');
+      const btnHint = this.container.querySelector('#btnHint');
+      if (btnHint) btnHint.textContent = '💡 Hint (' + this.currentHintLevel + '/4)';
+      if (hintBox && hintText) {
+        hintBox.style.display = 'block';
+        hintBox.textContent = hintText;
+      }
+      this.emitTelemetry('hint_revealed', { questionId: q.id, hintLevel: this.currentHintLevel });
+    }
+
+    handleAnswer(optIdx) {
+      const q = this.questions[this.currentIndex];
+      if (!q || !q.opts || !q.opts[optIdx]) return;
+      const opt = q.opts[optIdx];
+      const isCorrect = opt.c === true;
+
+      this.audio.playChime(isCorrect);
+
+      if (isCorrect) {
+        this.streak++;
+        this.score += Math.round(100 * (this.streak >= 2 ? 1.5 : 1.0));
+        this.emitTelemetry('question_answered', { questionId: q.id, isCorrect: true, score: this.score });
+        this.currentIndex++;
+        this.currentHintLevel = 0;
+        this.render();
+        this.bindEvents();
+      } else {
+        this.streak = 0;
+        this.lives = Math.max(0, this.lives - 1);
+        const miscModal = this.container.querySelector('#miscModal');
+        if (miscModal && opt.m) {
+          miscModal.style.display = 'block';
+          miscModal.textContent = 'Diagnostic Note: ' + opt.m;
+        }
+        const livesEl = this.container.querySelector('#asmtLives');
+        if (livesEl) livesEl.textContent = this.lives;
+        const streakEl = this.container.querySelector('#asmtStreak');
+        if (streakEl) streakEl.textContent = this.streak;
+        this.emitTelemetry('question_answered', { questionId: q.id, isCorrect: false, livesRemaining: this.lives });
+      }
+    }
+  }
+
+  // 3. Web Component Definition <aasha-assessment>
+  class AashaAssessmentComponent extends HTMLElement {
+    connectedCallback() {
+      this._adapter = new AashaGamifiedAssessmentAdapter(SPEC);
+      this._adapter.mount(this);
+    }
+    disconnectedCallback() {
+      if (this._adapter) {
+        this._adapter.destroy();
+        this._adapter = null;
+      }
+    }
+  }
+
+  if (typeof customElements !== 'undefined' && !customElements.get('aasha-assessment')) {
+    customElements.define('aasha-assessment', AashaAssessmentComponent);
+  }
+})();
+`;
+}
