@@ -55,7 +55,7 @@ export async function checkConnection({ authenticated = false } = {}) {
     return { status: null, ok: false, error: 'N8N_API_TOKEN missing', authenticated: true };
   }
 
-  const probePath = authenticated ? '/rest/login' : '/healthz';
+  const probePath = authenticated ? '/api/v1/workflows' : '/healthz';
   console.log(
     `[n8n-headless] Checking ${authenticated ? 'AUTHENTICATED' : 'liveness'} connection ` +
     `to https://${N8N_HOST}${probePath}...`
@@ -69,6 +69,7 @@ export async function checkConnection({ authenticated = false } = {}) {
       timeout: 5000,
       headers: {
         'User-Agent': 'AASHA-AIOS-Headless-Client/1.0',
+        'X-N8N-API-KEY': DEFAULT_BEARER,
         'Authorization': `Bearer ${DEFAULT_BEARER}`
       }
     };
@@ -107,6 +108,7 @@ export async function triggerWebhook(webhookPath, payload = {}) {
       headers: {
         'Content-Type': 'application/json',
         'Content-Length': Buffer.byteLength(dataString),
+        'X-N8N-API-KEY': DEFAULT_BEARER,
         'Authorization': `Bearer ${DEFAULT_BEARER}`,
         'User-Agent': 'AASHA-AIOS-Headless-Client/1.0'
       }

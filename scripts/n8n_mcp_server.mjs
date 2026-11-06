@@ -239,6 +239,7 @@ function handleRequest(request) {
           headers: {
             'Content-Type': 'application/json',
             'Content-Length': Buffer.byteLength(data),
+            'X-N8N-API-KEY': DEFAULT_BEARER,
             'Authorization': `Bearer ${DEFAULT_BEARER}`
           }
         }, (res) => {
