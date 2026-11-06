@@ -9,11 +9,11 @@
     "lint:superbrain:py": "python scripts/lint_superbrain_parity.py",
     "lint:secrets": "node scripts/lint_staged_secrets.mjs",
     "lint:workflows": "node scripts/lint_workflows.mjs",
-    "memory:sync": "npx tsx scripts/aasha_memory_engine.ts",
-    "memory:prime": "npx tsx scripts/jagiye_maakiran.ts",
+    "memory:sync": "npm --prefix Aasha-AI exec -- tsx scripts/aasha_memory_engine.ts",
+    "memory:prime": "npm --prefix Aasha-AI exec -- tsx scripts/jagiye_maakiran.ts",
     "gateway:ensure": "node scripts/ensure_9router.js",
     "gateway:start": "node scripts/ensure_9router.js",
-    "graphify:build": "graphify build",
+    "graphify:build": "node scripts/graphify_build.mjs",
     "laya:default": "node scripts/set_laya_default.mjs",
     "laya:loop": "node scripts/aasha_continuous_loop.mjs --once",
     "laya:loop:audit": "node scripts/aasha_continuous_loop.mjs --audit-only",
@@ -24,6 +24,7 @@
     "harvest:search": "node scripts/harvest_engine.mjs --search",
     "harvest:vendor": "node scripts/harvest_engine.mjs --vendor",
     "n8n:check": "node scripts/n8n_headless_client.mjs --check",
+    "n8n:check:auth": "node scripts/n8n_headless_client.mjs --auth",
     "test:browser": "node scripts/verify_prestack_assets_browser.mjs",
     "aasha:build": "node scripts/aasha_build_runner.mjs",
 
@@ -55,7 +56,7 @@
     "chapter:test:unit": "cd Aasha-AI/aasha-pipeline-with-master-json && .\\.venv\\Scripts\\python.exe -m pytest tests/test_e2e_smoke.py::TestMinimalPdfCreation tests/test_e2e_smoke.py::TestHTMLAssemblerPlaceholders tests/test_e2e_smoke.py::TestQAAgentFallback tests/test_ingest_parallel.py -v",
     "chapter:test:offline": "cd Aasha-AI/aasha-pipeline-with-master-json && .\\.venv\\Scripts\\python.exe -m pytest tests/test_deep_vectorizer.py tests/test_offline_chapter_compilation.py -v",
     "chapter:test:integration": "cd Aasha-AI/aasha-pipeline-with-master-json && .\\.venv\\Scripts\\python.exe -m pytest tests/test_e2e_smoke.py::TestCLIImport -v",
-    "chapter:test:e2e": "cd Aasha-AI/aasha-pipeline-with-master-json && .\\.venv\\Scripts\\python.exe -m pytest tests/test_e2e_smoke.py::TestFullE2EPipeline -v --timeout=600",
+    "chapter:test:e2e": "cd Aasha-AI/aasha-pipeline-with-master-json && .\\.venv\\Scripts\\python.exe -m pytest tests/test_e2e_smoke.py::TestFullE2EPipeline -v",
     "setup:rust": "powershell -ExecutionPolicy Bypass -File ./scripts/setup_rust_windows.ps1"
   },
   "engines": {

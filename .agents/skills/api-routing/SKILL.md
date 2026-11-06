@@ -231,7 +231,7 @@ invoke_subagent → TypeName: self, Model: inherit (Claude Sonnet)
 
 **Tier 3 task (PDF ingestion — explicit)**:
 ```
-run_command → node scripts/ingest_pdf.ts --model gemini-2.0-flash --authorize pdf_ingestion
+run_command → aasha ingest <path-to-pdf> --mode full-synthesis --subject <subj> --grade <n>
 ```
 
 ---

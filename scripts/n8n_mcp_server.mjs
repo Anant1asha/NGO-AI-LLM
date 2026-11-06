@@ -17,8 +17,43 @@ import readline from 'node:readline';
 import https from 'node:https';
 
 const N8N_HOST = 'airtribe.app.n8n.cloud';
-const DEFAULT_BEARER = process.env.N8N_API_TOKEN || 
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZDdhZDQzNy0yOGVjLTQzNTEtODg2Yi0wN2FkNDA4NTc3N2EiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6IjA6OWU0NmY4LWJjNDQtNDA3NS05YTc4LTkwOTQ4YzM1ZjcwYSIsImlhdCI6MTc4OTQxMTMzNH0.N7kXqJm152Df_QDx2eGjveKkCNUSanOhseZcZcj4gAw';
+
+// Load Aasha-AI/.env before the guard below, so one file configures both this
+// server and n8n_headless_client.mjs. An exported process env var still wins.
+{
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const { fileURLToPath } = await import('node:url');
+  const envFile = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)), '..', 'Aasha-AI', '.env'
+  );
+  if (fs.existsSync(envFile)) {
+    for (const line of fs.readFileSync(envFile, 'utf8').split('\n')) {
+      const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+      if (!m || process.env[m[1]]) continue;
+      let val = m[2].trim();
+      if ((val.startsWith('"') && val.endsWith('"')) ||
+          (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      process.env[m[1]] = val;
+    }
+  }
+}
+
+const DEFAULT_BEARER = process.env.N8N_API_TOKEN || '';
+
+// No literal credential may live in this file (public repo, zero-secret rule).
+// Without the env var every request would go out unauthenticated and fail with
+// an opaque 401, so refuse to start and say exactly what to set.
+if (!DEFAULT_BEARER) {
+  process.stderr.write(
+    '[n8n-mcp] N8N_API_TOKEN is not set.\n' +
+    '[n8n-mcp] Create an n8n API key at https://airtribe.app.n8n.cloud (Settings > n8n API),\n' +
+    '[n8n-mcp] then set N8N_API_TOKEN in your environment or in the MCP server config "env" block.\n'
+  );
+  process.exit(1);
+}
 
 const TOOLS = [
   {

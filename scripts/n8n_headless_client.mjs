@@ -10,18 +10,61 @@
  */
 
 import https from 'node:https';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const N8N_HOST = 'airtribe.app.n8n.cloud';
-const DEFAULT_BEARER = process.env.N8N_API_TOKEN || 
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZDdhZDQzNy0yOGVjLTQzNTEtODg2Yi0wN2FkNDA4NTc3N2EiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6IjA6OWU0NmY4LWJjNDQtNDA3NS05YTc4LTkwOTQ4YzM1ZjcwYSIsImlhdCI6MTc4OTQxMTMzNH0.N7kXqJm152Df_QDx2eGjveKkCNUSanOhseZcZcj4gAw';
 
-export async function checkConnection() {
-  console.log(`[n8n-headless] Checking connection to https://${N8N_HOST}...`);
+// No literal credential may live in this file (public repo, zero-secret rule).
+// Load Aasha-AI/.env so one file configures every n8n entry point; an already
+// exported process env var still wins.
+const ENV_FILE = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..', 'Aasha-AI', '.env'
+);
+
+export function loadEnvFile(file = ENV_FILE) {
+  if (!fs.existsSync(file)) return false;
+  for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
+    const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+    if (!m) continue;
+    const key = m[1];
+    if (process.env[key]) continue; // real env wins
+    let val = m[2].trim();
+    if ((val.startsWith('"') && val.endsWith('"')) ||
+        (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    process.env[key] = val;
+  }
+  return true;
+}
+
+loadEnvFile();
+
+const DEFAULT_BEARER = process.env.N8N_API_TOKEN || '';
+
+// /healthz is a liveness endpoint: it answers 200 even with no credential, so it
+// proves reachability only. `authenticated: true` probes a protected API path
+// and is the only mode that can fail on a bad or missing token.
+export async function checkConnection({ authenticated = false } = {}) {
+  if (authenticated && !DEFAULT_BEARER) {
+    console.error('[n8n-headless] Cannot verify auth: N8N_API_TOKEN is not set.');
+    console.error('[n8n-headless] Set it in the environment or in Aasha-AI/.env.');
+    return { status: null, ok: false, error: 'N8N_API_TOKEN missing', authenticated: true };
+  }
+
+  const probePath = authenticated ? '/rest/login' : '/healthz';
+  console.log(
+    `[n8n-headless] Checking ${authenticated ? 'AUTHENTICATED' : 'liveness'} connection ` +
+    `to https://${N8N_HOST}${probePath}...`
+  );
   return new Promise((resolve) => {
     const options = {
       hostname: N8N_HOST,
       port: 443,
-      path: '/healthz',
+      path: probePath,
       method: 'GET',
       timeout: 5000,
       headers: {
@@ -90,15 +133,23 @@ export async function triggerWebhook(webhookPath, payload = {}) {
 
 // CLI handler
 const args = process.argv.slice(2);
-if (args.includes('--check') || args.includes('--check-connection') || args.includes('--dry-run')) {
+if (args.includes('--auth')) {
+  // Credential-bearing probe: the only mode that can prove the token works.
+  checkConnection({ authenticated: true }).then(res => {
+    console.log(`[n8n-headless] Auth check: ${res.ok ? 'SUCCESS' : 'FAILED'}`);
+    process.exit(res.ok ? 0 : 1);
+  });
+} else if (args.includes('--check') || args.includes('--check-connection') || args.includes('--dry-run')) {
+  // Liveness only. Exit non-zero on unreachable so CI cannot read a green tick
+  // from a probe that never touched a credential.
   checkConnection().then(res => {
-    console.log(`[n8n-headless] Check completed: ${res.ok ? 'SUCCESS' : 'ADVISORY'}`);
-    process.exit(0);
+    console.log(`[n8n-headless] Check completed: ${res.ok ? 'SUCCESS' : 'FAILED'}`);
+    process.exit(res.ok ? 0 : 1);
   });
 } else if (args[0] === 'trigger') {
   const pathArg = args[1] || '/webhook/curriculum-ingest';
   triggerWebhook(pathArg, { triggered_by: 'AASHA-AIOS', timestamp: new Date().toISOString() })
     .then(() => process.exit(0));
 } else {
-  console.log('Usage: node scripts/n8n_headless_client.mjs [--check | trigger <webhook_path>]');
+  console.log('Usage: node scripts/n8n_headless_client.mjs [--check | --auth | trigger <webhook_path>]');
 }
