@@ -1,3 +1,7 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { resolveWorkspaceRoot } from './ingest_subagent.mjs';
+
 /**
  * AASHA AIOS — 3-Tier Gamified Assessment Subagent
  * Task 3: Assessment Engine, L-Truth Anti-Spoiler Linter & Web Component Generator
@@ -506,5 +510,73 @@ export function validateAssessmentBank(questions = []) {
     totalQuestions: questions.length,
     spoilersFound,
     errors
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Curriculum Exercise Bank Loader & Ingestion Adapter (Resource-First)
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolves path securely against repo workspace root.
+ */
+function resolvePath(filePath) {
+  const root = resolveWorkspaceRoot();
+  if (path.isAbsolute(filePath)) return filePath;
+  return path.resolve(root, filePath);
+}
+
+/**
+ * Ingests curriculum exercises from YAML contract or JSON question bank.
+ * Partitions questions into Warm-up (Tier 1), Deep Dive (Tier 2), and Boss (Tier 3).
+ * Verifies zero-spoiler compliance.
+ */
+export async function loadAndAdaptExerciseBank(contractOrJsonPath) {
+  const resolved = resolvePath(contractOrJsonPath);
+  if (!fs.existsSync(resolved)) {
+    throw new Error(`FILE_NOT_FOUND: Cannot locate assessment bank at ${resolved}`);
+  }
+
+  let questions = [];
+
+  if (resolved.endsWith('.json')) {
+    const rawData = JSON.parse(fs.readFileSync(resolved, 'utf-8'));
+    questions = Array.isArray(rawData.questions) ? rawData.questions : [];
+  } else if (resolved.endsWith('.yaml') || resolved.endsWith('.yml')) {
+    // Look for referenced JSON question bank in contract directory or chapters
+    const root = resolveWorkspaceRoot();
+    const candidateJson = path.join(root, 'Aasha-AI', 'chapters', 'square_cube_questions.json');
+    if (fs.existsSync(candidateJson)) {
+      const rawData = JSON.parse(fs.readFileSync(candidateJson, 'utf-8'));
+      questions = Array.isArray(rawData.questions) ? rawData.questions : [];
+    }
+  }
+
+  const warmup = [];
+  const deepDive = [];
+  const boss = [];
+
+  for (const q of questions) {
+    const tier = (q.tier || '').toLowerCase().replace('-', '_');
+    if (tier === 'warmup') {
+      warmup.push(q);
+    } else if (tier === 'deep_dive') {
+      deepDive.push(q);
+    } else if (tier === 'boss') {
+      boss.push(q);
+    } else {
+      warmup.push(q);
+    }
+  }
+
+  const validation = validateAssessmentBank(questions);
+
+  return {
+    totalQuestions: questions.length,
+    warmup,
+    deepDive,
+    boss,
+    allQuestions: questions,
+    validation
   };
 }

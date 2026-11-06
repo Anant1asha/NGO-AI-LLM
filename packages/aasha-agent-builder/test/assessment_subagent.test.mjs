@@ -7,7 +7,8 @@ import {
   validateQuestionSchema,
   validateZeroSpoilerInvariant,
   validate4TierHints,
-  validateAssessmentBank
+  validateAssessmentBank,
+  loadAndAdaptExerciseBank
 } from '../src/assessment_subagent.mjs';
 
 test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () => {
@@ -143,4 +144,14 @@ test('Anti-Spoiler Linter approves clean 4-tier diagnostic questions without spo
   };
   const errors = validateQuestionSchema(cleanQuestion);
   assert.equal(errors.length, 0, 'Clean question must have 0 validation errors');
+});
+
+test('loadAndAdaptExerciseBank loads and verifies complete 34 textbook questions from contract', async () => {
+  const bank = await loadAndAdaptExerciseBank('Aasha-AI/content/contracts/Mathematics_Class8_squares_and_cubes.yaml');
+  assert.equal(bank.totalQuestions, 34);
+  assert.equal(bank.warmup.length, 12);
+  assert.equal(bank.deepDive.length, 14);
+  assert.equal(bank.boss.length, 8);
+  assert.equal(bank.validation.errors.length, 0);
+  assert.equal(bank.validation.spoilersFound, 0);
 });
