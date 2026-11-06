@@ -168,6 +168,22 @@ When routing through 9Router (local port 20128) as the primary zero-bleed gatewa
 
 ---
 
+## 6. Zero Local Model Weight Bloat & Unified 9Router Multimodal Invariant
+
+1. **Strict Exclusion of Heavy Local Model Weights**:
+   - Multi-gigabyte GGUF model runtimes (including **Ollama**, **llama.cpp**, **vLLM**, and **LiteLLM Proxy**) are strictly prohibited on developer workstations due to host RAM (4–8 GB) and disk storage limits.
+   - Agents and subagents must never prompt the user to install or download GGUF model weights.
+
+2. **Unified 9Router Local Gateway**:
+   - The sole authorized local proxy is **9Router** (`http://127.0.0.1:20128`), consuming **<30 MB RAM** and **0 bytes of model disk storage**.
+   - Unifies text reasoning, coding, and **multimodal vision** into an integrated, zero-breakage auto-switching pool:
+     - **Multimodal Vision Routing**: Automatically routes textbook diagram and image vision extraction requests across free multimodal models (`google/gemini-2.0-flash-exp:free`, `nvidia/nemotron-3.5-super-vl:free`).
+     - **Coding & Synthesis Routing**: Automatically routes code generation to free coding models (`qwen/qwen-2.5-coder-32b-instruct:free`).
+     - **Routine Reasoning**: Routes routine turns to Tier 1 free pool (`meta-llama/llama-3.1-8b-instruct:free`, `nvidia/nemotron-3.5-lightning:free`).
+   - Rotates transparently across the 3 OpenRouter API keys (`OPENROUTER_API_KEY`, `OPENROUTER_API_KEY_2`, `OPENROUTER_API_KEY_3`) with 3s backoff on 429, guaranteeing that text, code, and multimodal tasks execute concurrently without rate limit stalls, crashes, or breaking.
+
+---
+
 ## Enforcement
 
 This rule applies to:
