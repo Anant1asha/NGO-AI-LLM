@@ -575,6 +575,7 @@ export async function ingestSubagent(params = {}) {
     contract: contractData ? {
       slug: contractData.chapter_meta?.slug,
       title: contractData.chapter_meta?.topic,
+      topic: contractData.chapter_meta?.topic,
       grade: contractData.chapter_meta?.class,
       sha256: contractSha256,
       coreConceptsCount: contractData.curriculum_intent?.core_concepts?.length || 0,
