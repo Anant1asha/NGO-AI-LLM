@@ -169,7 +169,7 @@ def test_c4_14_self_healing_removes_self_dependency_and_unknown_node_refs() -> N
 
 
 def test_c4_15_js_unified_e2e_pipeline_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_unified_e2e_pipeline.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_unified_e2e_pipeline.js").read_text(encoding="utf-8")
     assert "SelfHealingCompilerRepairLoopJS" in js_txt
     assert "UnifiedEndToEndPipelineOrchestratorJS" in js_txt
 

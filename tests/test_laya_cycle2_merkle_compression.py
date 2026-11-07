@@ -149,7 +149,7 @@ def test_lc2_14_compare_laya_cycle2_context_compression_and_merkle_diff_benchmar
 
 def test_lc2_15_ts_merkle_snapshot_diff_engine_present_in_test_version_manager() -> None:
     import pathlib
-    ts_code = pathlib.Path("/tmp/aasha_stage_pack/Aasha-AI/tests/test_version_manager.ts").read_text(encoding="utf-8")
+    ts_code = pathlib.Path("scripts/test_version_manager.ts").read_text(encoding="utf-8")
     assert "MerkleSnapshotDiffEngineTS" in ts_code
     assert "computeMerkleRoot" in ts_code
 

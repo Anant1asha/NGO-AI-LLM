@@ -160,7 +160,7 @@ def test_fjc3_14_stolen_tasks_update_assigned_worker_id() -> None:
 
 
 def test_fjc3_15_js_consensus_work_stealing_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_consensus_work_stealing.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_consensus_work_stealing.js").read_text(encoding="utf-8")
     assert "MultiAgentConsensusVerifierJS" in js_txt
     assert "DeadlockFreeWorkStealingSchedulerJS" in js_txt
 

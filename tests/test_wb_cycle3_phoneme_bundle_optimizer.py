@@ -153,7 +153,7 @@ def test_wbc3_14_manifest_entries_contain_valid_sha256_cas_uris() -> None:
 
 
 def test_wbc3_15_js_phoneme_bundle_optimizer_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_phoneme_bundle_optimizer.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_phoneme_bundle_optimizer.js").read_text(encoding="utf-8")
     assert "IndicPhonemeSyncCompilerJS" in js_txt
     assert "Sub20MiBBundleOptimizerJS" in js_txt
 

@@ -132,7 +132,7 @@ def test_f27c2_14_ltruth_anti_spoiler_blocks_exact_target_answer_and_allows_deci
 
 
 def test_f27c2_15_js_gamified_assessment_adapter_contains_ast_and_stress_classes() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_gamified_assessment_adapter.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_gamified_assessment_adapter.js").read_text(encoding="utf-8")
     assert "BilingualFormulaASTValidatorJS" in js_txt
     assert "MultiChapterSimStressTesterJS" in js_txt
 

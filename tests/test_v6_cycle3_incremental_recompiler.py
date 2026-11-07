@@ -157,7 +157,7 @@ def test_v6c3_14_grade_averages_computed_for_all_present_grades() -> None:
 
 
 def test_v6c3_15_js_incremental_recompiler_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_v6_incremental_recompiler.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_v6_incremental_recompiler.js").read_text(encoding="utf-8")
     assert "IncrementalASTDifferentialRecompilerJS" in js_txt
     assert "CrossGradeMasteryTransferMatrixJS" in js_txt
 

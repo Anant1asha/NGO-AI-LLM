@@ -152,7 +152,7 @@ def test_cert_14_verifier_rejects_wrong_signing_key() -> None:
 
 
 def test_cert_15_js_release_readiness_certifier_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_release_readiness_certifier.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_release_readiness_certifier.js").read_text(encoding="utf-8")
     assert "TenRuleQAReleaseCertifierJS" in js_txt
     assert "CryptographicReleaseBundleSignerJS" in js_txt
 

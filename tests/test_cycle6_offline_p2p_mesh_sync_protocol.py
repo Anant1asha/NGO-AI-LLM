@@ -159,7 +159,7 @@ def test_c6m_14_xor_buffers_is_self_inverse() -> None:
 
 
 def test_c6m_15_js_offline_p2p_mesh_sync_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_offline_p2p_mesh_sync.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_offline_p2p_mesh_sync.js").read_text(encoding="utf-8")
     assert "OfflineQRAndMeshChunkEncoderJS" in js_txt
     assert "PeerToPeerMeshGossipSynchronizerJS" in js_txt
 

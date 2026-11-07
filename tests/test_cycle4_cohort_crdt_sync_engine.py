@@ -145,7 +145,7 @@ def test_crdt_14_facilitator_aggregator_handles_empty_state_list() -> None:
 
 
 def test_crdt_15_js_cohort_crdt_sync_engine_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_cohort_crdt_sync_engine.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_cohort_crdt_sync_engine.js").read_text(encoding="utf-8")
     assert "CohortCRDTProgressMergerJS" in js_txt
     assert "FacilitatorDiagnosticAggregatorJS" in js_txt
 

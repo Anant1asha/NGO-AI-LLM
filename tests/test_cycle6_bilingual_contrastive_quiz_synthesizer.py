@@ -151,7 +151,7 @@ def test_c6q_14_supports_all_9_indic_scripts_in_prompt_narration() -> None:
 
 
 def test_c6q_15_js_contrastive_quiz_synthesizer_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_contrastive_quiz_synthesizer.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_contrastive_quiz_synthesizer.js").read_text(encoding="utf-8")
     assert "ContrastiveMisconceptionQuizSynthesizerJS" in js_txt
     assert "hashOptionKey" in js_txt
 

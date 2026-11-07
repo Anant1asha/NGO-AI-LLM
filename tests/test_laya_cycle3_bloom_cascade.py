@@ -127,7 +127,7 @@ def test_lc3_14_bloom_filter_is_case_insensitive() -> None:
 
 
 def test_lc3_15_js_laya_bloom_cascade_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_laya_bloom_cascade.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_laya_bloom_cascade.js").read_text(encoding="utf-8")
     assert "SemanticBloomFilterRouterJS" in js_txt
     assert "AdaptiveQuantizedModelCascadeJS" in js_txt
 

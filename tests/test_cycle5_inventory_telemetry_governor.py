@@ -151,7 +151,7 @@ def test_c5i_14_storage_already_above_threshold_performs_zero_evictions() -> Non
 
 
 def test_c5i_15_js_inventory_telemetry_governor_module_present_and_valid() -> None:
-    js_txt = pathlib.Path("/tmp/aasha_stage_pack/scripts/aasha_inventory_telemetry_governor.js").read_text(encoding="utf-8")
+    js_txt = pathlib.Path("scripts/aasha_inventory_telemetry_governor.js").read_text(encoding="utf-8")
     assert "PredictiveTabletBatteryStorageGovernorJS" in js_txt
     assert "CentreInventoryHealthTelemetryAgentJS" in js_txt
 
