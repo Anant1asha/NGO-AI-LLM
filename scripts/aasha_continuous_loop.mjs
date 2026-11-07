@@ -163,8 +163,8 @@ async function executeIteration(iterationNumber) {
   // -------------------------------------------------------------------------
   console.log('\n--- [STAGE 4/12: PRIORITIZE] Selecting Next Milestone Task ---');
   let selectedTask = {
-    id: 'FOCUS-UNIT-PHASE-H-027',
-    name: 'Phase H-027: 35th Certified Chapter (Heredity_Mendelian_Genetics_Punnett_Square_Class10_Gamified_v5.html), AVR-P321 (MendelianPunnettSquareVisual), 607-Word Hindi Dictionary & teas_content.db.gz',
+    id: 'WORKSTREAM-B-COMPILATION',
+    name: 'Workstream B: Offline Method B Chapter Compilation Pipeline & PyMuPDF Vectorizer Certification',
     component: 'Aasha-AI'
   };
   console.log(`  Selected Task: [${selectedTask.id}] ${selectedTask.name}`);

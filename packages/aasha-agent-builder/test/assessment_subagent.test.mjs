@@ -9,7 +9,13 @@ import {
   validate4TierHints,
   validateAssessmentBank,
   loadAndAdaptExerciseBank,
-  generateAssessmentScript
+  generateAssessmentScript,
+  OPENSOURCE_EDTECH_GAME_CATALOG,
+  queryGameCatalog,
+  generate4TierHints,
+  generateMisconceptionDiagnostics,
+  adaptGameTemplateToAssessment,
+  assessmentSubagent
 } from '../src/assessment_subagent.mjs';
 
 test('AssessmentBankModel organizes 3 tiers and manages progressive hints', () => {
@@ -191,3 +197,95 @@ test('generateAssessmentScript produces valid self-contained client Web Componen
   // XSS safety
   assert.ok(!script.includes('${SPEC.title}'));
 });
+
+test('OPENSOURCE_EDTECH_GAME_CATALOG queries and matches mechanics', () => {
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.kingsmath);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.battlemath);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.nearbycoder);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG['math-mania']);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.oppia);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.h5p);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.phaser);
+  assert.ok(OPENSOURCE_EDTECH_GAME_CATALOG.gcompris);
+
+  const mathGames = queryGameCatalog({ subject: 'Mathematics' });
+  assert.ok(mathGames.length >= 5);
+
+  const rpgGames = queryGameCatalog({ mechanic: 'battle_math_rpg' });
+  assert.equal(rpgGames.length, 1);
+  assert.equal(rpgGames[0].id, 'battlemath');
+
+  const grade8Games = queryGameCatalog({ grade: 8 });
+  assert.ok(grade8Games.length >= 6);
+});
+
+test('generate4TierHints provides progressive H1 to H4 scaffolding without spoilers', () => {
+  const squareQuestion = {
+    q: 'Find the square of 15.',
+    opts: [
+      { t: '225', c: true },
+      { t: '30', c: false }
+    ]
+  };
+  const hints = generate4TierHints(squareQuestion);
+  assert.ok(hints.h1 && hints.h1.length > 10);
+  assert.ok(hints.h2 && hints.h2.length > 10);
+  assert.ok(hints.h3 && hints.h3.length > 10);
+  assert.ok(hints.h4 && hints.h4.length > 10);
+  // Verify zero spoiler invariant on hints
+  const errors = validate4TierHints(hints, squareQuestion.opts[0], 'test_sq');
+  assert.equal(errors.length, 0);
+});
+
+test('generateMisconceptionDiagnostics auto-generates zero-spoiler diagnostic text', () => {
+  const question = {
+    q: 'What is 8 squared?',
+    opts: [
+      { t: '64', c: true, m: '' },
+      { t: '16', c: false }, // doubled base
+      { t: '32', c: false }  // wrong factor
+    ]
+  };
+  const enrichedOpts = generateMisconceptionDiagnostics(question);
+  assert.equal(enrichedOpts[0].m, '');
+  assert.ok(enrichedOpts[1].m.includes('Doubled the intermediate term'));
+  assert.ok(enrichedOpts[2].m.length >= 5);
+
+  const errors = validateQuestionSchema({ ...question, opts: enrichedOpts });
+  assert.equal(errors.filter(e => e.ruleId.includes('SPOILER')).length, 0);
+});
+
+test('adaptGameTemplateToAssessment adapts raw questions into 3-tier gamified specification', () => {
+  const rawQuestions = [
+    { q: 'What is 2 squared?', opts: [{ t: '4', c: true }, { t: '2', c: false }, { t: '8', c: false }] },
+    { q: 'What is √81?', opts: [{ t: '9', c: true }, { t: '18', c: false }, { t: '27', c: false }] },
+    { q: 'Is 25 a perfect square?', opts: [{ t: 'Yes', c: true }, { t: 'No', c: false }, { t: 'Maybe', c: false }] }
+  ];
+
+  const adapted = adaptGameTemplateToAssessment(rawQuestions, {
+    gameTemplateId: 'battlemath',
+    chapterTitle: 'Powers and Roots'
+  });
+
+  assert.equal(adapted.catalogEntry.id, 'battlemath');
+  assert.ok(adapted.spec.title.includes('Powers and Roots'));
+  assert.equal(adapted.spec.gameMode, 'battle_math_rpg');
+  assert.ok(adapted.spec.tiers.warmup);
+  assert.ok(adapted.spec.tiers.deepDive);
+  assert.ok(adapted.spec.tiers.boss);
+  assert.equal(adapted.validation.spoilersFound, 0);
+});
+
+test('assessmentSubagent end-to-end executes contract ingestion and script generation', async () => {
+  const result = await assessmentSubagent({
+    contractPath: 'Aasha-AI/content/contracts/Mathematics_Class8_squares_and_cubes.yaml',
+    gameTemplateId: 'battlemath'
+  });
+
+  assert.equal(result.success, true);
+  assert.ok(result.measurements.clientScriptBytes > 1000);
+  assert.equal(result.verification.zeroSpoilersCertified, true);
+  assert.equal(result.verification.touchTargetsCompliant, true);
+  assert.equal(result.catalogEntry.id, 'battlemath');
+});
+
