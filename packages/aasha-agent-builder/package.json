@@ -4,6 +4,13 @@
   "description": "AASHA Autonomous Agent Builder & Coordinator Engine",
   "type": "module",
   "main": "src/ingest_subagent.mjs",
+  "exports": {
+    ".": "./src/ingest_subagent.mjs",
+    "./ingest": "./src/ingest_subagent.mjs",
+    "./simulation": "./src/simulation_subagent.mjs",
+    "./assessment": "./src/assessment_subagent.mjs",
+    "./monolith": "./src/monolith_subagent.mjs"
+  },
   "scripts": {
     "test": "node --test test/*.test.mjs"
   },
