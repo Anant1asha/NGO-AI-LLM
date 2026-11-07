@@ -251,14 +251,19 @@ async function executeIteration(iterationNumber) {
   executionEvidence.tests.push({ name: 'Billing Observability (OI-001)', pass: billingTest.success });
 
   // Test 11: Aasha Agent Builder Simulation Engine Unit Suite
-  console.log('  [Test 11/12] Running Simulation Engine Unit Suite...');
+  console.log('  [Test 11/13] Running Simulation Engine Unit Suite...');
   const simSubTest = runCmd('node packages/aasha-agent-builder/test/simulation_subagent.test.mjs', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Simulation Engine Unit Suite', pass: simSubTest.success });
 
   // Test 12: Aasha Agent Builder Headless Chrome CDP & Scope-Locked Ceiling Suite
-  console.log('  [Test 12/12] Running Simulation Headless Chrome CDP & Ceiling Suite...');
+  console.log('  [Test 12/13] Running Simulation Headless Chrome CDP & Ceiling Suite...');
   const simCdpTest = runCmd('node packages/aasha-agent-builder/test/simulation_browser_cdp.test.mjs', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Simulation Headless Chrome CDP Suite', pass: simCdpTest.success });
+
+  // Test 13: Aasha Agent Builder 3-Tier Gamified Assessment Subagent Suite
+  console.log('  [Test 13/13] Running Assessment Subagent Unit Suite...');
+  const assessTest = runCmd('node packages/aasha-agent-builder/test/assessment_subagent.test.mjs', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Assessment Subagent Unit Suite', pass: assessTest.success });
 
   const allTestsPassed = executionEvidence.tests.every(t => t.pass);
   console.log(`\n  Test Summary: ${executionEvidence.tests.filter(t => t.pass).length}/${executionEvidence.tests.length} Suites Passed.`);
