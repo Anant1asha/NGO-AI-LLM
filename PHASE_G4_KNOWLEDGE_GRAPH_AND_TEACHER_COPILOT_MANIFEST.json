@@ -1,0 +1,113 @@
+{
+  "schema_version": "3.0.0-PHASE-G4-KNOWLEDGE-GRAPH-COPILOT",
+  "chunk_id": "G4",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G4_CROSS_GRADE_DAG_MASTERY_TWINS_AND_TEACHER_COPILOT_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "cross_grade_knowledge_graph": {
+    "total_chapters_in_graph": 10,
+    "total_prerequisite_edges": 6,
+    "dag_cycle_free_verified": true,
+    "edges": [
+      {
+        "from_chapter_id": "NCERT-G06-MATH-CH07-FRACTIONS",
+        "from_grade": 6,
+        "to_chapter_id": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES",
+        "to_grade": 8,
+        "transfer_weight": 0.88,
+        "pedagogical_rationale_en": "Fractions and equivalent ratios directly underpin percentage and ratio comparisons.",
+        "pedagogical_rationale_hi": "भिन्न और समतुल्य अनुपात सीधे प्रतिशत और अनुपात की तुलना का आधार हैं।"
+      },
+      {
+        "from_chapter_id": "NCERT-G07-MATH-CH11-PERIMETER-AREA",
+        "from_grade": 7,
+        "to_chapter_id": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA",
+        "to_grade": 10,
+        "transfer_weight": 0.85,
+        "pedagogical_rationale_en": "Polygon perimeter and area formulas govern field plot layout and drip emitter spacing.",
+        "pedagogical_rationale_hi": "बहुभुज का परिमाप और क्षेत्रफल खेत के लेआउट और ड्रिप सिंचाई की दूरी तय करता है।"
+      },
+      {
+        "from_chapter_id": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES",
+        "from_grade": 8,
+        "to_chapter_id": "NCERT-G10-MATH-CH02-POLYNOMIALS",
+        "to_grade": 10,
+        "transfer_weight": 0.82,
+        "pedagogical_rationale_en": "Proportional scaling and algebraic rate expressions prepare learners for polynomial modeling.",
+        "pedagogical_rationale_hi": "समानुपातिक स्केलिंग और बीजगणितीय दरें बहुपद मॉडलिंग के लिए आधार तैयार करती हैं।"
+      },
+      {
+        "from_chapter_id": "NCERT-G09-SCI-CH08-FORCE-MOTION",
+        "from_grade": 9,
+        "to_chapter_id": "NCERT-G09-SCI-CH10-WORK-ENERGY",
+        "to_grade": 9,
+        "transfer_weight": 0.91,
+        "pedagogical_rationale_en": "Newtonian force and acceleration ($F = m \\cdot a$) directly define mechanical work and kinetic energy.",
+        "pedagogical_rationale_hi": "न्यूटन का बल और त्वरण ($F = m \\cdot a$) सीधे यांत्रिक कार्य और गतिज ऊर्जा को परिभाषित करते हैं।"
+      },
+      {
+        "from_chapter_id": "NCERT-G09-SCI-CH10-WORK-ENERGY",
+        "from_grade": 9,
+        "to_chapter_id": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW",
+        "to_grade": 10,
+        "transfer_weight": 0.86,
+        "pedagogical_rationale_en": "Mechanical potential energy conservation transfers directly to electric potential and power ($P = V \\cdot I$).",
+        "pedagogical_rationale_hi": "स्थितिज ऊर्जा संरक्षण सीधे विद्युत विभव और शक्ति ($P = V \\cdot I$) को समझने में मदद करता है।"
+      },
+      {
+        "from_chapter_id": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES",
+        "from_grade": 8,
+        "to_chapter_id": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER",
+        "to_grade": 10,
+        "transfer_weight": 0.84,
+        "pedagogical_rationale_en": "Quantitative ledger auditing builds on percentage change and ratio verification.",
+        "pedagogical_rationale_hi": "सामुदायिक डेटा खाता ऑडिटिंग प्रतिशत परिवर्तन और अनुपात सत्यापन पर आधारित है।"
+      }
+    ],
+    "knowledge_graph_sha256": "7f7e02bf14a2734f4f3e9d2b8ccb3c98338e193644835f0e51cdbbe9721c33bd"
+  },
+  "student_mastery_twin_diagnoses": [
+    {
+      "anon_learner_hash": "TWIN-0c166db64cc71a1e",
+      "current_chapter_id": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES",
+      "current_mastery_score": 0.64,
+      "root_cause_prerequisite_chapter_id": "NCERT-G06-MATH-CH07-FRACTIONS",
+      "prerequisite_transfer_weight": 0.88,
+      "recommended_bridge_bilingual": "सबसे पहले (first), let us strengthen prerequisite NCERT-G06-MATH-CH07-भिन्न (fractions) क्योंकि (because) Fractions and समतुल्य (equivalent) ratios directly underpin प्रतिशत (percentage) and अनुपात (ratio) comparisons. | भिन्न और समतुल्य अनुपात सीधे प्रतिशत और अनुपात की तुलना का आधार हैं।",
+      "teacher_action_brief_en": "Assign 5-minute interactive lab in NCERT-G06-MATH-CH07-FRACTIONS before re-attempting NCERT-G08-MATH-CH08-COMPARING-QUANTITIES.",
+      "teacher_action_brief_hi": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES से पहले NCERT-G06-MATH-CH07-FRACTIONS की 5-मिनट की इंटरैक्टिव प्रयोगशाला कराएं।"
+    },
+    {
+      "anon_learner_hash": "TWIN-9b74ca5f5bb980d0",
+      "current_chapter_id": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW",
+      "current_mastery_score": 0.69,
+      "root_cause_prerequisite_chapter_id": "NCERT-G09-SCI-CH10-WORK-ENERGY",
+      "prerequisite_transfer_weight": 0.86,
+      "recommended_bridge_bilingual": "सबसे पहले (first), let us strengthen prerequisite NCERT-G09-SCI-CH10-WORK-ENERGY क्योंकि (because) Mechanical potential energy conservation transfers directly to electric potential and power ($P = V \\cdot I$). | स्थितिज ऊर्जा संरक्षण सीधे विद्युत विभव और शक्ति ($P = V \\cdot I$) को समझने में मदद करता है।",
+      "teacher_action_brief_en": "Assign 5-minute interactive lab in NCERT-G09-SCI-CH10-WORK-ENERGY before re-attempting NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW.",
+      "teacher_action_brief_hi": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW से पहले NCERT-G09-SCI-CH10-WORK-ENERGY की 5-मिनट की इंटरैक्टिव प्रयोगशाला कराएं।"
+    },
+    {
+      "anon_learner_hash": "TWIN-d59b19be64e3e0cd",
+      "current_chapter_id": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA",
+      "current_mastery_score": 0.71,
+      "root_cause_prerequisite_chapter_id": "NCERT-G07-MATH-CH11-PERIMETER-AREA",
+      "prerequisite_transfer_weight": 0.85,
+      "recommended_bridge_bilingual": "सबसे पहले (first), let us strengthen prerequisite NCERT-G07-MATH-CH11-परिमाप (perimeter)-क्षेत्रफल (area) क्योंकि (because) Polygon perimeter and area formulas govern field plot layout and drip emitter spacing. | बहुभुज का परिमाप और क्षेत्रफल खेत के लेआउट और ड्रिप सिंचाई की दूरी तय करता है।",
+      "teacher_action_brief_en": "Assign 5-minute interactive lab in NCERT-G07-MATH-CH11-PERIMETER-AREA before re-attempting NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA.",
+      "teacher_action_brief_hi": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA से पहले NCERT-G07-MATH-CH11-PERIMETER-AREA की 5-मिनट की इंटरैक्टिव प्रयोगशाला कराएं।"
+    }
+  ],
+  "teacher_copilot_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g4_teacher_copilot/Teacher_Facilitator_CoPilot_v5.html",
+    "bundle_size_bytes": 9148,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "1dda36bb3739b224ff7c751c06cd95af9be42ab8618d254a1847f88baa310ce0"
+  },
+  "daily_spend_cap_usd": 1.0,
+  "next_focus_unit": "G5: Autonomous 100-School Multi-District Field Resilience, Solar-Battery Power Governor & Zero-Downtime OTA Bundle Verifier",
+  "g4_manifest_sha256": "4242d1dfb4de9f2355784cac8406e803248a52d4fda2bf224a4eec8f31ae5127"
+}
