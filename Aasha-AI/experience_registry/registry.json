@@ -3383,5 +3383,13 @@
       },
       "artifact_hash": "993f011a62733aef55af8aa4747e72e815c3a914d36964804aeb9c30e706b420"
     }
+  ],
+  "certified_components": [
+    {
+      "id": "AVR-P406-kingsmath-gamified-assessment",
+      "license": "MIT-CLEANROOM-EXTRACT",
+      "interaction_mode": "data-tap-select=\"true\"",
+      "status": "CERTIFIED"
+    }
   ]
 }

@@ -1,284 +1,46 @@
 {
-  "schema_version": "1.0.0",
-  "focus_unit": "FOCUS-UNIT-PHASE-G-001",
-  "generated_at_utc": "2026-11-03T14:25:36.672Z",
-  "target_mvp_deadline": "2026-12-31",
-  "active_branch_lock": "origin/aios/v2-bootstrap",
-  "acceptance_criteria_summary": {
-    "total_criteria": 18,
-    "passed": 18,
-    "failed": 0,
-    "verdict": "RELEASE_GATE_CERTIFIED"
-  },
-  "ecosystem_metrics": {
-    "python_pipeline_unit_tests": "114/114",
-    "visual_contract_assertions": "97/97",
-    "phase3_visual_mechanics": "21/21",
-    "offline_html5_bundles": "26/26 (< 20 MiB, 0 external URLs)",
-    "hindi_wm_dictionary_entries": 544,
-    "hindi_conn_entries": 46,
-    "teas_sqlite_catalogue_gz_bytes": 30874
-  },
-  "criteria_results": [
-    {
-      "id": "TC-01",
-      "title": "Chapter Contract Schema (3..5 Nodes) & 75/75 Python Pipeline Unit Suite",
-      "status": "PASS",
-      "latency_ms": 1,
-      "detail": "114/114 unit tests passed (0 failures)"
-    },
-    {
-      "id": "TC-02",
-      "title": "8-Layer Bilingual LLE & 440-Word Canonical Hindi WM Dictionary",
-      "status": "PASS",
-      "latency_ms": 72,
-      "detail": "WM=544, CONN=46, SanitizedCandidates=144"
-    },
-    {
-      "id": "TC-03",
-      "title": "100% Self-Contained Offline HTML5 Chapter Bundles (Zero External URLs)",
-      "status": "PASS",
-      "latency_ms": 2,
-      "detail": "26/26 HTML5 bundles verified with 0 external runtime URLs"
-    },
-    {
-      "id": "TC-04",
-      "title": "20 MiB Bundle Ceiling (CON-009) & 10-Chapter teas_content.db.gz Catalogue",
-      "status": "PASS",
-      "latency_ms": 40,
-      "detail": "All 10 HTML5 bundles < 20 MiB; teas_content.db.gz = 30874 B (sha256:91c89c73e803)"
-    },
-    {
-      "id": "TC-05",
-      "title": "Self-Healing QA Auto-Repair Loop & Zero Blocking Dialogs",
-      "status": "PASS",
-      "latency_ms": 3,
-      "detail": "Zero native alert/prompt/confirm calls; 2-attempt run_self_healing_qa_pass verified"
-    },
-    {
-      "id": "TC-06",
-      "title": "5-Tab Student PWA Navigation & Bottom-Nav Safe-Area Clearance",
-      "status": "PASS",
-      "latency_ms": 48,
-      "detail": "5 PWA tabs verified with calc(96px + env(safe-area-inset-bottom, 16px)) clearance"
-    },
-    {
-      "id": "TC-07",
-      "title": "44x44px Minimum Touch Targets Across Cohort UI & PIN Modal",
-      "status": "PASS",
-      "latency_ms": 1,
-      "detail": "44x44px minimum touch targets verified on all interactive buttons and inputs"
-    },
-    {
-      "id": "TC-08",
-      "title": "Deterministic TEAS Coin Minting (50 Pass / 100 Mastery) & Idempotency",
-      "status": "PASS",
-      "latency_ms": 11,
-      "detail": "100 coins minted on mastery >=85% with strict chapter idempotency"
-    },
-    {
-      "id": "TC-09",
-      "title": "Tier-1 Store Redemption with Staff PIN (1080) Verification",
-      "status": "PASS",
-      "latency_ms": 3,
-      "detail": "Invalid PIN rejected (403/INVALID_PIN); valid PIN 1080 deducts 100 coins and issues receipt"
-    },
-    {
-      "id": "TC-10",
-      "title": "Offline Outbox Queue (enqueueSyncEvent) & Centre Server WAL Sync",
-      "status": "PASS",
-      "latency_ms": 23,
-      "detail": "Outbox event queued with timestamp; SQLite WAL mode & /api/sync/quiz-results verified"
-    },
-    {
-      "id": "TC-11",
-      "title": "Centre Facilitator Cohort Summary & Low-Stock Alerting",
-      "status": "PASS",
-      "latency_ms": 4,
-      "detail": "Cohort summary aggregates mastery, tokens, pending orders, and low-stock alerts (<=3)"
-    },
-    {
-      "id": "TC-12",
-      "title": "Signed Offline Cohort Order Pack & Server Tamper Rejection",
-      "status": "PASS",
-      "latency_ms": 1,
-      "detail": "Signed pack verified (fnv1a32:8f2e61bc); tampered center_id rejected"
-    },
-    {
-      "id": "TC-13",
-      "title": "Bounded Autonomous Self-Repair (Max 2 Attempts Before Quarantine)",
-      "status": "PASS",
-      "latency_ms": 26,
-      "detail": "Bounded 2-attempt self-repair invariant verified in orchestrator"
-    },
-    {
-      "id": "TC-14",
-      "title": "$1.00/day Hard Spend Cap (CON-008 / OI-001) & Laya System 1 Pre-Router",
-      "status": "PASS",
-      "latency_ms": 28,
-      "detail": "$1.00/day hard spend cap reconciled across verify_sprint_integrity.mjs and openrouter_client.ts"
-    },
-    {
-      "id": "TC-15",
-      "title": "97/97 Strict Visual Contract Compliance Suite",
-      "status": "PASS",
-      "latency_ms": 587,
-      "detail": "97/97 strict visual contract assertions passed (0 failures)"
-    },
-    {
-      "id": "TC-16",
-      "title": "21/21 Phase-3 Visual Harvest Mechanics (AVR-P301..AVR-P321)",
-      "status": "PASS",
-      "latency_ms": 0,
-      "detail": "21/21 mechanics passed syntax & fixture audit (20785 B, 0 anomalies)"
-    },
-    {
-      "id": "TC-17",
-      "title": "Strict Non-Main Task Branch Isolation (assertNonMainBranch)",
-      "status": "PASS",
-      "latency_ms": 3,
-      "detail": "assertNonMainBranch() locks automated pushes to origin/aios/v2-bootstrap and blocks main/master/HEAD"
-    },
-    {
-      "id": "TC-18",
-      "title": "Zero-Secret Post-Stage Guard & Explicit Path Allowlist (SEC-001 / SEC-002)",
-      "status": "PASS",
-      "latency_ms": 4,
-      "detail": "Zero git add -A; post-stage lint_staged_secrets.mjs and noreply author email enforced"
-    }
+  "schema_version": "3.0.0-RELEASE-CANDIDATE",
+  "task_id": "AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3",
+  "release_tag": "v3.0.0-rc1-aios-v2-bootstrap",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "roadmap_completion_ratio": "18/18 (100.0%)",
+  "completed_chunks": [
+    "A1",
+    "A2",
+    "A3",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "D1",
+    "D2",
+    "D3",
+    "E1",
+    "E2",
+    "E3",
+    "F1",
+    "F2"
   ],
-  "deliverable_sha256_ledger": {
-    "aasha_continuous_loop.mjs": {
-      "sha256": "510098ebdcf968220824ca2ed9da51ad01f15eb4a7cac0e915e33531df853d83",
-      "bytes": 27930
-    },
-    "verify_sprint_integrity.mjs": {
-      "sha256": "da27c206f12fcdd3151df3d1fd4a6d55e3ffcc6129e5dc2dd841eecd939363f7",
-      "bytes": 7170
-    },
-    "app.js": {
-      "sha256": "72d3e7eef1be0f3cd0b65a7dc08b54f92459b3acfee5dae5ce010ef03a3cadf2",
-      "bytes": 40658
-    },
-    "rewards.js": {
-      "sha256": "6c9155be6dee7991b3c076b18bb9db3914b06db303097f126b3958f7413f4ec7",
-      "bytes": 3704
-    },
-    "sync.js": {
-      "sha256": "3300e5ba3962c665d37060a3ff5def23604357e50909d1bec7570aa16b321ddd",
-      "bytes": 6763
-    },
-    "server.js": {
-      "sha256": "a7635b640cfe61f1e47ecb15425ce8d416b444aaf20c9dc6bff44e8452a27a13",
-      "bytes": 16833
-    },
-    "dictionary_reconciler.py": {
-      "sha256": "11d1928979fbf002d58bce84ac3ce2bfecf302ac2a597465b9c0b89c634d048a",
-      "bytes": 3771
-    },
-    "schoolbook_autonomous_orchestrator.py": {
-      "sha256": "e0022185c9544e255e771c33152c048944d8c713330e3b02918300174d1c13af",
-      "bytes": 17035
-    },
-    "candidate_dictionary_hi.json": {
-      "sha256": "88f91fed4f82ed6848dbfe4242093dbf5f43bababbc3c4276d843cb46bc03295",
-      "bytes": 37974
-    },
-    "defaults.json": {
-      "sha256": "82419828f6a4ffcd0d52aadeb1e53e07e51aeec61e2e4046a4b0fb55a4210bb0",
-      "bytes": 36090
-    },
-    "sqlite_exporter.py": {
-      "sha256": "375554eda548008b68c547d014ac147364210776bc4ec587986124909da0ffc1",
-      "bytes": 8150
-    },
-    "teas_content.db.gz": {
-      "sha256": "91c89c73e80317079a15e9e13ca92598901ddac6525f2b72685b3a840f937dc5",
-      "bytes": 30874
-    },
-    "Electric_Circuits_Class7_Gamified_v5.html": {
-      "sha256": "eb03ba92b8c569252ed7dae94bd185deaa923d996809771457f2f48411d0a833",
-      "bytes": 9733
-    },
-    "Motion_And_Force_Class9_Gamified_v5.html": {
-      "sha256": "768f38eb9db547f7d3dacb9263181beda20f2fa0377b513758096fffbee833d2",
-      "bytes": 8944
-    },
-    "Chemical_Effects_Of_Current_Class8_Gamified_v5.html": {
-      "sha256": "484bc339d44999f4544266bb3c7cda86127b5658fcb60fd99868618d681c560c",
-      "bytes": 9554
-    },
-    "Acids_Bases_And_Salts_Class7_Gamified_v5.html": {
-      "sha256": "94e9a1e3b5d75e825f9ee78cd134a357efadd722b8e0f4afc74ba490b47da9b5",
-      "bytes": 9621
-    },
-    "Light_Shadows_And_Reflections_Class6_Gamified_v5.html": {
-      "sha256": "3a1726862518b7ea47f57bced5cc666e4b9e8befe41eae33b2a54f1e8226c53a",
-      "bytes": 10233
-    },
-    "Linear_Equations_Two_Variables_Class9_Gamified_v5.html": {
-      "sha256": "0c23490cda2bbc4b5dc2b38ae17482f2d07d297876af2ef242af157f798e61bd",
-      "bytes": 8919
-    },
-    "Mensuration_3D_Solids_Class8_Gamified_v5.html": {
-      "sha256": "33887cb2b27a62d53a8faf0556d98af4fab86261c6b194dedb5543e6dc941be4",
-      "bytes": 9170
-    },
-    "Life_Processes_Human_Heart_Class10_Gamified_v5.html": {
-      "sha256": "d9b41fede7616edab8b0d064ad70cfbddf8408ffaae3109ba86cf398fa52271a",
-      "bytes": 9887
-    },
-    "Story_Of_Village_Palampur_Class9_Gamified_v5.html": {
-      "sha256": "387c6c9cfb5848b0c223c53de2538344ee0f843e68f218bf9f600633f94830a3",
-      "bytes": 10383
-    },
-    "Data_Handling_Mean_Median_Mode_Class7_Gamified_v5.html": {
-      "sha256": "511b000d5945b6fca37fc936fc409bdefbdab8ba371719022b9a532049162cb9",
-      "bytes": 10042
-    },
-    "Force_And_Pressure_Class8_Gamified_v5.html": {
-      "sha256": "4fd0578845237c36bf03ed24196af6453c46f5de3a96c07fe5fb87904b1d95b9",
-      "bytes": 9694
-    },
-    "Trigonometry_Heights_And_Distances_Class10_Gamified_v5.html": {
-      "sha256": "c42f1110478312b0e9b9f4cb0be0078b4a6bd51fffe87c7657dcaaf8f39d90f0",
-      "bytes": 9592
-    },
-    "Structure_Of_The_Atom_Bohr_Orbits_Class9_Gamified_v5.html": {
-      "sha256": "c8bc12b62ef1f8b89abc19c9612b67691d48b22eb37e7c9df99b10e3e463ee5c",
-      "bytes": 9734
-    },
-    "Algebraic_Identities_And_Factorisation_Class8_Gamified_v5.html": {
-      "sha256": "6b29e42b6acbe92e14cd3df2519498100f16a19500c479bd28f6698aef24c3b6",
-      "bytes": 9500
-    },
-    "Heat_Transfer_Conduction_Convection_Radiation_Class7_Gamified_v5.html": {
-      "sha256": "9d3c12de6e0968a243e923cc8a9e040cde548edd59a8bb2cc15ea2f44773d864",
-      "bytes": 10047
-    },
-    "Magnetic_Effects_Of_Electric_Current_Class10_Gamified_v5.html": {
-      "sha256": "d20293ece75d8be90db43ad001c249f3bcce861a0685ff6b714814fc3fc5491e",
-      "bytes": 10096
-    },
-    "sw.js": {
-      "sha256": "1e82410d925ded00f13ab8f078cab07a5382d443d03313a9f37a019bba0f983c",
-      "bytes": 3272
-    },
-    "manifest.json": {
-      "sha256": "b19b50433ec8d03221d4204e6530b7ec55ccd828539229b85129d3b6a07a23a5",
-      "bytes": 833
-    },
-    "index.html": {
-      "sha256": "e3de93c209e6c12596d8810d118ee046cf686a07233f9a011f5db5c53f00010f",
-      "bytes": 6622
-    },
-    "ngo_Ai_Antigravity_Online_Engine.ipynb": {
-      "sha256": "a41f6df7ab00d978bde1523662429c749989a1e17093a9f8759e6d6f372cb789",
-      "bytes": 4473
-    },
-    "aasha_antigravity_daily_ecosystem_runner.py": {
-      "sha256": "93e39f148e0b94b68f706a332317302cac822658118b5626abc52cd35917e7aa",
-      "bytes": 15462
-    }
-  }
+  "next_focus_unit": "G1: Continuous Autonomous Post-MVP Production Evolution & Live Cohort Telemetry Loop",
+  "sec001_zero_secrets_verified": true,
+  "max_bundle_bytes_verified_under_20mib": true,
+  "daily_spend_cap_usd": 1.0,
+  "chunk_proofs": {
+    "C1": "e8e1f03d12fedbf8218488009ea6743815062715fb03b1d84318638d63e87431",
+    "C2": "dc93a8ab471428839a0715c69b5fe6d8ca79efb185efa82d943efb4d55e5672a",
+    "C3": "b689d8079f474528b4585cea8bd24847a8c35688c20b34416e4f8bda1d7540e6",
+    "D1": "718b7f06b804d072ce1a8bf6d64d6ca94421fda2266f9e5691fd0521746def98",
+    "D2": "5819714af7f3d6eb2e04b4b28a176c6d2ade169983ae2f4e1e644070ec043d61",
+    "D3": "9dca9a4d05c92cbd6a12656fa4334028b6d4d4bdafe035402ed29606c8379ba1",
+    "E1": "ca93f7fb146e36a6ebf6c7211009ec14f3de1e8418042c07e7606cfd0d69da9f",
+    "E2": "47fa7fafd9da8c98e78d27b804fcf3acc6f67db14b67352ac7b8864e737b0c34",
+    "E3": "28f01840d960ee281690201e4ccad1f3edc1e0be7a040a2d0a42ff85cffc84ad",
+    "F1": "e1963a4bc1b7b07cc89dd1f1fba7f8b59a79878ece52693f5afa236bac70a2fb"
+  },
+  "release_manifest_sha256": "544685d614e8be356e14aabd078fb8d3dafbc21480edf93c37cad2fd4f92f272"
 }

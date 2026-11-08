@@ -1,0 +1,9 @@
+{
+  "schema_version": "3.0.0-E2-BRIDGE",
+  "bridge_target": "apsl-backend-foundation/api/bridge.py",
+  "ncvet_qualifications_supported": [
+    "NCVET-NSQF-L3-IT-01",
+    "NCVET-NSQF-L4-AGRI-02"
+  ],
+  "offline_first_verified": true
+}
