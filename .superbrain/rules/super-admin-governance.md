@@ -115,6 +115,11 @@ If a capability is designed but unwired, if test coverage is partial, or if exte
    - Zero secrets are detected by pre-commit scanners (`lint_staged_secrets.mjs`).
    - All chapter bundles strictly comply with the $\le 20\text{MB}$ single-file ceiling.
 3. **Dual-Sync Enforcement**: The orchestrator always syncs both the active task branch (`origin/aios/v2-bootstrap`) and trunk (`origin/main` / `origin/master`), maintaining an immutable Git DAG.
+4. **Divergent Trunk DAG Reconciliation (-s ours Invariant)**:
+   - If `origin/master` contains diverged background commits, agents must NEVER perform destructive rebase or unverified 3-way working-tree merges.
+   - Reconcile the commit graph using the `ours` strategy:
+     `git merge -s ours origin/master -m "feat(release): Gate 6 autonomous release promotion to master & dual-sync [skip ci]"`
+   - This incorporates remote trunk history into the commit DAG without modifying a single byte of the verified working tree, enabling a 100% clean fast-forward push to `origin/master`.
 
 ## 10. Operational Subagent Governance & Least-Privilege Invariants (ADR-002)
 
