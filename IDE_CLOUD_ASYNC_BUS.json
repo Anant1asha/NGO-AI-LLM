@@ -38,5 +38,5 @@
     "G6": 23
   },
   "completed_chunks_count": 24,
-  "active_focus_unit": "PHASE_G_COMPLETE: All 24/24 Chunks Certified & Gate 6 Release Promotion Ready"
+  "active_focus_unit": "GATE_6_PROMOTION_COMPLETE: Production Trunks master & main Synchronized across Dual Git DAG"
 }
