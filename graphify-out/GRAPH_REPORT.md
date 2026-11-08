@@ -1,16 +1,16 @@
-# Graph Report - NGO AI LLM  (2026-11-07)
+# Graph Report - NGO AI LLM  (2026-11-08)
 
 ## Corpus Check
-- 1567 files · ~5,722,478 words
+- 1641 files · ~5,784,462 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 14713 nodes · 22905 edges · 1269 communities (882 shown, 251 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 684 edges (avg confidence: 0.85)
+- 15369 nodes · 23665 edges · 1331 communities (931 shown, 264 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 704 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c8859fd6`
+- Built from commit: `27082b9d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,7 +24,7 @@
 - multi-agent-tui/package.json
 - chapter-builder/package.json
 - LLMAdapter
-- schemas/__init__.py
+- aasha/pipeline/orchestrator.py
 - cli.ts
 - llm_router.ts
 - dashboard/package.json
@@ -36,7 +36,7 @@
 - server/server.js
 - learner-web/src/app.js
 - test_browser_runtime.mjs
-- test_dictionary_staging.py
+- aasha-pipeline-with-master-json/src/aasha/__init__.py
 - HTMLAssembler
 - LLE
 - steps
@@ -47,7 +47,7 @@
 - FrontendCodeSynthesizer
 - Orchestrator
 - properties
-- HotPotatoesPlugin
+- We
 - core.test.js
 - 3. Exhaustive Theory & Curriculum Specifications by Page
 - InteractionRequest
@@ -61,14 +61,14 @@
 - ChapterAuditor
 - AASHA_TEACHING_GUIDE.md
 - BADGES
-- aasha/pipeline/orchestrator.py
+- Config
 - PhETPlugin
-- DesignAgent
+- validate_chapter_spec
 - BADGES
 - ChapterAuditor
 - MASTER PROMPT & OPERATIONAL DIRECTIVE FOR ALL AI AGENTS
 - scripts
-- .constructor
+- aa
 - GeoGebraPlugin
 - LLMAdapter
 - MASTER PROMPT & OPERATIONAL DIRECTIVE FOR ALL AI AGENTS
@@ -77,7 +77,7 @@
 - DOCUMENT 5 — BACKEND SCHEMA DOCUMENT
 - Agentic AI Design — How the Multi-Agent System Works
 - aasha-pipeline-with-master-json/schema/chapter_spec.schema.json
-- plugins/base.py
+- PluginMetadata
 - chart.umd.min.js
 - aasha-v5-reference-repo/schema/chapter_spec.schema.json
 - benchmarks/automated_browser_verification.js
@@ -128,10 +128,10 @@
 - 2. AASHA Prebuilt Foundation Registry
 - FabricPlugin
 - get_bundled_script
-- JSXGraphPlugin
+- ThousandAgentInfinitySwarmOrchestrator
 - AASHA AIOS Persistent Change Ledger
-- PluginMetadata
-- toJSON
+- ScilabPlugin
+- Dl
 - verify_m2_runtime_lifecycle.js
 - t
 - q
@@ -323,7 +323,7 @@
 - pie-wrapper.js
 - webpack.config.js
 - rules/graphify.md
-- We
+- Mn
 - 2. Observation
 - Milestone 1 Gate Review & Adversarial Audit Report
 - EVID-001_node_test_suite.md
@@ -333,12 +333,12 @@
 - aasha-rules/question_schema_validator.ts
 - verify_cinephysics_integration.js
 - verify_all_manual_steps.js
-- visual_gamification_bench.test.mjs
+- CrossGradeKnowledgeGraphDistiller
 - adversarial_question_challenger.js
 - agent_orchestrator.ts
 - Rational
-- core.test.mjs
-- events.js
+- visual_gamification_bench.test.mjs
+- storage.js
 - question_schema_validator.js
 - AashaCinePhysicsCaliperAdapter
 - CANONICAL GLOSSARY & ARCHITECTURAL ACRONYMS
@@ -386,7 +386,7 @@
 - verify_m1_questions.js
 - c
 - .push
-- copy
+- ci
 - adversarial_challenge_m2_squares.js
 - Sentinel Handoff Report
 - inspect_phet.js
@@ -406,7 +406,7 @@
 - Status: IN_PROGRESS
 - Universal API Tier Routing Policy (Anti-Bleed for ALL Interactions)
 - GameEngine
-- .multiplyScalar
+- copy
 - Progress — teamwork_preview_auditor_m1_1
 - Progress Log — teamwork_preview_challenger_m1_2
 - find_katex_poly.js
@@ -582,7 +582,7 @@
 - AUTH_COMPATIBILITY_REPORT.md
 - HATCHABLE_EXPERIMENT_LOG.md
 - STORAGE_COMPATIBILITY_REPORT.md
-- o
+- bn
 - API_COMPATIBILITY_REPORT.md
 - Task Assignment for Forensic Auditor (Integrity Forensics)
 - 5-Component Handoff Report — Auditor 1 (Forensic Integrity Auditor)
@@ -656,21 +656,21 @@
 - ns
 - Mi
 - SUPERBRAIN.md
-- va
-- sr
+- o
+- clone
 - AASHA Simulation & Foundation Registry Survey Report
 - DeepOfflineVectorizer
 - runPrototypeTestSuite
-- eo
+- s
 - AashaSimFractionSlice
 - e2e_compiler_runtime_test.ts
 - ke
 - scripts
-- experience_specification.ts
+- iec_aios_bridge.ts
 - AashaSimBalanceEquation
 - be
 - l
-- Xa
+- .constructor
 - AashaSimNumberLine
 - properties
 - create_minimal_pdf
@@ -679,7 +679,7 @@
 - tex-chtml.js
 - Repair and Harden the Existing AASHA Chapter Builder
 - DomainSimGenerators
-- s
+- GraphifyAdapter
 - O
 - bh
 - harvest_engine.mjs
@@ -697,7 +697,7 @@
 - 4. Issue 3: QuestionSchemaValidator Hardening
 - aasha_memory_engine.ts
 - OfflineSynthesizer
-- runPhase5Certification
+- phase_5_certification_test.ts
 - build_exponents_master_chapter.js
 - i
 - AASHA Pipeline & Tooling Survey Report: Square and Cube Roots Chapter Rebuild
@@ -719,10 +719,10 @@
 - 2. Remediation Specifications
 - AashaTelemetryClient
 - test_dev_agent_phase2.ts
-- Ji
+- Ki
 - Config
 - AASHA AIOS — Offline-First Visual Learning Ecosystem
-- b
+- runBattery
 - Remediation Plan: Class 8 Squares and Cubes Question Bank (Milestone 1 Iteration 2)
 - 1. Observation
 - 1. Observation
@@ -834,7 +834,7 @@
 - Requirements
 - Progress: Milestone 1 Iteration 2 Remediation & Verification
 - models/google.go
-- phase_6_production_activation_test.ts
+- experience_specification.ts
 - v6_compiler_concept_progression.test.ts
 - compilerOptions
 - DEEP RESEARCH REPORT: ARCHITECTURES FOR MULTI-AGENT LLM SYNTHESIS OF OFFLINE GAMIFIED NCERT K-12 LEARNING MODULES
@@ -854,7 +854,7 @@
 - Progress — teamwork_preview_worker_m2_squares
 - Progress - worker_m1
 - simulation_subagent.test.mjs
-- create_default_registry
+- What You Must Do When Invoked
 - taxonomy.py
 - core/package.json
 - AASHA AIOS — TASK 2 UNIFIED ARCHITECTURE EVIDENCE VERIFICATION REPORT
@@ -991,6 +991,7 @@
 - Local Stack & Offline-First Invariant (Method B)
 - Serena MCP Parameter & Memory Invariants
 - REA Environment & Analysis Provider Runbook
+- OpenMAICPlugin
 - AASHA AIOS — Local CDN, Open-Source Harvesting & Asset Orchestration Repository
 - AASHA AIOS — Credential Audit & Remediation Record (SEC-001)
 - tlsClientAdapter
@@ -1031,7 +1032,7 @@
 - Resolve
 - AASHA AIOS Development Agent — Human Approval Record
 - Installation Guide — AASHA Antigravity Agent Team
-- AssessmentBankModel
+- AASHA Multi-API Routing Runbook
 - 2. Product Manager Authorization for Phase 2
 - verify_mendelian_chapter_browser.mjs
 - Detailed Subsystem Logs
@@ -1039,7 +1040,7 @@
 - component_certification_attestation.schema.json
 - check_nodes_leaks.js
 - check_we_leaks.js
-- aasha_pc_antigravity_daemon.ps1
+- package.json
 - AASHA AIOS — TASK 2 IMPLEMENTATION & CERTIFICATION REPORT
 - AASHA AIOS — TASK 2 SIMULATION ENGINE OWNERSHIP & CANONICAL MAPPING
 - AVR-P306.js
@@ -1075,7 +1076,7 @@
 - /n8n-trigger: Headless Automation Pipeline Orchestrator
 - KingsMath Web Games Library (AASHA Prebuilt Harvest Resource)
 - AASHA AIOS Subsystem & File Disposition Matrix
-- package.json
+- Aasha-AIOS Adaptive Semantic Prompt Compiler & Architectural Guide
 - HeadlessCDPClient
 - MockElement
 - lint_workflows.mjs
@@ -1148,39 +1149,100 @@
 - .superbrain/rules/graphify.md
 - aasha-studio
 - github.com/ikhsan3adi/gemini-web2api
+- 7. Automated End-to-End Manual Verification Protocol
+- test_deep_vectorizer.py
+- validation_pipeline.ts
+- Pn
+- Phase 1: Brainstorming (MANDATORY)
+- .analyze_raster_image
+- recordEvent
+- masterplugin/skills/aasha-prompt-compiler/scripts/serena_adapter.ts
+- Open-Source Harvesting & Quality Gate Engine
+- cu
+- Common Pitfalls & Anti-Patterns
+- MafsPlugin
+- TimelinePlugin
+- 4. शिक्षक के लिए सारांश (Teacher HIL Verification Summary)
+- Verification Workflow (5-Step Execution)
+- AASHA AIOS: Offline-First Local Stack Architecture & Persistence Hierarchy (Method B)
+- monolith_subagent.mjs
+- infinity_cloud_hub.mjs
+- runPhase3Tests
+- approved_build_lessons.test.ts
+- graphify reference: extra exports and benchmark
+- 5-Phase Cadence Execution
+- LSP Toolchain Bootstrap & Environment Manager
+- 2. Transformation Rules by Question Type
+- AASHA AIOS Autonomous Ecosystem Orchestrator
+- test_source_provenance.py
+- CAT Assessment Authoring: Item Response Theory & Zero-Spoiler Scaffolding
+- Gamified Quest Architect Skill: 3-Tier Mastery & Offline Game Loops
+- REA Environment & Analysis Provider Runbook
+- CAT Assessment Authoring: Item Response Theory & Zero-Spoiler Scaffolding
+- Gamified Quest Architect Skill: 3-Tier Mastery & Offline Game Loops
+- scripts/aasha_orchestrator_cli.mjs
+- Pāṇinian Kāraka Computational Decision & Compilation Engine
+- AASHA AIOS Sprint Verifier
+- ._get_pixel_data
+- AASHA AIOS Workspace Agent Team Management Skill
+- graphify reference: query, path, explain
+- Universal Multi-Step Simulation & Game Engine Runbook
+- aasha-ecosystem-orchestrator/scripts/aasha_orchestrator_cli.mjs
+- BalanceEquationAudioSynthesizer
+- AASHA Autonomous Learning & Gamified Assessment Agent (AASHA-LGA)
+- Accessibility & Mobile Ergonomics Touch Auditor (A11Y-CDP)
+- /chapter-compile: AASHA AIOS Autonomous Chapter Compiler
+- /jagiye-maakiran: Serena Local Memory Wake-Up & System Priming
+- /n8n-trigger: Headless Automation Pipeline Orchestrator
+- Accessibility & Mobile Ergonomics Touch Auditor (A11Y-CDP)
+- Continuous Evolutionary Engineering Loop & Efficiency Ratchets
+- test_classify_balance_scale_raster_and_vector
+- /anti-bleed: LLM Routing & Cost Circuit Breaker Audit
+- graphify reference: add a URL and watch a folder
+- graphify reference: commit hook and native AGENTS.md integration
+- graphify reference: incremental update and cluster-only
+- /router-gateway-audit: 9Router Gateway & Laya Router Audit
+- graphify reference: GitHub clone and cross-repo merge
+- graphify reference: transcribe video and audio
+- /reasoning-check: Rigorous Truth-Seeking Reasoning Audit
+- uv (Python Package Manager)
+- masterplugin/skills/ecosystem-identity-audit/script/audit.sh
+- masterplugin/skills/graphify/references/extraction-spec.md
+- src/aasha/__init__.py
+- orchestrator/__init__.py
 
 ## God Nodes (most connected - your core abstractions)
-1. `copy()` - 146 edges
-2. `c()` - 145 edges
-3. `AASHA AIOS Persistent Change Ledger` - 142 edges
+1. `AASHA AIOS Persistent Change Ledger` - 167 edges
+2. `copy()` - 146 edges
+3. `c()` - 145 edges
 4. `s()` - 135 edges
 5. `We` - 109 edges
 6. `i()` - 102 edges
 7. `a()` - 98 edges
 8. `l()` - 89 edges
 9. `me` - 89 edges
-10. `InteractionRequest` - 80 edges
+10. `InteractionRequest` - 84 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `test_assessment_agent_fills_opts()` --calls--> `AssessmentAgent`  [INFERRED]
   Aasha-AI/aasha-pipeline-with-master-json/tests/test_agents.py → Aasha-AI/aasha-pipeline-with-master-json/src/aasha/agents/assessment_agent.py
-- `test_lle_agent_stages_candidates()` --calls--> `LLEAgent`  [INFERRED]
-  Aasha-AI/aasha-pipeline-with-master-json/tests/test_dictionary_staging.py → Aasha-AI/aasha-pipeline-with-master-json/src/aasha/agents/lle_agent.py
+- `test_create_adapter_factory()` --calls--> `create_adapter()`  [INFERRED]
+  Aasha-AI/aasha-pipeline-with-master-json/tests/test_llm_adapter.py → Aasha-AI/aasha-pipeline-with-master-json/src/aasha/llm/adapter.py
 - `Invoke-AashaInfrastructureWakeAndSync()` --calls--> `node`  [INFERRED]
   aasha_pc_antigravity_daemon.ps1 → package.json
-- `test_analysis_agent_run()` --calls--> `AnalysisAgent`  [INFERRED]
-  Aasha-AI/aasha-pipeline-with-master-json/tests/test_agents.py → Aasha-AI/aasha-pipeline-with-master-json/src/aasha/agents/analysis_agent.py
-- `IngestAgent` --uses--> `DeepOfflineVectorizer`  [INFERRED]
-  Aasha-AI/aasha-pipeline-with-master-json/src/aasha/agents/ingest_agent.py → Aasha-AI/aasha-pipeline-with-master-json/src/aasha/agents/deep_vectorizer.py
+- `TestThousandAgentSwarm` --uses--> `ThousandAgentInfinitySwarmOrchestrator`  [INFERRED]
+  tests/test_phase_g3_thousand_agent_pdf_html_swarm.py → src/aasha/orchestrator/phase_g3_thousand_agent_pdf_html_swarm.py
+- `TestThousandAgentSwarm` --uses--> `UniversalPDFToChildHTML5MasterFactory`  [INFERRED]
+  tests/test_phase_g3_thousand_agent_pdf_html_swarm.py → src/aasha/orchestrator/phase_g3_thousand_agent_pdf_html_swarm.py
 
 ## Import Cycles
 - 3-file cycle: `multi-agent-tui/src/agent.ts -> multi-agent-tui/src/tools/index.ts -> multi-agent-tui/src/tools/sub_agent.ts -> multi-agent-tui/src/agent.ts`
 
-## Communities (1269 total, 251 thin omitted)
+## Communities (1331 total, 264 thin omitted)
 
 ### Community 0 - "version_manager.ts"
-Cohesion: 0.11
-Nodes (22): AGENT_ROLES, main(), readJsonFile(), ApprovalAction, payloadFor(), REQUIRED_CERTIFICATION_GATES, SignedApproval, SignedCertification (+14 more)
+Cohesion: 0.10
+Nodes (24): AGENT_ROLES, main(), readJsonFile(), ApprovalAction, payloadFor(), REQUIRED_CERTIFICATION_GATES, SignedApproval, SignedCertification (+16 more)
 
 ### Community 1 - "AgentBus"
 Cohesion: 0.10
@@ -1188,11 +1250,11 @@ Nodes (17): AgentBus, Any, Path, Message bus for inter-agent communication and l
 
 ### Community 2 - "LLMAdapter"
 Cohesion: 0.06
-Nodes (35): create_adapter(), LLMAdapter, LLMGenerationError, _load_env_if_missing(), Any, Exception, Path, retry (+27 more)
+Nodes (34): create_adapter(), LLMAdapter, LLMGenerationError, _load_env_if_missing(), Any, Exception, Path, retry (+26 more)
 
 ### Community 3 - "aasha-student-pwa/src/app.js"
 Cohesion: 0.20
-Nodes (30): app, chapterCheck, cleanupActiveGames(), currentChapter, esc(), initials(), launchMatchArena(), launchSpeedRun() (+22 more)
+Nodes (26): app, chapterCheck, cleanupActiveGames(), currentChapter, esc(), initials(), launchMatchArena(), launchSpeedRun() (+18 more)
 
 ### Community 4 - "test_exercise_and_profiles.py"
 Cohesion: 0.05
@@ -1214,9 +1276,9 @@ Nodes (42): buildMonolithicHTML(), cheerio, fs, { inlineSource }, path, author, 
 Cohesion: 0.09
 Nodes (18): LLMAdapter, LLMGenerationError, Any, Exception, Path, retry, Parse JSON from LLM response, handling code fences and extra text., Estimate cost based on provider pricing (rough). (+10 more)
 
-### Community 9 - "schemas/__init__.py"
+### Community 9 - "aasha/pipeline/orchestrator.py"
 Cohesion: 0.04
-Nodes (80): Badge, ChapterMeta, ChapterSpec, Concept, ContentMap, Exercise, Figure, generate_supplementary_assessments() (+72 more)
+Nodes (74): Message bus for inter-agent communication and live progress updates., Multi-agent orchestrator — manages the pipeline job lifecycle. Sequences the 6…, Badge, ChapterMeta, ChapterSpec, Concept, ContentMap, enrich_content_map() (+66 more)
 
 ### Community 10 - "cli.ts"
 Cohesion: 0.26
@@ -1244,10 +1306,10 @@ Nodes (34): type, type, type, type, type, type, type, type (+26 more)
 
 ### Community 16 - "BaseAgent"
 Cohesion: 0.04
-Nodes (40): AnalysisAgent, AnalysisAgent — Stage 2: Content Analysis. Analyzes the raw PDF extract using…, Analyzes raw PDF extract to identify concepts and opportunities., AssessmentAgent, Any, Path, AssessmentAgent — Stage 4: Assessment Generation. For every quiz, VQ, solve…, Apply generated assessments back into the spec. (+32 more)
+Nodes (45): AnalysisAgent, AnalysisAgent — Stage 2: Content Analysis. Analyzes the raw PDF extract using…, Analyzes raw PDF extract to identify concepts and opportunities., AssessmentAgent, Any, Path, AssessmentAgent — Stage 4: Assessment Generation. For every quiz, VQ, solve…, Apply generated assessments back into the spec. (+37 more)
 
 ### Community 17 - "test_game_components.js"
-Cohesion: 0.08
+Cohesion: 0.09
 Nodes (15): AnturaProgressionAdapter, GameLoopComponent, H5PSchemas, TactileMatchComponent, assert, container, dom, firstAttempts (+7 more)
 
 ### Community 18 - "server/server.js"
@@ -1261,10 +1323,6 @@ Nodes (22): app, attempts, currentChapter, deviceId(), event(), learn(), onboard
 ### Community 20 - "test_browser_runtime.mjs"
 Cohesion: 0.23
 Nodes (12): practice(), assessNode(), gradeQuestion(), questionsForNode(), summarizeAttempts(), fractionsChapter, perimeterChapter, run() (+4 more)
-
-### Community 21 - "test_dictionary_staging.py"
-Cohesion: 0.20
-Nodes (6): Aasha Pipeline — Multi-Agent AI Chapter Builder. Converts NCERT textbook PDFs…, DummyMonkey, mock_llm(), fixture, Tests for Tier 1 candidate staging and Tier 2 dictionary management., test_lle_agent_stages_candidates()
 
 ### Community 22 - "HTMLAssembler"
 Cohesion: 0.09
@@ -1295,20 +1353,16 @@ Cohesion: 0.22
 Nodes (23): cmd_export_prompt(), cmd_list(), cmd_promote(), cmd_reject(), cmd_stats(), find_project_root(), get_candidate_path(), get_config_dir() (+15 more)
 
 ### Community 29 - "FrontendCodeSynthesizer"
-Cohesion: 0.08
-Nodes (17): FrontendCodeSynthesizer, Any, Path, Build the complete self-contained HTML file with embedded base64 libraries and…, Agent 4 — generates the final HTML5 output. Takes the pedagogy map (concepts +…, Synthesize the final HTML from agent outputs., Build HTML for one assessment level conforming to the Universal Question…, Collect base64 libraries, CSS, and JS assets from plugins used in the… (+9 more)
+Cohesion: 0.06
+Nodes (20): Mastery tracker for frontend offline sync., FrontendCodeSynthesizer, Any, Path, Agent 4: Frontend Code Synthesizer. Generates a complete, self-contained…, Build the complete self-contained HTML file with embedded base64 libraries and…, Agent 4 — generates the final HTML5 output. Takes the pedagogy map (concepts +…, Synthesize the final HTML from agent outputs. (+12 more)
 
 ### Community 30 - "Orchestrator"
-Cohesion: 0.08
-Nodes (32): Log a message for the job log., Orchestrator, Any, LLMAdapter, Path, Create an LLM adapter for the given provider. For OpenRouter, passes…, Get the work directory for a job., Infer subject and grade from PDF filename and text context. (+24 more)
+Cohesion: 0.06
+Nodes (36): Log a message for the job log., AgentBus, Any, Path, Publish a message to the bus., Read all messages from the bus., File-backed message bus., Orchestrator (+28 more)
 
 ### Community 31 - "properties"
 Cohesion: 0.10
 Nodes (20): maximum, minimum, type, type, type, properties, grade, id (+12 more)
-
-### Community 32 - "HotPotatoesPlugin"
-Cohesion: 0.22
-Nodes (4): HotPotatoesPlugin, Any, Hot Potatoes-style exercises - JQuiz, JMatch, JCloze, JCross, JMix (GNU GPL)., Hot Potatoes-style exercise types for assessment variety.
 
 ### Community 33 - "core.test.js"
 Cohesion: 0.11
@@ -1319,8 +1373,8 @@ Cohesion: 0.04
 Nodes (45): 1. Executive Summary & Document Overview, 1. Primary Interactive Manipulative: `<aasha-sim>` Dual Square & Cube Engine, 2. Chapter Structure & Pedagogical Sequence, 2. Tier 3 Boss Challenge: Foundation F01 (Escape Run), 3. Exhaustive Theory & Curriculum Specifications by Page, 3. Language Layer Engine (LLE) Indic Substrate, 4. Complete Inventory of All Textbook Exercises & Problems (100% Extracted), 5. Specification Miner Discovery & Edge Case Tables (+37 more)
 
 ### Community 35 - "InteractionRequest"
-Cohesion: 0.15
-Nodes (17): InteractionRequest, Describes an interaction need from the DesignAgent., Interaction Plugin System - extensible architecture for embedding open-source…, Tests for the plugin system., Fallback should always be available., Each plugin should provide CSS/JS assets for embedding., render_step should always return a dict with 't' field., test_all_step_types_are_strings() (+9 more)
+Cohesion: 0.13
+Nodes (19): InteractionRequest, Describes an interaction need from the DesignAgent., Interaction Plugin System - extensible architecture for embedding open-source…, fixture, Tests for the plugin system., Fallback should always be available., Each plugin should provide CSS/JS assets for embedding., render_step should always return a dict with 't' field. (+11 more)
 
 ### Community 36 - "impact-engine/src/index.js"
 Cohesion: 0.57
@@ -1362,17 +1416,17 @@ Nodes (21): 10. Interaction Must Have a Learning Purpose, 11. Feedback Language,
 Cohesion: 0.13
 Nodes (17): description, items, maxItems, minItems, type, required, type, description (+9 more)
 
-### Community 46 - "aasha/pipeline/orchestrator.py"
+### Community 46 - "Config"
 Cohesion: 0.06
-Nodes (47): main(), Aasha Pipeline CLI — build_chapter.py entry point. Usage: # Single chapter…, Run batch mode over a directory of PDFs with optional concurrency., Run curriculum course compilation over multiple chapter PDFs., Run the Flask web UI., Run a single chapter build., run_batch(), run_curriculum() (+39 more)
+Nodes (41): main(), Aasha Pipeline CLI — build_chapter.py entry point. Usage: # Single chapter…, Run batch mode over a directory of PDFs with optional concurrency., Run curriculum course compilation over multiple chapter PDFs., Run the Flask web UI., Run a single chapter build., run_batch(), run_curriculum() (+33 more)
 
 ### Community 47 - "PhETPlugin"
 Cohesion: 0.14
 Nodes (9): PhETPlugin, Any, PhET Interactive Simulations plugin. PhET (University of Colorado Boulder)…, Check if a PhET simulation exists for this concept., Find the best PhET simulation for a request., Produce a phet step spec. The srcdoc_b64 field will contain the base64-encoded…, Download and base64-encode the PhET simulation., Return any CSS needed for PhET iframes. (+1 more)
 
-### Community 48 - "DesignAgent"
-Cohesion: 0.22
-Nodes (7): DesignAgent, Any, Path, Structures content into the v5 NODES/steps shape or full-synthesis., Create a simple inline SVG hero image., Post-process the LLM output to fix common issues., test_design_agent_creates_structure()
+### Community 48 - "validate_chapter_spec"
+Cohesion: 0.12
+Nodes (19): DesignAgent, Any, Path, Structures content into the v5 NODES/steps shape or full-synthesis., Create a simple inline SVG hero image., Post-process the LLM output to fix common issues., Any, Run all 12 validation rules on a chapter spec dict. Returns a ValidationResult… (+11 more)
 
 ### Community 49 - "BADGES"
 Cohesion: 0.13
@@ -1390,9 +1444,9 @@ Nodes (15): 0. PRIMARY MISSION, 1. THE GOLDEN RULE, 2. TARGET OUTCOME, 3. THE EX
 Cohesion: 0.12
 Nodes (15): engines, node, name, private, scripts, build:content, dev:api, dev:learner (+7 more)
 
-### Community 53 - ".constructor"
-Cohesion: 0.03
-Nodes (71): go(), mt(), _t(), vt(), Ca(), clone(), a(), cr (+63 more)
+### Community 53 - "aa"
+Cohesion: 0.07
+Nodes (10): aa(), D(), ia, na, oa, Ra, setValue(), te() (+2 more)
 
 ### Community 54 - "GeoGebraPlugin"
 Cohesion: 0.14
@@ -1426,13 +1480,13 @@ Nodes (14): Adding a new agent, Adding a new LLM provider, Adding a new step typ
 Cohesion: 0.13
 Nodes (14): additionalProperties, definitions, option, step, description, $id, required, type (+6 more)
 
-### Community 62 - "plugins/base.py"
-Cohesion: 0.14
-Nodes (9): ABC, Interaction Plugin System — extensible architecture for embedding open-source…, Any, V5 Canvas Fallback — the built-in v5 engine canvas visuals. This plugin is the…, Fallback plugin using the v5 engine's built-in canvas visuals., Always returns True — this is the fallback., Produce a v5 canvas step based on the suggested model., No additional assets — v5 canvas is already in the template. (+1 more)
+### Community 62 - "PluginMetadata"
+Cohesion: 0.10
+Nodes (15): PluginMetadata, ABC, Interaction Plugin System — extensible architecture for embedding open-source…, Declares what a plugin can do., HotPotatoesPlugin, Any, Hot Potatoes-style exercises - JQuiz, JMatch, JCloze, JCross, JMix (GNU GPL)., Hot Potatoes-style exercise types for assessment variety. (+7 more)
 
 ### Community 63 - "chart.umd.min.js"
 Cohesion: 0.03
-Nodes (72): ao(), at(), average(), be(), beforeDatasetDraw(), beforeDatasetsDraw(), beforeDraw(), Bi() (+64 more)
+Nodes (50): Ae(), be(), beforeDatasetDraw(), beforeDatasetsDraw(), beforeDraw(), beforeLayout(), d(), da() (+42 more)
 
 ### Community 64 - "aasha-v5-reference-repo/schema/chapter_spec.schema.json"
 Cohesion: 0.13
@@ -1536,7 +1590,7 @@ Nodes (12): $ref, items, maxItems, minItems, type, items, maxItems, minItems (+4
 
 ### Community 89 - "qe"
 Cohesion: 0.03
-Nodes (34): beforeLayout(), destroy(), hn(), Jo(), qo(), Ye(), applyMatrix4(), clampPoint() (+26 more)
+Nodes (19): destroy(), Jo(), Ye(), applyMatrix4(), clampPoint(), dn, expandByPoint(), expandByScalar() (+11 more)
 
 ### Community 90 - "opts"
 Cohesion: 0.17
@@ -1628,23 +1682,23 @@ Nodes (4): FabricPlugin, Any, Fabric.js - interactive canvas for anatomy labelin
 
 ### Community 112 - "get_bundled_script"
 Cohesion: 0.11
-Nodes (10): get_bundled_script(), Downloads library from URL (if not cached), verifies integrity, caches in…, H5PPlugin, Any, H5P - interactive content format (MIT, JSON-based)., H5P - interactive content format (JSON-based, embeddable)., MafsPlugin, Any (+2 more)
+Nodes (10): get_bundled_script(), Downloads library from URL (if not cached), verifies integrity, caches in…, H5PPlugin, Any, H5P - interactive content format (MIT, JSON-based)., H5P - interactive content format (JSON-based, embeddable)., JSXGraphPlugin, Any (+2 more)
 
-### Community 113 - "JSXGraphPlugin"
-Cohesion: 0.22
-Nodes (4): JSXGraphPlugin, Any, JSXGraph - interactive geometry, graphing, function plotting. JSXGraph is a…, JSXGraph interactive geometry/graphing plugin (MIT, ~200KB).
+### Community 113 - "ThousandAgentInfinitySwarmOrchestrator"
+Cohesion: 0.07
+Nodes (25): Any, src/aasha/orchestrator/phase_g3_thousand_agent_pdf_html_swarm.py AASHA AIOS —…, Decomposes chapter into 3..5 TLN nodes following the 8-stage Golden Flow., Ensures 60% English / 40% Hindi weave and math token insulation., Binds interactive SVG/Canvas simulation with data-tap-select=true., Audits options to guarantee zero target-answer spoilers in 'm' attributes., Enforces 10 Critical QA Rules., Packages standalone child HTML5 module < 20 MiB. (+17 more)
 
 ### Community 114 - "AASHA AIOS Persistent Change Ledger"
 Cohesion: 0.01
-Nodes (142): [2026-10-27T04:14:00Z] — Initial Baseline Run, [2026-10-27T04:19:13.770Z] — Run #1 (VERIFIED), [2026-10-27T04:32:14.817Z] — Run #1 (VERIFIED), [2026-10-27T04:41:14.418Z] — Run #1 (VERIFIED), [2026-10-27T04:52:10.179Z] — Run #1 (VERIFIED), [2026-10-27T05:13:00.000Z] — Run #1 Remote Synchronization (VERIFIED), [2026-10-27T05:30:20.364Z] — Run #1 (VERIFIED), [2026-10-27T05:35:39.496Z] — Run #1 (VERIFIED) (+134 more)
+Nodes (167): [2026-10-27T04:14:00Z] — Initial Baseline Run, [2026-10-27T04:19:13.770Z] — Run #1 (VERIFIED), [2026-10-27T04:32:14.817Z] — Run #1 (VERIFIED), [2026-10-27T04:41:14.418Z] — Run #1 (VERIFIED), [2026-10-27T04:52:10.179Z] — Run #1 (VERIFIED), [2026-10-27T05:13:00.000Z] — Run #1 Remote Synchronization (VERIFIED), [2026-10-27T05:30:20.364Z] — Run #1 (VERIFIED), [2026-10-27T05:35:39.496Z] — Run #1 (VERIFIED) (+159 more)
 
-### Community 115 - "PluginMetadata"
-Cohesion: 0.12
-Nodes (10): PluginMetadata, Declares what a plugin can do., Any, Scilab - numerical computation and simulation (CeCILL license)., Scilab/Xcos - numerical computation, matrix operations, ODE solving., ScilabPlugin, Any, Interactive Timeline - for social studies, history, civics. (+2 more)
+### Community 115 - "ScilabPlugin"
+Cohesion: 0.22
+Nodes (4): Any, Scilab - numerical computation and simulation (CeCILL license)., Scilab/Xcos - numerical computation, matrix operations, ODE solving., ScilabPlugin
 
-### Community 116 - "toJSON"
-Cohesion: 0.02
-Nodes (25): Dl, ec, iu, jl, r(), s(), kl(), ko (+17 more)
+### Community 116 - "Dl"
+Cohesion: 0.03
+Nodes (15): Dl, ec, jl, kl(), $l, lineTo(), moveTo(), Nl (+7 more)
 
 ### Community 117 - "verify_m2_runtime_lifecycle.js"
 Cohesion: 0.16
@@ -1695,8 +1749,8 @@ Cohesion: 0.10
 Nodes (21): assemble(), assemble_with_defaults(), Stage 7 — Assemble HTML. See README.md for the 8-placeholder injection…, Convenience wrapper: fills LEVELS from config/defaults.json when the chapter…, main(), build_chapter.py — CLI entrypoint for the Aasha chapter-build agent. Examples:…, ingest_pdf(), load_raw_extract_stub() (+13 more)
 
 ### Community 129 - "Aasha AI Ecosystem Map"
-Cohesion: 0.22
-Nodes (8): 1. Multi-Agent System & Skills, 2. Interaction Plugins (The 12 Manipulatives), 3. Model Context Protocol (MCP) Servers, 4. Core Pipeline Dependencies, Aasha AI Ecosystem Map, Node.js QA Harness (`qa/package.json`), Principles for AI Agents, Python Backend (`requirements.txt`)
+Cohesion: 0.20
+Nodes (9): 1. Multi-Agent System & Skills, 2. Interaction Plugins (The 12 Manipulatives), 3. Model Context Protocol (MCP) Servers, 4. Core Pipeline Dependencies, 5. Execution Topology & Cloud Scaling, Aasha AI Ecosystem Map, Node.js QA Harness (`qa/package.json`), Principles for AI Agents (+1 more)
 
 ### Community 131 - "AI CLI Batch Workflow Playbook (Grades 6–10)"
 Cohesion: 0.22
@@ -2178,9 +2232,9 @@ Nodes (3): 2. The Golden Teaching Rule, Critical rule, **WHAT → WHY → HOW �
 Cohesion: 0.67
 Nodes (3): 3. Definition-First Is NOT the Default, Bad, Better
 
-### Community 317 - "We"
+### Community 317 - "Mn"
 Cohesion: 0.02
-Nodes (5): ba(), fe, Mn, Vo, We
+Nodes (16): ba(), disconnect(), fe, ja(), A(), C(), I(), R() (+8 more)
 
 ### Community 318 - "2. Observation"
 Cohesion: 0.10
@@ -2199,8 +2253,8 @@ Cohesion: 0.15
 Nodes (7): assert, data, evalExpr(), fs, jsonPath, path, Rational
 
 ### Community 355 - "aasha-rules/question_schema_validator.ts"
-Cohesion: 0.10
-Nodes (19): AASHAGatekeeper, GatekeeperResult, GatekeeperViolation, AASHA_RULES, AASHARuleDefinition, PROHIBITED_PATTERNS, SUBJECT_MODE_PATTERNS, AssessmentQuestion (+11 more)
+Cohesion: 0.17
+Nodes (12): AssessmentQuestion, escapeRegex(), LEAK_PREDICATES, normalizeMathText(), QuestionHints, QuestionOption, QuestionSchemaValidator, QuestionValidationError (+4 more)
 
 ### Community 356 - "verify_cinephysics_integration.js"
 Cohesion: 0.11
@@ -2210,29 +2264,29 @@ Nodes (16): { AashaCinePhysicsCaliperAdapter }, { AashaCinePhysicsDimensionalAda
 Cohesion: 0.18
 Nodes (12): captureAndSaveScreenshot(), CDPClient, fetchJson(), fs, http, os, path, PWA_DIR (+4 more)
 
-### Community 358 - "visual_gamification_bench.test.mjs"
-Cohesion: 0.36
-Nodes (9): computeMastery(), DynamicDifficultyEngine, eventEvidenceCache, getEventEvidence(), getScaffoldingHint(), progressionDecision(), recordSimulationTelemetry(), refreshMastery() (+1 more)
+### Community 358 - "CrossGradeKnowledgeGraphDistiller"
+Cohesion: 0.06
+Nodes (23): AdaptiveStudentMasteryTwin, CrossGradeKnowledgeGraphDistiller, KnowledgeNode, Any, src/aasha/orchestrator/phase_g4_knowledge_graph_mastery_twins.py AASHA AIOS —…, Kahn's Algorithm for topological sorting and cycle detection., Offline Bayesian Knowledge Tracing (BKT) and 2PL Item Response Theory (IRT)…, Updates latent mastery probability P(L_t) using standard BKT: P(L_t | obs) =… (+15 more)
 
 ### Community 359 - "adversarial_question_challenger.js"
 Cohesion: 0.13
 Nodes (15): baselineResult, data, DISCOURAGING_WORDS, findings, fs, gcd(), jsonPath, LEAK_PREDICATES (+7 more)
 
 ### Community 360 - "agent_orchestrator.ts"
-Cohesion: 0.09
-Nodes (31): AgentConfig, AgentRole, AGENTS, contextBus, deepFreeze(), getContextBus(), orchestrateChapterPipeline(), PipelineInput (+23 more)
+Cohesion: 0.06
+Nodes (40): AgentConfig, AgentRole, AGENTS, contextBus, deepFreeze(), getContextBus(), orchestrateChapterPipeline(), PipelineInput (+32 more)
 
 ### Community 361 - "Rational"
 Cohesion: 0.21
 Nodes (7): assert, fs, path, { QuestionSchemaValidator }, Rational, runOracle(), solveQuestion()
 
-### Community 362 - "core.test.mjs"
-Cohesion: 0.16
-Nodes (15): CHAPTER, CHAPTERS_CATALOG, QUESTIONS, CONTENT_SCHEMA_VERSION, validateChapter(), validateQuestion(), CONNECTIVE_WORDS, rt() (+7 more)
+### Community 362 - "visual_gamification_bench.test.mjs"
+Cohesion: 0.15
+Nodes (21): CHAPTER, CHAPTERS_CATALOG, QUESTIONS, CONTENT_SCHEMA_VERSION, validateChapter(), validateQuestion(), CONNECTIVE_WORDS, rt() (+13 more)
 
-### Community 363 - "events.js"
-Cohesion: 0.19
-Nodes (11): eventCount(), listEvents(), defaultState(), exportState(), loadState(), migrate(), resetState(), acknowledgeSync() (+3 more)
+### Community 363 - "storage.js"
+Cohesion: 0.27
+Nodes (9): defaultState(), exportState(), loadState(), migrate(), resetState(), acknowledgeSync(), buildSyncRequest(), getSyncStatus() (+1 more)
 
 ### Community 364 - "question_schema_validator.js"
 Cohesion: 0.12
@@ -2247,8 +2301,8 @@ Cohesion: 0.15
 Nodes (6): data, failed, Frac, fs, parseF(), verified
 
 ### Community 368 - "context_bus.ts"
-Cohesion: 0.17
-Nodes (18): artifactHash, lesson(), now, { publicKey, privateKey }, signedApproval(), sourceHash, testHash, trustedKeys (+10 more)
+Cohesion: 0.15
+Nodes (15): AASHAGatekeeper, GatekeeperResult, GatekeeperViolation, AASHA_RULES, AASHARuleDefinition, PROHIBITED_PATTERNS, SUBJECT_MODE_PATTERNS, emptySelection() (+7 more)
 
 ### Community 369 - "Memo0DualProvider"
 Cohesion: 0.14
@@ -2335,8 +2389,8 @@ Cohesion: 0.33
 Nodes (9): format_fraction(), main(), parse_fraction(), Parse fraction strings like '5/2', '-11/2', '12/-8', '-9/-33', '-21', '0'., AD Class 8 Rational Numbers — Mathematical Oracle & Arithmetic Accuracy Test…, Format Fraction to standard textbook form: 'p/q' or integer 'n'., Returns (oracle_answer, status, category, details), solve_question() (+1 more)
 
 ### Community 394 - "Universal 4-Tier Anti-Bleed API Routing Policy"
-Cohesion: 0.15
-Nodes (12): 4. 9Router Gateway Resilience & Local Proxy Invariant, 5. Live USD Billing Telemetry & High-Worth Task Authorization (OI-001), Cascade Rules (Strict — No Exceptions), Decision Tree (Apply Before EVERY API Call), Enforcement, Serena, Graphify & Local Memory Protocol (Default Local Memory), System Instructions & Structured JSON Protocol, Tier 0 — Deterministic Offline Synthesizer & Deep Vectorizer (Method B Foundation) (+4 more)
+Cohesion: 0.14
+Nodes (13): 4. 9Router Gateway Resilience & Local Proxy Invariant, 5. Live USD Billing Telemetry & High-Worth Task Authorization (OI-001), 6. Zero Local Model Weight Bloat & Unified 9Router Multimodal Invariant, Cascade Rules (Strict — No Exceptions), Decision Tree (Apply Before EVERY API Call), Enforcement, Serena, Graphify & Local Memory Protocol (Default Local Memory), System Instructions & Structured JSON Protocol (+5 more)
 
 ### Community 395 - "4. शिक्षक के लिए सारांश (Teacher HIL Verification Summary)"
 Cohesion: 0.20
@@ -2355,8 +2409,8 @@ Cohesion: 0.20
 Nodes (9): `<aasha-sim>` Web Component ↔ Chapter Core, Architecture, Code Layout, Content Contract ↔ Chapter Assembler, Feature Inventory, Interface Contracts, MathInsulator ↔ LLE Lexer, Milestones (+1 more)
 
 ### Community 399 - "three.min.js"
-Cohesion: 0.03
-Nodes (66): ac, _activateAction(), _addInactiveAction(), _addInactiveBinding(), Ar(), As(), _bindAction(), bs() (+58 more)
+Cohesion: 0.02
+Nodes (92): _activateAction(), _addInactiveAction(), _addInactiveBinding(), As(), bind(), _bindAction(), bs(), Ca() (+84 more)
 
 ### Community 400 - "BRIEFING — 2026-09-13T04:02:45+05:30"
 Cohesion: 0.22
@@ -2400,11 +2454,11 @@ Nodes (6): c(), makeBranchNode(), makeContentNode(), makeEmptyNode(), makeLeafNo
 
 ### Community 410 - ".push"
 Cohesion: 0.04
-Nodes (45): _c(), Cc(), constructor(), o(), _e(), Fc(), gc(), p() (+37 more)
+Nodes (46): ac, _c(), Cc(), _e(), Fc(), gc(), getW(), getX() (+38 more)
 
-### Community 411 - "copy"
+### Community 411 - "ci"
 Cohesion: 0.03
-Nodes (21): ah, ch, ci, copy(), dh, di, fl, hh (+13 more)
+Nodes (21): ah, ch, ci, di, i(), Ha, hh, ih (+13 more)
 
 ### Community 412 - "adversarial_challenge_m2_squares.js"
 Cohesion: 0.06
@@ -2478,9 +2532,9 @@ Nodes (4): Completed Steps:, Current Step:, Progress Log, Status: IN_PROGRESS
 Cohesion: 0.33
 Nodes (6): Cascade Rules (Strict â€” No Exceptions), Dual Gemini API Keys Structure & Scope, Tier 1 â€” OpenRouter Free Pool (Default for ALL Routine Work), Tier 2 â€” Claude Code (VS Code + All Coding Tasks), Tier 3 â€” Gemini API Reserve (Explicit Authorization Required â€” Exhaustive List), Universal API Tier Routing Policy (Anti-Bleed for ALL Interactions)
 
-### Community 431 - ".multiplyScalar"
-Cohesion: 0.04
-Nodes (18): $a(), i(), add(), ae(), closestPointToPoint(), closestPointToPointParameter(), delta(), distanceToPoint() (+10 more)
+### Community 431 - "copy"
+Cohesion: 0.03
+Nodes (29): hn(), $a(), i(), add(), ae(), closestPointToPoint(), closestPointToPointParameter(), containsPoint() (+21 more)
 
 ### Community 432 - "Progress — teamwork_preview_auditor_m1_1"
 Cohesion: 0.50
@@ -2830,9 +2884,9 @@ Nodes (7): Experiment 1 — Database Compatibility (EXP-DB-01), Experiment 2 —
 Cohesion: 0.25
 Nodes (7): 1. Executive Summary, 2. Empirical Test Results, 3.1 S3 Signed URL Architecture, 3.2 Buffer Representation in V8 Isolates, 3. Key Findings & Gotchas, 4. Offline-First Gate Evaluation, 5. Recommendation
 
-### Community 618 - "o"
-Cohesion: 0.05
-Nodes (38): a(), aa(), ai(), bn, cn(), determineDataLimits(), dn(), e() (+30 more)
+### Community 618 - "bn"
+Cohesion: 0.06
+Nodes (18): bn, ce(), de, dt(), ei(), he(), je(), ks() (+10 more)
 
 ### Community 619 - "API_COMPATIBILITY_REPORT.md"
 Cohesion: 0.29
@@ -3032,7 +3086,7 @@ Nodes (4): 21. REQUIRED FINAL CAVEATS, Caveat OI-001 — Provider Billing Teleme
 
 ### Community 681 - "me"
 Cohesion: 0.03
-Nodes (6): po(), me, se(), setUsage(), so, vr()
+Nodes (6): po(), Ge, me, se(), so, vr()
 
 ### Community 682 - "4.5 Gamified Economy & State Machine"
 Cohesion: 0.06
@@ -3044,11 +3098,11 @@ Nodes (11): LLEAgent, Any, Path, LLEAgent — Stage 5: LLE (Language Learning Ex
 
 ### Community 684 - "i"
 Cohesion: 0.05
-Nodes (30): au, bindSkeletons(), containsPoint(), cu, i(), i(), l(), o() (+22 more)
+Nodes (43): au, bindSkeletons(), a(), cr, i(), i(), c(), l() (+35 more)
 
 ### Community 685 - "jn"
 Cohesion: 0.04
-Nodes (15): It(), kn(), n(), Ao, bo, El, eu, io (+7 more)
+Nodes (14): kn(), n(), Ao, bo, El, eu, io, iu (+6 more)
 
 ### Community 686 - "i"
 Cohesion: 0.04
@@ -3063,76 +3117,76 @@ Cohesion: 0.07
 Nodes (27): bossCards, bossIdx, cardIdMatches, content, deepDiveCards, deepDiveIdx, fs, hasAashaMathPlaceholder (+19 more)
 
 ### Community 689 - "an"
-Cohesion: 0.07
-Nodes (13): addBox(), afterDatasetsUpdate(), an(), generateLabels(), ke(), Mn(), onClick(), removeBox() (+5 more)
+Cohesion: 0.05
+Nodes (22): addBox(), addElements(), afterDraw(), afterEvent(), an(), beforeUpdate(), configure(), f() (+14 more)
 
 ### Community 690 - "contracts.ts"
-Cohesion: 0.09
+Cohesion: 0.08
 Nodes (29): AiosOrchestrator, OrchestrationResult, AASHA_PREVIEW_BRIDGE, AnalysisAgentOutput, ArtifactManifest, AssessmentAgentOutput, BilingualVocabularyItem, BridgePayloadMap (+21 more)
 
 ### Community 691 - "ns"
 Cohesion: 0.05
-Nodes (17): As(), beforeUpdate(), buildTicks(), Ci(), Fn(), ii(), initialize(), labelColor() (+9 more)
+Nodes (13): As(), buildTicks(), Ci(), Fn(), ii(), labelColor(), labelPointStyle(), ns() (+5 more)
 
 ### Community 692 - "Mi"
 Cohesion: 0.04
-Nodes (13): bi, de(), gi(), Mi, oo, pl(), setW(), setXY() (+5 more)
+Nodes (16): bi, de(), gi(), Mi, oo, pl(), sd(), setFromCamera() (+8 more)
 
 ### Community 694 - "SUPERBRAIN.md"
 Cohesion: 0.03
 Nodes (64): 10. Daemon process and event loop, 11. Windows registry environment access, 12. Python CLI runner PYTHONPATH injection, 13. Teaching language and chapter contract mandate, 14. Universal scope and experience reuse — never build from scratch, 16. Laya System 1 zero-token pre-router, 17. System instructions and structured JSON, 18. Serena and local agentic memory (+56 more)
 
-### Community 695 - "va"
-Cohesion: 0.08
-Nodes (19): afterDraw(), afterEvent(), afterUpdate(), configure(), f(), ki(), m(), g() (+11 more)
+### Community 695 - "o"
+Cohesion: 0.07
+Nodes (43): a(), aa(), afterDatasetsUpdate(), afterUpdate(), ao(), b(), cn(), dn() (+35 more)
 
-### Community 696 - "sr"
-Cohesion: 0.05
-Nodes (13): aa(), _h(), ia, Ju(), lr, na, oa, qh (+5 more)
+### Community 696 - "clone"
+Cohesion: 0.04
+Nodes (20): Ur(), clone(), dispose(), Hr, ir, jh, Ji, ka() (+12 more)
 
 ### Community 697 - "AASHA Simulation & Foundation Registry Survey Report"
 Cohesion: 0.08
 Nodes (24): 1. Executive Summary, 2.1 Automated Resource Match Report, 2.2 Foundation-to-Concept Mapping Matrix, 2. Prebuilt Foundation Registry Survey, 3.1 Contract Architecture (`AashaExperienceContract`), 3.2 Universal `<aasha-sim>` Web Component, 3.3 Core Runtime Invariants for Certification, 3. `<aasha-sim>` Web Component Contract & Runtime Lifecycle (+16 more)
 
 ### Community 698 - "DeepOfflineVectorizer"
-Cohesion: 0.06
-Nodes (40): DeepOfflineVectorizer, Any, Path, Deep Offline Vectorizer & Topological Drawing Ingestion Engine. Provides deep…, Safely extract flattened pixel data compatible across Pillow versions., Perform stroke binarization, contour tracing, and topological OCR on a PIL…, Identify continuous active ranges in a 1D projection array., Extracts, vectorizes, and decodes non-text raster drawings and handwritten math… (+32 more)
+Cohesion: 0.17
+Nodes (11): DeepOfflineVectorizer, Any, Path, Extracts, vectorizes, and decodes non-text raster drawings and handwritten math…, Render high-fidelity, scalable SVG markup for an equation balance scale., Deeply vectorize a scanned/raster PDF page offline by safely opening the PDF., Render high-fidelity, scalable SVG markup for a Cartesian coordinate system., Convert a raster drawing bounding crop into an SVG vector element with… (+3 more)
 
 ### Community 699 - "runPrototypeTestSuite"
 Cohesion: 0.06
 Nodes (26): ApprovalRecord, CommandExecutionRecord, EvidenceLedger, TaskLedgerEntry, TestResultRecord, GitCommitInfo, GitDiffSummary, GitHubReader (+18 more)
 
-### Community 700 - "eo"
-Cohesion: 0.07
-Nodes (18): ca(), _calculateBarIndexPixels(), _calculateBarValuePixels(), Do(), eo(), getBasePixel(), getLabelAndValue(), getLabelForValue() (+10 more)
+### Community 700 - "s"
+Cohesion: 0.04
+Nodes (30): bo, ca(), _calculateBarIndexPixels(), _calculateBarValuePixels(), determineDataLimits(), Do(), eo(), et() (+22 more)
 
 ### Community 701 - "AashaSimFractionSlice"
-Cohesion: 0.08
-Nodes (14): AashaSimFractionSlice, addEventListener(), attachShadow(), dispatchEvent(), FractionAudioSynthesizer, FractionClassification, FractionMetrics, FractionSliceConfig (+6 more)
+Cohesion: 0.07
+Nodes (15): AashaSimFractionSlice, addEventListener(), attachShadow(), dispatchEvent(), FractionAudioSynthesizer, FractionClassification, FractionMetrics, FractionSliceConfig (+7 more)
 
 ### Community 702 - "e2e_compiler_runtime_test.ts"
-Cohesion: 0.08
-Nodes (25): CandidateCapability, ExperienceSpecificationMapper, ExperienceToHostEvent, ExperienceToHostEventType, HostToExperienceMessage, HostToExperienceMessageType, InteractionProtocolValidator, CapabilityDiscoveryEngine (+17 more)
+Cohesion: 0.15
+Nodes (9): CapabilityDiscoveryEngine, CapabilityEvaluator, ArchitecturalDriftGuard, fetchJson(), runE2ECompilerProof(), SimpleCDP, sleep(), runPhase1Tests() (+1 more)
 
 ### Community 704 - "scripts"
-Cohesion: 0.04
-Nodes (53): scripts, aasha:build, admin:status, assets:orchestrate, audit:gateway, audit:identity, chapter:bootstrap, chapter:compile (+45 more)
+Cohesion: 0.03
+Nodes (61): scripts, aasha:audit, aasha:build, aasha:heal, aasha:loop, aasha:status, admin:status, assets:orchestrate (+53 more)
 
-### Community 705 - "experience_specification.ts"
-Cohesion: 0.13
-Nodes (31): CompositeExperienceArtifact, ConstituentComponentBinding, HybridExperienceComposer, ControlledVariable, ExperiencePlan, ExperienceRequirement, ChildRuntimeNetworkPolicy, DeviceRequirements (+23 more)
+### Community 705 - "iec_aios_bridge.ts"
+Cohesion: 0.26
+Nodes (11): CompositeExperienceArtifact, ConstituentComponentBinding, ExperiencePlan, ProviderClass, ProvenanceRecord, ProvenanceTracker, CapabilityFitnessReport, CapabilityProvider (+3 more)
 
 ### Community 706 - "AashaSimBalanceEquation"
-Cohesion: 0.09
-Nodes (14): AashaSimBalanceEquation, addEventListener(), attachShadow(), BalanceEquationAudioSynthesizer, BalanceEquationConfig, BalanceEquationMathEvaluator, BalanceEquationMetrics, BalanceEquationState (+6 more)
+Cohesion: 0.10
+Nodes (13): AashaSimBalanceEquation, addEventListener(), attachShadow(), BalanceEquationConfig, BalanceEquationMathEvaluator, BalanceEquationMetrics, BalanceEquationState, BalancePreset (+5 more)
 
 ### Community 708 - "l"
 Cohesion: 0.08
 Nodes (4): getFactory(), l(), makeUnprocessed(), parseList()
 
-### Community 709 - "Xa"
-Cohesion: 0.07
-Nodes (29): ce(), equals(), er(), f(), u(), x(), Hc(), Ie (+21 more)
+### Community 709 - ".constructor"
+Cohesion: 0.04
+Nodes (51): go(), Gt(), jt(), mt(), _t(), vt(), Ar(), ce() (+43 more)
 
 ### Community 710 - "AashaSimNumberLine"
 Cohesion: 0.10
@@ -3143,16 +3197,16 @@ Cohesion: 0.04
 Nodes (44): enum, additionalProperties, pattern, type, minLength, type, const, minLength (+36 more)
 
 ### Community 712 - "create_minimal_pdf"
-Cohesion: 0.08
-Nodes (27): Message bus for inter-agent communication and live progress updates., create_minimal_pdf(), openrouter_key(), _pdf_obj(), fixture, Path, timeout, E2E Smoke Test — AASHA PDF → HTML5 Pipeline… (+19 more)
+Cohesion: 0.09
+Nodes (24): create_minimal_pdf(), openrouter_key(), _pdf_obj(), fixture, Path, timeout, E2E Smoke Test — AASHA PDF → HTML5 Pipeline…, Verify the 15-check QA suite catches known problems. (+16 more)
 
 ### Community 713 - "compile_exponents_powers_class8.ts"
 Cohesion: 0.05
 Nodes (42): adaptPrebuiltBoss(), adaptPrebuiltDeepDive(), adaptPrebuiltQuestion(), adaptPrebuiltWarmup(), additionalDeepDiveAssessments, additionalExercise2aAssessments, additionalHotsAssessments, additionalTextbookMcqAssessments (+34 more)
 
 ### Community 714 - "no"
-Cohesion: 0.07
-Nodes (11): buildLookupTable(), En, Fo(), _generate(), getDecimalForValue(), _getTimestampsForTable(), init(), initOffsets() (+3 more)
+Cohesion: 0.06
+Nodes (15): buildLookupTable(), En, Fo(), _generate(), getDecimalForValue(), _getTimestampsForTable(), In(), init() (+7 more)
 
 ### Community 715 - "tex-chtml.js"
 Cohesion: 0.06
@@ -3164,19 +3218,19 @@ Nodes (40): 10. Acceptance criteria, 11. Open decisions before implementation, 1
 
 ### Community 717 - "DomainSimGenerators"
 Cohesion: 0.09
-Nodes (15): fs, http, path, runTests(), customRounds, customScript, grammarScript, historyScript (+7 more)
+Nodes (14): fs, http, path, runTests(), customRounds, customScript, grammarScript, historyScript (+6 more)
 
-### Community 718 - "s"
-Cohesion: 0.07
-Nodes (13): bo, et(), g(), getValueForPixel(), H(), s(), label(), mo() (+5 more)
+### Community 718 - "GraphifyAdapter"
+Cohesion: 0.06
+Nodes (20): __dirname, __filename, GraphData, GraphEdge, GraphifyAdapter, GraphNode, CompilerVerificationResult, DualProposalOutput (+12 more)
 
 ### Community 719 - "O"
 Cohesion: 0.07
 Nodes (3): compare(), match(), O()
 
 ### Community 720 - "bh"
-Cohesion: 0.08
-Nodes (8): bh, eh(), fh(), gh(), mh(), ph(), rh, wh
+Cohesion: 0.09
+Nodes (7): bh, eh(), fh(), gh(), ph(), rh, wh
 
 ### Community 721 - "harvest_engine.mjs"
 Cohesion: 0.08
@@ -3204,19 +3258,19 @@ Nodes (32): 10. System Curated Resources (SCR), 11. Memory and Continuous Improv
 
 ### Community 728 - "tn"
 Cohesion: 0.10
-Nodes (4): addElements(), nn(), sn, tn
+Nodes (6): at(), fe(), nn(), sn, tn, w()
 
 ### Community 730 - "VersionManager"
 Cohesion: 0.28
 Nodes (3): verifyApproval(), VersionManager, runVersionManagerTests()
 
 ### Community 731 - "zt"
-Cohesion: 0.09
-Nodes (13): color(), Ft(), Gt(), jt(), kt(), qt(), te(), wt() (+5 more)
+Cohesion: 0.10
+Nodes (10): color(), Ft(), It(), kt(), qt(), te(), wt(), Xt() (+2 more)
 
 ### Community 732 - "tu"
-Cohesion: 0.08
-Nodes (5): connect(), disconnect(), getInput(), getOutput(), tu
+Cohesion: 0.09
+Nodes (4): connect(), getInput(), getOutput(), tu
 
 ### Community 733 - "4. Issue 3: QuestionSchemaValidator Hardening"
 Cohesion: 0.08
@@ -3230,9 +3284,9 @@ Nodes (28): auditAndHealMem0Tier(), auditAndReconcileSQLiteTier(), auditGraphify
 Cohesion: 0.10
 Nodes (20): _load_local_dictionary_db(), OfflineSynthesizer, Any, Autonomous Tier-0 Deterministic Offline Synthesizer. Provides 100% offline,…, Deterministic local generation engine supporting Universal K-12 Curriculum…, Normalize any subject name or context into canonical AASHA curriculum domains., Generate pedagogy map locally from extracted text and headings across K-12…, Generate chapter spec deterministically across Universal K-12 subjects and… (+12 more)
 
-### Community 736 - "runPhase5Certification"
+### Community 736 - "phase_5_certification_test.ts"
 Cohesion: 0.12
-Nodes (13): OpenMAICAdapterProvider, ChildBundlePackager, assert(), fetchJson(), runPhase4CompositionTest(), SimpleCDP, sleep(), assert() (+5 more)
+Nodes (14): HybridExperienceComposer, FoundationAdapterProvider, ProceduralCanvasProvider, OpenMAICAdapterProvider, assert(), fetchJson(), runPhase4CompositionTest(), SimpleCDP (+6 more)
 
 ### Community 737 - "build_exponents_master_chapter.js"
 Cohesion: 0.08
@@ -3246,10 +3300,6 @@ Nodes (13): ct(), fs(), ge(), gs(), ls, ms(), ps(), rs (+5 more)
 Cohesion: 0.09
 Nodes (21): 1. Executive Summary, 2.1 Package Scripts & CLI Commands (`package.json` & `admin_memory_cli.ts`), 2. Pipeline Architecture & CLI Tooling, 3.1 Contract Location and Taxonomy, 3.2 Required Section 24 Schema Structure, 3. Section 24 YAML Reusable Content Contracts, 4.1 Four Core Source Files, 4.2 Exact Spoiler and Distractor Quality Rules (+13 more)
 
-### Community 740 - "ou"
-Cohesion: 0.08
-Nodes (3): bind(), getValue(), ou
-
 ### Community 742 - "aasha_root_orchestrator.js"
 Cohesion: 0.10
 Nodes (25): COMMANDS, { ensure9Router }, path, printBanner(), promptMenu(), readline, ROOT_DIR, runTask() (+17 more)
@@ -3259,7 +3309,7 @@ Cohesion: 0.10
 Nodes (22): IngestAgent, Any, Path, Extracts structured text from a PDF textbook with hybrid digital & parallel…, mock_llm(), fixture, Tests for the agents (mocked LLM)., test_assessment_agent_fills_opts() (+14 more)
 
 ### Community 744 - "registry_ingestion_engine.ts"
-Cohesion: 0.13
+Cohesion: 0.14
 Nodes (10): ComponentMetadata, GateStatus, MandatoryGateResults, RegistryIngestionEngine, ChapterPipelineOrchestrator, PipelineOptions, PipelineResult, resolvePipelineDir() (+2 more)
 
 ### Community 745 - "build_square_cube_chapter.js"
@@ -3267,15 +3317,15 @@ Cohesion: 0.12
 Nodes (20): { AUTHORITATIVE_34_QUESTIONS }, baseDict, bossHtml, bossQs, deepDiveHtml, deepDiveQs, dictPath, domainVocab (+12 more)
 
 ### Community 746 - "openrouter_client.ts"
-Cohesion: 0.11
-Nodes (25): assertGeminiAuthorized(), BACKOFF_MS, callTier1(), callTier2(), callTier3(), CODE_TASK_TYPES, DEFAULT_LLM_PROVIDER, execute9Router() (+17 more)
+Cohesion: 0.10
+Nodes (30): assertGeminiAuthorized(), BACKOFF_MS, buildMessages(), callMultimodal(), callTier1(), callTier2(), callTier3(), CODE_TASK_TYPES (+22 more)
 
 ### Community 747 - "What You Must Do When Invoked"
 Cohesion: 0.07
 Nodes (26): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+18 more)
 
 ### Community 748 - "Fu"
-Cohesion: 0.12
+Cohesion: 0.09
 Nodes (3): Fu, _lendControlInterpolant(), stopAllAction()
 
 ### Community 749 - "40-मिनट का कक्षा चक्र (Classroom Period Breakdown: 40 Mins)"
@@ -3299,7 +3349,7 @@ Cohesion: 0.09
 Nodes (18): compileResult, __dirname, evalCorrect, evalInvalid, evalMax, evalOver, evaluator, evalUnder (+10 more)
 
 ### Community 754 - "laya_classifier.ts"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (15): TaskType, classificationCache, classifyTaskWithLaya(), CurriculumTaskTrie, curriculumTrie, daemon, DaemonState, LAYA_PYTHON_CANDIDATES (+7 more)
 
 ### Community 755 - "2. Remediation Specifications"
@@ -3314,9 +3364,9 @@ Nodes (6): AashaSemanticEvent, AashaTelemetryClient, EvidenceState, SemanticEven
 Cohesion: 0.12
 Nodes (13): CommandAllowlistExecutor, CommandExecutionOptions, ControlledExecutionResult, DiffReviewReport, IndependentDiffReviewer, InvariantAuditResult, InvariantCheckStatus, IsolatedWorktreeManager (+5 more)
 
-### Community 758 - "Ji"
-Cohesion: 0.17
-Nodes (5): Ur(), Hr, Ji, kr(), qr()
+### Community 758 - "Ki"
+Cohesion: 0.10
+Nodes (19): ai(), average(), Bi(), dataset(), Di(), Fi(), getCenterPoint(), Hs (+11 more)
 
 ### Community 759 - "Config"
 Cohesion: 0.15
@@ -3326,9 +3376,9 @@ Nodes (19): Default(), Find(), Config, Load(), TestMessagesToPrompt(), TestParse
 Cohesion: 0.08
 Nodes (24): 1. Authoring, orchestration, and governance, 2. Learner-facing learning modules, AASHA AIOS — Offline-First Visual Learning Ecosystem, Architecture at a glance, Contributing, Core learning experience, Development principles, Git submodules (+16 more)
 
-### Community 761 - "b"
-Cohesion: 0.12
-Nodes (8): Ae(), b(), ce(), de, dt(), he(), ia(), qs()
+### Community 761 - "runBattery"
+Cohesion: 0.10
+Nodes (17): AssessmentOption, CATConfig, CATResponseRecord, CATSessionState, IRTItem, MasteryTier, OfflineCATEngine, AudioChimeType (+9 more)
 
 ### Community 762 - "Remediation Plan: Class 8 Squares and Cubes Question Bank (Milestone 1 Iteration 2)"
 Cohesion: 0.11
@@ -3766,9 +3816,9 @@ Nodes (3): Planned Steps, Progress: Milestone 1 Iteration 2 Remediation & Verifi
 Cohesion: 0.19
 Nodes (18): BuildToolPrompt(), Image, GoogleContentsToPrompt(), GoogleToolChoiceInstruction(), ParseGoogleFunctionCalls(), GoogleFunctionCall, GoogleFunctionDeclaration, GoogleGenerateRequest (+10 more)
 
-### Community 873 - "phase_6_production_activation_test.ts"
-Cohesion: 0.18
-Nodes (8): CapabilityPromoter, PromotionError, IECAIOSBridge, assert(), fetchJson(), runPhase6Tests(), SimpleCDP, sleep()
+### Community 873 - "experience_specification.ts"
+Cohesion: 0.16
+Nodes (18): CandidateCapability, ControlledVariable, ExperienceRequirement, ExperienceSpecificationMapper, ExperienceToHostEvent, ExperienceToHostEventType, HostToExperienceMessage, HostToExperienceMessageType (+10 more)
 
 ### Community 874 - "v6_compiler_concept_progression.test.ts"
 Cohesion: 0.11
@@ -3814,9 +3864,9 @@ Nodes (3): Acceptance Criteria, Benchmark & Quality Guardrails, Content Complete
 Cohesion: 0.17
 Nodes (10): generateSimulationScript(), RENDERER_TYPES, selectAdaptiveRenderer(), simulationSubagent(), __dirname, __filename, generateCompleteStandaloneHtml(), repoRoot (+2 more)
 
-### Community 893 - "create_default_registry"
-Cohesion: 0.12
-Nodes (13): Mastery tracker for frontend offline sync., create_default_registry(), Create a registry with all available plugins registered. This is the main entry…, compute_sha256(), get_plugin_registry(), Wraps simulation content inside the standardized <aasha-sim> Web Component., Returns a dictionary representation of available interaction plugins., Compute SHA-256 checksum for asset integrity verification. (+5 more)
+### Community 893 - "What You Must Do When Invoked"
+Cohesion: 0.07
+Nodes (26): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+18 more)
 
 ### Community 894 - "taxonomy.py"
 Cohesion: 0.18
@@ -3871,7 +3921,7 @@ Cohesion: 0.16
 Nodes (16): items, minItems, type, type, items, additionalProperties, properties, required (+8 more)
 
 ### Community 939 - "LayaDaemonClient"
-Cohesion: 0.19
+Cohesion: 0.21
 Nodes (3): LayaDaemonClient, resolveLayaPython(), warmLayaDaemon()
 
 ### Community 940 - "AASHA AIOS — TASK 2 COMPLETE SCOPE REASSESSMENT & REMEDIATION REBASE REPORT (REVISION R2B)"
@@ -3887,8 +3937,8 @@ Cohesion: 0.18
 Nodes (10): cdnInteractivesDir, CHROME_PATH, __dirname, fetchJson(), __filename, HeadlessCDPClient, main(), repoRoot (+2 more)
 
 ### Community 943 - "test_llm_adapter.py"
-Cohesion: 0.13
-Nodes (5): adapter(), fixture, Tests for the LLM adapter., Test that complete() returns cached result without calling the API., test_complete_uses_cache()
+Cohesion: 0.12
+Nodes (6): adapter(), fixture, Tests for the LLM adapter., Test that complete() returns cached result without calling the API., test_complete_uses_cache(), test_create_adapter_factory()
 
 ### Community 944 - "compilerOptions"
 Cohesion: 0.13
@@ -3903,12 +3953,12 @@ Cohesion: 0.13
 Nodes (14): 1. System Architecture Overview, 2.1. Single-File HTML5 Bundle Ceiling: 40 MB, 2.2. Memory & Runtime Lifecycle: Balanced Invariant ($\ge 4$ GB RAM), 2.3. Bounded Telemetry Complexity: Sub-50ms Latency, 2. Hard Technical Budgets & Constraints, 3.1. Pre-LLE Mathematical Insulation Protocol, 3.2. Dictionary Caching & Zero-Token Fallback, 3. Mathematical & Bilingual Substrate Protection (+6 more)
 
 ### Community 947 - "aasha-agent-builder/package.json"
-Cohesion: 0.13
-Nodes (14): dependencies, yaml, description, devDependencies, @types/node, @types/node, yaml, license (+6 more)
+Cohesion: 0.10
+Nodes (19): dependencies, yaml, description, devDependencies, @types/node, exports, ./assessment, ./ingest (+11 more)
 
 ### Community 948 - "assessment_subagent.mjs"
-Cohesion: 0.30
-Nodes (13): assessmentSubagent(), escapeRegex(), generateAssessmentScript(), LEAK_PREDICATES, loadAndAdaptExerciseBank(), normalizeMathText(), resolvePath(), SPOILER_PHRASES (+5 more)
+Cohesion: 0.16
+Nodes (19): adaptGameTemplateToAssessment(), AssessmentBankModel, assessmentSubagent(), escapeRegex(), generate4TierHints(), generateAssessmentScript(), generateMisconceptionDiagnostics(), LEAK_PREDICATES (+11 more)
 
 ### Community 949 - "ingest_subagent.mjs"
 Cohesion: 0.32
@@ -3983,8 +4033,8 @@ Cohesion: 0.15
 Nodes (12): 1. Executive Summary & Vision, 2. Current MVP Phase Focus: Autonomous Learning & Gamified Assessment Tool, 3. Autonomous Multi-Subagent Architecture, 4. Interactive Startup Clarifications & Feedback, 5. MVP Synthesis & Execution Blueprint, 6. Companion Specifications & Bundle Authority, Component Capabilities:, Q1: Primary Target Learner & Environment Focus (+4 more)
 
 ### Community 968 - "Universal 4-Tier Anti-Bleed API Routing Policy"
-Cohesion: 0.15
-Nodes (12): 4. 9Router Gateway Resilience & Local Proxy Invariant, 5. Live USD Billing Telemetry & High-Worth Task Authorization (OI-001), Cascade Rules (Strict — No Exceptions), Decision Tree (Apply Before EVERY API Call), Enforcement, Serena, Graphify & Local Memory Protocol (Default Local Memory), System Instructions & Structured JSON Protocol, Tier 0 — Deterministic Offline Synthesizer & Deep Vectorizer (Method B Foundation) (+4 more)
+Cohesion: 0.14
+Nodes (13): 4. 9Router Gateway Resilience & Local Proxy Invariant, 5. Live USD Billing Telemetry & High-Worth Task Authorization (OI-001), 6. Zero Local Model Weight Bloat & Unified 9Router Multimodal Invariant, Cascade Rules (Strict — No Exceptions), Decision Tree (Apply Before EVERY API Call), Enforcement, Serena, Graphify & Local Memory Protocol (Default Local Memory), System Instructions & Structured JSON Protocol (+5 more)
 
 ### Community 969 - "properties"
 Cohesion: 0.17
@@ -4222,6 +4272,10 @@ Nodes (7): 0. Default Local Memory Mandate, 1. Tool Parameter Schemas, 2. Mandat
 Cohesion: 0.25
 Nodes (7): 1. Quick Verification & Doctor Health Check, 2. Node.js Engine Version Resolution (Windows), 3. Client Registration Architecture, 4. Native Decompiler Providers, Ghidra 12.1.4 (Recommended Open Source Backend), Other Providers (Architectural Constraints), REA Environment & Analysis Provider Runbook
 
+### Community 1030 - "OpenMAICPlugin"
+Cohesion: 0.10
+Nodes (14): OpenMAICInteractionBuilder, OpenMAICPlugin, Any, OpenMAIC Interaction Builder & Plugin. Extracts, validates, and packages…, Plugin for OpenMAIC interactive simulations and labs., Check if OpenMAIC supports the requested concept or interaction type., Produce an openmaic step specification for the chapter synthesis engine., Return container styling for OpenMAIC widgets embedded in synthesized chapters. (+6 more)
+
 ### Community 1031 - "AASHA AIOS — Local CDN, Open-Source Harvesting & Asset Orchestration Repository"
 Cohesion: 0.25
 Nodes (7): 5-Point Automated Quality Gate, AASHA AIOS — Local CDN, Open-Source Harvesting & Asset Orchestration Repository, Architectural Principle: Runtime Zero CDN vs. Continuous Harvesting, Catalog Summary, CLI & Pipeline Commands, Directory Structure, Overview
@@ -4374,6 +4428,10 @@ Nodes (5): 1. Executive Authorization Summary, 2. Decision Register & Approvals,
 Cohesion: 0.29
 Nodes (6): Do not run yet, Install (workspace-scoped, not machine-global), Installation Guide — AASHA Antigravity Agent Team, Preserve the current system, Target workspace, Verification after manual installation
 
+### Community 1071 - "AASHA Multi-API Routing Runbook"
+Cohesion: 0.09
+Nodes (22): 1. Add to `Aasha-AI/.env`, 1. Get API Key, 2. Add to `Aasha-AI/.env`, 2. Guard Check (Mandatory in All Pipeline Scripts), 3. Verify Connection, 4. Free Model Rotation Logic, 5. Multimodal Vision Pool (Tier 1 & 9Router), A. VS Code Extension (Interactive Dev — Recommended) (+14 more)
+
 ### Community 1072 - "2. Product Manager Authorization for Phase 2"
 Cohesion: 0.29
 Nodes (5): 1. Product Manager Evaluation of Phase 1 Deliverables, 2. Product Manager Authorization for Phase 2, AASHA AIOS Development Agent — Product Manager Review & Phase 2 Authorization, Phase 2 Invariants & Safety Locks, Phase 2 Scope
@@ -4398,9 +4456,9 @@ Nodes (5): content, fs, nodesEnd, nodesIdx, nodesSnippet
 Cohesion: 0.33
 Nodes (5): content, fs, weEnd, weIdx, weSnippet
 
-### Community 1079 - "aasha_pc_antigravity_daemon.ps1"
-Cohesion: 0.40
-Nodes (4): Ensure-AntigravityMcpConfig(), Invoke-AashaInfrastructureWakeAndSync(), engines, node
+### Community 1079 - "package.json"
+Cohesion: 0.20
+Nodes (8): Ensure-AntigravityMcpConfig(), Invoke-AashaInfrastructureWakeAndSync(), description, engines, node, name, private, version
 
 ### Community 1080 - "AASHA AIOS — TASK 2 IMPLEMENTATION & CERTIFICATION REPORT"
 Cohesion: 0.33
@@ -4459,8 +4517,8 @@ Cohesion: 0.33
 Nodes (4): 1. Verified Architecture & Capabilities of REA, 2. Compatibility Assessment with AASHA Ecosystem, 3. Mandatory Governance Invariants for REA Integration, REA (Reverse Engineer Anything) Compatibility & Integration Assessment
 
 ### Community 1095 - "aasha_colab_bridge.py"
-Cohesion: 0.47
-Nodes (4): is_colab_environment(), main(), parse_args(), scripts/aasha_colab_bridge.py AASHA AIOS: Google Colab & Autonomous Cloud…
+Cohesion: 0.53
+Nodes (5): is_colab_environment(), main(), parse_args(), scripts/aasha_colab_bridge.py AASHA AIOS: Google Colab & Autonomous Cloud…, run_cmd()
 
 ### Community 1096 - "graphify_build.mjs"
 Cohesion: 0.33
@@ -4534,16 +4592,16 @@ Nodes (4): AASHA Cleanroom Architecture, KingsMath Web Games Library (AASHA Preb
 Cohesion: 0.40
 Nodes (3): 1. Classification Definitions, 2. Comprehensive File & Directory Disposition, AASHA AIOS Subsystem & File Disposition Matrix
 
-### Community 1115 - "package.json"
-Cohesion: 0.40
-Nodes (4): description, name, private, version
+### Community 1115 - "Aasha-AIOS Adaptive Semantic Prompt Compiler & Architectural Guide"
+Cohesion: 0.10
+Nodes (20): 1. Graphify Connector (`graphify_adapter.ts`), 1. Pāṇinian Kāraka Semantic Intermediate Representation (IR), 1. System-Level Architecture & Core Purpose, 2. Indic Computational Abstractions (Pure Software Engineering), 2. Mem0 Local Adapter (`mem0_adapter.ts`), 2. Piṅgala Compression, 3. Evidence Classes, 3. Ramanujan Partitioning (+12 more)
 
 ### Community 1118 - "lint_workflows.mjs"
 Cohesion: 0.40
 Nodes (4): __dirname, __filename, rootDir, searchDirs
 
 ### Community 1119 - "n8n_mcp_server.mjs"
-Cohesion: 0.50
+Cohesion: 0.29
 Nodes (4): handleRequest(), rl, sendJsonRpc(), TOOLS
 
 ### Community 1120 - "serve_for_browser_test.mjs"
@@ -4555,8 +4613,8 @@ Cohesion: 0.40
 Nodes (4): classifierPath, __dirname, __filename, repoRoot
 
 ### Community 1122 - "Suggested Commands"
-Cohesion: 0.40
-Nodes (4): Benchmarks & Certification, Chapter & Contract CLI, Suggested Commands, Windows / PowerShell Notes
+Cohesion: 0.33
+Nodes (5): Autonomous Scaling & Cloud Execution, Benchmarks & Certification, Chapter & Contract CLI, Suggested Commands, Windows / PowerShell Notes
 
 ### Community 1123 - "SIMULATION REUSABLE RESOURCE PROVENANCE & SELECTION LEDGER"
 Cohesion: 0.40
@@ -4706,25 +4764,225 @@ Nodes (3): timestamp, format, type
 Cohesion: 0.67
 Nodes (3): version, minimum, type
 
+### Community 1269 - "7. Automated End-to-End Manual Verification Protocol"
+Cohesion: 0.10
+Nodes (19): 18. TypeScript Test Runner Standard (`npx tsx`), 19. Canonical Prototype IR & Stateful V6 Engine Runbook, 20. External Resource Discovery & Controlled Adapter Integration, 20+ Prebuilt Open-Source Foundations Catalog, 21. Compiler Inline Event Handler Quote Insulation (Dataset Pattern), 22. Zero-Dependency Headless Chrome CDP Verification Pattern, 23. Windows PowerShell Verbatim File Writing Invariant, 24. Certified Testing & Verification Commands (+11 more)
+
+### Community 1270 - "test_deep_vectorizer.py"
+Cohesion: 0.17
+Nodes (15): Deep Offline Vectorizer & Topological Drawing Ingestion Engine. Provides deep…, create_coordinate_graph_image(), create_scanned_drawing_pdf(), Path, Tests for DeepOfflineVectorizer and IngestAgent offline vectorization of…, Test that when online vision LLM fails, IngestAgent falls back to…, Create a high-contrast binary raster drawing of a Cartesian coordinate graph., Create a scanned mock PDF containing geometric drawings and simulated… (+7 more)
+
+### Community 1271 - "validation_pipeline.ts"
+Cohesion: 0.17
+Nodes (12): PromotionPreconditions, PromotionResult, ContainmentExecutionResult, FailureContainmentManager, TargetedRepairDescriptor, GateApplicability, GateResult, GateSeverity (+4 more)
+
+### Community 1273 - "Phase 1: Brainstorming (MANDATORY)"
+Cohesion: 0.15
+Nodes (12): Brainstorming Completion Criteria, Guiding Principles, Phase 1: Brainstorming (MANDATORY), Phase 2: Skill Design, Phase 3: Implementation, Phase 4: Validation, Round 1: Understand the Workflow, Round 2: Flexibility and Error Handling (+4 more)
+
+### Community 1274 - ".analyze_raster_image"
+Cohesion: 0.18
+Nodes (7): Perform stroke binarization, contour tracing, and topological OCR on a PIL…, Identify continuous active ranges in a 1D projection array., Clean tokenized formula string into valid KaTeX syntax., Unit tests for PyMuPDF vector drawing extraction and SVG rendering., Verify vector drawings convert accurately into scalable SVG elements., Verify geometric classifiers recognize aspect ratios and line types., TestDeepOfflineVectorizerUnit
+
+### Community 1275 - "recordEvent"
+Cohesion: 0.27
+Nodes (9): renderQuiz(), submitQuiz(), eventCount(), listEvents(), recordEvent(), awardQuizReward(), REWARD_POLICY, verifyRewardManually() (+1 more)
+
+### Community 1276 - "masterplugin/skills/aasha-prompt-compiler/scripts/serena_adapter.ts"
+Cohesion: 0.18
+Nodes (6): DEFAULT_MEMORIES_DIR, __dirname, __filename, PROJECT_ROOT, SerenaLocalAdapter, SerenaMemory
+
+### Community 1277 - "Open-Source Harvesting & Quality Gate Engine"
+Cohesion: 0.17
+Nodes (11): 3-Tier Resource Library Ingestion & Preservation Standards, Architectural Guarantees & Dual-Mode Scope, CLI & Pipeline Commands, Directory Organization, Open-Source Harvesting & Quality Gate Engine, Prestack Manifest & Local CDN Synchronization Workflow, Refinement & Localization Pipeline, The 5-Point Automated Quality Gate (+3 more)
+
+### Community 1279 - "Common Pitfalls & Anti-Patterns"
+Cohesion: 0.18
+Nodes (10): 1. Static Context Schema False Alarms (`Context access might be invalid`), 2. Deprecated Expression Syntax inside `if:` Conditionals, 3. Artifact Output Binding for Code Signing, 4. Runner Node.js Versioning, 5. Multi-Agent Instruction Directory Tracking & Parity in CI, Automated Verification, CI Workflow Sanitizer, Common Pitfalls & Anti-Patterns (+2 more)
+
+### Community 1280 - "MafsPlugin"
+Cohesion: 0.22
+Nodes (4): MafsPlugin, Any, Mafs - reactive math visualizations (MIT, lightweight)., Mafs - reactive, interactive math visualizations.
+
+### Community 1281 - "TimelinePlugin"
+Cohesion: 0.22
+Nodes (4): Any, Interactive Timeline - for social studies, history, civics., Interactive timelines, branching cause-and-effect, click-to-reveal maps., TimelinePlugin
+
+### Community 1282 - "4. शिक्षक के लिए सारांश (Teacher HIL Verification Summary)"
+Cohesion: 0.20
+Nodes (9): 1. Pāṇinian Kāraka Semantic Intermediate Representation (IR), 2. Multi-Turn Prompt Delta (Turn {{TURN_NUMBER}}), 3. Compiler Verification Audit, 4. शिक्षक के लिए सारांश (Teacher HIL Verification Summary), Aasha-AIOS Technical & Pedagogical Proposal Template, विद्यार्थी एवं कक्षा विवरण (Student & Class Profile), शिक्षक अनुमोदन (Teacher Sign-off), शिक्षण माध्यम एवं संकल्पना (Pedagogical Concepts & Simulations) (+1 more)
+
+### Community 1283 - "Verification Workflow (5-Step Execution)"
+Cohesion: 0.20
+Nodes (9): Core Identity Invariant, /ecosystem-identity-audit: AI Agent Ecosystem vs. LLM Building Cross-Check, Step 1: Pre-Flight Laya System 1 Classification, Step 2: Zero-Model-Training Empirical Cross-Check, Step 3: Multi-Tier Memory & Knowledge Graph Audit, Step 4: Multi-Agent Orchestration & Tool Registry Verification, Step 5: Truth-Seeking Certification & Reporting, Subject & Board Coverage Check (+1 more)
+
+### Community 1284 - "AASHA AIOS: Offline-First Local Stack Architecture & Persistence Hierarchy (Method B)"
+Cohesion: 0.20
+Nodes (9): 1. Executive Summary & Core Principle, 2. 4-Tier Persistence & Authority Hierarchy, 3. Method B Operating Laws & Invariant Protocols, 4. Database Schema Parity (PostgreSQL <-> SQLite), 5. Future-Ready Local Ecosystem Build Plan & Vision, AASHA AIOS: Offline-First Local Stack Architecture & Persistence Hierarchy (Method B), Law 1: Cloud Credential Bypass & Anti-Nagging Guard, Law 2: Local SQLite as Primary Evidence Authority (+1 more)
+
+### Community 1285 - "monolith_subagent.mjs"
+Cohesion: 0.40
+Nodes (6): assembleChapterMonolith(), CHILD_HTML5_BUNDLE_MAX_BYTES, escAttr(), escJsStr(), monolithSubagent(), verifyMonolithBundle()
+
+### Community 1286 - "infinity_cloud_hub.mjs"
+Cohesion: 0.24
+Nodes (9): args, chapterIdx, checkRemoteDaemon(), __dirname, __filename, IS_JSON, openBrowser(), ROOT_DIR (+1 more)
+
+### Community 1287 - "runPhase3Tests"
+Cohesion: 0.31
+Nodes (4): fetchJson(), runPhase3Tests(), SimpleCDP, sleep()
+
+### Community 1288 - "approved_build_lessons.test.ts"
+Cohesion: 0.25
+Nodes (8): artifactHash, lesson(), now, { publicKey, privateKey }, signedApproval(), sourceHash, testHash, trustedKeys
+
+### Community 1289 - "graphify reference: extra exports and benchmark"
+Cohesion: 0.22
+Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+
+### Community 1290 - "5-Phase Cadence Execution"
+Cohesion: 0.22
+Nodes (8): 5-Phase Cadence Execution, /laya-cadence: AASHA AIOS Daily Execution Cadence, Multi-Repo Safe Promotion & Zero-Leakage Git Protocol, Phase 1: Context Priming & Health Audit, Phase 2: Product & Pedagogical Synthesis, Phase 3: Deep Research & Multi-Scenario Verification, Phase 4: Surgical Optimization & Multi-Repo Alignment, Phase 5: Re-Verification & Telemetry Ledger
+
+### Community 1291 - "LSP Toolchain Bootstrap & Environment Manager"
+Cohesion: 0.22
+Nodes (8): 1. Audit Runtimes & LSPs, 2. Non-Interactive Installation Pipeline (Windows), 3. Persistent Windows Registry Environment Registration, 4. Verification Suite, A. TypeScript Language Server, B. Pyright Language Server, C. Go Runtime & Gopls, LSP Toolchain Bootstrap & Environment Manager
+
+### Community 1292 - "2. Transformation Rules by Question Type"
+Cohesion: 0.22
+Nodes (8): 1. Supported Raw Question Formats, 2. Transformation Rules by Question Type, Format A: Standard Multiple Choice Questions (MCQ), Format B: Fill-in-the-Blank / Sentence Completion, Format C: Matching Pairs / Multi-Column Association, Format D: Multi-Stage Numerical Calculations, Format E: Diagram / Structural Labelling, Universal Question Ingestion & Transformation Matrix
+
+### Community 1293 - "AASHA AIOS Autonomous Ecosystem Orchestrator"
+Cohesion: 0.22
+Nodes (8): AASHA AIOS Autonomous Ecosystem Orchestrator, Autonomous Self-Repair & Bounded Quarantine, Common Mistakes & Anti-Patterns, Modular Composer Topology, Overview, Quick Start & CLI Commands, The 12-Stage Continuous Evolutionary Loop, Universal Question Ingestion Protocol
+
+### Community 1294 - "test_source_provenance.py"
+Cohesion: 0.39
+Nodes (7): validate_child_bundle_size(), make_config(), make_pdf(), test_child_bundle_size_gate_uses_exact_byte_ceiling(), test_create_job_copies_source_and_records_content_hash(), test_create_job_rejects_missing_source_before_creating_job(), test_create_job_rejects_non_pdf_input()
+
+### Community 1295 - "CAT Assessment Authoring: Item Response Theory & Zero-Spoiler Scaffolding"
+Cohesion: 0.25
+Nodes (7): 1. Item Response Theory (IRT) Calibration Parameters, 2. Invariant Rule #1: Distractor Anti-Spoiler Law, 3. 4-Tier Progressive Hint Scaffolding ($H_1 \to H_4$), 4. Offline Computerized Adaptive Testing (CAT) Algorithm, 5. JSON Item Authoring Schema, CAT Assessment Authoring: Item Response Theory & Zero-Spoiler Scaffolding, Example:
+
+### Community 1296 - "Gamified Quest Architect Skill: 3-Tier Mastery & Offline Game Loops"
+Cohesion: 0.25
+Nodes (7): 1. Pedagogical Gamification Philosophy (Anti-Frustration Standard), 2. 3-Tier Quest Progression Model, 3. Web Component Integration Standard (`<aasha-game-quest>`), 4. Zero-Asset Offline Sound Engine (Web Audio API), 5. Touch Target & Mobile Viewport Constraints, Gamified Quest Architect Skill: 3-Tier Mastery & Offline Game Loops, Required Lifecycle & Event Bus Methods:
+
+### Community 1297 - "REA Environment & Analysis Provider Runbook"
+Cohesion: 0.25
+Nodes (7): 1. Quick Verification & Doctor Health Check, 2. Node.js Engine Version Resolution (Windows), 3. Client Registration Architecture, 4. Native Decompiler Providers, Ghidra 12.1.4 (Recommended Open Source Backend), Other Providers (Architectural Constraints), REA Environment & Analysis Provider Runbook
+
+### Community 1298 - "CAT Assessment Authoring: Item Response Theory & Zero-Spoiler Scaffolding"
+Cohesion: 0.25
+Nodes (7): 1. Item Response Theory (IRT) Calibration Parameters, 2. Invariant Rule #1: Distractor Anti-Spoiler Law, 3. 4-Tier Progressive Hint Scaffolding ($H_1 \to H_4$), 4. Offline Computerized Adaptive Testing (CAT) Algorithm, 5. JSON Item Authoring Schema, CAT Assessment Authoring: Item Response Theory & Zero-Spoiler Scaffolding, Example:
+
+### Community 1299 - "Gamified Quest Architect Skill: 3-Tier Mastery & Offline Game Loops"
+Cohesion: 0.25
+Nodes (7): 1. Pedagogical Gamification Philosophy (Anti-Frustration Standard), 2. 3-Tier Quest Progression Model, 3. Web Component Integration Standard (`<aasha-game-quest>`), 4. Zero-Asset Offline Sound Engine (Web Audio API), 5. Touch Target & Mobile Viewport Constraints, Gamified Quest Architect Skill: 3-Tier Mastery & Offline Game Loops, Required Lifecycle & Event Bus Methods:
+
+### Community 1300 - "scripts/aasha_orchestrator_cli.mjs"
+Cohesion: 0.32
+Nodes (7): args, __dirname, __filename, main(), printBanner(), ROOT_DIR, run()
+
+### Community 1301 - "Pāṇinian Kāraka Computational Decision & Compilation Engine"
+Cohesion: 0.29
+Nodes (6): 1. What Kāraka IR Is (and Is NOT), 2. The 8 Kāraka Roles & Decision Mapping, 3. Normalized Compilation Pipeline, 4. Execution & Autonomy Gate, 5. HIL Decision Packet Specification, Pāṇinian Kāraka Computational Decision & Compilation Engine
+
+### Community 1302 - "AASHA AIOS Sprint Verifier"
+Cohesion: 0.29
+Nodes (6): AASHA AIOS Sprint Verifier, CLI Execution, Overview, The 5 Pillars Verified, Usage Instructions, When to Invoke
+
+### Community 1303 - "._get_pixel_data"
+Cohesion: 0.40
+Nodes (3): Safely extract flattened pixel data compatible across Pillow versions., Topological invariant classifier for math symbols, digits, and variables., Count enclosed white regions inside a binary glyph mask.
+
+### Community 1304 - "AASHA AIOS Workspace Agent Team Management Skill"
+Cohesion: 0.33
+Nodes (5): 1. Subagent Roster & Operational Boundaries, 2. Invariant Operating Laws, 3. Subagent Task Delegation Protocol, 4. Discovery & Verification Commands, AASHA AIOS Workspace Agent Team Management Skill
+
+### Community 1305 - "graphify reference: query, path, explain"
+Cohesion: 0.33
+Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
+
+### Community 1306 - "Universal Multi-Step Simulation & Game Engine Runbook"
+Cohesion: 0.33
+Nodes (5): Core Rules & Invariants, Overview, REA MCP Web Game Reverse-Engineering & Decoupling Protocol, Universal Multi-Step Simulation & Game Engine Runbook, Verification Checklist
+
+### Community 1307 - "aasha-ecosystem-orchestrator/scripts/aasha_orchestrator_cli.mjs"
+Cohesion: 0.33
+Nodes (5): args, cliPath, __dirname, __filename, ROOT_DIR
+
+### Community 1309 - "AASHA Autonomous Learning & Gamified Assessment Agent (AASHA-LGA)"
+Cohesion: 0.40
+Nodes (4): AASHA Autonomous Learning & Gamified Assessment Agent (AASHA-LGA), Core Mission & Philosophy, Memory & Foundations, Multi-Subagent Build & Orchestration Hierarchy
+
+### Community 1310 - "Accessibility & Mobile Ergonomics Touch Auditor (A11Y-CDP)"
+Cohesion: 0.40
+Nodes (4): 1. Ergonomic Invariants for Rural Learners, 2. Automated Headless CDP Audit Script, 3. Verification Protocol, Accessibility & Mobile Ergonomics Touch Auditor (A11Y-CDP)
+
+### Community 1311 - "/chapter-compile: AASHA AIOS Autonomous Chapter Compiler"
+Cohesion: 0.40
+Nodes (4): Authority Invariant, /chapter-compile: AASHA AIOS Autonomous Chapter Compiler, Quick Start, Stage 1 Ingest Invariants (High-Throughput Vision & Deep Offline Vectorization)
+
+### Community 1312 - "/jagiye-maakiran: Serena Local Memory Wake-Up & System Priming"
+Cohesion: 0.40
+Nodes (4): Execution Sequence, /jagiye-maakiran: Serena Local Memory Wake-Up & System Priming, Purpose, Quick Invocations
+
+### Community 1313 - "/n8n-trigger: Headless Automation Pipeline Orchestrator"
+Cohesion: 0.40
+Nodes (4): Capabilities, CLI Usage, Headless Zero-Consent Architecture, /n8n-trigger: Headless Automation Pipeline Orchestrator
+
+### Community 1314 - "Accessibility & Mobile Ergonomics Touch Auditor (A11Y-CDP)"
+Cohesion: 0.40
+Nodes (4): 1. Ergonomic Invariants for Rural Learners, 2. Automated Headless CDP Audit Script, 3. Verification Protocol, Accessibility & Mobile Ergonomics Touch Auditor (A11Y-CDP)
+
+### Community 1315 - "Continuous Evolutionary Engineering Loop & Efficiency Ratchets"
+Cohesion: 0.40
+Nodes (4): 1. Daily Efficiency Ratchets (Eliminating Waste), 2. Autonomous Test & Debug Flow, 3. Daily Telemetry & Learning Persistence, Continuous Evolutionary Engineering Loop & Efficiency Ratchets
+
+### Community 1316 - "test_classify_balance_scale_raster_and_vector"
+Cohesion: 0.50
+Nodes (4): create_balance_scale_image(), Create a high-contrast binary raster drawing of a balance scale., Verify DeepOfflineVectorizer classifies balance scale diagrams with equilibrium…, test_classify_balance_scale_raster_and_vector()
+
+### Community 1317 - "/anti-bleed: LLM Routing & Cost Circuit Breaker Audit"
+Cohesion: 0.50
+Nodes (3): /anti-bleed: LLM Routing & Cost Circuit Breaker Audit, Golden Rules, Quick Verification
+
+### Community 1318 - "graphify reference: add a URL and watch a folder"
+Cohesion: 0.50
+Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
+
+### Community 1319 - "graphify reference: commit hook and native AGENTS.md integration"
+Cohesion: 0.50
+Nodes (3): For git commit hook, For native AGENTS.md integration, graphify reference: commit hook and native AGENTS.md integration
+
+### Community 1320 - "graphify reference: incremental update and cluster-only"
+Cohesion: 0.50
+Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
+
+### Community 1321 - "/router-gateway-audit: 9Router Gateway & Laya Router Audit"
+Cohesion: 0.50
+Nodes (3): Gateway Behavioral Invariants, Quick Diagnostic Commands, /router-gateway-audit: 9Router Gateway & Laya Router Audit
+
 ## Knowledge Gaps
-- **6037 isolated node(s):** `fs`, `path`, `{ QuestionSchemaValidator }`, `filePath`, `raw` (+6032 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 8316 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **251 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **6359 isolated node(s):** `fs`, `path`, `{ QuestionSchemaValidator }`, `filePath`, `raw` (+6354 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 8753 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **264 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dt()` connect `b` to `test_game_components.js`, `an`, `.constructor`, `chart.umd.min.js`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **Why does `GameLoopComponent` connect `GameLoopComponent` to `b`, `aasha-student-pwa/src/app.js`, `visual_gamification_bench.test.mjs`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `k()` connect `g` to `tex-chtml.js`, `.toString`, `eo`, `chart.umd.min.js`, `s`?**
+- **Why does `dt()` connect `bn` to `.constructor`, `GameLoopComponent`, `chart.umd.min.js`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `GameLoopComponent` connect `GameLoopComponent` to `visual_gamification_bench.test.mjs`, `aasha-student-pwa/src/app.js`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `k()` connect `g` to `tex-chtml.js`, `o`, `.toString`, `s`, `s`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **What connects `fs`, `path`, `{ QuestionSchemaValidator }` to the rest of the system?**
-  _6037 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _6359 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `version_manager.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.10984848484848485 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10420168067226891 - nodes in this community are weakly interconnected._
 - **Should `AgentBus` be split into smaller, more focused modules?**
   _Cohesion score 0.10256410256410256 - nodes in this community are weakly interconnected._
 - **Should `LLMAdapter` be split into smaller, more focused modules?**
-  _Cohesion score 0.05673076923076923 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05803571428571429 - nodes in this community are weakly interconnected._
