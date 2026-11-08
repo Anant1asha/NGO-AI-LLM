@@ -14,6 +14,7 @@ tmp/
 *cookie*
 *.cookie
 *.zip
+*.bundle
 
 # IDE / System
 .vscode/
