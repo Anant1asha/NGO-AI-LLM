@@ -1,31 +1,33 @@
-{
-  "schema_version": "1.0.0",
-  "timestamp_utc": "2026-11-08T11:35:00.0000000Z",
-  "pc_hostname": "DESKTOP-7RHB41C",
-  "workspace_root": "C:\\Users\\admin\\Downloads\\NGO AI LLM",
-  "active_chunk": "G4",
-  "lamport_epoch": 21,
-  "caveats_status": "FIXED_AUTHENTICATED_PUSH_AND_STAGE_SYNC",
-  "infrastructure": {
-    "antigravity_running": true,
-    "docker_running": false,
-    "gemini_proxy_running": false,
-    "ninerouter_running": true,
-    "node_version": "v24.19.0",
-    "python_version": "Python 3.15.0b3"
-  },
-  "repositories": {
-    "ngo_ai_llm_root": {
-      "branch": "aios/v2-bootstrap",
-      "head_commit": "CURRENT_HEAD",
-      "dirty_file_count": 0,
-      "dirty_files_sample": []
-    },
-    "aasha_ai_monorepo": {
-      "branch": "aios/v2-bootstrap",
-      "head_commit": "CURRENT_HEAD",
-      "dirty_file_count": 0,
-      "dirty_files_sample": []
-    }
-  }
+﻿{
+    "schema_version":  "1.0.0",
+    "timestamp_utc":  "2026-11-08T11:42:58.2555409Z",
+    "pc_hostname":  "DESKTOP-7RHB41C",
+    "workspace_root":  "C:\\Users\\admin\\Downloads\\NGO AI LLM",
+    "infrastructure":  {
+                           "antigravity_running":  true,
+                           "docker_running":  false,
+                           "gemini_proxy_running":  false,
+                           "ninerouter_running":  true,
+                           "node_version":  "v24.19.0",
+                           "python_version":  "Python 3.15.0b3"
+                       },
+    "repositories":  {
+                         "ngo_ai_llm_root":  {
+                                                 "branch":  "aios/v2-bootstrap",
+                                                 "head_commit":  "d6e438306fef222a1a0b127cc3ac09cc47fc4f35",
+                                                 "dirty_file_count":  2,
+                                                 "dirty_files_sample":  [
+                                                                            " M scripts/aasha_root_orchestrator.js",
+                                                                            "?? scripts/infinity_cloud_hub.mjs"
+                                                                        ]
+                                             },
+                         "aasha_ai_monorepo":  {
+                                                   "branch":  "aios/v2-bootstrap",
+                                                   "head_commit":  "b5f4eee33641599066be1fd5053a5712f2e6d470",
+                                                   "dirty_file_count":  0,
+                                                   "dirty_files_sample":  {
+
+                                                                          }
+                                               }
+                     }
 }

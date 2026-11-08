@@ -27,6 +27,9 @@
     "n8n:check:auth": "node scripts/n8n_headless_client.mjs --auth",
     "test:browser": "node scripts/verify_prestack_assets_browser.mjs",
     "aasha:build": "node scripts/aasha_build_runner.mjs",
+    "infinity:cloud": "node scripts/infinity_cloud_hub.mjs",
+    "infinity:status": "node scripts/infinity_cloud_hub.mjs --status",
+    "infinity:launch": "node scripts/infinity_cloud_hub.mjs --launch",
 
     "start": "node scripts/aasha_root_orchestrator.js",
     "orchestrator": "node scripts/aasha_root_orchestrator.js",
