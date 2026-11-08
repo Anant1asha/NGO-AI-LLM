@@ -71,4 +71,5 @@ output/
 work/
 config/defaults.json/
 .worktrees/
+tools/
 
