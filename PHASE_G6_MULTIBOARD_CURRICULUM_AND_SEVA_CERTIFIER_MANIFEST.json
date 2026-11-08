@@ -1,0 +1,136 @@
+{
+  "schema_version": "3.0.0-PHASE-G6-MULTIBOARD-SEVA",
+  "chunk_id": "G6",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G6_MULTIBOARD_HARVESTER_AND_SEVA_IMPACT_CERTIFIER_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "boards_harvested_count": 5,
+  "total_multiboard_tln_nodes": 20,
+  "harvested_board_locks": [
+    {
+      "board_code": "CBSE-NCERT",
+      "chapter_id": "CBSE-G08-SCI-WATER-CONSERVATION",
+      "source_pdf_sha256": "5fe56441a7ab33f907701f4c67e9f98a002448ad673c7472c24d0b531b1af36c",
+      "tln_node_count": 4,
+      "lle_english_ratio": 0.6,
+      "lle_hindi_ratio": 0.4,
+      "avr_mechanic": "AVR-P312",
+      "tln_version_hash": "b6626750ed907c04ee3736126c70e316aaf39f75cadf54c0626ee2b4414dad7e"
+    },
+    {
+      "board_code": "UP-BOARD-HINDI",
+      "chapter_id": "UPMSP-G07-MATH-MENSURATION-KHET",
+      "source_pdf_sha256": "2f85e64bff90b6c6cd85197cbb2e8c1c3c4e24863ab63324622bccff31ca2658",
+      "tln_node_count": 4,
+      "lle_english_ratio": 0.6,
+      "lle_hindi_ratio": 0.4,
+      "avr_mechanic": "AVR-P305",
+      "tln_version_hash": "13df907010ed6b801fa17a48ddd95aa2e0b444b9ab90aac7b4cf1bfb40f8731e"
+    },
+    {
+      "board_code": "MH-SCERT",
+      "chapter_id": "MH-G09-SCI-WATERSHED-ECOLOGY",
+      "source_pdf_sha256": "7879305486b493e8cc5311a0bfcd48ab9ce3d796ea6c221797ddca41971c15cf",
+      "tln_node_count": 4,
+      "lle_english_ratio": 0.6,
+      "lle_hindi_ratio": 0.4,
+      "avr_mechanic": "AVR-P315",
+      "tln_version_hash": "aeb92c362ceae6cceab142cd8d37a410c6b6fb44e33c4a2b6b1e030e44aaac5b"
+    },
+    {
+      "board_code": "TN-SCERT",
+      "chapter_id": "TN-G08-MATH-PROPORTIONS-TANK-IRRIGATION",
+      "source_pdf_sha256": "f798e57109d2d4c40239c69627c1d0884ce289db9b2a268823dd56830b5c5ff6",
+      "tln_node_count": 4,
+      "lle_english_ratio": 0.6,
+      "lle_hindi_ratio": 0.4,
+      "avr_mechanic": "AVR-P309",
+      "tln_version_hash": "cc55f0966950babbb91311328d8cfc0a3b7675173f11ecc1c2f5915d4a72bf50"
+    },
+    {
+      "board_code": "NCVET-PSSCIVE",
+      "chapter_id": "NCVET-L4-SOLAR-MICROIRRIGATION-TECH",
+      "source_pdf_sha256": "edbdcc8c1a88d4d27e6364dc440277b54e3c151d3486b11ca64be96751732765",
+      "tln_node_count": 4,
+      "lle_english_ratio": 0.6,
+      "lle_hindi_ratio": 0.4,
+      "avr_mechanic": "AVR-P321",
+      "tln_version_hash": "f20127d6ebf1b40d6cd498bebafe4c4bfe73d4c2e076a7b8f08743fd6aeb435c"
+    }
+  ],
+  "seva_impact_certification": {
+    "certificates_issued": 5,
+    "hash_chain_integrity_verified": true,
+    "total_eco_seva_saplings_certified": 375,
+    "total_jal_seva_liters_recharged": 18000,
+    "certificates": [
+      {
+        "certificate_id": "SEVA-CERT-2026-001-CBSE-NCERT",
+        "cohort_id": "COHORT-CBSE-NCERT-2026",
+        "board_code": "CBSE-NCERT",
+        "chapter_id": "CBSE-G08-SCI-WATER-CONSERVATION",
+        "teas_mean_mastery": 0.84,
+        "eco_seva_saplings_verified": 25,
+        "jal_seva_liters_recharged": 1200,
+        "prev_chain_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "certificate_sha256": "b34f00d5dbf19fd41f46368583726a869c6c5d42231c85abf70c8b13e3a697e7"
+      },
+      {
+        "certificate_id": "SEVA-CERT-2026-002-UP-BOARD-HINDI",
+        "cohort_id": "COHORT-UP-BOARD-HINDI-2026",
+        "board_code": "UP-BOARD-HINDI",
+        "chapter_id": "UPMSP-G07-MATH-MENSURATION-KHET",
+        "teas_mean_mastery": 0.86,
+        "eco_seva_saplings_verified": 50,
+        "jal_seva_liters_recharged": 2400,
+        "prev_chain_sha256": "b34f00d5dbf19fd41f46368583726a869c6c5d42231c85abf70c8b13e3a697e7",
+        "certificate_sha256": "d7c7207a770b32d45a3d4db0c41f6cca26b300f4be1225b25fbca0524897c814"
+      },
+      {
+        "certificate_id": "SEVA-CERT-2026-003-MH-SCERT",
+        "cohort_id": "COHORT-MH-SCERT-2026",
+        "board_code": "MH-SCERT",
+        "chapter_id": "MH-G09-SCI-WATERSHED-ECOLOGY",
+        "teas_mean_mastery": 0.88,
+        "eco_seva_saplings_verified": 75,
+        "jal_seva_liters_recharged": 3600,
+        "prev_chain_sha256": "d7c7207a770b32d45a3d4db0c41f6cca26b300f4be1225b25fbca0524897c814",
+        "certificate_sha256": "3a20750a254a7980fca74d8c00d6ba6b9e285c0ba79ba54719802df0ae3e065b"
+      },
+      {
+        "certificate_id": "SEVA-CERT-2026-004-TN-SCERT",
+        "cohort_id": "COHORT-TN-SCERT-2026",
+        "board_code": "TN-SCERT",
+        "chapter_id": "TN-G08-MATH-PROPORTIONS-TANK-IRRIGATION",
+        "teas_mean_mastery": 0.9,
+        "eco_seva_saplings_verified": 100,
+        "jal_seva_liters_recharged": 4800,
+        "prev_chain_sha256": "3a20750a254a7980fca74d8c00d6ba6b9e285c0ba79ba54719802df0ae3e065b",
+        "certificate_sha256": "1b021fc81f359d668414a437deb2ec7b6684c4a9ff4e8389a2a9718489ceed22"
+      },
+      {
+        "certificate_id": "SEVA-CERT-2026-005-NCVET-PSSCIVE",
+        "cohort_id": "COHORT-NCVET-PSSCIVE-2026",
+        "board_code": "NCVET-PSSCIVE",
+        "chapter_id": "NCVET-L4-SOLAR-MICROIRRIGATION-TECH",
+        "teas_mean_mastery": 0.92,
+        "eco_seva_saplings_verified": 125,
+        "jal_seva_liters_recharged": 6000,
+        "prev_chain_sha256": "1b021fc81f359d668414a437deb2ec7b6684c4a9ff4e8389a2a9718489ceed22",
+        "certificate_sha256": "3a599eda19d9d4b3ea085ad12c308388025eff96ad44dc19030fb19dd46b276f"
+      }
+    ]
+  },
+  "multiboard_seva_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g6_multiboard_seva/MultiBoard_Curriculum_Seva_Certifier_v5.html",
+    "bundle_size_bytes": 9598,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "1514e311b32d4f2fd474f4a499dcb6917d8606a8ad4f3c92e31f30d48e8406a7"
+  },
+  "daily_spend_cap_usd": 1.0,
+  "next_focus_unit": "G7: Autonomous Offline Voice-Guided Socratic Tutor, Low-Literacy Parent Progress Audio Report & Final December 2026 MVP Golden Master Pack",
+  "g6_manifest_sha256": "0d5430eff3f474ec3b5520555cfa07065c05ae53fab43004de23d7439fa3b036"
+}
