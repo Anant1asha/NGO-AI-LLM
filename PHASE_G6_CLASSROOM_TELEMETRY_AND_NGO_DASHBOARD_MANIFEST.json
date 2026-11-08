@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "PHASE_G6",
+  "feature": "Autonomous Classroom Telemetry Aggregator, NGO Impact Dashboard & Production Release Promotion",
+  "telemetry": {
+    "zero_pii_pseudonymization": true,
+    "event_types": ["SIM_INTERACTION", "QUEST_ATTEMPT", "HINT_REQUEST", "MASTERY_ATTAINED"],
+    "db_storage": "aasha_operational.db (classroom_telemetry_events)"
+  },
+  "ngo_impact_dashboard": {
+    "file": "Aasha-AI/aasha-pipeline-with-master-json/output/g6_ngo_dashboard/ngo_impact_dashboard.html",
+    "offline_inlined_svg": true,
+    "external_cdn_bytes": 0,
+    "paid_tokens_spent": 0
+  },
+  "gate6_release_promotion": {
+    "protocol": "ADR-001 Standing Super Admin Gate 6 Authorization",
+    "all_tests_passed": true,
+    "test_suite_count": 17,
+    "zero_secrets_detected": true,
+    "scope_locked_ceiling_bytes": 20971520,
+    "status": "GATE6_READY_FOR_PROMOTION"
+  }
+}
