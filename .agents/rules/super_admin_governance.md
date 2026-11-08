@@ -122,3 +122,15 @@ If a capability is designed but unwired, if test coverage is partial, or if exte
    - Constitutional files (`AGENTS.md`, `startup.md`) must be modified additively.
    - Agents must record pre-change SHA-256 hashes and verify that all 7 Invariant Operating Laws, Superbrain rules, and founder interview Q1–Q4 answers remain 100% intact.
 
+## 11. Meta-Engineering Authority & Active Coding Invariants (ADR-003)
+
+1. **Meta-Engineering Authority Separation**:
+   - The developer coding assistant operates strictly as the **Systems Architect & Tooling Engineer**, building, debugging, testing, and hardening the AI Agent orchestration, runtimes, validators, and self-healing algorithms.
+   - The assistant NEVER manually authors, types, or transcribes textbook chapter content or questions in AI chat turns.
+   - Chapter compilation, multi-layer Indic LLE, simulation parameter binding, and assessment formatting are the exclusive runtime tasks of the **autonomous multi-agent swarm** (`DIV_01_PDF_TRUTH` through `DIV_06_GITOPS_SYNC`).
+
+2. **Active Evolutionary Coding Invariant**:
+   - In the continuous engineering loop, **Stage 7 (`IMPLEMENT`)** must actively dispatch code synthesis engines (e.g. `UniversalPDFToChildHTML5MasterFactory`, `TenChapterMasteryIntegration`), and **Stage 10 (`FIX`)** must execute active 2-pass surgical code mutations (e.g. `aasha_orchestrator_cli.mjs --heal`) rather than passive log statements.
+   - Every loop cycle must ratchet the system to be stronger, more efficient, and regression-immune day by day.
+
+

@@ -46,6 +46,14 @@ Runbook for executing the daily high-rigor development cadence across the AASHA 
    npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/test_fault_injection_hardening.ts
    ```
    *Note: Both test harnesses automatically bind `NODE_ENV=test` and `MEMO0_OFFLINE=1` to guarantee local-only memory execution (<10ms) and prevent child-process thrashing.*
+5. Run Phase G Cumulative Multi-Chapter & Autonomous Swarm Suite:
+   ```bash
+   python -m unittest discover -s tests -p "test_phase_g*.py"
+   ```
+6. Verify continuous self-healing & system status:
+   ```bash
+   npm run aasha:status
+   ```
 
 ### Phase 4: Surgical Optimization & Multi-Repo Alignment
 1. Check git remote status across repositories (`NGO-AI-LLM`, `Aasha-AI`, `aasha-studio`); fast-forward upstream PR merges cleanly using safe stash-pull-pop.
@@ -54,9 +62,14 @@ Runbook for executing the daily high-rigor development cadence across the AASHA 
 4. Keep individual chapters compliant with the 20MB ceiling, zero external CDNs, math insulation, and mobile viewport clamping.
 
 ### Phase 5: Re-Verification & Telemetry Ledger
-1. Re-run all test suites (`npm run test:master`, `npm run test:ltruth`, `npm run laya:test`).
-2. Verify 100% pass rate (0 failures).
-3. Record verified execution telemetry into both `VERIFICATION_REPORT.md` and `.scratch/daily_laya_digest.md`.
+1. Re-run all test suites (`npm run test:master`, `npm run test:ltruth`, `npm run laya:test`, `python -m unittest discover -s tests -p "test_phase_g*.py"`).
+2. Run self-healing and system integrity audit:
+   ```bash
+   npm run aasha:heal
+   npm run aasha:status
+   ```
+3. Verify 100% pass rate (0 failures).
+4. Record verified execution telemetry into both `VERIFICATION_REPORT.md` and `.scratch/daily_laya_digest.md`.
 
 ## Multi-Repo Safe Promotion & Zero-Leakage Git Protocol
 1. Verify `.gitignore` actively blocks `.scratch/`, `**/.scratch/`, `*cookie*`, `*.zip`, `.claude/`, `.env`, and `secrets/`.
