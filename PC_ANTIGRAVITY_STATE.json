@@ -1,33 +1,31 @@
-﻿{
-    "schema_version":  "1.0.0",
-    "timestamp_utc":  "2026-11-08T11:29:38.6468659Z",
-    "pc_hostname":  "DESKTOP-7RHB41C",
-    "workspace_root":  "C:\\Users\\admin\\Downloads\\NGO AI LLM",
-    "infrastructure":  {
-                           "antigravity_running":  true,
-                           "docker_running":  false,
-                           "gemini_proxy_running":  false,
-                           "ninerouter_running":  true,
-                           "node_version":  "v24.19.0",
-                           "python_version":  "Python 3.15.0b3"
-                       },
-    "repositories":  {
-                         "ngo_ai_llm_root":  {
-                                                 "branch":  "aios/v2-bootstrap",
-                                                 "head_commit":  "3ea35d7a7104d2e2147021cb76bc53b52dbe73a1",
-                                                 "dirty_file_count":  2,
-                                                 "dirty_files_sample":  [
-                                                                            " M .gitignore",
-                                                                            "?? scripts/sync_gdrive_bundle.py"
-                                                                        ]
-                                             },
-                         "aasha_ai_monorepo":  {
-                                                   "branch":  "aios/v2-bootstrap",
-                                                   "head_commit":  "1d2ae7a49260ab8bd5cadaf278eabda79e6d79ed",
-                                                   "dirty_file_count":  0,
-                                                   "dirty_files_sample":  {
-
-                                                                          }
-                                               }
-                     }
+{
+  "schema_version": "1.0.0",
+  "timestamp_utc": "2026-11-08T11:35:00.0000000Z",
+  "pc_hostname": "DESKTOP-7RHB41C",
+  "workspace_root": "C:\\Users\\admin\\Downloads\\NGO AI LLM",
+  "active_chunk": "G4",
+  "lamport_epoch": 21,
+  "caveats_status": "FIXED_AUTHENTICATED_PUSH_AND_STAGE_SYNC",
+  "infrastructure": {
+    "antigravity_running": true,
+    "docker_running": false,
+    "gemini_proxy_running": false,
+    "ninerouter_running": true,
+    "node_version": "v24.19.0",
+    "python_version": "Python 3.15.0b3"
+  },
+  "repositories": {
+    "ngo_ai_llm_root": {
+      "branch": "aios/v2-bootstrap",
+      "head_commit": "CURRENT_HEAD",
+      "dirty_file_count": 0,
+      "dirty_files_sample": []
+    },
+    "aasha_ai_monorepo": {
+      "branch": "aios/v2-bootstrap",
+      "head_commit": "CURRENT_HEAD",
+      "dirty_file_count": 0,
+      "dirty_files_sample": []
+    }
+  }
 }

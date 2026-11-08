@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "PHASE_G4",
+  "total_tln_nodes": 40,
+  "total_prerequisite_edges": 36,
+  "dag_acyclic": true,
+  "teacher_guides_generated": 10,
+  "enhanced_modules_count": 10,
+  "total_size_bytes": 58753,
+  "all_under_ceiling": true,
+  "status": "G4_MASTER_CERTIFIED"
+}

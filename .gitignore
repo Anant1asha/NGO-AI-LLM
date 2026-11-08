@@ -51,10 +51,13 @@ graphify-out/*
 .keys/
 secrets/
 
-# Python Virtual Environments
+# Python Virtual Environments & Bytecode
 .venv/
 venv/
 ENV/
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Ephemeral Local Databases & Runtime Caches (Isolation Invariant)
 *.db

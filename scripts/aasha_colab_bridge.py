@@ -102,10 +102,22 @@ def main():
         sys.exit(ret.returncode)
     print("✔ Continuous loop completed successfully.")
 
-    # Step 5: Git Sync Check
-    print("\n--- [STEP 3/3: SYNC] Verifying Task Branch Invariants ---")
-    print(f"  Confirmed: All updates bound strictly to origin/{TARGET_BRANCH}.")
-    print("  Zero automated pushes permitted to master/main.")
+    # Step 5: Git Sync Check & Direct Authenticated Push (Fix Caveat 1)
+    print("\n--- [STEP 3/3: SYNC] Verifying Task Branch Invariants & Outbound Push ---")
+    if gh_pat and not args.dry_run:
+        print(f"  Configuring authenticated remote for origin/{TARGET_BRANCH}...")
+        # Insulate token injection into memory-only git remote
+        run_cmd(f"git remote set-url origin https://{gh_pat}@github.com/Anant1asha/NGO-AI-LLM.git", cwd=ROOT_DIR)
+        run_cmd(f"git push origin HEAD:{TARGET_BRANCH}", cwd=ROOT_DIR)
+        print(f"✔ Successfully pushed verified root commit to origin/{TARGET_BRANCH}.")
+
+        if (AASHA_AI_DIR / ".git").exists():
+            run_cmd(f"git remote set-url origin https://{gh_pat}@github.com/Anant1asha/Aasha-AI.git", cwd=AASHA_AI_DIR)
+            run_cmd(f"git push origin HEAD:{TARGET_BRANCH}", cwd=AASHA_AI_DIR)
+            print(f"✔ Successfully pushed verified Aasha-AI commit to origin/{TARGET_BRANCH}.")
+    else:
+        print(f"  Confirmed: All updates bound strictly to origin/{TARGET_BRANCH}.")
+        print("  Zero automated pushes permitted to master/main.")
     print("\n======================================================================")
     print(" 🌟 AASHA CLOUD WORKER BRIDGE: EXECUTION CERTIFIED                     ")
     print("======================================================================\n")

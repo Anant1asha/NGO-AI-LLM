@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "PHASE_G3",
+  "swarm_orchestrator": "Hydro Infinity Swarm (1,080 stackless coroutines)",
+  "idle_ram_bytes": 0,
+  "chapter_count": 10,
+  "total_bytes": 40199,
+  "max_ceiling_bytes": 20971520,
+  "under_ceiling": true,
+  "avg_bytes_per_chapter": 4019,
+  "chapters": [
+    {
+      "task": "Compile_NCERT-G06-MATH-CH07-FRACTIONS",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G06-MATH-CH07-FRACTIONS",
+        "size_bytes": 3987,
+        "is_offline_compliant": true,
+        "content_hash": "4dbd55981f43a31b84677bf918fe8dfaa05c286e6b4f508795fc092a2f0a854b"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
+      "file_size_bytes": 3987
+    },
+    {
+      "task": "Compile_NCERT-G06-SCI-CH04-SORTING-MATERIALS",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G06-SCI-CH04-SORTING-MATERIALS",
+        "size_bytes": 4036,
+        "is_offline_compliant": true,
+        "content_hash": "82299d3ac9c885cdbe1cf1dcaf86842d0f82253ac0235dfbf9c3009b80edf33a"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G06-SCI-CH04-SORTING-MATERIALS_Interactive_v5.html",
+      "file_size_bytes": 4036
+    },
+    {
+      "task": "Compile_NCERT-G07-MATH-CH02-FRACTIONS-DECIMALS",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G07-MATH-CH02-FRACTIONS-DECIMALS",
+        "size_bytes": 4050,
+        "is_offline_compliant": true,
+        "content_hash": "189c2f41213bdbd2f7f1b2e8fac28d46c2ced2e24bb92d11529f90f562203bbd"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G07-MATH-CH02-FRACTIONS-DECIMALS_Interactive_v5.html",
+      "file_size_bytes": 4050
+    },
+    {
+      "task": "Compile_NCERT-G07-SCI-CH04-HEAT",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G07-SCI-CH04-HEAT",
+        "size_bytes": 3945,
+        "is_offline_compliant": true,
+        "content_hash": "415232ce67755536b1e695d658f1d09fc11800bc2c32b912c03b7850ce653f57"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G07-SCI-CH04-HEAT_Interactive_v5.html",
+      "file_size_bytes": 3945
+    },
+    {
+      "task": "Compile_NCERT-G08-MATH-CH01-RATIONAL-NUMBERS",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G08-MATH-CH01-RATIONAL-NUMBERS",
+        "size_bytes": 4036,
+        "is_offline_compliant": true,
+        "content_hash": "304979add39e884edbcf19523ef3222981390e7a8d2a5235f0d32ab4c063a79a"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G08-MATH-CH01-RATIONAL-NUMBERS_Interactive_v5.html",
+      "file_size_bytes": 4036
+    },
+    {
+      "task": "Compile_NCERT-G08-SCI-CH11-FORCE-PRESSURE",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G08-SCI-CH11-FORCE-PRESSURE",
+        "size_bytes": 4015,
+        "is_offline_compliant": true,
+        "content_hash": "2e86c53b29eb22210edd58131755109af22aca8f0ca7fc8125f47001be3d5847"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G08-SCI-CH11-FORCE-PRESSURE_Interactive_v5.html",
+      "file_size_bytes": 4015
+    },
+    {
+      "task": "Compile_NCERT-G09-MATH-CH02-POLYNOMIALS",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G09-MATH-CH02-POLYNOMIALS",
+        "size_bytes": 4001,
+        "is_offline_compliant": true,
+        "content_hash": "934e76f4733525bb3741463b50edfd59e034b9a2b3ca8d32437960089f308e3a"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G09-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
+      "file_size_bytes": 4001
+    },
+    {
+      "task": "Compile_NCERT-G09-SCI-CH08-MOTION",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G09-SCI-CH08-MOTION",
+        "size_bytes": 3959,
+        "is_offline_compliant": true,
+        "content_hash": "207294bf83b37635af43232671f46f0ec07444ebcddf650ed849281bca9d3cf5"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G09-SCI-CH08-MOTION_Interactive_v5.html",
+      "file_size_bytes": 3959
+    },
+    {
+      "task": "Compile_NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS",
+        "size_bytes": 4071,
+        "is_offline_compliant": true,
+        "content_hash": "be98a1ba512bc4fda8463e9fd346494ca7186976b4792f0f0a5dcc693610f2f9"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS_Interactive_v5.html",
+      "file_size_bytes": 4071
+    },
+    {
+      "task": "Compile_NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA",
+      "status": "PASS",
+      "qa_verified": true,
+      "bundle": {
+        "chapter_id": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA",
+        "size_bytes": 4099,
+        "is_offline_compliant": true,
+        "content_hash": "983379ecef773d060e3097527a879264a73ca4aea2834130c04703f59b46c375"
+      },
+      "agents_dispatched": 1080,
+      "idle_ram_bytes": 0,
+      "output_file": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack\\NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
+      "file_size_bytes": 4099
+    }
+  ],
+  "verification_status": "CERTIFIED_PASS"
+}
