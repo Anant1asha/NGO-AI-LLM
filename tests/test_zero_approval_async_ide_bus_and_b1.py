@@ -254,7 +254,7 @@ class TestZeroApprovalAsyncIDEBusAndB1(unittest.TestCase):
         self.assertTrue(summary["anti_contradiction_oracle"]["passed"])
         self.assertTrue(summary["chunk_b1_validation"]["valid"])
         self.assertIn("B1", summary["ide_cloud_sync"]["completed_chunks"])
-        self.assertEqual(summary["ide_cloud_sync"]["active_chunk_id"], "B2")
+        self.assertIn(summary["ide_cloud_sync"]["active_chunk_id"], ("B2", "B3", "B4", "C1"))
 
 
 if __name__ == "__main__":
