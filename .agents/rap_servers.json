@@ -1,0 +1,27 @@
+{
+  "schema_version": "3.0.0-INFINITY-RAP-BRIDGE",
+  "upstream_reference": "https://github.com/hydro-project/infinity",
+  "license": "Apache-2.0",
+  "provider_gateway": {
+    "type": "9router-openai-compatible",
+    "endpoint": "http://127.0.0.1:20128/v1",
+    "allow_paid_gemini_fallback": false,
+    "max_daily_spend_usd": 1.0
+  },
+  "rap_servers": {
+    "sandbox-local": {
+      "crate": "sandbox-local",
+      "mode": "stacked-git-worktree",
+      "path_confinement_enforced": true
+    },
+    "mcp-compat-bridge": {
+      "wrapped_mcp_servers": [
+        "sequential-thinking",
+        "filesystem",
+        "context7",
+        "playwright"
+      ],
+      "delivery_mode": "synthetic-tool-call-continuation"
+    }
+  }
+}
