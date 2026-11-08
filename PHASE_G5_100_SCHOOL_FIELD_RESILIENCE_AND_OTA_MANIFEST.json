@@ -1,0 +1,89 @@
+{
+  "schema_version": "3.0.0-PHASE-G5-100-SCHOOL-SOLAR-OTA",
+  "chunk_id": "G5",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G5_100_SCHOOL_SOLAR_GOVERNOR_AND_ZERO_DOWNTIME_OTA_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "field_simulation": {
+    "districts_covered": [
+      "UP-GAUTAM-BUDDHA-NAGAR",
+      "UP-VARANASI",
+      "BR-GAYA",
+      "RJ-UDAIPUR",
+      "MP-BHOPAL"
+    ],
+    "schools_simulated": 100,
+    "concurrent_student_tablets_simulated": 5000,
+    "brownout_progress_durability_pct": 100.0,
+    "corrupted_ota_rollback_success_pct": 100.0
+  },
+  "solar_power_policies": {
+    "full_performance": {
+      "battery_soc_pct": 82.0,
+      "solar_charging_watts": 25.0,
+      "device_temp_celsius": 33.0,
+      "power_mode": "FULL_PERFORMANCE",
+      "target_canvas_fps": 60,
+      "p2p_mesh_gossip_enabled": true,
+      "background_tts_precompile_enabled": true,
+      "checkpoint_interval_sec": 30,
+      "estimated_runtime_extension_pct": 15.0
+    },
+    "eco_balanced_solar": {
+      "battery_soc_pct": 28.0,
+      "solar_charging_watts": 4.0,
+      "device_temp_celsius": 37.0,
+      "power_mode": "ECO_BALANCED_SOLAR",
+      "target_canvas_fps": 30,
+      "p2p_mesh_gossip_enabled": true,
+      "background_tts_precompile_enabled": false,
+      "checkpoint_interval_sec": 15,
+      "estimated_runtime_extension_pct": 42.5
+    },
+    "critical_survival_lock": {
+      "battery_soc_pct": 11.0,
+      "solar_charging_watts": 0.0,
+      "device_temp_celsius": 41.0,
+      "power_mode": "CRITICAL_SURVIVAL_LOCK",
+      "target_canvas_fps": 15,
+      "p2p_mesh_gossip_enabled": false,
+      "background_tts_precompile_enabled": false,
+      "checkpoint_interval_sec": 5,
+      "estimated_runtime_extension_pct": 55.0
+    }
+  },
+  "ab_slot_ota_verification": {
+    "valid_bundle_update": {
+      "active_slot": "SLOT_B_NEW_VERIFIED",
+      "candidate_version": "v3.0.0-g5-ota",
+      "signature_valid": true,
+      "sha256_valid": true,
+      "under_20mib_ceiling": true,
+      "atomic_switch_committed": true,
+      "rollback_triggered": false,
+      "rollback_reason": "NONE"
+    },
+    "corrupted_bundle_rollback": {
+      "active_slot": "SLOT_A_KNOWN_GOOD",
+      "candidate_version": "v3.0.0-g5-ota",
+      "signature_valid": false,
+      "sha256_valid": false,
+      "under_20mib_ceiling": true,
+      "atomic_switch_committed": false,
+      "rollback_triggered": true,
+      "rollback_reason": "OTA_SHA256_OR_LENGTH_CORRUPTION"
+    }
+  },
+  "field_resilience_console_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g5_field_resilience/Field_Resilience_Solar_OTA_Console_v5.html",
+    "bundle_size_bytes": 7776,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "416a95f854a3e5cd93106f81d8200689072be9d52e0e2536f2f1044ba9f70daf"
+  },
+  "daily_spend_cap_usd": 1.0,
+  "next_focus_unit": "G6: Autonomous National Open-Curriculum PDF Harvester, Multi-Board Textbook Adapter (CBSE/State/NCVET) & Community Seva Impact Certifier",
+  "g5_manifest_sha256": "f37cef1acdc6b5bdf0adb138d66f71a6feb617e3a0d0d81c55339d6b55e8bb4f"
+}
