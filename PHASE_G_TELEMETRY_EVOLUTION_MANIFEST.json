@@ -1,0 +1,35 @@
+{
+  "schema_version": "3.0.0-PHASE-G1-EVOLUTION",
+  "chunk_id": "G1",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G1_AUTONOMOUS_EVOLUTION_AND_COHORT_TELEMETRY_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "zero_pii_verified": true,
+  "cohorts_analyzed": 2,
+  "tln_nodes_monitored": 4,
+  "total_student_attempts_analyzed": 189,
+  "mean_cohort_mastery_score": 0.8275,
+  "remedial_patches_synthesized_count": 1,
+  "remedial_patches": [
+    {
+      "chapter_id": "NCERT-CLASS6-MATH-CH07-FRACTIONS",
+      "node_id": "TLN-02",
+      "trigger_mastery_score": 0.68,
+      "misconception_targeted": "DENOMINATOR_ADDITION_MISCONCEPTION",
+      "remedial_scaffold_bilingual": "याद रखें (remember), when comparing or adding भिन्न (fractions) in TLN-02, the हर (denominator) shows the size of each equal part in $\\frac{1}{4} + \\frac{2}{4}$, so we keep the denominator unchanged and combine only the अंश (numerator) parts. | याद रखें: समान हर वाले भिन्नों को जोड़ते समय हर (denominator) समान रहता है और केवल अंश जुड़ते हैं।",
+      "english_ratio": 0.6,
+      "hindi_ratio": 0.4,
+      "qa_ten_rules_passed": true,
+      "patch_sha256": "c11b4e213848ac5a86a74340feeca2a02b497d30016ffdb34de4d1a540e4cc37"
+    }
+  ],
+  "impact_ledger": {
+    "eco_seva_actions_verified": 60,
+    "jal_seva_liters_conserved": 1890
+  },
+  "daily_spend_cap_usd": 1.0,
+  "next_focus_unit": "G2: Multi-Centre Offline P2P Mesh Delta Sync & Regional Language Pack Expansion (9 Indic Scripts)",
+  "evolution_manifest_sha256": "6a02b9e600efeade980b8981979a273dbab4747a407095b2672b663da2694f9e"
+}
