@@ -65,9 +65,9 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 28,
+  "lamport_epoch": 29,
   "vector_clock": {
-    "plane_1_drive": 28,
+    "plane_1_drive": 29,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
