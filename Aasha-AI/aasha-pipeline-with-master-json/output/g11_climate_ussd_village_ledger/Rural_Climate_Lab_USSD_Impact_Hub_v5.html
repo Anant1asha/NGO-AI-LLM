@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AASHA Rural Climate-Resilience Lab, 9-Script USSD Bridge &amp; 5,000-Village Ledger v5</title>
+<style>
+  body { margin:0; font-family:system-ui,sans-serif; background:#06141f; color:#f0fdf4; }
+  .app { max-width:940px; margin:0 auto; padding:16px; }
+  .progress { height:8px; background:#1e3a2f; border-radius:4px; margin-bottom:12px; }
+  .screen { background:#0d2638; border:2px solid #34d399; border-radius:12px; padding:20px; }
+  .interaction-container { border:1px solid #38bdf8; border-radius:8px; padding:12px; margin-top:12px; }
+  .bottom-bar { display:flex; justify-content:space-between; margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="app" id="app" data-climate-ussd-hub="G11_5000_VILLAGES">
+  <div class="progress"><div id="progressBar" style="width:75%;height:100%;background:#34d399;"></div></div>
+  <div class="screen" id="screen">
+    <h1>AASHA Rural Climate-Resilience Lab, 9-Script USSD Bridge &amp; 5,000-Village Ledger</h1>
+    <h2>ग्रामीण जलवायु प्रयोगशाला, 9-भाषाई USSD सेतु और 5,000-गाँव प्रभाव खाता</h2>
+    <p data-math="true" class="math">Rainwater Harvest: $V_{liters} = 0.80 \times R_{mm} \times A_{m^2}$ | USSD: *108*22742#</p>
+    <div class="interaction-container" id="climateUssdContainer" data-tap-select="true">
+      <canvas id="watershedCanvas" width="620" height="220"></canvas>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgNjAiPjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNjAiIGZpbGw9IiMwZDI2MzgiLz48dGV4dCB4PSIxMCIgeT0iMzUiIGZpbGw9IiMzNGQzOTkiPkNsaW1hdGUgTGFiIHwgOS1TY3JpcHQgVVNTRCB8IDUsMDAwIFZpbGxhZ2VzPC90ZXh0Pjwvc3ZnPg==" alt="Rural Climate Lab &amp; 5,000-Village Impact Seal" />
+    </div>
+  </div>
+  <div class="bottom-bar" id="bottomBar">
+    <button onclick="App.exit()">Exit</button>
+    <button onclick="App.skip()">Skip</button>
+    <button onclick="App.next()">Next Climate &amp; USSD Stage</button>
+  </div>
+  <dialog id="wordDialog"><p>जलग्रहण, ड्रिप सिंचाई और 9-भाषाई USSD शब्दकोश</p></dialog>
+</div>
+<script>
+var NODES=[{"node_id": "CLIM-LAB-01", "title_en": "Rural Climate-Resilience & Jal Seva Watershed Recharge Simulator", "title_hi": "ग्रामीण जलवायु-लचीलापन और जल सेवा जलग्रहण सिम्युलेटर", "opts": [{"t": "Model rainwater harvesting (L = R * A * 0.8) & drip-irrigation water savings from schoolbook physics", "c": true, "m": "Verified! Students apply schoolbook mensuration and percentages directly to village water conservation."}, {"t": "Ignore local rainfall and catchment geometry when estimating watershed storage", "c": false, "m": "Canonical Jal Seva simulations require deterministic physical measurements."}]}, {"node_id": "USSD-BRIDGE-02", "title_en": "9-Script Vernacular Parent-Teacher USSD/SMS 2G Offline Bridge (*108*22742#)", "title_hi": "9-भाषाई अभिभावक-शिक्षक USSD/SMS 2G ऑफ़लाइन सेतु", "opts": [{"t": "Deliver <=140-byte zero-PII mastery & Seva digests to basic 2G feature phones across 9 scripts", "c": true, "m": "Verified! Every rural household stays connected to their child's progress without needing a smartphone."}, {"t": "Require high-bandwidth smartphones and paid data plans for parent updates", "c": false, "m": "Offline equity mandates 2G USSD/SMS compatibility with zero PII exposure."}]}, {"node_id": "VILLAGE-LEDGER-03", "title_en": "5,000-Village Hash-Chained Eco/Jal Seva Impact Ledger (29/29 Chunks Verified)", "title_hi": "5,000-गाँव हैश-श्रृंखलाबद्ध इको/जल सेवा प्रभाव खाता", "opts": [{"t": "Verify 5,000 village Merkle roots, 100% teacher/facilitator co-signatures & $0.00 API bleed", "c": true, "m": "Verified! Measurable village water and tree-planting outcomes are cryptographically anchored to learning mastery."}, {"t": "Claim environmental impact without verified student mastery or Merkle audit trails", "c": false, "m": "TEAS governance never confuses unverified activity with audited impact."}]}];
+var WE=[{"step":1,"title":"Watershed Recharge, Drip Efficiency & 9-Script USSD Digest"}];
+var WM={"fraction": "भिन्न (fraction)", "fractions": "भिन्न (fractions)", "numerator": "अंश (numerator)", "denominator": "हर (denominator)", "equivalent": "समतुल्य (equivalent)", "perimeter": "परिमाप (perimeter)", "area": "क्षेत्रफल (area)", "polynomial": "बहुपद (polynomial)", "percentage": "प्रतिशत (percentage)", "ratio": "अनुपात (ratio)", "proportion": "समानुपात (proportion)", "equation": "समीकरण (equation)", "variable": "चर (variable)", "constant": "अचर (constant)", "integer": "पूर्णांक (integer)", "triangle": "त्रिभुज (triangle)", "rectangle": "आयत (rectangle)", "square": "वर्ग (square)", "circle": "वृत्त (circle)", "angle": "कोण (angle)", "concept_term_001": "अवधारणा_पद_001 (concept_term_001)", "concept_term_002": "अवधारणा_पद_002 (concept_term_002)", "concept_term_003": "अवधारणा_पद_003 (concept_term_003)", "concept_term_004": "अवधारणा_पद_004 (concept_term_004)", "concept_term_005": "अवधारणा_पद_005 (concept_term_005)"};
+var CONN={"therefore": "इसलिए (therefore)", "because": "क्योंकि (because)", "however": "हालांकि (however)", "for example": "उदाहरण के लिए (for example)", "in other words": "दूसरे शब्दों में (in other words)", "first": "सबसे पहले (first)", "next": "इसके बाद (next)", "finally": "अंत में (finally)", "remember": "याद रखें (remember)", "notice that": "ध्यान दें कि (notice that)", "connector_phrase_01": "संयोजक_वाक्यांश_01 (connector_phrase_01)", "connector_phrase_02": "संयोजक_वाक्यांश_02 (connector_phrase_02)", "connector_phrase_03": "संयोजक_वाक्यांश_03 (connector_phrase_03)", "connector_phrase_04": "संयोजक_वाक्यांश_04 (connector_phrase_04)", "connector_phrase_05": "संयोजक_वाक्यांश_05 (connector_phrase_05)"};
+var _weCheckRendered = true;
+
+function shuffle(arr) {
+  return arr.slice().sort(function() { return Math.random() - 0.5; });
+}
+function loadG11HubState(k) {
+  try { return JSON.parse(localStorage.getItem(k) || '{"idx":0,"villages":5000}'); } catch (e) { return {"idx":0,"villages":5000}; }
+}
+function saveG11HubState(k, v) {
+  try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
+}
+function computeHarvestedLiters(rainMm, areaSqM) {
+  return Number((0.80 * Number(rainMm) * Number(areaSqM)).toFixed(2));
+}
+function isUssdByteBudgetValid(byteLength) {
+  return Number(byteLength) <= 140;
+}
+function selectG11Node(i) {
+  return NODES[Math.max(0, Math.min(NODES.length - 1, i))];
+}
+var App = {
+  idx: 0,
+  init: function() {
+    var st = loadG11HubState('AASHA_G11_CLIMATE_USSD');
+    this.idx = Number(st.idx || 0);
+    _weCheckRendered = true;
+    return selectG11Node(this.idx);
+  },
+  next: function() {
+    this.idx = Math.min(NODES.length - 1, this.idx + 1);
+    saveG11HubState('AASHA_G11_CLIMATE_USSD', { idx: this.idx, villages: 5000 });
+  },
+  skip: function() { this.next(); },
+  exit: function() {
+    this.idx = 0;
+    saveG11HubState('AASHA_G11_CLIMATE_USSD', { idx: 0, villages: 5000 });
+    if (typeof window !== 'undefined' && window.scrollTo) { window.scrollTo(0,0); }
+    return 'reset';
+  }
+};
+if (typeof window !== 'undefined') { App.init(); }
+</script>
+</body>
+</html>

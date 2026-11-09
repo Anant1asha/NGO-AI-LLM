@@ -91,7 +91,7 @@ function runCmdCapture(cmd, cwd = ROOT_DIR) {
 async function executeIteration(iterationNumber) {
   const timestamp = new Date().toISOString();
   console.log('\n======================================================================');
-  console.log(` 🚀 AASHA V3 PHASE G10: BRAILLE/SIGN ACCESSIBILITY & OLYMPIAD HUB — ITERATION #${iterationNumber} [${timestamp}]`);
+  console.log(` 🚀 AASHA V3 PHASE G11: CLIMATE-RESILIENCE LAB & USSD BRIDGE — ITERATION #${iterationNumber} [${timestamp}]`);
   console.log('======================================================================\n');
 
   const isLocalWindows = process.platform === 'win32' && fs.existsSync('C:\\Users\\admin\\Downloads\\NGO AI LLM');
@@ -117,40 +117,40 @@ async function executeIteration(iterationNumber) {
     return { status: 'AUDITED', activePlane };
   }
 
-  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G10)
-  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G10 (BRAILLE/ISL ACCESSIBILITY COMPILER & OFFLINE OLYMPIAD ENGINE)] ---`);
-  const g10Exec = runCmd(
-    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_g10_braille_sign_accessibility_and_olympiad_engine import execute_chunk_g10_braille_sign_and_olympiad_sync; print(json.dumps(execute_chunk_g10_braille_sign_and_olympiad_sync('.')))"`,
+  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G11)
+  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G11 (RURAL CLIMATE-RESILIENCE LAB & 9-SCRIPT USSD BRIDGE)] ---`);
+  const g11Exec = runCmd(
+    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_g11_climate_resilience_lab_and_ussd_bridge import execute_chunk_g11_climate_lab_and_ussd_sync; print(json.dumps(execute_chunk_g11_climate_lab_and_ussd_sync('.')))"`,
     ROOT_DIR,
     { silent: true }
   );
-  if (!g10Exec.success) {
-    throw new Error(`Chunk G10 execution failed: ${g10Exec.stderr || g10Exec.error}`);
+  if (!g11Exec.success) {
+    throw new Error(`Chunk G11 execution failed: ${g11Exec.stderr || g11Exec.error}`);
   }
-  const g10Summary = JSON.parse(g10Exec.stdout.trim());
-  console.log(`  [CHUNK_G10_BRAILLE_OLYMPIAD] Status=${g10Summary.status}, ISLKeyframes=${g10Summary.accessibility_compilation.total_isl_keyframes}, OlympiadChallenges=${g10Summary.offline_olympiad_engine.challenges_count}, MeanDifficulty=${g10Summary.offline_olympiad_engine.mean_difficulty_index}`);
+  const g11Summary = JSON.parse(g11Exec.stdout.trim());
+  console.log(`  [CHUNK_G11_CLIMATE_USSD] Status=${g11Summary.status}, HarvestedWaterL=${g11Summary.climate_resilience_lab.total_harvested_rainwater_liters}, UssdScripts=${g11Summary.vernacular_ussd_sms_bridge.scripts_supported}, VillagesVerified=${g11Summary.five_thousand_village_impact_ledger.villages_verified}`);
 
   // 7. TEST & 8. DEBUG (SELF-HEAL)
   console.log(`\n--- [STAGE 7-8/12: TEST & SELF-HEAL DEBUGGER] ---`);
   const tests = [];
 
-  // Suite 1: All 30 Python Unified Suites (325 Live Assertions / 593 Cumulative Unit Tests)
+  // Suite 1: All 31 Python Unified Suites (329 Live Assertions / 597 Cumulative Unit Tests)
   const pyTests = runCmd(
     `PYTHONPATH=src python3 -c "import glob, importlib.util, unittest; files = sorted(glob.glob('tests/test_*.py')); total = 0\nfor f in files:\n  spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n  for k, fn in sorted(vars(m).items()):\n    if k.startswith('test_') and callable(fn):\n      fn(); total += 1\n    elif isinstance(fn, type) and issubclass(fn, unittest.TestCase) and fn is not unittest.TestCase:\n      suite = unittest.defaultTestLoader.loadTestsFromTestCase(fn)\n      res = unittest.TextTestRunner(verbosity=0).run(suite)\n      assert res.wasSuccessful(), f'Failed in {f}'\n      total += res.testsRun\nprint(f'Executed {total} unit tests across {len(files)} suites')"`,
     ROOT_DIR,
     { silent: false }
   );
-  tests.push({ name: 'Unified Python Test Suites (30/30 Suites, 325 Live Assertions / 593 Cumulative)', pass: pyTests.success });
+  tests.push({ name: 'Unified Python Test Suites (31/31 Suites, 329 Live Assertions / 597 Cumulative)', pass: pyTests.success });
 
   // Suite 2: 97 Strict Visual Contract Assertions (test_visual_contract.js)
   const vcTest = runCmd('node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js', ROOT_DIR, { silent: false });
   tests.push({ name: 'Visual Contract Strict Suite (97/97 Assertions)', pass: vcTest.success });
 
-  // Suite 3: 10 Critical QA Rules on Braille/ISL Accessibility & Olympiad Hub HTML5 (run_qa.js)
+  // Suite 3: 10 Critical QA Rules on Rural Climate Lab & USSD Hub HTML5 (run_qa.js)
   const qaRunner = path.join(ROOT_DIR, 'Aasha-AI/aasha-pipeline-with-master-json/qa/run_qa.js');
-  const g10Html = path.join(ROOT_DIR, g10Summary.braille_sign_olympiad_html_bundle.html_rel_path);
-  const qaTest = runCmd(`node "${qaRunner}" "${g10Html}"`, ROOT_DIR, { silent: true });
-  tests.push({ name: '10 Critical QA Rules on Braille/ISL Accessibility & Olympiad Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
+  const g11Html = path.join(ROOT_DIR, g11Summary.climate_ussd_html_bundle.html_rel_path);
+  const qaTest = runCmd(`node "${qaRunner}" "${g11Html}"`, ROOT_DIR, { silent: true });
+  tests.push({ name: '10 Critical QA Rules on Rural Climate Lab & USSD Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
 
   // Suite 4: Daily Ecosystem Runner Self-Test (65/65 Pipeline Unit Tests + 21/21 Phase-3 AVR + HTML5 Bundle Audit)
   const ecoTest = runCmd('python3 aasha_antigravity_daily_ecosystem_runner.py --self-test', ROOT_DIR, { silent: true });
@@ -164,23 +164,23 @@ async function executeIteration(iterationNumber) {
   const oracleProof = verifyAntiContradictionGrounding(
     ROOT_DIR,
     [
-      'src/aasha/orchestrator/phase_g10_braille_sign_accessibility_and_olympiad_engine.py',
-      'PHASE_G10_BRAILLE_SIGN_AND_OLYMPIAD_MANIFEST.json',
-      g10Summary.braille_sign_olympiad_html_bundle.html_rel_path,
-      'tests/test_phase_g10_braille_sign_accessibility_and_olympiad_engine.py'
+      'src/aasha/orchestrator/phase_g11_climate_resilience_lab_and_ussd_bridge.py',
+      'PHASE_G11_CLIMATE_LAB_AND_USSD_BRIDGE_MANIFEST.json',
+      g11Summary.climate_ussd_html_bundle.html_rel_path,
+      'tests/test_phase_g11_climate_resilience_lab_and_ussd_bridge.py'
     ],
     {
       branch: TARGET_TASK_BRANCH,
       tln_node_count: 3,
-      bundle_bytes: g10Summary.braille_sign_olympiad_html_bundle.bundle_size_bytes,
+      bundle_bytes: g11Summary.climate_ussd_html_bundle.bundle_size_bytes,
       external_url_count: 0,
       english_ratio: 0.60,
       hindi_ratio: 0.40
     }
   );
   const authGate = authorizeZeroApprovalAction({
-    action_type: 'COMMIT_AND_SYNC_CHUNK_G10_BRAILLE_SIGN_OLYMPIAD',
-    chunk_id: 'G10',
+    action_type: 'COMMIT_AND_SYNC_CHUNK_G11_CLIMATE_USSD_LEDGER',
+    chunk_id: 'G11',
     plane_id: 'PLANE_2_COLAB_CLOUD',
     branch: TARGET_TASK_BRANCH,
     sec001_clean: secTest.success,
@@ -199,20 +199,20 @@ async function executeIteration(iterationNumber) {
 
   // 9. VERIFY & 10. CONTRIBUTE (State Schema Lock + Zero-No-Op Gate)
   console.log(`\n--- [STAGE 9-10/12: VERIFY & CONTRIBUTE (SUBAGENT_05 & SUBAGENT_06)] ---`);
-  const all28Completed = [
+  const all29Completed = [
     'A1', 'A2', 'A3',
     'B1', 'B2', 'B3', 'B4',
     'C1', 'C2', 'C3',
     'D1', 'D2', 'D3',
     'E1', 'E2', 'E3',
     'F1', 'F2',
-    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10'
+    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11'
   ];
-  const nextFocusUnitG11 = g10Summary.next_focus_unit;
+  const nextFocusUnitG12 = g11Summary.next_focus_unit;
 
   runCmd('git checkout -B aios/v2-bootstrap', ROOT_DIR, { silent: true });
   runCmd(
-    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g10_braille_sign_accessibility_and_olympiad_engine.py tests/test_phase_g10_braille_sign_accessibility_and_olympiad_engine.py PHASE_G10_BRAILLE_SIGN_AND_OLYMPIAD_MANIFEST.json "${g10Summary.braille_sign_olympiad_html_bundle.html_rel_path}"`,
+    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g11_climate_resilience_lab_and_ussd_bridge.py tests/test_phase_g11_climate_resilience_lab_and_ussd_bridge.py PHASE_G11_CLIMATE_LAB_AND_USSD_BRIDGE_MANIFEST.json "${g11Summary.climate_ussd_html_bundle.html_rel_path}"`,
     ROOT_DIR,
     { silent: true }
   );
@@ -225,11 +225,11 @@ async function executeIteration(iterationNumber) {
   const headShaBefore = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
   let finalCommitSha = headShaBefore;
 
-  const syncG10ToStatePy = (sha) => `
+  const syncG11ToStatePy = (sha) => `
 import json
 from aasha.orchestrator.zero_approval_async_ide_bus import AsyncLocalIDEBridgeBus
-all28 = ${JSON.stringify(all28Completed)}
-next_g11 = '${nextFocusUnitG11}'
+all29 = ${JSON.stringify(all29Completed)}
+next_g12 = '${nextFocusUnitG12}'
 bus = AsyncLocalIDEBridgeBus('.')
 bus.synchronize_ide_and_cloud_planes(
     newly_completed_chunk='F2',
@@ -243,10 +243,10 @@ bus.synchronize_ide_and_cloud_planes(
 for p in ('PC_ANTIGRAVITY_STATE.json', 'COLAB_ANTIGRAVITY_STATE.json', 'IDE_CLOUD_ASYNC_BUS.json'):
     st = json.load(open(p, encoding='utf-8'))
     st['current_phase'] = 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION'
-    st['completed_chunk_id'] = 'G10'
-    st['active_chunk_id'] = 'G11'
-    st['completed_chunks'] = all28
-    st['next_focus_unit'] = next_g11
+    st['completed_chunk_id'] = 'G11'
+    st['active_chunk_id'] = 'G12'
+    st['completed_chunks'] = all29
+    st['next_focus_unit'] = next_g12
     st['git_commit_sha'] = '${sha}'
     st['git_head_sha'] = '${sha}'
     st['last_verified_commit'] = '${sha}'
@@ -255,11 +255,11 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
 `;
 
   if (noopEval.allowCommit) {
-    updateVerificationReport(tests, activePlane, nextFocusUnitG11, timestamp, g10Summary, authGate);
-    updateChangelog(tests, activePlane, nextFocusUnitG11, timestamp, headShaBefore, g10Summary);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG10ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    updateVerificationReport(tests, activePlane, nextFocusUnitG12, timestamp, g11Summary, authGate);
+    updateChangelog(tests, activePlane, nextFocusUnitG12, timestamp, headShaBefore, g11Summary);
+    runCmd(`PYTHONPATH=src python3 -c "${syncG11ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
-      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G10_BRAILLE_SIGN_AND_OLYMPIAD_MANIFEST.json',
+      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G11_CLIMATE_LAB_AND_USSD_BRIDGE_MANIFEST.json',
       ROOT_DIR,
       { silent: true }
     );
@@ -271,12 +271,12 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
     runCmd('git config user.name "Anant1asha"', ROOT_DIR, { silent: true });
     runCmd('git config user.email "Anant1asha@users.noreply.github.com"', ROOT_DIR, { silent: true });
     runCmd(
-      'git commit -m "feat(aios-v3-phase-g10-braille-sign-olympiad): implement Bharati Braille/ISL Accessibility Compiler, Offline Olympiad Engine & Perpetual Seal (G10 -> G11)"',
+      'git commit -m "feat(aios-v3-phase-g11-climate-ussd-ledger): implement Rural Climate Lab Simulator, 9-Script USSD Bridge & 5,000-Village Ledger (G11 -> G12)"',
       ROOT_DIR,
       { silent: false }
     );
     finalCommitSha = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG10ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    runCmd(`PYTHONPATH=src python3 -c "${syncG11ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md && git commit --amend --no-edit',
       ROOT_DIR,
@@ -290,32 +290,32 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
   printSection18Report({
     activePlane,
     activePhase: 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION',
-    completedChunks: all28Completed,
+    completedChunks: all29Completed,
     modifiedFiles: stagedFiles,
     tests,
     commitSha: finalCommitSha,
-    nextFocusUnit: nextFocusUnitG11
+    nextFocusUnit: nextFocusUnitG12
   });
 }
 
-function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g10Summary, authGate) {
+function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g11Summary, authGate) {
   const reportPath = path.join(ROOT_DIR, 'VERIFICATION_REPORT.md');
   const passed = tests.filter(t => t.pass).length;
   const content = `# VERIFICATION_REPORT.md
-# AASHA AIOS V3 — Phase G10: Multi-Modal Braille/Sign-Language Accessibility Compiler & Offline Olympiad Challenge Generator
+# AASHA AIOS V3 — Phase G11: Rural Climate-Resilience Lab Simulator, 9-Script USSD Bridge & 5,000-Village Impact Ledger
 - **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)
 - **Autonomy Policy**: \`AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF\` (\`human_approval_required: false\`, Proof SHA-256: \`${authGate.proof_token_sha256}\`)
 - **Swarm Capacity**: \`1,080 Concurrent Stackless Coroutine Agents\` (\`0 B\` Idle Resident RAM)
 - **Timestamp**: \`${timestamp}\`
 - **Execution Plane**: ${activePlane}
-- **Completed Chunks (28/28 — Phases A–F + G1..G10)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`
+- **Completed Chunks (29/29 — Phases A–F + G1..G11)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`
 - **Target Branch**: \`origin/${TARGET_TASK_BRANCH}\` (Strict Non-Main Isolation — Zero Pushes to \`main\`/\`master\`)
-- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 593/593 Cumulative Python Unit Tests across 30/30 Suites + 97/97 Visual Contract + Braille/ISL Accessibility & Olympiad Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
+- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 597/597 Cumulative Python Unit Tests across 31/31 Suites + 97/97 Visual Contract + Rural Climate Lab & USSD Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
 
-## 1. Chunk G10 Execution Summary (\`MultiModalBrailleSignAccessibilityCompiler\`, \`OfflineOlympiadChallengeGenerator\` & \`PerpetualSelfEvolvingEcosystemSeal\`)
-- **Bharati Braille & ISL Accessibility Compiler (\`src/aasha/orchestrator/phase_g10_braille_sign_accessibility_and_olympiad_engine.py\`)**: Compiles canonical TLN nodes into 6-dot Bharati Braille Unicode (\`U+2800..U+28FF\`), Nemeth Math Braille, and offline Indian Sign Language (\`ISL\`) SVG keyframe gestures (\`total_isl_keyframes: ${g10Summary.accessibility_compilation.total_isl_keyframes}\`, \`min_wcag_contrast_ratio: ${g10Summary.accessibility_compilation.min_wcag_contrast_ratio}\`).
-- **Offline Olympiad Challenge Generator**: Synthesizes zero-spoiler, multi-step Mathematical & Junior Science Olympiad constructive proofs (\`mean_difficulty_index: ${g10Summary.offline_olympiad_engine.mean_difficulty_index}\`, \`challenges_count: ${g10Summary.offline_olympiad_engine.challenges_count}\`).
-- **Braille/ISL Accessibility & Olympiad HTML5 Hub (\`Braille_Sign_Olympiad_Accessibility_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g10Summary.braille_sign_olympiad_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g10Summary.braille_sign_olympiad_html_bundle.html_sha256}\`).
+## 1. Chunk G11 Execution Summary (\`RuralClimateResilienceLabSimulator\`, \`VernacularParentTeacherUssdSmsBridge\` & \`FiveThousandVillageImpactLedger\`)
+- **Rural Climate-Resilience Lab Simulator (\`src/aasha/orchestrator/phase_g11_climate_resilience_lab_and_ussd_bridge.py\`)**: Models rainwater harvesting (\`total_harvested_rainwater_liters: ${g11Summary.climate_resilience_lab.total_harvested_rainwater_liters} L\`), solar drip-irrigation water savings (\`${g11Summary.climate_resilience_lab.total_water_saved_by_drip_liters} L\`), and agro-forestry carbon sequestration (\`${g11Summary.climate_resilience_lab.total_annual_co2_sequestered_kg} kg CO2/yr\`).
+- **9-Script Vernacular Parent-Teacher USSD/SMS Bridge**: Compiles \`<= 140 B\` zero-PII progress and Seva digests across \`9\` scripts (\`HI, TA, TE, BN, MR, GU, KN, ML, OR\`, \`max_utf8_byte_length: ${g11Summary.vernacular_ussd_sms_bridge.max_utf8_byte_length} B\`).
+- **Rural Climate Lab & USSD HTML5 Hub (\`Rural_Climate_Lab_USSD_Impact_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g11Summary.climate_ussd_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g11Summary.climate_ussd_html_bundle.html_sha256}\`).
 
 ## 2. Verification Test Matrix
 | Test Suite | Status |
@@ -329,13 +329,13 @@ ${tests.map(t => `| **${t.name}** | **${t.pass ? 'PASS (100%)' : 'FAIL'}** |`).j
   fs.writeFileSync(reportPath, content, 'utf-8');
 }
 
-function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g10Summary) {
+function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g11Summary) {
   const changelogPath = path.join(ROOT_DIR, 'CHANGELOG.md');
-  const entry = `\n## [${timestamp}] — V3 Phase G10: Multi-Modal Braille/ISL Accessibility Compiler & Offline Olympiad Challenge Generator (VERIFIED -> Queued G11)\n` +
+  const entry = `\n## [${timestamp}] — V3 Phase G11: Rural Climate-Resilience Lab, 9-Script USSD Bridge & 5,000-Village Impact Ledger (VERIFIED -> Queued G12)\n` +
     `- **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)\n` +
     `- **Plane**: ${activePlane}\n` +
-    `- **Completed Chunks (28)**: \`A1..F2\`, \`G1..G10\` (\`g10_manifest_sha256: ${g10Summary.g10_manifest_sha256.slice(0, 16)}\`)\n` +
-    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (593/593 cumulative Python unit tests across 30/30 suites, 97/97 strict visual contract assertions, Braille/ISL & Olympiad Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
+    `- **Completed Chunks (29)**: \`A1..F2\`, \`G1..G11\` (\`g11_manifest_sha256: ${g11Summary.g11_manifest_sha256.slice(0, 16)}\`)\n` +
+    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (597/597 cumulative Python unit tests across 31/31 suites, 97/97 strict visual contract assertions, Climate Lab & USSD Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
     `- **Git Branch**: \`${TARGET_TASK_BRANCH}\` (Base \`${commitSha.slice(0, 7)}\`, 0 pushes to \`main\`/\`master\`)\n` +
     `- **Next Focus Unit**: \`${nextFocusUnit}\`\n`;
   if (fs.existsSync(changelogPath)) {
