@@ -1,0 +1,248 @@
+{
+  "schema_version": "3.0.0-PHASE-G8-1000-CENTRE-FEDERATION",
+  "chunk_id": "G8",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G8_1000_CENTRE_FEDERATION_AND_PEER_MICRO_GUILDS_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "statewide_federation": {
+    "total_districts": 20,
+    "total_centres_federated": 1000,
+    "total_concurrent_tablets": 50000,
+    "max_gossip_hops": 3,
+    "global_merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+    "all_1000_centres_converged": true,
+    "district_summaries": [
+      {
+        "district_id": "DISTRICT-UP-01",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-02",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-03",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-04",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-05",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-06",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-07",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-08",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-09",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-10",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-11",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-12",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-13",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-14",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-15",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-16",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-17",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-18",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-19",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      },
+      {
+        "district_id": "DISTRICT-UP-20",
+        "centres_count": 50,
+        "active_tablets_count": 2500,
+        "max_gossip_hops": 3,
+        "merkle_root_sha256": "c49f6dc9a1ae8f790fd28def3c1149cf4713050a89fabffb9e83035ddfa2221d",
+        "converged": true
+      }
+    ]
+  },
+  "peer_micro_guilds": {
+    "guilds_formed": 3,
+    "mean_pre_guild_mastery": 0.6367,
+    "mean_post_guild_mastery": 0.86,
+    "total_seva_leadership_tokens": 45,
+    "guilds": [
+      {
+        "guild_id": "GUILD-UP01-001",
+        "centre_id": "CENTRE-UP01-01",
+        "chapter_id": "NCERT-G06-MATH-CH07-FRACTIONS",
+        "node_id": "TLN-02",
+        "mentor_anon_id": "SATHI-MENTOR-ANON-001",
+        "mentor_mastery": 0.92,
+        "learner_anon_ids": [
+          "PEER-ANON-001-A",
+          "PEER-ANON-001-B",
+          "PEER-ANON-001-C"
+        ],
+        "pre_guild_mean_mastery": 0.61,
+        "post_guild_mean_mastery": 0.84,
+        "socratic_peer_prompt_bilingual": "सबसे पहले (first), ask your guild partner to show the equal parts of the भिन्न (fraction) on the number line in TLN-02 before calculating. | साथी समूह (Micro-Guild): गणना करने से पहले अपने मित्र से संख्या रेखा पर बराबर भाग दिखाने को कहें।",
+        "seva_leadership_tokens_awarded": 15
+      },
+      {
+        "guild_id": "GUILD-UP01-002",
+        "centre_id": "CENTRE-UP01-02",
+        "chapter_id": "NCERT-G09-SCI-CH08-FORCE-MOTION",
+        "node_id": "TLN-03",
+        "mentor_anon_id": "SATHI-MENTOR-ANON-002",
+        "mentor_mastery": 0.89,
+        "learner_anon_ids": [
+          "PEER-ANON-002-A",
+          "PEER-ANON-002-B",
+          "PEER-ANON-002-C"
+        ],
+        "pre_guild_mean_mastery": 0.64,
+        "post_guild_mean_mastery": 0.86,
+        "socratic_peer_prompt_bilingual": "सबसे पहले (first), ask your guild partner to show the equal parts of the भिन्न (fraction) on the number line in TLN-03 before calculating. | साथी समूह (Micro-Guild): गणना करने से पहले अपने मित्र से संख्या रेखा पर बराबर भाग दिखाने को कहें।",
+        "seva_leadership_tokens_awarded": 15
+      },
+      {
+        "guild_id": "GUILD-UP02-001",
+        "centre_id": "CENTRE-UP02-01",
+        "chapter_id": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA",
+        "node_id": "TLN-01",
+        "mentor_anon_id": "SATHI-MENTOR-ANON-003",
+        "mentor_mastery": 0.94,
+        "learner_anon_ids": [
+          "PEER-ANON-003-A",
+          "PEER-ANON-003-B",
+          "PEER-ANON-003-C"
+        ],
+        "pre_guild_mean_mastery": 0.66,
+        "post_guild_mean_mastery": 0.88,
+        "socratic_peer_prompt_bilingual": "सबसे पहले (first), ask your guild partner to show the equal parts of the भिन्न (fraction) on the number line in TLN-01 before calculating. | साथी समूह (Micro-Guild): गणना करने से पहले अपने मित्र से संख्या रेखा पर बराबर भाग दिखाने को कहें।",
+        "seva_leadership_tokens_awarded": 15
+      }
+    ]
+  },
+  "federation_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g8_statewide_federation/StateWide_1000Centre_Guild_Federation_v5.html",
+    "bundle_size_bytes": 7891,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "155064157ef9f2ad2fb012b6d526482c973b35e44031a6a9bebd5fbd95c672f5"
+  },
+  "daily_spend_cap_usd": 1.0,
+  "next_focus_unit": "G9: Autonomous Offline Exam-Board Readiness Simulator, Vocational Apprenticeship Matcher & National Scale Telemetry Audit",
+  "g8_manifest_sha256": "5e4bcb0c8b3e24a70cbea83efb07da6945e35a6a4f87c6725ff02f555e95eff2"
+}
