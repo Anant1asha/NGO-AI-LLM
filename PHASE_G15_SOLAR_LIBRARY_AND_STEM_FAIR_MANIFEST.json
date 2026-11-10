@@ -1,0 +1,145 @@
+{
+  "schema_version": "3.0.0-PHASE-G15-SOLAR-LIBRARY-STEM-FAIR",
+  "chunk_id": "G15",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G15_SOLAR_LIBRARY_STEM_FAIR_AND_100000_CENTRE_SEAL_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "solar_powered_open_library": {
+    "packs_count": 3,
+    "total_chapters_indexed": 300,
+    "total_compressed_size_mb": 29.0,
+    "mean_deduplication_ratio": 0.74,
+    "all_cc_by_sa_verified": true,
+    "packs": [
+      {
+        "archive_id": "OER-NCERT-STEM-01",
+        "title_en": "NCERT Class 6-10 Bilingual Math & Science Open Library Pack",
+        "title_hi": "NCERT कक्षा 6-10 द्विभाषी गणित और विज्ञान मुक्त पुस्तकालय पैक",
+        "chapters_indexed": 120,
+        "compressed_size_mb": 11.4,
+        "deduplication_ratio": 0.74,
+        "under_20mib_pack_ceiling": true,
+        "cc_by_sa_license_verified": true
+      },
+      {
+        "archive_id": "OER-DIKSHA-HINDI-02",
+        "title_en": "State SCERT Foundational & Bridge Workbook Archive (9 Scripts)",
+        "title_hi": "राज्य SCERT मूलभूत और ब्रिज कार्यपुस्तिका संग्रह (9 लिपियाँ)",
+        "chapters_indexed": 95,
+        "compressed_size_mb": 9.2,
+        "deduplication_ratio": 0.71,
+        "under_20mib_pack_ceiling": true,
+        "cc_by_sa_license_verified": true
+      },
+      {
+        "archive_id": "OER-NPTEL-RURAL-03",
+        "title_en": "Frugal Rural Engineering, Solar & Watershed Field Manual Pack",
+        "title_hi": "ग्रामीण सौर ऊर्जा और जलग्रहण अभियांत्रिकी मार्गदर्शिका पैक",
+        "chapters_indexed": 85,
+        "compressed_size_mb": 8.4,
+        "deduplication_ratio": 0.77,
+        "under_20mib_pack_ceiling": true,
+        "cc_by_sa_license_verified": true
+      }
+    ]
+  },
+  "inter_district_stem_fair_judge": {
+    "prototypes_evaluated": 3,
+    "mean_composite_fair_score": 0.9042,
+    "total_innovation_seva_grant_tokens": 850,
+    "evaluations": [
+      {
+        "prototype_id": "STEM-FAIR-2026-001",
+        "tln_node_id": "TLN-SCI-THERM-01",
+        "district_guild_code": "DIST-UP-JHANSI-G01",
+        "prototype_title_en": "Convection Solar Grain & Millet Dryer",
+        "prototype_title_hi": "संवहन सौर अनाज और बाजरा शुष्कक",
+        "scientific_rigor": 0.92,
+        "village_utility": 0.95,
+        "frugal_cost_score": 0.9,
+        "composite_fair_score": 0.9255,
+        "innovation_seva_grant_tokens": 300,
+        "bilingual_judge_feedback": "सबसे पहले (first), prototype STEM-FAIR-2026-001 (Convection Solar Grain & Millet Dryer) scored 0.9255 by applying TLN-SCI-THERM-01 principles with locally available village materials. | STEM नवाचार मेला (STEM-FAIR-2026-001): स्थानीय संसाधनों और पाठ्यपुस्तक सिद्धांतों के उत्कृष्ट प्रयोग से 0.9255 अंक प्राप्त किए।"
+      },
+      {
+        "prototype_id": "STEM-FAIR-2026-002",
+        "tln_node_id": "TLN-JAL-FILT-02",
+        "district_guild_code": "DIST-BR-NALANDA-G02",
+        "prototype_title_en": "Multi-Layer Bio-Sand & Moringa Seed Water Clarifier",
+        "prototype_title_hi": "बहु-स्तरीय बायो-सैंड और सहजन बीज जल शोधक",
+        "scientific_rigor": 0.88,
+        "village_utility": 0.92,
+        "frugal_cost_score": 0.94,
+        "composite_fair_score": 0.909,
+        "innovation_seva_grant_tokens": 300,
+        "bilingual_judge_feedback": "सबसे पहले (first), prototype STEM-FAIR-2026-002 (Multi-Layer Bio-Sand & Moringa Seed Water Clarifier) scored 0.909 by applying TLN-JAL-FILT-02 principles with locally available village materials. | STEM नवाचार मेला (STEM-FAIR-2026-002): स्थानीय संसाधनों और पाठ्यपुस्तक सिद्धांतों के उत्कृष्ट प्रयोग से 0.909 अंक प्राप्त किए।"
+      },
+      {
+        "prototype_id": "STEM-FAIR-2026-003",
+        "tln_node_id": "TLN-SCI-EM-03",
+        "district_guild_code": "DIST-MH-WARDHA-G03",
+        "prototype_title_en": "Bicycle Dynamo 12V Study-Lamp & Tablet Trickle Charger",
+        "prototype_title_hi": "साइकिल डायनेमो 12V अध्ययन-लैंप और टैबलेट चार्जर",
+        "scientific_rigor": 0.85,
+        "village_utility": 0.88,
+        "frugal_cost_score": 0.92,
+        "composite_fair_score": 0.878,
+        "innovation_seva_grant_tokens": 250,
+        "bilingual_judge_feedback": "सबसे पहले (first), prototype STEM-FAIR-2026-003 (Bicycle Dynamo 12V Study-Lamp & Tablet Trickle Charger) scored 0.878 by applying TLN-SCI-EM-03 principles with locally available village materials. | STEM नवाचार मेला (STEM-FAIR-2026-003): स्थानीय संसाधनों और पाठ्यपुस्तक सिद्धांतों के उत्कृष्ट प्रयोग से 0.878 अंक प्राप्त किए।"
+      }
+    ]
+  },
+  "hundred_thousand_centre_sovereign_seal": {
+    "centres_certified": 100000,
+    "blocks_federated": 2000,
+    "completed_chunks_count": 33,
+    "completed_chunks": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D3",
+      "E1",
+      "E2",
+      "E3",
+      "F1",
+      "F2",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15"
+    ],
+    "paid_api_bleed_usd": 0.0,
+    "daily_spend_cap_usd": 1.0
+  },
+  "solar_library_stem_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g15_solar_library_stem_fair/Solar_Library_STEM_Fair_Sovereign_Hub_v5.html",
+    "bundle_size_bytes": 8135,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "84804c58ce1ead0937a252fe47b4e9626a96cae5e3e6cb2bf09a1553c40dfaf3"
+  },
+  "next_focus_unit": "G16: Autonomous Offline Rural Livelihood Micro-Coop Ledger, Multi-Grade Bridge Classroom Scheduler & 250,000-Centre Sovereign Bharat Seal",
+  "g15_manifest_sha256": "9add15da5b7d2af7b737edf5111c0e8bb004be04ed2cef34cb97c32d890c4665"
+}
