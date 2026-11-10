@@ -1,0 +1,135 @@
+{
+  "schema_version": "3.0.0-PHASE-G13-SCHOLARSHIP-VIRTUAL-LAB",
+  "chunk_id": "G13",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G13_MICRO_SCHOLARSHIP_VIRTUAL_LAB_AND_25000_CENTRE_SEAL_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "micro_scholarship_disburser": {
+    "awards_count": 3,
+    "mean_composite_continuity_index": 0.8883,
+    "total_scholarship_seva_tokens": 700,
+    "zero_pii_verified": true,
+    "awards": [
+      {
+        "award_id": "SCH-2026-001",
+        "anon_student_token": "ANON-SCH-101",
+        "teas_mastery_score": 0.91,
+        "attendance_streak_days": 28,
+        "seva_projects_completed": 4,
+        "composite_continuity_index": 0.935,
+        "scholarship_seva_tokens": 250,
+        "study_kit_tier": "SOLAR_STUDY_LAMP_AND_STEM_KIT",
+        "zero_pii_verified": true
+      },
+      {
+        "award_id": "SCH-2026-002",
+        "anon_student_token": "ANON-SCH-102",
+        "teas_mastery_score": 0.86,
+        "attendance_streak_days": 24,
+        "seva_projects_completed": 3,
+        "composite_continuity_index": 0.82,
+        "scholarship_seva_tokens": 200,
+        "study_kit_tier": "GEOMETRY_AND_WORKBOOK_KIT",
+        "zero_pii_verified": true
+      },
+      {
+        "award_id": "SCH-2026-003",
+        "anon_student_token": "ANON-SCH-103",
+        "teas_mastery_score": 0.88,
+        "attendance_streak_days": 27,
+        "seva_projects_completed": 4,
+        "composite_continuity_index": 0.91,
+        "scholarship_seva_tokens": 250,
+        "study_kit_tier": "SOLAR_STUDY_LAMP_AND_STEM_KIT",
+        "zero_pii_verified": true
+      }
+    ]
+  },
+  "interactive_science_virtual_lab": {
+    "experiments_count": 3,
+    "mean_simulation_accuracy": 0.992,
+    "experiments": [
+      {
+        "experiment_id": "VLAB-OPTICS-LENS-01",
+        "tln_node_id": "TLN-SCI-OPT-01",
+        "domain": "PHYSICS_OPTICS",
+        "title_en": "Convex Lens Ray Tracing & Focal Length Lab",
+        "title_hi": "उत्तल लेंस किरण आरेख और फोकस दूरी प्रयोगशाला",
+        "governing_equation_latex": "\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}",
+        "simulation_accuracy": 0.992,
+        "bilingual_lab_guide": "सबसे पहले (first), slide the candle object distance u beyond 2F and observe the inverted real image converge between F and 2F. | उत्तल लेंस प्रयोग: वस्तु दूरी u को 2F से परे रखें और F तथा 2F के बीच वास्तविक प्रतिबिंब देखें।"
+      },
+      {
+        "experiment_id": "VLAB-CHEM-PH-02",
+        "tln_node_id": "TLN-SCI-CHEM-02",
+        "domain": "CHEMISTRY_SOIL_PH",
+        "title_en": "Village Rainwater & Soil pH Neutralization Lab",
+        "title_hi": "ग्रामीण वर्षा जल और मिट्टी pH उदासीनीकरण प्रयोगशाला",
+        "governing_equation_latex": "\\text{pH} = -\\log_{10}[\\text{H}^+]",
+        "simulation_accuracy": 0.988,
+        "bilingual_lab_guide": "सबसे पहले (first), test the soil extract with hibiscus natural indicator before adding organic compost to balance pH near 6.8. | मिट्टी pH परीक्षण: जैविक खाद मिलाने से पहले गुड़हल के प्राकृतिक सूचक से pH स्तर की जाँच करें।"
+      },
+      {
+        "experiment_id": "VLAB-ELEC-OHM-03",
+        "tln_node_id": "TLN-SCI-ELEC-03",
+        "domain": "PHYSICS_SOLAR_CIRCUITS",
+        "title_en": "Solar Micro-Grid Ohm's Law & Series/Parallel Load Lab",
+        "title_hi": "सौर माइक्रो-ग्रिड ओम का नियम और परिपथ प्रयोगशाला",
+        "governing_equation_latex": "V = I \\times R_{\\text{eq}}",
+        "simulation_accuracy": 0.996,
+        "bilingual_lab_guide": "सबसे पहले (first), connect two 6V solar LED lamps in parallel so each branch receives full voltage without dimming. | सौर परिपथ प्रयोग: दो 6V सौर लैंपों को समानांतर क्रम में जोड़ें ताकि प्रत्येक को पूर्ण वोल्टेज मिले।"
+      }
+    ]
+  },
+  "twenty_five_thousand_centre_block_seal": {
+    "centres_certified": 25000,
+    "blocks_federated": 500,
+    "completed_chunks_count": 31,
+    "completed_chunks": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D3",
+      "E1",
+      "E2",
+      "E3",
+      "F1",
+      "F2",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12",
+      "G13"
+    ],
+    "paid_api_bleed_usd": 0.0,
+    "daily_spend_cap_usd": 1.0
+  },
+  "scholarship_vlab_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g13_scholarship_virtual_lab/Scholarship_Science_Virtual_Lab_Hub_v5.html",
+    "bundle_size_bytes": 8326,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "e06962ddceec5f067f2ca9479d8daf3163ce743d0fa08d1d77134faadf5071d1"
+  },
+  "next_focus_unit": "G14: Autonomous Offline Rural Agro-Weather & Water-Quality Field Kit, Vernacular Facilitator Peer-Mentoring Circle & 50,000-Centre National Golden Seal",
+  "g13_manifest_sha256": "c9c7dbf82257c5f0926347552c5fa6b85bb7652ced241e4382a78953bd6c434b"
+}
