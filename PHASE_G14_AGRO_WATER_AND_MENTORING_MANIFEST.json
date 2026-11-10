@@ -1,0 +1,140 @@
+{
+  "schema_version": "3.0.0-PHASE-G14-AGRO-WATER-MENTORING",
+  "chunk_id": "G14",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G14_AGRO_WATER_FIELD_KIT_PEER_CIRCLE_AND_50000_CENTRE_SEAL_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "agro_weather_water_quality_kit": {
+    "stations_count": 3,
+    "all_bis_is10500_compliant": true,
+    "mean_potability_index": 0.656,
+    "readings": [
+      {
+        "station_id": "FIELD-KIT-UP-01",
+        "tln_node_id": "TLN-JAL-WQ-01",
+        "village_code": "UP-CHITRAKOOT-V01",
+        "tds_ppm": 210.0,
+        "turbidity_ntu": 1.8,
+        "dissolved_oxygen_mg_l": 7.6,
+        "soil_moisture_pct": 64.0,
+        "potability_index": 0.652,
+        "bis_is10500_compliant": true,
+        "bilingual_field_advisory": "सबसे पहले (first), at UP-CHITRAKOOT-V01, TDS is 210.0 ppm and turbidity is 1.8 NTU (BIS IS-10500 compliant) with 64.0% root-zone soil moisture. | जल और कृषि परीक्षण (UP-CHITRAKOOT-V01): TDS 210.0 ppm तथा गंदलापन 1.8 NTU सुरक्षित सीमा में है और मिट्टी की नमी 64.0% है।"
+      },
+      {
+        "station_id": "FIELD-KIT-BR-02",
+        "tln_node_id": "TLN-JAL-WQ-02",
+        "village_code": "BR-GAYA-WATERSHED-V02",
+        "tds_ppm": 180.0,
+        "turbidity_ntu": 1.5,
+        "dissolved_oxygen_mg_l": 8.0,
+        "soil_moisture_pct": 68.0,
+        "potability_index": 0.706,
+        "bis_is10500_compliant": true,
+        "bilingual_field_advisory": "सबसे पहले (first), at BR-GAYA-WATERSHED-V02, TDS is 180.0 ppm and turbidity is 1.5 NTU (BIS IS-10500 compliant) with 68.0% root-zone soil moisture. | जल और कृषि परीक्षण (BR-GAYA-WATERSHED-V02): TDS 180.0 ppm तथा गंदलापन 1.5 NTU सुरक्षित सीमा में है और मिट्टी की नमी 68.0% है।"
+      },
+      {
+        "station_id": "FIELD-KIT-MH-03",
+        "tln_node_id": "TLN-ECO-AGRO-03",
+        "village_code": "MH-LATUR-BASIN-V03",
+        "tds_ppm": 240.0,
+        "turbidity_ntu": 2.0,
+        "dissolved_oxygen_mg_l": 7.4,
+        "soil_moisture_pct": 61.0,
+        "potability_index": 0.61,
+        "bis_is10500_compliant": true,
+        "bilingual_field_advisory": "सबसे पहले (first), at MH-LATUR-BASIN-V03, TDS is 240.0 ppm and turbidity is 2.0 NTU (BIS IS-10500 compliant) with 61.0% root-zone soil moisture. | जल और कृषि परीक्षण (MH-LATUR-BASIN-V03): TDS 240.0 ppm तथा गंदलापन 2.0 NTU सुरक्षित सीमा में है और मिट्टी की नमी 61.0% है।"
+      }
+    ]
+  },
+  "facilitator_peer_mentoring_circle": {
+    "circles_count": 3,
+    "total_facilitators_mentored": 66,
+    "total_case_studies_shared": 33,
+    "mean_efficacy_score": 0.91,
+    "circles": [
+      {
+        "circle_id": "CIRCLE-HINDI-UP",
+        "lang_code": "HI",
+        "region_cluster": "UP-AWADH-BUNDELKHAND",
+        "facilitators_count": 24,
+        "pedagogical_case_studies_shared": 12,
+        "post_circle_efficacy_score": 0.91,
+        "zero_pii_verified": true,
+        "bilingual_mentoring_playbook": "सबसे पहले (first), use tactile भिन्न (fraction) strips and local mandi grain weights to resolve हर (denominator) addition misconceptions in 10 minutes. | सहकर्मी शिक्षक मंडल: भिन्न के हर जोड़ने की त्रुटि को सुधारने के लिए स्थानीय मंडी के बाट और भिन्न पट्टियों का प्रयोग करें।"
+      },
+      {
+        "circle_id": "CIRCLE-MARATHI-MH",
+        "lang_code": "MR",
+        "region_cluster": "MH-VIDARBHA-MARATHWADA",
+        "facilitators_count": 20,
+        "pedagogical_case_studies_shared": 10,
+        "post_circle_efficacy_score": 0.89,
+        "zero_pii_verified": true,
+        "bilingual_mentoring_playbook": "सबसे पहले (first), pair struggling readers with Sathi guild peers for 8-minute aloud matra-phoneme echo reading before independent quizzes. | शिक्षक मार्गदर्शन मंडल: स्वतंत्र प्रश्नोत्तरी से पहले 8 मिनट सहकर्मी सस्वर पठन का अभ्यास कराएँ।"
+      },
+      {
+        "circle_id": "CIRCLE-TAMIL-TN",
+        "lang_code": "TA",
+        "region_cluster": "TN-CAUVERY-DELTA",
+        "facilitators_count": 22,
+        "pedagogical_case_studies_shared": 11,
+        "post_circle_efficacy_score": 0.93,
+        "zero_pii_verified": true,
+        "bilingual_mentoring_playbook": "सबसे पहले (first), connect linear समीकरण (equation) variables directly to village solar battery charge hours during afternoon lab sessions. | शिक्षक सहकर्मी समूह: दोपहर की प्रयोगशाला में रैखिक समीकरणों को सौर बैटरी चार्जिंग घंटों से जोड़कर समझाएँ।"
+      }
+    ]
+  },
+  "fifty_thousand_centre_national_golden_seal": {
+    "centres_certified": 50000,
+    "blocks_federated": 1000,
+    "completed_chunks_count": 32,
+    "completed_chunks": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D3",
+      "E1",
+      "E2",
+      "E3",
+      "F1",
+      "F2",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14"
+    ],
+    "paid_api_bleed_usd": 0.0,
+    "daily_spend_cap_usd": 1.0
+  },
+  "agro_water_mentoring_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g14_agro_water_mentoring/Agro_Water_Quality_Facilitator_Circle_Hub_v5.html",
+    "bundle_size_bytes": 8410,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "3d1fe57c03d7ce3b2be227534448bff676244388f009635568d3c75ea5c6de10"
+  },
+  "next_focus_unit": "G15: Autonomous Offline Rural Solar-Powered Library & Open-Textbook Harvester, Inter-District STEM Innovation Fair Judge & 100,000-Centre Sovereign AIOS Seal",
+  "g14_manifest_sha256": "15ab0bdea4d170ef828c344cafd4694773aedd7c678b37b45489117bd916657a"
+}
