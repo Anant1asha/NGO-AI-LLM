@@ -91,7 +91,7 @@ function runCmdCapture(cmd, cwd = ROOT_DIR) {
 async function executeIteration(iterationNumber) {
   const timestamp = new Date().toISOString();
   console.log('\n======================================================================');
-  console.log(` 🚀 AASHA V3 PHASE G19: NUTRITION MATH LAB & GRAM-SABHA AUDIT — ITERATION #${iterationNumber} [${timestamp}]`);
+  console.log(` 🚀 AASHA V3 PHASE G20: SOIL-TO-MARKET MATH & ORAL-HISTORY SEAL — ITERATION #${iterationNumber} [${timestamp}]`);
   console.log('======================================================================\n');
 
   const isLocalWindows = process.platform === 'win32' && fs.existsSync('C:\\Users\\admin\\Downloads\\NGO AI LLM');
@@ -117,40 +117,40 @@ async function executeIteration(iterationNumber) {
     return { status: 'AUDITED', activePlane };
   }
 
-  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G19)
-  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G19 (SCHOOLBOOK NUTRITION MATH LAB & GRAM-SABHA AUDIT PORTAL)] ---`);
-  const g19Exec = runCmd(
-    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_g19_nutrition_math_and_gram_sabha_portal import execute_chunk_g19_nutrition_and_gram_sabha_sync; print(json.dumps(execute_chunk_g19_nutrition_and_gram_sabha_sync('.')))"`,
+  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G20)
+  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G20 (SOIL-TO-MARKET SUPPLY-CHAIN SIMULATOR & ORAL-HISTORY ARCHIVE)] ---`);
+  const g20Exec = runCmd(
+    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_g20_supply_chain_and_oral_history_seal import execute_chunk_g20_supply_chain_and_oral_history_sync; print(json.dumps(execute_chunk_g20_supply_chain_and_oral_history_sync('.')))"`,
     ROOT_DIR,
     { silent: true }
   );
-  if (!g19Exec.success) {
-    throw new Error(`Chunk G19 execution failed: ${g19Exec.stderr || g19Exec.error}`);
+  if (!g20Exec.success) {
+    throw new Error(`Chunk G20 execution failed: ${g20Exec.stderr || g20Exec.error}`);
   }
-  const g19Summary = JSON.parse(g19Exec.stdout.trim());
-  console.log(`  [CHUNK_G19_NUTRI_GRAMSABHA] Status=${g19Summary.status}, MeanEfficacy=${g19Summary.schoolbook_nutrition_hygiene_lab.mean_scientific_efficacy_ratio}, ChaptersMastered=${g19Summary.gram_sabha_open_audit_portal.total_schoolbook_chapters_mastered}, LearnersCertified=${g19Summary.two_million_learner_sovereign_seal.learners_certified}`);
+  const g20Summary = JSON.parse(g20Exec.stdout.trim());
+  console.log(`  [CHUNK_G20_SUPPLY_ORAL] Status=${g20Summary.status}, HarvestQuintals=${g20Summary.soil_to_market_supply_chain_simulator.total_harvest_quintals}, StoriesArchived=${g20Summary.inter_generational_oral_history_archive.total_stories_archived}, LearnersCertified=${g20Summary.five_million_learner_mvp_golden_seal.learners_certified}`);
 
   // 7. TEST & 8. DEBUG (SELF-HEAL)
   console.log(`\n--- [STAGE 7-8/12: TEST & SELF-HEAL DEBUGGER] ---`);
   const tests = [];
 
-  // Suite 1: All 39 Python Unified Suites (361 Live Assertions / 629 Cumulative Unit Tests)
+  // Suite 1: All 40 Python Unified Suites (365 Live Assertions / 633 Cumulative Unit Tests)
   const pyTests = runCmd(
     `PYTHONPATH=src python3 -c "import glob, importlib.util, unittest; files = sorted(glob.glob('tests/test_*.py')); total = 0\nfor f in files:\n  spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n  for k, fn in sorted(vars(m).items()):\n    if k.startswith('test_') and callable(fn):\n      fn(); total += 1\n    elif isinstance(fn, type) and issubclass(fn, unittest.TestCase) and fn is not unittest.TestCase:\n      suite = unittest.defaultTestLoader.loadTestsFromTestCase(fn)\n      res = unittest.TextTestRunner(verbosity=0).run(suite)\n      assert res.wasSuccessful(), f'Failed in {f}'\n      total += res.testsRun\nprint(f'Executed {total} unit tests across {len(files)} suites')"`,
     ROOT_DIR,
     { silent: false }
   );
-  tests.push({ name: 'Unified Python Test Suites (39/39 Suites, 361 Live Assertions / 629 Cumulative)', pass: pyTests.success });
+  tests.push({ name: 'Unified Python Test Suites (40/40 Suites, 365 Live Assertions / 633 Cumulative)', pass: pyTests.success });
 
   // Suite 2: 97 Strict Visual Contract Assertions (test_visual_contract.js)
   const vcTest = runCmd('node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js', ROOT_DIR, { silent: false });
   tests.push({ name: 'Visual Contract Strict Suite (97/97 Assertions)', pass: vcTest.success });
 
-  // Suite 3: 10 Critical QA Rules on Nutrition Math & Gram-Sabha Audit Hub HTML5 (run_qa.js)
+  // Suite 3: 10 Critical QA Rules on Soil-to-Market & Oral-History Hub HTML5 (run_qa.js)
   const qaRunner = path.join(ROOT_DIR, 'Aasha-AI/aasha-pipeline-with-master-json/qa/run_qa.js');
-  const g19Html = path.join(ROOT_DIR, g19Summary.nutrition_gram_sabha_html_bundle.html_rel_path);
-  const qaTest = runCmd(`node "${qaRunner}" "${g19Html}"`, ROOT_DIR, { silent: true });
-  tests.push({ name: '10 Critical QA Rules on Nutrition Math & Gram-Sabha Audit Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
+  const g20Html = path.join(ROOT_DIR, g20Summary.supply_oral_history_html_bundle.html_rel_path);
+  const qaTest = runCmd(`node "${qaRunner}" "${g20Html}"`, ROOT_DIR, { silent: true });
+  tests.push({ name: '10 Critical QA Rules on Soil-to-Market & Oral-History Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
 
   // Suite 4: Daily Ecosystem Runner Self-Test (65/65 Pipeline Unit Tests + 21/21 Phase-3 AVR + HTML5 Bundle Audit)
   const ecoTest = runCmd('python3 aasha_antigravity_daily_ecosystem_runner.py --self-test', ROOT_DIR, { silent: true });
@@ -164,23 +164,23 @@ async function executeIteration(iterationNumber) {
   const oracleProof = verifyAntiContradictionGrounding(
     ROOT_DIR,
     [
-      'src/aasha/orchestrator/phase_g19_nutrition_math_and_gram_sabha_portal.py',
-      'PHASE_G19_NUTRITION_LAB_AND_GRAM_SABHA_MANIFEST.json',
-      g19Summary.nutrition_gram_sabha_html_bundle.html_rel_path,
-      'tests/test_phase_g19_nutrition_math_and_gram_sabha_portal.py'
+      'src/aasha/orchestrator/phase_g20_supply_chain_and_oral_history_seal.py',
+      'PHASE_G20_SUPPLY_CHAIN_AND_ORAL_HISTORY_MANIFEST.json',
+      g20Summary.supply_oral_history_html_bundle.html_rel_path,
+      'tests/test_phase_g20_supply_chain_and_oral_history_seal.py'
     ],
     {
       branch: TARGET_TASK_BRANCH,
       tln_node_count: 3,
-      bundle_bytes: g19Summary.nutrition_gram_sabha_html_bundle.bundle_size_bytes,
+      bundle_bytes: g20Summary.supply_oral_history_html_bundle.bundle_size_bytes,
       external_url_count: 0,
       english_ratio: 0.60,
       hindi_ratio: 0.40
     }
   );
   const authGate = authorizeZeroApprovalAction({
-    action_type: 'COMMIT_AND_SYNC_CHUNK_G19_NUTRITION_GRAM_SABHA',
-    chunk_id: 'G19',
+    action_type: 'COMMIT_AND_SYNC_CHUNK_G20_SUPPLY_CHAIN_ORAL_HISTORY',
+    chunk_id: 'G20',
     plane_id: 'PLANE_2_COLAB_CLOUD',
     branch: TARGET_TASK_BRANCH,
     sec001_clean: secTest.success,
@@ -199,20 +199,20 @@ async function executeIteration(iterationNumber) {
 
   // 9. VERIFY & 10. CONTRIBUTE (State Schema Lock + Zero-No-Op Gate)
   console.log(`\n--- [STAGE 9-10/12: VERIFY & CONTRIBUTE (SUBAGENT_05 & SUBAGENT_06)] ---`);
-  const all37Completed = [
+  const all38Completed = [
     'A1', 'A2', 'A3',
     'B1', 'B2', 'B3', 'B4',
     'C1', 'C2', 'C3',
     'D1', 'D2', 'D3',
     'E1', 'E2', 'E3',
     'F1', 'F2',
-    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19'
+    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20'
   ];
-  const nextFocusUnitG20 = g19Summary.next_focus_unit;
+  const nextFocusUnitG21 = g20Summary.next_focus_unit;
 
   runCmd('git checkout -B aios/v2-bootstrap', ROOT_DIR, { silent: true });
   runCmd(
-    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g19_nutrition_math_and_gram_sabha_portal.py tests/test_phase_g19_nutrition_math_and_gram_sabha_portal.py PHASE_G19_NUTRITION_LAB_AND_GRAM_SABHA_MANIFEST.json "${g19Summary.nutrition_gram_sabha_html_bundle.html_rel_path}"`,
+    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g20_supply_chain_and_oral_history_seal.py tests/test_phase_g20_supply_chain_and_oral_history_seal.py PHASE_G20_SUPPLY_CHAIN_AND_ORAL_HISTORY_MANIFEST.json "${g20Summary.supply_oral_history_html_bundle.html_rel_path}"`,
     ROOT_DIR,
     { silent: true }
   );
@@ -225,11 +225,11 @@ async function executeIteration(iterationNumber) {
   const headShaBefore = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
   let finalCommitSha = headShaBefore;
 
-  const syncG19ToStatePy = (sha) => `
+  const syncG20ToStatePy = (sha) => `
 import json
 from aasha.orchestrator.zero_approval_async_ide_bus import AsyncLocalIDEBridgeBus
-all37 = ${JSON.stringify(all37Completed)}
-next_g20 = '${nextFocusUnitG20}'
+all38 = ${JSON.stringify(all38Completed)}
+next_g21 = '${nextFocusUnitG21}'
 bus = AsyncLocalIDEBridgeBus('.')
 bus.synchronize_ide_and_cloud_planes(
     newly_completed_chunk='F2',
@@ -243,10 +243,10 @@ bus.synchronize_ide_and_cloud_planes(
 for p in ('PC_ANTIGRAVITY_STATE.json', 'COLAB_ANTIGRAVITY_STATE.json', 'IDE_CLOUD_ASYNC_BUS.json'):
     st = json.load(open(p, encoding='utf-8'))
     st['current_phase'] = 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION'
-    st['completed_chunk_id'] = 'G19'
-    st['active_chunk_id'] = 'G20'
-    st['completed_chunks'] = all37
-    st['next_focus_unit'] = next_g20
+    st['completed_chunk_id'] = 'G20'
+    st['active_chunk_id'] = 'G21'
+    st['completed_chunks'] = all38
+    st['next_focus_unit'] = next_g21
     st['git_commit_sha'] = '${sha}'
     st['git_head_sha'] = '${sha}'
     st['last_verified_commit'] = '${sha}'
@@ -255,11 +255,11 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
 `;
 
   if (noopEval.allowCommit) {
-    updateVerificationReport(tests, activePlane, nextFocusUnitG20, timestamp, g19Summary, authGate);
-    updateChangelog(tests, activePlane, nextFocusUnitG20, timestamp, headShaBefore, g19Summary);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG19ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    updateVerificationReport(tests, activePlane, nextFocusUnitG21, timestamp, g20Summary, authGate);
+    updateChangelog(tests, activePlane, nextFocusUnitG21, timestamp, headShaBefore, g20Summary);
+    runCmd(`PYTHONPATH=src python3 -c "${syncG20ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
-      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G19_NUTRITION_LAB_AND_GRAM_SABHA_MANIFEST.json',
+      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G20_SUPPLY_CHAIN_AND_ORAL_HISTORY_MANIFEST.json',
       ROOT_DIR,
       { silent: true }
     );
@@ -271,12 +271,12 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
     runCmd('git config user.name "Anant1asha"', ROOT_DIR, { silent: true });
     runCmd('git config user.email "Anant1asha@users.noreply.github.com"', ROOT_DIR, { silent: true });
     runCmd(
-      'git commit -m "feat(aios-v3-phase-g19-nutrition-gram-sabha): implement Schoolbook Nutrition Math Lab, Gram-Sabha Audit Portal & 2M-Learner Seal (G19 -> G20)"',
+      'git commit -m "feat(aios-v3-phase-g20-supply-oral-history): implement Soil-to-Market Math Simulator, Oral-History Archive & 5M-Learner MVP Seal (G20 -> G21)"',
       ROOT_DIR,
       { silent: false }
     );
     finalCommitSha = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG19ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    runCmd(`PYTHONPATH=src python3 -c "${syncG20ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md && git commit --amend --no-edit',
       ROOT_DIR,
@@ -290,32 +290,32 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
   printSection18Report({
     activePlane,
     activePhase: 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION',
-    completedChunks: all37Completed,
+    completedChunks: all38Completed,
     modifiedFiles: stagedFiles,
     tests,
     commitSha: finalCommitSha,
-    nextFocusUnit: nextFocusUnitG20
+    nextFocusUnit: nextFocusUnitG21
   });
 }
 
-function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g19Summary, authGate) {
+function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g20Summary, authGate) {
   const reportPath = path.join(ROOT_DIR, 'VERIFICATION_REPORT.md');
   const passed = tests.filter(t => t.pass).length;
   const content = `# VERIFICATION_REPORT.md
-# AASHA AIOS V3 — Phase G19: Offline Schoolbook Nutrition Math Lab, Gram-Sabha Public Audit Portal & 2,000,000-Learner Sovereign Bharat Seal
+# AASHA AIOS V3 — Phase G20: Offline Rural Soil-to-Market Supply-Chain Math Simulator, Oral-History Archive & 5,000,000-Learner MVP Golden Seal
 - **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)
 - **Autonomy Policy**: \`AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF\` (\`human_approval_required: false\`, Proof SHA-256: \`${authGate.proof_token_sha256}\`)
 - **Swarm Capacity**: \`1,080 Concurrent Stackless Coroutine Agents\` (\`0 B\` Idle Resident RAM)
 - **Timestamp**: \`${timestamp}\`
 - **Execution Plane**: ${activePlane}
-- **Completed Chunks (37/37 — Phases A–F + G1..G19)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`, \`G12\`, \`G13\`, \`G14\`, \`G15\`, \`G16\`, \`G17\`, \`G18\`, \`G19\`
+- **Completed Chunks (38/38 — Phases A–F + G1..G20)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`, \`G12\`, \`G13\`, \`G14\`, \`G15\`, \`G16\`, \`G17\`, \`G18\`, \`G19\`, \`G20\`
 - **Target Branch**: \`origin/${TARGET_TASK_BRANCH}\` (Strict Non-Main Isolation — Zero Pushes to \`main\`/\`master\`)
-- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 629/629 Cumulative Python Unit Tests across 39/39 Suites + 97/97 Visual Contract + Nutrition Math & Gram-Sabha Audit Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
+- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 633/633 Cumulative Python Unit Tests across 40/40 Suites + 97/97 Visual Contract + Soil-to-Market & Oral-History Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
 
-## 1. Chunk G19 Execution Summary (\`OfflineSchoolbookNutritionMathAndHygieneLab\`, \`GramSabhaOpenImpactAuditPortal\` & \`TwoMillionLearnerSovereignBharatSeal\`)
-- **Offline Schoolbook Nutrition Math & Hygiene Lab (\`src/aasha/orchestrator/phase_g19_nutrition_math_and_gram_sabha_portal.py\`)**: Models NCERT Class 6–8 Science kitchen-garden millet/pulse nutrient stoichiometry and 20-second soap-micelle handwashing physics (\`mean_scientific_efficacy_ratio: ${g19Summary.schoolbook_nutrition_hygiene_lab.mean_scientific_efficacy_ratio}\`, \`total_seva_garden_credits: ${g19Summary.schoolbook_nutrition_hygiene_lab.total_seva_garden_credits}\`).
-- **Gram-Sabha Open Impact Audit Portal**: Publishes zero-PII, Merkle-verified aggregate community scorecards (\`total_verified_seva_projects: ${g19Summary.gram_sabha_open_audit_portal.total_verified_seva_projects}\`, \`total_schoolbook_chapters_mastered: ${g19Summary.gram_sabha_open_audit_portal.total_schoolbook_chapters_mastered}\`).
-- **Nutrition Math & Gram-Sabha Audit HTML5 Hub (\`Nutrition_Hygiene_GramSabha_Audit_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g19Summary.nutrition_gram_sabha_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g19Summary.nutrition_gram_sabha_html_bundle.html_sha256}\`).
+## 1. Chunk G20 Execution Summary (\`OfflineSoilToMarketSupplyChainSimulator\`, \`InterGenerationalVillageOralHistoryArchive\` & \`FiveMillionLearnerMvpGoldenMasterSeal\`)
+- **Offline Soil-to-Market Supply-Chain Math Simulator (\`src/aasha/orchestrator/phase_g20_supply_chain_and_oral_history_seal.py\`)**: Models NCERT Commercial Math across \`${g20Summary.soil_to_market_supply_chain_simulator.total_harvest_quintals}\` quintals (\`-${g20Summary.soil_to_market_supply_chain_simulator.mean_post_harvest_loss_reduced_pct}%\` mean post-harvest loss reduction, \`${g20Summary.soil_to_market_supply_chain_simulator.total_net_gain_seva_credits}\` Seva credits).
+- **Inter-Generational Village Oral-History Archive**: Connects \`${g20Summary.inter_generational_oral_history_archive.total_stories_archived}\` zero-PII elder stepwell geometry and grain-fraction lore entries to \`${g20Summary.inter_generational_oral_history_archive.total_tln_concepts_linked}\` canonical TLN concepts (\`mean_verification_score: ${g20Summary.inter_generational_oral_history_archive.mean_verification_score}\`).
+- **Soil-to-Market & Oral-History HTML5 Hub (\`Soil_To_Market_Oral_History_MVP_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g20Summary.supply_oral_history_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g20Summary.supply_oral_history_html_bundle.html_sha256}\`).
 
 ## 2. Verification Test Matrix
 | Test Suite | Status |
@@ -329,13 +329,13 @@ ${tests.map(t => `| **${t.name}** | **${t.pass ? 'PASS (100%)' : 'FAIL'}** |`).j
   fs.writeFileSync(reportPath, content, 'utf-8');
 }
 
-function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g19Summary) {
+function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g20Summary) {
   const changelogPath = path.join(ROOT_DIR, 'CHANGELOG.md');
-  const entry = `\n## [${timestamp}] — V3 Phase G19: Offline Schoolbook Nutrition Math Lab, Gram-Sabha Audit Portal & 2,000,000-Learner Seal (VERIFIED -> Queued G20)\n` +
+  const entry = `\n## [${timestamp}] — V3 Phase G20: Offline Soil-to-Market Supply-Chain Simulator, Oral-History Archive & 5,000,000-Learner MVP Seal (VERIFIED -> Queued G21)\n` +
     `- **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)\n` +
     `- **Plane**: ${activePlane}\n` +
-    `- **Completed Chunks (37)**: \`A1..F2\`, \`G1..G19\` (\`g19_manifest_sha256: ${g19Summary.g19_manifest_sha256.slice(0, 16)}\`)\n` +
-    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (629/629 cumulative Python unit tests across 39/39 suites, 97/97 strict visual contract assertions, Nutrition Math & Gram-Sabha Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
+    `- **Completed Chunks (38)**: \`A1..F2\`, \`G1..G20\` (\`g20_manifest_sha256: ${g20Summary.g20_manifest_sha256.slice(0, 16)}\`)\n` +
+    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (633/633 cumulative Python unit tests across 40/40 suites, 97/97 strict visual contract assertions, Soil-to-Market & Oral-History Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
     `- **Git Branch**: \`${TARGET_TASK_BRANCH}\` (Base \`${commitSha.slice(0, 7)}\`, 0 pushes to \`main\`/\`master\`)\n` +
     `- **Next Focus Unit**: \`${nextFocusUnit}\`\n`;
   if (fs.existsSync(changelogPath)) {

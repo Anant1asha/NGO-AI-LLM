@@ -1,0 +1,141 @@
+{
+  "schema_version": "3.0.0-PHASE-G20-SUPPLY-CHAIN-ORAL-HISTORY",
+  "chunk_id": "G20",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G20_SUPPLY_CHAIN_SIMULATOR_ORAL_HISTORY_AND_5M_LEARNER_MVP_SEAL_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "soil_to_market_supply_chain_simulator": {
+    "simulations_count": 3,
+    "total_harvest_quintals": 120.0,
+    "mean_post_harvest_loss_reduced_pct": 14.0,
+    "total_net_gain_seva_credits": 900,
+    "simulations": [
+      {
+        "sim_id": "SUPPLY-WHEAT-UP-01",
+        "tln_node_id": "TLN-MATH-PCT-01",
+        "crop_cluster_code": "UP-BUNDELKHAND-WHEAT",
+        "harvest_quintals": 50.0,
+        "post_harvest_loss_reduced_pct": 12.0,
+        "net_gain_seva_credits": 300,
+        "zero_pii_verified": true,
+        "bilingual_supply_chain_summary": "सबसे पहले (first), in UP-BUNDELKHAND-WHEAT, solar drying and FPO pooling across 50.0 quintals cut post-harvest loss by 12.0% and earned 300 Seva credits. | खेत-से-बाज़ार गणित (UP-BUNDELKHAND-WHEAT): 50.0 क्विंटल उपज में 12.0% नुकसान घटाकर 300 सेवा अंक अर्जित किए।"
+      },
+      {
+        "sim_id": "SUPPLY-MILLET-RJ-02",
+        "tln_node_id": "TLN-MATH-RATIO-02",
+        "crop_cluster_code": "RJ-MARWAR-BAJRA",
+        "harvest_quintals": 40.0,
+        "post_harvest_loss_reduced_pct": 15.0,
+        "net_gain_seva_credits": 320,
+        "zero_pii_verified": true,
+        "bilingual_supply_chain_summary": "सबसे पहले (first), in RJ-MARWAR-BAJRA, solar drying and FPO pooling across 40.0 quintals cut post-harvest loss by 15.0% and earned 320 Seva credits. | खेत-से-बाज़ार गणित (RJ-MARWAR-BAJRA): 40.0 क्विंटल उपज में 15.0% नुकसान घटाकर 320 सेवा अंक अर्जित किए।"
+      },
+      {
+        "sim_id": "SUPPLY-PULSES-MH-03",
+        "tln_node_id": "TLN-MATH-LIN-02",
+        "crop_cluster_code": "MH-VIDARBHA-TUR",
+        "harvest_quintals": 30.0,
+        "post_harvest_loss_reduced_pct": 15.0,
+        "net_gain_seva_credits": 280,
+        "zero_pii_verified": true,
+        "bilingual_supply_chain_summary": "सबसे पहले (first), in MH-VIDARBHA-TUR, solar drying and FPO pooling across 30.0 quintals cut post-harvest loss by 15.0% and earned 280 Seva credits. | खेत-से-बाज़ार गणित (MH-VIDARBHA-TUR): 30.0 क्विंटल उपज में 15.0% नुकसान घटाकर 280 सेवा अंक अर्जित किए।"
+      }
+    ]
+  },
+  "inter_generational_oral_history_archive": {
+    "packs_count": 3,
+    "total_stories_archived": 75,
+    "total_tln_concepts_linked": 24,
+    "mean_verification_score": 0.96,
+    "packs": [
+      {
+        "archive_id": "ORAL-BAOLI-STEPWELL-01",
+        "tln_node_id": "TLN-GEO-WATER-01",
+        "theme_title_en": "Traditional Stepwell (Baoli) Geometry & Aquifer Recharge Lore",
+        "theme_title_hi": "पारंपरिक बावड़ी ज्यामिति और भूजल पुनर्भरण लोक-ज्ञान",
+        "stories_archived": 25,
+        "tln_concepts_linked": 8,
+        "verification_score": 0.96,
+        "zero_pii_verified": true
+      },
+      {
+        "archive_id": "ORAL-MONSOON-NAKSHATRA-02",
+        "tln_node_id": "TLN-SCI-CLIM-02",
+        "theme_title_en": "Indigenous Cloud, Wind & Soil-Moisture Phenology Archive",
+        "theme_title_hi": "देशज बादल, पवन और मिट्टी-नमी ऋतु-विज्ञान अभिलेख",
+        "stories_archived": 20,
+        "tln_concepts_linked": 7,
+        "verification_score": 0.94,
+        "zero_pii_verified": true
+      },
+      {
+        "archive_id": "ORAL-GRAIN-FRACTION-03",
+        "tln_node_id": "TLN-FRAC-01",
+        "theme_title_en": "Historical Village Grain-Measure Fractions & Base-16 Subdivisions",
+        "theme_title_hi": "पारंपरिक अनाज मापन भिन्न और सोलह-आधारी विभाजन",
+        "stories_archived": 30,
+        "tln_concepts_linked": 9,
+        "verification_score": 0.98,
+        "zero_pii_verified": true
+      }
+    ]
+  },
+  "five_million_learner_mvp_golden_seal": {
+    "learners_certified": 5000000,
+    "centres_certified": 500000,
+    "completed_chunks_count": 38,
+    "completed_chunks": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D3",
+      "E1",
+      "E2",
+      "E3",
+      "F1",
+      "F2",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16",
+      "G17",
+      "G18",
+      "G19",
+      "G20"
+    ],
+    "paid_api_bleed_usd": 0.0,
+    "daily_spend_cap_usd": 1.0
+  },
+  "supply_oral_history_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g20_supply_chain_oral_history/Soil_To_Market_Oral_History_MVP_Hub_v5.html",
+    "bundle_size_bytes": 8332,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "c0b54fd141711aceceffb000d2a463a53e90af55de7984fb3965559b96b77436"
+  },
+  "next_focus_unit": "G21: Autonomous Offline Rural Handicraft & Handloom Geometry Simulator, Block-Level Offline Exam Paper Generator & 10,000,000-Learner Sovereign Bharat Seal",
+  "g20_manifest_sha256": "e654033315287a1e7c4db24a341a7ca8db20b1ca3043e6f5904a2d47b5b6dd08"
+}
