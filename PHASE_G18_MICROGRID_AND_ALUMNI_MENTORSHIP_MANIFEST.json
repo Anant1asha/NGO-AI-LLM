@@ -1,0 +1,146 @@
+{
+  "schema_version": "3.0.0-PHASE-G18-MICROGRID-ALUMNI",
+  "chunk_id": "G18",
+  "phase": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
+  "status": "G18_RENEWABLE_MICROGRID_ALUMNI_MENTORSHIP_AND_1M_LEARNER_SEAL_VERIFIED",
+  "target_branch": "aios/v2-bootstrap",
+  "autonomy_policy": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
+  "human_approval_required": false,
+  "renewable_microgrid_load_balancer": {
+    "grids_count": 3,
+    "total_solar_generation_wh": 7400.0,
+    "mean_reserve_fraction": 0.3,
+    "all_zero_brownout_verified": true,
+    "grids": [
+      {
+        "grid_id": "MGRID-UP-SONBHADRA-01",
+        "tln_node_id": "TLN-SCI-ELEC-03",
+        "centre_cluster_code": "UP-SONBHADRA-C01",
+        "solar_generation_wh": 2400.0,
+        "classroom_load_wh": 1680.0,
+        "battery_reserve_wh": 720.0,
+        "load_efficiency_ratio": 0.7,
+        "reserve_fraction": 0.3,
+        "zero_brownout_verified": true,
+        "bilingual_grid_dispatch_note": "सबसे पहले (first), at UP-SONBHADRA-C01, 2400.0 Wh solar generation allocates 1680.0 Wh to tablet charging and retains 720.0 Wh (30%) evening LiFePO4 reserve. | सौर माइक्रो-ग्रिड संतुलन (UP-SONBHADRA-C01): 2400.0 Wh सौर ऊर्जा में से 720.0 Wh (30%) शाम की कक्षा के लिए सुरक्षित रखा गया।"
+      },
+      {
+        "grid_id": "MGRID-BR-JAMUI-02",
+        "tln_node_id": "TLN-SCI-ELEC-03",
+        "centre_cluster_code": "BR-JAMUI-C02",
+        "solar_generation_wh": 2000.0,
+        "classroom_load_wh": 1440.0,
+        "battery_reserve_wh": 560.0,
+        "load_efficiency_ratio": 0.72,
+        "reserve_fraction": 0.28,
+        "zero_brownout_verified": true,
+        "bilingual_grid_dispatch_note": "सबसे पहले (first), at BR-JAMUI-C02, 2000.0 Wh solar generation allocates 1440.0 Wh to tablet charging and retains 560.0 Wh (28%) evening LiFePO4 reserve. | सौर माइक्रो-ग्रिड संतुलन (BR-JAMUI-C02): 2000.0 Wh सौर ऊर्जा में से 560.0 Wh (28%) शाम की कक्षा के लिए सुरक्षित रखा गया।"
+      },
+      {
+        "grid_id": "MGRID-RJ-BARMER-03",
+        "tln_node_id": "TLN-MATH-LIN-02",
+        "centre_cluster_code": "RJ-BARMER-C03",
+        "solar_generation_wh": 3000.0,
+        "classroom_load_wh": 2040.0,
+        "battery_reserve_wh": 960.0,
+        "load_efficiency_ratio": 0.68,
+        "reserve_fraction": 0.32,
+        "zero_brownout_verified": true,
+        "bilingual_grid_dispatch_note": "सबसे पहले (first), at RJ-BARMER-C03, 3000.0 Wh solar generation allocates 2040.0 Wh to tablet charging and retains 960.0 Wh (32%) evening LiFePO4 reserve. | सौर माइक्रो-ग्रिड संतुलन (RJ-BARMER-C03): 3000.0 Wh सौर ऊर्जा में से 960.0 Wh (32%) शाम की कक्षा के लिए सुरक्षित रखा गया।"
+      }
+    ]
+  },
+  "alumni_peer_mentorship_ledger": {
+    "mentorships_count": 3,
+    "total_mentees_supported": 45,
+    "total_seva_honorarium_tokens": 540,
+    "mean_mentee_mastery_delta": 0.23,
+    "zero_pii_verified": true,
+    "records": [
+      {
+        "mentorship_id": "MENTOR-2026-001",
+        "anon_alumni_token": "ANON-ALUMNI-101",
+        "target_guild_code": "GUILD-UP-CHITRAKOOT-01",
+        "mentees_count": 15,
+        "hours_logged": 12,
+        "mentee_mastery_delta": 0.22,
+        "seva_honorarium_tokens": 180,
+        "zero_pii_verified": true
+      },
+      {
+        "mentorship_id": "MENTOR-2026-002",
+        "anon_alumni_token": "ANON-ALUMNI-102",
+        "target_guild_code": "GUILD-BR-GAYA-02",
+        "mentees_count": 18,
+        "hours_logged": 14,
+        "mentee_mastery_delta": 0.25,
+        "seva_honorarium_tokens": 210,
+        "zero_pii_verified": true
+      },
+      {
+        "mentorship_id": "MENTOR-2026-003",
+        "anon_alumni_token": "ANON-ALUMNI-103",
+        "target_guild_code": "GUILD-MH-WARDHA-03",
+        "mentees_count": 12,
+        "hours_logged": 10,
+        "mentee_mastery_delta": 0.22,
+        "seva_honorarium_tokens": 150,
+        "zero_pii_verified": true
+      }
+    ]
+  },
+  "one_million_learner_sovereign_seal": {
+    "learners_certified": 1000000,
+    "centres_certified": 500000,
+    "completed_chunks_count": 36,
+    "completed_chunks": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D3",
+      "E1",
+      "E2",
+      "E3",
+      "F1",
+      "F2",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16",
+      "G17",
+      "G18"
+    ],
+    "paid_api_bleed_usd": 0.0,
+    "daily_spend_cap_usd": 1.0
+  },
+  "microgrid_alumni_html_bundle": {
+    "html_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g18_microgrid_alumni_mentorship/Renewable_MicroGrid_Alumni_Mentorship_Hub_v5.html",
+    "bundle_size_bytes": 8312,
+    "under_20mib_ceiling": true,
+    "ten_critical_qa_rules_passed": 10,
+    "html_sha256": "42815fc8d6bf2f7fc34e4e0caed012eda0e6785bac22b63e7301fbc7c03c1248"
+  },
+  "next_focus_unit": "G19: Autonomous Offline Rural Maternal/Child Nutrition Math & Hygiene Lab, Gram-Sabha Open Impact Audit Portal & 2,000,000-Learner Sovereign Bharat Seal",
+  "g18_manifest_sha256": "f416a3de6a9290a07d02c32acf686934acf2fcf779e4fde46fb3140c8de8059a"
+}
