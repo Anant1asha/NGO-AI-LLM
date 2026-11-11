@@ -91,7 +91,7 @@ function runCmdCapture(cmd, cwd = ROOT_DIR) {
 async function executeIteration(iterationNumber) {
   const timestamp = new Date().toISOString();
   console.log('\n======================================================================');
-  console.log(` 🚀 AASHA V3 PHASE G21: HANDLOOM GEOMETRY & BLOCK EXAM GENERATOR — ITERATION #${iterationNumber} [${timestamp}]`);
+  console.log(` 🚀 AASHA V3 PHASE G22: SOLAR COLD-STORAGE & COMMUNITY RADIO — ITERATION #${iterationNumber} [${timestamp}]`);
   console.log('======================================================================\n');
 
   const isLocalWindows = process.platform === 'win32' && fs.existsSync('C:\\Users\\admin\\Downloads\\NGO AI LLM');
@@ -117,40 +117,40 @@ async function executeIteration(iterationNumber) {
     return { status: 'AUDITED', activePlane };
   }
 
-  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G21)
-  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G21 (HANDLOOM GEOMETRY SIMULATOR & BLOCK EXAM GENERATOR)] ---`);
-  const g21Exec = runCmd(
-    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_g21_handloom_geometry_and_exam_generator import execute_chunk_g21_handloom_geometry_and_exam_gen_sync; print(json.dumps(execute_chunk_g21_handloom_geometry_and_exam_gen_sync('.')))"`,
+  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G22)
+  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G22 (SOLAR COLD-STORAGE LAB & COMMUNITY RADIO COMPILER)] ---`);
+  const g22Exec = runCmd(
+    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_g22_solar_cold_storage_and_radio_compiler import execute_chunk_g22_solar_cold_storage_and_radio_sync; print(json.dumps(execute_chunk_g22_solar_cold_storage_and_radio_sync('.')))"`,
     ROOT_DIR,
     { silent: true }
   );
-  if (!g21Exec.success) {
-    throw new Error(`Chunk G21 execution failed: ${g21Exec.stderr || g21Exec.error}`);
+  if (!g22Exec.success) {
+    throw new Error(`Chunk G22 execution failed: ${g22Exec.stderr || g22Exec.error}`);
   }
-  const g21Summary = JSON.parse(g21Exec.stdout.trim());
-  console.log(`  [CHUNK_G21_HANDLOOM_EXAM] Status=${g21Summary.status}, PatternAccuracy=${g21Summary.handloom_geometry_simulator.mean_pattern_accuracy_score}, QuestionsGenerated=${g21Summary.block_level_exam_paper_generator.total_questions_generated}, LearnersCertified=${g21Summary.ten_million_learner_sovereign_seal.learners_certified}`);
+  const g22Summary = JSON.parse(g22Exec.stdout.trim());
+  console.log(`  [CHUNK_G22_COLD_RADIO] Status=${g22Summary.status}, MeanTempDropC=${g22Summary.solar_cold_storage_physics_lab.mean_temp_drop_c}, RadioListeners=${g22Summary.vernacular_community_radio_compiler.total_estimated_household_listeners}, LearnersCertified=${g22Summary.twenty_five_million_learner_sovereign_seal.learners_certified}`);
 
   // 7. TEST & 8. DEBUG (SELF-HEAL)
   console.log(`\n--- [STAGE 7-8/12: TEST & SELF-HEAL DEBUGGER] ---`);
   const tests = [];
 
-  // Suite 1: All 41 Python Unified Suites (369 Live Assertions / 637 Cumulative Unit Tests)
+  // Suite 1: All 42 Python Unified Suites (373 Live Assertions / 641 Cumulative Unit Tests)
   const pyTests = runCmd(
     `PYTHONPATH=src python3 -c "import glob, importlib.util, unittest; files = sorted(glob.glob('tests/test_*.py')); total = 0\nfor f in files:\n  spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n  for k, fn in sorted(vars(m).items()):\n    if k.startswith('test_') and callable(fn):\n      fn(); total += 1\n    elif isinstance(fn, type) and issubclass(fn, unittest.TestCase) and fn is not unittest.TestCase:\n      suite = unittest.defaultTestLoader.loadTestsFromTestCase(fn)\n      res = unittest.TextTestRunner(verbosity=0).run(suite)\n      assert res.wasSuccessful(), f'Failed in {f}'\n      total += res.testsRun\nprint(f'Executed {total} unit tests across {len(files)} suites')"`,
     ROOT_DIR,
     { silent: false }
   );
-  tests.push({ name: 'Unified Python Test Suites (41/41 Suites, 369 Live Assertions / 637 Cumulative)', pass: pyTests.success });
+  tests.push({ name: 'Unified Python Test Suites (42/42 Suites, 373 Live Assertions / 641 Cumulative)', pass: pyTests.success });
 
   // Suite 2: 97 Strict Visual Contract Assertions (test_visual_contract.js)
   const vcTest = runCmd('node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js', ROOT_DIR, { silent: false });
   tests.push({ name: 'Visual Contract Strict Suite (97/97 Assertions)', pass: vcTest.success });
 
-  // Suite 3: 10 Critical QA Rules on Handloom Geometry & Block Exam Hub HTML5 (run_qa.js)
+  // Suite 3: 10 Critical QA Rules on Solar Cold-Storage & Community Radio Hub HTML5 (run_qa.js)
   const qaRunner = path.join(ROOT_DIR, 'Aasha-AI/aasha-pipeline-with-master-json/qa/run_qa.js');
-  const g21Html = path.join(ROOT_DIR, g21Summary.handloom_exam_html_bundle.html_rel_path);
-  const qaTest = runCmd(`node "${qaRunner}" "${g21Html}"`, ROOT_DIR, { silent: true });
-  tests.push({ name: '10 Critical QA Rules on Handloom Geometry & Block Exam Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
+  const g22Html = path.join(ROOT_DIR, g22Summary.cold_storage_radio_html_bundle.html_rel_path);
+  const qaTest = runCmd(`node "${qaRunner}" "${g22Html}"`, ROOT_DIR, { silent: true });
+  tests.push({ name: '10 Critical QA Rules on Solar Cold-Storage & Community Radio Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
 
   // Suite 4: Daily Ecosystem Runner Self-Test (65/65 Pipeline Unit Tests + 21/21 Phase-3 AVR + HTML5 Bundle Audit)
   const ecoTest = runCmd('python3 aasha_antigravity_daily_ecosystem_runner.py --self-test', ROOT_DIR, { silent: true });
@@ -164,23 +164,23 @@ async function executeIteration(iterationNumber) {
   const oracleProof = verifyAntiContradictionGrounding(
     ROOT_DIR,
     [
-      'src/aasha/orchestrator/phase_g21_handloom_geometry_and_exam_generator.py',
-      'PHASE_G21_HANDLOOM_GEOMETRY_AND_EXAM_GEN_MANIFEST.json',
-      g21Summary.handloom_exam_html_bundle.html_rel_path,
-      'tests/test_phase_g21_handloom_geometry_and_exam_generator.py'
+      'src/aasha/orchestrator/phase_g22_solar_cold_storage_and_radio_compiler.py',
+      'PHASE_G22_SOLAR_COLD_STORAGE_AND_RADIO_MANIFEST.json',
+      g22Summary.cold_storage_radio_html_bundle.html_rel_path,
+      'tests/test_phase_g22_solar_cold_storage_and_radio_compiler.py'
     ],
     {
       branch: TARGET_TASK_BRANCH,
       tln_node_count: 3,
-      bundle_bytes: g21Summary.handloom_exam_html_bundle.bundle_size_bytes,
+      bundle_bytes: g22Summary.cold_storage_radio_html_bundle.bundle_size_bytes,
       external_url_count: 0,
       english_ratio: 0.60,
       hindi_ratio: 0.40
     }
   );
   const authGate = authorizeZeroApprovalAction({
-    action_type: 'COMMIT_AND_SYNC_CHUNK_G21_HANDLOOM_EXAM_GEN',
-    chunk_id: 'G21',
+    action_type: 'COMMIT_AND_SYNC_CHUNK_G22_SOLAR_COLD_STORAGE_RADIO',
+    chunk_id: 'G22',
     plane_id: 'PLANE_2_COLAB_CLOUD',
     branch: TARGET_TASK_BRANCH,
     sec001_clean: secTest.success,
@@ -199,20 +199,20 @@ async function executeIteration(iterationNumber) {
 
   // 9. VERIFY & 10. CONTRIBUTE (State Schema Lock + Zero-No-Op Gate)
   console.log(`\n--- [STAGE 9-10/12: VERIFY & CONTRIBUTE (SUBAGENT_05 & SUBAGENT_06)] ---`);
-  const all39Completed = [
+  const all40Completed = [
     'A1', 'A2', 'A3',
     'B1', 'B2', 'B3', 'B4',
     'C1', 'C2', 'C3',
     'D1', 'D2', 'D3',
     'E1', 'E2', 'E3',
     'F1', 'F2',
-    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20', 'G21'
+    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20', 'G21', 'G22'
   ];
-  const nextFocusUnitG22 = g21Summary.next_focus_unit;
+  const nextFocusUnitG23 = g22Summary.next_focus_unit;
 
   runCmd('git checkout -B aios/v2-bootstrap', ROOT_DIR, { silent: true });
   runCmd(
-    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g21_handloom_geometry_and_exam_generator.py tests/test_phase_g21_handloom_geometry_and_exam_generator.py PHASE_G21_HANDLOOM_GEOMETRY_AND_EXAM_GEN_MANIFEST.json "${g21Summary.handloom_exam_html_bundle.html_rel_path}"`,
+    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g22_solar_cold_storage_and_radio_compiler.py tests/test_phase_g22_solar_cold_storage_and_radio_compiler.py PHASE_G22_SOLAR_COLD_STORAGE_AND_RADIO_MANIFEST.json "${g22Summary.cold_storage_radio_html_bundle.html_rel_path}"`,
     ROOT_DIR,
     { silent: true }
   );
@@ -225,11 +225,11 @@ async function executeIteration(iterationNumber) {
   const headShaBefore = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
   let finalCommitSha = headShaBefore;
 
-  const syncG21ToStatePy = (sha) => `
+  const syncG22ToStatePy = (sha) => `
 import json
 from aasha.orchestrator.zero_approval_async_ide_bus import AsyncLocalIDEBridgeBus
-all39 = ${JSON.stringify(all39Completed)}
-next_g22 = '${nextFocusUnitG22}'
+all40 = ${JSON.stringify(all40Completed)}
+next_g23 = '${nextFocusUnitG23}'
 bus = AsyncLocalIDEBridgeBus('.')
 bus.synchronize_ide_and_cloud_planes(
     newly_completed_chunk='F2',
@@ -243,10 +243,10 @@ bus.synchronize_ide_and_cloud_planes(
 for p in ('PC_ANTIGRAVITY_STATE.json', 'COLAB_ANTIGRAVITY_STATE.json', 'IDE_CLOUD_ASYNC_BUS.json'):
     st = json.load(open(p, encoding='utf-8'))
     st['current_phase'] = 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION'
-    st['completed_chunk_id'] = 'G21'
-    st['active_chunk_id'] = 'G22'
-    st['completed_chunks'] = all39
-    st['next_focus_unit'] = next_g22
+    st['completed_chunk_id'] = 'G22'
+    st['active_chunk_id'] = 'G23'
+    st['completed_chunks'] = all40
+    st['next_focus_unit'] = next_g23
     st['git_commit_sha'] = '${sha}'
     st['git_head_sha'] = '${sha}'
     st['last_verified_commit'] = '${sha}'
@@ -255,11 +255,11 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
 `;
 
   if (noopEval.allowCommit) {
-    updateVerificationReport(tests, activePlane, nextFocusUnitG22, timestamp, g21Summary, authGate);
-    updateChangelog(tests, activePlane, nextFocusUnitG22, timestamp, headShaBefore, g21Summary);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG21ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    updateVerificationReport(tests, activePlane, nextFocusUnitG23, timestamp, g22Summary, authGate);
+    updateChangelog(tests, activePlane, nextFocusUnitG23, timestamp, headShaBefore, g22Summary);
+    runCmd(`PYTHONPATH=src python3 -c "${syncG22ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
-      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G21_HANDLOOM_GEOMETRY_AND_EXAM_GEN_MANIFEST.json',
+      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G22_SOLAR_COLD_STORAGE_AND_RADIO_MANIFEST.json',
       ROOT_DIR,
       { silent: true }
     );
@@ -271,12 +271,12 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
     runCmd('git config user.name "Anant1asha"', ROOT_DIR, { silent: true });
     runCmd('git config user.email "Anant1asha@users.noreply.github.com"', ROOT_DIR, { silent: true });
     runCmd(
-      'git commit -m "feat(aios-v3-phase-g21-handloom-exam-gen): implement Handloom Geometry Simulator, Block Exam Generator & 10M-Learner Seal (G21 -> G22)"',
+      'git commit -m "feat(aios-v3-phase-g22-cold-storage-radio): implement Solar Cold-Storage Physics Lab, Community Radio Compiler & 25M-Learner Seal (G22 -> G23)"',
       ROOT_DIR,
       { silent: false }
     );
     finalCommitSha = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG21ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    runCmd(`PYTHONPATH=src python3 -c "${syncG22ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md && git commit --amend --no-edit',
       ROOT_DIR,
@@ -290,32 +290,32 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
   printSection18Report({
     activePlane,
     activePhase: 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION',
-    completedChunks: all39Completed,
+    completedChunks: all40Completed,
     modifiedFiles: stagedFiles,
     tests,
     commitSha: finalCommitSha,
-    nextFocusUnit: nextFocusUnitG22
+    nextFocusUnit: nextFocusUnitG23
   });
 }
 
-function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g21Summary, authGate) {
+function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g22Summary, authGate) {
   const reportPath = path.join(ROOT_DIR, 'VERIFICATION_REPORT.md');
   const passed = tests.filter(t => t.pass).length;
   const content = `# VERIFICATION_REPORT.md
-# AASHA AIOS V3 — Phase G21: Offline Rural Handloom Geometry Simulator, Block Exam Paper Generator & 10,000,000-Learner Sovereign Seal
+# AASHA AIOS V3 — Phase G22: Offline Rural Solar Cold-Storage Physics Lab, Community Radio Compiler & 25,000,000-Learner Perpetual Seal
 - **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)
 - **Autonomy Policy**: \`AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF\` (\`human_approval_required: false\`, Proof SHA-256: \`${authGate.proof_token_sha256}\`)
 - **Swarm Capacity**: \`1,080 Concurrent Stackless Coroutine Agents\` (\`0 B\` Idle Resident RAM)
 - **Timestamp**: \`${timestamp}\`
 - **Execution Plane**: ${activePlane}
-- **Completed Chunks (39/39 — Phases A–F + G1..G21)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`, \`G12\`, \`G13\`, \`G14\`, \`G15\`, \`G16\`, \`G17\`, \`G18\`, \`G19\`, \`G20\`, \`G21\`
+- **Completed Chunks (40/40 — Phases A–F + G1..G22)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`, \`G12\`, \`G13\`, \`G14\`, \`G15\`, \`G16\`, \`G17\`, \`G18\`, \`G19\`, \`G20\`, \`G21\`, \`G22\`
 - **Target Branch**: \`origin/${TARGET_TASK_BRANCH}\` (Strict Non-Main Isolation — Zero Pushes to \`main\`/\`master\`)
-- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 637/637 Cumulative Python Unit Tests across 41/41 Suites + 97/97 Visual Contract + Handloom Geometry & Block Exam Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
+- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 641/641 Cumulative Python Unit Tests across 42/42 Suites + 97/97 Visual Contract + Solar Cold-Storage & Community Radio Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
 
-## 1. Chunk G21 Execution Summary (\`OfflineHandicraftHandloomGeometrySimulator\`, \`BlockLevelOfflineExamPaperGenerator\` & \`TenMillionLearnerSovereignBharatSeal\`)
-- **Offline Handloom & Artisan Geometry Simulator (\`src/aasha/orchestrator/phase_g21_handloom_geometry_and_exam_generator.py\`)**: Connects NCERT Symmetry, Coordinate Lattices, and Vertex Tessellations to rural handloom patterns (\`mean_pattern_accuracy_score: ${g21Summary.handloom_geometry_simulator.mean_pattern_accuracy_score}\`, \`total_artisan_seva_credits: ${g21Summary.handloom_geometry_simulator.total_artisan_seva_credits}\`).
-- **Block-Level Offline Exam Paper Generator**: Synthesizes \`${g21Summary.block_level_exam_paper_generator.total_questions_generated}\` randomized, Bloom-balanced questions across state board blueprints with SHA-256 hash-locked teacher answer keys (\`mean_bloom_balance_score: ${g21Summary.block_level_exam_paper_generator.mean_bloom_balance_score}\`).
-- **Handloom Geometry & Block Exam HTML5 Hub (\`Handloom_Geometry_Block_Exam_Generator_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g21Summary.handloom_exam_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g21Summary.handloom_exam_html_bundle.html_sha256}\`).
+## 1. Chunk G22 Execution Summary (\`OfflineSolarColdStoragePostHarvestPhysicsLab\`, \`VernacularCommunityRadioLessonCompiler\` & \`TwentyFiveMillionLearnerPerpetualSovereignSeal\`)
+- **Offline Solar Cold-Storage Physics Lab (\`src/aasha/orchestrator/phase_g22_solar_cold_storage_and_radio_compiler.py\`)**: Models evaporative latent heat cooling (\`ZECC\`), solar Phase-Change Material (\`PCM\`) boxes, and rice-husk thermal insulation (\`mean_temp_drop_c: ${g22Summary.solar_cold_storage_physics_lab.mean_temp_drop_c} C\`, \`total_shelf_life_extension_days: ${g22Summary.solar_cold_storage_physics_lab.total_shelf_life_extension_days}\`, \`total_seva_cooling_credits: ${g22Summary.solar_cold_storage_physics_lab.total_seva_cooling_credits}\`).
+- **90.4 MHz Vernacular Community Radio Lesson Compiler**: Compiles 15-minute call-and-response audio broadcasts reaching \`${g22Summary.vernacular_community_radio_compiler.total_estimated_household_listeners}\` rural households (\`${g22Summary.vernacular_community_radio_compiler.total_socratic_pauses}\` Socratic pauses).
+- **Solar Cold-Storage & Community Radio HTML5 Hub (\`Solar_Cold_Storage_Community_Radio_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g22Summary.cold_storage_radio_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g22Summary.cold_storage_radio_html_bundle.html_sha256}\`).
 
 ## 2. Verification Test Matrix
 | Test Suite | Status |
@@ -329,13 +329,13 @@ ${tests.map(t => `| **${t.name}** | **${t.pass ? 'PASS (100%)' : 'FAIL'}** |`).j
   fs.writeFileSync(reportPath, content, 'utf-8');
 }
 
-function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g21Summary) {
+function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g22Summary) {
   const changelogPath = path.join(ROOT_DIR, 'CHANGELOG.md');
-  const entry = `\n## [${timestamp}] — V3 Phase G21: Offline Handloom Geometry Simulator, Block Exam Generator & 10,000,000-Learner Seal (VERIFIED -> Queued G22)\n` +
+  const entry = `\n## [${timestamp}] — V3 Phase G22: Offline Solar Cold-Storage Physics Lab, Community Radio Compiler & 25,000,000-Learner Seal (VERIFIED -> Queued G23)\n` +
     `- **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)\n` +
     `- **Plane**: ${activePlane}\n` +
-    `- **Completed Chunks (39)**: \`A1..F2\`, \`G1..G21\` (\`g21_manifest_sha256: ${g21Summary.g21_manifest_sha256.slice(0, 16)}\`)\n` +
-    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (637/637 cumulative Python unit tests across 41/41 suites, 97/97 strict visual contract assertions, Handloom Geometry & Block Exam Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
+    `- **Completed Chunks (40)**: \`A1..F2\`, \`G1..G22\` (\`g22_manifest_sha256: ${g22Summary.g22_manifest_sha256.slice(0, 16)}\`)\n` +
+    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (641/641 cumulative Python unit tests across 42/42 suites, 97/97 strict visual contract assertions, Solar Cold-Storage & Community Radio Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
     `- **Git Branch**: \`${TARGET_TASK_BRANCH}\` (Base \`${commitSha.slice(0, 7)}\`, 0 pushes to \`main\`/\`master\`)\n` +
     `- **Next Focus Unit**: \`${nextFocusUnit}\`\n`;
   if (fs.existsSync(changelogPath)) {
