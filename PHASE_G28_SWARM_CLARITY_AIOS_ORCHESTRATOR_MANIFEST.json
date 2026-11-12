@@ -1,0 +1,257 @@
+{
+  "phase": "G28",
+  "title": "Swarm Clarity: AASHA AIOS Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM)",
+  "verified_chunk_count": 46,
+  "verified_chunks": [
+    "A1",
+    "A2",
+    "A3",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "D1",
+    "D2",
+    "D3",
+    "E1",
+    "E2",
+    "E3",
+    "F1",
+    "F2",
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6",
+    "G7",
+    "G8",
+    "G9",
+    "G10",
+    "G11",
+    "G12",
+    "G13",
+    "G14",
+    "G15",
+    "G16",
+    "G17",
+    "G18",
+    "G19",
+    "G20",
+    "G21",
+    "G22",
+    "G23",
+    "G24",
+    "G25",
+    "G26",
+    "G27",
+    "G28"
+  ],
+  "design_learning_stage": {
+    "stage": "DESIGN_LEARNING",
+    "chapter_id": "NCERT-CLASS6-MATH-CH07-FRACTIONS",
+    "source_pdf_sha256": "aef4aa09bb439e657594646cb29be2ccbdf173e906a4b45956296e36e73576a7",
+    "tln_node_count": 4,
+    "agents_executed": [
+      "AGENT_01_SCHOOLBOOK_EXTRACTOR",
+      "AGENT_02_TLN_ARCHITECT",
+      "AGENT_03_LLE_BILINGUAL_WEAVER",
+      "AGENT_04_INTERACTIVE_MECHANIC_BINDER",
+      "AGENT_05_TEAS_ASSESSMENT_DESIGNER",
+      "AGENT_06_V5_OFFLINE_HTML5_ASSEMBLER"
+    ],
+    "engines_populated": [
+      "ENGINE_1_CONCEPT_STORY",
+      "ENGINE_2_INTERACTIVE_LAB",
+      "ENGINE_3_WORKED_EXAMPLES",
+      "ENGINE_4_GUIDED_PRACTICE",
+      "ENGINE_5_GAMIFIED_CHALLENGE",
+      "ENGINE_6_MASTERY_REVIEW"
+    ],
+    "lle_layers_executed": [
+      "L1_MATH_FORMULA_INSULATION",
+      "L2_CANONICAL_CONCEPT_ANCHOR",
+      "L3_WM_296_VOCABULARY_BRIDGE",
+      "L4_CONN_46_DISCOURSE_CONNECTORS",
+      "L5_CONCRETE_LOCAL_ANALOGY",
+      "L6_SOCRATIC_SCAFFOLD_PROMPT",
+      "L7_RATIO_GOVERNOR_60_40_EN_HI",
+      "L8_MATH_TOKEN_RESTORATION_VERIFY"
+    ],
+    "wm_dictionary_count": 296,
+    "conn_dictionary_count": 46,
+    "english_ratio": 0.6,
+    "hindi_ratio": 0.4,
+    "math_tokens_preserved": 4,
+    "synthesized_nodes": [
+      {
+        "node_id": "TLN-01",
+        "mechanic_id": "AVR-P301",
+        "interaction_mode": "data-tap-select=\"true\"",
+        "draggable_used": false,
+        "bilingual_narrative": "सबसे पहले (first), ध्यान दें कि (notice that) in भिन्न (fractions) Concept Node 1, the अंश (numerator) and हर (denominator) of a भिन्न (fraction) like $\\frac{1}{2}$ form an समतुल्य (equivalent) अनुपात (ratio) on the number line. | अध्याय चरण 1: अंश और हर को संख्या रेखा पर समझें।",
+        "english_ratio": 0.6,
+        "hindi_ratio": 0.4,
+        "engines_bound": [
+          "ENGINE_1_CONCEPT_STORY",
+          "ENGINE_2_INTERACTIVE_LAB",
+          "ENGINE_3_WORKED_EXAMPLES",
+          "ENGINE_4_GUIDED_PRACTICE",
+          "ENGINE_5_GAMIFIED_CHALLENGE",
+          "ENGINE_6_MASTERY_REVIEW"
+        ]
+      },
+      {
+        "node_id": "TLN-02",
+        "mechanic_id": "AVR-P302",
+        "interaction_mode": "data-tap-select=\"true\"",
+        "draggable_used": false,
+        "bilingual_narrative": "सबसे पहले (first), ध्यान दें कि (notice that) in भिन्न (fractions) Concept Node 2, the अंश (numerator) and हर (denominator) of a भिन्न (fraction) like $\\frac{2}{3}$ form an समतुल्य (equivalent) अनुपात (ratio) on the number line. | अध्याय चरण 2: अंश और हर को संख्या रेखा पर समझें।",
+        "english_ratio": 0.6,
+        "hindi_ratio": 0.4,
+        "engines_bound": [
+          "ENGINE_1_CONCEPT_STORY",
+          "ENGINE_2_INTERACTIVE_LAB",
+          "ENGINE_3_WORKED_EXAMPLES",
+          "ENGINE_4_GUIDED_PRACTICE",
+          "ENGINE_5_GAMIFIED_CHALLENGE",
+          "ENGINE_6_MASTERY_REVIEW"
+        ]
+      },
+      {
+        "node_id": "TLN-03",
+        "mechanic_id": "AVR-P303",
+        "interaction_mode": "data-tap-select=\"true\"",
+        "draggable_used": false,
+        "bilingual_narrative": "सबसे पहले (first), ध्यान दें कि (notice that) in भिन्न (fractions) Concept Node 3, the अंश (numerator) and हर (denominator) of a भिन्न (fraction) like $\\frac{3}{4}$ form an समतुल्य (equivalent) अनुपात (ratio) on the number line. | अध्याय चरण 3: अंश और हर को संख्या रेखा पर समझें।",
+        "english_ratio": 0.6,
+        "hindi_ratio": 0.4,
+        "engines_bound": [
+          "ENGINE_1_CONCEPT_STORY",
+          "ENGINE_2_INTERACTIVE_LAB",
+          "ENGINE_3_WORKED_EXAMPLES",
+          "ENGINE_4_GUIDED_PRACTICE",
+          "ENGINE_5_GAMIFIED_CHALLENGE",
+          "ENGINE_6_MASTERY_REVIEW"
+        ]
+      },
+      {
+        "node_id": "TLN-04",
+        "mechanic_id": "AVR-P304",
+        "interaction_mode": "data-tap-select=\"true\"",
+        "draggable_used": false,
+        "bilingual_narrative": "सबसे पहले (first), ध्यान दें कि (notice that) in भिन्न (fractions) Concept Node 4, the अंश (numerator) and हर (denominator) of a भिन्न (fraction) like $\\frac{4}{5}$ form an समतुल्य (equivalent) अनुपात (ratio) on the number line. | अध्याय चरण 4: अंश और हर को संख्या रेखा पर समझें।",
+        "english_ratio": 0.6,
+        "hindi_ratio": 0.4,
+        "engines_bound": [
+          "ENGINE_1_CONCEPT_STORY",
+          "ENGINE_2_INTERACTIVE_LAB",
+          "ENGINE_3_WORKED_EXAMPLES",
+          "ENGINE_4_GUIDED_PRACTICE",
+          "ENGINE_5_GAMIFIED_CHALLENGE",
+          "ENGINE_6_MASTERY_REVIEW"
+        ]
+      }
+    ],
+    "ecosystem_registries": {
+      "experience_registry_version": "1.0.0",
+      "foundation_count": 27,
+      "foundation_ids_sample": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05"
+      ],
+      "certified_component_count": 1,
+      "certified_chapter_count": 2,
+      "phase3_avr_mechanic_count": 21,
+      "phase3_harvest_pattern_count": 4
+    }
+  },
+  "dual_output_sqlite_stage": {
+    "stage": "BUILD_DUAL_OUTPUT_SQLITE",
+    "storage_key": "aasha_ncert_class6_math_ch07_fractions_v5",
+    "chapters_stored": 1,
+    "tln_nodes_stored": 4,
+    "wm_vocabulary_stored": 296,
+    "sqlite_db_bytes": 180224,
+    "sqlite_gz_bytes": 10845
+  },
+  "gamified_teas_ecosystem_stage": {
+    "catalogSize": 4,
+    "coinsBeforeRedemption": 300,
+    "duplicateAwardedCoins": 0,
+    "unlockedBadgeIds": [
+      "first_step",
+      "three_chapter_streak",
+      "coin_saver"
+    ],
+    "invalidPinBlocked": true,
+    "validRedemptionOk": true,
+    "redeemedItemId": "item_geometry_box",
+    "coinsRemainingAfterRedemption": 50
+  },
+  "debug_and_fix_self_healing_stage": {
+    "html5_self_healing": {
+      "initial_violation_count": 5,
+      "initial_violations": [
+        "EXTERNAL_RUNTIME_URL_DETECTED",
+        "HTML5_DRAG_AND_DROP_FORBIDDEN",
+        "BLOCKING_DIALOG_ALERT_CONFIRM_DETECTED",
+        "UNRESOLVED_TEMPLATE_PLACEHOLDER_DETECTED",
+        "MISSING_WE_CHECK_RENDERED_IDEMPOTENCY_GUARD"
+      ],
+      "attempts_used": 1,
+      "max_attempts": 2,
+      "repairs_applied": [
+        "STRIPPED_EXTERNAL_RUNTIME_URLS",
+        "CONVERTED_DRAGGABLE_TO_DATA_TAP_SELECT",
+        "REPLACED_BLOCKING_ALERT_CONFIRM_DIALOGS",
+        "STRIPPED_UNRESOLVED_TEMPLATE_PLACEHOLDERS",
+        "INJECTED_WE_CHECK_RENDERED_GUARD"
+      ],
+      "final_violation_count": 0,
+      "final_violations": [],
+      "passed": true
+    },
+    "e2e_ten_rule_html_healing_passed": true,
+    "healed_html_uses_tap_select": true,
+    "compiler_ast_self_healing": {
+      "passed": true,
+      "total_faults_repaired": 8,
+      "repairs_applied": [
+        "CONSECUTIVE_OPERATORS_NORMALIZED",
+        "TRAILING_OPERATOR_STRIPPED",
+        "DOLLAR_MATH_DELIMITERS_BALANCED",
+        "BOUND_MISSING_SYMBOL_m",
+        "BOUND_MISSING_SYMBOL_a",
+        "REPAIRED_CYCLE_BACK_EDGE:G6_FRAC_01->G8_ALGEBRA_99",
+        "PREEMPTED_WFG_CYCLE:AGENT_B->AGENT_A",
+        "REDACTED_SPOILER_LEAK:['answer is 24', '24']"
+      ],
+      "repaired_formula": "$F = m \\cdot a$",
+      "repaired_hint": "Counterfactual check: At 12 N, the simulated motion falls short of the target marker. Try increasing F and watch the velocity vector. | प्रति-तथ्यात्मक जाँच: 12 N पर गति लक्ष्य से कम रह जाती है। F को बढ़ाकर वेग सदिश देखें।"
+    }
+  },
+  "html5_hub": {
+    "file_name": "AASHA_Swarm_Clarity_TLN_TEAS_Gamified_Engine_v5.html",
+    "file_path": "/working_dir/c_dc69f23207b9a38d/aasha_aios_unified_repo/AASHA_Visual_Mass_Harvest_Phase3/AASHA_Swarm_Clarity_TLN_TEAS_Gamified_Engine_v5.html",
+    "size_bytes": 9438,
+    "under_20mib_ceiling": true,
+    "self_healing_qa_report": {
+      "initial_violation_count": 0,
+      "initial_violations": [],
+      "attempts_used": 0,
+      "max_attempts": 2,
+      "repairs_applied": [],
+      "final_violation_count": 0,
+      "final_violations": [],
+      "passed": true
+    },
+    "sha256": "dfb0ccb0b71b823fc982126e625e0ed01337687e8520e0a0fe005fcebf1d2eba"
+  }
+}
