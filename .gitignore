@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+.scratch/
+.qa_syntax_check.js
+*.tmp
+.plugin_cache/
+node_modules/

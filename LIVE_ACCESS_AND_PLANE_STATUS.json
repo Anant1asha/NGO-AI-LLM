@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-11-12T19:00:12.180101+00:00",
+  "active_plane": "PLANE_2_CLOUD_SANDBOX_MODE_A",
+  "planes": {
+    "plane_1_google_drive_bridge": {
+      "folder_id": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
+      "status": "LIVE_VERIFIED_SYNCED",
+      "free_offline_mirror": "aasha_operational_mirror.json + aasha_aios_v2_bootstrap_full.bundle"
+    },
+    "plane_2_colab_cloud_runner": {
+      "notebook_id": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
+      "status": "METADATA_VERIFIED_CLOUD_SANDBOX_ACTIVE"
+    },
+    "plane_3_windows_workstation": {
+      "configured_path": "C:\\Users\\admin\\Downloads\\NGO AI LLM",
+      "accessible_from_cloud_sandbox": false,
+      "status": "OFFLINE_UNREACHABLE_FROM_SANDBOX",
+      "fallback_strategy": "FREE_DRIVE_JSON_MIRROR_AND_GIT_BUNDLE"
+    }
+  },
+  "runtime_capabilities": {
+    "python3": true,
+    "node_v18": true,
+    "chromium_binary": true,
+    "jsdom_npm": false,
+    "playwright_npm": false,
+    "outbound_internet": false
+  }
+}

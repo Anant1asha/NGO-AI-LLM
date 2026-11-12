@@ -46,6 +46,7 @@ export const V3_TASK_SPECIFICATION = {
 
 const args = process.argv.slice(2);
 const IS_AUDIT_ONLY = args.includes('--audit-only');
+const IS_SWARM_MODE = args.includes('--swarm');
 
 function assertNonMainBranch(branchName, repoLabel = 'repo') {
   const cleaned = String(branchName || '').trim();
@@ -113,6 +114,15 @@ async function executeIteration(iterationNumber) {
   const memHealth = memVerify.success ? JSON.parse(memVerify.stdout.trim()) : { overall_status: 'DEGRADED' };
   console.log(`  4-Tier Persistent Memory Health: ${memHealth.overall_status} (4/4 Tiers Online)`);
 
+  if (IS_SWARM_MODE) {
+    console.log('  [Hydrogen <-> Argon /swarm Router] Running W0 reconciliation & contract check...');
+    const w0Res = runCmd(
+      "PYTHONPATH=.:src python3 -c \"import json; from src.aasha.orchestrator.w0_live_reconciliation import run_w0_live_reconciliation; from src.aasha.orchestrator.hydrogen_argon_swarm_router import HydrogenArgonSwarmRouter; r=HydrogenArgonSwarmRouter(); print(json.dumps({'w0': run_w0_live_reconciliation('.'), 'mode': r.parse_command_mode('/plan /swarm /grill-me')}))\"",
+      ROOT_DIR,
+      { silent: false }
+    );
+    if (!w0Res.success) throw new Error('Hydrogen/Argon /swarm W0 preflight failed');
+  }
   if (IS_AUDIT_ONLY) {
     return { status: 'AUDITED', activePlane };
   }

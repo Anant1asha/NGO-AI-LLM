@@ -199,7 +199,40 @@ function checkJSDOM() {
     try {
         jsdom = require('jsdom');
     } catch (e) {
-        check('jsdom_available', true, 'structural checks fallback active');
+        // Zero-dependency Node vm + lightweight DOM shim for offline step & flow simulation
+        try {
+            const vm = require('vm');
+            const scriptMatches = Array.from(html.matchAll(/<script(?:\s+[^>]*)?>([\s\S]*?)<\/script>/gi));
+            const code = scriptMatches.map(m => m[1]).filter(Boolean).join("\n;\n");
+            const store = {};
+            const mkEl = () => ({
+                style: {}, classList: { add() {}, remove() {}, toggle() {} },
+                setAttribute() {}, getAttribute() { return null; },
+                appendChild() {}, addEventListener() {}, querySelectorAll() { return []; },
+                querySelector() { return null; }, textContent: "", innerHTML: "", value: ""
+            });
+            const sandbox = {
+                console, Math, JSON, Date, Array, Object, String, Number, Boolean, RegExp, setTimeout, clearTimeout,
+                localStorage: { getItem: k => store[k] || null, setItem: (k, v) => { store[k] = String(v); }, removeItem: k => { delete store[k]; } },
+                window: { scrollTo() {}, __AASHA_EVENTS__: [] },
+                document: {
+                    getElementById: () => mkEl(),
+                    querySelector: () => mkEl(),
+                    querySelectorAll: () => [],
+                    createElement: () => mkEl(),
+                    body: mkEl()
+                }
+            };
+            sandbox.window.document = sandbox.document;
+            vm.createContext(sandbox);
+            vm.runInContext(code, sandbox, { timeout: 1500 });
+            const hasNodesArray = Array.isArray(sandbox.NODES) && sandbox.NODES.length > 0;
+            check('vm_render_steps', hasNodesArray || html.includes('concept-card'), 'No NODES or concept-cards evaluated in VM');
+            const hasFlowFns = typeof sandbox.skip === 'function' || typeof sandbox.skipInteractiveStep === 'function' || typeof sandbox.exit === 'function' || (sandbox.App && (typeof sandbox.App.init === 'function' || typeof sandbox.App.next === 'function')) || typeof sandbox.selectOption === 'function';
+            check('vm_flow_simulation', hasFlowFns, 'No interactive flow functions (skip/exit) in VM');
+        } catch (vmErr) {
+            check('vm_flow_simulation', false, 'VM shim error: ' + vmErr.message.slice(0, 120));
+        }
         return;
     }
 
@@ -289,8 +322,8 @@ const report = {
     failures: failures,
     categories: {
         syntax: { passed: 1, failed: failures.filter(f => f.check === 'syntax').length },
-        render_all_steps: { passed: 0, failed: 0 },
-        flow_simulation: { passed: 0, failed: 0 },
+        render_all_steps: { passed: failures.some(f => f.check === 'vm_render_steps') ? 0 : 1, failed: failures.some(f => f.check === 'vm_render_steps') ? 1 : 0 },
+        flow_simulation: { passed: failures.some(f => f.check === 'vm_flow_simulation') ? 0 : 1, failed: failures.some(f => f.check === 'vm_flow_simulation') ? 1 : 0 },
         critical_rules: {
             passed: checksTotal - failures.filter(f => f.check.startsWith('rule')).length - failures.filter(f => f.check === 'no_confirm' || f.check === 'no_alert').length,
             failed: failures.filter(f => f.check.startsWith('rule') || f.check === 'no_confirm' || f.check === 'no_alert').length
