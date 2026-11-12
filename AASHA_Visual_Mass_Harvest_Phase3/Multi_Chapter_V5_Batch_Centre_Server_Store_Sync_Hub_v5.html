@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AASHA AIOS v5 — Multi-Chapter v5 Batch, SQLite Catalogue &amp; Centre Server Sync Hub (G29)</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #38bdf8;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+  body { background: var(--bg); color: var(--text); padding: 1.25rem; line-height: 1.5; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 0.75rem; margin-bottom: 1.25rem; }
+  h1 { font-size: 1.4rem; color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 0.92rem; margin-top: 0.25rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+  .card { background: var(--card); border: 1px solid #334155; border-radius: 10px; padding: 1rem; }
+  .card h2 { font-size: 1.05rem; color: var(--amber); margin-bottom: 0.5rem; }
+  .metric { font-size: 1.3rem; font-weight: 700; color: var(--green); margin: 0.35rem 0; }
+  .tap-option {
+    display: block; width: 100%; text-align: left;
+    background: #0f172a; color: var(--text);
+    border: 1px solid #475569; border-radius: 8px;
+    padding: 0.65rem 0.85rem; margin: 0.4rem 0; cursor: pointer;
+  }
+  .tap-option[data-selected="true"] { border-color: var(--green); background: #064e3b; }
+  .btn-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  button.ctrl {
+    background: var(--accent); color: #082f49; border: none;
+    border-radius: 6px; padding: 0.5rem 0.9rem; font-weight: 600; cursor: pointer;
+  }
+  button.ctrl.secondary { background: #475569; color: var(--text); }
+  #feedback-banner { margin-top: 0.75rem; padding: 0.65rem; border-radius: 6px; background: #064e3b; display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AASHA AIOS v5.0 — Multi-Chapter v5 Batch, SQLite Catalogue &amp; Centre Server Sync Hub (Chunk G29)</h1>
+  <div class="subtitle">
+    Batch: <strong>5 NCERT Class 6 Chapters (16 TLN Nodes)</strong> &bull;
+    SQLite Catalogue: <strong>teas_content.db.gz (12746 B)</strong> &bull;
+    Centre Server Sync: <strong>fnv1a32:e7524d6e Verified</strong>
+  </div>
+</header>
+
+<section class="grid" aria-label="Core Multi-Chapter &amp; Centre Server Telemetry">
+  <article class="card">
+    <h2>1. 5-Chapter NCERT v5 Synthesis Batch (बहु-अध्याय संश्लेषण)</h2>
+    <p>Chapters: <strong>Fractions, Decimals, Mensuration, Data Handling, Ratio &amp; Proportion</strong></p>
+    <div class="metric">5 Chapters | 16 TLN Nodes</div>
+    <p>LLE Dictionaries: <strong>296 WM + 46 CONN</strong> (Math Tokens: 16)</p>
+  </article>
+
+  <article class="card">
+    <h2>2. Dual-Output SQLite Catalogue (teas_content.db.gz)</h2>
+    <p>Exported via <strong>sqlite_exporter.py</strong></p>
+    <div class="metric">5 Chapters | 16 SQLite Nodes</div>
+    <p>Vocabulary Rows: <strong>296</strong> &bull; Compressed: <strong>12746 B &lt; 20 MiB</strong></p>
+  </article>
+
+  <article class="card">
+    <h2>3. Centre Server SQLite &amp; Student PWA Store Sync</h2>
+    <p>Quiz Sync: <strong>3 Events &rarr; +300 Coins</strong> (Invalid PIN HTTP 403)</p>
+    <div class="metric">PIN 1080 Redeemed | Balance: 50 Coins</div>
+    <p>Cohort Pack: <strong>ingested (1 Order Reconciled)</strong></p>
+  </article>
+</section>
+
+<section class="card" aria-label="Interactive Multi-Chapter NCERT &amp; TEAS Store Sync Checkpoint">
+  <h2>Interactive NCERT Class 6 Mensuration &amp; TEAS Store Checkpoint (अभ्यास प्रश्न)</h2>
+  <p id="prompt-text">
+    In NCERT Class 6 Mathematics Chapter 10 (Mensuration / क्षेत्रमिति), a rectangular school garden has length 15 m and breadth 10 m. What are its perimeter (परिमाप) and area (क्षेत्रफल), and how many Aasha Coins remain if a student with 300 Coins redeems a Geometry Box (250 Coins) using Centre Staff PIN 1080?
+  </p>
+  <div id="options-container">
+    <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOption(this)">
+      A) Perimeter (परिमाप) = 2 &times; (15 + 10) = 50 m, Area (क्षेत्रफल) = 15 &times; 10 = 150 m&sup2;, and 50 Aasha Coins remain after PIN 1080 redemption (सही उत्तर!).
+    </button>
+    <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOption(this)">
+      B) Perimeter = 25 m, Area = 25 m&sup2;, and 0 Coins remain (गलत: परिमाप = 2 &times; (लम्बाई + चौड़ाई)).
+    </button>
+    <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOption(this)">
+      C) Perimeter = 150 m, Area = 50 m&sup2; (गलत: परिमाप और क्षेत्रफल के सूत्र उलट दिए गए हैं).
+    </button>
+  </div>
+  <div class="btn-bar">
+    <button type="button" class="ctrl" onclick="verifySelection()">Check Answer (जाँचें)</button>
+    <button type="button" class="ctrl secondary" onclick="skip()">Skip (आगे बढ़ें)</button>
+    <button type="button" class="ctrl secondary" onclick="exit()">Exit &amp; Save (सहेजें)</button>
+  </div>
+  <div id="feedback-banner" role="status" aria-live="polite"></div>
+</section>
+
+<script>
+var NODES = [
+  { id: "G29_CH07_FRACTIONS", title: "NCERT Class 6 Ch 07 Fractions (भिन्न)", nodes: 4 },
+  { id: "G29_CH08_DECIMALS", title: "NCERT Class 6 Ch 08 Decimals (दशमलव)", nodes: 3 },
+  { id: "G29_CH10_MENSURATION", title: "NCERT Class 6 Ch 10 Mensuration (क्षेत्रमिति)", nodes: 3 },
+  { id: "G29_CENTRE_SERVER_SYNC", title: "Centre Server SQLite & Student PWA Store Sync (PIN 1080)", coinsAwarded: 300 }
+];
+var WE = {
+  workedExampleId: "WE_G29_MENSURATION_AND_TEAS_SYNC",
+  perimeterFormula: "P = 2 * (L + B) = 2 * (15 + 10) = 50 m",
+  areaFormula: "A = L * B = 15 * 10 = 150 m2"
+};
+var WM = {
+  perimeter: "परिमाप (perimeter)",
+  area: "क्षेत्रफल (area)",
+  ratio: "अनुपात (ratio)",
+  proportion: "समानुपात (proportion)"
+};
+var CONN = {
+  first: "सबसे पहले (first)",
+  therefore: "इसलिए (therefore)",
+  because: "क्योंकि (because)"
+};
+var _weCheckRendered = true;
+
+function shuffle(arr) {
+  var copy = arr.slice();
+  for (var i = copy.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = copy[i];
+    copy[i] = copy[j];
+    copy[j] = temp;
+  }
+  return copy;
+}
+
+function saveOfflineState(key, val) {
+  try {
+    localStorage.setItem(key, JSON.stringify(val));
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+function loadOfflineState(key, fallback) {
+  try {
+    var raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (err) {
+    return fallback;
+  }
+}
+
+function selectOption(btn) {
+  var all = document.querySelectorAll('.tap-option[data-tap-select="true"]');
+  for (var i = 0; i < all.length; i++) {
+    all[i].setAttribute("data-selected", "false");
+  }
+  btn.setAttribute("data-selected", "true");
+  saveOfflineState("aasha_g29_selected", btn.textContent.trim().slice(0, 32));
+}
+
+function verifySelection() {
+  var selected = document.querySelector('.tap-option[data-selected="true"]');
+  var banner = document.getElementById("feedback-banner");
+  banner.style.display = "block";
+  if (!selected) {
+    banner.textContent = "Please tap an option first (कृपया पहले एक विकल्प चुनें).";
+    return false;
+  }
+  var isCorrect = selected.getAttribute("data-correct") === "true";
+  if (isCorrect) {
+    banner.textContent = "Correct! Perimeter = 50 m, Area = 150 m2, and 50 Aasha Coins remain after PIN 1080 store redemption!";
+    saveOfflineState("aasha_g29_mastery", { passed: true, perimeterM: 50, areaM2: 150 });
+  } else {
+    banner.textContent = "Review P = 2*(L+B) and A = L*B and try again (पुनः प्रयास करें).";
+  }
+  return isCorrect;
+}
+
+function skip() {
+  var banner = document.getElementById("feedback-banner");
+  banner.style.display = "block";
+  banner.textContent = "Skipped to Centre Server Cohort Sync summary (अगले चरण पर गए).";
+  saveOfflineState("aasha_g29_skipped", true);
+}
+
+function exit() {
+  var banner = document.getElementById("feedback-banner");
+  banner.style.display = "block";
+  banner.textContent = "Progress saved offline in localStorage (प्रगति ऑफ़लाइन सहेजी गई).";
+  saveOfflineState("aasha_g29_exited", true);
+}
+</script>
+</body>
+</html>

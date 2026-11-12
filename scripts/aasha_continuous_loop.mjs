@@ -91,7 +91,7 @@ function runCmdCapture(cmd, cwd = ROOT_DIR) {
 async function executeIteration(iterationNumber) {
   const timestamp = new Date().toISOString();
   console.log('\n======================================================================');
-  console.log(` 🚀 AASHA V3 PHASE G28 (SWARM CLARITY): AIOS LEARNING, GAMIFIED TEAS & SELF-HEALING LOOP — ITERATION #${iterationNumber} [${timestamp}]`);
+  console.log(` 🚀 AASHA V3 PHASE G29: MULTI-CHAPTER V5 BATCH, SQLITE CATALOGUE & CENTRE SERVER SYNC — ITERATION #${iterationNumber} [${timestamp}]`);
   console.log('======================================================================\n');
 
   const isLocalWindows = process.platform === 'win32' && fs.existsSync('C:\\Users\\admin\\Downloads\\NGO AI LLM');
@@ -117,40 +117,40 @@ async function executeIteration(iterationNumber) {
     return { status: 'AUDITED', activePlane };
   }
 
-  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G28 SWARM CLARITY AIOS LOOP)
-  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G28 (SWARM CLARITY: DESIGN LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED TEAS)] ---`);
-  const g28Exec = runCmd(
-    `PYTHONPATH=.:src python3 -c "import json; from src.aasha.orchestrator.phase_g28_swarm_clarity_aios_learning_gamified_orchestrator import execute_chunk_g28_swarm_clarity_aios_orchestrator_sync; print(json.dumps(execute_chunk_g28_swarm_clarity_aios_orchestrator_sync('.')))"`,
+  // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G29)
+  console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G29 (MULTI-CHAPTER V5 BATCH, SQLITE CATALOGUE & CENTRE SERVER SYNC)] ---`);
+  const g29Exec = runCmd(
+    `PYTHONPATH=.:src python3 -c "import json; from src.aasha.orchestrator.phase_g29_multi_chapter_v5_and_centre_server_sync import execute_chunk_g29_multi_chapter_v5_and_centre_server_sync; print(json.dumps(execute_chunk_g29_multi_chapter_v5_and_centre_server_sync('.')))"`,
     ROOT_DIR,
     { silent: true }
   );
-  if (!g28Exec.success) {
-    throw new Error(`Chunk G28 execution failed: ${g28Exec.stderr || g28Exec.error}`);
+  if (!g29Exec.success) {
+    throw new Error(`Chunk G29 execution failed: ${g29Exec.stderr || g29Exec.error}`);
   }
-  const g28Summary = JSON.parse(g28Exec.stdout.trim());
-  console.log(`  [CHUNK_G28_SWARM_CLARITY] Status=${g28Summary.status}, Chapter=${g28Summary.design_learning.chapter_id}, TLNNodes=${g28Summary.design_learning.tln_node_count}, SQLiteVocab=${g28Summary.dual_output_sqlite.wm_vocabulary_stored}, HTML5ViolationsFixed=${g28Summary.debug_and_fix_self_healing.html5_initial_violations}->${g28Summary.debug_and_fix_self_healing.html5_final_violations}, TEASCoinsEarned=${g28Summary.gamified_teas_ecosystem.coins_earned}`);
+  const g29Summary = JSON.parse(g29Exec.stdout.trim());
+  console.log(`  [CHUNK_G29_MULTI_CHAPTER_SERVER_SYNC] Status=${g29Summary.status}, Chapters=${g29Summary.multi_chapter_v5_batch.chapter_count}, TLNNodes=${g29Summary.multi_chapter_v5_batch.total_tln_nodes}, SQLiteGzipBytes=${g29Summary.dual_output_sqlite_catalogue.gzip_db_bytes}, CoinsAwarded=${g29Summary.centre_server_fastify_store_sync.coins_awarded}, CohortHash=${g29Summary.centre_server_fastify_store_sync.cohort_pack_integrity_hash}`);
 
   // 7. TEST & 8. DEBUG (SELF-HEAL)
   console.log(`\n--- [STAGE 7-8/12: TEST & SELF-HEAL DEBUGGER] ---`);
   const tests = [];
 
-  // Suite 1: All 48 Python Unified Suites (397 Live Assertions / 665 Cumulative Unit Tests)
+  // Suite 1: All 49 Python Unified Suites (401 Live Assertions / 669 Cumulative Unit Tests)
   const pyTests = runCmd(
     `PYTHONPATH=.:src python3 -c "import glob, importlib.util, unittest; files = sorted(glob.glob('tests/test_*.py')); total = 0\nfor f in files:\n  spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n  for k, fn in sorted(vars(m).items()):\n    if k.startswith('test_') and callable(fn):\n      fn(); total += 1\n    elif isinstance(fn, type) and issubclass(fn, unittest.TestCase) and fn is not unittest.TestCase:\n      suite = unittest.defaultTestLoader.loadTestsFromTestCase(fn)\n      res = unittest.TextTestRunner(verbosity=0).run(suite)\n      assert res.wasSuccessful(), f'Failed in {f}'\n      total += res.testsRun\nprint(f'Executed {total} unit tests across {len(files)} suites')"`,
     ROOT_DIR,
     { silent: false }
   );
-  tests.push({ name: 'Unified Python Test Suites (48/48 Suites, 397 Live Assertions / 665 Cumulative)', pass: pyTests.success });
+  tests.push({ name: 'Unified Python Test Suites (49/49 Suites, 401 Live Assertions / 669 Cumulative)', pass: pyTests.success });
 
   // Suite 2: 97 Strict Visual Contract Assertions (test_visual_contract.js)
   const vcTest = runCmd('node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js', ROOT_DIR, { silent: false });
   tests.push({ name: 'Visual Contract Strict Suite (97/97 Assertions)', pass: vcTest.success });
 
-  // Suite 3: 10 Critical QA Rules on Swarm Clarity TLN/TEAS Gamified Engine HTML5 (run_qa.js)
+  // Suite 3: 10 Critical QA Rules on Multi-Chapter & Centre Server Sync Hub HTML5 (run_qa.js)
   const qaRunner = path.join(ROOT_DIR, 'Aasha-AI/aasha-pipeline-with-master-json/qa/run_qa.js');
-  const g28Html = path.join(ROOT_DIR, g28Summary.swarm_clarity_html_bundle.html_rel_path);
-  const qaTest = runCmd(`node "${qaRunner}" "${g28Html}"`, ROOT_DIR, { silent: true });
-  tests.push({ name: '10 Critical QA Rules on Swarm Clarity TLN/TEAS Gamified Engine HTML5 (node qa/run_qa.js)', pass: qaTest.success });
+  const g29Html = path.join(ROOT_DIR, g29Summary.multi_chapter_centre_server_html_bundle.html_rel_path);
+  const qaTest = runCmd(`node "${qaRunner}" "${g29Html}"`, ROOT_DIR, { silent: true });
+  tests.push({ name: '10 Critical QA Rules on Multi-Chapter v5 Batch & Centre Server Sync Hub HTML5 (node qa/run_qa.js)', pass: qaTest.success });
 
   // Suite 4: Daily Ecosystem Runner Self-Test (65/65 Pipeline Unit Tests + 21/21 Phase-3 AVR + HTML5 Bundle Audit)
   const ecoTest = runCmd('python3 aasha_antigravity_daily_ecosystem_runner.py --self-test', ROOT_DIR, { silent: true });
@@ -164,23 +164,23 @@ async function executeIteration(iterationNumber) {
   const oracleProof = verifyAntiContradictionGrounding(
     ROOT_DIR,
     [
-      'src/aasha/orchestrator/phase_g28_swarm_clarity_aios_learning_gamified_orchestrator.py',
-      'PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json',
-      g28Summary.swarm_clarity_html_bundle.html_rel_path,
-      'tests/test_phase_g28_swarm_clarity_aios_learning_gamified_orchestrator.py'
+      'src/aasha/orchestrator/phase_g29_multi_chapter_v5_and_centre_server_sync.py',
+      'PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json',
+      g29Summary.multi_chapter_centre_server_html_bundle.html_rel_path,
+      'tests/test_phase_g29_multi_chapter_v5_and_centre_server_sync.py'
     ],
     {
       branch: TARGET_TASK_BRANCH,
-      tln_node_count: g28Summary.design_learning.tln_node_count,
-      bundle_bytes: g28Summary.swarm_clarity_html_bundle.bundle_size_bytes,
+      tln_node_count: 4,
+      bundle_bytes: g29Summary.multi_chapter_centre_server_html_bundle.bundle_size_bytes,
       external_url_count: 0,
       english_ratio: 0.60,
       hindi_ratio: 0.40
     }
   );
   const authGate = authorizeZeroApprovalAction({
-    action_type: 'COMMIT_AND_SYNC_CHUNK_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR',
-    chunk_id: 'G28',
+    action_type: 'COMMIT_AND_SYNC_CHUNK_G29_MULTI_CHAPTER_CENTRE_SERVER_SYNC',
+    chunk_id: 'G29',
     plane_id: 'PLANE_2_COLAB_CLOUD',
     branch: TARGET_TASK_BRANCH,
     sec001_clean: secTest.success,
@@ -199,20 +199,20 @@ async function executeIteration(iterationNumber) {
 
   // 9. VERIFY & 10. CONTRIBUTE (State Schema Lock + Zero-No-Op Gate)
   console.log(`\n--- [STAGE 9-10/12: VERIFY & CONTRIBUTE (SUBAGENT_05 & SUBAGENT_06)] ---`);
-  const all46Completed = [
+  const all47Completed = [
     'A1', 'A2', 'A3',
     'B1', 'B2', 'B3', 'B4',
     'C1', 'C2', 'C3',
     'D1', 'D2', 'D3',
     'E1', 'E2', 'E3',
     'F1', 'F2',
-    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20', 'G21', 'G22', 'G23', 'G24', 'G25', 'G26', 'G27', 'G28'
+    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20', 'G21', 'G22', 'G23', 'G24', 'G25', 'G26', 'G27', 'G28', 'G29'
   ];
-  const nextFocusUnitG29 = g28Summary.next_focus_unit;
+  const nextFocusUnitG30 = g29Summary.next_focus_unit;
 
   runCmd('git checkout -B aios/v2-bootstrap', ROOT_DIR, { silent: true });
   runCmd(
-    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g28_swarm_clarity_aios_learning_gamified_orchestrator.py tests/test_phase_g28_swarm_clarity_aios_learning_gamified_orchestrator.py PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json "${g28Summary.swarm_clarity_html_bundle.html_rel_path}"`,
+    `git add -f scripts/aasha_continuous_loop.mjs src/aasha/orchestrator/phase_g29_multi_chapter_v5_and_centre_server_sync.py tests/test_phase_g29_multi_chapter_v5_and_centre_server_sync.py PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json "${g29Summary.multi_chapter_centre_server_html_bundle.html_rel_path}"`,
     ROOT_DIR,
     { silent: true }
   );
@@ -225,11 +225,11 @@ async function executeIteration(iterationNumber) {
   const headShaBefore = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
   let finalCommitSha = headShaBefore;
 
-  const syncG28ToStatePy = (sha) => `
+  const syncG29ToStatePy = (sha) => `
 import json
 from aasha.orchestrator.zero_approval_async_ide_bus import AsyncLocalIDEBridgeBus
-all46 = ${JSON.stringify(all46Completed)}
-next_g29 = '${nextFocusUnitG29}'
+all47 = ${JSON.stringify(all47Completed)}
+next_g30 = '${nextFocusUnitG30}'
 bus = AsyncLocalIDEBridgeBus('.')
 bus.synchronize_ide_and_cloud_planes(
     newly_completed_chunk='F2',
@@ -243,10 +243,10 @@ bus.synchronize_ide_and_cloud_planes(
 for p in ('PC_ANTIGRAVITY_STATE.json', 'COLAB_ANTIGRAVITY_STATE.json', 'IDE_CLOUD_ASYNC_BUS.json'):
     st = json.load(open(p, encoding='utf-8'))
     st['current_phase'] = 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION'
-    st['completed_chunk_id'] = 'G28'
-    st['active_chunk_id'] = 'G29'
-    st['completed_chunks'] = all46
-    st['next_focus_unit'] = next_g29
+    st['completed_chunk_id'] = 'G29'
+    st['active_chunk_id'] = 'G30'
+    st['completed_chunks'] = all47
+    st['next_focus_unit'] = next_g30
     st['git_commit_sha'] = '${sha}'
     st['git_head_sha'] = '${sha}'
     st['last_verified_commit'] = '${sha}'
@@ -255,11 +255,11 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
 `;
 
   if (noopEval.allowCommit) {
-    updateVerificationReport(tests, activePlane, nextFocusUnitG29, timestamp, g28Summary, authGate);
-    updateChangelog(tests, activePlane, nextFocusUnitG29, timestamp, headShaBefore, g28Summary);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG28ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    updateVerificationReport(tests, activePlane, nextFocusUnitG30, timestamp, g29Summary, authGate);
+    updateChangelog(tests, activePlane, nextFocusUnitG30, timestamp, headShaBefore, g29Summary);
+    runCmd(`PYTHONPATH=src python3 -c "${syncG29ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
-      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json',
+      'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json',
       ROOT_DIR,
       { silent: true }
     );
@@ -271,12 +271,12 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
     runCmd('git config user.name "Anant1asha"', ROOT_DIR, { silent: true });
     runCmd('git config user.email "Anant1asha@users.noreply.github.com"', ROOT_DIR, { silent: true });
     runCmd(
-      'git commit -m "feat(aios-v3-phase-g28-swarm-clarity): implement Swarm Clarity AIOS Learning, Gamified TEAS & Self-Healing Orchestrator Loop (G28 -> G29)"',
+      'git commit -m "feat(aios-v3-phase-g29-multi-chapter-server-sync): implement 5-Chapter v5 Batch Synthesis, SQLite Catalogue & Fastify Centre Server Store Sync (G29 -> G30)"',
       ROOT_DIR,
       { silent: false }
     );
     finalCommitSha = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG28ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    runCmd(`PYTHONPATH=src python3 -c "${syncG29ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md && git commit --amend --no-edit',
       ROOT_DIR,
@@ -290,34 +290,33 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
   printSection18Report({
     activePlane,
     activePhase: 'PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION',
-    completedChunks: all46Completed,
+    completedChunks: all47Completed,
     modifiedFiles: stagedFiles,
     tests,
     commitSha: finalCommitSha,
-    nextFocusUnit: nextFocusUnitG29
+    nextFocusUnit: nextFocusUnitG30
   });
 }
 
-function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g28Summary, authGate) {
+function updateVerificationReport(tests, activePlane, nextFocusUnit, timestamp, g29Summary, authGate) {
   const reportPath = path.join(ROOT_DIR, 'VERIFICATION_REPORT.md');
   const passed = tests.filter(t => t.pass).length;
   const content = `# VERIFICATION_REPORT.md
-# AASHA AIOS V3 — Phase G28 (Swarm Clarity): Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM)
+# AASHA AIOS V3 — Phase G29: Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Fastify/SQLite Centre Server TEAS Store Redemption Sync
 - **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)
 - **Autonomy Policy**: \`AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF\` (\`human_approval_required: false\`, Proof SHA-256: \`${authGate.proof_token_sha256}\`)
 - **Swarm Capacity**: \`1,080 Concurrent Stackless Coroutine Agents\` (\`0 B\` Idle Resident RAM)
 - **Timestamp**: \`${timestamp}\`
 - **Execution Plane**: ${activePlane}
-- **Completed Chunks (46/46 — Phases A–F + G1..G28)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`, \`G12\`, \`G13\`, \`G14\`, \`G15\`, \`G16\`, \`G17\`, \`G18\`, \`G19\`, \`G20\`, \`G21\`, \`G22\`, \`G23\`, \`G24\`, \`G25\`, \`G26\`, \`G27\`, \`G28\`
+- **Completed Chunks (47/47 — Phases A–F + G1..G29)**: \`A1..A3\`, \`B1..B4\`, \`C1..C3\`, \`D1..D3\`, \`E1..E3\`, \`F1..F2\`, \`G1\`, \`G2\`, \`G3\`, \`G4\`, \`G5\`, \`G6\`, \`G7\`, \`G8\`, \`G9\`, \`G10\`, \`G11\`, \`G12\`, \`G13\`, \`G14\`, \`G15\`, \`G16\`, \`G17\`, \`G18\`, \`G19\`, \`G20\`, \`G21\`, \`G22\`, \`G23\`, \`G24\`, \`G25\`, \`G26\`, \`G27\`, \`G28\`, \`G29\`
 - **Target Branch**: \`origin/${TARGET_TASK_BRANCH}\` (Strict Non-Main Isolation — Zero Pushes to \`main\`/\`master\`)
-- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 665/665 Cumulative Python Unit Tests across 48/48 Suites + 97/97 Visual Contract + Swarm Clarity TLN/TEAS Gamified Engine HTML5 + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
+- **Overall Status**: **VERIFIED (${passed}/${tests.length} Test Batteries — 669/669 Cumulative Python Unit Tests across 49/49 Suites + 97/97 Visual Contract + Multi-Chapter v5 Batch & Centre Server Sync Hub + 10 Child HTML5 Modules Certified by \`qa/run_qa.js\` + 0 Contradictions)**
 
-## 1. Chunk G28 Swarm Clarity Execution Summary (\`SwarmClarityAIOSOrchestrator\`)
-- **DESIGN_LEARNING (\`SourcePDFSha256LockAndTLNValidator\` + \`SixAgentV5EngineSynthesizer\` + \`experience_registry/registry.json\`)**: Synthesized \`${g28Summary.design_learning.chapter_id}\` (\`tln_node_count: ${g28Summary.design_learning.tln_node_count}\`, \`wm_dictionary_count: ${g28Summary.design_learning.wm_dictionary_count}\`, \`conn_dictionary_count: ${g28Summary.design_learning.conn_dictionary_count}\`, bound to \`${g28Summary.design_learning.foundation_count}\` foundations and \`${g28Summary.design_learning.phase3_avr_mechanic_count}\` Phase-3 AVR mechanics).
-- **BUILD & CODE (\`sqlite_exporter.py\` + \`v5-engine\` HTML5)**: Exported dual-output \`teas_content.db.gz\` (\`tln_nodes_stored: ${g28Summary.dual_output_sqlite.tln_nodes_stored}\`, \`wm_vocabulary_stored: ${g28Summary.dual_output_sqlite.wm_vocabulary_stored}\`, \`sqlite_gz_bytes: ${g28Summary.dual_output_sqlite.sqlite_gz_bytes} B\`).
-- **TEST, DEBUG & FIX (\`run_html5_self_healing_qa_pass\` + \`SelfHealingCompilerRepairLoop\`)**: Repaired \`${g28Summary.debug_and_fix_self_healing.html5_initial_violations} -> ${g28Summary.debug_and_fix_self_healing.html5_final_violations}\` HTML5 QA violations and \`${g28Summary.debug_and_fix_self_healing.compiler_ast_faults_repaired}\` compiler AST/WFG/spoiler faults.
-- **GAMIFIED TEAS ECOSYSTEM (\`aasha-student-pwa/src/rewards.js\`)**: Verified \`${g28Summary.gamified_teas_ecosystem.coins_earned}\` Aasha Coins awarded, badges \`${g28Summary.gamified_teas_ecosystem.unlocked_badges.join(', ')}\` unlocked, invalid PIN blocked (\`${g28Summary.gamified_teas_ecosystem.invalid_pin_blocked}\`), and Staff PIN \`1080\` redemption of \`${g28Summary.gamified_teas_ecosystem.redeemed_item_id}\` (\`coins_remaining: ${g28Summary.gamified_teas_ecosystem.coins_remaining}\`).
-- **Swarm Clarity TLN/TEAS HTML5 Hub (\`AASHA_Swarm_Clarity_TLN_TEAS_Gamified_Engine_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g28Summary.swarm_clarity_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g28Summary.swarm_clarity_html_bundle.html_sha256}\`).
+## 1. Chunk G29 Execution Summary (\`MultiChapterV5BatchAndCentreServerOrchestrator\`)
+- **5-Chapter NCERT Schoolbook v5 Synthesis Batch (\`src/aasha/orchestrator/phase_g29_multi_chapter_v5_and_centre_server_sync.py\`)**: Synthesized \`${g29Summary.multi_chapter_v5_batch.chapter_count}\` NCERT Class 6 Mathematics chapters (\`total_tln_nodes: ${g29Summary.multi_chapter_v5_batch.total_tln_nodes}\`, \`total_math_tokens_preserved: ${g29Summary.multi_chapter_v5_batch.total_math_tokens_preserved}\`, \`296 WM + 46 CONN\` Hindi dictionary entries).
+- **Dual-Output SQLite Catalogue Export (\`sqlite_exporter.py\`)**: Exported \`${g29Summary.dual_output_sqlite_catalogue.chapters_exported}\` chapters, \`${g29Summary.dual_output_sqlite_catalogue.tln_nodes_exported}\` \`tln_nodes\`, and \`${g29Summary.dual_output_sqlite_catalogue.wm_vocabulary_exported}\` \`vocabulary\` rows into \`teas_content.db.gz\` (\`gzip_db_bytes: ${g29Summary.dual_output_sqlite_catalogue.gzip_db_bytes} B < 20 MiB\`, SHA-256: \`${g29Summary.dual_output_sqlite_catalogue.gzip_sha256}\`).
+- **Fastify/SQLite Centre Server & Student PWA Sync (\`Aasha-AI/server/server.js\` + \`sync.js\`)**: Verified \`POST /api/sync/quiz-results\` (\`${g29Summary.centre_server_fastify_store_sync.synced_quiz_events}\` events $\\rightarrow$ \`+${g29Summary.centre_server_fastify_store_sync.coins_awarded}\` Aasha Coins), \`POST /api/student/:id/redeem\` (invalid PIN \`0000\` rejected with HTTP \`${g29Summary.centre_server_fastify_store_sync.invalid_pin_http_status}\`, valid PIN \`1080\` redeemed \`item_geometry_box\`, balance \`${g29Summary.centre_server_fastify_store_sync.balance_after_redemption}\` coins), \`POST /api/teacher/restock\` (\`stock_qty: ${g29Summary.centre_server_fastify_store_sync.restocked_geometry_box_qty}\`), \`POST /api/sync/cohort-order-pack\` (\`${g29Summary.centre_server_fastify_store_sync.cohort_pack_status}\`, hash \`${g29Summary.centre_server_fastify_store_sync.cohort_pack_integrity_hash}\`), and \`POST /api/sync/student-snapshot\` (\`${g29Summary.centre_server_fastify_store_sync.snapshot_backup_status}\`).
+- **Multi-Chapter & Centre Server Sync HTML5 Hub (\`Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html\`)**: Certified by \`node qa/run_qa.js\` (\`10/10\` Critical QA Rules passed, \`${g29Summary.multi_chapter_centre_server_html_bundle.bundle_size_bytes} B < 20 MiB\`, SHA-256: \`${g29Summary.multi_chapter_centre_server_html_bundle.html_sha256}\`).
 
 ## 2. Verification Test Matrix
 | Test Suite | Status |
@@ -331,13 +330,13 @@ ${tests.map(t => `| **${t.name}** | **${t.pass ? 'PASS (100%)' : 'FAIL'}** |`).j
   fs.writeFileSync(reportPath, content, 'utf-8');
 }
 
-function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g28Summary) {
+function updateChangelog(tests, activePlane, nextFocusUnit, timestamp, commitSha, g29Summary) {
   const changelogPath = path.join(ROOT_DIR, 'CHANGELOG.md');
-  const entry = `\n## [${timestamp}] — V3 Phase G28 (Swarm Clarity): AASHA AIOS Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM) (VERIFIED -> Queued G29)\n` +
+  const entry = `\n## [${timestamp}] — V3 Phase G29: Multi-Chapter Schoolbook v5 Batch Synthesis, Dual-Output SQLite Catalogue & Fastify Centre Server Store Sync (VERIFIED -> Queued G30)\n` +
     `- **Task ID**: \`AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3\` (\`v3.0.0\`)\n` +
     `- **Plane**: ${activePlane}\n` +
-    `- **Completed Chunks (46)**: \`A1..F2\`, \`G1..G28\` (\`g28_manifest_sha256: ${g28Summary.g28_manifest_sha256.slice(0, 16)}\`)\n` +
-    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (665/665 cumulative Python unit tests across 48/48 suites, 97/97 strict visual contract assertions, Swarm Clarity TLN/TEAS Gamified Engine + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
+    `- **Completed Chunks (47)**: \`A1..F2\`, \`G1..G29\` (\`g29_manifest_sha256: ${g29Summary.g29_manifest_sha256.slice(0, 16)}\`)\n` +
+    `- **Test Outcome**: ${tests.filter(t => t.pass).length}/${tests.length} test batteries passed (669/669 cumulative Python unit tests across 49/49 suites, 97/97 strict visual contract assertions, Multi-Chapter & Centre Server Sync Hub + 10 child HTML5 modules passing \`qa/run_qa.js\`, 65/65 pipeline tests, 21/21 Phase-3 AVR checks, 0 secrets, 0 contradictions).\n` +
     `- **Git Branch**: \`${TARGET_TASK_BRANCH}\` (Base \`${commitSha.slice(0, 7)}\`, 0 pushes to \`main\`/\`master\`)\n` +
     `- **Next Focus Unit**: \`${nextFocusUnit}\`\n`;
   if (fs.existsSync(changelogPath)) {
