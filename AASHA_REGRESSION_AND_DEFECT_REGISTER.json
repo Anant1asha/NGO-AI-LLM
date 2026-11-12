@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "generated_at_utc": "2026-11-12T19:43:44.011561+00:00",
   "open_defects": [
     {
       "defect_id": "DEF-001",
@@ -14,7 +14,7 @@
       "severity": "HIGH",
       "plane": "Learning Plane",
       "description": "Automated g3_10chapter_pack Fractions HTML is 26 KB with 25 WM, 0 PhET sims vs 6.74 MB Fractions_Gamified_v5_3.html (2 PhET, 13 canvases, 296 WM).",
-      "evidence": "36685 B vs 6737167 B"
+      "evidence": "93704 B vs 6737167 B"
     },
     {
       "defect_id": "DEF-003",

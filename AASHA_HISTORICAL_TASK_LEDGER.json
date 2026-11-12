@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-12T19:11:25.711236+00:00",
-  "total_phase_manifests": 30,
-  "total_python_test_suites": 52,
+  "generated_at_utc": "2026-11-12T19:43:43.965324+00:00",
+  "total_phase_manifests": 31,
+  "total_python_test_suites": 54,
   "status_counts": {
-    "LIVE_VERIFIED_PASS": 30,
+    "LIVE_VERIFIED_PASS": 31,
     "PARTIAL": 0,
     "BLOCKED": 0,
     "UNKNOWN_OFFLINE_WINDOWS": 1
@@ -191,6 +191,14 @@
       "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
       "manifest_file": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json",
       "manifest_sha256": "317c6f92ee819627a7f60f859a8902865f386d3bd237febbea09dae5a5ec3c8b",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G33",
+      "title": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST",
+      "manifest_file": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST.json",
+      "manifest_sha256": "556c0f7ff88247a21f5a12f0aa216f76a76397a09da32056d80947cb69469ba4",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },

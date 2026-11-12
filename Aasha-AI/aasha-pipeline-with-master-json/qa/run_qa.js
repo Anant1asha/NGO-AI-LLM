@@ -208,7 +208,7 @@ function checkJSDOM() {
             const mkEl = () => ({
                 style: {}, classList: { add() {}, remove() {}, toggle() {} },
                 setAttribute() {}, getAttribute() { return null; },
-                appendChild() {}, addEventListener() {}, querySelectorAll() { return []; },
+                appendChild() {}, append() {}, addEventListener() {}, querySelectorAll() { return []; },
                 querySelector() { return null; }, textContent: "", innerHTML: "", value: ""
             });
             const sandbox = {

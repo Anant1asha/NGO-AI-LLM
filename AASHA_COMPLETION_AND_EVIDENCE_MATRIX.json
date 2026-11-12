@@ -1,17 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "generated_at_utc": "2026-11-12T19:43:44.011561+00:00",
   "summary": {
-    "phase_manifests": 30,
-    "python_test_suites": 53,
-    "orchestrator_modules": 47,
+    "phase_manifests": 31,
+    "python_test_suites": 54,
+    "orchestrator_modules": 48,
     "operational_db_tables": {
       "memory_nodes": 1,
       "reusable_mechanics": 5,
       "open_source_foundations": 7,
-      "build_cache_metrics": 8,
-      "lle_vocabulary": 729,
-      "codebase_sources": 48
+      "build_cache_metrics": 12,
+      "codebase_sources": 48,
+      "lle_vocabulary": 1214
     }
   },
   "verified_waves": [
