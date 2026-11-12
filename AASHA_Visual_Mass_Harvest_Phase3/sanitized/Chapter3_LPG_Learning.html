@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Aasha · Liberalisation, Privatisation &amp; Globalisation — Class 12 Indian Economic Development Ch.3</title>
+<style>
+:root{
+  --bg:#070f1a; --bg2:#0b1826; --panel:#0f2233; --panel2:#12293d;
+  --ink:#eaf4ff; --ink2:#cfe0f0; --muted:#9fb6cc; --line:#1d3b55; --line2:#25496a;
+  --gold:#f4c265; --gold2:#ffd98a; --teal:#38d6c0; --teal2:#0fb8a0;
+  --violet:#9d7bff; --rose:#ff7a9c; --lime:#a8e05f; --sky:#5cc8ff;
+  --good:#3ddc97; --bad:#ff6b6b; --warn:#ffcf5c;
+  --r:14px; --r2:18px; --shadow:0 14px 34px rgba(0,0,0,.45);
+  --safe: env(safe-area-inset-bottom, 0px);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%;overflow:hidden;overscroll-behavior:none}
+body{
+  background:radial-gradient(1100px 620px at 82% -8%, #16334c 0%, transparent 60%),
+             radial-gradient(900px 560px at 8% 108%, #14243b 0%, transparent 62%), var(--bg);
+  color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans",Arial,sans-serif; line-height:1.55; font-size:15.5px;
+}
+.app{height:100vh; height:100dvh; display:flex; flex-direction:column; max-width:560px; margin:0 auto;
+  border-left:1px solid var(--line); border-right:1px solid var(--line)}
+@media (min-width:820px){
+  .app{max-width:820px}
+  .stage{padding:20px 24px calc(20px + var(--safe))}
+  body{font-size:16px} h2{font-size:22px} p{margin:.6em 0}
+  .card{padding:22px} .visual{min-height:270px;padding:22px}
+  .vbox .em{font-size:40px} .vbox .t{font-size:16px} .vbox .d{font-size:13.5px}
+  .opt{padding:13px 15px;font-size:14.6px} .qtext{font-size:16.5px}
+  .meaning{font-size:13.2px} .kv{font-size:15px} .formula{font-size:19px}
+  .bubble{font-size:15px} .mtile{font-size:14px;min-height:56px} .mcol.defs .mtile{font-size:13px}
+  .tile .t{font-size:13.8px} .tile{min-height:62px}
+}
+.topbar{flex:none; height:50px; display:flex; align-items:center; gap:8px; padding:0 12px;
+  background:linear-gradient(180deg,rgba(9,20,32,.98),rgba(7,15,26,.86)); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); z-index:40}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;min-width:0}
+.logo{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none;
+  background:conic-gradient(from 210deg,var(--teal),var(--gold),var(--violet),var(--teal));color:#05121d;font-weight:900;font-size:14px;box-shadow:0 6px 18px rgba(56,214,192,.35)}
+.brand b{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font-weight:600;color:var(--muted);font-size:8px;letter-spacing:.5px;text-transform:uppercase}
+.spacer{flex:1}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;background:var(--panel);
+  border:1px solid var(--line);font-size:11px;font-weight:800;white-space:nowrap}
+.chip b{color:var(--gold)}
+
+.viewport{flex:1; position:relative; overflow:hidden}
+.screen{position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden}
+.screen.active{display:flex; animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.stage{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:14px 14px calc(14px + var(--safe)); overscroll-behavior:contain;
+  display:flex; flex-direction:column; justify-content:center}
+.navbar{flex:none; min-height:58px; display:flex; align-items:center; gap:9px; padding:8px 12px calc(8px + var(--safe));
+  background:linear-gradient(0deg,rgba(7,15,26,.99),rgba(7,15,26,.74)); border-top:1px solid var(--line)}
+.progressbar{flex:1;height:8px;border-radius:99px;background:#0a1a29;border:1px solid var(--line);overflow:hidden}
+.progressbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.slidectr{font-size:10.5px;color:var(--muted);font-weight:800;white-space:nowrap}
+
+/* ---------- cards / slide ---------- */
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:var(--r2);padding:15px;box-shadow:var(--shadow);margin:0 0 10px}
+.card:last-child{margin-bottom:0}
+.card.flat{background:#0a1c2b;box-shadow:none}
+h1{font-size:24px;line-height:1.2;margin:.1em 0 .35em}
+h2{font-size:21px;line-height:1.25;margin:.1em 0 .4em}
+h3{font-size:15.5px;margin:.1em 0 .3em}
+p{margin:.5em 0;color:var(--ink2)}
+.muted{color:var(--muted)} .small{font-size:12.8px} .center{text-align:center}
+.kicker{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:800}
+.snum,.badge{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;background:rgba(56,214,192,.14);color:var(--teal);border:1px solid rgba(56,214,192,.3)}
+.badge.gold{background:rgba(244,194,101,.14);color:var(--gold);border-color:rgba(244,194,101,.3)}
+.badge.violet{background:rgba(157,123,255,.16);color:#c3aaff;border-color:rgba(157,123,255,.32)}
+.badge.green{background:rgba(61,220,151,.14);color:var(--good);border-color:rgba(61,220,151,.35)}
+.callout{border-left:3px solid var(--gold);background:rgba(244,194,101,.07);padding:10px 12px;border-radius:0 10px 10px 0;margin:9px 0;font-size:13.6px}
+.callout.teal{border-color:var(--teal);background:rgba(56,214,192,.07)}
+.callout.bad{border-color:var(--bad);background:rgba(255,107,107,.07)}
+.formula{font-family:"Cambria Math",Georgia,serif;font-size:17px;text-align:center;padding:13px;border-radius:14px;
+  background:#08182a;border:1.5px solid var(--line2);margin:9px 0;color:var(--gold2);font-weight:700}
+.result{border:2px solid var(--good);box-shadow:0 10px 26px rgba(61,220,151,.18)}
+.result .rfoot{background:linear-gradient(135deg,#7ff0c0,var(--good));color:#04201c;font-weight:900;font-size:12px;text-align:center;padding:6px;border-radius:0 0 14px 14px;margin:12px -14px -14px}
+.meaning{font-size:12.2px;color:var(--muted);margin:2px 0 0;line-height:1.45}
+.meaning.one{font-size:11.6px;line-height:1.3}
+.kv{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13.8px}
+.kv b{color:var(--gold2);font-variant-numeric:tabular-nums}
+.kv.compact{padding:3px 0;font-size:11.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* ---------- panda guide ---------- */
+.panda{display:flex;gap:9px;align-items:flex-start;margin:0 0 9px}
+.panda .av{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:22px;
+  background:linear-gradient(135deg,#12354c,#0d2233);border:1px solid var(--line);animation:bob 3s ease-in-out infinite;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+@keyframes bob{50%{transform:translateY(-3px)}}
+.bubble{position:relative;background:linear-gradient(180deg,#12314a,#0e2436);border:1px solid var(--line);
+  border-radius:14px;padding:10px 12px;font-size:14px;flex:1;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.bubble:before{content:"";position:absolute;left:-7px;top:12px;width:12px;height:12px;background:#12314a;
+  border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.bubble b{color:var(--gold2)}
+.panda .nm{font-size:10px;font-weight:800;color:var(--teal);text-transform:uppercase;letter-spacing:.6px;margin-bottom:2px}
+
+/* ---------- cover ---------- */
+.cover{position:relative;overflow:hidden;border-radius:var(--r2);border:1px solid var(--line);background:linear-gradient(150deg,#0d2b3f,#0a1a2b 55%,#141033)}
+.cover .glow{position:absolute;inset:-45% -12% auto auto;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(244,194,101,.28),transparent 62%)}
+.cover .glow.b{left:-70px;right:auto;bottom:-120px;top:auto;background:radial-gradient(circle,rgba(56,214,192,.22),transparent 62%)}
+.cover .pad{position:relative;padding:18px}
+.cover h1{font-size:24px}
+.tag{font-size:10px;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);margin:3px 4px 0 0;display:inline-block;color:var(--ink2);font-weight:700}
+.heroanim{position:relative;height:70px;margin-top:11px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#08182a,#0b2233);border:1px solid var(--line)}
+.heroanim .bar{position:absolute;bottom:8px;width:17px;border-radius:6px 6px 3px 3px;animation:grow 2.6s ease-in-out infinite alternate}
+.heroanim .bar:nth-child(1){background:linear-gradient(180deg,var(--teal),#0d6f8f)}
+.heroanim .bar:nth-child(2){animation-delay:.25s;background:linear-gradient(180deg,var(--gold),#c07a12)}
+.heroanim .bar:nth-child(3){animation-delay:.5s;background:linear-gradient(180deg,var(--violet),#5b3fb0)}
+.heroanim .bar:nth-child(4){animation-delay:.75s;background:linear-gradient(180deg,var(--rose),#a83a5b)}
+.heroanim .bar:nth-child(5){animation-delay:1s;background:linear-gradient(180deg,var(--sky),#1f6fa8)}
+@keyframes grow{from{height:14px}to{height:54px}}
+
+/* ---------- buttons ---------- */
+.btn{appearance:none;border:0;cursor:pointer;font-weight:800;font-family:inherit;font-size:13.5px;
+  padding:11px 15px;border-radius:12px;color:#05121d;background:linear-gradient(135deg,var(--gold2),var(--gold));
+  box-shadow:0 8px 20px rgba(244,194,101,.26);transition:transform .12s ease}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn.teal{background:linear-gradient(135deg,#7ff0e0,var(--teal));color:#04201c;box-shadow:0 8px 20px rgba(56,214,192,.24)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.btn.violet{background:linear-gradient(135deg,#c3aaff,var(--violet));color:#160b33}
+.btn.block{width:100%} .btn.sm{padding:8px 12px;font-size:12px;border-radius:10px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ---------- contents tiles ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel),var(--bg2));padding:9px;cursor:pointer;position:relative;min-height:56px;transition:.15s}
+.tile:active{transform:scale(.98)}
+.tile.done{border-color:var(--good)}
+.tile.locked{opacity:.5;cursor:not-allowed}
+.tile .ic{font-size:17px;line-height:1}
+.tile .t{font-weight:800;font-size:12.8px;line-height:1.18;margin-top:3px}
+.tile .x{font-size:10.5px;font-weight:800;color:var(--gold);margin-top:3px}
+.tile.done .x{color:var(--good)}
+.tile .n{position:absolute;top:6px;right:8px;font-size:9.5px;color:var(--muted);font-weight:800}
+
+/* ---------- visuals ---------- */
+.visual{position:relative;border-radius:16px;border:1px solid var(--line);background:linear-gradient(180deg,#0a1e2e,#081624);
+  padding:14px;overflow:hidden;min-height:168px;display:flex;flex-direction:column;justify-content:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 26px rgba(0,0,0,.35)}
+.visual .vchip{display:inline-block;align-self:flex-start;margin:0 0 10px;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--gold);background:rgba(244,194,101,.12);border:1px solid rgba(244,194,101,.3);padding:3px 10px;border-radius:999px}
+.visual svg{display:block;width:100%;height:auto;position:relative;z-index:2}
+.vrow{display:flex;gap:9px;align-items:center;justify-content:center;flex-wrap:wrap}
+.vbox{flex:1;min-width:96px;border-radius:12px;border:1.5px solid var(--line2);background:#0d2233;padding:13px;text-align:center}
+.vbox .em{font-size:31px;line-height:1}
+.vbox .t{font-size:14px;font-weight:800;margin-top:4px}
+.vbox .d{font-size:11.8px;color:var(--muted);margin-top:2px}
+.vbox.g{border-color:rgba(61,220,151,.42);background:rgba(61,220,151,.10)}
+.vbox.a{border-color:rgba(244,194,101,.42);background:rgba(244,194,101,.10)}
+.vbox.r{border-color:rgba(255,107,107,.42);background:rgba(255,107,107,.10)}
+.varrow{color:var(--gold);font-size:19px;flex:none;font-weight:900}
+.op{display:inline-block;font-size:10px;font-weight:800;color:var(--gold2);background:rgba(244,194,101,.14);
+  border:1px solid rgba(244,194,101,.32);border-radius:999px;padding:2px 7px;white-space:nowrap}
+
+/* ---------- simulations ---------- */
+.sim{border-radius:16px;border:1px solid var(--line);background:#08182a;padding:12px;box-shadow:var(--shadow)}
+.sim .simhead{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.sim .simhead .t{font-weight:800;font-size:12.8px}
+.sim .simhead .hint{margin-left:auto;font-size:10px;color:var(--muted)}
+.simstage{position:relative;border-radius:12px;background:linear-gradient(180deg,#0a1e2e,#081624);border:1px solid var(--line);padding:10px}
+.pill{padding:7px 11px;border-radius:11px;border:1.5px solid var(--line);background:var(--panel);cursor:pointer;
+  font-weight:700;font-size:12.8px;display:inline-block;margin:3px 3px 0 0;transition:.15s}
+.pill.sel{border-color:var(--gold);background:rgba(244,194,101,.14)}
+.pill.right{border-color:var(--good);background:rgba(61,220,151,.15)}
+.pill.wrong{border-color:var(--bad);background:rgba(255,107,107,.15)}
+.range{width:100%;accent-color:var(--teal);height:22px;margin:2px 0}
+.meter{height:12px;border-radius:99px;background:#0a1a29;border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;width:0;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.statbox{background:#0a1c2b;border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center}
+.statbox .n{font-size:17px;font-weight:900;color:var(--gold2);font-variant-numeric:tabular-nums}
+.statbox .l{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.chain{display:flex;align-items:stretch;gap:5px;flex-wrap:wrap;row-gap:9px;padding:4px 1px;justify-content:center}
+.node{min-width:72px;border-radius:11px;border:1.5px solid var(--line2);background:linear-gradient(180deg,#0e2537,#0a1a28);padding:6px 7px;text-align:center;flex:none}
+.node .em{font-size:16px} .node .nm{font-size:10px;font-weight:800} .node .va{font-size:10px;color:var(--teal);font-weight:800}
+.node .inp{font-size:9px;color:var(--muted)}
+.node.res{border-color:var(--good);background:rgba(61,220,151,.13)}
+.node.hl{border-color:var(--gold);background:rgba(244,194,101,.13)}
+.arrow{align-self:center;color:var(--gold);font-size:16px;flex:none}
+.flowline{stroke-dasharray:8 8;animation:dash 1.1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.particle{fill:var(--gold);filter:drop-shadow(0 0 5px rgba(244,194,101,.7))}
+
+/* ---------- quiz ---------- */
+.qtext{font-size:14.6px;font-weight:700;margin:6px 0 9px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);
+  background:var(--panel);margin:6px 0;cursor:pointer;transition:.15s;font-size:14px}
+.opt:hover{border-color:var(--teal)}
+.opt .k{width:22px;height:22px;border-radius:7px;background:#0a1a29;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
+.opt.right{border-color:var(--good);background:rgba(61,220,151,.12)}
+.opt.wrong{border-color:var(--bad);background:rgba(255,107,107,.12)}
+.opt.locked{cursor:default}
+.fb{margin-top:7px;padding:9px 11px;border-radius:12px;font-size:12.4px;display:none}
+.fb.show{display:block}
+.fb.ok{background:rgba(61,220,151,.12);border:1px solid rgba(61,220,151,.35)}
+.fb.no{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.35)}
+
+/* ---------- term ↔ definition match ---------- */
+.matchgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mcol{display:flex;flex-direction:column;gap:6px}
+.mhead{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:800;margin-bottom:2px}
+.mtile{border:1.5px solid var(--line);border-radius:11px;background:var(--panel);padding:10px;font-size:12.8px;font-weight:800;
+  cursor:pointer;min-height:50px;display:flex;align-items:center;transition:.15s}
+.mcol.defs .mtile{font-weight:600;font-size:12px;color:var(--muted)}
+.mtile.sel{border-color:var(--gold);background:rgba(244,194,101,.14)}
+.mtile.match{border-color:var(--good);background:rgba(61,220,151,.14);color:var(--ink)}
+.mtile.err{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* ---------- assessment ---------- */
+.hp{height:11px;border-radius:99px;background:#2a0f18;border:1px solid #5a2233;overflow:hidden;margin-top:5px}
+.hp i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff5b7f,#ff9d5b);transition:width .4s}
+.timer{font-variant-numeric:tabular-nums;font-weight:900;color:var(--gold2)}
+
+/* ---------- language layer ---------- */
+.tapable{cursor:pointer;border-bottom:1px dotted rgba(244,194,101,.5)}
+.tapable:active{background:rgba(244,194,101,.16);border-radius:4px}
+.conn{color:var(--teal);font-style:italic}
+/* ---------- sentence translation reveal (new) ---------- */
+.hiWrap{margin-top:6px;display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+.hiBtn{font:inherit;font-size:11px;font-weight:800;letter-spacing:.2px;cursor:pointer;
+  background:rgba(56,214,192,.12);color:var(--teal);border:1px solid rgba(56,214,192,.4);
+  border-radius:999px;padding:3px 10px;display:inline-flex;align-items:center;gap:5px;line-height:1.2}
+.hiBtn:active{transform:scale(.96)}
+.hiWrap.open .hiBtn{background:var(--teal);color:#04201c}
+.hiBox{width:100%;font-size:13px;line-height:1.6;color:#dff3ee;background:rgba(56,214,192,.10);
+  border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:8px 11px}
+.hiBox[hidden]{display:none}
+.kv .hiWrap,.opt .hiWrap{margin-top:4px}
+#wordpanel{position:fixed;left:0;right:0;bottom:0;z-index:200;transform:translateY(130%);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  background:linear-gradient(180deg,#0d2a3d,#081a28);border-top:1px solid var(--gold);box-shadow:0 -14px 34px rgba(0,0,0,.5);
+  padding:12px 14px calc(14px + var(--safe));max-width:560px;margin:0 auto;border-radius:18px 18px 0 0}
+#wordpanel.up{transform:translateY(0)}
+#wordpanel .wp-top{display:flex;align-items:center;gap:9px}
+#wordpanel .w{font-size:19px;font-weight:900;color:var(--gold2)}
+#wordpanel .h{font-size:16px;color:var(--teal);margin-top:1px}
+#wordpanel .pron{font-size:11px;color:var(--muted)}
+.spk{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:11px;padding:8px 11px;font-weight:800;cursor:pointer;font-size:12px}
+.spk:active{background:var(--teal);color:#04201c}
+#toast{position:fixed;left:50%;top:58px;transform:translate(-50%,-16px);z-index:300;opacity:0;transition:.3s;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));color:#05121d;font-weight:900;padding:10px 15px;border-radius:12px;
+  box-shadow:0 12px 28px rgba(244,194,101,.4);pointer-events:none;font-size:13px}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:250;overflow:hidden}
+.cf{position:absolute;width:8px;height:12px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(680deg);opacity:.9}}
+.badgegrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bdg{border:1px solid var(--line);border-radius:12px;padding:9px;text-align:center;background:#0a1c2b;opacity:.45}
+.bdg.on{opacity:1;border-color:var(--gold)}
+.bdg .em{font-size:20px} .bdg .t{font-weight:800;font-size:11.5px} .bdg .d{font-size:9.5px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- MOTION LAYER (UI/UX animation, per the reference video) ---------- */
+@keyframes enterUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes popIn{0%{opacity:0;transform:scale(.86)}62%{transform:scale(1.03)}100%{opacity:1;transform:none}}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+@keyframes pulseOk{0%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}100%{box-shadow:0 0 0 16px rgba(61,220,151,0)}}
+@keyframes ripple{to{transform:scale(2.6);opacity:0}}
+@keyframes sweepGlow{0%{left:-45%;opacity:0}25%{opacity:1}100%{left:115%;opacity:0}}
+.blk{will-change:transform,opacity}
+.node,.vbox{will-change:transform,opacity}
+.opt{position:relative;overflow:hidden}
+.opt:active{transform:scale(.985)}
+.opt .rip{position:absolute;border-radius:50%;background:rgba(56,214,192,.35);transform:scale(0);pointer-events:none;animation:ripple .6s ease-out forwards}
+.opt.right{animation:pulseOk .7s ease-out}
+.visual .sweep{position:absolute;top:0;bottom:0;width:45%;pointer-events:none;z-index:1;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.10),transparent);animation:sweepGlow 2.4s ease .5s 1}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001s !important;transition-duration:.001s !important}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="brand"><div class="logo">A</div><div><b>ANNANTH AASHA</b><small>Learning &amp; Impact</small></div></div>
+    <div class="spacer"></div>
+    <div class="chip" title="Experience points">⭐ <b id="xpVal">0</b></div>
+    <div class="chip" title="Aasha Coins — reward, never cash">🪙 <b id="coinVal">0</b></div>
+  </div>
+
+  <div class="viewport">
+
+    <section class="screen active" id="screen-home">
+      <div class="stage">
+        <div class="cover">
+          <div class="glow"></div><div class="glow b"></div>
+          <div class="pad">
+            <div class="kicker">Class 12 · Indian Economic Development · Chapter 3</div>
+            <h1>Liberalisation, Privatisation &amp; Globalisation</h1>
+            <p class="small" style="color:#cfe2f4">Why did India throw open its economy in 1991? Walk through the crisis, the reforms, and what three decades of change actually did.</p>
+            <div><span class="tag">📘 NCERT-aligned</span><span class="tag">🎞️ Slide journey</span><span class="tag">🧪 Sims + visuals</span><span class="tag">📴 Offline</span></div>
+            <div class="heroanim" aria-hidden="true">
+              <div class="bar" style="left:8%"></div><div class="bar" style="left:26%"></div>
+              <div class="bar" style="left:44%"></div><div class="bar" style="left:62%"></div><div class="bar" style="left:80%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panda">
+          <div class="av">🧑🏫</div>
+          <div class="bubble"><div class="nm">Acharya · your teacher</div>
+            <span data-lang>Namaste! I'm Acharya. In 1991 India nearly went broke — it could not pay for two weeks of petrol. We will walk through that crisis, the big reforms it forced, and what they did to farms, factories and jobs. Short slides, clear pictures. Ready? Let's go!</span></div>
+        </div>
+        <div class="card">
+          <div class="btnrow">
+            <button class="btn teal" id="btnStart" style="flex:1">▶ Start the journey</button>
+            <button class="btn ghost" id="btnContinue">↻ Continue</button>
+          </div>
+          <p class="small muted" id="homeState" style="margin-top:7px"></p>
+          <p class="small muted">Each slide is one idea with a picture or a sim. You must answer each check to move on. Mastery is decided by the assessment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-map">
+      <div class="stage">
+        <div class="card flat" style="padding:10px 12px"><div class="kicker">Your journey</div>
+          <div class="small muted" data-lang>Ten concepts, one slide-journey. Finish each check to unlock the next concept.</div></div>
+        <div class="tiles" id="mapList"></div>
+        <div class="btnrow">
+          <button class="btn" id="btnMapAssess" disabled style="flex:1">🎮 Go to Assessment</button>
+          <button class="btn ghost sm" id="btnReset">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-lesson">
+      <div class="stage" id="lessonStage"></div>
+      <div class="navbar">
+        <button class="btn ghost sm" id="btnBack" style="flex:none;min-width:60px">◀</button>
+        <div class="progressbar"><i id="progFill"></i></div>
+        <span class="slidectr" id="pageInfo"></span>
+        <button class="btn" id="btnNext" style="flex:none;min-width:70px">Next ▶</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-assess"><div class="stage" id="assessBody"></div></section>
+    <section class="screen" id="screen-done"><div class="stage" id="doneBody"></div></section>
+
+  </div>
+</div>
+
+<div id="toast"></div>
+<div class="confetti" id="confetti"></div>
+
+<div id="wordpanel" role="dialog" aria-label="Word meaning">
+  <div class="wp-top">
+    <div><div class="w" id="wpWord">word</div><div class="h" id="wpHindi">हिंदी</div><div class="pron" id="wpPron"></div></div>
+    <div style="margin-left:auto"><button class="spk" id="wpSpeak">🔊 Hear it</button></div>
+  </div>
+  <div class="wp-top" style="margin-top:8px">
+    <span class="small muted">Tap the word again or close to keep reading.</span>
+    <button class="spk" id="wpClose" style="margin-left:auto">Close ✕</button>
+  </div>
+</div>
+<script>
+var _weCheckRendered = true;
+
+/* =========================================================================
+   AASHA LANGUAGE LAYER ENGINE  (reference-derived, reproduce faithfully)
+   READ -> SEE ENGLISH -> TAP WORD -> REVEAL HINDI -> HEAR WORD -> RETURN
+   No external translation. Unknown is a valid state.
+   ========================================================================= */
+const WM = {
+  // ---- LPG core vocabulary ----
+  "liberalisation":{h:"उदारीकरण",p:"लिबरलाइज़ेशन"},
+  "liberalization":{h:"उदारीकरण",p:"लिबरलाइज़ेशन"},
+  "liberalise":{h:"उदार बनाना",p:"लिबरलाइज़"},
+  "privatisation":{h:"निजीकरण",p:"प्राइवेटाइज़ेशन"},
+  "privatization":{h:"निजीकरण",p:"प्राइवेटाइज़ेशन"},
+  "privatised":{h:"निजीकृत",p:"प्राइवेटाइज़्ड"},
+  "globalisation":{h:"वैश्वीकरण",p:"ग्लोबलाइज़ेशन"},
+  "globalization":{h:"वैश्वीकरण",p:"ग्लोबलाइज़ेशन"},
+  "globalised":{h:"वैश्वीकृत",p:"ग्लोबलाइज़्ड"},
+  "appraisal":{h:"मूल्यांकन (समीक्षा)",p:"अप्रेज़ल"},
+  "reform":{h:"सुधार",p:"रिफ़ॉर्म"},
+  "reforms":{h:"सुधार",p:"रिफ़ॉर्म्स"},
+  "crisis":{h:"संकट",p:"क्राइसिस"},
+  "reserves":{h:"भंडार (आरक्षित कोष)",p:"रिज़र्व्स"},
+  "reserve":{h:"भंडार",p:"रिज़र्व"},
+  "exchange":{h:"विनिमय",p:"एक्सचेंज"},
+  "devaluation":{h:"अवमूल्यन (मूल्य घटाना)",p:"डीवैल्यूएशन"},
+  "devalued":{h:"अवमूल्यित",p:"डीवैल्यूड"},
+  "tariff":{h:"सीमा शुल्क (आयात कर)",p:"टैरिफ़"},
+  "tariffs":{h:"सीमा शुल्क",p:"टैरिफ़्स"},
+  "quota":{h:"कोटा (निर्धारित सीमा)",p:"कोटा"},
+  "quantitative":{h:"मात्रात्मक",p:"क्वांटिटेटिव"},
+  "restrictions":{h:"प्रतिबंध",p:"रिस्ट्रिक्शन्स"},
+  "restriction":{h:"प्रतिबंध",p:"रिस्ट्रिक्शन"},
+  "licensing":{h:"लाइसेंसिंग (अनुमति देना)",p:"लाइसेंसिंग"},
+  "licence":{h:"लाइसेंस (अनुमति)",p:"लाइसेंस"},
+  "license":{h:"लाइसेंस",p:"लाइसेंस"},
+  "deregulation":{h:"अनियमन (नियम हटाना)",p:"डीरेगुलेशन"},
+  "disinvestment":{h:"विनिवेश (हिस्सा बेचना)",p:"डिसइन्वेस्टमेंट"},
+  "equity":{h:"इक्विटी (हिस्सेदारी)",p:"इक्विटी"},
+  "strategic":{h:"रणनीतिक",p:"स्ट्रैटेजिक"},
+  "minority":{h:"अल्पमत (कम हिस्सा)",p:"माइनॉरिटी"},
+  "sale":{h:"बिक्री",p:"सेल"},
+  "outsourcing":{h:"आउटसोर्सिंग (बाहर से सेवा लेना)",p:"आउटसोर्सिंग"},
+  "outsource":{h:"बाहर से कराना",p:"आउटसोर्स"},
+  "multinational":{h:"बहुराष्ट्रीय",p:"मल्टीनैशनल"},
+  "corporation":{h:"निगम (कंपनी)",p:"कॉरपोरेशन"},
+  "corporations":{h:"निगम",p:"कॉरपोरेशन्स"},
+  "enterprise":{h:"उद्यम (धंधा)",p:"एंटरप्राइज़"},
+  "enterprises":{h:"उद्यम",p:"एंटरप्राइज़ेज़"},
+  "undertaking":{h:"उपक्रम",p:"अंडरटेकिंग"},
+  "undertakings":{h:"उपक्रम",p:"अंडरटेकिंग्स"},
+  "bilateral":{h:"द्विपक्षीय (दो देशों के बीच)",p:"बाइलेटरल"},
+  "multilateral":{h:"बहुपक्षीय (कई देशों के बीच)",p:"मल्टीलैटरल"},
+  "institutional":{h:"संस्थागत",p:"इंस्टिट्यूशनल"},
+  "investor":{h:"निवेशक",p:"इन्वेस्टर"},
+  "investors":{h:"निवेशक",p:"इन्वेस्टर्स"},
+  "facilitator":{h:"सुविधाकारक (मददगार)",p:"फ़ैसिलिटेटर"},
+  "regulator":{h:"नियामक",p:"रेगुलेटर"},
+  "regulation":{h:"नियमन",p:"रेगुलेशन"},
+  "regulatory":{h:"नियामकीय",p:"रेगुलेटरी"},
+  "stabilisation":{h:"स्थिरीकरण",p:"स्टेबिलाइज़ेशन"},
+  "stabilization":{h:"स्थिरीकरण",p:"स्टेबिलाइज़ेशन"},
+  "structural":{h:"संरचनात्मक",p:"स्ट्रक्चरल"},
+  "conditionalities":{h:"शर्तें",p:"कंडीशनैलिटीज़"},
+  "competitiveness":{h:"प्रतिस्पर्धात्मकता",p:"कॉम्पिटिटिवनेस"},
+  "competitive":{h:"प्रतिस्पर्धी",p:"कॉम्पिटिटिव"},
+  "competition":{h:"प्रतिस्पर्धा",p:"कॉम्पिटिशन"},
+  "barriers":{h:"बाधाएँ",p:"बैरियर्स"},
+  "barrier":{h:"बाधा",p:"बैरियर"},
+  "integrate":{h:"जोड़ना (एक करना)",p:"इंटीग्रेट"},
+  "integration":{h:"एकीकरण",p:"इंटीग्रेशन"},
+  "interdependence":{h:"परस्पर निर्भरता",p:"इंटरडिपेंडेंस"},
+  "autonomy":{h:"स्वायत्तता (आज़ादी)",p:"ऑटोनॉमी"},
+  "efficiency":{h:"दक्षता",p:"एफ़िशिएंसी"},
+  "inefficiency":{h:"अक्षमता",p:"इनएफ़िशिएंसी"},
+  "productivity":{h:"उत्पादकता",p:"प्रोडक्टिविटी"},
+  "revenue":{h:"राजस्व",p:"रेवेन्यू"},
+  "fiscal":{h:"राजकोषीय",p:"फ़िस्कल"},
+  "budget":{h:"बजट",p:"बजट"},
+  "deficit":{h:"घाटा",p:"डेफ़िसिट"},
+  "borrowings":{h:"उधार",p:"बॉरोइंग्स"},
+  "borrowing":{h:"उधार लेना",p:"बॉरोइंग"},
+  "debt":{h:"क़र्ज़",p:"डेट"},
+  "loan":{h:"क़र्ज़ (ऋण)",p:"लोन"},
+  "subsidy":{h:"सब्सिडी (सरकारी सहायता)",p:"सब्सिडी"},
+  "subsidies":{h:"सब्सिडियाँ",p:"सब्सिडीज़"},
+  "tax":{h:"कर",p:"टैक्स"},
+  "taxes":{h:"कर",p:"टैक्सेज़"},
+  "taxation":{h:"कराधान",p:"टैक्सेशन"},
+  "evasion":{h:"कर चोरी",p:"इवेज़न"},
+  "compliance":{h:"अनुपालन (नियम मानना)",p:"कम्प्लायंस"},
+  "gst":{h:"वस्तु एवं सेवा कर (जीएसटी)",p:"जीएसटी"},
+  "customs":{h:"सीमा शुल्क",p:"कस्टम्स"},
+  "incentives":{h:"प्रोत्साहन (प्रोत्साहन राशि)",p:"इंसेंटिव्स"},
+  "incentive":{h:"प्रोत्साहन",p:"इंसेंटिव"},
+  "inflation":{h:"मुद्रास्फीति (कीमतें बढ़ना)",p:"इन्फ़्लेशन"},
+  "deficit":{h:"घाटा",p:"डेफ़िसिट"},
+  "invest":{h:"निवेश करना",p:"इन्वेस्ट"},
+  "investment":{h:"निवेश",p:"इन्वेस्टमेंट"},
+  "fdi":{h:"प्रत्यक्ष विदेशी निवेश (FDI)",p:"एफ़डीआई"},
+  "fii":{h:"विदेशी संस्थागत निवेशक (FII)",p:"एफ़आईआई"},
+  "manufacturing":{h:"विनिर्माण",p:"मैन्युफ़ैक्चरिंग"},
+  "agriculture":{h:"कृषि",p:"ऐग्रिकल्चर"},
+  "agricultural":{h:"कृषि संबंधी",p:"ऐग्रिकल्चरल"},
+  "industry":{h:"उद्योग",p:"इंडस्ट्री"},
+  "industrial":{h:"औद्योगिक",p:"इंडस्ट्रियल"},
+  "service":{h:"सेवा",p:"सर्विस"},
+  "services":{h:"सेवाएँ",p:"सर्विसेज़"},
+  "sector":{h:"क्षेत्र",p:"सेक्टर"},
+  "sectors":{h:"क्षेत्र",p:"सेक्टर्स"},
+  "employment":{h:"रोज़गार",p:"एम्प्लॉयमेंट"},
+  "unemployment":{h:"बेरोज़गारी",p:"अनएम्प्लॉयमेंट"},
+  "livelihood":{h:"आजीविका",p:"लाइवलीहुड"},
+  "welfare":{h:"कल्याण",p:"वेलफ़ेयर"},
+  "disparities":{h:"असमानताएँ",p:"डिस्पैरिटीज़"},
+  "inequality":{h:"असमानता",p:"इनइक्वैलिटी"},
+  "inequalities":{h:"असमानताएँ",p:"इनइक्वैलिटीज़"},
+  "poverty":{h:"गरीबी",p:"पॉवर्टी"},
+  "population":{h:"जनसंख्या",p:"पॉपुलेशन"},
+  "growth":{h:"वृद्धि",p:"ग्रोथ"},
+  "economy":{h:"अर्थव्यवस्था",p:"इकोनॉमी"},
+  "economic":{h:"आर्थिक",p:"इकोनॉमिक"},
+  "economics":{h:"अर्थशास्त्र",p:"इकोनॉमिक्स"},
+  "gdp":{h:"सकल घरेलू उत्पाद (GDP)",p:"जीडीपी"},
+  "gva":{h:"सकल मूल्य वर्धन (GVA)",p:"जीवीए"},
+  "reserve":{h:"भंडार",p:"रिज़र्व"},
+  "bank":{h:"बैंक",p:"बैंक"},
+  "banks":{h:"बैंक",p:"बैंक्स"},
+  "banking":{h:"बैंकिंग",p:"बैंकिंग"},
+  "rbi":{h:"भारतीय रिज़र्व बैंक (RBI)",p:"आरबीआई"},
+  "imf":{h:"अंतर्राष्ट्रीय मुद्रा कोष (IMF)",p:"आईएमएफ़"},
+  "wto":{h:"विश्व व्यापार संगठन (WTO)",p:"डब्ल्यूटीओ"},
+  "gatt":{h:"सामान्य व्यापार एवं शुल्क समझौता (GATT)",p:"गैट"},
+  "world":{h:"विश्व",p:"वर्ल्ड"},
+  "trade":{h:"व्यापार",p:"ट्रेड"},
+  "trading":{h:"व्यापार करना",p:"ट्रेडिंग"},
+  "exports":{h:"निर्यात",p:"एक्सपोर्ट्स"},
+  "export":{h:"निर्यात",p:"एक्सपोर्ट"},
+  "imports":{h:"आयात",p:"इम्पोर्ट्स"},
+  "import":{h:"आयात",p:"इम्पोर्ट"},
+  "petroleum":{h:"पेट्रोलियम (कच्चा तेल)",p:"पेट्रोलियम"},
+  "foreign":{h:"विदेशी",p:"फ़ॉरेन"},
+  "abroad":{h:"विदेश में",p:"अब्रॉड"},
+  "dollar":{h:"डॉलर",p:"डॉलर"},
+  "dollars":{h:"डॉलर",p:"डॉलर्स"},
+  "rupee":{h:"रुपया",p:"रुपी"},
+  "price":{h:"कीमत",p:"प्राइस"},
+  "prices":{h:"कीमतें",p:"प्राइसेज़"},
+  "farmers":{h:"किसान",p:"फ़ार्मर्स"},
+  "farmer":{h:"किसान",p:"फ़ार्मर"},
+  "farmer":{h:"किसान",p:"फ़ार्मर"},
+  "worker":{h:"मज़दूर",p:"वर्कर"},
+  "workers":{h:"मज़दूर",p:"वर्कर्स"},
+  "weaver":{h:"बुनकर",p:"वीवर"},
+  "weavers":{h:"बुनकर",p:"वीवर्स"},
+  "company":{h:"कंपनी",p:"कंपनी"},
+  "companies":{h:"कंपनियाँ",p:"कंपनीज़"},
+  "firm":{h:"फर्म (उत्पादक)",p:"फ़र्म"},
+  "firms":{h:"फर्में",p:"फ़र्म्स"},
+  "market":{h:"बाज़ार",p:"मार्केट"},
+  "markets":{h:"बाज़ार",p:"मार्केट्स"},
+  "government":{h:"सरकार",p:"गवर्नमेंट"},
+  "public":{h:"सार्वजनिक (सरकारी)",p:"पब्लिक"},
+  "private":{h:"निजी",p:"प्राइवेट"},
+  "profit":{h:"लाभ",p:"प्रॉफ़िट"},
+  "profits":{h:"लाभ",p:"प्रॉफ़िट्स"},
+  "loss":{h:"हानि (नुकसान)",p:"लॉस"},
+  "losses":{h:"हानियाँ",p:"लॉसेज़"},
+  "modernisation":{h:"आधुनिकीकरण",p:"मॉडर्नाइज़ेशन"},
+  "professionalism":{h:"व्यावसायिकता",p:"प्रोफ़ेशनलिज़्म"},
+  "technology":{h:"तकनीक",p:"टेक्नोलॉजी"},
+  "infrastructure":{h:"आधारभूत संरचना",p:"इन्फ़्रास्ट्रक्चर"},
+  "irrigation":{h:"सिंचाई",p:"इरिगेशन"},
+  "fertiliser":{h:"उर्वरक (खाद)",p:"फ़र्टिलाइज़र"},
+  "research":{h:"अनुसंधान",p:"रिसर्च"},
+  "extension":{h:"प्रसार (सलाह सेवा)",p:"एक्सटेंशन"},
+  "crop":{h:"फ़सल",p:"क्रॉप"},
+  "crops":{h:"फ़सलें",p:"क्रॉप्स"},
+  "food":{h:"खाद्य (खाना)",p:"फ़ूड"},
+  "grain":{h:"अनाज",p:"ग्रेन"},
+  "grains":{h:"अनाज",p:"ग्रेन्स"},
+  "textile":{h:"वस्त्र उद्योग",p:"टेक्सटाइल"},
+  "textiles":{h:"वस्त्र",p:"टेक्सटाइल्स"},
+  "clothing":{h:"कपड़े",p:"क्लोदिंग"},
+  "garment":{h:"तैयार कपड़ा",p:"गारमेंट"},
+  "power":{h:"बिजली",p:"पावर"},
+  "electricity":{h:"बिजली",p:"इलेक्ट्रिसिटी"},
+  "wages":{h:"मज़दूरी",p:"वेजेज़"},
+  "wage":{h:"मज़दूरी",p:"वेज"},
+  "capital":{h:"पूँजी",p:"कैपिटल"},
+  "labour":{h:"श्रम",p:"लेबर"},
+  "labor":{h:"श्रम",p:"लेबर"},
+  "management":{h:"प्रबंधन",p:"मैनेजमेंट"},
+  "managerial":{h:"प्रबंधकीय",p:"मैनेजेरियल"},
+  "ownership":{h:"स्वामित्व (मालिकी)",p:"ओनरशिप"},
+  "share":{h:"हिस्सा",p:"शेयर"},
+  "stake":{h:"हिस्सेदारी",p:"स्टेक"},
+  "assets":{h:"संपत्तियाँ",p:"ऐसेट्स"},
+  "infrastructure":{h:"आधारभूत संरचना",p:"इन्फ़्रास्ट्रक्चर"},
+  "outsourced":{h:"आउटसोर्स किया गया",p:"आउटसोर्स्ड"},
+  "call":{h:"कॉल (फ़ोन)",p:"कॉल"},
+  "centre":{h:"केंद्र",p:"सेंटर"},
+  "centres":{h:"केंद्र",p:"सेंटर्स"},
+  "processes":{h:"प्रक्रियाएँ",p:"प्रोसेसेज़"},
+  "information":{h:"सूचना",p:"इन्फ़ॉर्मेशन"},
+  "communication":{h:"संचार",p:"कम्युनिकेशन"},
+  "internet":{h:"इंटरनेट",p:"इंटरनेट"},
+  "software":{h:"सॉफ़्टवेयर",p:"सॉफ़्टवेयर"},
+  "manufacturers":{h:"निर्माता",p:"मैन्युफ़ैक्चरर्स"},
+  "producers":{h:"उत्पादक",p:"प्रोड्यूसर्स"},
+  "consumers":{h:"उपभोक्ता",p:"कंज़्यूमर्स"},
+  "citizens":{h:"नागरिक",p:"सिटिज़न्स"},
+  "nation":{h:"राष्ट्र",p:"नेशन"},
+  "country":{h:"देश",p:"कंट्री"},
+  "countries":{h:"देश",p:"कंट्रीज़"},
+  "world":{h:"विश्व",p:"वर्ल्ड"},
+  "developing":{h:"विकासशील",p:"डेवलपिंग"},
+  "developed":{h:"विकसित",p:"डेवलप्ड"},
+  "opportunity":{h:"अवसर (मौक़ा)",p:"ऑपरच्युनिटी"},
+  "opportunities":{h:"अवसर",p:"ऑपरच्युनिटीज़"},
+  "threat":{h:"ख़तरा",p:"थ्रेट"},
+  "identity":{h:"पहचान",p:"आइडेंटिटी"},
+  "social":{h:"सामाजिक",p:"सोशल"},
+  "justice":{h:"न्याय",p:"जस्टिस"},
+  "society":{h:"समाज",p:"सोसाइटी"},
+  "savings":{h:"बचत",p:"सेविंग्स"},
+  "saving":{h:"बचत",p:"सेविंग"},
+  "consumption":{h:"उपभोग",p:"कंज़म्पशन"},
+  "spending":{h:"खर्च",p:"स्पेंडिंग"},
+  "expenditure":{h:"व्यय (खर्च)",p:"एक्सपेंडिचर"},
+  "income":{h:"आय",p:"इनकम"},
+  "disclosure":{h:"खुलासा (बताना)",p:"डिस्क्लोज़र"},
+  "voluntary":{h:"स्वैच्छिक",p:"वॉलंटरी"},
+  "moderate":{h:"मध्यम (संतुलित)",p:"मॉडरेट"},
+  "reduced":{h:"घटाया गया",p:"रिड्यूस्ड"},
+  "increase":{h:"वृद्धि (बढ़ोतरी)",p:"इंक्रीज़"},
+  "decrease":{h:"कमी",p:"डिक्रीज़"},
+  "decline":{h:"गिरावट",p:"डिक्लाइन"},
+  "declined":{h:"घटा",p:"डिक्लाइंड"},
+  "fluctuation":{h:"उतार-चढ़ाव",p:"फ़्लक्चुएशन"},
+  "uneven":{h:"असमान",p:"अनईवन"},
+  "winners":{h:"विजेता",p:"विनर्स"},
+  "worries":{h:"चिंताएँ",p:"वरीज़"},
+  "verdict":{h:"फ़ैसला (निर्णय)",p:"वर्डिक्ट"},
+  "appraisal":{h:"मूल्यांकन",p:"अप्रेज़ल"},
+  "recap":{h:"सारांश (दोहराव)",p:"रीकैप"},
+  "conclusion":{h:"निष्कर्ष",p:"कन्क्लूज़न"},
+  "three":{h:"तीन",p:"थ्री"},
+  "pillars":{h:"स्तंभ",p:"पिलर्स"},
+  "pillar":{h:"स्तंभ",p:"पिलर"},
+  "stability":{h:"स्थिरता",p:"स्टेबिलिटी"},
+  "self-reliance":{h:"आत्मनिर्भरता",p:"सेल्फ़-रिलायंस"},
+  "mixed":{h:"मिश्रित",p:"मिक्स्ड"},
+  "capitalist":{h:"पूँजीवादी",p:"कैपिटलिस्ट"},
+  "socialist":{h:"समाजवादी",p:"सोशलिस्ट"},
+  "stagnation":{h:"ठहराव (रुकावट)",p:"स्टैग्नेशन"},
+  "diversified":{h:"विविध (अनेक प्रकार का)",p:"डाइवर्सिफ़ाइड"},
+  "security":{h:"सुरक्षा",p:"सिक्योरिटी"},
+  "defence":{h:"रक्षा",p:"डिफ़ेंस"},
+  "challenges":{h:"चुनौतियाँ",p:"चैलेंजेज़"},
+  "profligate":{h:"फ़िज़ूलख़र्च",p:"प्रॉफ़्लिगेट"},
+  "unsustainable":{h:"असंधारणीय (जारी न रह सकने वाला)",p:"अनसस्टेनेबल"},
+  "immediate":{h:"तत्काल",p:"इमीडिएट"},
+  "measure":{h:"क़दम (उपाय)",p:"मेज़र"},
+  "measures":{h:"क़दम (उपाय)",p:"मेज़र्स"},
+  "step":{h:"क़दम",p:"स्टेप"},
+  "steps":{h:"क़दम",p:"स्टेप्स"},
+  "nationalised":{h:"राष्ट्रीयकृत",p:"नेशनलाइज़्ड"},
+  "mutual":{h:"म्यूचुअल (पारस्परिक)",p:"म्यूचुअल"},
+  "fund":{h:"कोष (फ़ंड)",p:"फ़ंड"},
+  "funds":{h:"कोष",p:"फ़ंड्स"},
+  "pension":{h:"पेंशन",p:"पेंशन"},
+  "merchant":{h:"व्यापारी",p:"मर्चेंट"},
+  "stock":{h:"शेयर बाज़ार (स्टॉक)",p:"स्टॉक"},
+  "branch":{h:"शाखा",p:"ब्रांच"},
+  "branches":{h:"शाखाएँ",p:"ब्रांचेज़"},
+  "holders":{h:"धारक (रखने वाले)",p:"होल्डर्स"},
+  "account":{h:"खाता",p:"अकाउंट"},
+  "shareholders":{h:"शेयरधारक",p:"शेयरहोल्डर्स"},
+  "stakeholders":{h:"हितधारक",p:"स्टेकहोल्डर्स"},
+  "jewels":{h:"रत्न",p:"ज्वेल्स"},
+  "court":{h:"दरबार",p:"कोर्ट"},
+  "king":{h:"राजा",p:"किंग"},
+  "railway":{h:"रेलवे",p:"रेलवे"},
+  "atomic":{h:"परमाणु",p:"ऐटॉमिक"},
+  "energy":{h:"ऊर्जा",p:"एनर्जी"},
+  "aerospace":{h:"वायु-अंतरिक्ष",p:"एयरोस्पेस"},
+  "hazardous":{h:"ख़तरनाक",p:"हैज़र्डस"},
+  "chemicals":{h:"रसायन",p:"केमिकल्स"},
+  "explosives":{h:"विस्फोटक",p:"एक्सप्लोसिव्स"},
+  "electronics":{h:"इलेक्ट्रॉनिक्स",p:"इलेक्ट्रॉनिक्स"},
+  "pharmaceuticals":{h:"औषधियाँ",p:"फ़ार्मास्यूटिकल्स"},
+  "cigarettes":{h:"सिगरेट",p:"सिगरेट्स"},
+  "alcohol":{h:"शराब",p:"ऐल्कोहॉल"},
+  "environmentally":{h:"पर्यावरणीय रूप से",p:"एनवायरनमेंटली"},
+  "sensitive":{h:"संवेदनशील",p:"सेंसिटिव"},
+  "duties":{h:"शुल्क (कर)",p:"ड्यूटीज़"},
+  "duty":{h:"शुल्क",p:"ड्यूटी"},
+  "dismantling":{h:"हटाना (भंग करना)",p:"डिसमैंटलिंग"},
+  "manufactured":{h:"निर्मित (बना हुआ)",p:"मैन्युफ़ैक्चर्ड"},
+  "destination":{h:"गंतव्य (मंज़िल)",p:"डेस्टिनेशन"},
+  "skilled":{h:"कुशल",p:"स्किल्ड"},
+  "manpower":{h:"जनशक्ति",p:"मैनपावर"},
+  "available":{h:"उपलब्ध",p:"अवेलेबल"},
+  "transmitted":{h:"प्रेषित (भेजा गया)",p:"ट्रांसमिटेड"},
+  "continents":{h:"महाद्वीप",p:"कॉन्टिनेंट्स"},
+  "boundaries":{h:"सीमाएँ",p:"बाउंड्रीज़"},
+  "record":{h:"अभिलेख (रिकॉर्ड)",p:"रिकॉर्ड"},
+  "keeping":{h:"रखना",p:"कीपिंग"},
+  "accountancy":{h:"लेखाशासन",p:"अकाउंटेंसी"},
+  "transcription":{h:"प्रतिलेखन (लिखकर उतारना)",p:"ट्रांसक्रिप्शन"},
+  "clinical":{h:"चिकित्सकीय",p:"क्लिनिकल"},
+  "editor":{h:"संपादक",p:"एडिटर"},
+  "editing":{h:"संपादन",p:"एडिटिंग"},
+  "regime":{h:"व्यवस्था (शासन)",p:"रेजीम"},
+  "rule-based":{h:"नियम-आधारित",p:"रूल-बेस्ड"},
+  "arbitrary":{h:"मनमाना",p:"आर्बिट्रेरी"},
+  "multilateral":{h:"बहुपक्षीय",p:"मल्टीलैटरल"},
+  "optimum":{h:"इष्टतम (सर्वोत्तम)",p:"ऑप्टिमम"},
+  "utilisation":{h:"उपयोग",p:"यूटिलाइज़ेशन"},
+  "utilisation":{h:"उपयोग",p:"यूटिलाइज़ेशन"},
+  "environment":{h:"पर्यावरण",p:"एनवायरनमेंट"},
+  "agreements":{h:"समझौते",p:"अग्रीमेंट्स"},
+  "agreement":{h:"समझौता",p:"अग्रीमेंट"},
+  "member":{h:"सदस्य",p:"मेंबर"},
+  "members":{h:"सदस्य",p:"मेंबर्स"},
+  "forefront":{h:"अग्रिम पंक्ति में",p:"फ़ोरफ़्रंट"},
+  "safeguards":{h:"सुरक्षा उपाय",p:"सेफ़गार्ड्स"},
+  "advocating":{h:"पैरवी करना (समर्थन)",p:"ऐडवोकेटिंग"},
+  "commitments":{h:"प्रतिबद्धताएँ",p:"कमिटमेंट्स"},
+  "access":{h:"पहुँच",p:"एक्सेस"},
+  "complaints":{h:"शिकायतें",p:"कम्प्लेंट्स"},
+  "cheated":{h:"ठगा हुआ (धोखा)",p:"चीटेड"},
+  "favour":{h:"पक्ष (समर्थन)",p:"फ़ेवर"},
+  "foreign":{h:"विदेशी",p:"फ़ॉरेन"},
+  "expansion":{h:"विस्तार",p:"एक्सपैंशन"},
+  "expanded":{h:"विस्तारित (फैला)",p:"एक्सपैंडेड"},
+  "subsidiary":{h:"सहायक कंपनी",p:"सब्सिडियरी"},
+  "exploration":{h:"खोज (अन्वेषण)",p:"एक्सप्लोरेशन"},
+  "operations":{h:"परिचालन (कार्य)",p:"ऑपरेशन्स"},
+  "plants":{h:"कारखाने",p:"प्लांट्स"},
+  "laboratories":{h:"प्रयोगशालाएँ",p:"लैबोरेटरीज़"},
+  "steel":{h:"इस्पात (स्टील)",p:"स्टील"},
+  "engaged":{h:"लगा हुआ (संलग्न)",p:"एंगेज्ड"},
+  "products":{h:"उत्पाद",p:"प्रोडक्ट्स"},
+  "product":{h:"उत्पाद",p:"प्रोडक्ट"},
+  "wings":{h:"पंख (विस्तार)",p:"विंग्स"},
+  "footprint":{h:"पदचिह्न (उपस्थिति)",p:"फ़ुटप्रिंट"},
+  "destinations":{h:"गंतव्य",p:"डेस्टिनेशन्स"},
+  "sustainable":{h:"टिकाऊ (संधारणीय)",p:"सस्टेनेबल"},
+  "skills":{h:"कौशल",p:"स्किल्स"},
+  "regular":{h:"नियमित",p:"रेगुलर"},
+  "digital":{h:"डिजिटल",p:"डिजिटल"},
+  "reduced":{h:"घटाया",p:"रिड्यूस्ड"},
+  "welfare":{h:"कल्याण",p:"वेलफ़ेयर"},
+  "welfare":{h:"कल्याण",p:"वेलफ़ेयर"},
+  "vulnerable":{h:"असुरक्षित (कमज़ोर)",p:"वल्नरेबल"},
+  "compelled":{h:"मजबूर",p:"कम्पेल्ड"},
+  "adversely":{h:"प्रतिकूल रूप से (नुकसानदेह)",p:"ऐडवर्सली"},
+  "replaced":{h:"बदल दिया (प्रतिस्थापित)",p:"रिप्लेस्ड"},
+  "vital":{h:"महत्वपूर्ण (ज़रूरी)",p:"वाइटल"},
+  "aggravated":{h:"और बिगाड़ा",p:"ऐग्रवेटेड"},
+  "concentrated":{h:"केंद्रित (सीमित)",p:"कॉन्संट्रेटेड"},
+  "rooted":{h:"जड़ें जमाए",p:"रूटेड"},
+  "erupted":{h:"भड़का (फूटा)",p:"इरप्टेड"},
+  "addressed":{h:"सुलझाया (ध्यान दिया)",p:"ऐड्रेस्ड"},
+  "decelerating":{h:"धीमा पड़ता",p:"डीसिलरेटिंग"},
+  "setback":{h:"झटका (नुकसान)",p:"सेटबैक"},
+  "underway":{h:"जारी (चल रहा)",p:"अंडरवे"},
+  "recovery":{h:"सुधार (वापसी)",p:"रिकवरी"},
+  "steady":{h:"स्थिर",p:"स्टेडी"},
+  "sustained":{h:"लगातार (टिका हुआ)",p:"सस्टेन्ड"},
+  "holder":{h:"धारक",p:"होल्डर"},
+  "exporter":{h:"निर्यातक",p:"एक्सपोर्टर"},
+  "contributor":{h:"योगदानकर्ता",p:"कंट्रिब्यूटर"},
+  "reserves":{h:"भंडार",p:"रिज़र्व्स"},
+  "inflow":{h:"आवक (अंदर आना)",p:"इनफ़्लो"},
+  "prices":{h:"कीमतें",p:"प्राइसेज़"},
+  "under":{h:"अधीन (नीचे)",p:"अंडर"},
+  "control":{h:"नियंत्रण",p:"कंट्रोल"},
+  "demand":{h:"माँग",p:"डिमांड"},
+  "supply":{h:"आपूर्ति",p:"सप्लाई"},
+  "value":{h:"मूल्य",p:"वैल्यू"},
+  "merit":{h:"गुण (लाभ)",p:"मेरिट"},
+  "demerit":{h:"दोष (हानि)",p:"डेमेरिट"},
+  "excellence":{h:"उत्कृष्टता",p:"एक्सलेंस"},
+  "efficiency":{h:"दक्षता",p:"एफ़िशिएंसी"},
+  "quality":{h:"गुणवत्ता",p:"क्वालिटी"},
+  "masses":{h:"आम जनता",p:"मासेज़"},
+  "nominal":{h:"नाममात्र (बहुत कम)",p:"नॉमिनल"},
+  "accountable":{h:"जवाबदेह",p:"अकाउंटेबल"},
+  "allege":{h:"आरोप लगाना",p:"अलेज"},
+  "scholars":{h:"विद्वान",p:"स्कॉलर्स"},
+  "critics":{h:"आलोचक",p:"क्रिटिक्स"},
+  "consensus":{h:"आम सहमति",p:"कन्सेंसस"},
+  "progress":{h:"प्रगति",p:"प्रोग्रेस"},
+  "measure":{h:"माप (उपाय)",p:"मेज़र"},
+  "society":{h:"समाज",p:"सोसाइटी"},
+  "welcome":{h:"स्वागत",p:"वेलकम"},
+  "journey":{h:"यात्रा",p:"जर्नी"},
+  "story":{h:"कहानी",p:"स्टोरी"},
+  "begins":{h:"शुरू होती है",p:"बिगिन्स"},
+  "fortnight":{h:"पखवाड़ा (दो सप्ताह)",p:"फ़ोर्टनाइट"},
+  "medicine":{h:"दवा (इलाज)",p:"मेडिसिन"},
+  "pill":{h:"गोली",p:"पिल"},
+  "shake":{h:"हिलाना",p:"शेक"},
+  "shook":{h:"हिला दिया",p:"शुक"},
+  "doctor":{h:"डॉक्टर",p:"डॉक्टर"},
+  "check":{h:"जाँच",p:"चेक"},
+  "quick":{h:"झटपट (तेज़)",p:"क्विक"},
+  "champion":{h:"चैंपियन",p:"चैंपियन"},
+  "coach":{h:"कोच (प्रशिक्षक)",p:"कोच"},
+  "picture":{h:"तस्वीर",p:"पिक्चर"},
+  "unlock":{h:"खोलना",p:"अनलॉक"},
+  "locked":{h:"बंद (ताला)",p:"लॉक्ड"},
+  "concept":{h:"अवधारणा (विषय)",p:"कॉन्सेप्ट"},
+  "concepts":{h:"अवधारणाएँ",p:"कॉन्सेप्ट्स"},
+  "revision":{h:"दोहराव",p:"रिवीज़न"},
+  "mastery":{h:"महारत (पूर्ण दक्षता)",p:"मास्टरी"},
+  "assessment":{h:"मूल्यांकन",p:"असेसमेंट"},
+  "question":{h:"सवाल",p:"क्वेश्चन"},
+  "answer":{h:"जवाब",p:"आन्सर"},
+  "correct":{h:"सही",p:"करेक्ट"},
+  "wrong":{h:"ग़लत",p:"रॉन्ग"},
+  "score":{h:"अंक (स्कोर)",p:"स्कोर"},
+  "match":{h:"मिलान",p:"मैच"},
+  "term":{h:"शब्द",p:"टर्म"},
+  "meaning":{h:"अर्थ (मतलब)",p:"मीनिंग"}
+};
+const CONN = {
+  "because":"क्योंकि","therefore":"इसलिए","however":"लेकिन","but":"पर","so":"इसलिए","then":"तब",
+  "remember":"याद रखो","since":"चूँकि","thus":"इस प्रकार","hence":"अतः","while":"जबकि","yet":"फिर भी",
+  "if":"अगर","when":"जब","first":"पहले","next":"फिर","finally":"आख़िर में","also":"साथ ही"
+};
+function normalizeWord(w){ return w.toLowerCase().replace(/[’']s$/,"").replace(/[^a-z\- ]/g,""); }
+function lookupWord(raw){
+  const n = normalizeWord(raw);
+  if(WM[n]) return {known:true, ...WM[n]};
+  const n2 = normalizeWord(n.replace(/-/g," "));
+  if(WM[n2]) return {known:true, ...WM[n2]};
+  return {known:false, h:"(no Hindi entry — proper name or number)", p:""};
+}
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+/* Wrap English words as tapable; shield {{...}} and existing tags; CONN inline (max 4/sentence) */
+function rtText(text){
+  const shielded = [];
+  text = text.replace(/\{\{([\s\S]*?)\}\}/g, (m,g)=>{ shielded.push(g); return "\u0001"+(shielded.length-1)+"\u0001"; });
+  const parts = text.split(/(<[^>]+>|\u0001\d+\u0001)/g);
+  let connCount = 0;
+  const out = parts.map(seg=>{
+    if(/^<[^>]+>$/.test(seg)) return seg;
+    const sm = seg.match(/^\u0001(\d+)\u0001$/);
+    if(sm) return esc(shielded[+sm[1]]);
+    // reset connector budget at sentence boundaries
+    return seg.replace(/([A-Za-z][A-Za-z'\-]*)|([.!?]+\s*)/g, (m,word,punc)=>{
+      if(punc){ connCount = 0; return punc; }
+      if(!word) return m;
+      if(/^\d/.test(word)) return word;
+      const low = word.toLowerCase();
+      if(CONN[low] && connCount < 4){
+        connCount++;
+        return '<span class="conn" title="connector">'+word+' ('+CONN[low]+')</span>';
+      }
+      const key = normalizeWord(word);
+      return '<span class="tapable" data-w="'+key+'" tabindex="0" role="button">'+word+'</span>';
+    });
+  }).join("");
+  return out;
+}
+/* Apply language layer to an element tree by data-lang attribute */
+/* ---- sentence translation map (simple Hindi, pre-authored) ---- */
+const PH = {
+/* ---- home ---- */
+"Namaste! I'm Acharya. In 1991 India nearly went broke — it could not pay for two weeks of petrol. We will walk through that crisis, the big reforms it forced, and what they did to farms, factories and jobs. Short slides, clear pictures. Ready? Let's go!":"नमस्ते! मैं आचार्य हूँ। 1991 में भारत लगभग दिवालिया हो गया था — दो हफ़्ते का पेट्रोल तक नहीं खरीद सकता था। हम उस संकट से गुज़रेंगे, उससे लाए गए बड़े सुधारों को देखेंगे, और समझेंगे कि उन्होंने खेतों, कारखानों और नौकरियों पर क्या असर डाला। छोटी स्लाइड, साफ़ तस्वीरें। तैयार? चलो शुरू करें!",
+"Ten concepts, one slide-journey. Finish each check to unlock the next concept.":"दस विषय, एक स्लाइड-यात्रा। अगला विषय खोलने के लिए हर चेक पूरा करो।",
+"Here's where it becomes real — read this slowly.":"अब यह असली ज़िंदगी से जुड़ता है — इसे धीरे पढ़ो।",
+
+/* ---- intro ---- */
+"Why should this chapter matter to you?":"यह अध्याय तुम्हारे लिए क्यों ज़रूरी है?",
+"In 1991, India nearly went broke. Not for years — for two weeks. It could not even pay for the petrol it needed.":"1991 में भारत लगभग दिवालिया हो गया था। सालों के लिए नहीं — दो हफ़्तों के लिए। अपनी ज़रूरत का पेट्रोल तक नहीं खरीद सकता था।",
+"What India did next changed your family's monthly budget, the price at the petrol pump, the jobs open to you, and the phone in your hand. So this is not old history. It is your present — and your future.":"इसके बाद भारत ने जो किया, उसने तुम्हारे घर का महीने का बजट, पेट्रोल पंप का दाम, तुम्हारे लिए खुलने वाली नौकरियाँ और तुम्हारे हाथ का फ़ोन — सब बदल दिया। इसलिए यह पुरानी कहानी नहीं है। यह तुम्हारा वर्तमान है — और तुम्हारा भविष्य।",
+
+/* ---- 1 crisis ---- */
+"1991: the year India almost ran out of money":"1991: वह साल जब भारत के पास पैसा लगभग ख़त्म हो गया",
+"Every time India buys petrol or machines from abroad, it pays in dollars. And those dollars come from what we sell abroad.":"जब भी भारत बाहर से पेट्रोल या मशीनें खरीदता है, वह डॉलर में पैसे देता है। और वे डॉलर इससे आते हैं जो हम बाहर बेचते हैं।",
+"In 1991, our dollar savings had shrunk so far that they could pay for barely two weeks of imports. Two weeks — and then nothing. That is where our story begins.":"1991 में हमारी डॉलर बचत इतनी घट गई थी कि वह मुश्किल से दो हफ़्ते का आयात कर सकती थी। दो हफ़्ते — और फिर कुछ नहीं। यहीं से हमारी कहानी शुरू होती है।",
+"It did not happen in a day. It leaked.":"यह एक दिन में नहीं हुआ। यह चुपचाप रिसता गया।",
+"Through the 1980s the government spent more than it earned, year after year. To fill the gap, it borrowed — from banks, from people like us, and from foreign lenders.":"1980 के दशक में सरकार हर साल अपनी कमाई से ज़्यादा खर्च करती रही। यह अंतर भरने के लिए उसने उधार लिया — बैंकों से, हम जैसे लोगों से, और विदेशी ऋणदाताओं से।",
+"Meanwhile, imports kept climbing and exports did not keep up. Money flowed out faster than it flowed in. A small leak, ignored long enough, becomes a flood.":"इस बीच आयात बढ़ते रहे और निर्यात साथ नहीं चले। पैसा आने से तेज़ी से बहता गया। छोटी-सी रिसन, ज़्यादा देर नज़रअंदाज़ की जाए तो बाढ़ बन जाती है।",
+"The fortnight that shook India":"वह पखवाड़ा जिसने भारत को हिला दिया",
+"By 1991 India could not repay what it had borrowed abroad. Reserves could not cover even a fortnight of imports, and the prices of everyday goods were climbing fast.":"1991 तक भारत विदेश से लिया उधार चुका नहीं सकता था। भंडार दो हफ़्ते का आयात भी नहीं कर सकता था, और रोज़मर्रा की चीज़ों की कीमतें तेज़ी से चढ़ रही थीं।",
+"And no one — no country, no bank — would lend us a rupee more. When a family reaches this point, it sells its jewellery. When a country reaches it, it must change its rules. That is exactly what India did next.":"और कोई नहीं — कोई देश नहीं, कोई बैंक नहीं — हमें एक रुपया और उधार देने को तैयार था। जब परिवार इस हाल में पहुँचता है, तो गहने बेचता है। जब देश पहुँचता है, तो उसे अपने नियम बदलने पड़ते हैं। भारत ने ठीक यही किया।",
+"Watch the reserves run out":"भंडार ख़त्म होते देखो",
+"Slide it and feel the pressure: how few weeks of cover does it take before a country is in real trouble?":"स्लाइडर सरकाओ और दबाव महसूस करो: कितने ही कम हफ़्तों का भंडार होने पर देश सचमुच मुसीबत में आ जाता है?",
+
+/* ---- 2 nep ---- */
+"The lifeline came with conditions":"जीवनदान शर्तों के साथ आया",
+"India knocked on two doors: the World Bank and the IMF. They agreed to lend seven billion dollars — a genuine lifeline.":"भारत ने दो दरवाज़े खटखटाए: विश्व बैंक और IMF। उन्होंने सात अरब डॉलर उधार देने पर हामी भरी — सचमुच एक जीवनदान।",
+"But money like this never comes free. The condition: open up the economy. Let private firms in. Loosen the government's grip. Cut the trade barriers. Take the loan — but change how you run the country.":"पर इतना पैसा कभी मुफ़्त नहीं आता। शर्त यह थी: अर्थव्यवस्था खोलो। निजी फर्मों को आने दो। सरकार की पकड़ ढीली करो। व्यापार की बाधाएँ घटाओ। क़र्ज़ लो — पर देश चलाने का तरीक़ा बदलो।",
+"The New Economic Policy, 1991":"नई आर्थिक नीति, 1991",
+"India accepted the terms and announced a New Economic Policy. One word captures its whole aim: competition.":"भारत ने शर्तें मान लीं और नई आर्थिक नीति की घोषणा की। इसका पूरा मक़सद एक शब्द में है: प्रतिस्पर्धा।",
+"Knock down the walls that kept firms out. Let businesses enter, grow, and fight for the customer. A country that competes grows strong. A country that hides grows weak.":"वे दीवारें गिराओ जो फर्मों को बाहर रखती थीं। कारोबारों को आने दो, बढ़ने दो, और ग्राहक के लिए लड़ने दो। जो देश प्रतिस्पर्धा करता है वह मज़बूत बनता है। जो छिपता है वह कमज़ोर पड़ता है।",
+"Two problems, two medicines":"दो समस्याएँ, दो दवाएँ",
+"Picture a patient who is both bleeding and weak. A good doctor does two things. First, stop the bleeding — now. Then, over months, rebuild the patient's strength.":"सोचो एक मरीज़ जो एक साथ ख़ून बहा रहा है और कमज़ोर भी है। अच्छा डॉक्टर दो काम करता है। पहले ख़ून रोकता है — तुरंत। फिर महीनों में मरीज़ की ताक़त लौटाता है।",
+"India's treatment had two halves too. Stabilisation = stop the bleeding: fix the balance of payments and control rising prices. Structural reform = build strength: make the economy efficient and globally competitive for the long run.":"भारत के इलाज के भी दो हिस्से थे। स्थिरीकरण = ख़ून रोकना: भुगतान संतुलन ठीक करना और बढ़ती कीमतें काबू में लाना। संरचनात्मक सुधार = ताक़त बनाना: लंबे समय के लिए अर्थव्यवस्था को दक्ष और विश्व-प्रतिस्पर्धी बनाना।",
+"Short-term relief, long-term cure. Examiners love to make you mix these two up. Do not let them.":"अल्पकालिक राहत, दीर्घकालिक इलाज। परीक्षक इन दोनों को आपस में उलझाना बहुत पसंद करते हैं। उन्हें मौक़ा मत दो।",
+"Sort the measures":"उपायों को छाँटो",
+"Is each step 'stop the bleeding' or 'build strength'? Sort them and see if your instinct is right.":"हर क़दम 'ख़ून रोकना' है या 'ताक़त बनाना'? इन्हें छाँटो और देखो तुम्हारी समझ सही है या नहीं।",
+"Three pillars hold the reform":"सुधार के तीन स्तंभ",
+"The long-term cure stood on three pillars: liberalisation, privatisation and globalisation.":"दीर्घकालिक इलाज तीन स्तंभों पर खड़ा था: उदारीकरण, निजीकरण और वैश्वीकरण।",
+"Free your own rules. Let private hands run business. Join the world. Three words — and the rest of this chapter explains each one.":"अपने नियम ढीले करो। निजी हाथों को कारोबार चलाने दो। दुनिया से जुड़ो। तीन शब्द — और इस अध्याय का बाक़ी हिस्सा हर एक को समझाता है।",
+
+/* ---- 3 liberal ---- */
+"Taking off the chains":"ज़ंजीरें खोलना",
+"Before 1991, starting a business in India was like needing a passport to open a shop. You needed a licence to begin, a licence to expand, even permission to decide how much you could make. This was the licence raj.":"1991 से पहले भारत में कारोबार शुरू करना दुकान खोलने के लिए पासपोर्ट माँगने जैसा था। शुरू करने के लिए लाइसेंस, बढ़ाने के लिए लाइसेंस, और यह तय करने तक की इजाज़त कि कितना बनाओगे। यही लाइसेंस राज था।",
+"Liberalisation means removing those chains and opening the doors to private and foreign firms. Some steps came in the 1980s — but 1991 tore down far more.":"उदारीकरण का अर्थ है वे ज़ंजीरें हटाना और निजी व विदेशी फर्मों के लिए दरवाज़े खोलना। कुछ क़दम 1980 के दशक में उठाए गए — पर 1991 ने कहीं ज़्यादा गिराया।",
+"The licence raj ends":"लाइसेंस राज का अंत",
+"The reforms abolished industrial licensing for almost every product. An entrepreneur could now start, grow or close a business without begging for permission.":"सुधारों ने लगभग हर उत्पाद से औद्योगिक लाइसेंसिंग समाप्त कर दी। अब कोई उद्यमी इजाज़त के लिए गिड़गिड़ाए बिना कारोबार शुरू, बढ़ा या बंद कर सकता था।",
+"A short, stubborn list stayed licensed — learn it, it is a favourite exam question: alcohol, cigarettes, hazardous chemicals, industrial explosives, electronics, aerospace, and drugs and pharmaceuticals.":"एक छोटी, ज़िद्दी सूची लाइसेंस में बनी रही — इसे याद रखो, यह परीक्षा का पसंदीदा सवाल है: शराब, सिगरेट, ख़तरनाक रसायन, औद्योगिक विस्फोटक, इलेक्ट्रॉनिक्स, वायु-अंतरिक्ष, और औषधियाँ।",
+"And only two things stayed locked to the government: atomic energy generation, and the core activities of the railways.":"और सरकार के पास सिर्फ़ दो चीज़ें बंद रहीं: परमाणु ऊर्जा उत्पादन, और रेलवे की मुख्य गतिविधियाँ।",
+"Dereservation — and who sets the price":"आरक्षण हटना — और कीमत कौन तय करता है",
+"Many goods that only small-scale industries were allowed to make were now dereserved.":"जो वस्तुएँ पहले सिर्फ़ लघु उद्योग बना सकते थे, उनका आरक्षण अब हटा दिया गया।",
+"And prices? In most industries, the market — not a government office — would now decide. That one change quietly decides what you pay for almost everything.":"और कीमतें? अधिकतर उद्योगों में अब बाज़ार तय करता था, कोई सरकारी दफ़्तर नहीं। यही एक बदलाव चुपचाप तय करता है कि तुम हर चीज़ के लिए कितना देते हो।",
+"What still needs a licence?":"अब भी किसे लाइसेंस चाहिए?",
+"Tap each product. Guess whether it stayed under licensing after 1991 — then find out.":"हर उत्पाद पर टैप करो। अंदाज़ा लगाओ कि 1991 के बाद वह लाइसेंस में रहा या नहीं — फिर जवाब देखो।",
+
+/* ---- 4 finsec ---- */
+"The economy's heart: banks and the RBI":"अर्थव्यवस्था का दिल: बैंक और RBI",
+"Commercial banks, investment banks, stock exchanges, the foreign exchange market — together they are the financial sector. Money moves through them the way blood moves through a body.":"वाणिज्यिक बैंक, निवेश बैंक, शेयर बाज़ार, विदेशी मुद्रा बाज़ार — ये सब मिलकर वित्तीय क्षेत्र हैं। इनके ज़रिए पैसा ऐसे चलता है जैसे शरीर में ख़ून।",
+"And in India, one institution watches over all of it: the Reserve Bank of India — the RBI.":"और भारत में इन सब पर एक संस्था नज़र रखती है: भारतीय रिज़र्व बैंक — RBI।",
+"From controller to facilitator":"नियंत्रक से सुविधाकारक तक",
+"The RBI decides how much cash banks must keep, what interest rates will be, and who gets loans. Earlier, it controlled almost every decision a bank made.":"RBI तय करता है कि बैंकों को कितना नक़द रखना है, ब्याज दरें क्या होंगी, और किसे क़र्ज़ मिलेगा। पहले यह बैंक के लगभग हर फ़ैसले को नियंत्रित करता था।",
+"The reform changed its role: from controller to facilitator. Now banks take many decisions themselves, and the RBI guides and enables instead of bossing every move.":"सुधार ने इसकी भूमिका बदली: नियंत्रक से सुविधाकारक। अब बैंक कई फ़ैसले ख़ुद लेते हैं, और RBI हर क़दम पर हुक्म चलाने के बजाय मार्गदर्शन देता है और रास्ता खोलता है।",
+"Think about it: a parent who decides everything raises a child who can decide nothing. The same is true of banks.":"सोचो: जो माता-पिता हर बात तय करते हैं, वे ऐसा बच्चा पालते हैं जो कुछ तय नहीं कर सकता। बैंकों के साथ भी यही सच है।",
+"New players enter the game":"खेल में नए खिलाड़ी",
+"Private banks were allowed — Indian and foreign. Foreign investment in banks was raised to about 74 per cent.":"निजी बैंकों को इजाज़त मिली — भारतीय और विदेशी। बैंकों में विदेशी निवेश की सीमा लगभग 74 प्रतिशत तक बढ़ा दी गई।",
+"Good banks could open new branches without asking the RBI each time. And a new kind of investor arrived: FIIs — Foreign Institutional Investors, like mutual funds and pension funds.":"अच्छे बैंक हर बार RBI से पूछे बिना नई शाखाएँ खोल सकते थे। और एक नया निवेशक आया: FII — विदेशी संस्थागत निवेशक, जैसे म्यूचुअल फ़ंड और पेंशन फ़ंड।",
+"More players, more competition, better service. That was the bet.":"ज़्यादा खिलाड़ी, ज़्यादा प्रतिस्पर्धा, बेहतर सेवा। यही दाँव लगाया गया था।",
+
+/* ---- 5 taxfx ---- */
+"Why cut taxes to earn more tax?":"ज़्यादा कर कमाने के लिए कर क्यों घटाया?",
+"This sounds backward, so read it twice. If the government taxes income very heavily, people simply hide their income. The government ends up earning less, not more.":"यह उलटा लगता है, इसलिए दो बार पढ़ो। अगर सरकार आय पर बहुत भारी कर लगाती है, तो लोग अपनी आय छिपा देते हैं। नतीजा — सरकार कम कमाती है, ज़्यादा नहीं।",
+"So from 1991, income-tax rates were cut. The logic: moderate taxes encourage people to save, to work, and to honestly declare what they earn. Corporation tax was cut too.":"इसलिए 1991 से आय-कर की दरें घटाई गईं। तर्क: संतुलित कर लोगों को बचत करने, काम करने और अपनी कमाई ईमानदारी से बताने के लिए प्रोत्साहित करते हैं। निगम कर भी घटाया गया।",
+"Lower rate, wider net, more honest taxpayers. That is the whole idea in one line.":"कम दर, चौड़ा जाल, ज़्यादा ईमानदार करदाता। पूरा विचार एक पंक्ति में।",
+"GST: one nation, one tax":"GST: एक राष्ट्र, एक कर",
+"In 2016 India did something clever. It amended the Constitution so that both the Centre and the states could levy one shared tax on goods and services — the Goods and Services Tax, or GST.":"2016 में भारत ने एक समझदारी भरा क़दम उठाया। उसने संविधान में संशोधन कर केंद्र और राज्य, दोनों को वस्तुओं और सेवाओं पर एक साझा कर लगाने का अधिकार दिया — वस्तु एवं सेवा कर, यानी GST।",
+"The dream was easy to say and hard to build: one nation, one tax, one market. Fewer forms, less evasion, and no tax wall standing between one state and the next.":"सपना कहना आसान और बनाना मुश्किल था: एक राष्ट्र, एक कर, एक बाज़ार। कम फ़ॉर्म, कम चोरी, और एक राज्य से दूसरे के बीच कोई कर की दीवार नहीं।",
+"Devaluation: a weaker rupee, on purpose":"अवमूल्यन: जान-बूझकर कमज़ोर रुपया",
+"In 1991, as an emergency step, India devalued the rupee. In plain words: it deliberately made the rupee worth less against the dollar.":"1991 में, एक आपातकालीन क़दम के रूप में, भारत ने रुपये का अवमूल्यन किया। सीधे शब्दों में: उसने जान-बूझकर रुपये की कीमत डॉलर के मुक़ाबले घटा दी।",
+"Why weaken your own money? Because a cheaper rupee makes your exports cheaper for foreign buyers, and your imports costlier for you. So fewer dollars leave and more come in. It was the tourniquet on the wound.":"अपना ही पैसा कमज़ोर क्यों करें? क्योंकि सस्ता रुपया तुम्हारे निर्यात को विदेशी खरीदारों के लिए सस्ता बनाता है, और तुम्हारे आयात को तुम्हारे लिए महँगा। इसलिए कम डॉलर बाहर जाते हैं और ज़्यादा अंदर आते हैं। यह घाव पर पट्टी थी।",
+"And it set the rupee free: from then on, markets — not the government — would decide its value.":"और इसने रुपये को आज़ाद कर दिया: उसके बाद बाज़ार इसकी कीमत तय करता है, सरकार नहीं।",
+"Move the exchange rate":"विनिमय दर हिलाओ",
+"Drag the rupee's value and watch exports and imports respond. Feel why 1991 needed a weaker rupee.":"रुपये की कीमत खींचो और देखो निर्यात-आयात कैसे बदलते हैं। महसूस करो कि 1991 को कमज़ोर रुपया क्यों चाहिए था।",
+
+/* ---- 6 trade ---- */
+"Why our trade had to open":"हमारा व्यापार क्यों खोलना पड़ा",
+"To protect Indian factories, we had built high walls: limits on how much could be imported, and very high taxes on imports, called tariffs.":"भारतीय कारखानों की रक्षा के लिए हमने ऊँची दीवारें बना रखी थीं: कितना आयात हो सकता है इसकी सीमाएँ, और आयात पर बहुत ऊँचे कर, जिन्हें सीमा शुल्क कहते हैं।",
+"Walls protect — and walls also trap. Sheltered from competition, our factories grew slow, costly and inefficient. Protection had quietly turned into weakness.":"दीवारें बचाती भी हैं — और फँसाती भी। प्रतिस्पर्धा से बचे रहकर हमारे कारखाने धीमे, महँगे और अकुशल बन गए। संरक्षण चुपचाप कमज़ोरी बन गया था।",
+"Dismantle. Reduce. Remove.":"हटाओ। घटाओ। समाप्त करो।",
+"The trade reforms did exactly three things. Dismantle the quantity limits on imports and exports. Reduce tariff rates. Remove the licensing that imports once needed.":"व्यापार सुधारों ने ठीक तीन काम किए। आयात-निर्यात पर मात्रात्मक सीमाएँ हटाईं। सीमा शुल्क दरें घटाईं। आयात को जो लाइसेंस चाहिए था, वह समाप्त किया।",
+"Import licensing went — except for hazardous and environmentally sensitive goods. By April 2001, the quantity limits on consumer goods and farm products were gone too.":"आयात लाइसेंसिंग हट गई — ख़तरनाक और पर्यावरण-संवेदनशील वस्तुओं को छोड़कर। अप्रैल 2001 तक उपभोक्ता वस्तुओं और कृषि उत्पादों पर मात्रात्मक सीमाएँ भी हट गईं।",
+"And export duties were scrapped, so Indian goods could fight harder in foreign markets.":"और निर्यात शुल्क हटा दिए गए, ताकि भारतीय वस्तुएँ विदेशी बाज़ारों में ज़ोर से लड़ सकें।",
+"Set a tariff, watch trade":"सीमा शुल्क तय करो, व्यापार देखो",
+"Raise and lower the tariff wall. Notice how protection and higher prices always arrive together.":"सीमा शुल्क की दीवार ऊँची-नीची करो। देखो कि संरक्षण और ऊँची कीमतें हमेशा साथ-साथ आते हैं।",
+
+/* ---- 7 privatise ---- */
+"Handing over the keys":"चाबियाँ सौंपना",
+"Privatisation means the government lets go of the ownership or the management of an enterprise it runs.":"निजीकरण का अर्थ है कि सरकार किसी अपने चलाए उद्यम की मालिकी या प्रबंधन छोड़ देती है।",
+"There are two ways to do it: the government withdraws from owning and running it, or it sells the company outright. Simple idea — big consequences.":"इसके दो तरीक़े हैं: सरकार उसे अपने मालिकाने और चलाने से हट जाती है, या कंपनी को सीधे बेच देती है। विचार सरल — नतीजे बड़े।",
+"Disinvestment: selling a slice":"विनिवेश: एक हिस्सा बेचना",
+"When the government sells part of a public company's shares to the public, that is called disinvestment.":"जब सरकार किसी सार्वजनिक कंपनी के शेयरों का एक हिस्सा जनता को बेचती है, उसे विनिवेश कहते हैं।",
+"The government's reason: bring in financial discipline, modernise, and use private money and management skill to improve performance. The critics' reason: it was quietly selling the family silver.":"सरकार का तर्क: वित्तीय अनुशासन लाना, आधुनिकीकरण, और निजी पैसे व प्रबंधन कौशल से प्रदर्शन सुधारना। आलोचकों का तर्क: यह चुपचाप पुरखों की संपत्ति बेचना था।",
+"Hold both views at once. This chapter wants you to weigh, not just memorise.":"दोनों नज़रिए साथ रखो। यह अध्याय तुमसे तौलने की उम्मीद करता है, सिर्फ़ रटने की नहीं।",
+"Maharatna, Navratna, Miniratna":"महारत्न, नवरत्न, मिनीरत्न",
+"Instead of selling everything, the government gave some public enterprises a special status — Maharatna, Navratna, Miniratna — and, with it, real freedom to decide.":"सब कुछ बेचने के बजाय सरकार ने कुछ सार्वजनिक उद्यमों को विशेष दर्जा दिया — महारत्न, नवरत्न, मिनीरत्न — और साथ में निर्णय लेने की असली आज़ादी।",
+"Remember the examples: Maharatna — Indian Oil and SAIL. Navratna — HAL, MTNL and IRCTC. Miniratna — BSNL and the Airports Authority of India.":"उदाहरण याद रखो: महारत्न — इंडियन ऑयल और SAIL। नवरत्न — HAL, MTNL और IRCTC। मिनीरत्न — BSNL और भारतीय विमानपत्तन प्राधिकरण।",
+"The idea was simple: trust them with autonomy, and they will perform.":"विचार सरल था: उन्हें स्वायत्तता के साथ भरोसा दो, वे प्रदर्शन करेंगे।",
+"How much should the government sell?":"सरकार को कितना बेचना चाहिए?",
+"Drag the slider. Watch the moment control changes hands — that is the line between a minority sale and a strategic sale.":"स्लाइडर खींचो। वह पल देखो जब नियंत्रण हाथ बदलता है — वही रेखा अल्पमत बिक्री और रणनीतिक बिक्री के बीच है।",
+
+/* ---- 8 global ---- */
+"India joins the world":"भारत दुनिया से जुड़ता है",
+"Globalisation is India's economy linking arms with the world's — goods, money, services and people moving across borders.":"वैश्वीकरण का अर्थ है भारत की अर्थव्यवस्था का विश्व की अर्थव्यवस्था से हाथ मिलाना — वस्तुएँ, पैसा, सेवाएँ और लोग सीमाओं के आर-पार आते-जाते हैं।",
+"It is the child of liberalisation and privatisation. Once you open your own doors, you become part of one big global market — for better and for worse.":"यह उदारीकरण और निजीकरण की संतान है। जब तुम अपने दरवाज़े खोलते हो, तुम एक बड़े वैश्विक बाज़ार का हिस्सा बन जाते हो — अच्छे के लिए भी, बुरे के लिए भी।",
+"Why the world calls India":"दुनिया भारत को क्यों फ़ोन करती है",
+"Outsourcing means a company pays someone outside — often in another country — to do a job it once did in-house. Legal advice, accounts, advertising, even teaching.":"आउटसोर्सिंग का अर्थ है कि कोई कंपनी बाहर के किसी को — अक्सर दूसरे देश में — वह काम करने के पैसे देती है जो पहले वह ख़ुद करती थी। कानूनी सलाह, हिसाब-किताब, विज्ञापन, पढ़ाना तक।",
+"Why India? Two reasons. Our wages are lower, and our skilled, English-speaking workers are plenty. Add fast internet, and work crosses the world in seconds.":"भारत क्यों? दो कारण। हमारी मज़दूरी कम है, और हमारे कुशल, अंग्रेज़ी बोलने वाले कामगार बहुत हैं। ऊपर से तेज़ इंटरनेट — और काम सेकंडों में दुनिया पार कर लेता है।",
+"So the world's call centres, accounts, film editing and transcription land here. That is not luck. That is the dividend of a young, skilled, connected workforce.":"इसलिए दुनिया के कॉल सेंटर, हिसाब-किताब, फ़िल्म संपादन और प्रतिलेखन यहाँ आते हैं। यह किस्मत नहीं है। यह एक युवा, कुशल, जुड़ी हुई कार्यशक्ति का लाभांश है।",
+"Send a service abroad":"सेवा विदेश भेजो",
+"Tap a service and see, in numbers, why a firm abroad would rather pay India for it.":"किसी सेवा पर टैप करो और अंकों में देखो कि विदेश की फर्म इसे भारत को पैसे देकर क्यों कराती है।",
+"Indian companies go global":"भारतीय कंपनियाँ वैश्विक बनती हैं",
+"And the traffic flows both ways. Indian firms went out and bought a piece of the world.":"और यह आवाजाही दोनों तरफ़ चलती है। भारतीय कंपनियाँ बाहर गईं और दुनिया का एक हिस्सा ख़रीद लिया।",
+"ONGC Videsh has projects in 16 countries. Tata Steel runs in 26 countries and sells in 50. HCL has offices in 31. Dr Reddy's has plants and research centres worldwide.":"ONGC विदेश के 16 देशों में परियोजनाएँ रखती है। टाटा स्टील 26 देशों में चलती है और 50 में बेचती है। HCL के 31 देशों में दफ़्तर हैं। डॉ रेड्डीज़ के दुनिया भर में कारखाने और अनुसंधान केंद्र हैं।",
+"Notice the direction of this story: India stopped only receiving — and started reaching.":"इस कहानी की दिशा देखो: भारत ने सिर्फ़ लेना बंद किया — और पहुँचना शुरू किया।",
+
+/* ---- 9 wto ---- */
+"A referee for world trade":"विश्व व्यापार का रेफ़री",
+"In 1995 the world set up a referee for trade: the World Trade Organisation. It replaced GATT, which had begun back in 1948 with just 23 countries.":"1995 में दुनिया ने व्यापार के लिए एक रेफ़री बनाया: विश्व व्यापार संगठन। यह GATT की जगह आया, जो 1948 में सिर्फ़ 23 देशों के साथ शुरू हुआ था।",
+"Its job: write fair rules, give every country an equal chance, and stop big nations from blocking small ones unfairly.":"इसका काम: निष्पक्ष नियम बनाना, हर देश को बराबर मौक़ा देना, और बड़े देशों को छोटों को अन्याय से रोकने से रोकना।",
+"India at the WTO":"WTO में भारत",
+"India sits at this table as a strong voice — pushing for rules that are fair to developing countries.":"भारत इस मेज़ पर एक मज़बूत आवाज़ है — विकासशील देशों के लिए निष्पक्ष नियमों की पैरवी करता है।",
+"We kept our side of the bargain too: we removed quantity limits on imports and cut our tariffs.":"हमने अपना वादा भी निभाया: आयात पर मात्रात्मक सीमाएँ हटाईं और सीमा शुल्क घटाए।",
+"But here is the honest catch. Much of world trade happens between rich nations. Poorer countries are pushed to open their markets, yet face high hidden barriers when they try to sell into rich markets. Fair on paper is not always fair in practice.":"पर एक सच्ची बात है। विश्व व्यापार का बड़ा हिस्सा अमीर देशों के बीच होता है। ग़रीब देशों पर अपने बाज़ार खोलने का दबाव डाला जाता है, पर जब वे अमीर बाज़ारों में बेचना चाहते हैं तो ऊँची छिपी बाधाएँ मिलती हैं। काग़ज़ पर निष्पक्षता हमेशा असल में निष्पक्ष नहीं होती।",
+
+/* ---- 10 verdict ---- */
+"Thirty years on: the report card":"तीस साल बाद: रिपोर्ट कार्ड",
+"So did it work? Mostly yes — with bruises. India's GDP growth climbed from about 5.6 per cent (1980–91) to 9.4 per cent (2021–22).":"तो क्या यह काम आया? ज़्यादातर हाँ — कुछ चोटों के साथ। भारत की GDP वृद्धि लगभग 5.6 प्रतिशत (1980–91) से 9.4 प्रतिशत (2021–22) तक चढ़ी।",
+"But look closely and the growth was lopsided: services raced ahead, industry stumbled up and down, and agriculture — where most people still work — slowed.":"पर ध्यान से देखो तो वृद्धि एकतरफ़ा थी: सेवाएँ दौड़ीं, उद्योग ऊपर-नीचे लड़खड़ाया, और कृषि — जहाँ अब भी सबसे ज़्यादा लोग काम करते हैं — धीमी पड़ गई।",
+"The sector scoreboard":"क्षेत्रों का स्कोरबोर्ड",
+"Tap through the years. Watch which sector carried the economy — and which one quietly fell behind.":"सालों पर टैप करो। देखो किस क्षेत्र ने अर्थव्यवस्था को ढोया — और कौन चुपचाप पीछे छूट गया।",
+"More dollars, more trade":"ज़्यादा डॉलर, ज़्यादा व्यापार",
+"The open economy pulled money in from around the world. Foreign investment jumped from about 100 million dollars (1990–91) to about 23 billion dollars (2022–23).":"खुली अर्थव्यवस्था ने दुनिया भर से पैसा खींचा। विदेशी निवेश लगभग 100 मिलियन डॉलर (1990–91) से लगभग 23 बिलियन डॉलर (2022–23) तक उछला।",
+"And our foreign exchange reserves — the very thing that almost ran out in 1991 — grew from about 6 billion dollars to about 646 billion dollars by 2023–24.":"और हमारा विदेशी मुद्रा भंडार — वही चीज़ जो 1991 में लगभग ख़त्म हो गई थी — लगभग 6 बिलियन डॉलर से 2023–24 तक लगभग 646 बिलियन डॉलर हो गया।",
+"From two weeks of survival to one of the world's biggest safety nets. That is the turnaround.":"दो हफ़्ते की गुज़ारे से दुनिया के सबसे बड़े सुरक्षा-जालों में से एक तक। यही है यह पलटाव।",
+"But not everyone won":"पर सबने नहीं जीता",
+"A good teacher shows you both sides. Not everyone gained.":"अच्छा शिक्षक तुम्हें दोनों पहलू दिखाता है। सबको लाभ नहीं मिला।",
+"Farmers: public investment in irrigation, roads and research fell. Fertiliser subsidies were cut. Cheap imported oils flooded in. Costs rose, prices did not — and the small farmer bore it.":"किसान: सिंचाई, सड़क और अनुसंधान में सार्वजनिक निवेश घटा। उर्वरक सब्सिडी काटी गई। सस्ते आयातित तेल उमड़ पड़े। लागत बढ़ी, कीमत नहीं — और छोटा किसान यह सब झेलता रहा।",
+"Industry: cheaper imports and weak infrastructure slowed it down. Fairness: growth pooled in a few service pockets — IT, finance, telecom — not in the farms and factories where millions earn their living.":"उद्योग: सस्ते आयात और कमज़ोर आधारभूत संरचना ने इसे धीमा किया। न्याय: वृद्धि कुछ सेवा जेबों — IT, वित्त, दूरसंचार — में जमा हो गई, न कि उन खेतों और कारखानों में जहाँ लाखों रोज़ी कमाते हैं।",
+"So the honest verdict: the reforms made India faster and richer — but not yet fairer. Closing that gap is your generation's work.":"तो ईमानदार फ़ैसला: सुधारों ने भारत को तेज़ और अमीर बनाया — पर अब तक ज़्यादा निष्पक्ष नहीं। यह अंतर पाटना तुम्हारी पीढ़ी का काम है।",
+
+/* ---- revision + UI ---- */
+"Lock it in":"इसे पक्का करो",
+"Match each term with what it really means. Not a translation — the idea behind it.":"हर शब्द को उसके असली अर्थ से मिलाओ। अनुवाद नहीं — उसके पीछे का विचार।",
+"Quick check":"छोटा चेक",
+"XP shows progress. Mastery comes only from your answers. Wrong options explain the misconception, never the answer.":"XP प्रगति दिखाता है। महारत सिर्फ़ तुम्हारे जवाबों से तय होती है। गलत विकल्प भ्रम समझाते हैं, जवाब कभी नहीं।",
+"Brilliant — you can explain this round clearly.":"शानदार — तुम इस राउंड को साफ़ समझा सकते हो।",
+"Solid — a little more practice on the misses will lock it in.":"अच्छा — जो चूके उन पर थोड़ा और अभ्यास इसे पक्का कर देगा।",
+"Good effort — revisit the slides, then try again.":"अच्छी कोशिश — स्लाइड दोबारा देखो, फिर कोशिश करो।",
+
+/* ---- QUICK questions ---- */
+"By 1991, India's foreign exchange reserves had fallen so low that they could finance imports for barely:":"1991 तक भारत का विदेशी मुद्रा भंडार इतना गिर गया था कि वह मुश्किल से कितने समय का आयात कर सकता था:",
+"Stabilisation measures introduced in 1991 were:":"1991 में लाए गए स्थिरीकरण उपाय थे:",
+"After 1991, industrial licensing was abolished for:":"1991 के बाद औद्योगिक लाइसेंसिंग किसके लिए समाप्त की गई:",
+"A major aim of financial sector reforms was to change the RBI's role from:":"वित्तीय क्षेत्र सुधारों का एक बड़ा लक्ष्य RBI की भूमिका बदलना था, से:",
+"The devaluation of the rupee in 1991 meant that the rupee:":"1991 में रुपये के अवमूल्यन का अर्थ था कि रुपया:",
+"Quantitative restrictions in trade refer to:":"व्यापार में मात्रात्मक प्रतिबंध का अर्थ है:",
+"Selling off part of the equity of a public sector enterprise to the public is called:":"सार्वजनिक उपक्रम की इक्विटी का हिस्सा जनता को बेचना कहलाता है:",
+"Outsourcing intensified mainly because of:":"आउटसोर्सिंग मुख्यतः किस कारण बढ़ी:",
+"The WTO was founded in 1995 as the successor to:":"WTO 1995 में किसकी उत्तराधिकारी के रूप में स्थापित हुआ:",
+"During the reform period, which sector's growth rose the most and now drives GDP growth?":"सुधार काल में किस क्षेत्र की वृद्धि सबसे अधिक बढ़ी और अब GDP वृद्धि चलाती है?",
+
+/* ---- ASSESS questions ---- */
+"India introduced its major economic reforms in the year:":"भारत ने अपने बड़े आर्थिक सुधार किस वर्ष लाए:",
+"Which two international institutions did India approach for a loan in 1991?":"1991 में भारत ने क़र्ज़ के लिए किन दो अंतर्राष्ट्रीय संस्थाओं से संपर्क किया?",
+"'Shedding the ownership or management of a government-owned enterprise' defines:":"'सरकारी स्वामित्व वाले उद्यम की मालिकी या प्रबंधन छोड़ना' किसकी परिभाषा है:",
+"The NEP of 1991 classified reforms into:":"1991 की NEP ने सुधारों को किन वर्गों में बाँटा:",
+"Which of the following is a STRUCTURAL reform measure, not a stabilisation measure?":"इनमें से कौन-सा स्थिरीकरण नहीं, संरचनात्मक सुधार उपाय है?",
+"A government sells 26 per cent of a public sector enterprise to a private partner and hands over management control. This is best described as:":"सरकार किसी सार्वजनिक उपक्रम का 26 प्रतिशत निजी साझेदार को बेचकर प्रबंधन नियंत्रण सौंप देती है। इसे सबसे अच्छा कहेंगे:",
+"Which pair correctly matches a barrier to trade with its nature?":"कौन-सा युग्म व्यापार बाधा को उसकी प्रकृति से सही मिलाता है?",
+"India kept its WTO commitments by:":"भारत ने अपनी WTO प्रतिबद्धताएँ कैसे निभाईं:",
+"'One nation, one tax, one market' in the reform era refers to:":"सुधार काल में 'एक राष्ट्र, एक कर, एक बाज़ार' किससे जुड़ा है:",
+"Which of these is an example of a Foreign Institutional Investor (FII)?":"इनमें से कौन विदेशी संस्थागत निवेशक (FII) का उदाहरण है?",
+"Which of these public sector enterprises was declared a Navratna?":"इनमें से किस सार्वजनिक उपक्रम को नवरत्न घोषित किया गया?",
+"Why was devaluation expected to help India's balance of payments?":"अवमूल्यन से भारत के भुगतान संतुलन को मदद मिलने की उम्मीद क्यों थी?",
+"Which statement about agriculture during the reform period is correct?":"सुधार काल में कृषि के बारे में कौन-सा कथन सही है?",
+"Which is NOT a criticism of the reform process?":"सुधार प्रक्रिया की आलोचना कौन-सी नहीं है?"
+};
+const HIL = {"Stabilisation":"स्थिरीकरण","Structural":"संरचनात्मक","Final good":"अंतिम वस्तु","Intermediate":"मध्यवर्ती"};
+
+function escA(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function hiAttr(en){ const h=PH[en]; return h ? (' data-hi="'+escA(h)+'"') : ""; }
+/* attach a per-block "show full-sentence Hindi" toggle (new LLE option) */
+function attachHi(el, hi){
+  if(!hi) return;
+  if(el.dataset.hiDone) return; el.dataset.hiDone="1";
+  const wrap=document.createElement("div"); wrap.className="hiWrap";
+  const btn=document.createElement("button"); btn.type="button"; btn.className="hiBtn";
+  btn.setAttribute("aria-expanded","false"); btn.setAttribute("aria-label","Show Hindi translation");
+  btn.textContent="हिंदी";
+  const box=document.createElement("div"); box.className="hiBox"; box.hidden=true; box.setAttribute("lang","hi");
+  box.textContent=hi;
+  btn.addEventListener("click", e=>{ e.stopPropagation();
+    const open=box.hidden; box.hidden=!open; wrap.classList.toggle("open",open);
+    btn.setAttribute("aria-expanded", String(open)); btn.textContent = open ? "हिंदी ▴" : "हिंदी";
+  });
+  wrap.appendChild(btn); wrap.appendChild(box); el.appendChild(wrap);
+}
+function applyLang(root){
+  (root||document).querySelectorAll("[data-lang]").forEach(el=>{
+    if(el.dataset.langDone) return;
+    const en = (el.dataset.hi ? "" : el.textContent).replace(/\s+/g," ").trim();
+    el.innerHTML = rtText(el.innerHTML);
+    el.dataset.langDone = "1";
+    attachHi(el, el.dataset.hi || PH[en]);
+  });
+  bindTaps(root||document);
+}
+function bindTaps(root){
+  (root||document).querySelectorAll(".tapable").forEach(el=>{
+    if(el.dataset.bound) return; el.dataset.bound="1";
+    const open=()=>showWord(el.dataset.w);
+    el.addEventListener("click", open);
+    el.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();open();} });
+  });
+}
+let lastUtter=null;
+function speak(text){
+  try{
+    if(!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    lastUtter = new SpeechSynthesisUtterance(text);
+    lastUtter.rate = 0.85; lastUtter.lang = "en-IN";
+    window.speechSynthesis.speak(lastUtter);
+  }catch(e){/* sound is feedback, never a dependency */}
+}
+function showWord(w){
+  const r = lookupWord(w);
+  document.getElementById("wpWord").textContent = w;
+  document.getElementById("wpHindi").textContent = r.h;
+  document.getElementById("wpPron").textContent = r.known && r.p ? "उच्चारण · "+r.p : "";
+  const panel = document.getElementById("wordpanel");
+  panel.classList.add("up");
+  panel.dataset.cur = w;
+  speak(w);
+}
+function closeWord(){ document.getElementById("wordpanel").classList.remove("up"); }
+document.getElementById("wpClose").addEventListener("click", closeWord);
+document.getElementById("wpSpeak").addEventListener("click", ()=>{
+  const w = document.getElementById("wordpanel").dataset.cur; if(w) speak(w);
+});
+document.getElementById("wordpanel").addEventListener("click", e=>{ if(e.target.id==="wordpanel") closeWord(); });
+
+</script>
+<script>
+
+/* =========================================================================
+   STATE · GAMIFICATION · ROUTER  (learning state is separate from telemetry)
+   ========================================================================= */
+const STORE_KEY = "aasha_lpg_ch3_v1";
+const S = { xp:0, coins:0, stops:{}, best:{warm:0,deep:0,boss:0}, badges:{}, last:"home" };
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); }catch(e){} }
+function load(){ try{ const r=localStorage.getItem(STORE_KEY); if(r){ Object.assign(S, JSON.parse(r)); } }catch(e){} }
+function resetAll(){ try{ localStorage.removeItem(STORE_KEY); }catch(e){} location.reload(); }
+
+function renderTop(){
+  document.getElementById("xpVal").textContent = S.xp;
+  document.getElementById("coinVal").textContent = S.coins;
+  const f=document.getElementById("xpFill"); if(f) f.style.width = Math.min(100, Math.round(S.xp/900*100)) + "%";
+}
+let toastT=null;
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("show"),1400); }
+function addXP(n){ S.xp+=n; save(); renderTop(); toast("⭐ +"+n+" XP"); }
+function addCoin(n){ S.coins+=n; save(); renderTop(); }
+function confetti(n=40){
+  const box=document.getElementById("confetti");
+  const colors=["#f4c265","#38d6c0","#9d7bff","#ff7a9c","#a8e05f","#5cc8ff"];
+  for(let i=0;i<n;i++){ const d=document.createElement("i"); d.className="cf";
+    d.style.left=(Math.random()*100)+"vw"; d.style.top=(-10-Math.random()*20)+"vh";
+    d.style.background=colors[i%colors.length]; d.style.animationDuration=(1.6+Math.random()*1.4)+"s";
+    d.style.animationDelay=(Math.random()*0.4)+"s"; box.appendChild(d); setTimeout(()=>d.remove(),3200); }
+}
+function go(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen-"+id).classList.add("active");
+  S.last=id; save();
+  const st=document.getElementById("screen-"+id).querySelector(".stage");
+  if(st) st.scrollTop=0;
+  applyLang(document.getElementById("screen-"+id));
+}
+function money(x){ return "₹" + (Math.round(x*100)/100).toLocaleString("en-IN"); }
+function fmt(n){ return (Math.round(n*100)/100).toLocaleString("en-IN"); }
+function panda(say, who){
+  return `<div class="panda"><div class="av">🐼</div><div class="bubble"><div class="nm">${who||"Chintu Panda"}</div><span data-lang>${say}</span></div></div>`;
+}
+
+</script>
+<script>
+/* =========================================================================
+   THE SLIDE JOURNEY — one linear sequence.
+   Chapter 3 · Liberalisation, Privatisation and Globalisation (NCERT XII IED)
+   Voice: a mentor talking straight to the student. Canonical truth locked.
+   ========================================================================= */
+const CONCEPTS = {
+  crisis:{n:"The 1991 crisis", ic:"🔴", xp:80},
+  nep:{n:"New Economic Policy", ic:"⚖️", xp:70},
+  liberal:{n:"Liberalisation", ic:"🔓", xp:80},
+  finsec:{n:"Financial sector & the RBI", ic:"🏦", xp:80},
+  taxfx:{n:"Tax & exchange reforms", ic:"💱", xp:80},
+  trade:{n:"Trade & investment reforms", ic:"🚢", xp:80},
+  privatise:{n:"Privatisation & disinvestment", ic:"🏭", xp:80},
+  global:{n:"Globalisation & outsourcing", ic:"🌍", xp:80},
+  wto:{n:"The WTO & world trade", ic:"🤝", xp:70},
+  verdict:{n:"India during reforms", ic:"📊", xp:90}
+};
+const CONCEPT_ORDER = ["crisis","nep","liberal","finsec","taxfx","trade","privatise","global","wto","verdict"];
+
+const SLIDES = [
+ /* intro */
+ {kicker:"Before we begin", title:"Why should this chapter matter to you?", text:[
+   "In 1991, India nearly went broke. Not for years — for two weeks. It could not even pay for the petrol it needed.",
+   "What India did next changed your family's monthly budget, the price at the petrol pump, the jobs open to you, and the phone in your hand. So this is not old history. It is your present — and your future."], visual:"vMap"},
+
+ /* 1 — crisis */
+ {concept:"crisis", kicker:"1 · The background", title:"1991: the year India almost ran out of money", text:[
+   "Every time India buys petrol or machines from abroad, it pays in dollars. And those dollars come from what we sell abroad.",
+   "In 1991, our dollar savings had shrunk so far that they could pay for barely two weeks of imports. Two weeks — and then nothing. That is where our story begins."], visual:"vCrisisIntro"},
+ {concept:"crisis", kicker:"1 · How it happened", title:"It did not happen in a day. It leaked.", text:[
+   "Through the 1980s the government spent more than it earned, year after year. To fill the gap, it borrowed — from banks, from people like us, and from foreign lenders.",
+   "Meanwhile, imports kept climbing and exports did not keep up. Money flowed out faster than it flowed in. A small leak, ignored long enough, becomes a flood."], visual:"vCrisisBuild"},
+ {concept:"crisis", kicker:"1 · The breaking point", title:"The fortnight that shook India", text:[
+   "By 1991 India could not repay what it had borrowed abroad. Reserves could not cover even a fortnight of imports, and the prices of everyday goods were climbing fast.",
+   "And no one — no country, no bank — would lend us a rupee more. When a family reaches this point, it sells its jewellery. When a country reaches it, it must change its rules. That is exactly what India did next."], formula:"Foreign exchange reserves < two weeks of imports", visual:"vFortnight"},
+ {concept:"crisis", sim:["crisis"], kicker:"1 · Try it yourself", title:"Watch the reserves run out", text:["Slide it and feel the pressure: how few weeks of cover does it take before a country is in real trouble?"]},
+ {concept:"crisis", check:"q1", kicker:"1 · Your turn", title:"Quick check"},
+
+ /* 2 — nep */
+ {concept:"nep", kicker:"2 · Asking for help", title:"The lifeline came with conditions", text:[
+   "India knocked on two doors: the World Bank and the IMF. They agreed to lend seven billion dollars — a genuine lifeline.",
+   "But money like this never comes free. The condition: open up the economy. Let private firms in. Loosen the government's grip. Cut the trade barriers. Take the loan — but change how you run the country."], visual:"vWorldBank"},
+ {concept:"nep", kicker:"2 · The announcement", title:"The New Economic Policy, 1991", text:[
+   "India accepted the terms and announced a New Economic Policy. One word captures its whole aim: competition.",
+   "Knock down the walls that kept firms out. Let businesses enter, grow, and fight for the customer. A country that competes grows strong. A country that hides grows weak."], visual:"vNEP"},
+ {concept:"nep", kicker:"2 · Two medicines", title:"Two problems, two medicines", text:[
+   "Picture a patient who is both bleeding and weak. A good doctor does two things. First, stop the bleeding — now. Then, over months, rebuild the patient's strength.",
+   "India's treatment had two halves too. Stabilisation = stop the bleeding: fix the balance of payments and control rising prices. Structural reform = build strength: make the economy efficient and globally competitive for the long run.",
+   "Short-term relief, long-term cure. Examiners love to make you mix these two up. Do not let them."], visual:"vTwoMedicine"},
+ {concept:"nep", sim:["sort"], kicker:"2 · Try it yourself", title:"Sort the measures", text:["Is each step 'stop the bleeding' or 'build strength'? Sort them and see if your instinct is right."]},
+ {concept:"nep", kicker:"2 · The three pillars", title:"Three pillars hold the reform", text:[
+   "The long-term cure stood on three pillars: liberalisation, privatisation and globalisation.",
+   "Free your own rules. Let private hands run business. Join the world. Three words — and the rest of this chapter explains each one."], visual:"vPillars"},
+ {concept:"nep", check:"q2", kicker:"2 · Your turn", title:"Quick check"},
+
+ /* 3 — liberal */
+ {concept:"liberal", kicker:"3 · Liberalisation", title:"Taking off the chains", text:[
+   "Before 1991, starting a business in India was like needing a passport to open a shop. You needed a licence to begin, a licence to expand, even permission to decide how much you could make. This was the licence raj.",
+   "Liberalisation means removing those chains and opening the doors to private and foreign firms. Some steps came in the 1980s — but 1991 tore down far more."], visual:"vLiberal"},
+ {concept:"liberal", kicker:"3 · Deregulating industry", title:"The licence raj ends", text:[
+   "The reforms abolished industrial licensing for almost every product. An entrepreneur could now start, grow or close a business without begging for permission.",
+   "A short, stubborn list stayed licensed — learn it, it is a favourite exam question: alcohol, cigarettes, hazardous chemicals, industrial explosives, electronics, aerospace, and drugs and pharmaceuticals.",
+   "And only two things stayed locked to the government: atomic energy generation, and the core activities of the railways."], visual:"vLicence"},
+ {concept:"liberal", kicker:"3 · Small industry & prices", title:"Dereservation — and who sets the price", text:[
+   "Many goods that only small-scale industries were allowed to make were now dereserved.",
+   "And prices? In most industries, the market — not a government office — would now decide. That one change quietly decides what you pay for almost everything."], visual:"vMarket"},
+ {concept:"liberal", sim:["licence"], kicker:"3 · Try it yourself", title:"What still needs a licence?", text:["Tap each product. Guess whether it stayed under licensing after 1991 — then find out."]},
+ {concept:"liberal", check:"q3", kicker:"3 · Your turn", title:"Quick check"},
+
+ /* 4 — finsec */
+ {concept:"finsec", kicker:"4 · The financial sector", title:"The economy's heart: banks and the RBI", text:[
+   "Commercial banks, investment banks, stock exchanges, the foreign exchange market — together they are the financial sector. Money moves through them the way blood moves through a body.",
+   "And in India, one institution watches over all of it: the Reserve Bank of India — the RBI."], visual:"vFinSec"},
+ {concept:"finsec", kicker:"4 · A new role", title:"From controller to facilitator", text:[
+   "The RBI decides how much cash banks must keep, what interest rates will be, and who gets loans. Earlier, it controlled almost every decision a bank made.",
+   "The reform changed its role: from controller to facilitator. Now banks take many decisions themselves, and the RBI guides and enables instead of bossing every move.",
+   "Think about it: a parent who decides everything raises a child who can decide nothing. The same is true of banks."], visual:"vRBI"},
+ {concept:"finsec", kicker:"4 · New players", title:"New players enter the game", text:[
+   "Private banks were allowed — Indian and foreign. Foreign investment in banks was raised to about 74 per cent.",
+   "Good banks could open new branches without asking the RBI each time. And a new kind of investor arrived: FIIs — Foreign Institutional Investors, like mutual funds and pension funds.",
+   "More players, more competition, better service. That was the bet."], visual:"vBanks"},
+ {concept:"finsec", check:"q4", kicker:"4 · Your turn", title:"Quick check"},
+
+ /* 5 — taxfx */
+ {concept:"taxfx", kicker:"5 · Tax reforms", title:"Why cut taxes to earn more tax?", text:[
+   "This sounds backward, so read it twice. If the government taxes income very heavily, people simply hide their income. The government ends up earning less, not more.",
+   "So from 1991, income-tax rates were cut. The logic: moderate taxes encourage people to save, to work, and to honestly declare what they earn. Corporation tax was cut too.",
+   "Lower rate, wider net, more honest taxpayers. That is the whole idea in one line."], visual:"vTax"},
+ {concept:"taxfx", kicker:"5 · One nation, one tax", title:"GST: one nation, one tax", text:[
+   "In 2016 India did something clever. It amended the Constitution so that both the Centre and the states could levy one shared tax on goods and services — the Goods and Services Tax, or GST.",
+   "The dream was easy to say and hard to build: one nation, one tax, one market. Fewer forms, less evasion, and no tax wall standing between one state and the next."], visual:"vGST"},
+ {concept:"taxfx", kicker:"5 · Foreign exchange", title:"Devaluation: a weaker rupee, on purpose", text:[
+   "In 1991, as an emergency step, India devalued the rupee. In plain words: it deliberately made the rupee worth less against the dollar.",
+   "Why weaken your own money? Because a cheaper rupee makes your exports cheaper for foreign buyers, and your imports costlier for you. So fewer dollars leave and more come in. It was the tourniquet on the wound.",
+   "And it set the rupee free: from then on, markets — not the government — would decide its value."], formula:"Devaluation → exports cheaper · imports dearer", visual:"vDevalue"},
+ {concept:"taxfx", sim:["devalue"], kicker:"5 · Try it yourself", title:"Move the exchange rate", text:["Drag the rupee's value and watch exports and imports respond. Feel why 1991 needed a weaker rupee."]},
+ {concept:"taxfx", check:"q5", kicker:"5 · Your turn", title:"Quick check"},
+
+ /* 6 — trade */
+ {concept:"trade", kicker:"6 · Trade reforms", title:"Why our trade had to open", text:[
+   "To protect Indian factories, we had built high walls: limits on how much could be imported, and very high taxes on imports, called tariffs.",
+   "Walls protect — and walls also trap. Sheltered from competition, our factories grew slow, costly and inefficient. Protection had quietly turned into weakness."], visual:"vTradeOld"},
+ {concept:"trade", kicker:"6 · The three moves", title:"Dismantle. Reduce. Remove.", text:[
+   "The trade reforms did exactly three things. Dismantle the quantity limits on imports and exports. Reduce tariff rates. Remove the licensing that imports once needed.",
+   "Import licensing went — except for hazardous and environmentally sensitive goods. By April 2001, the quantity limits on consumer goods and farm products were gone too.",
+   "And export duties were scrapped, so Indian goods could fight harder in foreign markets."], visual:"vTradeNew"},
+ {concept:"trade", sim:["tariff"], kicker:"6 · Try it yourself", title:"Set a tariff, watch trade", text:["Raise and lower the tariff wall. Notice how protection and higher prices always arrive together."]},
+ {concept:"trade", check:"q6", kicker:"6 · Your turn", title:"Quick check"},
+
+ /* 7 — privatise */
+ {concept:"privatise", kicker:"7 · Privatisation", title:"Handing over the keys", text:[
+   "Privatisation means the government lets go of the ownership or the management of an enterprise it runs.",
+   "There are two ways to do it: the government withdraws from owning and running it, or it sells the company outright. Simple idea — big consequences."], visual:"vPrivatise"},
+ {concept:"privatise", kicker:"7 · Disinvestment", title:"Disinvestment: selling a slice", text:[
+   "When the government sells part of a public company's shares to the public, that is called disinvestment.",
+   "The government's reason: bring in financial discipline, modernise, and use private money and management skill to improve performance. The critics' reason: it was quietly selling the family silver.",
+   "Hold both views at once. This chapter wants you to weigh, not just memorise."], visual:"vDisinvest"},
+ {concept:"privatise", kicker:"7 · Special status", title:"Maharatna, Navratna, Miniratna", text:[
+   "Instead of selling everything, the government gave some public enterprises a special status — Maharatna, Navratna, Miniratna — and, with it, real freedom to decide.",
+   "Remember the examples: Maharatna — Indian Oil and SAIL. Navratna — HAL, MTNL and IRCTC. Miniratna — BSNL and the Airports Authority of India.",
+   "The idea was simple: trust them with autonomy, and they will perform."], visual:"vRatna"},
+ {concept:"privatise", sim:["disinvest"], kicker:"7 · Try it yourself", title:"How much should the government sell?", text:["Drag the slider. Watch the moment control changes hands — that is the line between a minority sale and a strategic sale."]},
+ {concept:"privatise", check:"q7", kicker:"7 · Your turn", title:"Quick check"},
+
+ /* 8 — global */
+ {concept:"global", kicker:"8 · Globalisation", title:"India joins the world", text:[
+   "Globalisation is India's economy linking arms with the world's — goods, money, services and people moving across borders.",
+   "It is the child of liberalisation and privatisation. Once you open your own doors, you become part of one big global market — for better and for worse."], visual:"vGlobal"},
+ {concept:"global", kicker:"8 · Outsourcing", title:"Why the world calls India", text:[
+   "Outsourcing means a company pays someone outside — often in another country — to do a job it once did in-house. Legal advice, accounts, advertising, even teaching.",
+   "Why India? Two reasons. Our wages are lower, and our skilled, English-speaking workers are plenty. Add fast internet, and work crosses the world in seconds.",
+   "So the world's call centres, accounts, film editing and transcription land here. That is not luck. That is the dividend of a young, skilled, connected workforce."], visual:"vOutsource"},
+ {concept:"global", sim:["outsource"], kicker:"8 · Try it yourself", title:"Send a service abroad", text:["Tap a service and see, in numbers, why a firm abroad would rather pay India for it."]},
+ {concept:"global", kicker:"8 · Going out", title:"Indian companies go global", text:[
+   "And the traffic flows both ways. Indian firms went out and bought a piece of the world.",
+   "ONGC Videsh has projects in 16 countries. Tata Steel runs in 26 countries and sells in 50. HCL has offices in 31. Dr Reddy's has plants and research centres worldwide.",
+   "Notice the direction of this story: India stopped only receiving — and started reaching."], visual:"vIndiaGlobal"},
+ {concept:"global", check:"q8", kicker:"8 · Your turn", title:"Quick check"},
+
+ /* 9 — wto */
+ {concept:"wto", kicker:"9 · The WTO", title:"A referee for world trade", text:[
+   "In 1995 the world set up a referee for trade: the World Trade Organisation. It replaced GATT, which had begun back in 1948 with just 23 countries.",
+   "Its job: write fair rules, give every country an equal chance, and stop big nations from blocking small ones unfairly."], visual:"vWTO"},
+ {concept:"wto", kicker:"9 · India's stand", title:"India at the WTO", text:[
+   "India sits at this table as a strong voice — pushing for rules that are fair to developing countries.",
+   "We kept our side of the bargain too: we removed quantity limits on imports and cut our tariffs.",
+   "But here is the honest catch. Much of world trade happens between rich nations. Poorer countries are pushed to open their markets, yet face high hidden barriers when they try to sell into rich markets. Fair on paper is not always fair in practice."], visual:"vWTOIndia"},
+ {concept:"wto", check:"q9", kicker:"9 · Your turn", title:"Quick check"},
+
+ /* 10 — verdict */
+ {concept:"verdict", kicker:"10 · The verdict", title:"Thirty years on: the report card", text:[
+   "So did it work? Mostly yes — with bruises. India's GDP growth climbed from about 5.6 per cent (1980–91) to 9.4 per cent (2021–22).",
+   "But look closely and the growth was lopsided: services raced ahead, industry stumbled up and down, and agriculture — where most people still work — slowed."], visual:"vSectors"},
+ {concept:"verdict", sim:["sectors"], kicker:"10 · Try it yourself", title:"The sector scoreboard", text:["Tap through the years. Watch which sector carried the economy — and which one quietly fell behind."]},
+ {concept:"verdict", kicker:"10 · Opening up", title:"More dollars, more trade", text:[
+   "The open economy pulled money in from around the world. Foreign investment jumped from about 100 million dollars (1990–91) to about 23 billion dollars (2022–23).",
+   "And our foreign exchange reserves — the very thing that almost ran out in 1991 — grew from about 6 billion dollars to about 646 billion dollars by 2023–24.",
+   "From two weeks of survival to one of the world's biggest safety nets. That is the turnaround."], visual:"vWinners"},
+ {concept:"verdict", kicker:"10 · Who was left behind", title:"But not everyone won", text:[
+   "A good teacher shows you both sides. Not everyone gained.",
+   "Farmers: public investment in irrigation, roads and research fell. Fertiliser subsidies were cut. Cheap imported oils flooded in. Costs rose, prices did not — and the small farmer bore it.",
+   "Industry: cheaper imports and weak infrastructure slowed it down. Fairness: growth pooled in a few service pockets — IT, finance, telecom — not in the farms and factories where millions earn their living.",
+   "So the honest verdict: the reforms made India faster and richer — but not yet fairer. Closing that gap is your generation's work."], visual:"vFairness"},
+ {concept:"verdict", check:"q10", kicker:"10 · Your turn", title:"Quick check"},
+
+ /* revision */
+ {id:"revision", kicker:"Revision", title:"Lock it in", text:[
+   "Match each term with what it really means. Not a translation — the idea behind it."], match:true}
+];
+
+/* ---------- revision: term ↔ concept/definition ---------- */
+const MATCH = [
+  ["Liberalisation","Removing the rules and licences that held the economy back"],
+  ["Privatisation","Letting go of government ownership or management of an enterprise"],
+  ["Disinvestment","Selling part of a public company's shares to the public"],
+  ["Devaluation","Deliberately lowering the rupee's value against foreign currencies"],
+  ["Quantitative restrictions","Limits on how much may be imported"],
+  ["Outsourcing","Hiring a service from outside, often from another country"]
+];
+
+/* ---------- in-slide quick checks ---------- */
+const QUICK = {
+ q1:{q:"By 1991, India's foreign exchange reserves had fallen so low that they could finance imports for barely:",
+     o:[{t:"Two weeks",c:1},
+        {t:"Two years",m:"Two years would be comfortable. This was a crisis — so think in weeks, not years."},
+        {t:"Six months",m:"Six months is a problem, not a panic. India had a fortnight. Go smaller."},
+        {t:"Ten years",m:"Ten years of cover would mean no crisis at all. Think much smaller."}]},
+ q2:{q:"Stabilisation measures introduced in 1991 were:",
+     o:[{t:"Short-term measures to correct the balance of payments and control inflation",c:1},
+        {t:"Long-term measures to raise the economy's efficiency",m:"Careful — that is the structural reform, the long-term half. Stabilisation is the quick fix."},
+        {t:"Measures to increase government ownership of firms",m:"The reforms moved the other way — away from government control."},
+        {t:"Measures to raise tariff walls against imports",m:"Tariffs were being lowered in this period, not raised."}]},
+ q3:{q:"After 1991, industrial licensing was abolished for:",
+     o:[{t:"Almost all products, except a few like alcohol and hazardous chemicals",c:1},
+        {t:"Only small-scale industries",m:"Small-scale reservation was reduced, but that is not the whole scope of licensing."},
+        {t:"No products at all — licensing continued everywhere",m:"Read it again: licensing was abolished for almost everything."},
+        {t:"Only the service sector",m:"Licensing applied to industrial products, not services."}]},
+ q4:{q:"A major aim of financial sector reforms was to change the RBI's role from:",
+     o:[{t:"Regulator to facilitator of the financial sector",c:1},
+        {t:"Facilitator to regulator",m:"You have the direction reversed. The reform loosened control, it did not tighten it."},
+        {t:"Lender to borrower",m:"The RBI is the banker to banks — that is not what this reform changed."},
+        {t:"Owner to manager of private banks",m:"The RBI never owned private banks."}]},
+ q5:{q:"The devaluation of the rupee in 1991 meant that the rupee:",
+     o:[{t:"Lost value against foreign currencies",c:1},
+        {t:"Gained value against foreign currencies",m:"A gain in value is called revaluation. Devaluation is a fall."},
+        {t:"Was replaced by the dollar",m:"The rupee stayed our currency — only its external value changed."},
+        {t:"Was fixed permanently to gold",m:"The reform moved toward market-set rates, not a gold peg."}]},
+ q6:{q:"Quantitative restrictions in trade refer to:",
+     o:[{t:"Limits on the quantity of goods that may be imported",c:1},
+        {t:"Taxes charged on imported goods",m:"That is a tariff — a price barrier. This question is about a quantity barrier."},
+        {t:"A total ban on all exports",m:"A ban is not the same as a limit on quantity."},
+        {t:"Limits on how much firms may produce",m:"This is about trade across borders, not domestic production."}]},
+ q7:{q:"Selling off part of the equity of a public sector enterprise to the public is called:",
+     o:[{t:"Disinvestment",c:1},
+        {t:"Nationalisation",m:"Nationalisation is the opposite — bringing private firms into government hands."},
+        {t:"Liberalisation",m:"Liberalisation is about removing rules. This specific sale has its own name."},
+        {t:"Devaluation",m:"Devaluation is about the currency's value, not company shares."}]},
+ q8:{q:"Outsourcing intensified mainly because of:",
+     o:[{t:"The growth of fast modes of communication, especially Information Technology",c:1},
+        {t:"A fall in the number of companies",m:"It grew because more companies outsourced, not fewer."},
+        {t:"Higher wage rates in India",m:"It was India's low wages that pulled the work here."},
+        {t:"The closing of world markets",m:"Outsourcing grew with opening and integration, not closure."}]},
+ q9:{q:"The WTO was founded in 1995 as the successor to:",
+     o:[{t:"GATT",c:1},
+        {t:"The IMF",m:"The IMF handles money and balance-of-payments issues, not the trade rules GATT began."},
+        {t:"The World Bank",m:"The World Bank lends for development. GATT was the trade agreement."},
+        {t:"The RBI",m:"The RBI is India's central bank, not a world trade body."}]},
+ q10:{q:"During the reform period, which sector's growth rose the most and now drives GDP growth?",
+     o:[{t:"The service sector",c:1},
+        {t:"Agriculture",m:"Agriculture's growth actually declined in this period. Look at the sector that includes IT and finance."},
+        {t:"Industry",m:"Industry fluctuated and slowed at times — it did not lead."},
+        {t:"None of them",m:"One sector clearly led. It is the one in the name of this chapter's fastest story."}]}
+};
+
+/* ---------- gamified assessment bank ---------- */
+const ASSESS = {
+ warm:{ title:"Warm-up", sub:"Recall the ideas", tier:"gold", timer:0, xpPer:20, qs:[
+   {q:"India introduced its major economic reforms in the year:",
+    o:[{t:"1991",c:1},{t:"1947",m:"That is independence. The reforms came decades later."},{t:"2001",m:"By 2001 many reforms were already in place — the start was earlier."},{t:"2016",m:"2016 is the year GST arrived — a later step, not the beginning."}]},
+   {q:"Which two international institutions did India approach for a loan in 1991?",
+    o:[{t:"The World Bank and the IMF",c:1},{t:"The WTO and GATT",m:"Those are trade bodies. India went to them about trade, not for this crisis loan."},{t:"The RBI and SEBI",m:"Those are Indian regulators, not international lenders."},{t:"The UN and WHO",m:"Those are not the lenders who attached reform conditions."}]},
+   {q:"'Shedding the ownership or management of a government-owned enterprise' defines:",
+    o:[{t:"Privatisation",c:1},{t:"Liberalisation",m:"Liberalisation is about removing rules, not transferring ownership."},{t:"Globalisation",m:"Globalisation is about linking with the world economy."},{t:"Disinvestment",m:"Disinvestment is one method of privatisation — but the definition given is the broader term."}]},
+   {q:"The NEP of 1991 classified reforms into:",
+    o:[{t:"Stabilisation measures and structural reform measures",c:1},{t:"Direct and indirect taxes",m:"That classifies taxes, not the reform package."},{t:"Tariff and non-tariff barriers",m:"That classifies trade barriers."},{t:"Public and private sectors",m:"That classifies ownership, not reforms."}]},
+   {q:"Devaluation of the rupee means:",
+    o:[{t:"A fall in the rupee's value against foreign currencies",c:1},{t:"A rise in the rupee's value",m:"A rise would be revaluation."},{t:"Fixing the rupee to gold",m:"The reform moved away from fixed values, not toward gold."},{t:"Withdrawing the rupee from circulation",m:"The rupee remained India's currency."}]}
+ ]},
+ deep:{ title:"Deep Dive", sub:"Apply and connect", tier:"violet", timer:0, xpPer:35, qs:[
+   {q:"Which of the following is a STRUCTURAL reform measure, not a stabilisation measure?",
+    o:[{t:"Removing industrial licensing to raise efficiency",c:1},
+       {t:"Cutting inflation to correct the balance of payments",m:"Bringing inflation under control is a short-term stabilisation step."},
+       {t:"Holding enough foreign exchange for imports",m:"Maintaining reserves is a stabilisation step."},
+       {t:"Correcting a balance-of-payments weakness",m:"Correcting the BoP is exactly what stabilisation is for."}]},
+   {q:"A government sells 26 per cent of a public sector enterprise to a private partner and hands over management control. This is best described as:",
+    o:[{t:"Strategic sale",c:1},
+       {t:"Minority sale",m:"A minority sale keeps control with the government — here control has been handed over."},
+       {t:"Nationalisation",m:"Nationalisation moves the other way, into government hands."},
+       {t:"Devaluation",m:"That concerns the currency, not company ownership."}]},
+   {q:"Which pair correctly matches a barrier to trade with its nature?",
+    o:[{t:"Tariff — a tax on imports; quota — a limit on quantity",c:1},
+       {t:"Tariff — a limit on quantity; quota — a tax on imports",m:"Those two are swapped. A tariff is a price barrier; a quota is a quantity barrier."},
+       {t:"Both are quantity limits",m:"Only the quota limits quantity. A tariff works through price."},
+       {t:"Both are outright bans",m:"Neither is a total ban."}]},
+   {q:"India kept its WTO commitments by:",
+    o:[{t:"Removing quantitative restrictions on imports and reducing tariff rates",c:1},
+       {t:"Raising tariff walls higher",m:"The direction was downward, not upward."},
+       {t:"Banning all imports",m:"India liberalised trade — it did not ban it."},
+       {t:"Leaving the WTO",m:"India remained an important member."}]}
+ ]},
+ boss:{ title:"Boss Challenge", sub:"Mixed, timed, unforgiving", tier:"violet", timer:12, xpPer:50, qs:[
+   {q:"'One nation, one tax, one market' in the reform era refers to:",
+    o:[{t:"The Goods and Services Tax (GST)",c:1},
+       {t:"The income tax",m:"Income tax is a direct tax on individuals, not the unified market tax."},
+       {t:"Customs duty",m:"Customs duty applies to imports, not to a single nationwide market tax."},
+       {t:"Corporation tax",m:"Corporation tax is on company profits, not the unified market tax."}]},
+   {q:"Which of these is an example of a Foreign Institutional Investor (FII)?",
+    o:[{t:"A mutual fund or pension fund investing in Indian markets",c:1},
+       {t:"A farmer selling wheat",m:"That is a domestic producer, not an institutional investor."},
+       {t:"A government ministry",m:"A ministry is not an investor."},
+       {t:"A small shopkeeper",m:"A shopkeeper is a domestic trader, not an FII."}]},
+   {q:"Which of these public sector enterprises was declared a Navratna?",
+    o:[{t:"Hindustan Aeronautics Limited",c:1},
+       {t:"Indian Oil Corporation",m:"Indian Oil is a Maharatna — a higher category."},
+       {t:"BSNL",m:"BSNL is a Miniratna."},
+       {t:"Airports Authority of India",m:"The Airports Authority is a Miniratna."}]},
+   {q:"Why was devaluation expected to help India's balance of payments?",
+    o:[{t:"It made exports cheaper and imports dearer, raising foreign exchange inflow",c:1},
+       {t:"It made imports cheaper",m:"Devaluation makes imports dearer, not cheaper."},
+       {t:"It raised the rupee's value",m:"It lowered the rupee's value."},
+       {t:"It banned all imports",m:"It changed relative prices — it did not ban imports."}]},
+   {q:"Which statement about agriculture during the reform period is correct?",
+    o:[{t:"Growth decelerated and public investment in agriculture fell",c:1},
+       {t:"Agriculture grew faster than services",m:"Services grew fastest; agriculture's growth declined."},
+       {t:"Fertiliser subsidies were increased",m:"They were partially removed, which raised costs."},
+       {t:"Public investment in irrigation rose sharply",m:"Public investment in irrigation and related areas fell."}]},
+   {q:"Which is NOT a criticism of the reform process?",
+    o:[{t:"The reforms raised foreign exchange reserves",c:1},
+       {t:"Growth did not create enough employment",m:"This is a genuine criticism of the reforms."},
+       {t:"Disinvestment proceeds were used to plug revenue gaps",m:"This is a criticism raised by scholars."},
+       {t:"Growth concentrated in a few service areas",m:"This is a common criticism of the reform period."}]}
+ ]}
+};
+</script>
+<script>
+/* =========================================================================
+   VISUALS — dark theme, semantically colour-coded:
+   teal = neutral/idea, green = result/positive, gold = money/deduction,
+   rose = caution/problem.
+   ========================================================================= */
+function viz(chip, inner){ return `<div class="visual">${chip?`<span class="vchip">${chip}</span>`:""}${inner}</div>`; }
+function vbox(em,t,d,cls){ return `<div class="vbox ${cls||""}"><div class="em">${em}</div><div class="t">${t}</div>${d?`<div class="d">${d}</div>`:""}</div>`; }
+const ARROW = `<div class="varrow">▶</div>`;
+function opStep(label){ return `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:none"><span class="op">${label}</span><span class="arrow">▶</span></div>`; }
+function chainNode(em,nm,sub,cls){ return `<div class="node ${cls||""}"><div class="em">${em}</div><div class="nm">${nm}</div>${sub?`<div class="va">${sub}</div>`:""}</div>`; }
+
+const VISUALS = {
+ vMap:()=>viz("India, 1991", `<div class="vrow">${vbox("🔴","The crisis","dollars ran out")}${vbox("⚖️","The reform","stabilise + restructure")}${vbox("🔓🌍","The three words","liberalise · privatise · globalise","g")}</div>
+   <div class="center small muted" style="margin-top:9px">From a closed, licence-bound economy to an open one.</div>`),
+ vCrisisIntro:()=>viz("The balance-of-payments crisis", `<div class="vrow">${vbox("🛢️","Oil imports","paid in dollars")}${vbox("📉","Reserves","below 2 weeks","a")}${vbox("🔥","Prices","rising sharply","r")}</div>
+   <div class="center small muted" style="margin-top:9px">When you import, you pay in dollars you earn from exports.</div>`),
+ vCrisisBuild:()=>viz("How the trouble built up", `<div class="vrow">${vbox("🏛️","Low revenue","taxes, PSUs")}${vbox("➡️","High spending","development, defence","a")}${vbox("🪙","Borrowing","banks + abroad")}${vbox("📉","Reserves drain","imports > exports","r")}</div>`),
+ vFortnight:()=>viz("The breaking point", `<svg viewBox="0 0 300 96" role="img" aria-label="Reserves fell below two weeks of imports">
+   <rect x="30" y="34" width="240" height="26" rx="8" fill="#08131f" stroke="#1d3b55" stroke-width="2"/>
+   <rect x="32" y="36" width="20" height="22" rx="6" fill="#ff6b6b"/>
+   <text x="150" y="24" text-anchor="middle" fill="#ff6b6b" font-size="11.5" font-weight="800">Foreign exchange reserves</text>
+   <text x="150" y="52" text-anchor="middle" fill="#eaf4ff" font-size="11" font-weight="800">under two weeks of imports</text>
+   <text x="150" y="82" text-anchor="middle" fill="#9fb6cc" font-size="9.5">No lender would lend. An economic emergency.</text></svg>`),
+ vWorldBank:()=>viz("Asking for help", `<div class="vrow">${vbox("🇮🇳","India","cannot repay")}${vbox("🏦","World Bank","IBRD")}${vbox("🏛️","IMF","")}</div>
+   <div class="vrow" style="margin-top:9px">${vbox("💵","Loan of $7 billion","to manage the crisis","g")}</div>
+   <div class="center small muted" style="margin-top:8px">…with conditions: liberalise and open up the economy.</div>`),
+ vNEP:()=>viz("The New Economic Policy, 1991", `<div class="vrow">${vbox("📜","Wide-ranging reforms","")}${vbox("🏁","Remove barriers to entry","")}${vbox("⚔️","A more competitive economy","","g")}</div>`),
+ vTwoMedicine:()=>viz("Two kinds of medicine", `<div class="vrow">${vbox("⚡","Stabilisation","short-term · BoP + inflation","a")}${vbox("🌱","Structural reform","long-term · efficiency + competitiveness","g")}</div>`),
+ vPillars:()=>viz("The three pillars", `<div class="vrow">${vbox("🔓","Liberalisation","free the economy")}${vbox("🏭","Privatisation","shed govt ownership")}${vbox("🌍","Globalisation","join the world","g")}</div>`),
+ vLiberal:()=>viz("Liberalisation", `<div class="vrow">${vbox("🚧","Before","rules, licences, permits","r")}${vbox("🔓","After","open to private & foreign firms","g")}</div>
+   <div class="center small muted" style="margin-top:9px">Some steps in the 1980s; the 1991 reforms were far wider.</div>`),
+ vLicence:()=>viz("The licence raj ends", `<div class="vrow">${vbox("📝","Licensing abolished","almost all products","g")}</div>
+   <div class="vrow" style="margin-top:8px">${vbox("🍺","Still licensed","alcohol · cigarettes · chemicals","a")}${vbox("⚛️","Still public","atomic energy · core railways","a")}</div>`),
+ vMarket:()=>viz("Who sets the price?", `<div class="vrow">${vbox("🏛️","Before","government fixed prices","r")}${vbox("🛒","After","the market decides","g")}</div>`),
+ vFinSec:()=>viz("The financial sector", `<div class="vrow">${vbox("🏦","Banks","commercial + investment")}${vbox("📈","Stock exchange","")}${vbox("💱","Forex market","")}</div>
+   <div class="vrow" style="margin-top:9px">${vbox("🛡️","Regulated by the RBI","","a")}</div>`),
+ vRBI:()=>viz("The RBI's changing role", `<div class="vrow">${vbox("🎛️","Regulator","controls each step","a")}${vbox("➡️","","","flex:none;border:0;background:transparent;font-size:20px")}${vbox("🤝","Facilitator","guides and enables","g")}</div>
+   <div class="center small muted" style="margin-top:9px">Decisions can be taken without consulting the RBI each time.</div>`),
+ vBanks:()=>viz("New players", `<div class="vrow">${vbox("🏦","Private banks","Indian + foreign")}${vbox("🌍","FIIs","merchant & mutual & pension funds")}${vbox("📊","74%","foreign investment limit","a")}</div>`),
+ vTax:()=>viz("Tax reforms", `<div class="vrow">${vbox("👤","Direct","income & profit")}${vbox("🛒","Indirect","goods & services")}</div>
+   <div class="vrow" style="margin-top:9px">${vbox("📉","Income-tax rates cut","high rates caused evasion","g")}${vbox("📉","Corporation tax cut","")}</div>`),
+ vGST:()=>viz("Goods and Services Tax, 2016", `<div class="vrow">${vbox("🏛️","Centre","")}${vbox("🗺️","States","")}${vbox("🤝","Together","one nation, one tax","g")}</div>
+   <div class="center small muted" style="margin-top:9px">More revenue · less evasion · one market.</div>`),
+ vDevalue:()=>viz("Devaluation, 1991", `<div class="vrow">${vbox("💱","₹ falls vs $","")}${vbox("📤","Exports cheaper","more inflow","g")}${vbox("📥","Imports dearer","spend less dollars","a")}</div>
+   <div class="center small muted" style="margin-top:9px">Then the rupee's value was freed — markets set the rate.</div>`),
+ vTradeOld:()=>viz("Before: a walled market", `<div class="vrow">${vbox("🚧","Quantitative restrictions","limits on imports","r")}${vbox("💰","Very high tariffs","")}${vbox("🐢","Slow manufacturing","","r")}</div>`),
+ vTradeNew:()=>viz("After: three moves", `<div class="vrow">${vbox("🧨","Dismantle","QRs on imports/exports","g")}${vbox("📉","Reduce","tariff rates","g")}${vbox("🚫","Remove","import licensing","g")}</div>
+   <div class="center small muted" style="margin-top:9px">QRs on consumer goods & farm products removed from April 2001.</div>`),
+ vPrivatise:()=>viz("Privatisation", `<div class="vrow">${vbox("🏛️","Government-owned","")}${vbox("➡️","","","flex:none;border:0;background:transparent;font-size:20px")}${vbox("🏭","Private","withdraw or outright sale","g")}</div>`),
+ vDisinvest:()=>viz("Disinvestment", `<div class="vrow">${vbox("🏭","PSE equity","")}${vbox("➡️","","","flex:none;border:0;background:transparent;font-size:20px")}${vbox("🛒","Sold to the public","raise funds","g")}</div>
+   <div class="center small muted" style="margin-top:9px">Purpose: financial discipline · modernisation · private capability.</div>`),
+ vRatna:()=>viz("Special status", `<div class="vrow">${vbox("🥇","Maharatna","Indian Oil · SAIL","g")}${vbox("🥈","Navratna","HAL · MTNL · IRCTC")}${vbox("🥉","Miniratna","BSNL · Airports Authority")}</div>
+   <div class="center small muted" style="margin-top:9px">Greater financial, managerial and operational autonomy.</div>`),
+ vGlobal:()=>viz("Globalisation", `<div class="vrow">${vbox("🇮🇳","India's economy","")}${vbox("🔗","Integrated with","")}${vbox("🌍","The world economy","","g")}</div>
+   <div class="center small muted" style="margin-top:9px">Outcome of liberalisation + privatisation. A borderless world.</div>`),
+ vOutsource:()=>viz("Outsourcing to India", `<div class="vrow">${vbox("🏢","A rich-country firm","")}${vbox("➡️","","","flex:none;border:0;background:transparent;font-size:20px")}${vbox("🇮🇳","India","low wages + skills","g")}</div>
+   <div class="vrow" style="margin-top:8px">${vbox("📞","Call centres / BPO","")}${vbox("🧮","Accountancy & records","")}${vbox("🎬","Editing & transcription","")}</div>`),
+ vIndiaGlobal:()=>viz("Indian firms abroad", `<div class="vrow">${vbox("🛢️","ONGC Videsh","16 countries")}${vbox("🏗️","Tata Steel","26 countries, sells in 50")}${vbox("💻","HCL","31 countries")}${vbox("💊","Dr Reddy's","worldwide")}</div>`),
+ vWTO:()=>viz("The WTO, 1995", `<div class="vrow">${vbox("📜","GATT, 1948","23 countries")}${vbox("➡️","","","flex:none;border:0;background:transparent;font-size:20px")}${vbox("🤝","WTO, 1995","successor","g")}</div>
+   <div class="center small muted" style="margin-top:9px">Rule-based trade · no arbitrary restrictions · fair access for all.</div>`),
+ vWTOIndia:()=>viz("India at the WTO", `<div class="vrow">${vbox("🗣️","Framing fair rules","for the developing world","g")}${vbox("✅","Kept commitments","QRs removed, tariffs cut")}${vbox("⚠️","Still blocked","high non-tariff barriers","a")}</div>`),
+ vSectors:()=>viz("Growth by sector (%)", `<svg viewBox="0 0 300 128" role="img" aria-label="Growth of agriculture, industry and services">
+   <line x1="30" y1="104" x2="290" y2="104" stroke="#1d3b55" stroke-width="2"/>
+   <rect x="44" y="92" width="20" height="12" rx="3" fill="#ff7a9c"/><text x="54" y="88" text-anchor="middle" fill="#ff7a9c" font-size="8.5" font-weight="700">3.6</text>
+   <rect x="74" y="80" width="20" height="24" rx="3" fill="#f4c265"/><text x="84" y="76" text-anchor="middle" fill="#f4c265" font-size="8.5" font-weight="700">7.1</text>
+   <rect x="104" y="82" width="20" height="22" rx="3" fill="#38d6c0"/><text x="114" y="78" text-anchor="middle" fill="#38d6c0" font-size="8.5" font-weight="700">6.7</text>
+   <text x="84" y="118" text-anchor="middle" fill="#9fb6cc" font-size="9">1980–91</text>
+   <rect x="164" y="97" width="20" height="7" rx="3" fill="#ff7a9c"/><text x="174" y="93" text-anchor="middle" fill="#ff7a9c" font-size="8.5" font-weight="700">2.3</text>
+   <rect x="194" y="76" width="20" height="28" rx="3" fill="#f4c265"/><text x="204" y="72" text-anchor="middle" fill="#f4c265" font-size="8.5" font-weight="700">9.4</text>
+   <rect x="224" y="81" width="20" height="23" rx="3" fill="#38d6c0"/><text x="234" y="77" text-anchor="middle" fill="#38d6c0" font-size="8.5" font-weight="700">7.8</text>
+   <text x="204" y="118" text-anchor="middle" fill="#9fb6cc" font-size="9">2002–07</text>
+   <text x="160" y="14" text-anchor="middle" fill="#eaf4ff" font-size="9.5" font-weight="800">🟥 agriculture  🟨 industry  🟩 services</text></svg>
+   <div class="center small muted" style="margin-top:6px">Services grew fastest; agriculture's growth fell.</div>`),
+ vWinners:()=>viz("Opening up", `<div class="vrow">${vbox("💵","Foreign investment","$0.1 bn → $23 bn","g")}${vbox("🏦","Forex reserves","$6 bn → $646 bn","g")}</div>
+   <div class="center small muted" style="margin-top:9px">1990–91 → 2022–23 / 2023–24. Exports: auto parts, pharma, engineering, IT, textiles.</div>`),
+ vFairness:()=>viz("Who was left behind", `<div class="vrow">${vbox("🌾","Agriculture","growth fell, investment down","r")}${vbox("🏭","Industry","slowed by cheap imports","r")}${vbox("⚖️","Fairness","disparities widened","a")}</div>
+   <div class="center small muted" style="margin-top:9px">Growth concentrated in a few service areas, not in farms and factories.</div>`)
+};
+</script>
+<script>
+/* =========================================================================
+   SIMULATION ENGINES — touch-first (tap-to-select & sliders).
+   ========================================================================= */
+function fmtN(n){ return (Math.round(n*100)/100).toLocaleString("en-IN"); }
+
+function buildCrisis(el){
+  if(!el) return;
+  el.innerHTML=`<div class="simhead"><span class="t">🔴 The reserves countdown</span><span class="hint">move the slider</span></div>
+    <div class="simstage">
+      <div class="small muted" data-lang>How many weeks of imports can our reserves pay for?</div>
+      <input class="range" id="crR" type="range" min="0" max="8" value="6">
+      <div class="grid2" style="margin-top:6px">
+        <div class="statbox"><div class="n" id="crW" style="color:var(--gold2)">6</div><div class="l">weeks covered</div></div>
+        <div class="statbox"><div class="n" id="crD" style="color:#3ddc97">42</div><div class="l">days of imports</div></div>
+      </div>
+      <div class="meter" style="margin-top:6px"><i id="crBar" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></i></div>
+      <div class="callout small" id="crNote"></div>
+    </div>`;
+  const r=el.querySelector("#crR");
+  function upd(){ const w=+r.value; el.querySelector("#crW").textContent=w; el.querySelector("#crD").textContent=w*7;
+    el.querySelector("#crBar").style.width=Math.min(100,(w/8)*100)+"%";
+    const n=el.querySelector("#crNote");
+    if(w<2){ n.className="callout small rose"; n.innerHTML="🔥 <b>Crisis!</b> Under two weeks of imports — this is exactly the 1991 emergency. No lender will lend; prices of essentials rise sharply."; }
+    else if(w<4){ n.className="callout small"; n.innerHTML="⚠️ Thin cover. A balance-of-payments problem is building — the government is spending more than it earns."; }
+    else { n.className="callout small teal"; n.innerHTML="✅ Comfortable cover. Reserves can finance imports and repay foreign debt without panic."; }
+  }
+  r.oninput=upd; upd();
+}
+
+function buildSort(el){
+  if(!el) return;
+  const items=[
+    {t:"Correcting the balance of payments",a:"stab",why:"This corrects an existing weakness in the balance of payments — a short-term stabilisation measure."},
+    {t:"Bringing inflation under control",a:"stab",why:"Keeping prices from running away is a short-term stabilisation measure."},
+    {t:"Removing industrial licensing",a:"struct",why:"Removing rigidities to raise efficiency is a long-term structural reform."},
+    {t:"Opening the economy to foreign investment",a:"struct",why:"Improving competitiveness by removing barriers is a structural reform."},
+    {t:"Holding enough foreign exchange for imports",a:"stab",why:"Maintaining reserves is a short-term stabilisation step."},
+    {t:"Deregulating the financial sector",a:"struct",why:"Raising the economy's efficiency over the long run is a structural reform."}
+  ];
+  let i=0, right=0;
+  el.innerHTML=`<div class="simhead"><span class="t">⚖️ Sort the measures</span><span class="hint">stabilise or restructure?</span></div>
+    <div class="simstage" id="stStage"></div><div class="btnrow" id="stBtns"></div>
+    <div class="small muted" id="stScore" style="margin-top:6px"></div>`;
+  const stage=el.querySelector("#stStage"), btns=el.querySelector("#stBtns"), score=el.querySelector("#stScore");
+  function draw(){
+    if(i>=items.length){
+      stage.innerHTML=`<div class="center"><div style="font-size:30px">🏅</div><b>${right}/${items.length} correct</b>
+        <p class="small muted">Remember: stabilisation = short-term (BoP + inflation). Structural = long-term (efficiency + competitiveness).</p></div>`;
+      btns.innerHTML=`<button class="btn teal sm" id="stAgain">↻ Try again</button>`;
+      btns.querySelector("#stAgain").onclick=()=>{ i=0;right=0; draw(); }; return;
+    }
+    const it=items[i];
+    stage.innerHTML=`<div class="pill sel" style="font-size:13px;pointer-events:none">${it.t}</div><div id="stFb" class="fb"></div>`;
+    btns.innerHTML=`<button class="btn teal sm" id="stS">Stabilisation</button><button class="btn sm" id="stR">Structural reform</button>`;
+    const fb=stage.querySelector("#stFb");
+    function answer(a){ const ok=(a===it.a); if(ok) right++;
+      fb.className="fb show "+(ok?"ok":"no"); fb.innerHTML=(ok?"✅ Correct. ":"❌ Not quite. ")+it.why;
+      btns.querySelectorAll("button").forEach(b=>b.disabled=true); score.textContent="Score: "+right+" / "+(i+1);
+      setTimeout(()=>{ i++; draw(); }, 1500); }
+    btns.querySelector("#stS").onclick=()=>answer("stab"); btns.querySelector("#stR").onclick=()=>answer("struct");
+  }
+  draw();
+}
+
+function buildLicence(el){
+  if(!el) return;
+  const items=[
+    {t:"🍺 Alcohol",still:true,why:"Alcohol stayed under licensing after 1991."},
+    {t:"🧵 Cotton garments",still:false,why:"Licensing was abolished for almost all product categories — garments were freed."},
+    {t:"🚬 Cigarettes",still:true,why:"Cigarettes remained a licensed product."},
+    {t:"🧪 Hazardous chemicals",still:true,why:"Hazardous chemicals stayed licensed."},
+    {t:"💥 Industrial explosives",still:true,why:"Industrial explosives stayed licensed."},
+    {t:"🖥️ Electronics",still:true,why:"Electronics remained in the licensed list."},
+    {t:"✈️ Aerospace",still:true,why:"Aerospace stayed licensed."},
+    {t:"💊 Drugs & pharmaceuticals",still:true,why:"Drugs and pharmaceuticals remained licensed."},
+    {t:"🍞 Bread & biscuits",still:false,why:"A common consumer good — freed from licensing."},
+    {t:"⚛️ Atomic energy",still:true,why:"Atomic energy generation stayed reserved for the public sector."}
+  ];
+  let i=0, right=0;
+  el.innerHTML=`<div class="simhead"><span class="t">🔓 What stays licensed?</span><span class="hint">tap to classify</span></div>
+    <div class="simstage" id="liStage"></div><div class="btnrow" id="liBtns"></div>
+    <div class="small muted" id="liScore" style="margin-top:6px"></div>`;
+  const stage=el.querySelector("#liStage"), btns=el.querySelector("#liBtns"), score=el.querySelector("#liScore");
+  function draw(){
+    if(i>=items.length){
+      stage.innerHTML=`<div class="center"><div style="font-size:30px">🏅</div><b>${right}/${items.length} correct</b>
+        <p class="small muted">Licensing went for almost everything. A short list stayed: alcohol, cigarettes, hazardous chemicals, industrial explosives, electronics, aerospace, drugs and pharmaceuticals — plus atomic energy and core railways for the public sector.</p></div>`;
+      btns.innerHTML=`<button class="btn teal sm" id="liAgain">↻ Try again</button>`;
+      btns.querySelector("#liAgain").onclick=()=>{ i=0;right=0; draw(); }; return;
+    }
+    const it=items[i];
+    stage.innerHTML=`<div class="pill sel" style="font-size:13px;pointer-events:none">${it.t}</div><div id="liFb" class="fb"></div>`;
+    btns.innerHTML=`<button class="btn teal sm" id="liF">Freed from licensing</button><button class="btn sm" id="liL">Still licensed / reserved</button>`;
+    const fb=stage.querySelector("#liFb");
+    function answer(still){ const ok=(still===it.still); if(ok) right++;
+      fb.className="fb show "+(ok?"ok":"no"); fb.innerHTML=(ok?"✅ Correct. ":"❌ Not quite. ")+it.why;
+      btns.querySelectorAll("button").forEach(b=>b.disabled=true); score.textContent="Score: "+right+" / "+(i+1);
+      setTimeout(()=>{ i++; draw(); }, 1500); }
+    btns.querySelector("#liF").onclick=()=>answer(false); btns.querySelector("#liL").onclick=()=>answer(true);
+  }
+  draw();
+}
+
+function buildDevalue(el){
+  if(!el) return;
+  el.innerHTML=`<div class="simhead"><span class="t">💱 Devalue the rupee</span><span class="hint">slide the rate</span></div>
+    <div class="simstage">
+      <div class="small muted">Exchange rate: <b id="dvRate" style="color:var(--gold2)">₹40</b> per US $</div>
+      <input class="range" id="dvR" type="range" min="20" max="80" value="40">
+      <div class="grid2" style="margin-top:6px">
+        <div class="statbox"><div class="n" id="dvX" style="color:#3ddc97">Exports</div><div class="l">cheaper abroad → rise</div></div>
+        <div class="statbox"><div class="n" id="dvM" style="color:#ff7a9c">Imports</div><div class="l">dearer at home → fall</div></div>
+      </div>
+      <div class="meter" style="margin-top:6px"><i id="dvBar" style="background:linear-gradient(90deg,var(--teal),var(--gold))"></i></div>
+      <div class="callout small" id="dvNote"></div>
+    </div>`;
+  const r=el.querySelector("#dvR");
+  function upd(){ const rate=+r.value; el.querySelector("#dvRate").textContent="₹"+rate;
+    const cheap=Math.round((rate-20)/60*100); // higher rate = rupee weaker = exports cheaper
+    el.querySelector("#dvBar").style.width=cheap+"%";
+    el.querySelector("#dvX").textContent=(rate>40?"↑ ":"↓ ")+"Exports";
+    el.querySelector("#dvM").textContent=(rate>40?"↓ ":"↑ ")+"Imports";
+    const n=el.querySelector("#dvNote");
+    if(rate>40) n.innerHTML="📤 A weaker rupee makes Indian exports cheaper for foreign buyers and imports dearer for us — so more dollars flow in. This is what 1991 devaluation did.";
+    else if(rate<40) n.innerHTML="📥 A stronger rupee makes exports dearer and imports cheaper — the opposite of what the 1991 crisis needed.";
+    else n.innerHTML="↔️ Roughly the pre-1991 level. In 1991 the rupee was devalued to push the rate up (weaker rupee).";
+  }
+  r.oninput=upd; upd();
+}
+
+function buildTariff(el){
+  if(!el) return;
+  el.innerHTML=`<div class="simhead"><span class="t">🚢 Set a tariff</span><span class="hint">move the slider</span></div>
+    <div class="simstage">
+      <div class="small muted">Tariff on imported goods: <b id="tfRate" style="color:var(--gold2)">10</b>%</div>
+      <input class="range" id="tfR" type="range" min="0" max="100" value="10">
+      <div class="grid2" style="margin-top:6px">
+        <div class="statbox"><div class="n" id="tfImp" style="color:#5cc8ff">high</div><div class="l">imports coming in</div></div>
+        <div class="statbox"><div class="n" id="tfPri" style="color:#ff7a9c">low</div><div class="l">price at home</div></div>
+      </div>
+      <div class="callout small" id="tfNote"></div>
+    </div>`;
+  const r=el.querySelector("#tfR");
+  function upd(){ const t=+r.value; el.querySelector("#tfRate").textContent=t;
+    const imp = t<25?"high":t<60?"medium":"low";
+    const pri = t<25?"low":t<60?"medium":"high";
+    el.querySelector("#tfImp").textContent=imp; el.querySelector("#tfPri").textContent=pri;
+    const n=el.querySelector("#tfNote");
+    if(t>=60) n.innerHTML="🧱 A high wall: local producers are protected, but buyers pay more and imports shrink. Pre-1991 India kept tariffs very high — and manufacturing grew slowly.";
+    else if(t<=15) n.innerHTML="🌐 Low tariffs: cheaper imports reach buyers and competition rises — the direction of the 1991 trade reforms.";
+    else n.innerHTML="⚖️ A middle tariff: some protection, some competition. Reforms moved India from the high wall toward the low end.";
+  }
+  r.oninput=upd; upd();
+}
+
+function buildDisinvest(el){
+  if(!el) return;
+  el.innerHTML=`<div class="simhead"><span class="t">🏭 Sell a slice of a PSE</span><span class="hint">move the slider</span></div>
+    <div class="simstage">
+      <div class="small muted">Equity sold to the public: <b id="diPct" style="color:var(--gold2)">10</b>%</div>
+      <input class="range" id="diR" type="range" min="0" max="100" value="10">
+      <div class="grid2" style="margin-top:6px">
+        <div class="statbox"><div class="n" id="diGov" style="color:#38d6c0">90%</div><div class="l">government stake</div></div>
+        <div class="statbox"><div class="n" id="diCtrl" style="color:#3ddc97">Govt</div><div class="l">who controls?</div></div>
+      </div>
+      <div class="meter" style="margin-top:6px"><i id="diBar" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></i></div>
+      <div class="callout small" id="diNote"></div>
+    </div>`;
+  const r=el.querySelector("#diR");
+  function upd(){ const p=+r.value, gov=100-p; el.querySelector("#diPct").textContent=p;
+    el.querySelector("#diGov").textContent=gov+"%";
+    el.querySelector("#diBar").style.width=p+"%";
+    const c=el.querySelector("#diCtrl"), n=el.querySelector("#diNote");
+    if(gov>50){ c.textContent="Govt"; n.innerHTML="🏛️ The government keeps a majority — this is a <b>minority sale</b>. Ownership stays public, only a slice of equity is sold."; }
+    else if(gov>0){ c.textContent="Private"; n.innerHTML="🤝 Control passes to the private partner — this is a <b>strategic sale</b>. The government withdraws from management."; }
+    else { c.textContent="Private"; n.innerHTML="🏭 Full privatisation — the enterprise is sold outright and leaves the public sector."; }
+  }
+  r.oninput=upd; upd();
+}
+
+function buildOutsource(el){
+  if(!el) return;
+  const svc=[
+    {t:"📞 Call centre / BPO",save:60,why:"Voice-based business processes run 24×7 at a fraction of the cost in rich countries."},
+    {t:"🧮 Accountancy & record keeping",save:55,why:"Skilled accountants in India cost far less than in-house teams abroad."},
+    {t:"💻 Computer service / IT",save:50,why:"India's large pool of English-speaking IT talent and fast links make this a favourite."},
+    {t:"🎬 Film editing & music recording",save:45,why:"Digital files travel instantly over the internet for editing abroad."},
+    {t:"📖 Book transcription",save:40,why:"Text can be digitised and sent in real time across continents."},
+    {t:"🩺 Clinical advice",save:35,why:"Qualified professionals provide services remotely."}
+  ];
+  el.innerHTML=`<div class="simhead"><span class="t">🌍 Outsource a service</span><span class="hint">tap a service</span></div>
+    <div class="simstage">
+      <div class="vrow" id="osRow" style="flex-wrap:wrap"></div>
+      <div class="grid2" style="margin-top:6px">
+        <div class="statbox"><div class="n" id="osSave" style="color:#3ddc97">—</div><div class="l">firm's cost saved</div></div>
+        <div class="statbox"><div class="n" id="osWhy" style="color:var(--gold2)">India</div><div class="l">low wages + skills</div></div>
+      </div>
+      <div class="callout small" id="osNote">Tap a service to see why it is outsourced to India.</div>
+    </div>`;
+  const row=el.querySelector("#osRow");
+  svc.forEach((s,i)=>{ const b=document.createElement("button"); b.className="pill"; b.style.fontSize="12px"; b.textContent=s.t;
+    b.onclick=()=>{ row.querySelectorAll(".pill").forEach(x=>x.classList.remove("sel")); b.classList.add("sel");
+      el.querySelector("#osSave").textContent="~"+s.save+"%";
+      el.querySelector("#osNote").innerHTML="<b>"+s.t+"</b> — "+s.why; };
+    row.appendChild(b); });
+}
+
+function buildSectors(el){
+  if(!el) return;
+  const data=[
+    {y:"1980–91",ag:3.6,in:7.1,sv:6.7},
+    {y:"1992–2001",ag:3.3,in:6.5,sv:8.2},
+    {y:"2002–07",ag:2.3,in:9.4,sv:7.8},
+    {y:"2007–12",ag:3.2,in:7.4,sv:10.0},
+    {y:"2012–13",ag:1.5,in:3.6,sv:8.1},
+    {y:"2013–14",ag:4.2,in:5.0,sv:7.8},
+    {y:"2021–22",ag:4.8,in:12.7,sv:9.2}
+  ];
+  el.innerHTML=`<div class="simhead"><span class="t">📊 Sector scoreboard</span><span class="hint">tap a year</span></div>
+    <div class="simstage">
+      <div class="vrow" id="scRow" style="flex-wrap:wrap"></div>
+      <div class="grid2" style="margin-top:6px">
+        <div class="statbox"><div class="n" id="scAg" style="color:#ff7a9c">—</div><div class="l">agriculture %</div></div>
+        <div class="statbox"><div class="n" id="scIn" style="color:#f4c265">—</div><div class="l">industry %</div></div>
+      </div>
+      <div class="statbox" style="margin-top:6px"><div class="n" id="scSv" style="color:#38d6c0">—</div><div class="l">services % — the fastest-growing sector</div></div>
+      <div class="callout small" id="scNote">Source: NCERT Table 3.1, Economic Survey. *2021–22 industry data is GVA.</div>
+    </div>`;
+  const row=el.querySelector("#scRow");
+  data.forEach((d,i)=>{ const b=document.createElement("button"); b.className="pill"; b.style.fontSize="11.5px"; b.textContent=d.y;
+    b.onclick=()=>{ row.querySelectorAll(".pill").forEach(x=>x.classList.remove("sel")); b.classList.add("sel");
+      el.querySelector("#scAg").textContent=d.ag; el.querySelector("#scIn").textContent=d.in; el.querySelector("#scSv").textContent=d.sv;
+      const lead = d.sv>=d.in && d.sv>=d.ag ? "Services led the way." : d.in>d.sv ? "Industry led here — note the 2021–22 rebound." : "Agriculture led this year.";
+      el.querySelector("#scNote").textContent="In "+d.y+": agriculture "+d.ag+"%, industry "+d.in+"%, services "+d.sv+"%. "+lead; };
+    row.appendChild(b); });
+}
+
+const SIMS = { crisis:buildCrisis, sort:buildSort, licence:buildLicence, devalue:buildDevalue,
+  tariff:buildTariff, disinvest:buildDisinvest, outsource:buildOutsource, sectors:buildSectors };
+</script>
+<script>
+
+/* =========================================================================
+   ENGINE — one linear slide journey (no tabs), auto-paginated to fit.
+   ========================================================================= */
+let cur = 0;              // slide index
+let pageIdx = 0;
+let beatPages = 1;
+let curPages = [];
+let curOnePerPage = false;
+let curQOpts = null;
+let activeConcept = null;
+
+function shuffle(a){ const b=a.slice(); for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+function conceptDone(id){ return !!S.stops[id]; }
+function allConceptsDone(){ return CONCEPT_ORDER.every(c=>!!S.stops[c]); }
+function slideConcept(i){ return SLIDES[i] && SLIDES[i].concept; }
+function firstSlideOf(concept){ return SLIDES.findIndex(s=>s.concept===concept); }
+function conceptUnlocked(i){ return i===0 || conceptDone(CONCEPT_ORDER[i-1]); }
+
+/* ---------------- pagination ---------------- */
+function availH(stage){ let h=stage.clientHeight; if(!h||h>window.innerHeight) h=window.innerHeight-200; return Math.max(200,h-16); }
+function setStageBlocks(blocks, onePerPage){
+  const stage=document.getElementById("lessonStage");
+  stage.innerHTML = blocks.map(b=>`<div class="blk">${b}</div>`).join("");
+  curOnePerPage=onePerPage;
+  packNodes(stage, Array.from(stage.querySelectorAll(".blk")), onePerPage, 0);
+}
+function packNodes(stage, nodes, onePerPage, keepPage){
+  stage.innerHTML="";
+  const holder=document.createElement("div"); holder.className="pageblk"; nodes.forEach(n=>holder.appendChild(n)); stage.appendChild(holder);
+  let pages;
+  if(onePerPage){ pages=nodes.map(n=>[n]); }
+  else { const A=availH(stage); pages=[]; let grp=[], h=0;
+    nodes.forEach(n=>{ const cs=getComputedStyle(n);
+      const bh=n.getBoundingClientRect().height+(parseFloat(cs.marginTop)||0)+(parseFloat(cs.marginBottom)||0);
+      if(h>0 && h+bh>A){ pages.push(grp); grp=[]; h=0; } grp.push(n); h+=bh; });
+    if(grp.length) pages.push(grp); if(!pages.length) pages=[[]]; }
+  stage.innerHTML="";
+  curPages = pages.map(g=>{ const d=document.createElement("div"); d.className="pageblk"; g.forEach(x=>d.appendChild(x)); stage.appendChild(d); return d; });
+  for(let pass=0; pass<12; pass++){ const a=availH(stage); let changed=false;
+    for(let i=0;i<curPages.length;i++){ const pg=curPages[i];
+      if(pg.getBoundingClientRect().height>a && pg.children.length>1){ const last=pg.lastElementChild;
+        let np=curPages[i+1]; if(!np){ np=document.createElement("div"); np.className="pageblk"; stage.appendChild(np); curPages.push(np); }
+        np.insertBefore(last, np.firstChild); changed=true; } }
+    if(!changed) break; }
+  beatPages=curPages.length;
+  pageIdx=Math.min(keepPage||0, beatPages-1);
+  showPage(pageIdx);
+}
+function showPage(i){ pageIdx=i;
+  curPages.forEach((p,idx)=>{ p.style.display = idx===i?"block":"none"; });
+  initSimsInPage(curPages[i]);
+  renderNav();
+  animatePage(curPages[i]); }
+function initSimsInPage(pageEl){ if(!pageEl) return;
+  pageEl.querySelectorAll(".sim").forEach(host=>{ if(host.dataset.built) return;
+    const k=host.id.replace("sim_",""); if(SIMS[k]){ SIMS[k](host); host.dataset.built="1"; } }); }
+function reflow(){ const stage=document.getElementById("lessonStage");
+  const nodes=[]; curPages.forEach(p=>Array.from(p.children).forEach(c=>nodes.push(c)));
+  if(!nodes.length) return; packNodes(stage, nodes, curOnePerPage, pageIdx); }
+window.addEventListener("resize", ()=>{ if(document.getElementById("screen-lesson").classList.contains("active")) reflow(); });
+
+/* ---------------- slide building ---------------- */
+function pandaLine(say,who){ return `<div class="panda"><div class="av">🧑‍🏫</div><div class="bubble"><div class="nm">${who||"Acharya"}</div><span data-lang>${say}</span></div></div>`; }
+function slideBlocks(s){
+  const out=[];
+  const num = s.concept? (CONCEPT_ORDER.indexOf(s.concept)+1) : 0;
+  out.push(`<div class="card"><span class="snum">${s.kicker}</span>
+    <h2 data-lang>${s.title}</h2>${(s.text||[]).map(t=>`<p data-lang>${t}</p>`).join("")}</div>`);
+  if(s.visual && VISUALS[s.visual]) out.push(VISUALS[s.visual]());
+  if(s.formula) out.push(`<div class="formula">${s.formula}</div>`);
+  if(s.terms) out.push(`<div class="card">${s.terms.map(t=>`<div class="kv"><span><b style="color:var(--ink)">${t.t}</b><div class="meaning" data-lang>${t.m}</div></span></div>`).join("")}</div>`);
+  if(s.example) out.unshift(pandaLine("Here's where it becomes real — read this slowly.","Acharya · real India"));
+  if(s.sim) s.sim.forEach(k=>out.push(`<div class="sim" id="sim_${k}"></div>`));
+  if(s.check) out.push(`<div class="card"><div class="small" style="color:var(--teal);font-weight:800;margin-bottom:4px">🧑🏫 Your turn. Answer honestly — a wrong guess teaches you more than a lucky one.</div><span class="badge gold">Check</span><div class="qtext" data-lang>${QUICK[s.check].q}</div></div>`);
+  if(s.check) out.push(`<div class="card flat"><div id="qk_opts">${quickOpts(s.check)}</div><div class="fb" id="qk_fb"></div></div>`);
+  if(s.match) out.push(`<div class="card" id="matchHost"></div>`);
+  return out;
+}
+function quickOpts(qid){ const q=QUICK[qid]; curQOpts=shuffle(q.o);
+  return curQOpts.map((o,i)=>`<div class="opt" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span data-lang>${o.t}</span></div>`).join(""); }
+function wireQuick(stage, qid, concept){
+  const box=stage.querySelector("#qk_opts"), fb=stage.querySelector("#qk_fb"); if(!box) return;
+  let solved=false;
+  box.querySelectorAll(".opt").forEach(el=>{ const o=curQOpts[+el.dataset.i];
+    el.onclick=()=>{ if(solved) return;
+      if(o.c){ solved=true; el.classList.add("right"); box.querySelectorAll(".opt").forEach(x=>x.classList.add("locked"));
+        fb.className="fb show ok"; fb.innerHTML="✅ Correct. Nice one!"; applyLang(stage); passCheck(concept); }
+      else { el.classList.add("wrong"); fb.className="fb show no";
+        fb.innerHTML="❌ "+(o.m||"Not this one — think again.")+" <span class='small muted'>(try another option)</span>"; applyLang(fb); } };
+  });
+}
+function passCheck(concept){ if(!concept) return; const c=CONCEPTS[concept]; if(!c) return;
+  if(!S.stops[concept]){ S.stops[concept]=true; S.xp+=c.xp; S.coins+=5; save(); renderTop(); toast("⭐ +"+c.xp+" XP · "+c.n); confetti(22); renderMap(); }
+  renderNav(); }
+
+/* ---------------- term ↔ definition match ---------------- */
+function buildMatch(el, onDone){
+  if(!el) return;
+  const terms=MATCH.map((m,i)=>({i,t:m[0]})), defs=shuffle(MATCH.map((m,i)=>({i,d:m[1]})));
+  el.innerHTML=`<div class="matchgrid">
+    <div><div class="mhead">Term</div><div class="mcol" id="mT">${terms.map(x=>`<div class="mtile" data-i="${x.i}">${x.t}</div>`).join("")}</div></div>
+    <div><div class="mhead">Meaning in economics</div><div class="mcol defs" id="mD">${defs.map(x=>`<div class="mtile" data-i="${x.i}">${x.d}</div>`).join("")}</div></div>
+  </div><div class="small muted" id="mScore" style="margin-top:7px">Matched 0 / ${MATCH.length}</div>`;
+  let sel=null, matched=0, lock=false;
+  const T=el.querySelector("#mT"), D=el.querySelector("#mD");
+  T.querySelectorAll(".mtile").forEach(t=>t.onclick=()=>{ if(lock||t.classList.contains("match")) return;
+    T.querySelectorAll(".mtile").forEach(x=>x.classList.remove("sel")); t.classList.add("sel"); sel=t; });
+  D.querySelectorAll(".mtile").forEach(d=>d.onclick=()=>{ if(lock||d.classList.contains("match")||!sel) return;
+    if(sel.dataset.i===d.dataset.i){ sel.classList.add("match"); d.classList.add("match"); sel.classList.remove("sel"); sel=null; matched++;
+      el.querySelector("#mScore").textContent=`Matched ${matched} / ${MATCH.length}`;
+      if(matched===MATCH.length){ confetti(30); onDone&&onDone(); } }
+    else { lock=true; const s=sel; d.classList.add("err"); s.classList.add("err");
+      setTimeout(()=>{ d.classList.remove("err"); s.classList.remove("err"); s.classList.remove("sel"); sel=null; lock=false; },620); } });
+}
+function passRevision(){ if(!S.stops["revision"]){ S.stops["revision"]=true; S.xp+=60; S.coins+=8; save(); renderTop(); toast("🧠 Concepts locked · +60 XP"); confetti(30); renderMap(); } }
+
+/* ---------------- render ---------------- */
+function renderSlide(){
+  const s=SLIDES[cur]; if(!s) return;
+  const stage=document.getElementById("lessonStage");
+  const blocks=slideBlocks(s);
+  pageIdx=0;
+  setStageBlocks(blocks, false);
+  if(s.check) wireQuick(stage, s.check, s.concept);
+  if(s.match) buildMatch(stage.querySelector("#matchHost"), passRevision);
+  applyLang(stage);
+  renderNav();
+  setTimeout(reflow, 0);
+}
+function animatePage(el){
+  if(!el) return;
+  try{ if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; }catch(e){}
+  Array.from(el.children).forEach((b,i)=>{ b.style.animation='enterUp .5s cubic-bezier(.2,.8,.2,1) both'; b.style.animationDelay=(i*70)+'ms'; });
+  el.querySelectorAll('.chain .node, .visual .vbox').forEach((n,i)=>{ n.style.animation='popIn .45s cubic-bezier(.2,.8,.2,1) both'; n.style.animationDelay=(140+i*80)+'ms'; });
+  el.querySelectorAll('.meter i').forEach(m=>{ const w=m.style.width||'0%'; m.style.transition='none'; m.style.width='0%';
+    requestAnimationFrame(()=>{ m.style.transition='width .8s cubic-bezier(.2,.8,.2,1)'; m.style.width=w; }); });
+  el.querySelectorAll('svg .flowline').forEach(pl=>{ try{ const L=pl.getTotalLength(); pl.style.strokeDasharray=L+' '+L; pl.style.strokeDashoffset=L; pl.style.animation='drawLine 1.3s ease .2s forwards'; }catch(e){} });
+  const v=el.querySelector('.visual'); if(v && !v.querySelector('.sweep')){ const sw=document.createElement('span'); sw.className='sweep'; v.appendChild(sw); }
+}
+function renderNav(){
+  const s=SLIDES[cur], next=document.getElementById("btnNext"), info=document.getElementById("pageInfo");
+  document.getElementById("progFill").style.width = Math.round((cur/(SLIDES.length))*100)+"%";
+  const more = pageIdx < beatPages-1;
+  info.textContent = (cur+1)+"/"+SLIDES.length + (beatPages>1? " ·"+(pageIdx+1)+"/"+beatPages : "");
+  if(more){ next.textContent="More ▶"; next.disabled=false; return; }
+  // GATE: cannot leave a check slide until that concept's check is answered
+  if(s && s.check && !conceptDone(s.concept)){ next.textContent="Answer the check"; next.disabled=true; return; }
+  const last = cur===SLIDES.length-1;
+  next.textContent = last ? "🎮 Arena ▶" : "Next ▶";
+  next.disabled=false;
+}
+
+/* ---------------- contents ---------------- */
+function renderMap(){
+  const list=document.getElementById("mapList");
+  const tiles=CONCEPT_ORDER.map((c,i)=>`<div class="tile ${conceptDone(c)?"done":""} ${conceptUnlocked(i)?"":"locked"}" data-c="${c}">
+      <span class="n">${i+1}</span><div class="ic">${conceptDone(c)?"✓":(conceptUnlocked(i)?CONCEPTS[c].ic:"🔒")}</div>
+      <div class="t">${CONCEPTS[c].n}</div><div class="x">${conceptDone(c)?"done":(conceptUnlocked(i)?"+"+CONCEPTS[c].xp+" XP":"locked")}</div></div>`).join("");
+  const rev=`<div class="tile ${S.stops["revision"]?"done":""} ${allConceptsDone()?"":"locked"}" data-c="revision">
+      <span class="n">11</span><div class="ic">${S.stops["revision"]?"✓":(allConceptsDone()?"🧠":"🔒")}</div><div class="t">Revision · term match</div>
+      <div class="x">${S.stops["revision"]?"done":(allConceptsDone()?"+60 XP":"locked")}</div></div>`;
+  list.innerHTML=tiles+rev;
+  list.querySelectorAll(".tile").forEach(t=>t.onclick=()=>openConcept(t.dataset.c));
+  const ab=document.getElementById("btnMapAssess"); ab.disabled=!allConceptsDone();
+  ab.textContent = allConceptsDone()? "🎮 Go to Assessment" : "🎮 Finish the journey first";
+}
+function openConcept(c){ const i = (c==="revision") ? SLIDES.length-1 : firstSlideOf(c);
+  if(i<0) return;
+  if(c==="revision"){ if(!allConceptsDone()){ toast("🔒 Finish all concepts first"); return; } }
+  else { const idx=CONCEPT_ORDER.indexOf(c); if(!conceptUnlocked(idx)){ toast("🔒 Finish the previous concept first"); return; } }
+  cur=i; pageIdx=0; go("lesson"); renderSlide(); }
+function renderHome(){ const done=CONCEPT_ORDER.filter(c=>S.stops[c]).length;
+  document.getElementById("homeState").textContent = (S.xp>0||done>0) ? `Saved progress: ${done}/${CONCEPT_ORDER.length} concepts · ${S.xp} XP.` : ""; }
+
+/* ---------------- assessment ---------------- */
+let A=null;
+function renderAssess(){
+  const body=document.getElementById("assessBody");
+  if(!A){
+    const card=k=>{ const t=ASSESS[k], best=S.best[k]||0;
+      return `<div class="tile" data-tier="${k}" style="min-height:auto;text-align:left;grid-column:1/-1">
+        <div class="ic">${k==="warm"?"🔥":k==="deep"?"🔬":"👹"}</div><div class="t">${t.title} · ${t.sub}</div>
+        <div class="x">${t.qs.length} Qs${t.timer?" · "+t.timer+"s each":" · no timer"} · best ${best}/${t.qs.length} · +${t.xpPer} XP/q</div></div>`; };
+    body.innerHTML=`<div class="card"><span class="badge gold">Gamified assessment</span><h2>Three rounds to prove mastery</h2>
+      <p class="small muted" data-lang>XP shows progress. Mastery comes only from your answers. Wrong options explain the misconception, never the answer.</p>
+      ${["warm","deep","boss"].map(card).join("")}
+      <div class="btnrow"><button class="btn ghost sm" id="aMap">◀ Back to contents</button></div></div>`;
+    body.querySelectorAll(".tile").forEach(n=>n.onclick=()=>startTier(n.dataset.tier));
+    body.querySelector("#aMap").onclick=()=>go("map"); applyLang(body); return;
+  }
+  renderQuestion();
+}
+function startTier(k){ const t=ASSESS[k]; A={tier:k,i:0,correct:0,total:t.qs.length,order:shuffle(t.qs),timerId:null,tleft:t.timer}; renderQuestion(); }
+function renderQuestion(){
+  const body=document.getElementById("assessBody"), t=ASSESS[A.tier], q=A.order[A.i], opts=shuffle(q.o);
+  body.innerHTML=`<div class="card">
+    <div style="display:flex;align-items:center;gap:8px"><span class="badge ${t.tier}">${t.title}</span>
+      <span class="small muted">Q ${A.i+1} / ${A.total}</span>${t.timer?`<span class="timer" id="aTimer" style="margin-left:auto">⏱ ${A.tleft}s</span>`:""}</div>
+    ${A.tier==="boss"?`<div class="hp"><i id="aHp" style="width:100%"></i></div>`:""}
+    <div class="qtext" data-lang>${q.q}</div><div id="aOpts"></div><div class="fb" id="aFb"></div>
+    <div class="btnrow"><button class="btn ghost sm" id="aQuit">Quit</button><span class="small muted" style="align-self:center">Correct: ${A.correct}</span></div></div>`;
+  const box=body.querySelector("#aOpts"), fb=body.querySelector("#aFb"); let done=false;
+  function lock(){ done=true; box.querySelectorAll(".opt").forEach(x=>x.classList.add("locked")); if(A.timerId){ clearInterval(A.timerId); A.timerId=null; } }
+  function answer(o,el){ if(done) return; lock();
+    if(o.c){ A.correct++; el.classList.add("right"); fb.className="fb show ok"; fb.innerHTML="✅ Correct."; }
+    else { el.classList.add("wrong"); fb.className="fb show no"; fb.innerHTML="❌ "+(o.m||"Not this one.")+" <span class='small muted'>(the answer is not revealed here)</span>"; }
+    applyLang(body); setTimeout(nextQuestion, o.c?700:1500); }
+  opts.forEach((o,i)=>{ const d=document.createElement("div"); d.className="opt";
+    d.innerHTML=`<span class="k">${"ABCD"[i]}</span><span data-lang>${o.t}</span>`; d.onclick=()=>answer(o,d); box.appendChild(d); });
+  if(t.timer){ A.tleft=t.timer; A.timerId=setInterval(()=>{ A.tleft--; const el=document.getElementById("aTimer"); if(el) el.textContent="⏱ "+A.tleft+"s";
+    if(A.tleft<=0){ lock(); fb.className="fb show no"; fb.innerHTML="⌛ Time! Keep moving."; setTimeout(nextQuestion,1100); } },1000); }
+  body.querySelector("#aQuit").onclick=()=>{ if(A.timerId)clearInterval(A.timerId); A=null; renderAssess(); };
+  applyLang(body);
+}
+function nextQuestion(){ if(!A) return; A.i++; if(A.i<A.total){ renderQuestion(); return; } finishTier(); }
+function finishTier(){
+  const t=ASSESS[A.tier], k=A.tier, sc=A.correct, tot=A.total;
+  if(sc>(S.best[k]||0)) S.best[k]=sc;
+  S.xp+=sc*t.xpPer; S.coins+=sc*2;
+  if(sc===tot) S.badges[k+"_perfect"]=true;
+  if(k==="warm"&&sc>=4) S.badges.warm=true; if(k==="deep"&&sc>=3) S.badges.deep=true; if(k==="boss"&&sc>=5) S.badges.boss=true;
+  save(); renderTop(); const pct=Math.round(sc/tot*100); confetti(sc>=Math.ceil(tot*0.7)?40:0);
+  const all=["warm","deep","boss"].every(x=>S.best[x]!==undefined);
+  const body=document.getElementById("assessBody");
+  body.innerHTML=`<div class="card center"><div style="font-size:36px">${pct>=85?"🏆":pct>=60?"🎖️":"📘"}</div>
+    <h2>${t.title} — ${sc} / ${tot}</h2>
+    <div class="meter" style="max-width:250px;margin:9px auto"><i style="width:${pct}%;background:linear-gradient(90deg,var(--teal),var(--gold))"></i></div>
+    <p class="small muted" data-lang>${pct>=85?"Brilliant — you can explain this round clearly.":pct>=60?"Solid — a little more practice on the misses will lock it in.":"Good effort — revisit the slides, then try again."}</p>
+    <p class="small">+${sc*t.xpPer} XP · +${sc*2} 🪙</p>
+    <div class="btnrow" style="justify-content:center"><button class="btn teal sm" id="rAgain">↻ Retry</button>
+      <button class="btn ghost sm" id="rMap">◀ Contents</button>${all?`<button class="btn sm" id="rDone">🎓 Summary</button>`:""}</div></div>`;
+  body.querySelector("#rAgain").onclick=()=>startTier(k); body.querySelector("#rMap").onclick=()=>go("map");
+  const d=body.querySelector("#rDone"); if(d) d.onclick=showDone;
+  applyLang(body); A=null;
+}
+
+/* ---------------- done ---------------- */
+function masteryPct(){ const parts=[]; ["warm","deep","boss"].forEach(k=>{ if(S.best[k]!==undefined) parts.push(S.best[k]/ASSESS[k].qs.length); });
+  return parts.length? Math.round(parts.reduce((a,b)=>a+b,0)/parts.length*100) : 0; }
+function showDone(){
+  const p=masteryPct(), label=p>=85?"MASTERED":p>=60?"DEVELOPING":"NEEDS PRACTICE";
+  const b=[["Reform Architect","All 10 concepts",allConceptsDone()],["Concept Master","Term match done",!!S.stops["revision"]],
+    ["Warm-up Cleared","≥ 4/5",!!S.badges.warm],["Deep Diver","≥ 3/4",!!S.badges.deep],
+    ["Boss Slayer","≥ 5/6",!!S.badges.boss],["Perfect Round","All correct",!!(S.badges.warm_perfect||S.badges.deep_perfect||S.badges.boss_perfect)]];
+  const body=document.getElementById("doneBody");
+  body.innerHTML=`<div class="card center"><div class="kicker">Chapter 3 · Liberalisation, Privatisation &amp; Globalisation</div>
+    <h1>${label}</h1><div class="meter" style="max-width:260px;margin:9px auto"><i style="width:${p}%;background:linear-gradient(90deg,var(--teal),var(--gold))"></i></div>
+    <p class="small muted" data-lang data-hi="मूल्यांकन प्रमाण: ${p}%। महारत इन जवाबों से तय होती है — XP सिर्फ़ प्रगति का निशान है।">Assessment evidence: ${p}%. Mastery is judged from these answers — XP is only a progress trail.</p>
+    <div class="grid2" style="margin-top:8px">
+      <div class="statbox"><div class="n">${S.xp}</div><div class="l">Total XP</div></div>
+      <div class="statbox"><div class="n">${S.coins}</div><div class="l">Aasha Coins</div></div>
+      <div class="statbox"><div class="n">${S.best.warm!==undefined?S.best.warm+"/"+ASSESS.warm.qs.length:"—"}</div><div class="l">Warm-up</div></div>
+      <div class="statbox"><div class="n">${S.best.boss!==undefined?S.best.boss+"/"+ASSESS.boss.qs.length:"—"}</div><div class="l">Boss</div></div>
+    </div>
+    <div class="badgegrid" style="margin-top:8px">${b.map(x=>`<div class="bdg ${x[2]?"on":""}"><div class="em">${x[2]?"🏅":"🔒"}</div><div class="t">${x[0]}</div><div class="d">${x[1]}</div></div>`).join("")}</div>
+    <div class="btnrow" style="justify-content:center;margin-top:9px"><button class="btn teal sm" id="dMap">◀ Contents</button><button class="btn ghost sm" id="dHome">🏠 Home</button></div>
+    <p class="small muted" style="margin-top:8px">Coins reward participation — never cash or payment for learning. Human/teacher review is recommended before classroom use. Source: NCERT Class 12 Indian Economic Development, Ch.3 — Liberalisation, Privatisation and Globalisation: An Appraisal.</p></div>`;
+  body.querySelector("#dMap").onclick=()=>go("map"); body.querySelector("#dHome").onclick=()=>{ renderHome(); go("home"); };
+  applyLang(body);
+}
+
+/* ---------------- wiring ---------------- */
+document.getElementById("btnStart").onclick=()=>{ renderMap(); go("map"); };
+document.getElementById("btnContinue").onclick=()=>{ if(allConceptsDone()){ renderAssess(); go("assess"); }
+  else { const n=CONCEPT_ORDER.findIndex(c=>!S.stops[c]); openConcept(n<0?"goods":CONCEPT_ORDER[n]); } };
+document.getElementById("btnMapAssess").onclick=()=>{ renderAssess(); go("assess"); };
+document.getElementById("btnReset").onclick=()=>{ if(Boolean("Reset all progress for this chapter?")) resetAll(); };
+document.getElementById("btnBack").onclick=()=>{
+  if(pageIdx>0){ showPage(pageIdx-1); return; }
+  if(cur>0){ cur--; pageIdx=0; renderSlide(); } else { renderMap(); go("map"); }
+};
+document.getElementById("btnNext").onclick=()=>{
+  if(pageIdx<beatPages-1){ showPage(pageIdx+1); return; }
+  if(cur>=SLIDES.length-1){ renderAssess(); go("assess"); return; }
+  cur++; pageIdx=0; renderSlide();
+};
+document.addEventListener("click", function(e){
+  const o=e.target.closest && e.target.closest(".opt"); if(!o) return;
+  const r=o.getBoundingClientRect(); const s=document.createElement("span"); s.className="rip";
+  const d=Math.max(r.width,r.height); s.style.width=s.style.height=d+"px";
+  s.style.left=(e.clientX-r.left-d/2)+"px"; s.style.top=(e.clientY-r.top-d/2)+"px";
+  o.appendChild(s); setTimeout(()=>s.remove(),650);
+});
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeWord(); });
+
+/* ---------------- boot ---------------- */
+(function boot(){ load(); renderTop(); renderHome(); renderMap(); applyLang(document);
+  if(S.last && S.last!=="home" && S.xp>0){ if(S.last==="lesson"){ const n=CONCEPT_ORDER.findIndex(c=>!S.stops[c]); cur=(n<0?0:firstSlideOf(CONCEPT_ORDER[n])); go("lesson"); renderSlide(); } else { go(S.last==="assess"?"map":S.last); } } })();
+
+</script>
+</body>
+</html>
