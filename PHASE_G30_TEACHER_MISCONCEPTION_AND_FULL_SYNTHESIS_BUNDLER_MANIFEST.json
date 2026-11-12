@@ -1,0 +1,173 @@
+{
+  "phase": "G30",
+  "title": "Teacher Cohort Misconception Hotspot Analytics (/api/teacher/misconception-analytics), FrontendCodeSynthesizer 3-Level Assessment (Warmup/Deep-Dive/Boss) & Offline Plugin Base64 Bundler Verification",
+  "verified_chunk_count": 48,
+  "verified_chunks": [
+    "A1",
+    "A2",
+    "A3",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "C1",
+    "C2",
+    "C3",
+    "D1",
+    "D2",
+    "D3",
+    "E1",
+    "E2",
+    "E3",
+    "F1",
+    "F2",
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6",
+    "G7",
+    "G8",
+    "G9",
+    "G10",
+    "G11",
+    "G12",
+    "G13",
+    "G14",
+    "G15",
+    "G16",
+    "G17",
+    "G18",
+    "G19",
+    "G20",
+    "G21",
+    "G22",
+    "G23",
+    "G24",
+    "G25",
+    "G26",
+    "G27",
+    "G28",
+    "G29",
+    "G30"
+  ],
+  "teacher_misconception_analytics": {
+    "endpoint": "/api/teacher/misconception-analytics",
+    "status": "ok",
+    "total_events_analyzed": 8,
+    "failing_events_count": 6,
+    "hotspot_clusters_identified": 3,
+    "top_hotspot_chapter_id": "NCERT-CLASS6-MATH-CH07-FRACTIONS",
+    "top_hotspot_concept_code": "G6_CH07_N4_LIKE_UNLIKE_ADD",
+    "top_hotspot_struggling_count": 3,
+    "top_hotspot_avg_failed_score": 45.0,
+    "pwa_server_top_hotspot_aligned": true,
+    "sample_diagnostic_distractors": [
+      "2/5 (added numerators and denominators directly: (1+1)/(2+3))",
+      "1/6 (multiplied denominators without scaling numerators)"
+    ],
+    "dashboard_renders_section": true,
+    "flashcard_renders_deck": true,
+    "backup_renders_card": true,
+    "server_hotspots": [
+      {
+        "chapterId": "NCERT-CLASS6-MATH-CH07-FRACTIONS",
+        "conceptCode": "G6_CH07_N4_LIKE_UNLIKE_ADD",
+        "strugglingCount": 3,
+        "avgFailedScore": 45.0
+      },
+      {
+        "chapterId": "NCERT-CLASS6-MATH-CH10-MENSURATION",
+        "conceptCode": "G6_CH10_N1_PERIMETER_POLYGON",
+        "strugglingCount": 2,
+        "avgFailedScore": 50.0
+      },
+      {
+        "chapterId": "NCERT-CLASS6-MATH-CH08-DECIMALS",
+        "conceptCode": "G6_CH08_N1_TENTHS_HUNDREDTHS",
+        "strugglingCount": 1,
+        "avgFailedScore": 55.0
+      }
+    ]
+  },
+  "frontend_code_synthesizer_3level": {
+    "synthesizer_agent": "FrontendCodeSynthesizer",
+    "requires_llm": false,
+    "concept_count": 3,
+    "warmup_count": 2,
+    "deep_dive_count": 2,
+    "boss_count": 1,
+    "total_assessment_count": 5,
+    "wm_dictionary_count": 296,
+    "conn_dictionary_count": 46,
+    "synthesized_html_bytes": 47691,
+    "under_20mib_ceiling": true,
+    "self_healing_qa_passed": true,
+    "final_qa_violations": 0,
+    "synthesized_html_sha256": "62d7fc53005304bc8427bce8309a3846f240b0b7203a4eda2ffbddb90b38ba6e"
+  },
+  "offline_plugin_base64_bundler": {
+    "avr_mechanics_bundled": 21,
+    "all_21_avr_mechanics_verified": true,
+    "total_raw_js_bytes": 20785,
+    "total_data_uri_chars": 28832,
+    "zero_external_cdn_urls": true,
+    "under_20mib_ceiling": true,
+    "sample_bundled_mechanics": [
+      {
+        "resource_id": "AVR-P301",
+        "raw_js_bytes": 1082,
+        "data_uri_tag_len": 1496,
+        "is_valid_base64_script_tag": true,
+        "cache_file_created": true
+      },
+      {
+        "resource_id": "AVR-P302",
+        "raw_js_bytes": 1165,
+        "data_uri_tag_len": 1608,
+        "is_valid_base64_script_tag": true,
+        "cache_file_created": true
+      },
+      {
+        "resource_id": "AVR-P303",
+        "raw_js_bytes": 984,
+        "data_uri_tag_len": 1364,
+        "is_valid_base64_script_tag": true,
+        "cache_file_created": true
+      },
+      {
+        "resource_id": "AVR-P304",
+        "raw_js_bytes": 1041,
+        "data_uri_tag_len": 1440,
+        "is_valid_base64_script_tag": true,
+        "cache_file_created": true
+      },
+      {
+        "resource_id": "AVR-P305",
+        "raw_js_bytes": 1356,
+        "data_uri_tag_len": 1860,
+        "is_valid_base64_script_tag": true,
+        "cache_file_created": true
+      }
+    ],
+    "bundle_merkle_sha256": "a6db31406ec79987dc5f91771fc13c7675a88d1e0dd349a968ce5df920f554ee"
+  },
+  "html5_hub": {
+    "file_name": "Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
+    "file_path": "/working_dir/c_dc69f23207b9a38d/aasha_aios_unified_repo/AASHA_Visual_Mass_Harvest_Phase3/Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
+    "size_bytes": 9577,
+    "under_20mib_ceiling": true,
+    "self_healing_qa_report": {
+      "initial_violation_count": 0,
+      "initial_violations": [],
+      "attempts_used": 0,
+      "max_attempts": 2,
+      "repairs_applied": [],
+      "final_violation_count": 0,
+      "final_violations": [],
+      "passed": true
+    },
+    "sha256": "7c7865726d6f87e6890012e3e7617a572021fc29761d06daaade9075224a7797"
+  }
+}
