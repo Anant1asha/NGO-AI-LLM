@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "W6_INDEPENDENT_CERTIFICATION",
+  "generated_at_utc": "2026-11-12T20:05:02.442209+00:00",
+  "git_head": "f71768a17ac9b2b004fd486765c1d56ee1ef7fbb",
+  "git_branch": "aios/v2-bootstrap",
+  "github_push_note": "Offline sandbox cannot push directly; commits packaged in aasha_aios_v2_bootstrap_full.bundle on Google Drive.",
+  "priority_1_w1_w5_verification": {
+    "cached_assets_sha256_verified": 48,
+    "cached_assets_total": 48,
+    "assets_mismatched": [],
+    "def004_sanitized_replay": {
+      "Chapter3_LPG_Learning.html": {
+        "exists": true,
+        "zero_alert": true,
+        "zero_confirm": true
+      },
+      "Quadratic_Equations_Class10_Pro.html": {
+        "exists": true,
+        "zero_alert": true,
+        "zero_confirm": true
+      }
+    }
+  },
+  "priority_2_lle_quality_audit": {
+    "wm_total": 1129,
+    "wm_with_devanagari": 1129,
+    "wm_with_phonetic_parens": 755,
+    "wm_empty_values": 0,
+    "conn_total": 85,
+    "conn_with_devanagari": 85
+  },
+  "priority_3_idempotency_check": {
+    "lle_rows_before_reconcile": 1214,
+    "lle_rows_after_reconcile": 1214,
+    "zero_duplicates_confirmed": true
+  },
+  "priority_4_qa_replay": {
+    "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html": {
+      "passed": true,
+      "checks_passed": 28,
+      "checks_total": 28
+    },
+    "AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html": {
+      "passed": true,
+      "checks_passed": 28,
+      "checks_total": 28
+    }
+  }
+}
