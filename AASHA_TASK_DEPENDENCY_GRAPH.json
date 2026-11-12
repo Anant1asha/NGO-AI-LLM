@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "orchestrator": "Hydrogen",
+  "swarm": "Argon",
+  "nodes": [
+    {
+      "id": "W0_RECON",
+      "depends_on": [],
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "id": "W1_HYDROGEN_ARGON_ROUTER",
+      "depends_on": [
+        "W0_RECON"
+      ],
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "id": "W2_INDEPENDENT_VM_QA",
+      "depends_on": [
+        "W1_HYDROGEN_ARGON_ROUTER"
+      ],
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "id": "W3_COMPOUNDING_DB_AND_CACHE",
+      "depends_on": [
+        "W0_RECON"
+      ],
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "id": "W4_FULL_LPG_CRICKET_ARENA_UPGRADE",
+      "depends_on": [
+        "W2_INDEPENDENT_VM_QA",
+        "W3_COMPOUNDING_DB_AND_CACHE"
+      ],
+      "status": "PROPOSED_NEXT"
+    },
+    {
+      "id": "W5_WINDOWS_RECONCILIATION_AND_SCALE",
+      "depends_on": [
+        "W4_FULL_LPG_CRICKET_ARENA_UPGRADE"
+      ],
+      "status": "BLOCKED_WINDOWS_OFFLINE"
+    }
+  ]
+}

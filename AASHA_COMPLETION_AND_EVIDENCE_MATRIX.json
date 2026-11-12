@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "summary": {
+    "phase_manifests": 30,
+    "python_test_suites": 53,
+    "orchestrator_modules": 47,
+    "operational_db_tables": {
+      "memory_nodes": 1,
+      "reusable_mechanics": 5,
+      "open_source_foundations": 7,
+      "build_cache_metrics": 8,
+      "lle_vocabulary": 729,
+      "codebase_sources": 48
+    }
+  },
+  "verified_waves": [
+    {
+      "wave": "G29",
+      "evidence": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "G30",
+      "evidence": "PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W0_SWARM",
+      "evidence": "tests/test_hydrogen_argon_swarm_router.py (4/4)",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "G31",
+      "evidence": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "G32",
+      "evidence": "CODEBASE_CACHE_INDEX.json (48 assets)",
+      "status": "LIVE_VERIFIED_PASS"
+    }
+  ]
+}

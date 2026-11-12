@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "dimensions_count": 17,
+  "dimensions": [
+    {
+      "dimension": "Agent capability and role clarity",
+      "numerator": 2,
+      "denominator": 2,
+      "baseline": "Hydrogen + Argon roles separated in hydrogen_argon_swarm_router.py",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Hydrogen orchestration and handoff correctness",
+      "numerator": 4,
+      "denominator": 4,
+      "baseline": "4/4 router contract & circuit-breaker tests pass",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Argon coordination and parallel execution efficiency",
+      "numerator": 1,
+      "denominator": 1,
+      "baseline": "Write-scope contention guard enforced across WorkerTaskContracts",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Automation reliability and resumability",
+      "numerator": 30,
+      "denominator": 30,
+      "baseline": "30 PHASE_G manifests + bounded 2-attempt repair cap",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Infrastructure access, security and sync integrity",
+      "numerator": 2,
+      "denominator": 3,
+      "baseline": "Drive + Cloud Sandbox live; Windows PC offline",
+      "confidence": "MEDIUM",
+      "blockers": [
+        "DEF-005"
+      ]
+    },
+    {
+      "dimension": "Tool/API/MCP utilization and reliability",
+      "numerator": 4,
+      "denominator": 4,
+      "baseline": "4 MCP servers configured in .agents/rap_servers.json; outbound bash disabled",
+      "confidence": "MEDIUM",
+      "blockers": [
+        "DEF-003"
+      ]
+    },
+    {
+      "dimension": "Memory retrieval and verified knowledge reuse",
+      "numerator": 48,
+      "denominator": 48,
+      "baseline": "48 codebase assets + 644 WM + 85 CONN indexed in aasha_operational.db",
+      "confidence": "HIGH",
+      "blockers": [
+        "DEF-001"
+      ]
+    },
+    {
+      "dimension": "Independent test and verification coverage",
+      "numerator": 53,
+      "denominator": 53,
+      "baseline": "53 Python test suites + 97/97 Visual Contract + 28/28 VM QA",
+      "confidence": "HIGH",
+      "blockers": [
+        "DEF-003"
+      ]
+    },
+    {
+      "dimension": "Curriculum and TLN traceability",
+      "numerator": 16,
+      "denominator": 16,
+      "baseline": "16 TLN nodes across 5 NCERT Ch6 math chapters in G29",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Multi-layer LLE completeness",
+      "numerator": 644,
+      "denominator": 1800,
+      "baseline": "644 WM + 85 CONN harvested vs ~1,800+ across LPG/Cricket/v5",
+      "confidence": "MEDIUM",
+      "blockers": [
+        "DEF-001"
+      ]
+    },
+    {
+      "dimension": "Pedagogical and visual learning quality",
+      "numerator": 1,
+      "denominator": 2,
+      "baseline": "Fractions_Gamified_v5_3 rich (6.74MB); automated g3_pack light (26KB)",
+      "confidence": "HIGH",
+      "blockers": [
+        "DEF-002"
+      ]
+    },
+    {
+      "dimension": "Simulation, interaction and accessibility",
+      "numerator": 21,
+      "denominator": 21,
+      "baseline": "21/21 AVR-P301..P321 cached; PhET not yet auto-embedded in g3_pack",
+      "confidence": "MEDIUM",
+      "blockers": [
+        "DEF-002"
+      ]
+    },
+    {
+      "dimension": "Assessment correctness and misconception quality",
+      "numerator": 3,
+      "denominator": 3,
+      "baseline": "3-level (Warmup/Deep-Dive/Boss) + misconception hotspot analytics verified",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "TEAS determinism and state integrity",
+      "numerator": 1,
+      "denominator": 1,
+      "baseline": "Deterministic scoring, PIN 1080 store, FNV-1a signed packs verified",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Offline performance and artifact size",
+      "numerator": 1,
+      "denominator": 1,
+      "baseline": "G31 Hub 59698 B (< 20 MiB), 0 external URLs",
+      "confidence": "HIGH",
+      "blockers": []
+    },
+    {
+      "dimension": "Security, privacy and child safety",
+      "numerator": 1,
+      "denominator": 1,
+      "baseline": "SEC-001 0 secrets; ?yotta=false telemetry block documented",
+      "confidence": "HIGH",
+      "blockers": [
+        "DEF-004"
+      ]
+    },
+    {
+      "dimension": "Maintainability, reproducibility and provenance",
+      "numerator": 1,
+      "denominator": 1,
+      "baseline": "All artifacts SHA-256 hashed, git-bundled on aios/v2-bootstrap",
+      "confidence": "HIGH",
+      "blockers": []
+    }
+  ]
+}

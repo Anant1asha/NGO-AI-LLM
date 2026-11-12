@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "open_defects": [
+    {
+      "defect_id": "DEF-001",
+      "severity": "HIGH",
+      "plane": "Learning & LLE",
+      "description": "LPG (1,256 WM) & Cricket (536 WM) use non-string/multi-line JS dictionary syntax, yielding only 2 entries each in G31 regex pass.",
+      "evidence": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json"
+    },
+    {
+      "defect_id": "DEF-002",
+      "severity": "HIGH",
+      "plane": "Learning Plane",
+      "description": "Automated g3_10chapter_pack Fractions HTML is 26 KB with 25 WM, 0 PhET sims vs 6.74 MB Fractions_Gamified_v5_3.html (2 PhET, 13 canvases, 296 WM).",
+      "evidence": "36685 B vs 6737167 B"
+    },
+    {
+      "defect_id": "DEF-003",
+      "severity": "MEDIUM",
+      "plane": "QA & Browser",
+      "description": "jsdom/playwright npm packages absent offline; run_qa.js uses Node VM shim instead of headless Chromium DOM rendering.",
+      "evidence": "LIVE_ACCESS_AND_PLANE_STATUS.json"
+    },
+    {
+      "defect_id": "DEF-004",
+      "severity": "MEDIUM",
+      "plane": "Uploaded Artifacts",
+      "description": "Uploaded Chapter3_LPG_Learning.html (confirm()) and Quadratic_Equations_Class10_Pro.html.xml (alert()) fail QA Rule 4.",
+      "evidence": "qa/run_qa.js scan"
+    },
+    {
+      "defect_id": "DEF-005",
+      "severity": "MEDIUM",
+      "plane": "Infrastructure",
+      "description": "Windows workstation C:\\Users\\admin\\Downloads\\NGO AI LLM unreachable from cloud sandbox; reconciled only via Drive JSON mirror.",
+      "evidence": "LIVE_ACCESS_AND_PLANE_STATUS.json"
+    }
+  ]
+}

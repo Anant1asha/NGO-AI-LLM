@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-11-12T19:24:15.683209+00:00",
+  "prioritized_backlog": [
+    {
+      "priority": "P0",
+      "id": "BACKLOG-01",
+      "defect": "DEF-001",
+      "action": "Parse array/object WM entries in Chapter3_LPG_Learning.html (1,256) and Class8_Science_Cricket.html (536) via Node VM into defaults_expanded_v2.json and aasha_operational.db."
+    },
+    {
+      "priority": "P0",
+      "id": "BACKLOG-02",
+      "defect": "DEF-002",
+      "action": "Upgrade g3_10chapter_pack compiler to embed vendor_cache AVR-P301..P321 + PhET/Canvas + Cricket/Arena hooks so automated chapters match Fractions_Gamified_v5_3 quality under 20 MiB."
+    },
+    {
+      "priority": "P1",
+      "id": "BACKLOG-03",
+      "defect": "DEF-004",
+      "action": "Run self-healing QA Rule 4 modal sanitizer on uploaded Chapter3_LPG_Learning.html and Quadratic_Equations_Class10_Pro.html.xml."
+    },
+    {
+      "priority": "P1",
+      "id": "BACKLOG-04",
+      "defect": "DEF-003",
+      "action": "Wire /usr/bin/chromium --headless --dump-dom smoke check into run_qa.js alongside Node VM shim."
+    }
+  ]
+}
