@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-12T19:00:12.180101+00:00",
-  "total_phase_manifests": 29,
-  "total_python_test_suites": 51,
+  "generated_at_utc": "2026-11-12T19:11:25.711236+00:00",
+  "total_phase_manifests": 30,
+  "total_python_test_suites": 52,
   "status_counts": {
-    "LIVE_VERIFIED_PASS": 29,
+    "LIVE_VERIFIED_PASS": 30,
     "PARTIAL": 0,
     "BLOCKED": 0,
     "UNKNOWN_OFFLINE_WINDOWS": 1
@@ -158,7 +158,7 @@
       "task_id": "G28",
       "title": "Swarm Clarity: AASHA AIOS Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM)",
       "manifest_file": "PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json",
-      "manifest_sha256": "9c7010e91aedd21daae3d03191df4414f1404c38c3d3dc4a12c173908a28c2b8",
+      "manifest_sha256": "83bd647ca927f4b5f1e08e70b034961a14b9a68227c7477335781892883193f5",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 46
     },
@@ -166,7 +166,7 @@
       "task_id": "G29",
       "title": "Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Centre Server + Student PWA TEAS Store Redemption Sync Verification",
       "manifest_file": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
-      "manifest_sha256": "7bb6820821064656275c3436f70b38ebcabe3b0228ab3d5cec08b5fcb581581b",
+      "manifest_sha256": "0fc2ca5ba6e46c8e4f5e97ce2edff0b8ef40c58b5714756d0383752d0d333d83",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 47
     },
@@ -185,6 +185,14 @@
       "manifest_sha256": "448e0ee169c2102d49f232ea562a5ea817b046aa0379356d4bb476b5b9478b26",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 48
+    },
+    {
+      "task_id": "G31",
+      "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
+      "manifest_file": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json",
+      "manifest_sha256": "317c6f92ee819627a7f60f859a8902865f386d3bd237febbea09dae5a5ec3c8b",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
     },
     {
       "task_id": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",

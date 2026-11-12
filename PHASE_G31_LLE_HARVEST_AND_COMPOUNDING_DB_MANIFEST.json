@@ -1,0 +1,75 @@
+{
+  "phase": "G31",
+  "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
+  "generated_at_utc": "2026-11-12T19:11:25.662799+00:00",
+  "lle_harvest": {
+    "expanded_config_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/config/defaults_expanded_v2.json",
+    "wm_count": 644,
+    "conn_count": 85,
+    "sources_scanned": [
+      {
+        "source": "config/defaults.json",
+        "wm": 296,
+        "conn": 46
+      },
+      {
+        "source": "Chapter3_LPG_Learning.html",
+        "wm": 2,
+        "conn": 18
+      },
+      {
+        "source": "Class8_Science_Cricket.html",
+        "wm": 2,
+        "conn": 18
+      },
+      {
+        "source": "Polynomials_Class10_Gamified_v5.html",
+        "wm": 361,
+        "conn": 46
+      }
+    ],
+    "sha256": "6a9b271fad7e25c2a7ed196629fd8f667bbb0997d6d8c157a0660f507eff55da"
+  },
+  "compounding_db": {
+    "db_path": "aasha_operational.db",
+    "wm_rows_stored": 644,
+    "conn_rows_stored": 85,
+    "reusable_mechanics_stored": 5,
+    "open_source_foundations_stored": 7,
+    "build_cache_records": 8
+  },
+  "open_source_foundations_count": 7,
+  "reusable_mechanics_count": 5,
+  "swarm_synthesized_module": {
+    "swarm_final_state": "CERTIFIED_CHECKPOINT",
+    "transitions": [
+      {
+        "timestamp_utc": "2026-11-12T19:11:25.433584+00:00",
+        "from": "HYDROGEN_ORCHESTRATE",
+        "to": "ARGON_EXECUTE",
+        "reason": "Contract validated; dispatching Argon specialist",
+        "task_id": "G31-ENRICHED-SYNTHESIS"
+      },
+      {
+        "timestamp_utc": "2026-11-12T19:11:25.445019+00:00",
+        "from": "ARGON_EXECUTE",
+        "to": "HYDROGEN_INDEPENDENT_QA",
+        "reason": "Argon finished; switching to Hydrogen independent QA",
+        "task_id": "G31-ENRICHED-SYNTHESIS"
+      },
+      {
+        "timestamp_utc": "2026-11-12T19:11:25.662505+00:00",
+        "from": "HYDROGEN_INDEPENDENT_QA",
+        "to": "CERTIFIED_CHECKPOINT",
+        "reason": "Independent QA passed",
+        "task_id": "G31-ENRICHED-SYNTHESIS"
+      }
+    ],
+    "qa_checks_passed": 28,
+    "qa_checks_total": 28,
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html",
+    "size_bytes": 59698,
+    "under_20mib_ceiling": true,
+    "sha256": "f6b154445aeb6d5169c276fbd858c80c9cd01153448d4a567a029dc3e78aaab7"
+  }
+}

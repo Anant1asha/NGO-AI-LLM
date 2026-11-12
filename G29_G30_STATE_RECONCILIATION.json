@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-12T19:00:12.180101+00:00",
-  "colab_state_completed_chunk": "G30",
-  "colab_state_active_chunk": "G31",
+  "generated_at_utc": "2026-11-12T19:11:25.711236+00:00",
+  "colab_state_completed_chunk": "F2",
+  "colab_state_active_chunk": "ALL_DONE",
   "g29_reconciliation": {
     "status": "LIVE_VERIFIED_PASS",
-    "manifest_sha256": "7bb6820821064656275c3436f70b38ebcabe3b0228ab3d5cec08b5fcb581581b"
+    "manifest_sha256": "0fc2ca5ba6e46c8e4f5e97ce2edff0b8ef40c58b5714756d0383752d0d333d83"
   },
   "g30_reconciliation": {
     "status": "LIVE_VERIFIED_PASS",
