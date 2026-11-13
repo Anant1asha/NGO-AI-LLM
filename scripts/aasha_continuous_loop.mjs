@@ -198,7 +198,8 @@ async function executeIteration(iterationNumber) {
   console.log(`     Phase G4 Code Synthesis & Integration: ${g4Compile.success ? 'PASS (Enhanced 10 Modules Verified)' : 'FAILED'}`);
 
   console.log('  2. Verifying kingsmath / F27 Universal Gamified Assessment Adapter & VersionManager...');
-  const gamedAdapter = fs.existsSync(path.join(ROOT_DIR, 'Aasha-AI', 'aasha_gamified_assessment_adapter.js'));
+  const adapterPath = path.join(AASHA_AI_DIR, 'experience_registry', 'adapters', 'aasha_gamified_assessment_adapter.js');
+  const gamedAdapter = fs.existsSync(adapterPath);
   console.log(`     AashaGamifiedAssessmentAdapter: ${gamedAdapter ? 'ACTIVE' : 'MISSING'}`);
 
   // -------------------------------------------------------------------------
