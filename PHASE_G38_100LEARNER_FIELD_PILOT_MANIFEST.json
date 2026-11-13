@@ -1,0 +1,38 @@
+{
+  "phase": "G38",
+  "title": "100-Learner Multi-Centre Rural Cohort Offline Field Pilot & Double-Entry TEAS Ledger Audit",
+  "generated_at_utc": "2026-11-13T07:34:11.982626+00:00",
+  "field_pilot_100_learners": {
+    "centres_count": 4,
+    "learners_simulated": 100,
+    "total_mastery_events": 300,
+    "passed_events": 240,
+    "failed_events": 60,
+    "redemptions_fulfilled_pin_1080": 25,
+    "coins_lifetime_earned": 18000,
+    "coins_remaining_balance": 15500,
+    "coins_redeemed": 2500,
+    "double_entry_conserved": true,
+    "hotspot_chapters_detected": 3,
+    "cohort_pack_verified": true,
+    "cohort_pack_hash": "fnv1a32:280c5929"
+  },
+  "html5_hub": {
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
+    "swarm_state": "CERTIFIED_CHECKPOINT",
+    "qa_passed": 28,
+    "qa_total": 28,
+    "size_bytes": 97563,
+    "under_20mib": true,
+    "sha256": "9159332d83c5824440bb637dbf44a3ba5a8101becec17497584b6fbb150511e0",
+    "compounding_db": {
+      "db_path": "aasha_operational.db",
+      "wm_rows_stored": 1129,
+      "conn_rows_stored": 85,
+      "reusable_mechanics_stored": 5,
+      "open_source_foundations_stored": 7,
+      "build_cache_records": 17
+    }
+  },
+  "next_focus_unit": "PHASE_G_CHUNK_G39_END_TO_END_REGRESSION_SUITE_AND_WINDOWS_COLAB_FINAL_SYNC_GATE: Execute full 60-suite Python + Visual Contract + 16-Module QA regression gate and tag December 31 2026 MVP Release Candidate."
+}

@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-13T07:31:22.585027+00:00",
-  "total_phase_manifests": 35,
-  "total_python_test_suites": 59,
+  "generated_at_utc": "2026-11-13T07:34:12.019704+00:00",
+  "total_phase_manifests": 36,
+  "total_python_test_suites": 60,
   "status_counts": {
-    "LIVE_VERIFIED_PASS": 35,
+    "LIVE_VERIFIED_PASS": 36,
     "PARTIAL": 0,
     "BLOCKED": 0,
     "UNKNOWN_OFFLINE_WINDOWS": 1
@@ -231,6 +231,14 @@
       "title": "Experience Registry Sync (13 Certified Chapters + 21 AVR), DOM Smoke Gate & Dec 31 2026 MVP Release Candidate Certification",
       "manifest_file": "PHASE_G37_MVP_RELEASE_CANDIDATE_MANIFEST.json",
       "manifest_sha256": "a1512d57e026e47d2aec6c795b8da1af77ab2ec48d030cf99559663fb3d481b2",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G38",
+      "title": "100-Learner Multi-Centre Rural Cohort Offline Field Pilot & Double-Entry TEAS Ledger Audit",
+      "manifest_file": "PHASE_G38_100LEARNER_FIELD_PILOT_MANIFEST.json",
+      "manifest_sha256": "28fd8f6c210206ec37f093fb613fff8f9b4546bca06131c04c222f0f1d2d29ce",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },

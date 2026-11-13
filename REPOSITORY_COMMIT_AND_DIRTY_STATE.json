@@ -1,13 +1,12 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-13T07:31:22.585027+00:00",
+  "generated_at_utc": "2026-11-13T07:34:12.019704+00:00",
   "branch": "aios/v2-bootstrap",
-  "head_sha": "e84ee2d81a650025a5d962f95d5deb10127e6212",
-  "dirty_entries_count": 70,
+  "head_sha": "00bdef6807551cdb082ba0987e5b77472036e4bd",
+  "dirty_entries_count": 69,
   "dirty_entries_sample": [
     " M .serena/memories/active_chunk_context.md",
     " M AASHA_Visual_Mass_Harvest_Phase3/Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html",
-    " M Aasha-AI/experience_registry/registry.json",
     " M COLAB_ANTIGRAVITY_STATE.json",
     " M IDE_CLOUD_ASYNC_BUS.json",
     " M PC_ANTIGRAVITY_STATE.json",
@@ -21,8 +20,8 @@
     "?? .serena/memories/task_completion.md",
     "?? .serena/memories/tech_stack.md",
     "?? AASHA_Visual_Mass_Harvest_Phase3/BUILD-REPORT.json",
+    "?? AASHA_Visual_Mass_Harvest_Phase3/Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
     "?? AASHA_Visual_Mass_Harvest_Phase3/LICENSE-AUDIT.json",
-    "?? AASHA_Visual_Mass_Harvest_Phase3/MVP_Release_Candidate_G37_Certification_Hub_v5.html",
     "?? AASHA_Visual_Mass_Harvest_Phase3/catalogue/",
     "?? AASHA_Visual_Mass_Harvest_Phase3/fixtures/",
     "?? AASHA_Visual_Mass_Harvest_Phase3/resources/",
@@ -34,6 +33,7 @@
     "?? Aasha-AI/aasha-pipeline-with-master-json/config.yaml",
     "?? Aasha-AI/aasha-pipeline-with-master-json/docs/",
     "?? Aasha-AI/aasha-pipeline-with-master-json/examples/ComparingQuantities_Percentage_Class8_Gamified_v5.html",
-    "?? Aasha-AI/aasha-pipeline-with-master-json/examples/Fractions_Gamified_v5_3.html"
+    "?? Aasha-AI/aasha-pipeline-with-master-json/examples/Fractions_Gamified_v5_3.html",
+    "?? Aasha-AI/aasha-pipeline-with-master-json/examples/Perimeter_Area_Gamified_v5_2.html"
   ]
 }
