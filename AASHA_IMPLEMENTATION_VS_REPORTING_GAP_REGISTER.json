@@ -1,0 +1,34 @@
+{
+  "schema_version": "7.0.0",
+  "generated_at_utc": "2026-11-13T13:48:55.327575+00:00",
+  "gaps": [
+    {
+      "gap_id": "GAP-V7-01",
+      "severity": "HIGH",
+      "area": "aasha-studio / Fastify Live Server",
+      "finding": "aasha-studio/apps/studio-ui/src/App.tsx is a single TypeScript helper file without a running Vite/Next build or live HTTP integration test against Aasha-AI/server/server.js.",
+      "recommended_fix": "Wire an end-to-end Fastify HTTP test (start server.js on ephemeral port, hit /api/health, /api/teacher/misconception-analytics, /api/student/:id/redeem) in Node."
+    },
+    {
+      "gap_id": "GAP-V7-02",
+      "severity": "HIGH",
+      "area": "Colab / GitHub Remote Sync",
+      "finding": "Cloud sandbox has no outbound network; commits exist in aasha_aios_v2_bootstrap_full.bundle on Google Drive until scripts/apply_bundle_and_push.sh is executed in Colab/Windows.",
+      "recommended_fix": "Execute scripts/apply_bundle_and_push.sh from Colab notebook 1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2."
+    },
+    {
+      "gap_id": "GAP-V7-03",
+      "severity": "MEDIUM",
+      "area": "Headless Browser DOM Verification",
+      "finding": "/usr/bin/chromium hangs in container sandbox; qa/run_qa.js relies on Node VM DOM shim instead of full Chromium layout/click/WebAudio verification.",
+      "recommended_fix": "Run Playwright headless smoke suite in Colab/Windows runner where Chromium sandbox flags are unrestricted."
+    },
+    {
+      "gap_id": "GAP-V7-04",
+      "severity": "MEDIUM",
+      "area": "Pipeline Orchestrator Integration",
+      "finding": "aasha-pipeline-with-master-json CLI/agents are tested via unit mocks and orchestrator wrappers; full PDF-to-HTML5 CLI run with a live local LLM/9router endpoint is not yet exercised in sandbox.",
+      "recommended_fix": "Add deterministic offline PDF-fixture-to-v5 CLI integration test using defaults_expanded_v2.json."
+    }
+  ]
+}

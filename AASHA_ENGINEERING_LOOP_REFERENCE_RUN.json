@@ -1,0 +1,19 @@
+{
+  "schema_version": "7.0.0",
+  "generated_at_utc": "2026-11-13T13:48:55.327575+00:00",
+  "git_branch": "aios/v2-bootstrap",
+  "git_head": "3e603129c85536485ef8b736b6813db2816ba0f6",
+  "commands_executed": [
+    {
+      "cmd": "node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "cmd": "node scripts/lint_staged_secrets.mjs",
+      "returncode": 0,
+      "passed": true
+    }
+  ],
+  "gaps_identified": 4
+}
