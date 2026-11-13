@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-13T02:40:17.272350+00:00",
+  "generated_at_utc": "2026-11-13T07:17:50.774048+00:00",
   "cost_usd": 0.0,
   "purpose": "Free Plane 1/2 mirror of local operational DB & state while Windows PC is offline",
-  "git_head_sha": "39c83183171a24248a0481337358f365c6f86120",
+  "git_head_sha": "9d5664e5d30ee172d7028354af09995692da93cf",
   "lamport_epoch": 48,
   "operational_db_sha256": "4e3cf1d2c2c7e4afa5d85001d7e53eddc4fe34a26978dc1095db669d18a63094",
   "operational_db_tables": {
