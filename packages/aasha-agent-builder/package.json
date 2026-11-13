@@ -9,7 +9,8 @@
     "./ingest": "./src/ingest_subagent.mjs",
     "./simulation": "./src/simulation_subagent.mjs",
     "./assessment": "./src/assessment_subagent.mjs",
-    "./monolith": "./src/monolith_subagent.mjs"
+    "./monolith": "./src/monolith_subagent.mjs",
+    "./resolver": "./src/asset_resolver.mjs"
   },
   "scripts": {
     "test": "node --test test/*.test.mjs"
