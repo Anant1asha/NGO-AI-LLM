@@ -1,0 +1,307 @@
+{
+  "schema_version": "aasha.aios.master_prompt.v3.0",
+  "prompt_id": "LOCAL-AIOS-MASTER-HANDOFF-PHASE-H016",
+  "generated_at_ist": "2026-11-03T19:43:00+05:30",
+  "target_mvp_deadline": "2026-12-31",
+  "execution_authority": {
+    "karta_agent": "Local Antigravity AIOS / Superbrain Agent on Windows PC (DESKTOP-7RHB41C) & Colab Cloud Worker",
+    "super_admin": "Anant1asha (Annanth Aasha Foundation)",
+    "active_branch_lock": "origin/aios/v2-bootstrap",
+    "author_identity": "Anant1asha <Anant1asha@users.noreply.github.com>"
+  },
+  "paninian_karaka_semantic_ir": {
+    "KARTA": "Local AIOS Autonomous Engineer (executing on DESKTOP-7RHB41C at D:\\NGO AI LLM and G:\\My Drive\\NGO AI LLM)",
+    "KARMAN": "Reconcile, verify, commit, and git-push all 33 certified cloud-built deliverables (Phases 1-4, D-002..D-003, E-001..E-002, F-001, G-001..G-006, H-001..H-016: 25 certified offline HTML5 chapters, 537-word canonical Hindi WM dictionary, 8-stage schoolbook_autonomous_orchestrator.py, 5-tab Student PWA, Centre Server WAL endpoints, and 25-chapter teas_content.db.gz) to origin/aios/v2-bootstrap, then execute FOCUS-UNIT-PHASE-H-017.",
+    "KARANA": "scripts/sync_and_push_all_autonomous_cycles.mjs, scripts/verify_tc01_to_tc18_release_gate.mjs, scripts/lint_staged_secrets.mjs, and aasha_antigravity_daily_ecosystem_runner.py",
+    "SAMPRADANA": "Rural and semi-urban students (Grades 6-12) using low-cost shared offline Android tablets and Centre Facilitators",
+    "APADANA": "Synced Google Drive folders MyDrive/NGO AI LLM (1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD) and Othercomputers/My Laptop/NGO AI LLM (1G18qV6MXHBiEYJB_e_d-PAYx73NFJPWn)",
+    "ADHIKARANA": "Local Git repositories Anant1asha/NGO-AI-LLM, Anant1asha/Aasha-AI, and Anant1asha/aasha-studio on branch aios/v2-bootstrap",
+    "KRIYA": "OBSERVE -> SYNC -> VERIFY (112/112 Python + 97/97 Visual Contract + 18/18 TC-01..TC-18) -> STAGE ALLOWLIST -> LINT SECRETS -> COMMIT -> GIT PUSH -> CONTINUE H-017"
+  },
+  "cumulative_autonomous_cycles_completed": {
+    "phases_1_to_3_security_and_contracts": [
+      "Reconciled assertNonMainBranch(\"aios/v2-bootstrap\") in scripts/aasha_continuous_loop.mjs (blocking main/master/HEAD).",
+      "Replaced prohibited git add -A with explicit allowlisted source paths (protecting Aasha-AI/.env and .chrome_temp_profile*).",
+      "Enforced post-stage node scripts/lint_staged_secrets.mjs before git commit (SEC-001 / SEC-002).",
+      "Reconciled 20 MiB (20,971,520 B) child bundle ceiling (CON-009) and $1.00/day hard spend cap (CON-008 / OI-001).",
+      "Upgraded ngo_Ai_Antigravity_Online_Engine.ipynb (1__nxogS6snSIsidrCM27U-T-TocJ9Dc3) and aasha_cloud_worker.ipynb (1g9xe2-0FehgwULh_c1Nqjcy4855KhN-w) for zero-zip Drive execution."
+    ],
+    "phases_d_e_f_g_pwa_server_and_sqlite_catalogue": [
+      "Phase D (D-002 & D-003): Built renderTeacherCohortDashboard, renderFacilitatorPinModal, and exportSignedCohortOrderPack (fnv1a32 integrity hash).",
+      "Phase E (E-001 & E-002): Built dictionary_reconciler.py, scrubbed 20 PII/numeric keys from candidate_dictionary_hi.json, eliminated all 26 fallback placeholders, and fixed multi-chapter SQLite export in sqlite_exporter.py.",
+      "Phase F (F-001): Built verifySignedCohortOrderPack, getTeasSqliteCatalogueManifest, and Centre Server endpoints GET /api/catalogue/teas-sqlite-manifest & POST /api/sync/cohort-order-pack.",
+      "Phase G (G-001..G-006): Built 18-criterion release gate verify_tc01_to_tc18_release_gate.mjs, Service Worker sw.js v2.1 pre-caching all certified chapters + teas_content.db.gz, 5-tab Student PWA (Home, Learn, Practice, Rewards, Store), renderChapterPlayerModal, handleChapterMasteryMessage, and handlePinModalConfirm."
+    ],
+    "phase_h_autonomous_schoolbook_orchestrator_and_chapters_11_to_25": {
+      "orchestrator_module": "Aasha-AI/aasha-pipeline-with-master-json/src/aasha/config.py (schoolbook_autonomous_orchestrator.py)",
+      "core_functions": [
+        "select_and_customize_opensource_scr(chapter_title, subject, concepts)",
+        "plan_outsourced_agent_routing(task_type, complexity, daily_spend_usd)",
+        "execute_autonomous_schoolbook_loop(pdf_bytes, chapter_title, subject, grade, concepts, raw_html_draft, wm_dict)",
+        "batch_compile_schoolbook_chapters(chapter_specs, wm_dict)",
+        "generate_adaptive_remediation_hint(chapter_id, concept_code, selected_wrong_option, attempt_number)"
+      ],
+      "synthesized_certified_html5_chapters_11_to_25": [
+        {
+          "chapter_num": 11,
+          "file": "Electric_Circuits_Class7_Gamified_v5.html",
+          "scr_id": "AVR-P301-circuit-builder-sim",
+          "visual_class": "CircuitBuilderVisual"
+        },
+        {
+          "chapter_num": 12,
+          "file": "Motion_And_Force_Class9_Gamified_v5.html",
+          "scr_id": "AVR-P302-kinematics-motion-sim",
+          "visual_class": "KinematicsMotionVisual"
+        },
+        {
+          "chapter_num": 13,
+          "file": "Chemical_Effects_Of_Current_Class8_Gamified_v5.html",
+          "scr_id": "AVR-P301-circuit-builder-sim",
+          "visual_class": "CircuitBuilderVisual"
+        },
+        {
+          "chapter_num": 14,
+          "file": "Acids_Bases_And_Salts_Class7_Gamified_v5.html",
+          "scr_id": "AVR-P305-ph-titration-indicator-sim",
+          "visual_class": "PhIndicatorTitrationVisual"
+        },
+        {
+          "chapter_num": 15,
+          "file": "Light_Shadows_And_Reflections_Class6_Gamified_v5.html",
+          "scr_id": "AVR-P306-ray-optics-mirror-sim",
+          "visual_class": "RayOpticsMirrorVisual"
+        },
+        {
+          "chapter_num": 16,
+          "file": "Linear_Equations_Two_Variables_Class9_Gamified_v5.html",
+          "scr_id": "AVR-P307-coordinate-graph-plotter-sim",
+          "visual_class": "CoordinateLinearGraphVisual"
+        },
+        {
+          "chapter_num": 17,
+          "file": "Mensuration_3D_Solids_Class8_Gamified_v5.html",
+          "scr_id": "AVR-P310-solid-3d-mensuration-sim",
+          "visual_class": "Solid3DMensurationVisual"
+        },
+        {
+          "chapter_num": 18,
+          "file": "Life_Processes_Human_Heart_Class10_Gamified_v5.html",
+          "scr_id": "AVR-P319-bio-double-circulation-sim",
+          "visual_class": "BioProcessFlowVisual"
+        },
+        {
+          "chapter_num": 19,
+          "file": "Story_Of_Village_Palampur_Class9_Gamified_v5.html",
+          "scr_id": "AVR-P318-econ-factors-of-production-sim",
+          "visual_class": "ProductionFactorsAllocationVisual"
+        },
+        {
+          "chapter_num": 20,
+          "file": "Data_Handling_Mean_Median_Mode_Class7_Gamified_v5.html",
+          "scr_id": "AVR-P312-stats-data-handling-sim",
+          "visual_class": "DataHistogramBarChartVisual"
+        },
+        {
+          "chapter_num": 21,
+          "file": "Force_And_Pressure_Class8_Gamified_v5.html",
+          "scr_id": "AVR-P315-physics-pressure-area-sim",
+          "visual_class": "FluidPressureForceVisual"
+        },
+        {
+          "chapter_num": 22,
+          "file": "Trigonometry_Heights_And_Distances_Class10_Gamified_v5.html",
+          "scr_id": "AVR-P311-math-right-triangle-trig-sim",
+          "visual_class": "RightTriangleTrigVisual"
+        },
+        {
+          "chapter_num": 23,
+          "file": "Structure_Of_The_Atom_Bohr_Orbits_Class9_Gamified_v5.html",
+          "scr_id": "AVR-P317-chem-bohr-atomic-shells-sim",
+          "visual_class": "AtomicBohrShellVisual"
+        },
+        {
+          "chapter_num": 24,
+          "file": "Algebraic_Identities_And_Factorisation_Class8_Gamified_v5.html",
+          "scr_id": "AVR-P313-math-algebra-tile-identities-sim",
+          "visual_class": "AlgebraTileAreaModelVisual"
+        },
+        {
+          "chapter_num": 25,
+          "file": "Heat_Transfer_Conduction_Convection_Radiation_Class7_Gamified_v5.html",
+          "scr_id": "AVR-P316-physics-heat-transfer-modes-sim",
+          "visual_class": "ThermalHeatTransferVisual"
+        }
+      ],
+      "pwa_and_server_upgrades": [
+        "aggregateCohortMisconceptions(events) in sync.js, renderMisconceptionHeatmapCard in app.js, and GET /api/teacher/misconception-analytics in server.js",
+        "exportStudentProgressSnapshot(state), restoreStudentProgressSnapshot(snapshot), and renderProfileBackupCard(state) in app.js + verifySignedStudentSnapshot in sync.js + POST/GET /api/sync/student-snapshot in server.js",
+        "three_chapter_streak, ten_chapter_scholar, twenty_chapter_champion, and twenty_five_chapter_legend badges in rewards.js",
+        "Grade-level filter pills (Grades 6-12) in renderLearnSearchAndFilterBar, buildAdaptivePracticeQueue(state), computeSubjectMasteryBreakdown(state), and renderVocabularyFlashcardDeck(words) in app.js"
+      ]
+    }
+  },
+  "verified_ecosystem_metrics": {
+    "python_pipeline_unit_tests": "112/112",
+    "visual_contract_assertions": "97/97",
+    "phase3_visual_mechanics": "21/21",
+    "offline_html5_bundles": "25/25 (< 20 MiB, 0 external URLs)",
+    "hindi_wm_dictionary_entries": 537,
+    "hindi_conn_entries": 46,
+    "teas_sqlite_catalogue_gz_bytes": 30360
+  },
+  "local_aios_immediate_action_plan": {
+    "step_1_sync_from_drive": "Unpack or copy the latest synced files from Google Drive folder NGO AI LLM (1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD / 1G18qV6MXHBiEYJB_e_d-PAYx73NFJPWn) into D:\\NGO AI LLM using node scripts/sync_and_push_all_autonomous_cycles.mjs.",
+    "step_2_run_verification_gates": [
+      "python aasha_antigravity_daily_ecosystem_runner.py --self-test",
+      "node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js --strict",
+      "node scripts/verify_tc01_to_tc18_release_gate.mjs",
+      "node Aasha-AI/aasha-student-pwa/src/test_phase1_to_4.mjs"
+    ],
+    "step_3_git_commit_and_push_all_repos": [
+      "git config user.name \"Anant1asha\"",
+      "git config user.email \"Anant1asha@users.noreply.github.com\"",
+      "git checkout -B aios/v2-bootstrap",
+      "git add scripts/ Aasha-AI/aasha-student-pwa/ Aasha-AI/server/ Aasha-AI/aasha-pipeline-with-master-json/ RELEASE_READINESS_MANIFEST.json aasha_antigravity_daily_ecosystem_runner.py",
+      "node scripts/lint_staged_secrets.mjs",
+      "git commit -m \"feat(aios-phase-h016): sync 25 certified offline HTML5 chapters, 537-word Hindi WM dictionary & PWA/Server upgrades\"",
+      "git push -u origin aios/v2-bootstrap",
+      "cd Aasha-AI && git checkout -B aios/v2-bootstrap && git add aasha-student-pwa/ server/ aasha-pipeline-with-master-json/ && node ../scripts/lint_staged_secrets.mjs && git commit -m \"feat(aios-phase-h016): sync 25-chapter offline catalogue, PWA & Centre Server\" && git push -u origin aios/v2-bootstrap"
+    ],
+    "step_4_update_pc_heartbeat": "Update PC_ANTIGRAVITY_STATE.json with the new commit SHA on origin/aios/v2-bootstrap (never stage PC_ANTIGRAVITY_STATE.json into git commits) so the Cloud/Colab runner sees DESKTOP-7RHB41C is synced.",
+    "step_5_execute_next_focus_unit": {
+      "focus_unit_id": "FOCUS-UNIT-PHASE-H-017",
+      "title": "Autonomous Synthesis of 26th Certified NCERT Class 10 Science Chapter (Magnetic_Effects_Of_Electric_Current_Class10_Gamified_v5.html) via Open-Source SCR AVR-P320 (ElectromagneticFieldVisual) & 544-Word Canonical Hindi WM Dictionary Expansion"
+    }
+  },
+  "deliverable_sha256_ledger": {
+    "aasha_continuous_loop.mjs": {
+      "sha256": "510098ebdcf968220824ca2ed9da51ad01f15eb4a7cac0e915e33531df853d83",
+      "bytes": 27930
+    },
+    "verify_sprint_integrity.mjs": {
+      "sha256": "da27c206f12fcdd3151df3d1fd4a6d55e3ffcc6129e5dc2dd841eecd939363f7",
+      "bytes": 7170
+    },
+    "app.js": {
+      "sha256": "12a7b9b44d0b2093bf760a57854d4e327dfbc97108b38c2e477d61fc94d62de3",
+      "bytes": 39724
+    },
+    "rewards.js": {
+      "sha256": "6c9155be6dee7991b3c076b18bb9db3914b06db303097f126b3958f7413f4ec7",
+      "bytes": 3704
+    },
+    "sync.js": {
+      "sha256": "c2319d238519e3faedd0ebd1036a7124e6b5e5c50954c94e705b9ec29e08af54",
+      "bytes": 6763
+    },
+    "server.js": {
+      "sha256": "8d9e3105525efe559ea4f0b229d0d81e9806d6e79fa33f0a361e41149e203446",
+      "bytes": 16833
+    },
+    "dictionary_reconciler.py": {
+      "sha256": "11d1928979fbf002d58bce84ac3ce2bfecf302ac2a597465b9c0b89c634d048a",
+      "bytes": 3771
+    },
+    "schoolbook_autonomous_orchestrator.py": {
+      "sha256": "1351201e1cd10fa48248f682c60efb0cab90f27e52281124dbc15d8c595282e0",
+      "bytes": 16674
+    },
+    "candidate_dictionary_hi.json": {
+      "sha256": "88f91fed4f82ed6848dbfe4242093dbf5f43bababbc3c4276d843cb46bc03295",
+      "bytes": 37974
+    },
+    "defaults.json": {
+      "sha256": "4999f793190927a4d57f1c11b8b02b6f0de041fecabfd99d33366cde99a81da2",
+      "bytes": 35504
+    },
+    "sqlite_exporter.py": {
+      "sha256": "375554eda548008b68c547d014ac147364210776bc4ec587986124909da0ffc1",
+      "bytes": 8150
+    },
+    "teas_content.db.gz": {
+      "sha256": "bae36f345bef09db6b09f42b7396f95a902fd206532dfe9d63c9ff875d5bd52d",
+      "bytes": 30360
+    },
+    "Electric_Circuits_Class7_Gamified_v5.html": {
+      "sha256": "eb03ba92b8c569252ed7dae94bd185deaa923d996809771457f2f48411d0a833",
+      "bytes": 9733
+    },
+    "Motion_And_Force_Class9_Gamified_v5.html": {
+      "sha256": "768f38eb9db547f7d3dacb9263181beda20f2fa0377b513758096fffbee833d2",
+      "bytes": 8944
+    },
+    "Chemical_Effects_Of_Current_Class8_Gamified_v5.html": {
+      "sha256": "484bc339d44999f4544266bb3c7cda86127b5658fcb60fd99868618d681c560c",
+      "bytes": 9554
+    },
+    "Acids_Bases_And_Salts_Class7_Gamified_v5.html": {
+      "sha256": "94e9a1e3b5d75e825f9ee78cd134a357efadd722b8e0f4afc74ba490b47da9b5",
+      "bytes": 9621
+    },
+    "Light_Shadows_And_Reflections_Class6_Gamified_v5.html": {
+      "sha256": "3a1726862518b7ea47f57bced5cc666e4b9e8befe41eae33b2a54f1e8226c53a",
+      "bytes": 10233
+    },
+    "Linear_Equations_Two_Variables_Class9_Gamified_v5.html": {
+      "sha256": "0c23490cda2bbc4b5dc2b38ae17482f2d07d297876af2ef242af157f798e61bd",
+      "bytes": 8919
+    },
+    "Mensuration_3D_Solids_Class8_Gamified_v5.html": {
+      "sha256": "33887cb2b27a62d53a8faf0556d98af4fab86261c6b194dedb5543e6dc941be4",
+      "bytes": 9170
+    },
+    "Life_Processes_Human_Heart_Class10_Gamified_v5.html": {
+      "sha256": "d9b41fede7616edab8b0d064ad70cfbddf8408ffaae3109ba86cf398fa52271a",
+      "bytes": 9887
+    },
+    "Story_Of_Village_Palampur_Class9_Gamified_v5.html": {
+      "sha256": "387c6c9cfb5848b0c223c53de2538344ee0f843e68f218bf9f600633f94830a3",
+      "bytes": 10383
+    },
+    "Data_Handling_Mean_Median_Mode_Class7_Gamified_v5.html": {
+      "sha256": "511b000d5945b6fca37fc936fc409bdefbdab8ba371719022b9a532049162cb9",
+      "bytes": 10042
+    },
+    "Force_And_Pressure_Class8_Gamified_v5.html": {
+      "sha256": "4fd0578845237c36bf03ed24196af6453c46f5de3a96c07fe5fb87904b1d95b9",
+      "bytes": 9694
+    },
+    "Trigonometry_Heights_And_Distances_Class10_Gamified_v5.html": {
+      "sha256": "c42f1110478312b0e9b9f4cb0be0078b4a6bd51fffe87c7657dcaaf8f39d90f0",
+      "bytes": 9592
+    },
+    "Structure_Of_The_Atom_Bohr_Orbits_Class9_Gamified_v5.html": {
+      "sha256": "c8bc12b62ef1f8b89abc19c9612b67691d48b22eb37e7c9df99b10e3e463ee5c",
+      "bytes": 9734
+    },
+    "Algebraic_Identities_And_Factorisation_Class8_Gamified_v5.html": {
+      "sha256": "6b29e42b6acbe92e14cd3df2519498100f16a19500c479bd28f6698aef24c3b6",
+      "bytes": 9500
+    },
+    "Heat_Transfer_Conduction_Convection_Radiation_Class7_Gamified_v5.html": {
+      "sha256": "ffac57cb04f6bfacefc9bd472448ad3f15ebbfab2aff5f0f461748b3fb942189",
+      "bytes": 10048
+    },
+    "sw.js": {
+      "sha256": "cb2c6ee925eca1bc0ebb93b1bf9bf0ba07ef857f0f9ee2b144965a73a4b41fba",
+      "bytes": 3195
+    },
+    "manifest.json": {
+      "sha256": "b19b50433ec8d03221d4204e6530b7ec55ccd828539229b85129d3b6a07a23a5",
+      "bytes": 833
+    },
+    "index.html": {
+      "sha256": "f350ca40c33d6b050325ee57270cd967f9b71d46e53d68bfee894e74c1c06a7d",
+      "bytes": 4027
+    },
+    "ngo_Ai_Antigravity_Online_Engine.ipynb": {
+      "sha256": "a41f6df7ab00d978bde1523662429c749989a1e17093a9f8759e6d6f372cb789",
+      "bytes": 4473
+    },
+    "aasha_antigravity_daily_ecosystem_runner.py": {
+      "sha256": "3417a1dea356079de16c5884a44f72367ea12e5ce8f9577f7a9268ec834a0b8f",
+      "bytes": 15349
+    }
+  }
+}

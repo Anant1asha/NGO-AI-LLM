@@ -410,7 +410,8 @@ async function executeIteration(iterationNumber) {
       'CANONICAL_CONTRACT_REGISTER.md', '.superbrain/rules', 'PC_ANTIGRAVITY_STATE.json',
       'scripts/verify_sprint_integrity.mjs', 'SPRINT_VERIFICATION_REPORT.md', 'notebooks',
       'TEST_READY.md', 'ARCHITECTURE_GRAPH.md', 'assets', 'packages', 'graphify-out',
-      'SIMULATION_COMPETITOR_BENCHMARK.md', '.serena/project.yml', 'test_kingsmath_chapter.html'
+      'SIMULATION_COMPETITOR_BENCHMARK.md', '.serena/project.yml', 'test_kingsmath_chapter.html',
+      'LOCAL_AIOS_MASTER_PROMPT_PHASE_H016.json'
     ];
     const existingPaths = candidatePaths.filter(p => fs.existsSync(path.join(ROOT_DIR, p)));
     if (existingPaths.length > 0) {
