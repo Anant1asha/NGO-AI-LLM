@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-13T07:17:50.774048+00:00",
-  "total_phase_manifests": 34,
-  "total_python_test_suites": 58,
+  "generated_at_utc": "2026-11-13T07:31:22.585027+00:00",
+  "total_phase_manifests": 35,
+  "total_python_test_suites": 59,
   "status_counts": {
-    "LIVE_VERIFIED_PASS": 34,
+    "LIVE_VERIFIED_PASS": 35,
     "PARTIAL": 0,
     "BLOCKED": 0,
     "UNKNOWN_OFFLINE_WINDOWS": 1
@@ -223,6 +223,14 @@
       "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
       "manifest_file": "PHASE_G36_NCVET_VOCATIONAL_AND_OTA_DELTA_MANIFEST.json",
       "manifest_sha256": "a73ab516a7ca88a72575ea8f5597f4c1d04ce2927a847865f21d295e88c325d2",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G37",
+      "title": "Experience Registry Sync (13 Certified Chapters + 21 AVR), DOM Smoke Gate & Dec 31 2026 MVP Release Candidate Certification",
+      "manifest_file": "PHASE_G37_MVP_RELEASE_CANDIDATE_MANIFEST.json",
+      "manifest_sha256": "a1512d57e026e47d2aec6c795b8da1af77ab2ec48d030cf99559663fb3d481b2",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
