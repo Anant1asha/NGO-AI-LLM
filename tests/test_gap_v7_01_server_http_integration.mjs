@@ -175,7 +175,17 @@ try {
   assert.equal(rubData.valid, true);
   assert.equal(rubData.errors.length, 0);
 
-  console.log('✅ GAP-V7-01 & G43 LIVE HTTP INTEGRATION TEST PASSED (11/11 endpoint assertions on ephemeral port)');
+
+  // 12. TEAS SQLite Catalogue Manifest + Live G44 Catalogue (Phase G44)
+  const catRes = await fetch(`${baseUrl}/api/catalogue/teas-sqlite-manifest`);
+  assert.equal(catRes.status, 200);
+  const catData = await catRes.json();
+  assert.equal(catData.status, 'ok');
+  assert.equal(catData.live_g44_catalogue.wm_entries_count, 1129);
+  assert.equal(catData.live_g44_catalogue.certified_html5_modules_count, 21);
+
+  console.log('✅ GAP-V7-01, G43 & G44 LIVE HTTP INTEGRATION TEST PASSED (12/12 endpoint assertions on ephemeral port)');
+
 
 } finally {
   await app.close();

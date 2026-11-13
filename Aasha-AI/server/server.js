@@ -259,7 +259,15 @@ export function buildServer() {
     tln_nodes_count: 78,
     vocabulary_rows_count: 544,
     under_20mib: true,
-    zero_external_urls: true
+    zero_external_urls: true,
+    live_g44_catalogue: {
+      chapters_count: 13,
+      tln_nodes_count: 39,
+      wm_entries_count: 1129,
+      conn_entries_count: 85,
+      certified_html5_modules_count: 21,
+      under_20mib: true
+    }
   }));
 
   app.post('/api/sync/cohort-order-pack', async (req, reply) => {
