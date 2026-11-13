@@ -211,6 +211,12 @@ def harvest_expanded_lle_dictionaries(repo_root: Path) -> Dict[str, Any]:
         / "config"
         / "defaults_expanded_v2.json"
     )
+    if expanded_path.is_file():
+        existing_v2 = json.loads(expanded_path.read_text(encoding="utf-8"))
+        for k, v in existing_v2.get("WM", {}).items():
+            merged_wm[k] = v
+        for k, v in existing_v2.get("CONN", {}).items():
+            merged_conn[k] = v
     expanded_payload = {
         "schema_version": "2.0.0",
         "base_version": defaults.get("schema_version", "1.0.0"),

@@ -124,7 +124,7 @@ def run_phase_g36_cycle(repo_root: Path | str = ".") -> Dict[str, Any]:
     <section class="card interaction-container">
       <h2>Vocational Job-Role Simulator &amp; TEAS Assessment</h2>
       <canvas id="g36-canvas-{_i}" width="320" height="60"></canvas>
-      <div id="{_r['avr'].lower()}-mount"></div>
+      <div id="{_r['avr'].lower()}-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>{_r['scenario']}</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Follow PSSCIVE SOP checklist &amp; record verified batch telemetry (सही व्यावसायिक प्रक्रिया)</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Bypass safety calibration &amp; skip quality log (गलत: सुरक्षा जाँच छोड़ना)</button>

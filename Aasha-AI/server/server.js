@@ -67,6 +67,13 @@ db.exec(`
     checksum TEXT NOT NULL,
     updated_at_utc TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS synced_centre_deltas (
+    delta_id TEXT PRIMARY KEY,
+    centre_id TEXT NOT NULL,
+    events_merged INTEGER NOT NULL DEFAULT 0,
+    coins_minted INTEGER NOT NULL DEFAULT 0,
+    merged_at_utc TEXT NOT NULL
+  );
   CREATE TABLE IF NOT EXISTS synced_cohort_packs (
     integrity_hash TEXT PRIMARY KEY,
     center_id TEXT NOT NULL,
@@ -400,7 +407,74 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G43: Multi-Centre Cohort Delta Merge & NCVET Teacher Rubric Validator Endpoints
+  app.post('/api/sync/multi-centre-deltas', async (req) => {
+    const { deltas = [] } = req.body || {};
+    if (!Array.isArray(deltas)) {
+      return { merged_centres: 0, total_events_merged: 0, total_coins_minted: 0, idempotent: true };
+    }
+    const now = new Date().toISOString();
+    let merged_centres = 0;
+    let total_events_merged = 0;
+    let total_coins_minted = 0;
+    const tx = db.transaction(() => {
+      for (const d of deltas) {
+        const deltaId = String(d.delta_id || '');
+        if (!deltaId) continue;
+        const exists = db.prepare('SELECT delta_id FROM synced_centre_deltas WHERE delta_id = ?').get(deltaId);
+        if (exists) continue;
+        const awards = Array.isArray(d.student_awards) ? d.student_awards : [];
+        let deltaCoins = 0;
+        for (const aw of awards) {
+          const sid = String(aw.student_id || '');
+          const coins = Number(aw.coins || 0);
+          if (!sid || coins <= 0) continue;
+          deltaCoins += coins;
+          db.prepare(`
+            INSERT INTO token_balances (student_id, balance, lifetime_earned, updated_at)
+            VALUES (?, ?, ?, ?)
+            ON CONFLICT(student_id) DO UPDATE SET
+              balance = balance + excluded.balance,
+              lifetime_earned = lifetime_earned + excluded.lifetime_earned,
+              updated_at = excluded.updated_at
+          `).run(sid, coins, coins, now);
+        }
+        db.prepare('INSERT INTO synced_centre_deltas (delta_id, centre_id, events_merged, coins_minted, merged_at_utc) VALUES (?, ?, ?, ?, ?)')
+          .run(deltaId, String(d.centre_id || 'CENTER-UNKNOWN'), awards.length, deltaCoins, now);
+        merged_centres++;
+        total_events_merged += awards.length;
+        total_coins_minted += deltaCoins;
+      }
+    });
+    tx();
+    return { status: 'merged', merged_centres, total_events_merged, total_coins_minted, idempotent: true };
+  });
+
+  app.post('/api/teacher/validate-rubric', async (req, reply) => {
+    const rubric = req.body || {};
+    const errors = [];
+    if (rubric.template_id !== 'aasha.teacher.authoring.v1') errors.push('Invalid template_id');
+    if (!Array.isArray(rubric.curriculum_alignment) || !rubric.curriculum_alignment.includes('NCVET-PSSCIVE')) {
+      errors.push('Missing NCVET-PSSCIVE curriculum alignment');
+    }
+    const pol = rubric.offline_policy || {};
+    if (Number(pol.max_bundle_bytes || 0) > 20971520 || !pol.zero_external_urls) {
+      errors.push('Offline bundle policy violation');
+    }
+    const lle = Array.isArray(rubric.lle_vocabulary_entries) ? rubric.lle_vocabulary_entries : [];
+    if (lle.length === 0 || !lle.every((e) => e && e.term_en && e.term_hi && e.phonetic_hi)) {
+      errors.push('Incomplete LLE Devanagari/phonetic entries');
+    }
+    const sha256 = crypto.createHash('sha256').update(JSON.stringify(rubric)).digest('hex');
+    if (errors.length > 0) {
+      return reply.code(400).send({ valid: false, errors, rubric_sha256: sha256 });
+    }
+    return { valid: true, errors: [], rubric_sha256: sha256 };
+  });
+
   return app;
+
 
 
 }

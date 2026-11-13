@@ -128,7 +128,7 @@ def upgrade_all_10_g3_chapters(repo_root: Path) -> Dict[str, Any]:
     <section class="card interaction-container">
       <h2>Interactive Lab &amp; 3-Level TEAS Assessment (Warm-up · Deep Dive · Boss)</h2>
       <canvas id="g34-canvas-{_idx}" width="320" height="60"></canvas>
-      <div id="{_ch['avr'].lower()}-mount"></div>
+      <div id="{_ch['avr'].lower()}-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>Tap the correct concept answer (सही उत्तर चुनें):</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Apply verified textbook principle &amp; earn +20 XP (सही अवधारणा लागू करें)</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Skip unit verification &amp; guess directly (गलत: बिना जाँचे अनुमान)</button>

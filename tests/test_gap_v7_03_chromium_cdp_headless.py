@@ -160,9 +160,10 @@ class TestGapV703ChromiumCDPHeadless(unittest.TestCase):
                         REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
                         REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/E2E_Regression_G39_Golden_Master_Hub_v5.html",
                         REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/V7_System_Wide_Audit_And_Argon_Swarm_Observability_Hub_v5.html",
+                        REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/Multi_Centre_Delta_Rubric_And_10Pack_1129WM_Hub_v5.html",
                     ]
                 )
-                self.assertEqual(len(modules_to_verify), 19)
+                self.assertEqual(len(modules_to_verify), 20)
 
                 for mod_path in modules_to_verify:
                     self.assertTrue(mod_path.exists(), f"Missing {mod_path}")
@@ -209,8 +210,8 @@ class TestGapV703ChromiumCDPHeadless(unittest.TestCase):
                     self.assertIn("HeadlessChrome/156", val["userAgent"])
                     self.assertGreater(val["appWidth"], 100, f"Zero layout width in {mod_path.name}")
                     self.assertGreater(val["appHeight"], 50, f"Zero layout height in {mod_path.name}")
-                    self.assertGreaterEqual(val["wmCount"], 25, f"Low WM in {mod_path.name}")
-                    self.assertGreaterEqual(val["connCount"], 15, f"Low CONN in {mod_path.name}")
+                    self.assertGreaterEqual(val["wmCount"], 1129, f"Low WM in {mod_path.name}")
+                    self.assertGreaterEqual(val["connCount"], 85, f"Low CONN in {mod_path.name}")
                     self.assertGreaterEqual(val["nodesCount"], 3, f"Missing NODES in {mod_path.name}")
                     if "Hub_v5.html" in mod_path.name and "Enriched_G31" not in mod_path.name:
                         self.assertGreaterEqual(val["wmCount"], 1129, f"Expected 1,129 WM in {mod_path.name}")

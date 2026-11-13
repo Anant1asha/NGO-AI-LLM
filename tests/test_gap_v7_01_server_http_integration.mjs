@@ -137,7 +137,46 @@ try {
   assert.equal(snapRestored.coinsBalance, 50);
   assert.equal(snapRestored.checksum, snapBody.checksum);
 
-  console.log('✅ GAP-V7-01 LIVE HTTP INTEGRATION TEST PASSED (9/9 endpoint assertions on ephemeral port)');
+
+  // 10. Multi-centre cohort delta merge + replay idempotency (Phase G43)
+  const deltaPayload = {
+    deltas: [
+      { delta_id: 'DELTA-GN-G43', centre_id: 'CENTER-UP-GN-01', student_awards: [{ student_id: 'stu_ananya_01', coins: 50 }] }
+    ]
+  };
+  const dRes1 = await fetch(`${baseUrl}/api/sync/multi-centre-deltas`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(deltaPayload)
+  });
+  assert.equal(dRes1.status, 200);
+  const dData1 = await dRes1.json();
+  assert.equal(dData1.merged_centres, 1);
+  assert.equal(dData1.total_coins_minted, 50);
+
+  const dRes2 = await fetch(`${baseUrl}/api/sync/multi-centre-deltas`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(deltaPayload)
+  });
+  const dData2 = await dRes2.json();
+  assert.equal(dData2.merged_centres, 0);
+  assert.equal(dData2.total_coins_minted, 0);
+
+  // 11. Teacher NCVET/PSSCIVE rubric validation endpoint (Phase G43)
+  const rubricTpl = JSON.parse(fs.readFileSync(new URL('../Aasha-AI/experience_registry/teacher_authoring_template_v1.json', import.meta.url), 'utf8'));
+  const rubRes = await fetch(`${baseUrl}/api/teacher/validate-rubric`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(rubricTpl)
+  });
+  assert.equal(rubRes.status, 200);
+  const rubData = await rubRes.json();
+  assert.equal(rubData.valid, true);
+  assert.equal(rubData.errors.length, 0);
+
+  console.log('✅ GAP-V7-01 & G43 LIVE HTTP INTEGRATION TEST PASSED (11/11 endpoint assertions on ephemeral port)');
+
 } finally {
   await app.close();
   fs.rmSync(tmpDir, { recursive: true, force: true });

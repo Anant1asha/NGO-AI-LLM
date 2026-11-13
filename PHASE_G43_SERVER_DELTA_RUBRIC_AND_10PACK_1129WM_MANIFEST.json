@@ -1,0 +1,123 @@
+{
+  "schema_version": "7.0.0",
+  "phase": "G43_SERVER_DELTA_RUBRIC_API_AND_10PACK_1129WM_UPGRADE",
+  "generated_at_utc": "2026-11-13T19:18:45.046366+00:00",
+  "ten_chapter_pack_upgrade": {
+    "modules_upgraded": 10,
+    "wm_entries_per_module": 1129,
+    "conn_entries_per_module": 85,
+    "all_passed_28_of_28": true,
+    "modules": [
+      {
+        "file": "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 125831,
+        "under_20mib": true,
+        "sha256": "a6be7570d6456f6b15cc840e213e72b5e5994e6a8a3ec206e19f44ae214f1ed6"
+      },
+      {
+        "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 127682,
+        "under_20mib": true,
+        "sha256": "1402c355bfbe4ab30ed1dd8d9393c6b8cf6941d75a52fcf35bcbe909d3998fc8"
+      },
+      {
+        "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 125451,
+        "under_20mib": true,
+        "sha256": "5ca27228fe51783d7450b3e76b4c870a235abfc60ffc85ed89063776c964e34f"
+      },
+      {
+        "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 124444,
+        "under_20mib": true,
+        "sha256": "b3c0f66d10303eeb37273128c05bad0f26f3d7baac37cd84ad108d6e3dba273d"
+      },
+      {
+        "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 127371,
+        "under_20mib": true,
+        "sha256": "b1a96c356e9a901ce27d955dda86e9d86636eb45015827fa139bff192a58de64"
+      },
+      {
+        "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 126302,
+        "under_20mib": true,
+        "sha256": "caadc93539b758dfb47ee021647a79859e75da149dedabb0bf381ab0ee83b69b"
+      },
+      {
+        "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 126805,
+        "under_20mib": true,
+        "sha256": "0409137320754bd75c7516aef5ab8ba1072e52b52e4e24af6a9db763253e775f"
+      },
+      {
+        "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 124426,
+        "under_20mib": true,
+        "sha256": "9724b61e7c35c7832ae18c4b3491d37530518e5583b6d155a815f5701f74d942"
+      },
+      {
+        "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 128360,
+        "under_20mib": true,
+        "sha256": "f52deb18c1ebfbb09517bc466729631e0c84083d69c498445cb3f73f1706703d"
+      },
+      {
+        "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 28,
+        "qa_total": 28,
+        "size_bytes": 126791,
+        "under_20mib": true,
+        "sha256": "7fc48876bffeeb904c73ed177b301f89823940f11a2ed967ba03895741aa6bd7"
+      }
+    ]
+  },
+  "html5_hub": {
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Multi_Centre_Delta_Rubric_And_10Pack_1129WM_Hub_v5.html",
+    "swarm_state": "CERTIFIED_CHECKPOINT",
+    "qa_passed": 28,
+    "qa_total": 28,
+    "size_bytes": 97546,
+    "under_20mib": true,
+    "sha256": "f61eb8289fc3b7b6a4456f028a875095973322f40d20025cc1c556f9c6b0b171"
+  },
+  "next_focus_unit": "PHASE_G_CHUNK_G44_SQLITE_GZIP_CATALOGUE_REBUILD_AND_OFFLINE_PWA_BUNDLE_AUDITOR: Rebuild teas_content.db.gz with upgraded 10-chapter 1,129 WM specs and certify offline PWA service-worker cache manifest."
+}
