@@ -18,8 +18,10 @@ def download_gdrive_file(file_id, output_path):
     resp = opener.open(url)
     data = resp.read()
     
-    # Check if we got the actual bundle or HTML confirmation page
-    if data.startswith(b'# v2 git bundle') or data.startswith(b'# v3 git bundle') or len(data) > 100000:
+    # Check if we got the actual bundle or HTML confirmation page.
+    # Size is not evidence: a Google sign-in page is ~1 MB and would pass a
+    # length test, so only the bundle magic bytes may decide.
+    if data.startswith(b'# v2 git bundle') or data.startswith(b'# v3 git bundle'):
         with open(output_path, "wb") as f:
             f.write(data)
         print(f"Downloaded directly: {len(data)} bytes")
@@ -67,7 +69,13 @@ def download_gdrive_file(file_id, output_path):
             if total % (1024 * 1024) == 0:
                 print(f"Read {total // (1024 * 1024)} MB...")
     print(f"Finished downloading {output_path}: {total} bytes")
+    with open(output_path, "rb") as f:
+        magic = f.read(14)
+    if not (magic.startswith(b'# v2 git bundle') or magic.startswith(b'# v3 git bundle')):
+        print(f"Rejected: {output_path} is not a git bundle (starts {magic[:40]!r}).")
+        return False
     return True
 
 if __name__ == "__main__":
-    download_gdrive_file(FILE_ID, OUTPUT_BUNDLE)
+    if not download_gdrive_file(FILE_ID, OUTPUT_BUNDLE):
+        sys.exit(1)

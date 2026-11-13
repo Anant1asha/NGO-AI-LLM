@@ -1669,3 +1669,12 @@ Governed by Section 16 of the AASHA AIOS Continuous Engineering Task Specificati
 - **Aasha-AI Subrepo**: Branch aios/v2-bootstrap @ 8f9ad26
 - **Task Branch Push**: Target=aios/v2-bootstrap, AashaPush=NONE, RootPush=NONE
 - **Branch Protection**: 100% Preserved (zero automated pushes to master/main).
+
+## [2026-11-13T17:50:42.112Z] — Run #1 (VERIFIED)
+- **Mode**: Mode D (Direct Local PC Workspace - Live & Authoritative)
+- **Selected Task**: Workstream B: Offline Method B Chapter Compilation Pipeline & PyMuPDF Vectorizer Certification
+- **Test Outcome**: 16/16 suites passed.
+- **Root Repo**: Branch aios/v2-bootstrap @ 7f4c0f0
+- **Aasha-AI Subrepo**: Branch aios/v2-bootstrap @ e196c6a
+- **Task Branch Push**: Target=aios/v2-bootstrap, AashaPush=NONE, RootPush=NONE
+- **Branch Protection**: 100% Preserved (zero automated pushes to master/main).
