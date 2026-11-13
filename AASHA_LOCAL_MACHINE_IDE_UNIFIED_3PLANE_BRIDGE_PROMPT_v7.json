@@ -1,0 +1,122 @@
+{
+  "prompt_id": "AASHA_LOCAL_MACHINE_IDE_UNIFIED_3PLANE_BRIDGE_PROMPT_V7",
+  "schema_version": "7.0.0",
+  "document_type": "LOCAL_WINDOWS_IDE_TO_CLOUD_3PLANE_UNIFICATION_DIRECTIVE",
+  "organization": "Annanth Aasha Foundation (Anant1asha)",
+  "target_environment": {
+    "plane_3_local_windows_workstation": {
+      "pc_hostname": "DESKTOP-7RHB41C",
+      "workspace_root": "C:\\Users\\admin\\Downloads\\NGO AI LLM",
+      "local_operational_sqlite_db": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\aasha_operational.db",
+      "local_operational_json_mirror": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\aasha_operational_mirror.json",
+      "ide_targets": [
+        "Antigravity IDE",
+        "Cursor / VS Code",
+        "Serena MCP (.serena/memories/active_chunk_context.md)"
+      ]
+    },
+    "plane_1_google_drive_bridge": {
+      "drive_folder_id": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
+      "drive_folder_url": "https://drive.google.com/drive/folders/1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD?usp=drive_link",
+      "windows_drive_desktop_candidates": [
+        "G:\\My Drive\\NGO AI LLM",
+        "G:\\Other computers\\My Laptop\\NGO AI LLM",
+        "C:\\Users\\admin\\Google Drive\\NGO AI LLM"
+      ],
+      "canonical_git_bundle": "aasha_aios_v2_bootstrap_full.bundle"
+    },
+    "plane_2_cloud_sandbox_and_colab": {
+      "colab_handover_notebook_id": "1R--MU9RIe02Qr7xF6C9y4x-bP0KsKzPp",
+      "colab_handover_url": "https://colab.research.google.com/drive/1R--MU9RIe02Qr7xF6C9y4x-bP0KsKzPp?ouid=117981788088187594825",
+      "legacy_colab_runner_id": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
+      "latest_cloud_verified_commit_on_bundle": "a6e66cff27950730addf01745ce37d8ea43ff8b6",
+      "latest_completed_chunk": "G42"
+    }
+  },
+  "governance_and_safety_invariants": {
+    "target_branch": "aios/v2-bootstrap",
+    "protected_branches_blocked": [
+      "main",
+      "master",
+      "HEAD",
+      "production",
+      "release"
+    ],
+    "sec001_zero_secret_policy": "Never commit or log API keys, GitHub PATs, staff PINs, or learner PII. Run `node scripts/lint_staged_secrets.mjs` before every commit and bundle creation.",
+    "child_html5_bundle_ceiling_bytes": 20971520,
+    "zero_external_runtime_urls": true,
+    "curriculum_alignment": "NCVET/PSSCIVE for vocational modules + STEM foundations (offline-first to protect children from unsupervised internet access).",
+    "conflict_resolution_policy": "CRDT_JOIN_SEMILATTICE_AND_DISJOINT_FILE_LEASE via IDE_CLOUD_ASYNC_BUS.json (never overwrite uncommitted local IDE files)."
+  },
+  "ide_agent_execution_protocol": {
+    "step_1_check_dirty_worktree_and_acquire_lease": {
+      "description": "Before pulling from the Google Drive bundle, inspect git status in C:\\Users\\admin\\Downloads\\NGO AI LLM and record any dirty files in IDE_CLOUD_ASYNC_BUS.json (`ide_dirty_files_lease`).",
+      "commands": [
+        "cd \"C:\\Users\\admin\\Downloads\\NGO AI LLM\"",
+        "git status -s",
+        "git checkout -B aios/v2-bootstrap"
+      ]
+    },
+    "step_2_ingest_cloud_bundle_from_google_drive": {
+      "description": "Fetch and merge the latest cloud-verified commits (A1..F2, G1..G42, W0A, GAP-V7-01, GAP-V7-03, GAP-V7-04) from the synced Google Drive bundle `aasha_aios_v2_bootstrap_full.bundle`.",
+      "commands": [
+        "powershell -ExecutionPolicy Bypass -File scripts/sync_local_windows_ide_bridge.ps1 -Direction PullFromDrive"
+      ],
+      "fallback_manual_commands": [
+        "git fetch \"G:\\My Drive\\NGO AI LLM\\aasha_aios_v2_bootstrap_full.bundle\" aios/v2-bootstrap:refs/remotes/drive/aios/v2-bootstrap",
+        "git merge --ff-only refs/remotes/drive/aios/v2-bootstrap"
+      ]
+    },
+    "step_3_reconcile_operational_sqlite_and_serena_memory": {
+      "description": "Reconcile the $0.00 JSON mirror (`aasha_operational_mirror.json`) into the local Windows SQLite database (`aasha_operational.db`) and refresh `.serena/memories/active_chunk_context.md` so the IDE agent has full context.",
+      "commands": [
+        "python scripts/reconcile_windows_mirror.py",
+        "python -c \"import json; from src.aasha.orchestrator.w0_live_reconciliation import run_w0_live_reconciliation; print(json.dumps(run_w0_live_reconciliation('.'), indent=2))\""
+      ]
+    },
+    "step_4_run_local_verification_and_swarm_loop": {
+      "description": "Execute the full local test battery (67 Python suites, 97/97 Visual Contract assertions, 9/9 live Fastify HTTP endpoints, 19/19 Headless Chromium CDP checks, and SEC-001 secret lint).",
+      "commands": [
+        "node scripts/aasha_continuous_loop.mjs --swarm",
+        "node --loader ./tests/esm_offline_server_loader.mjs tests/test_gap_v7_01_server_http_integration.mjs",
+        "node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js",
+        "node scripts/lint_staged_secrets.mjs"
+      ]
+    },
+    "step_5_push_to_github_and_export_bundle_back_to_drive": {
+      "description": "Close GAP-V7-02 from your local Windows machine by pushing `aios/v2-bootstrap` to GitHub, rebuilding `aasha_aios_v2_bootstrap_full.bundle`, and copying the updated bundle + state JSONs back to your Google Drive sync folder so Cloud/Colab stays in lockstep when your PC goes offline.",
+      "commands": [
+        "powershell -ExecutionPolicy Bypass -File scripts/sync_local_windows_ide_bridge.ps1 -Direction PushToDriveAndGitHub"
+      ],
+      "fallback_manual_commands": [
+        "node scripts/lint_staged_secrets.mjs",
+        "git push origin aios/v2-bootstrap",
+        "git bundle create aasha_aios_v2_bootstrap_full.bundle aios/v2-bootstrap",
+        "Copy-Item -Force aasha_aios_v2_bootstrap_full.bundle, PC_ANTIGRAVITY_STATE.json, COLAB_ANTIGRAVITY_STATE.json, IDE_CLOUD_ASYNC_BUS.json \"G:\\My Drive\\NGO AI LLM\\\""
+      ]
+    }
+  },
+  "mcp_and_ide_configuration": {
+    "mcp_servers_to_enable_in_ide": {
+      "sequential-thinking": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\admin\\Downloads\\NGO AI LLM"]
+      },
+      "playwright": {
+        "command": "npx",
+        "args": ["-y", "@playwright/mcp", "--isolated", "--headless"]
+      }
+    },
+    "slash_commands_supported_by_swarm_router": [
+      "/plan",
+      "/swarm",
+      "/grill-me",
+      "/btw"
+    ]
+  },
+  "instruction_to_local_ide_agent": "You are operating on Plane 3 (Local Windows Workstation & IDE at C:\\Users\\admin\\Downloads\\NGO AI LLM) of the unified 3-Plane AASHA AIOS ecosystem. Never start from scratch or create a competing scheduler. First run Step 1 and Step 2 to pull the latest `aasha_aios_v2_bootstrap_full.bundle` from the Google Drive sync folder into branch `aios/v2-bootstrap`. Next run Step 3 (`python scripts/reconcile_windows_mirror.py`) to hydrate `aasha_operational.db` and read `IDE_CLOUD_ASYNC_BUS.json` + `PC_ANTIGRAVITY_STATE.json`. Execute authorized code changes, run Step 4 (`node scripts/aasha_continuous_loop.mjs --swarm`), and finish every session with Step 5 (`scripts/sync_local_windows_ide_bridge.ps1 -Direction PushToDriveAndGitHub`) so Plane 1 (Google Drive) and Plane 2 (Cloud Sandbox / Colab) automatically continue from your exact commit when the Windows PC is turned off."
+}
