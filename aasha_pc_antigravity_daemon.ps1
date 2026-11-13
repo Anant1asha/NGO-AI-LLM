@@ -211,7 +211,8 @@ function Invoke-AashaInfrastructureWakeAndSync {
                 branch            = $AashaBranch
                 head_commit       = $AashaCommit
                 dirty_file_count  = $AashaStatus.Count
-                dirty_files_sample = ($AashaStatus | Select-Object -First 20)
+                # @() forces an array literal: an empty result would otherwise serialize as {} and drift the schema.
+                dirty_files_sample = @($AashaStatus | Select-Object -First 20)
             }
         }
     }
