@@ -163,9 +163,9 @@ async function executeIteration(iterationNumber) {
   // -------------------------------------------------------------------------
   console.log('\n--- [STAGE 4/12: PRIORITIZE] Selecting Next Milestone Task ---');
   let selectedTask = {
-    id: 'WORKSTREAM-B-COMPILATION',
-    name: 'Workstream B: Offline Method B Chapter Compilation Pipeline & PyMuPDF Vectorizer Certification',
-    component: 'Aasha-AI'
+    id: 'MILESTONE-1-URIRA',
+    name: 'Milestone 1: Universal Resource Intelligence & Asset Resolver Bridge (URIRA) Integration',
+    component: 'aasha-agent-builder'
   };
   console.log(`  Selected Task: [${selectedTask.id}] ${selectedTask.name}`);
   executionEvidence.stages.prioritize = selectedTask;
@@ -278,9 +278,14 @@ async function executeIteration(iterationNumber) {
   executionEvidence.tests.push({ name: 'Chapter Monolith Assembly Suite', pass: monolithTest.success });
 
   // Test 15: Aasha Agent Builder Unified 4-Stage Multi-Agent Orchestration Suite
-  console.log('  [Test 15/15] Running Unified 4-Stage Multi-Agent Orchestration Suite...');
+  console.log('  [Test 15/16] Running Unified 4-Stage Multi-Agent Orchestration Suite...');
   const e2ePipelineTest = runCmd('node packages/aasha-agent-builder/test/e2e_full_pipeline.test.mjs', ROOT_DIR, { silent: false });
   executionEvidence.tests.push({ name: 'Unified 4-Stage Pipeline Suite', pass: e2ePipelineTest.success });
+
+  // Test 16: Universal Asset Resolver Bridge Suite (M1 URIRA)
+  console.log('  [Test 16/16] Running Universal Asset Resolver Bridge Suite (M1 URIRA)...');
+  const resolverTest = runCmd('node packages/aasha-agent-builder/test/asset_resolver.test.mjs', ROOT_DIR, { silent: false });
+  executionEvidence.tests.push({ name: 'Universal Asset Resolver Bridge (M1 URIRA)', pass: resolverTest.success });
 
   const allTestsPassed = executionEvidence.tests.every(t => t.pass);
   console.log(`\n  Test Summary: ${executionEvidence.tests.filter(t => t.pass).length}/${executionEvidence.tests.length} Suites Passed.`);
