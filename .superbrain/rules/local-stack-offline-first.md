@@ -43,3 +43,8 @@ Whenever a task requires storage, database, or analytics capabilities, follow th
 ## 6. Distractor Anti-Spoiler Sanitization Invariant (L-Truth Rule #1)
 - Misconception explanations in assessment distractors must NEVER reveal or quote the correct target answer or numerical value.
 - The pipeline orchestrator must enforce `sanitize_spec_misconceptions()` before HTML assembly, replacing accidental answer leaks with pedagogical reasoning clues.
+
+## 7. Educational Quality Benchmark & Single-File Packaging Invariant
+- **Quality Benchmark Standard**: Pedagogical design, interaction models, and visual fidelity are benchmarked against Khan Academy, PhET Interactive Simulations, Brilliant, Desmos, and GeoGebra.
+- **20 MiB Scope-Locked Hard Ceiling**: Single-file child-facing learning deliverables must remain strictly $\le 20,971,520\text{ bytes (20 MiB)}$ per `CHILD_HTML5_BUNDLE_MAX_BYTES`. Sub-1MB packaging is an optional runtime optimization for budget 1GB RAM devices when beneficial, but must NEVER be treated as a strategic blocker or allowed to degrade educational quality, visual richness, or simulation depth.
+- **Decoupled Universal Assessment Engine Invariant**: Never hardcode chapter-specific assessment games. The Universal Assessment Engine must decouple question schemas (MCQ, multi-select, true/false, fill-in-the-blank, matching, drag-and-drop, ordering, numerical, multi-step math, subjective, diagram-based, case-based) from evaluation logic, game mechanics, and presentation themes.
