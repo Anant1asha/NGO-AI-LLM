@@ -20,6 +20,10 @@ QA_RUNNER = REPO_ROOT / "Aasha-AI" / "aasha-pipeline-with-master-json" / "qa" / 
 
 if str(PIPELINE_SRC) not in sys.path:
     sys.path.insert(0, str(PIPELINE_SRC))
+if "aasha" in sys.modules and hasattr(sys.modules["aasha"], "__path__"):
+    pkg_dir = str(PIPELINE_SRC / "aasha")
+    if pkg_dir not in sys.modules["aasha"].__path__:
+        sys.modules["aasha"].__path__.append(pkg_dir)
 
 # Offline sandbox compatibility shims for tenacity & pydantic v1 -> v2
 if "tenacity" not in sys.modules:
