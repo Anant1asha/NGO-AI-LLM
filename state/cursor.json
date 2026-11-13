@@ -1,0 +1,34 @@
+{
+  "$schema": "https://annantaasha.org/schemas/argon-cursor-v3.json",
+  "loop_id": "AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3",
+  "status": "RETRY_NEEDED",
+  "current_phase": "PHASE_A_REPO_AND_TRUTH_AUDIT",
+  "phase_order": [
+    "PHASE_A_REPO_AND_TRUTH_AUDIT",
+    "PHASE_B_CURRICULUM_NCVET_INGEST",
+    "PHASE_C_BILINGUAL_LLE_SYNTHESIS",
+    "PHASE_D_OFFLINE_HTML5_SIM_BUILD",
+    "PHASE_E_TEAS_TLN_VERIFICATION",
+    "PHASE_F_BUNDLE_AND_SECURITY_AUDIT",
+    "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION"
+  ],
+  "subtask_index": 0,
+  "active_worktree": "wt-phase-a-init",
+  "last_verified_commit": null,
+  "rap_mailbox_offset": 0,
+  "retry_count": 1,
+  "max_retries": 3,
+  "constraints": {
+    "max_bundle_bytes": 20971520,
+    "allow_external_network": false,
+    "require_bilingual_lle": true,
+    "curriculum_standard": "NCVET-PSSCIVE"
+  },
+  "hibernation": {
+    "drive_sync_folder_id": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
+    "colab_notebook_id": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
+    "last_synced_utc": null
+  },
+  "last_failure_reason": "UNCOMMITTED_STATE",
+  "last_failure_detail": "1 tracked file(s) modified:  M PC_ANTIGRAVITY_STATE.json"
+}

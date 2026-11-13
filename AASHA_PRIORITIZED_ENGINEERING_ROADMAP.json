@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "timestamp": "2026-11-14T01:18:00Z",
+  "roadmap_authority": "AASHA AIOS System Architect (Swarm Step 3)",
+  "governance_standard": "Pāṇinian Kāraka Strategic Cadence & Truth-Seeking Protocol",
+  "prioritization_model": "Impact vs Complexity (P0: Critical Blockers & Safety, P1: High-Yield Production Hardening, P2: Multi-Board & Scalability Extensions)",
+  "epics": [
+    {
+      "epic_id": "EPIC-P0-01",
+      "priority": "P0",
+      "title": "Anti-Spoiler Prompt Hardening & Pre-Filtering Engine (Defect DEF-005)",
+      "stream": "Stream 4: Assessment Plane & Anti-Spoiler Scaffolding",
+      "plane": "Assessment Plane",
+      "target_milestone": "M1: Baseline Hardening",
+      "estimated_effort": "2 days",
+      "dependencies": [],
+      "description": "Hardens the AssessmentAgent prompt architecture with structured misconception reasoning templates and applies deterministic pre-filtering (`sanitize_spec_misconceptions`) before ContextBus validation to eliminate repair-loop quarantine stalls.",
+      "acceptance_criteria": [
+        "100% of generated distractors pass zero-spoiler regex before repair escalation.",
+        "Zero quarantine activations across 10 consecutive chapter synthesis runs.",
+        "Diagnostic feedback clearly explains conceptual error without revealing answer or formula calculation."
+      ]
+    },
+    {
+      "epic_id": "EPIC-P0-02",
+      "priority": "P0",
+      "title": "Dual-Repository GitOps Synchronization & Release Gate Promotion (Defect DEF-002)",
+      "stream": "Stream 7: Autonomous Multi-Agent Orchestration & Control Plane",
+      "plane": "Platform Infrastructure & GitOps",
+      "target_milestone": "M1: Baseline Hardening",
+      "estimated_effort": "1 day",
+      "dependencies": [],
+      "description": "Standardizes working-tree hygiene across both root (`NGO AI LLM`) and sub-repo (`Aasha-AI`). Enforces atomic synchronization checks in `scripts/sync_and_push_all_autonomous_cycles.mjs` before executing Gate 6 release promotions.",
+      "acceptance_criteria": [
+        "Pre-commit and pre-push hooks verify clean status across both root and sub-repo.",
+        "Zero untracked scratch artifacts staged during automated cycles.",
+        "Automated release promotion to trunk (`origin/master` and `origin/main`) completes via `-s ours` DAG reconciliation without tree divergence."
+      ]
+    },
+    {
+      "epic_id": "EPIC-P1-01",
+      "priority": "P1",
+      "title": "9Router AI Gateway Resilient Background Supervisor (Defect DEF-001)",
+      "stream": "Stream 7: Autonomous Multi-Agent Orchestration & Control Plane",
+      "plane": "Orchestration & Platform Infrastructure",
+      "target_milestone": "M2: Production Automation",
+      "estimated_effort": "2 days",
+      "dependencies": [],
+      "description": "Embeds a lightweight process supervisor inside the root orchestrator CLI to detect dormant 9Router gateway instances on port 20128 and automatically launch `start_9router_hidden.ps1` with detached process stdio.",
+      "acceptance_criteria": [
+        "Port 20128 automatically becomes responsive within 2 seconds of invoking `npm start` or `npm run aasha:loop`.",
+        "Subagent tasks consistently utilize local gateway caching without 429 backoff stalls.",
+        "Resident memory footprint strictly remains < 30 MB RAM."
+      ]
+    },
+    {
+      "epic_id": "EPIC-P1-02",
+      "priority": "P1",
+      "title": "Asset Pipeline Optimization & 1.0 MB Chapter Packaging Ceiling (Defect DEF-006)",
+      "stream": "Stream 6: Single-File HTML5 Compiler & Offline Edge Runtime",
+      "plane": "Learning Plane / Packaging",
+      "target_milestone": "M2: Production Automation",
+      "estimated_effort": "3 days",
+      "dependencies": [],
+      "description": "Implements automated Pillow JPEG/WebP downsampling (max width 1000px, quality 80) for all raster assets in `v6_compiler.ts`, compressing asset-heavy chapters (such as Fractions from 6.47 MB to < 1.0 MB) while preserving 100% offline self-containment.",
+      "acceptance_criteria": [
+        "All compiled standalone chapter HTML files measure <= 1,048,576 bytes (1.0 MB) without external network dependencies.",
+        "Headless Chrome CDP audits verify zero visual degradation on high-DPI viewports.",
+        "DOM parse time on 1GB RAM budget mobile devices drops by > 70%."
+      ]
+    },
+    {
+      "epic_id": "EPIC-P1-03",
+      "priority": "P1",
+      "title": "LaTeX AST Math Insulator & Multi-Line Formula Shielding (Defect DEF-004)",
+      "stream": "Stream 5: Indic Language Layer Engine (LLE) & Bilingual Substrate",
+      "plane": "Learning Plane",
+      "target_milestone": "M2: Production Automation",
+      "estimated_effort": "2 days",
+      "dependencies": [],
+      "description": "Upgrades `math_insulator.ts` from heuristic regex replacements to a formal AST-based LaTeX token parser, guaranteeing zero transliteration collision on complex fractions, matrices, and algebraic formulas.",
+      "acceptance_criteria": [
+        "Zero `math-rt` collisions across all NCERT Class 8-10 Mathematics chapters.",
+        "Full support for nested LaTeX fractions, square roots, and variable groupings.",
+        "100/100 score maintained on L-Truth Benchmark Rule 4 (Math Insulation Integrity)."
+      ]
+    },
+    {
+      "epic_id": "EPIC-P2-01",
+      "priority": "P2",
+      "title": "Dual SQLite Telemetry Event Sync Daemon (Defect DEF-008)",
+      "stream": "Stream 8: Multi-Tier Persistent Memory & Local State Hierarchy",
+      "plane": "Memory & State Hierarchy",
+      "target_milestone": "M3: Scale & Multi-Board Expansion",
+      "estimated_effort": "3 days",
+      "dependencies": ["EPIC-P0-02"],
+      "description": "Implements an automated bi-directional event sync bridge between root `aasha_operational.db` and sub-repo `offline_sync.db`, maintaining real-time parity of the evidence ledger and learner progress records.",
+      "acceptance_criteria": [
+        "Evidence ledger updates committed in sub-repo tests appear in root queries in < 5ms.",
+        "Zero locking errors on concurrent SQLite transactions.",
+        "Zero cloud credential requirements (Method B strictly preserved)."
+      ]
+    },
+    {
+      "epic_id": "EPIC-P2-02",
+      "priority": "P2",
+      "title": "Multilingual Indic Expansion Substrate (Bengali, Tamil, Telugu)",
+      "stream": "Stream 5: Indic Language Layer Engine (LLE) & Bilingual Substrate",
+      "plane": "Learning Plane",
+      "target_milestone": "M3: Scale & Multi-Board Expansion",
+      "estimated_effort": "5 days",
+      "dependencies": ["EPIC-P1-03"],
+      "description": "Expands the active LLE substrate from Hindi to include vetted local offline dictionaries and Devanagari/Indic phonetics for Bengali, Tamil, and Telugu regional school boards.",
+      "acceptance_criteria": [
+        "Verified bilingual word maps generated for top 300 pedagogical keywords in Bengali, Tamil, and Telugu.",
+        "Offline WordMap modals render correctly in all target Indic scripts.",
+        "Zero runtime external API calls required for inlined Indic translations."
+      ]
+    }
+  ]
+}

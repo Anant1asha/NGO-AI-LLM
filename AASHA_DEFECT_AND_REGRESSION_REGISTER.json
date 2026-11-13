@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "timestamp": "2026-11-14T01:15:00Z",
+  "audit_authority": "AASHA AIOS System Architect (Swarm Step 3)",
+  "governance_standard": "Pāṇinian Kāraka Epistemic Integrity & Truth-Seeking Protocol",
+  "total_defects_registered": 8,
+  "severity_breakdown": {
+    "CRITICAL": 1,
+    "HIGH": 3,
+    "MEDIUM": 3,
+    "LOW": 1
+  },
+  "defects": [
+    {
+      "id": "DEF-001",
+      "stream": "Stream 7: Autonomous Multi-Agent Orchestration & Control Plane",
+      "title": "9Router AI Gateway Process Dormancy & Non-Supervised Service Lifecycle",
+      "severity": "HIGH",
+      "plane": "Orchestration & Platform Infrastructure",
+      "status": "OPEN",
+      "evidence": "Live discovery probe on http://127.0.0.1:20128 timed out (process dormant). Local scripts `ensure_9router.js` and `start_9router_hidden.ps1` exist but are not managed by a persistent OS background supervisor or Windows Service.",
+      "impact": "When 9Router is offline, local requests fallback to unbuffered OpenRouter free endpoints or stall. Risk of hitting 429 rate limits without local gateway caching and circuit breaking.",
+      "root_cause": "9Router runs as an on-demand process rather than a resilient daemon or persistent local service supervised by the AIOS root orchestrator.",
+      "remediation_proposal": "Integrate an auto-start daemon hook into `scripts/aasha_root_orchestrator.js` and `package.json` entrypoints to verify port 20128 and spawn `start_9router_hidden.ps1` with unref() stdio prior to pipeline runs.",
+      "owner_agent": "OPS-004: full_stack_developer / Orchestrator Architect"
+    },
+    {
+      "id": "DEF-002",
+      "stream": "Stream 7: Autonomous Multi-Agent Orchestration & Control Plane",
+      "title": "Dual Sub-Repository State Drift & Desynchronized Git Working Trees",
+      "severity": "HIGH",
+      "plane": "Platform Infrastructure & GitOps",
+      "status": "OPEN",
+      "evidence": "Root repo `NGO AI LLM` has untracked `LOCAL_AIOS_MASTER_PROMPT_PHASE_H016.json` and modified `scripts/aasha_continuous_loop.mjs`. Sub-repo `Aasha-AI` is an independent git repository with modified `aasha-pipeline-with-master-json/config/candidate_dictionary_hi.json`. Neither uses a formal Git submodule or synchronized atomic commit link.",
+      "impact": "Autonomous Gate 6 promotions or trunk synchronization could push desynchronized commit states between root and `Aasha-AI`, breaking multi-repo path resolutions and test baselines.",
+      "root_cause": "Nested repository structure without a strict multi-repo commit synchronization script or submodule pointer.",
+      "remediation_proposal": "Add pre-commit dual-repository dirty check in `scripts/lint_staged_secrets.mjs` and execute `scripts/sync_and_push_all_autonomous_cycles.mjs` with subrepo status assertions before any Gate 6 promotion.",
+      "owner_agent": "delivery-coordinator / GitOps Orchestrator"
+    },
+    {
+      "id": "DEF-003",
+      "stream": "Stream 1: Ingestion & Document Vision Plane",
+      "title": "Subprocess Staging Latency & Ingestion Filesystem Overhead on Windows",
+      "severity": "MEDIUM",
+      "plane": "Ingestion Plane",
+      "status": "ACCEPTED_LIMITATION",
+      "evidence": "`Aasha-AI/agent_orchestrator.ts` invokes the Python ingestion worker (`ingest_agent.py`) via subprocess spawning and intermediate file staging (`raw_extract.json`). Verified in RG-002 as an accepted current implementation characteristic.",
+      "impact": "Windows process creation overhead (~500ms-1500ms per spawn) introduces latency during batch multi-chapter compilation. Not a correctness bug, but creates a batch scaling bottleneck.",
+      "root_cause": "Lack of a persistent in-memory streaming IPC daemon between Node.js and Python runtimes.",
+      "remediation_proposal": "Maintain current accepted status until multi-chapter batch requirements mandate an in-memory resident JSON-RPC / stdio daemon.",
+      "owner_agent": "full-stack-developer / Python Runtime Engineer"
+    },
+    {
+      "id": "DEF-004",
+      "stream": "Stream 5: Indic Language Layer Engine (LLE) & Bilingual Substrate",
+      "title": "Monolingual Hindi LLE Active Substrate & Nested LaTeX Formula Collision Risk",
+      "severity": "MEDIUM",
+      "plane": "Learning Plane",
+      "status": "IN_PROGRESS",
+      "evidence": "`docs/FINAL_MULTI_AGENT_SYSTEM.md` and `GEMINI.md` confirm Hindi is currently the sole active Indic substrate. Complex multi-line or nested LaTeX environments (e.g. `\\begin{aligned}`, `\\frac` with nested sub-expressions) can occasionally fail regex placeholder insulation (`__AASHA_MATH_X__`), risking false dictionary translation.",
+      "impact": "Math symbols could be wrapped in transliteration tags (`rt()`), corrupting KaTeX formula rendering on client mobile WebViews.",
+      "root_cause": "Regex-based math insulation rather than a formal AST LaTeX tokenizer.",
+      "remediation_proposal": "Upgrade `packages/aasha-rules/math_insulator.ts` to use a lightweight AST-based LaTeX tokenizer for math boundary detection before invoking the Hindi dictionary regex replace.",
+      "owner_agent": "AGT-005: LLEAgent / full-stack-developer"
+    },
+    {
+      "id": "DEF-005",
+      "stream": "Stream 4: Assessment Plane & Anti-Spoiler Scaffolding",
+      "title": "Distractor Misconception Spoiler Generation Rate & Repair-Loop Quarantine Risk",
+      "severity": "CRITICAL",
+      "plane": "Assessment Plane",
+      "status": "IN_PROGRESS",
+      "evidence": "Assessment generation frequently trips Rule #1 Zero-Spoiler regex in distractor explanations (`m` attribute) during initial LLM prompt generation. The 2-tier repair loop catches and remediates them, but repair exhaustion triggers `QuarantineError` and downstream stage blocking.",
+      "impact": "Chapters with persistent spoiler leaks halt the automated pipeline at Stage 3, requiring manual Super Admin intervention and blocking downstream assembly.",
+      "root_cause": "Assessment prompts allow LLMs to freely generate misconception text before post-hoc regex evaluation, rather than enforcing structured, spoiler-free diagnostic templates at the prompt level.",
+      "remediation_proposal": "Enforce strict distractor misconception templates in `AssessmentAgent` system prompt and run `sanitize_spec_misconceptions()` pre-filtering on candidate outputs before ContextBus validation.",
+      "owner_agent": "AGT-004: AssessmentAgent / Prompt Compiler"
+    },
+    {
+      "id": "DEF-006",
+      "stream": "Stream 6: Single-File HTML5 Compiler & Offline Edge Runtime",
+      "title": "Standalone Bundle Size Variance on Asset-Heavy Chapters (Fractions 6.47MB)",
+      "severity": "MEDIUM",
+      "plane": "Learning Plane / Packaging",
+      "status": "OPEN",
+      "evidence": "Audit of `chapters/*Gamified*.html` shows most chapters are lightweight (80KB-350KB), but `Fractions_Gamified_v5_(2)_Enhanced_v6.html` reaches 6.47 MB due to heavy inlined raster graphics and SVG assets.",
+      "impact": "While strictly within the 20 MiB ceiling, a 6.47 MB single-file HTML bundle causes memory spikes on ultra-budget Android Go devices (1GB RAM) during initial WebKit DOM parsing.",
+      "root_cause": "Inclusion of unoptimized raster images converted to raw Base64 data URIs without Pillow downsampling.",
+      "remediation_proposal": "Mandate web-optimized Pillow JPEG downsampling (max width 1000px, quality 80, alpha=False) in compiler asset pipeline for all raster graphics, targeting <1.0 MB per chapter.",
+      "owner_agent": "full-stack-developer / Asset Compiler"
+    },
+    {
+      "id": "DEF-007",
+      "stream": "Stream 9: Verification, Quality Assurance & Telemetry Governance",
+      "title": "Upstream Provider Billing Telemetry Observability Gap (OI-001 / RG-004)",
+      "severity": "LOW",
+      "plane": "Governance & Telemetry",
+      "status": "ACCEPTED_LIMITATION",
+      "evidence": "Local guards (`ALLOW_PAID_GEMINI_FALLBACK=false`, spend cap ledger in `router_usage.json` with $10.00 daily limit) are verified, but external provider-side billing balances cannot be programmatically queried from the developer runtime.",
+      "impact": "Upstream provider billing is not externally observable at runtime; zero paid token usage cannot be certified provider-side without manual dashboard inspection.",
+      "root_cause": "OpenRouter and Google Cloud do not expose authenticated client-side balance webhooks in this project.",
+      "remediation_proposal": "Maintain formal bounding per `docs/FINAL_MULTI_AGENT_SYSTEM.md`: client guards certified, provider telemetry accepted as local limitation (OI-001).",
+      "owner_agent": "Super Admin / Security Lead"
+    },
+    {
+      "id": "DEF-008",
+      "stream": "Stream 8: Multi-Tier Persistent Memory & Local State Hierarchy",
+      "title": "Dual-Plane SQLite Database Telemetry Synchronization Asynchrony",
+      "severity": "LOW",
+      "plane": "Memory & State Hierarchy",
+      "status": "OPEN",
+      "evidence": "Root database `aasha_operational.db` maintains concept nodes and operational states, while `Aasha-AI/server/offline_sync.db` stores evidence ledgers and student sync data. Synchronization relies on discrete CLI scripts (`npm run memory:sync`) rather than automated bi-directional event publishing.",
+      "impact": "Evidence ledger records generated during subrepo tests may not immediately reflect in root operational state queries until explicit sync execution.",
+      "root_cause": "Dual-root workspace architecture without a unified SQLite shared database path or automated trigger.",
+      "remediation_proposal": "Configure a unified connection path or automated post-test sync hook in `agent_orchestrator.ts` to replicate evidence ledger writes across both databases.",
+      "owner_agent": "full-stack-developer / Database Architect"
+    }
+  ]
+}

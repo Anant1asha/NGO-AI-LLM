@@ -411,7 +411,8 @@ async function executeIteration(iterationNumber) {
       'scripts/verify_sprint_integrity.mjs', 'SPRINT_VERIFICATION_REPORT.md', 'notebooks',
       'TEST_READY.md', 'ARCHITECTURE_GRAPH.md', 'assets', 'packages', 'graphify-out',
       'SIMULATION_COMPETITOR_BENCHMARK.md', '.serena/project.yml', 'test_kingsmath_chapter.html',
-      'LOCAL_AIOS_MASTER_PROMPT_PHASE_H016.json'
+      'LOCAL_AIOS_MASTER_PROMPT_PHASE_H016.json', 'state', 'AASHA_DEFECT_AND_REGRESSION_REGISTER.json',
+      'AASHA_LIVE_SYSTEM_MAP.md', 'AASHA_PRIORITIZED_ENGINEERING_ROADMAP.json'
     ];
     const existingPaths = candidatePaths.filter(p => fs.existsSync(path.join(ROOT_DIR, p)));
     if (existingPaths.length > 0) {
