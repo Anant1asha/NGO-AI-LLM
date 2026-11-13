@@ -266,7 +266,7 @@ def build_g38_pilot_hub_via_swarm(repo_root: Path, pilot_res: Dict[str, Any]) ->
     <section class="card interaction-container">
       <h2>TEAS Double-Entry Conservation &amp; Cohort Audit (लेखा परीक्षण)</h2>
       <canvas id="g38-canvas" width="320" height="60"></canvas>
-      <div id="avr-p309-mount"></div>
+      <div id="avr-p309-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>Across {pilot_res['learners_simulated']} rural learners, {pilot_res['coins_lifetime_earned']} Aasha Coins were minted and {pilot_res['coins_redeemed']} were redeemed with PIN 1080. Verify the TEAS invariant:</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Double-entry conserved: lifetime_earned ({pilot_res['coins_lifetime_earned']}) == balance ({pilot_res['coins_remaining_balance']}) + redeemed ({pilot_res['coins_redeemed']})</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Allow negative balances when offline packets arrive out of order</button>

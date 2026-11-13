@@ -251,7 +251,7 @@ def build_g41_v7_observability_hub_via_swarm(repo_root: Path, deliverable_hashes
     <section class="card interaction-container">
       <h2>Hydrogen-Argon Swarm Observability &amp; Governance Gate (प्रणाली निरीक्षण)</h2>
       <canvas id="g41-canvas" width="320" height="60"></canvas>
-      <div id="avr-p310-mount"></div>
+      <div id="avr-p310-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>All 27 MASTER_PROMPT_v7 audit deliverables and {len(deliverable_hashes)} W1-W2 registries are verified on disk. Which rule governs autonomous repair attempts before escalating to human-in-the-loop?</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Maximum 2 bounded repair attempts per defect class, then BLOCKED_HIL with raw evidence preserved</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Unlimited retries and silent test skipping</button>

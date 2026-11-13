@@ -170,7 +170,7 @@ def build_g37_release_candidate_hub_via_swarm(repo_root: Path, reg_sync: Dict[st
     <section class="card interaction-container">
       <h2>Release Candidate Verification Checkpoint (रिलीज़ उम्मीदवार प्रमाणन)</h2>
       <canvas id="g37-canvas" width="320" height="60"></canvas>
-      <div id="avr-p301-mount"></div>
+      <div id="avr-p301-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>How does the Online Antigravity Colab Runner push offline sandbox commits and reconcile SQLite state?</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Run scripts/apply_bundle_and_push.sh to fetch aasha_aios_v2_bootstrap_full.bundle, reconcile aasha_operational_mirror.json, and push to origin/aios/v2-bootstrap</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Force-push directly to main without QA or secret scanning</button>

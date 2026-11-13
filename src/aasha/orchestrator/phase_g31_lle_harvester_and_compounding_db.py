@@ -449,7 +449,8 @@ def synthesize_enriched_chapter_via_swarm(
 <script>
 var NODES=[
   {{"id":"G31_N1","title":"Fractions & Equivalent Ratios","opts":[{{"t":"JSXGraph","c":true,"m":""}},{{"t":"CDN","c":false,"m":"Misconception: External CDNs violate offline-first"}}]}},
-  {{"id":"G31_N2","title":"Cricket Innings & Proportion Arena","opts":[{{"t":"5/6","c":true,"m":""}},{{"t":"3/9","c":false,"m":"Misconception: Direct numerator/denominator addition"}}]}}
+  {{"id":"G31_N2","title":"Cricket Innings & Proportion Arena","opts":[{{"t":"5/6","c":true,"m":""}},{{"t":"3/9","c":false,"m":"Misconception: Direct numerator/denominator addition"}}]}},
+  {{"id":"G31_N3","title":"Expanded 1,129 WM Bilingual Mastery","opts":[{{"t":"1,129 WM + 85 CONN Verified","c":true,"m":""}},{{"t":"Unverified Glossary","c":false,"m":"Misconception: Requires Devanagari & phonetic coverage"}}]}}
 ];
 var WE={{id:"WE_G31_HARVEST",formula:"2/3 + 1/6 = 5/6"}};
 var WM={json.dumps(wm_dict, ensure_ascii=False)};

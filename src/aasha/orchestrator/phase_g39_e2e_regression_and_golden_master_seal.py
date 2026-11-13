@@ -132,7 +132,7 @@ def build_g39_e2e_regression_hub_via_swarm(repo_root: Path, reg_matrix: Dict[str
     <section class="card interaction-container">
       <h2>End-to-End Regression &amp; Release Readiness Gate (संपूर्ण प्रणाली जाँच)</h2>
       <canvas id="g39-canvas" width="320" height="60"></canvas>
-      <div id="avr-p310-mount"></div>
+      <div id="avr-p310-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>All {reg_matrix['modules_audited']} child-facing &amp; hub HTML5 modules passed {reg_matrix['total_qa_checks_executed']} QA checks. What is required before promoting any module to canonical release?</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Independent QA verification (28/28), 97/97 Visual Contract, 0 secrets, and &lt; 20 MiB offline bundle</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Self-certification by the builder worker without running run_qa.js</button>

@@ -214,7 +214,7 @@ def build_g35_facilitator_10pack_hub_via_swarm(
     <section class="card interaction-container">
       <h2>Facilitator Misconception Hotspot &amp; Cohort Order Pack Verification (शिक्षक निदान केंद्र)</h2>
       <canvas id="g35-canvas" width="320" height="60"></canvas>
-      <div id="avr-p320-mount"></div>
+      <div id="avr-p320-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>Top Hotspot: <strong>{bridge_res['topHotspotChapter']}</strong> ({bridge_res['topHotspotStruggling']} learners struggling). Select the verified remediation step:</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) Launch AVR-P301 Fraction Strip + 1,129-word phonetic LLE flashcard deck (सही निदान कदम)</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) Skip misconception diagnosis and advance without LCM practice (गलत विकल्प)</button>

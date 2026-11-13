@@ -165,8 +165,8 @@ def execute_backlog_02_upgrade_g3_fractions(repo_root: Path, wm_dict: Dict[str, 
     <section class="card interaction-container">
       <h2>Interactive Fraction Strip &amp; Number Line (संख्या रेखा व भिन्न पट्टी)</h2>
       <canvas id="frac-canvas" width="320" height="60"></canvas>
-      <div id="avr-p301-mount"></div>
-      <div id="avr-p302-mount"></div>
+      <div id="avr-p301-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
+      <div id="avr-p302-mount"><div id="stage"></div><div id="controls"></div><div id="msg"></div><div id="x"></div></div>
       <p>Solve <strong>1/2 + 1/3</strong> using LCM (ल.स.प.):</p>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="true" onclick="selectOpt(this)">A) 5/6 (3/6 + 2/6 = 5/6)</button>
       <button type="button" class="tap-option" data-tap-select="true" data-correct="false" onclick="selectOpt(this)">B) 2/5 (Added numerators &amp; denominators directly)</button>
