@@ -9,6 +9,7 @@
     {
       "epic_id": "EPIC-P0-01",
       "priority": "P0",
+      "status": "COMPLETED",
       "title": "Anti-Spoiler Prompt Hardening & Pre-Filtering Engine (Defect DEF-005)",
       "stream": "Stream 4: Assessment Plane & Anti-Spoiler Scaffolding",
       "plane": "Assessment Plane",
@@ -25,6 +26,7 @@
     {
       "epic_id": "EPIC-P0-02",
       "priority": "P0",
+      "status": "COMPLETED",
       "title": "Dual-Repository GitOps Synchronization & Release Gate Promotion (Defect DEF-002)",
       "stream": "Stream 7: Autonomous Multi-Agent Orchestration & Control Plane",
       "plane": "Platform Infrastructure & GitOps",
@@ -41,6 +43,7 @@
     {
       "epic_id": "EPIC-P1-01",
       "priority": "P1",
+      "status": "COMPLETED",
       "title": "9Router AI Gateway Resilient Background Supervisor (Defect DEF-001)",
       "stream": "Stream 7: Autonomous Multi-Agent Orchestration & Control Plane",
       "plane": "Orchestration & Platform Infrastructure",
