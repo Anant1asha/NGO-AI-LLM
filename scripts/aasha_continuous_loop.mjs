@@ -167,6 +167,10 @@ async function executeIteration(iterationNumber) {
   const ecoTest = runCmd('python3 aasha_antigravity_daily_ecosystem_runner.py --self-test', ROOT_DIR, { silent: true });
   tests.push({ name: 'Ecosystem Multi-Repo Runner (65/65 Pipeline + 21/21 Phase-3 AVR + HTML5 Bundles <20MiB)', pass: ecoTest.success });
 
+  // Suite 5A: GAP-V7-01 Live Fastify HTTP Integration Test (9/9 Ephemeral Port Assertions)
+  const httpTest = runCmd('node --loader ./tests/esm_offline_server_loader.mjs tests/test_gap_v7_01_server_http_integration.mjs', ROOT_DIR, { silent: false });
+  tests.push({ name: 'GAP-V7-01 Live Fastify HTTP Server Integration (9/9 Endpoints)', pass: httpTest.success });
+
   // Suite 5: SEC-001 Pre-Commit Zero-Secret Scanner
   const secTest = runCmd('node scripts/lint_staged_secrets.mjs', ROOT_DIR, { silent: false });
   tests.push({ name: 'SEC-001 Zero-Secret Static Scanner', pass: secTest.success });
@@ -217,7 +221,7 @@ async function executeIteration(iterationNumber) {
     'D1', 'D2', 'D3',
     'E1', 'E2', 'E3',
     'F1', 'F2',
-    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20', 'G21', 'G22', 'G23', 'G24', 'G25', 'G26', 'G27', 'G28', 'G29', 'G30'
+    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'G19', 'G20', 'G21', 'G22', 'G23', 'G24', 'G25', 'G26', 'G27', 'G28', 'G29', 'G30', 'G31', 'G32', 'G33', 'G34', 'G35', 'G36', 'G37', 'G38', 'G39', 'W0A', 'G40'
   ];
   const nextFocusUnitG31 = g30Summary.next_focus_unit;
 
