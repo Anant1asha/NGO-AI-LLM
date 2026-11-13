@@ -20,6 +20,7 @@ import { resolveWorkspaceRoot } from './ingest_subagent.mjs';
 import { ingestSubagent } from './ingest_subagent.mjs';
 import { simulationSubagent } from './simulation_subagent.mjs';
 import { assessmentSubagent } from './assessment_subagent.mjs';
+import { assetResolver, recordReuseTransaction } from './asset_resolver.mjs';
 
 export const CHILD_HTML5_BUNDLE_MAX_BYTES = 20971520; // 20 MB scope-locked ceiling
 
@@ -122,6 +123,30 @@ export async function assembleChapterMonolith(options = {}) {
   // 1. Task 1: Ingest Contract
   const ingest = await ingestSubagent({ contractPath });
 
+  // 1b. Universal Resource Resolution (M1 URIRA Bridge)
+  const resolvedAsset = assetResolver.resolveAsset({
+    concept: ingest.contract.title || 'Square and Cube Roots',
+    subject: ingest.contract.subject || 'Mathematics',
+    grade: ingest.contract.grade || 8,
+    topics: ingest.contract.curriculum_intent?.core_concepts?.map(c => c.title) || ['squares', 'cubes', 'geometry']
+  });
+
+  if (resolvedAsset.matched) {
+    try {
+      recordReuseTransaction('aasha_operational.db', {
+        chapterId: ingest.contract.slug || 'squares_and_cubes',
+        conceptNodeId: 'concept_1',
+        resourceId: resolvedAsset.resource.id,
+        tierResolved: resolvedAsset.tier,
+        tokensSaved: resolvedAsset.tokenSavings.totalSaved,
+        usdSaved: resolvedAsset.tokenSavings.estimatedUsdSaved,
+        latencyMs: resolvedAsset.latencyMs
+      });
+    } catch {
+      // Non-fatal if sqlite transaction is busy
+    }
+  }
+
   // 2. Task 2: Simulation Subagent
   const sim = await simulationSubagent({
     contractData: {
@@ -163,6 +188,9 @@ export async function assembleChapterMonolith(options = {}) {
     byteSizeKB: audit.byteSizeKB,
     contract: ingest.contract,
     assessmentTotalQuestions: assessment.assessmentSpec.totalQuestions,
+    resolvedAsset: resolvedAsset.matched ? resolvedAsset.resource : null,
+    resourceTier: resolvedAsset.tier,
+    tokenSavings: resolvedAsset.tokenSavings,
     verification: {
       zeroSpoilersCertified: assessment.verification.zeroSpoilersCertified,
       offlineReady: audit.valid && audit.violations.length === 0,
