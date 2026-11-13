@@ -1,0 +1,25 @@
+{
+  "schema_version": "7.0.0",
+  "phase": "G41_V7_SYSTEM_WIDE_AUDIT_AND_OBSERVABILITY",
+  "generated_at_utc": "2026-11-13T14:40:23.556615+00:00",
+  "v7_deliverables_generated": {
+    "AASHA_AUTOMATION_COVERAGE_AUDIT.json": "1eea3fb2a0fb11a147bd19420167da4d75c8c74e9830d27d19dbf5de0f355eb0",
+    "AASHA_TECHNICAL_DEBT_AND_REUSE_REGISTER.json": "6d575032a1e4d82828c3e69fb2d863439e5f3f29dc0ef4bf49d16e4cbccc0603",
+    "AASHA_PRIORITIZED_RECOVERY_ROADMAP.json": "3d48095f90df7c4a7c784e626a625fc611f8ef88ea33a067530c2cb6a61208b6",
+    "AASHA_LIVE_ACCESS_AND_INFRASTRUCTURE_MATRIX.json": "2f6180d76fe9988be954d5355bf196df16259be47f9ccbd3920cf66a444cda84",
+    "AASHA_AGENT_CAPABILITY_AND_ROLE_REGISTRY.json": "091362205d9acd13e7f21b913ba1214a53d5f63704e9d71f492d86e773820162",
+    "AASHA_AUTOMATION_RELIABILITY_AUDIT.json": "e88e2842db5c05b2387ee05b89ef064e9711f548039598b1e999ff648714ffea",
+    "AASHA_TOOL_API_MCP_UTILIZATION_AUDIT.json": "0bf7dcaba626a630bf7ed50f6b6707cdc12751e7b9c24a58ce95eb0d19c66a31"
+  },
+  "total_v7_deliverables_present": 27,
+  "html5_hub": {
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/V7_System_Wide_Audit_And_Argon_Swarm_Observability_Hub_v5.html",
+    "swarm_state": "CERTIFIED_CHECKPOINT",
+    "qa_passed": 28,
+    "qa_total": 28,
+    "size_bytes": 97463,
+    "under_20mib": true,
+    "sha256": "c355b60416383e459a1613f738f0ac70f7ce0f15217d0c4eee2ce3a4c3a5ded8"
+  },
+  "next_focus_unit": "PHASE_G_CHUNK_G42_MULTI_CENTRE_COHORT_DELTA_MERGE_AND_TEACHER_RUBRIC_VALIDATOR: Implement deterministic multi-centre SQLite cohort delta merge and NCVET/PSSCIVE teacher rubric validator."
+}

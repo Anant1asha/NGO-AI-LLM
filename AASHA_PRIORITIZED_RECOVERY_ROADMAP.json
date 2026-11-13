@@ -1,0 +1,38 @@
+{
+  "schema_version": "7.0.0",
+  "generated_at_utc": "2026-11-13T14:40:23.363031+00:00",
+  "waves": [
+    {
+      "wave": "W0_LIVE_TRUTH_AND_SAFETY",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W0A_ENGINEERING_FOUNDATION_AND_CODE_EXECUTION",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W1_ORCHESTRATION_AND_AUTOMATION",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W2_AGENT_AND_TOOL_EFFECTIVENESS",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W3_MEMORY_AND_REUSE",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W4_LEARNING_AND_ASSESSMENT_COMPILERS",
+      "status": "LIVE_VERIFIED_PASS"
+    },
+    {
+      "wave": "W5_SYSTEMIC_REGRESSION_AND_SCALE",
+      "status": "LIVE_VERIFIED_PASS"
+    }
+  ],
+  "next_bounded_actions": [
+    "Execute Step 4 cell in ngo_Ai_Argon_Handover_v7.ipynb on Google Colab to push aios/v2-bootstrap to GitHub (GAP-V7-02) and run Playwright Chromium (GAP-V7-03).",
+    "Advance to Phase G42: Multi-Centre Cohort Delta Merge & Offline Teacher Rubric Validator."
+  ]
+}

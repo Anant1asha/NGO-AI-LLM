@@ -1,0 +1,29 @@
+{
+  "schema_version": "7.0.0",
+  "generated_at_utc": "2026-11-13T14:40:23.363031+00:00",
+  "planes": {
+    "plane_1_google_drive": {
+      "folder_id": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
+      "access": "READ_WRITE_VERIFIED"
+    },
+    "plane_2_cloud_sandbox_and_colab": {
+      "colab_notebook_id": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
+      "upgraded_handover_notebook_id": "1R--MU9RIe02Qr7xF6C9y4x-bP0KsKzPp",
+      "sandbox_outbound_network": false,
+      "access": "LOCAL_VM_EXECUTION_AND_DRIVE_BRIDGE_VERIFIED"
+    },
+    "plane_3_windows_workstation": {
+      "path": "C:\\Users\\admin\\Downloads\\NGO AI LLM",
+      "status": "OFFLINE_MIRRORED_VIA_DRIVE_AND_JSON",
+      "mirror_file": "aasha_operational_mirror.json"
+    }
+  },
+  "sqlite_operational_tables": [
+    "build_cache_metrics",
+    "codebase_sources",
+    "lle_vocabulary",
+    "memory_nodes",
+    "open_source_foundations",
+    "reusable_mechanics"
+  ]
+}

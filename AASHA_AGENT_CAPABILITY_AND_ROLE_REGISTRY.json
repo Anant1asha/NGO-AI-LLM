@@ -1,0 +1,25 @@
+{
+  "schema_version": "7.0.0",
+  "generated_at_utc": "2026-11-13T14:40:23.363031+00:00",
+  "master_orchestrator": "Hydrogen (HydrogenArgonSwarmRouter)",
+  "specialist_swarm": "Argon (12 Specialist Families)",
+  "specialist_families": [
+    "RECON",
+    "CURRICULUM_TLN",
+    "LLE_DICTIONARY",
+    "SIM_VISUAL",
+    "ASSESSMENT_TEAS",
+    "OFFLINE_HTML5",
+    "BACKEND_SQLITE",
+    "INDEPENDENT_QA"
+  ],
+  "user_skills_registered": [
+    "aasha-aios-build-agent",
+    "aasha-focus-engine",
+    "aasha-spark-creative-builder",
+    "aasha-spark-creative-builder2",
+    "aasha-voice-and-style-engine",
+    "get-more-perspectives",
+    "semantic-prompt-compiler"
+  ]
+}
