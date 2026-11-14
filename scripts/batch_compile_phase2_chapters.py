@@ -315,7 +315,6 @@ def create_chapter_pdf(pdf_path: Path, spec: dict) -> None:
             rect,
             page_info["text"],
             fontsize=10,
-            leading=15,
             color=(0.2, 0.2, 0.2),
         )
         

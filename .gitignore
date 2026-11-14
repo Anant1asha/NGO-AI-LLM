@@ -11,6 +11,7 @@ scratch/
 **/scratch/
 tmp/
 *.tmp
+temp_cdp_*
 *cookie*
 *.cookie
 *.zip
