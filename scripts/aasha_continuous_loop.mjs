@@ -45,6 +45,10 @@ export const V3_TASK_SPECIFICATION = {
 };
 
 const args = process.argv.slice(2);
+if (args.includes('--help') || args.includes('-h')) {
+  console.log('Usage: node scripts/aasha_continuous_loop.mjs [--once] [--audit-only] [--16-stage] [--swarm] [--frequent] [--interval <min>] [--help]');
+  process.exit(0);
+}
 const IS_AUDIT_ONLY = args.includes('--audit-only');
 const IS_SWARM_MODE = args.includes('--swarm');
 const IS_16_STAGE_MODE = args.includes('--16-stage') || IS_SWARM_MODE;
