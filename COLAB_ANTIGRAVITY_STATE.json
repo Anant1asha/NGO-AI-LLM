@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_F_G_END_TO_END_RELEASE_READINESS_AND_OFFLINE_PWA_SERVICE_WORKER_PRECACHE_VERIFICATION",
+  "next_focus_unit": "PHASE_G_TEACHER_STUDIO_BATCH_PDF_UPLOAD_AND_LIVE_PREVIEW_BRIDGE",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -68,9 +68,9 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at": "2026-11-14T11:24:00.619889+00:00",
+  "updated_at": "2026-11-14T14:53:21.414168+00:00",
   "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_D_STUDENT_PWA_AND_AASHA_STUDIO_LEARN_ARENA_LAUNCHER_CERTIFIED",
+  "active_phase": "PHASE_F_G_OFFLINE_PWA_PRECACHE_AND_RELEASE_READINESS_CERTIFIED",
   "learn_arena_batch": {
     "chapters_compiled": 13,
     "total_html5_modules_generated": 26,
@@ -84,5 +84,11 @@
     "server_endpoints_verified": 15,
     "visual_contract_assertions": "97/97",
     "learn_arena_qa_checks": "871/871"
+  },
+  "phase_fg_sw_precache": {
+    "cache_version": "aasha-student-pwa-v2.2",
+    "total_precached_assets": 53,
+    "certified_html5_modules_count": 47,
+    "merkle_root_sha256": "2f6d7043965b84876e6f8fb89bed9b7c38f059647a0f02ba0c0d435f493abf4c"
   }
 }

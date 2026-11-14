@@ -1,0 +1,14 @@
+{
+  "phase_id": "PHASE_F_G_END_TO_END_RELEASE_READINESS_AND_OFFLINE_PWA_SERVICE_WORKER_PRECACHE_VERIFICATION",
+  "certified_at": "2026-11-14T14:53:21.414168+00:00",
+  "branch": "aios/v2-bootstrap",
+  "cache_version": "aasha-student-pwa-v2.2",
+  "merkle_root_sha256": "2f6d7043965b84876e6f8fb89bed9b7c38f059647a0f02ba0c0d435f493abf4c",
+  "total_precached_assets": 53,
+  "certified_html5_modules_count": 47,
+  "learn_arena_modules_count": 26,
+  "total_precache_bytes": 27776561,
+  "under_20mib_ceiling": true,
+  "zero_external_urls": true,
+  "next_focus_unit": "PHASE_G_TEACHER_STUDIO_BATCH_PDF_UPLOAD_AND_LIVE_PREVIEW_BRIDGE"
+}

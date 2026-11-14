@@ -2,7 +2,36 @@
  * Aasha Student PWA — Offline-First Service Worker (v2.1)
  * FOCUS-UNIT-PHASE-G-003: Pre-caches 5-Tab PWA Shell, teas_content.db.gz, and all 11 Certified HTML5 Chapters.
  */
-export const CACHE_VERSION = "aasha-student-pwa-v2.1";
+export const CACHE_VERSION = "aasha-student-pwa-v2.2";
+
+export const LEARN_ARENA_26_BUNDLES = [
+  "/chapters/NCERT-G06-MATH-CH07-FRACTIONS_Learning.html",
+  "/chapters/NCERT-G06-MATH-CH07-FRACTIONS_Arena.html",
+  "/chapters/NCERT-G07-MATH-CH11-PERIMETER-AREA_Learning.html",
+  "/chapters/NCERT-G07-MATH-CH11-PERIMETER-AREA_Arena.html",
+  "/chapters/NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Learning.html",
+  "/chapters/NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Arena.html",
+  "/chapters/NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
+  "/chapters/NCERT-G09-SCI-CH08-FORCE-MOTION_Arena.html",
+  "/chapters/NCERT-G09-SCI-CH10-WORK-ENERGY_Learning.html",
+  "/chapters/NCERT-G09-SCI-CH10-WORK-ENERGY_Arena.html",
+  "/chapters/NCERT-G10-MATH-CH02-POLYNOMIALS_Learning.html",
+  "/chapters/NCERT-G10-MATH-CH02-POLYNOMIALS_Arena.html",
+  "/chapters/NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Learning.html",
+  "/chapters/NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Arena.html",
+  "/chapters/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html",
+  "/chapters/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Arena.html",
+  "/chapters/NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html",
+  "/chapters/NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Arena.html",
+  "/chapters/NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html",
+  "/chapters/NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Arena.html",
+  "/chapters/NCVET_PSSCIVE_L3_IT_DataEntry_Learning.html",
+  "/chapters/NCVET_PSSCIVE_L3_IT_DataEntry_Arena.html",
+  "/chapters/NCVET_PSSCIVE_L4_Agri_SolarDrip_Learning.html",
+  "/chapters/NCVET_PSSCIVE_L4_Agri_SolarDrip_Arena.html",
+  "/chapters/NCVET_PSSCIVE_L4_Food_SolarDehydrator_Learning.html",
+  "/chapters/NCVET_PSSCIVE_L4_Food_SolarDehydrator_Arena.html"
+];
 
 export const CERTIFIED_CHAPTER_BUNDLES = [
   "/chapters/ncert_economics_ch1_modal.html",
@@ -42,7 +71,9 @@ export const PRECACHE_ASSETS = [
   "/src/sync.js",
   "/teas_content.db.gz",
   "/api/catalogue/teas-sqlite-manifest",
-  ...CERTIFIED_CHAPTER_BUNDLES
+  "/api/catalogue/learn-arena-modules",
+  ...CERTIFIED_CHAPTER_BUNDLES,
+  ...LEARN_ARENA_26_BUNDLES
 ];
 
 if (typeof self !== "undefined" && typeof self.addEventListener === "function") {

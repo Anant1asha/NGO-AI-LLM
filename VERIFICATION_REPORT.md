@@ -1,8 +1,7 @@
-# AASHA Verification Report — Phase D Student PWA, Aasha Studio & Centre Server Learn/Arena Integration
-- **Timestamp**: `2026-11-14T11:24:00.619889+00:00`
+# AASHA Verification Report — Phase F/G Offline PWA Service Worker Precache & Release Readiness
+- **Timestamp**: `2026-11-14T14:53:21.414168+00:00`
 - **Branch**: `aios/v2-bootstrap`
-- **Completed Focus Unit**: `PHASE_D_STUDENT_PWA_AND_AASHA_STUDIO_LEARN_ARENA_LAUNCHER_INTEGRATION`
-- **Student PWA & Studio Integration**: Dual `▶️ Aasha Learn / पाठ` + `⚔️ Aasha Arena / अखाड़ा` launcher buttons, in-modal `Switch to Arena / Switch to Learn` toggle, `TEAS_CHAPTER_MASTERY` coin/outbox handler, and Studio dual-file QA scorecard.
-- **Centre Server API**: Added `GET /api/catalogue/learn-arena-modules` (15 live HTTP endpoints verified on ephemeral port).
-- **QA & Contract Gates**: `871/871` Learn & Arena QA checks, `97/97` Visual Contract assertions, `0` secrets.
-- **Next Focus Unit**: `PHASE_F_G_END_TO_END_RELEASE_READINESS_AND_OFFLINE_PWA_SERVICE_WORKER_PRECACHE_VERIFICATION`
+- **Completed Focus Unit**: `PHASE_F_G_END_TO_END_RELEASE_READINESS_AND_OFFLINE_PWA_SERVICE_WORKER_PRECACHE_VERIFICATION`
+- **Service Worker (`sw.js`)**: `CACHE_VERSION = "aasha-student-pwa-v2.2"`, precaching 26 legacy bundles + 26 paired `*_Learning.html` & `*_Arena.html` modules + `/teas_content.db.gz` + `/api/catalogue/learn-arena-modules`.
+- **Merkle Cache Manifest (`sw_cache_manifest.json`)**: `53` verified on-disk assets (`47` HTML5 modules, all `< 20 MiB`, `0` external URLs), Merkle root `2f6d7043965b84876e6f8fb89bed9b7c38f059647a0f02ba0c0d435f493abf4c`.
+- **Next Focus Unit**: `PHASE_G_TEACHER_STUDIO_BATCH_PDF_UPLOAD_AND_LIVE_PREVIEW_BRIDGE`
