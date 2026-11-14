@@ -14,6 +14,8 @@ if [ -f Aasha-AI/server/package.json ]; then
   npm install --prefix Aasha-AI/server --no-audit --no-fund
 fi
 node --loader ./tests/esm_offline_server_loader.mjs tests/test_gap_v7_01_server_http_integration.mjs
+node --loader ./tests/esm_offline_server_loader.mjs tests/test_phase_d_pwa_studio_learn_arena_launcher.mjs
+python3 -m unittest tests/test_phase_e_13chapter_learn_arena_batch.py tests/test_learn_arena_e2e_pipeline.py -v
 
 echo "=== [3/5] Running Visual Contract (97/97) & SEC-001 Secret Scan ==="
 node Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js
