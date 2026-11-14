@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_G_TEACHER_STUDIO_BATCH_PDF_UPLOAD_AND_LIVE_PREVIEW_BRIDGE",
+  "next_focus_unit": "PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATOR_EXPANSION_FOR_SCIENCE_AND_COMMERCE",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -68,9 +68,9 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at": "2026-11-14T14:53:21.414168+00:00",
+  "updated_at": "2026-11-14T19:00:10.717184+00:00",
   "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_F_G_OFFLINE_PWA_PRECACHE_AND_RELEASE_READINESS_CERTIFIED",
+  "active_phase": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_CERTIFIED",
   "learn_arena_batch": {
     "chapters_compiled": 13,
     "total_html5_modules_generated": 26,
@@ -90,5 +90,11 @@
     "total_precached_assets": 53,
     "certified_html5_modules_count": 47,
     "merkle_root_sha256": "2f6d7043965b84876e6f8fb89bed9b7c38f059647a0f02ba0c0d435f493abf4c"
+  },
+  "phase_g_studio_web_cli_bridge": {
+    "cli_learn_arena_single_and_batch": true,
+    "web_upload_sync_and_async_learn_arena": true,
+    "web_dual_preview_and_download_endpoints": true,
+    "studio_dual_preview_workbench_scorecard": true
   }
 }

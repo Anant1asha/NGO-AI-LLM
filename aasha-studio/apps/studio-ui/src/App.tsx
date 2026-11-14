@@ -40,3 +40,24 @@ export function computeStudioLivePreviewScorecard(spec: Partial<StudioQAScorecar
     arenaQaPassed: '34/34'
   };
 }
+
+export function renderStudioDualPreviewWorkbench(spec: Partial<StudioQAScorecard> = {}, activePane: 'learn' | 'arena' | 'split' = 'split'): string {
+  const sc = computeStudioLivePreviewScorecard(spec);
+  return `
+    <section id="aasha-studio-dual-workbench" data-chapter-id="${sc.chapterId}" data-pane="${activePane}">
+      <header class="studio-workbench-header">
+        <h2>🎨 Aasha Studio — Schoolbook PDF → Learn &amp; Arena Workbench (${sc.chapterId})</h2>
+        <div class="studio-scorecard-badges">
+          <span class="badge-qa-learn">📖 Learn QA: ${sc.learnQaPassed}</span>
+          <span class="badge-qa-arena">⚔️ Arena QA: ${sc.arenaQaPassed}</span>
+          <span class="badge-vc">✅ Visual Contract: ${sc.visualContractAssertionsPassed}/97</span>
+          <span class="badge-size">📦 Under 20 MiB: ${sc.under20MiBCeiling ? 'YES' : 'NO'}</span>
+        </div>
+      </header>
+      <div class="studio-preview-grid" style="display:grid;grid-template-columns:${activePane === 'split' ? '1fr 1fr' : '1fr'};gap:16px;">
+        ${activePane !== 'arena' ? `<iframe id="studio-preview-learn" src="/chapters/${sc.learnHtmlFile}" title="Aasha Learn Preview (${sc.chapterId})" sandbox="allow-scripts allow-same-origin"></iframe>` : ''}
+        ${activePane !== 'learn' ? `<iframe id="studio-preview-arena" src="/chapters/${sc.arenaHtmlFile}" title="Aasha Arena Preview (${sc.chapterId})" sandbox="allow-scripts allow-same-origin"></iframe>` : ''}
+      </div>
+    </section>
+  `.trim();
+}

@@ -1,0 +1,19 @@
+{
+  "phase_id": "PHASE_G_TEACHER_STUDIO_BATCH_PDF_UPLOAD_AND_LIVE_PREVIEW_BRIDGE",
+  "certified_at": "2026-11-14T19:00:10.717184+00:00",
+  "branch": "aios/v2-bootstrap",
+  "deliverables": {
+    "cli_py": "Aasha-AI/aasha-pipeline-with-master-json/src/aasha/cli.py",
+    "web_app_py": "Aasha-AI/aasha-pipeline-with-master-json/src/aasha/web/app.py",
+    "flask_shim_py": "Aasha-AI/aasha-pipeline-with-master-json/src/aasha/web/flask_shim.py",
+    "studio_app_tsx": "aasha-studio/apps/studio-ui/src/App.tsx",
+    "e2e_test_suite": "tests/test_phase_g_studio_web_cli_learn_arena_bridge.py"
+  },
+  "verified_capabilities": {
+    "cli_learn_arena_single_and_batch": true,
+    "web_upload_sync_and_async_learn_arena": true,
+    "web_dual_preview_and_download_endpoints": true,
+    "studio_dual_preview_workbench_scorecard": true
+  },
+  "next_focus_unit": "PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATOR_EXPANSION_FOR_SCIENCE_AND_COMMERCE"
+}
