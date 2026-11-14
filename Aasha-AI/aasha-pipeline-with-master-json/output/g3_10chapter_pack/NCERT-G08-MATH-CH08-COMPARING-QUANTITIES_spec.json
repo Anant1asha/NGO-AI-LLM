@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Comparing Quantities, Percentages & Cooperative Micro-Savings",
+    "subject": "math",
+    "grade": 8,
+    "storage_key": "aasha_ncertg08mathch08_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Comparing Quantities, Percentages & Cooperative Micro-Savings concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Ratios, Percentages & Percentage Change",
+      "question": "Solar pump output rose from 40 L/min to 50 L/min. Find the percentage increase.",
+      "steps": [
+        {
+          "text": "Find the change in output: ΔV = 50 − 40 = 10 L/min.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Divide by the original value 40: 10 / 40 = 1/4.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Multiply by 100%: (1/4) × 100% = 25% increase.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "A price drops from ₹200 to ₹160. What is the discount percentage?",
+        "opts": [
+          {
+            "t": "20%",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "40%",
+            "c": false,
+            "m": "₹40 is the rupee discount; divide ₹40 by the original ₹200."
+          },
+          {
+            "t": "25%",
+            "c": false,
+            "m": "Divide by the original price ₹200, not the new price ₹160."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Profit, Loss, Discount & GST",
+      "question": "A cooperative buys solar lanterns at ₹400 and sells them at ₹460. Find the profit percentage.",
+      "steps": [
+        {
+          "text": "Compute profit: SP − CP = 460 − 400 = ₹60.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Use Cost Price ₹400 as the base: Profit% = (60 / 400) × 100.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Simplify: 60 / 4 = 15% profit.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Profit percentage is always calculated with respect to which value?",
+        "opts": [
+          {
+            "t": "Cost Price (CP)",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Selling Price (SP)",
+            "c": false,
+            "m": "Using SP instead of CP is a classic exam trap."
+          },
+          {
+            "t": "Marked Price (MP)",
+            "c": false,
+            "m": "Marked Price is used for discount%, not profit%."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Simple & Compound Interest for Self-Help Groups",
+      "question": "Find the amount on ₹1,000 for 2 years at 10% per annum compounded annually.",
+      "steps": [
+        {
+          "text": "After Year 1: A₁ = 1000 × (1 + 10/100) = ₹1,100.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "After Year 2: A₂ = 1100 × (1 + 10/100) = ₹1,210.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compound interest earned = 1210 − 1000 = ₹210.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Why is compound interest for 2 years greater than simple interest at the same rate?",
+        "opts": [
+          {
+            "t": "Year 2 interest is also earned on Year 1's interest",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "The interest rate doubles in Year 2",
+            "c": false,
+            "m": "The rate stays the same; the principal base grows."
+          },
+          {
+            "t": "Simple interest subtracts principal each year",
+            "c": false,
+            "m": "Simple interest uses the original principal every year."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Ratios, Percentages & Percentage Change",
+      "question": "Solar pump output rose from 40 L/min to 50 L/min. Find the percentage increase.",
+      "steps": [
+        {
+          "prompt": "Find the change in output: ΔV = 50 − 40 = 10 L/min.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Divide by the original value 40: 10 / 40 = 1/4.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Multiply by 100%: (1/4) × 100% = 25% increase.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Profit, Loss, Discount & GST",
+      "question": "A cooperative buys solar lanterns at ₹400 and sells them at ₹460. Find the profit percentage.",
+      "steps": [
+        {
+          "prompt": "Compute profit: SP − CP = 460 − 400 = ₹60.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Use Cost Price ₹400 as the base: Profit% = (60 / 400) × 100.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Simplify: 60 / 4 = 15% profit.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Simple & Compound Interest for Self-Help Groups",
+      "question": "Find the amount on ₹1,000 for 2 years at 10% per annum compounded annually.",
+      "steps": [
+        {
+          "prompt": "After Year 1: A₁ = 1000 × (1 + 10/100) = ₹1,100.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "After Year 2: A₂ = 1100 × (1 + 10/100) = ₹1,210.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compound interest earned = 1210 − 1000 = ₹210.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Ratios, Percentages & Percentage Change",
+      "emoji": "📊",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Ratios, Percentages & Percentage Change",
+          "body": "A percentage is a ratio with denominator 100. Percentage increase or decrease is always calculated on the original base value.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Ratios, Percentages & Percentage Change",
+          "instruction": "Move the slider to test how Ratios, Percentages & Percentage Change scales.",
+          "parts": 2,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "A price drops from ₹200 to ₹160. What is the discount percentage?",
+            "opts": [
+              {
+                "t": "20%",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "40%",
+                "c": false,
+                "m": "₹40 is the rupee discount; divide ₹40 by the original ₹200."
+              },
+              {
+                "t": "25%",
+                "c": false,
+                "m": "Divide by the original price ₹200, not the new price ₹160."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Profit, Loss, Discount & GST",
+      "emoji": "🪙",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Profit, Loss, Discount & GST",
+          "body": "Profit or loss is measured on Cost Price (CP), whereas discount is subtracted from Marked Price (MP) before applying GST.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Profit, Loss, Discount & GST",
+          "instruction": "Move the slider to test how Profit, Loss, Discount & GST scales.",
+          "parts": 3,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Profit percentage is always calculated with respect to which value?",
+            "opts": [
+              {
+                "t": "Cost Price (CP)",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Selling Price (SP)",
+                "c": false,
+                "m": "Using SP instead of CP is a classic exam trap."
+              },
+              {
+                "t": "Marked Price (MP)",
+                "c": false,
+                "m": "Marked Price is used for discount%, not profit%."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Simple & Compound Interest for Self-Help Groups",
+      "emoji": "🏦",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Simple & Compound Interest for Self-Help Groups",
+          "body": "Under compound interest, interest earned each period is added to the principal: A = P(1 + R/100)^n.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Simple & Compound Interest for Self-Help Groups",
+          "instruction": "Move the slider to test how Simple & Compound Interest for Self-Help Groups scales.",
+          "parts": 4,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Why is compound interest for 2 years greater than simple interest at the same rate?",
+            "opts": [
+              {
+                "t": "Year 2 interest is also earned on Year 1's interest",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "The interest rate doubles in Year 2",
+                "c": false,
+                "m": "The rate stays the same; the principal base grows."
+              },
+              {
+                "t": "Simple interest subtracts principal each year",
+                "c": false,
+                "m": "Simple interest uses the original principal every year."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

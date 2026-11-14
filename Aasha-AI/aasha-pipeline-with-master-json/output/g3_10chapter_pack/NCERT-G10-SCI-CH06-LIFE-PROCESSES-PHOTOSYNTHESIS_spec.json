@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Life Processes, Stomatal Transpiration & Cellular Nutrition",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncertg10scich06l_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Life Processes, Stomatal Transpiration & Cellular Nutrition concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Autotrophic Nutrition & Stages of Photosynthesis",
+      "question": "List the three core events that occur during photosynthesis in a leaf.",
+      "steps": [
+        {
+          "text": "Step 1: Absorption of light energy by chlorophyll in chloroplasts.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Step 2: Conversion of light energy into chemical energy and splitting of water (H₂O) into hydrogen and oxygen.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Step 3: Reduction of carbon dioxide (CO₂) to carbohydrates (glucose).",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "From which molecule does the oxygen gas released during photosynthesis come?",
+        "opts": [
+          {
+            "t": "Splitting of water (H₂O)",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Carbon dioxide (CO₂)",
+            "c": false,
+            "m": "Photolysis splits water molecules to release O₂."
+          },
+          {
+            "t": "Soil minerals",
+            "c": false,
+            "m": "Oxygen gas comes from water absorbed by roots."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Stomata, Guard Cells & Eco Seva Mulching",
+      "question": "How does mulching around native saplings conserve soil water in summer?",
+      "steps": [
+        {
+          "text": "Direct sun heats bare topsoil and accelerates evaporation.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "A dry-leaf mulch layer shades the root zone and cools the soil.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Reduced evaporation keeps water available for guard cells and root uptake.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What causes stomatal pores to open during the day?",
+        "opts": [
+          {
+            "t": "Water flows into guard cells, making them turgid",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Guard cells lose all water and shrink",
+            "c": false,
+            "m": "Shrinking (flaccid) guard cells close the stomatal pore."
+          },
+          {
+            "t": "Roots stop absorbing water",
+            "c": false,
+            "m": "Turgor pressure inside guard cells opens the pore."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Aerobic vs Anaerobic Cellular Respiration",
+      "question": "Why do muscle cramps occur during sudden heavy exercise?",
+      "steps": [
+        {
+          "text": "During sprint exercise, oxygen supply to muscle cells falls short.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Pyruvate is converted anaerobically into 3-carbon lactic acid.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Accumulation of lactic acid in muscle tissue causes temporary cramps.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Where does the complete aerobic breakdown of pyruvate take place?",
+        "opts": [
+          {
+            "t": "Mitochondria",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Cytoplasm only",
+            "c": false,
+            "m": "Glycolysis happens in the cytoplasm; aerobic oxidation occurs in mitochondria."
+          },
+          {
+            "t": "Vacuole",
+            "c": false,
+            "m": "Mitochondria are the powerhouses of aerobic ATP synthesis."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Autotrophic Nutrition & Stages of Photosynthesis",
+      "question": "List the three core events that occur during photosynthesis in a leaf.",
+      "steps": [
+        {
+          "prompt": "Step 1: Absorption of light energy by chlorophyll in chloroplasts.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Step 2: Conversion of light energy into chemical energy and splitting of water (H₂O) into hydrogen and oxygen.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Step 3: Reduction of carbon dioxide (CO₂) to carbohydrates (glucose).",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Stomata, Guard Cells & Eco Seva Mulching",
+      "question": "How does mulching around native saplings conserve soil water in summer?",
+      "steps": [
+        {
+          "prompt": "Direct sun heats bare topsoil and accelerates evaporation.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "A dry-leaf mulch layer shades the root zone and cools the soil.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Reduced evaporation keeps water available for guard cells and root uptake.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Aerobic vs Anaerobic Cellular Respiration",
+      "question": "Why do muscle cramps occur during sudden heavy exercise?",
+      "steps": [
+        {
+          "prompt": "During sprint exercise, oxygen supply to muscle cells falls short.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Pyruvate is converted anaerobically into 3-carbon lactic acid.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Accumulation of lactic acid in muscle tissue causes temporary cramps.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Autotrophic Nutrition & Stages of Photosynthesis",
+      "emoji": "🌿",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Autotrophic Nutrition & Stages of Photosynthesis",
+          "body": "Green plants synthesize glucose using sunlight, chlorophyll, carbon dioxide, and water: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Autotrophic Nutrition & Stages of Photosynthesis",
+          "instruction": "Move the slider to test how Autotrophic Nutrition & Stages of Photosynthesis scales.",
+          "parts": 2,
+          "target_num": 6,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "From which molecule does the oxygen gas released during photosynthesis come?",
+            "opts": [
+              {
+                "t": "Splitting of water (H₂O)",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Carbon dioxide (CO₂)",
+                "c": false,
+                "m": "Photolysis splits water molecules to release O₂."
+              },
+              {
+                "t": "Soil minerals",
+                "c": false,
+                "m": "Oxygen gas comes from water absorbed by roots."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Stomata, Guard Cells & Eco Seva Mulching",
+      "emoji": "🍃",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Stomata, Guard Cells & Eco Seva Mulching",
+          "body": "Tiny pores called stomata on leaf surfaces control gas exchange and transpiration. Guard cells swell with water to open the pore and shrink to close it.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Stomata, Guard Cells & Eco Seva Mulching",
+          "instruction": "Move the slider to test how Stomata, Guard Cells & Eco Seva Mulching scales.",
+          "parts": 3,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What causes stomatal pores to open during the day?",
+            "opts": [
+              {
+                "t": "Water flows into guard cells, making them turgid",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Guard cells lose all water and shrink",
+                "c": false,
+                "m": "Shrinking (flaccid) guard cells close the stomatal pore."
+              },
+              {
+                "t": "Roots stop absorbing water",
+                "c": false,
+                "m": "Turgor pressure inside guard cells opens the pore."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Aerobic vs Anaerobic Cellular Respiration",
+      "emoji": "🫁",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Aerobic vs Anaerobic Cellular Respiration",
+          "body": "Glucose (6-carbon) breaks down into pyruvate (3-carbon) in the cytoplasm. With oxygen in mitochondria, pyruvate yields CO₂, H₂O, and 38 ATP.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Aerobic vs Anaerobic Cellular Respiration",
+          "instruction": "Move the slider to test how Aerobic vs Anaerobic Cellular Respiration scales.",
+          "parts": 4,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Where does the complete aerobic breakdown of pyruvate take place?",
+            "opts": [
+              {
+                "t": "Mitochondria",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Cytoplasm only",
+                "c": false,
+                "m": "Glycolysis happens in the cytoplasm; aerobic oxidation occurs in mitochondria."
+              },
+              {
+                "t": "Vacuole",
+                "c": false,
+                "m": "Mitochondria are the powerhouses of aerobic ATP synthesis."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

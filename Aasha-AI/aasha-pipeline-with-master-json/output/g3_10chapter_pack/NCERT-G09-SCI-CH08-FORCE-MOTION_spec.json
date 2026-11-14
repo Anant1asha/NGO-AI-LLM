@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Force, Newton's Laws of Motion & Momentum Conservation",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncertg09scich08f_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Force, Newton's Laws of Motion & Momentum Conservation concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Balanced vs Unbalanced Forces & Inertia (First Law)",
+      "question": "Why does a passenger lean forward when a moving bus brakes suddenly?",
+      "steps": [
+        {
+          "text": "Before braking, both passenger and bus move forward at the same velocity.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Brakes apply a backward force to the bus floor, slowing the feet immediately.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "By inertia of motion, the upper body continues moving forward.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Which object has greater inertia?",
+        "opts": [
+          {
+            "t": "A loaded 50 kg grain sack",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "An empty 2 kg basket",
+            "c": false,
+            "m": "Inertia increases directly with mass."
+          },
+          {
+            "t": "Both have equal inertia",
+            "c": false,
+            "m": "Higher mass always means greater inertia."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Momentum & Newton's Second Law (F = ma)",
+      "question": "What net force is required to accelerate a 5 kg cart at 3 m/s²?",
+      "steps": [
+        {
+          "text": "Given mass m = 5 kg and acceleration a = 3 m/s².",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Apply Newton's Second Law: F = m × a.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute F = 5 × 3 = 15 N.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Why does a cricketer pull their hands back while catching a fast ball?",
+        "opts": [
+          {
+            "t": "To increase stopping time and reduce impact force",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "To increase the ball's momentum",
+            "c": false,
+            "m": "The momentum change is fixed by initial velocity."
+          },
+          {
+            "t": "To decrease stopping time",
+            "c": false,
+            "m": "Shorter stopping time causes a larger painful force."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Action-Reaction Pairs & Conservation of Momentum",
+      "question": "Why do action and reaction forces never cancel each other out?",
+      "steps": [
+        {
+          "text": "Action force is exerted by Body A on Body B.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Reaction force is exerted by Body B on Body A.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Because they act on two different objects, they do not cancel on a single object.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "In an isolated collision between two carts, what remains conserved?",
+        "opts": [
+          {
+            "t": "Total linear momentum of the system",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Velocity of each individual cart",
+            "c": false,
+            "m": "Individual velocities change during collision."
+          },
+          {
+            "t": "Acceleration of the heavier cart",
+            "c": false,
+            "m": "Total momentum m₁u₁ + m₂u₂ is conserved."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Balanced vs Unbalanced Forces & Inertia (First Law)",
+      "question": "Why does a passenger lean forward when a moving bus brakes suddenly?",
+      "steps": [
+        {
+          "prompt": "Before braking, both passenger and bus move forward at the same velocity.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Brakes apply a backward force to the bus floor, slowing the feet immediately.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "By inertia of motion, the upper body continues moving forward.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Momentum & Newton's Second Law (F = ma)",
+      "question": "What net force is required to accelerate a 5 kg cart at 3 m/s²?",
+      "steps": [
+        {
+          "prompt": "Given mass m = 5 kg and acceleration a = 3 m/s².",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Apply Newton's Second Law: F = m × a.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute F = 5 × 3 = 15 N.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Action-Reaction Pairs & Conservation of Momentum",
+      "question": "Why do action and reaction forces never cancel each other out?",
+      "steps": [
+        {
+          "prompt": "Action force is exerted by Body A on Body B.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Reaction force is exerted by Body B on Body A.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Because they act on two different objects, they do not cancel on a single object.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Balanced vs Unbalanced Forces & Inertia (First Law)",
+      "emoji": "🛸",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Balanced vs Unbalanced Forces & Inertia (First Law)",
+          "body": "An object stays at rest or in uniform straight-line motion unless acted upon by an unbalanced external force. Mass is the measure of inertia.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Balanced vs Unbalanced Forces & Inertia (First Law)",
+          "instruction": "Move the slider to test how Balanced vs Unbalanced Forces & Inertia (First Law) scales.",
+          "parts": 2,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Which object has greater inertia?",
+            "opts": [
+              {
+                "t": "A loaded 50 kg grain sack",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "An empty 2 kg basket",
+                "c": false,
+                "m": "Inertia increases directly with mass."
+              },
+              {
+                "t": "Both have equal inertia",
+                "c": false,
+                "m": "Higher mass always means greater inertia."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Momentum & Newton's Second Law (F = ma)",
+      "emoji": "🚀",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Momentum & Newton's Second Law (F = ma)",
+          "body": "Momentum is p = m × v. The rate of change of momentum is directly proportional to net applied force: F = m × a (in Newtons).",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Momentum & Newton's Second Law (F = ma)",
+          "instruction": "Move the slider to test how Momentum & Newton's Second Law (F = ma) scales.",
+          "parts": 3,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Why does a cricketer pull their hands back while catching a fast ball?",
+            "opts": [
+              {
+                "t": "To increase stopping time and reduce impact force",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "To increase the ball's momentum",
+                "c": false,
+                "m": "The momentum change is fixed by initial velocity."
+              },
+              {
+                "t": "To decrease stopping time",
+                "c": false,
+                "m": "Shorter stopping time causes a larger painful force."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Action-Reaction Pairs & Conservation of Momentum",
+      "emoji": "⚖️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Action-Reaction Pairs & Conservation of Momentum",
+          "body": "To every action there is an equal and opposite reaction acting on two different bodies, so total momentum of an isolated system stays constant.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Action-Reaction Pairs & Conservation of Momentum",
+          "instruction": "Move the slider to test how Action-Reaction Pairs & Conservation of Momentum scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "In an isolated collision between two carts, what remains conserved?",
+            "opts": [
+              {
+                "t": "Total linear momentum of the system",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Velocity of each individual cart",
+                "c": false,
+                "m": "Individual velocities change during collision."
+              },
+              {
+                "t": "Acceleration of the heavier cart",
+                "c": false,
+                "m": "Total momentum m₁u₁ + m₂u₂ is conserved."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

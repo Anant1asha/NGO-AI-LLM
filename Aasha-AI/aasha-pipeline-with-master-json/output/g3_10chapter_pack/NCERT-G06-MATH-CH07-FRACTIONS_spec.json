@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Fractions on the Number Line & Equivalent Ratios",
+    "subject": "math",
+    "grade": 6,
+    "storage_key": "aasha_ncertg06mathch07_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Fractions on the Number Line & Equivalent Ratios concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Proper, Improper & Mixed Fractions on the Number Line",
+      "question": "Plot 3/4 on a number line and find an equivalent fraction with denominator 12.",
+      "steps": [
+        {
+          "text": "Divide the interval from 0 to 1 into 4 equal parts; the 3rd mark is 3/4.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Multiply numerator and denominator by 3: (3 × 3) / (4 × 3).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Verified equivalent fraction: 9/12 represents the exact same point.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Which fraction is equivalent to 3/4 on the number line?",
+        "opts": [
+          {
+            "t": "9/12",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "6/12",
+            "c": false,
+            "m": "6/12 simplifies to 1/2, not 3/4."
+          },
+          {
+            "t": "7/8",
+            "c": false,
+            "m": "Adding the same number to top and bottom changes the ratio."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Equivalent Fractions & Simplest Form",
+      "question": "Reduce 18/24 to its simplest form.",
+      "steps": [
+        {
+          "text": "Find the highest common factor (HCF) of 18 and 24, which is 6.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Divide both numerator and denominator by 6: (18 ÷ 6) / (24 ÷ 6).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Simplest form is 3/4.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What is the simplest form of 15/25?",
+        "opts": [
+          {
+            "t": "3/5",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "5/3",
+            "c": false,
+            "m": "Do not invert the numerator and denominator."
+          },
+          {
+            "t": "1/5",
+            "c": false,
+            "m": "Divide 15 by 5 to get 3 in the numerator."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Adding & Subtracting Fractions in Jal Seva Tank Audits",
+      "question": "A rainwater tank is 2/5 full in the morning and gains 3/10 more. What fraction is full now?",
+      "steps": [
+        {
+          "text": "Find the LCM of denominators 5 and 10, which is 10.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Convert 2/5 to 4/10 so both fractions have denominator 10.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Add numerators: 4/10 + 3/10 = 7/10 of the tank is full.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What is 1/3 + 1/6?",
+        "opts": [
+          {
+            "t": "1/2",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "2/9",
+            "c": false,
+            "m": "Never add denominators directly; find the common denominator 6 first."
+          },
+          {
+            "t": "2/6",
+            "c": false,
+            "m": "Convert 1/3 to 2/6 before adding 1/6."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Proper, Improper & Mixed Fractions on the Number Line",
+      "question": "Plot 3/4 on a number line and find an equivalent fraction with denominator 12.",
+      "steps": [
+        {
+          "prompt": "Divide the interval from 0 to 1 into 4 equal parts; the 3rd mark is 3/4.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Multiply numerator and denominator by 3: (3 × 3) / (4 × 3).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Verified equivalent fraction: 9/12 represents the exact same point.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Equivalent Fractions & Simplest Form",
+      "question": "Reduce 18/24 to its simplest form.",
+      "steps": [
+        {
+          "prompt": "Find the highest common factor (HCF) of 18 and 24, which is 6.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Divide both numerator and denominator by 6: (18 ÷ 6) / (24 ÷ 6).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Simplest form is 3/4.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Adding & Subtracting Fractions in Jal Seva Tank Audits",
+      "question": "A rainwater tank is 2/5 full in the morning and gains 3/10 more. What fraction is full now?",
+      "steps": [
+        {
+          "prompt": "Find the LCM of denominators 5 and 10, which is 10.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Convert 2/5 to 4/10 so both fractions have denominator 10.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Add numerators: 4/10 + 3/10 = 7/10 of the tank is full.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Proper, Improper & Mixed Fractions on the Number Line",
+      "emoji": "📏",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Proper, Improper & Mixed Fractions on the Number Line",
+          "body": "A fraction represents equal parts of a whole. On a number line between 0 and 1, dividing the segment into b equal parts places 1/b at the first mark.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Proper, Improper & Mixed Fractions on the Number Line",
+          "instruction": "Move the slider to test how Proper, Improper & Mixed Fractions on the Number Line scales.",
+          "parts": 2,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Which fraction is equivalent to 3/4 on the number line?",
+            "opts": [
+              {
+                "t": "9/12",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "6/12",
+                "c": false,
+                "m": "6/12 simplifies to 1/2, not 3/4."
+              },
+              {
+                "t": "7/8",
+                "c": false,
+                "m": "Adding the same number to top and bottom changes the ratio."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Equivalent Fractions & Simplest Form",
+      "emoji": "⚖️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Equivalent Fractions & Simplest Form",
+          "body": "Multiplying or dividing both the numerator and denominator by the same non-zero number keeps the value of the fraction unchanged.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Equivalent Fractions & Simplest Form",
+          "instruction": "Move the slider to test how Equivalent Fractions & Simplest Form scales.",
+          "parts": 3,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What is the simplest form of 15/25?",
+            "opts": [
+              {
+                "t": "3/5",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "5/3",
+                "c": false,
+                "m": "Do not invert the numerator and denominator."
+              },
+              {
+                "t": "1/5",
+                "c": false,
+                "m": "Divide 15 by 5 to get 3 in the numerator."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Adding & Subtracting Fractions in Jal Seva Tank Audits",
+      "emoji": "💧",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Adding & Subtracting Fractions in Jal Seva Tank Audits",
+          "body": "To add or subtract unlike fractions, first convert them to like fractions using the least common multiple (LCM) of their denominators.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Adding & Subtracting Fractions in Jal Seva Tank Audits",
+          "instruction": "Move the slider to test how Adding & Subtracting Fractions in Jal Seva Tank Audits scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What is 1/3 + 1/6?",
+            "opts": [
+              {
+                "t": "1/2",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "2/9",
+                "c": false,
+                "m": "Never add denominators directly; find the common denominator 6 first."
+              },
+              {
+                "t": "2/6",
+                "c": false,
+                "m": "Convert 1/3 to 2/6 before adding 1/6."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Perimeter and Area of Polygons & Community Gardens",
+    "subject": "math",
+    "grade": 7,
+    "storage_key": "aasha_ncertg07mathch11_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Perimeter and Area of Polygons & Community Gardens concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Perimeter & Area of Rectangles and Squares",
+      "question": "An Eco Seva garden bed is 8 m long and 5 m wide. Find its fencing perimeter and soil area.",
+      "steps": [
+        {
+          "text": "Calculate perimeter: P = 2 × (8 + 5) = 2 × 13 = 26 m.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Calculate area: A = 8 × 5 = 40 sq m.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "The bed needs 26 m of boundary fencing and covers 40 m².",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If a rectangular plot has length 10 m and breadth 4 m, what is its perimeter?",
+        "opts": [
+          {
+            "t": "28 m",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "40 m",
+            "c": false,
+            "m": "40 m² is the area (l × b), not the boundary perimeter."
+          },
+          {
+            "t": "14 m",
+            "c": false,
+            "m": "14 m is only l + b; double it for all four sides."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Area of Parallelograms & Triangles",
+      "question": "Find the area of a triangular solar-panel support frame with base 6 m and height 4 m.",
+      "steps": [
+        {
+          "text": "Identify base b = 6 m and perpendicular height h = 4 m.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Apply the triangle area formula: A = ½ × b × h.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute A = 0.5 × 6 × 4 = 12 m².",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What is the area of a parallelogram with base 9 cm and perpendicular height 5 cm?",
+        "opts": [
+          {
+            "t": "45 cm²",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "22.5 cm²",
+            "c": false,
+            "m": "Do not divide by 2 for a parallelogram; ½ × b × h is for triangles."
+          },
+          {
+            "t": "28 cm²",
+            "c": false,
+            "m": "Multiply base by perpendicular height."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Circumference & Area of Circular Water Tanks",
+      "question": "Find the circumference of a circular tank cover of radius 7 m (use π = 22/7).",
+      "steps": [
+        {
+          "text": "Write the circumference formula: C = 2 × π × r.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Substitute r = 7 m and π = 22/7: C = 2 × (22/7) × 7.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Cancel 7 to obtain C = 44 m.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If the radius of a circle doubles, how does its area change?",
+        "opts": [
+          {
+            "t": "It becomes 4 times as large",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "It doubles",
+            "c": false,
+            "m": "Area depends on r², so doubling r multiplies area by 2²."
+          },
+          {
+            "t": "It stays the same",
+            "c": false,
+            "m": "Area scales with the square of the radius."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Perimeter & Area of Rectangles and Squares",
+      "question": "An Eco Seva garden bed is 8 m long and 5 m wide. Find its fencing perimeter and soil area.",
+      "steps": [
+        {
+          "prompt": "Calculate perimeter: P = 2 × (8 + 5) = 2 × 13 = 26 m.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Calculate area: A = 8 × 5 = 40 sq m.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "The bed needs 26 m of boundary fencing and covers 40 m².",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Area of Parallelograms & Triangles",
+      "question": "Find the area of a triangular solar-panel support frame with base 6 m and height 4 m.",
+      "steps": [
+        {
+          "prompt": "Identify base b = 6 m and perpendicular height h = 4 m.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Apply the triangle area formula: A = ½ × b × h.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute A = 0.5 × 6 × 4 = 12 m².",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Circumference & Area of Circular Water Tanks",
+      "question": "Find the circumference of a circular tank cover of radius 7 m (use π = 22/7).",
+      "steps": [
+        {
+          "prompt": "Write the circumference formula: C = 2 × π × r.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Substitute r = 7 m and π = 22/7: C = 2 × (22/7) × 7.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Cancel 7 to obtain C = 44 m.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Perimeter & Area of Rectangles and Squares",
+      "emoji": "📐",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Perimeter & Area of Rectangles and Squares",
+          "body": "Perimeter is the total boundary distance around a closed figure (P = 2(l + b)), while area measures the surface enclosed inside (A = l × b).",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Perimeter & Area of Rectangles and Squares",
+          "instruction": "Move the slider to test how Perimeter & Area of Rectangles and Squares scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If a rectangular plot has length 10 m and breadth 4 m, what is its perimeter?",
+            "opts": [
+              {
+                "t": "28 m",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "40 m",
+                "c": false,
+                "m": "40 m² is the area (l × b), not the boundary perimeter."
+              },
+              {
+                "t": "14 m",
+                "c": false,
+                "m": "14 m is only l + b; double it for all four sides."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Area of Parallelograms & Triangles",
+      "emoji": "🔺",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Area of Parallelograms & Triangles",
+          "body": "Every parallelogram with base b and perpendicular height h has area A = b × h, and a triangle with the same base and height has half that area: A = ½ × b × h.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Area of Parallelograms & Triangles",
+          "instruction": "Move the slider to test how Area of Parallelograms & Triangles scales.",
+          "parts": 3,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What is the area of a parallelogram with base 9 cm and perpendicular height 5 cm?",
+            "opts": [
+              {
+                "t": "45 cm²",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "22.5 cm²",
+                "c": false,
+                "m": "Do not divide by 2 for a parallelogram; ½ × b × h is for triangles."
+              },
+              {
+                "t": "28 cm²",
+                "c": false,
+                "m": "Multiply base by perpendicular height."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Circumference & Area of Circular Water Tanks",
+      "emoji": "⭕",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Circumference & Area of Circular Water Tanks",
+          "body": "For a circle of radius r, the circumference is C = 2πr and the enclosed area is A = πr² (where π ≈ 22/7).",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Circumference & Area of Circular Water Tanks",
+          "instruction": "Move the slider to test how Circumference & Area of Circular Water Tanks scales.",
+          "parts": 4,
+          "target_num": 6,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If the radius of a circle doubles, how does its area change?",
+            "opts": [
+              {
+                "t": "It becomes 4 times as large",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "It doubles",
+                "c": false,
+                "m": "Area depends on r², so doubling r multiplies area by 2²."
+              },
+              {
+                "t": "It stays the same",
+                "c": false,
+                "m": "Area scales with the square of the radius."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

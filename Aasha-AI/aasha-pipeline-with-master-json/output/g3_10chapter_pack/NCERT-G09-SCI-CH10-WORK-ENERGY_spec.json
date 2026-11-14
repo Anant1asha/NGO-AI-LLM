@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Work, Kinetic & Potential Energy in Renewable Micro-Grids",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncertg09scich10w_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Work, Kinetic & Potential Energy in Renewable Micro-Grids concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Scientific Definition of Work (W = F × s)",
+      "question": "A student lifts a 20 N water bucket vertically by 3 m. How much work is done?",
+      "steps": [
+        {
+          "text": "Identify upward force F = 20 N and vertical displacement s = 3 m.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Apply W = F × s since force and displacement are in the same direction.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute W = 20 × 3 = 60 J.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If a person pushes a wall hard for 10 minutes but the wall does not move, how much scientific work is done?",
+        "opts": [
+          {
+            "t": "Zero Joules (displacement is 0)",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "100 Joules",
+            "c": false,
+            "m": "Without displacement (s = 0), scientific work W = F × 0 = 0."
+          },
+          {
+            "t": "Depends on muscular tiredness",
+            "c": false,
+            "m": "Physics work requires non-zero displacement."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Kinetic Energy (½mv²) & Potential Energy (mgh)",
+      "question": "Find the potential energy of 10 kg of water stored 5 m high (take g = 10 m/s²).",
+      "steps": [
+        {
+          "text": "Given mass m = 10 kg, gravity g = 10 m/s², height h = 5 m.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Apply Ep = m × g × h.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute Ep = 10 × 10 × 5 = 500 J.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If the speed of a moving bicycle doubles, its kinetic energy becomes:",
+        "opts": [
+          {
+            "t": "4 times its original value",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "2 times its original value",
+            "c": false,
+            "m": "Kinetic energy is proportional to v², so doubling v gives 2² = 4."
+          },
+          {
+            "t": "Half its original value",
+            "c": false,
+            "m": "Higher speed increases kinetic energy quadratically."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Law of Conservation of Energy & Power (P = W/t)",
+      "question": "A solar water pump performs 1,200 J of work in 20 seconds. What is its power output?",
+      "steps": [
+        {
+          "text": "Given work W = 1,200 J and time t = 20 s.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Apply the power formula: P = W ÷ t.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute P = 1200 ÷ 20 = 60 W.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What is the commercial unit of electrical energy used in household meters?",
+        "opts": [
+          {
+            "t": "Kilowatt-hour (kWh)",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Kilowatt (kW)",
+            "c": false,
+            "m": "Kilowatt is a unit of power, whereas kWh (power × time) measures energy."
+          },
+          {
+            "t": "Joule per second",
+            "c": false,
+            "m": "Joule per second is a Watt (power)."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Scientific Definition of Work (W = F × s)",
+      "question": "A student lifts a 20 N water bucket vertically by 3 m. How much work is done?",
+      "steps": [
+        {
+          "prompt": "Identify upward force F = 20 N and vertical displacement s = 3 m.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Apply W = F × s since force and displacement are in the same direction.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute W = 20 × 3 = 60 J.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Kinetic Energy (½mv²) & Potential Energy (mgh)",
+      "question": "Find the potential energy of 10 kg of water stored 5 m high (take g = 10 m/s²).",
+      "steps": [
+        {
+          "prompt": "Given mass m = 10 kg, gravity g = 10 m/s², height h = 5 m.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Apply Ep = m × g × h.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute Ep = 10 × 10 × 5 = 500 J.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Law of Conservation of Energy & Power (P = W/t)",
+      "question": "A solar water pump performs 1,200 J of work in 20 seconds. What is its power output?",
+      "steps": [
+        {
+          "prompt": "Given work W = 1,200 J and time t = 20 s.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Apply the power formula: P = W ÷ t.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute P = 1200 ÷ 20 = 60 W.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Scientific Definition of Work (W = F × s)",
+      "emoji": "⚙️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Scientific Definition of Work (W = F × s)",
+          "body": "Work is done when a force acts on an object and displaces it in the direction of the force: W = F × s (measured in Joules).",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Scientific Definition of Work (W = F × s)",
+          "instruction": "Move the slider to test how Scientific Definition of Work (W = F × s) scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If a person pushes a wall hard for 10 minutes but the wall does not move, how much scientific work is done?",
+            "opts": [
+              {
+                "t": "Zero Joules (displacement is 0)",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "100 Joules",
+                "c": false,
+                "m": "Without displacement (s = 0), scientific work W = F × 0 = 0."
+              },
+              {
+                "t": "Depends on muscular tiredness",
+                "c": false,
+                "m": "Physics work requires non-zero displacement."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Kinetic Energy (½mv²) & Potential Energy (mgh)",
+      "emoji": "🔋",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Kinetic Energy (½mv²) & Potential Energy (mgh)",
+          "body": "Moving objects possess kinetic energy Ek = ½mv², while elevated water in an overhead Jal Seva tank stores gravitational potential energy Ep = mgh.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Kinetic Energy (½mv²) & Potential Energy (mgh)",
+          "instruction": "Move the slider to test how Kinetic Energy (½mv²) & Potential Energy (mgh) scales.",
+          "parts": 3,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If the speed of a moving bicycle doubles, its kinetic energy becomes:",
+            "opts": [
+              {
+                "t": "4 times its original value",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "2 times its original value",
+                "c": false,
+                "m": "Kinetic energy is proportional to v², so doubling v gives 2² = 4."
+              },
+              {
+                "t": "Half its original value",
+                "c": false,
+                "m": "Higher speed increases kinetic energy quadratically."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Law of Conservation of Energy & Power (P = W/t)",
+      "emoji": "☀️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Law of Conservation of Energy & Power (P = W/t)",
+          "body": "Energy can neither be created nor destroyed; it only transforms from one form to another. Power is the rate of doing work: P = W / t (in Watts).",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Law of Conservation of Energy & Power (P = W/t)",
+          "instruction": "Move the slider to test how Law of Conservation of Energy & Power (P = W/t) scales.",
+          "parts": 4,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What is the commercial unit of electrical energy used in household meters?",
+            "opts": [
+              {
+                "t": "Kilowatt-hour (kWh)",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Kilowatt (kW)",
+                "c": false,
+                "m": "Kilowatt is a unit of power, whereas kWh (power × time) measures energy."
+              },
+              {
+                "t": "Joule per second",
+                "c": false,
+                "m": "Joule per second is a Watt (power)."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

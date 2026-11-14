@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "NCVET Level 4 — Rural Solar Food Dehydrator Unit Operator",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncvetpsscivel4fo_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed NCVET Level 4 — Rural Solar Food Dehydrator Unit Operator concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Moisture Content Reduction & Safe Water Activity",
+      "question": "A 15 kg batch of fresh mango slices loses 12 kg of water during solar drying. What is the dry yield weight?",
+      "steps": [
+        {
+          "text": "Given initial fresh weight = 15 kg and water evaporated = 12 kg.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Subtract evaporated water: 15 kg − 12 kg.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Final dried mango yield = 3 kg (20% of fresh weight).",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Why must warm humid air be continuously vented out of a solar dehydrator cabinet?",
+        "opts": [
+          {
+            "t": "So saturated air is replaced by dry warm air to keep evaporation going",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "To let rain enter the trays",
+            "c": false,
+            "m": "Vents are hooded against rain while exhausting humid air."
+          },
+          {
+            "t": "To freeze the fruit slices",
+            "c": false,
+            "m": "Stagnant humid air halts dehydration and causes mold."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Temperature Control & Preventing Case Hardening",
+      "question": "What happens if drying temperature spikes above 80 °C on the first hour?",
+      "steps": [
+        {
+          "text": "Excessive surface heat rapidly forms a hard, dry crust on the fruit slice.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Internal moisture becomes trapped behind the sealed crust (case hardening).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Trapped internal moisture later causes spoilage during storage.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What is the ideal tray-loading practice for uniform airflow?",
+        "opts": [
+          {
+            "t": "Single layer of uniform-thickness slices with small gaps between pieces",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Piling slices 10 cm deep in a heap",
+            "c": false,
+            "m": "Deep heaps block airflow and rot in the center."
+          },
+          {
+            "t": "Mixing whole uncut fruits with thin slices",
+            "c": false,
+            "m": "Uniform slice thickness ensures all pieces finish drying together."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Hygienic Packaging & Cooperative Unit Economics",
+      "question": "Why must dried slices cool to room temperature before sealing in pouches?",
+      "steps": [
+        {
+          "text": "Warm slices still release trace water vapor.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Sealing warm slices traps vapor that condenses into liquid droplets on the pouch wall.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Cooling in a clean dry chamber prevents condensation and mold.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If a cooperative spends ₹600 on fresh produce and sells 20 pouches at ₹45 each, what is the net surplus?",
+        "opts": [
+          {
+            "t": "₹300",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "₹900",
+            "c": false,
+            "m": "₹900 is total revenue (20 × 45); subtract the ₹600 cost to get ₹300."
+          },
+          {
+            "t": "₹150",
+            "c": false,
+            "m": "Revenue is 20 × ₹45 = ₹900, minus ₹600 cost = ₹300."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Moisture Content Reduction & Safe Water Activity",
+      "question": "A 15 kg batch of fresh mango slices loses 12 kg of water during solar drying. What is the dry yield weight?",
+      "steps": [
+        {
+          "prompt": "Given initial fresh weight = 15 kg and water evaporated = 12 kg.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Subtract evaporated water: 15 kg − 12 kg.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Final dried mango yield = 3 kg (20% of fresh weight).",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Temperature Control & Preventing Case Hardening",
+      "question": "What happens if drying temperature spikes above 80 °C on the first hour?",
+      "steps": [
+        {
+          "prompt": "Excessive surface heat rapidly forms a hard, dry crust on the fruit slice.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Internal moisture becomes trapped behind the sealed crust (case hardening).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Trapped internal moisture later causes spoilage during storage.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Hygienic Packaging & Cooperative Unit Economics",
+      "question": "Why must dried slices cool to room temperature before sealing in pouches?",
+      "steps": [
+        {
+          "prompt": "Warm slices still release trace water vapor.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Sealing warm slices traps vapor that condenses into liquid droplets on the pouch wall.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Cooling in a clean dry chamber prevents condensation and mold.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Moisture Content Reduction & Safe Water Activity",
+      "emoji": "🥭",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Moisture Content Reduction & Safe Water Activity",
+          "body": "Solar dehydration removes moisture from fresh produce (80–90% water) down to 10–15% so spoilage microbes cannot grow.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Moisture Content Reduction & Safe Water Activity",
+          "instruction": "Move the slider to test how Moisture Content Reduction & Safe Water Activity scales.",
+          "parts": 2,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Why must warm humid air be continuously vented out of a solar dehydrator cabinet?",
+            "opts": [
+              {
+                "t": "So saturated air is replaced by dry warm air to keep evaporation going",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "To let rain enter the trays",
+                "c": false,
+                "m": "Vents are hooded against rain while exhausting humid air."
+              },
+              {
+                "t": "To freeze the fruit slices",
+                "c": false,
+                "m": "Stagnant humid air halts dehydration and causes mold."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Temperature Control & Preventing Case Hardening",
+      "emoji": "🌡️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Temperature Control & Preventing Case Hardening",
+          "body": "Maintaining cabinet temperature between 50 °C and 60 °C dries produce evenly without scorching vitamins or sealing the outer skin (case hardening).",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Temperature Control & Preventing Case Hardening",
+          "instruction": "Move the slider to test how Temperature Control & Preventing Case Hardening scales.",
+          "parts": 3,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What is the ideal tray-loading practice for uniform airflow?",
+            "opts": [
+              {
+                "t": "Single layer of uniform-thickness slices with small gaps between pieces",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Piling slices 10 cm deep in a heap",
+                "c": false,
+                "m": "Deep heaps block airflow and rot in the center."
+              },
+              {
+                "t": "Mixing whole uncut fruits with thin slices",
+                "c": false,
+                "m": "Uniform slice thickness ensures all pieces finish drying together."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Hygienic Packaging & Cooperative Unit Economics",
+      "emoji": "📦",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Hygienic Packaging & Cooperative Unit Economics",
+          "body": "Cooling dried produce before sealing in food-grade moisture-barrier pouches prevents condensation and extends shelf life to 6–12 months.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Hygienic Packaging & Cooperative Unit Economics",
+          "instruction": "Move the slider to test how Hygienic Packaging & Cooperative Unit Economics scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If a cooperative spends ₹600 on fresh produce and sells 20 pouches at ₹45 each, what is the net surplus?",
+            "opts": [
+              {
+                "t": "₹300",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "₹900",
+                "c": false,
+                "m": "₹900 is total revenue (20 × 45); subtract the ₹600 cost to get ₹300."
+              },
+              {
+                "t": "₹150",
+                "c": false,
+                "m": "Revenue is 20 × ₹45 = ₹900, minus ₹600 cost = ₹300."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

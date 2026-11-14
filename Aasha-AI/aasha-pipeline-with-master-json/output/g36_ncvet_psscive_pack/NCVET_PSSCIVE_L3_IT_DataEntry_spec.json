@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "NCVET Level 3 — Domestic Data Entry & Digital Village Ledger",
+    "subject": "math",
+    "grade": 8,
+    "storage_key": "aasha_ncvetpsscivel3it_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed NCVET Level 3 — Domestic Data Entry & Digital Village Ledger concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Keyboard Ergonomics, Accuracy & Net Typing Speed",
+      "question": "A student types 200 words in 5 minutes with 0 errors. Find the WPM.",
+      "steps": [
+        {
+          "text": "Given total words = 200 and duration = 5 minutes.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Divide words by minutes: 200 ÷ 5.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Verified typing speed = 40 WPM at 100% accuracy.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Before submitting a village scholarship table, how should numeric ID columns be verified?",
+        "opts": [
+          {
+            "t": "Cross-check digit count and checksum totals against source forms",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Skip verification to save time",
+            "c": false,
+            "m": "Single-digit ID errors block student scholarship disbursements."
+          },
+          {
+            "t": "Sort rows randomly",
+            "c": false,
+            "m": "Always validate against source records."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Spreadsheet Formulas: SUM, AVERAGE & COUNTIF",
+      "question": "Five learners scored 18, 20, 16, 22, and 24 coins. Find the sum and average.",
+      "steps": [
+        {
+          "text": "Compute SUM: 18 + 20 + 16 + 22 + 24 = 100 coins.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Divide by count (5 learners): 100 ÷ 5.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Average score = 20 coins per learner.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Every formula in a standard spreadsheet cell must begin with which symbol?",
+        "opts": [
+          {
+            "t": "Equals sign (=)",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Hash sign (#)",
+            "c": false,
+            "m": "Without '=', the cell treats the text as a plain label."
+          },
+          {
+            "t": "Question mark (?)",
+            "c": false,
+            "m": "Formulas always start with '='."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Offline Backup & PIN-Guarded Store Reconciliation",
+      "question": "A student has 80 Aasha Coins and redeems a notebook worth 50 Coins. What balance remains?",
+      "steps": [
+        {
+          "text": "Verify initial wallet balance = 80 Coins ≥ item cost (50 Coins).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Deduct item cost: 80 − 50 = 30 Coins.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Record transaction in the append-only store ledger.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Why must wallet redemptions check `balance >= cost` before deducting coins?",
+        "opts": [
+          {
+            "t": "To enforce coin conservation and prevent negative balances",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "To make the screen brighter",
+            "c": false,
+            "m": "Ledger conservation prevents double-spending."
+          },
+          {
+            "t": "To delete student progress",
+            "c": false,
+            "m": "XP and mastery stay intact; only spendable coins are deducted."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Keyboard Ergonomics, Accuracy & Net Typing Speed",
+      "question": "A student types 200 words in 5 minutes with 0 errors. Find the WPM.",
+      "steps": [
+        {
+          "prompt": "Given total words = 200 and duration = 5 minutes.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Divide words by minutes: 200 ÷ 5.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Verified typing speed = 40 WPM at 100% accuracy.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Spreadsheet Formulas: SUM, AVERAGE & COUNTIF",
+      "question": "Five learners scored 18, 20, 16, 22, and 24 coins. Find the sum and average.",
+      "steps": [
+        {
+          "prompt": "Compute SUM: 18 + 20 + 16 + 22 + 24 = 100 coins.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Divide by count (5 learners): 100 ÷ 5.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Average score = 20 coins per learner.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Offline Backup & PIN-Guarded Store Reconciliation",
+      "question": "A student has 80 Aasha Coins and redeems a notebook worth 50 Coins. What balance remains?",
+      "steps": [
+        {
+          "prompt": "Verify initial wallet balance = 80 Coins ≥ item cost (50 Coins).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Deduct item cost: 80 − 50 = 30 Coins.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Record transaction in the append-only store ledger.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Keyboard Ergonomics, Accuracy & Net Typing Speed",
+      "emoji": "⌨️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Keyboard Ergonomics, Accuracy & Net Typing Speed",
+          "body": "Net WPM deducts error penalties from Gross WPM. In community ledger entry, 100% numeric accuracy is more important than raw speed.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Keyboard Ergonomics, Accuracy & Net Typing Speed",
+          "instruction": "Move the slider to test how Keyboard Ergonomics, Accuracy & Net Typing Speed scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Before submitting a village scholarship table, how should numeric ID columns be verified?",
+            "opts": [
+              {
+                "t": "Cross-check digit count and checksum totals against source forms",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Skip verification to save time",
+                "c": false,
+                "m": "Single-digit ID errors block student scholarship disbursements."
+              },
+              {
+                "t": "Sort rows randomly",
+                "c": false,
+                "m": "Always validate against source records."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Spreadsheet Formulas: SUM, AVERAGE & COUNTIF",
+      "emoji": "📊",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Spreadsheet Formulas: SUM, AVERAGE & COUNTIF",
+          "body": "Spreadsheet functions automate cohort reporting: =SUM(B2:B11) totals values, while =AVERAGE(B2:B11) computes the arithmetic mean.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Spreadsheet Formulas: SUM, AVERAGE & COUNTIF",
+          "instruction": "Move the slider to test how Spreadsheet Formulas: SUM, AVERAGE & COUNTIF scales.",
+          "parts": 3,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Every formula in a standard spreadsheet cell must begin with which symbol?",
+            "opts": [
+              {
+                "t": "Equals sign (=)",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Hash sign (#)",
+                "c": false,
+                "m": "Without '=', the cell treats the text as a plain label."
+              },
+              {
+                "t": "Question mark (?)",
+                "c": false,
+                "m": "Formulas always start with '='."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Offline Backup & PIN-Guarded Store Reconciliation",
+      "emoji": "🔐",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Offline Backup & PIN-Guarded Store Reconciliation",
+          "body": "Centre facilitators reconcile student reward redemptions using PIN-guarded logs and daily SQLite/JSON backups.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Offline Backup & PIN-Guarded Store Reconciliation",
+          "instruction": "Move the slider to test how Offline Backup & PIN-Guarded Store Reconciliation scales.",
+          "parts": 4,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Why must wallet redemptions check `balance >= cost` before deducting coins?",
+            "opts": [
+              {
+                "t": "To enforce coin conservation and prevent negative balances",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "To make the screen brighter",
+                "c": false,
+                "m": "Ledger conservation prevents double-spending."
+              },
+              {
+                "t": "To delete student progress",
+                "c": false,
+                "m": "XP and mastery stay intact; only spendable coins are deducted."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

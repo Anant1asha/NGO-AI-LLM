@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Electric Potential, Ohm's Law & Series-Parallel Solar Circuits",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncertg10scich12e_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Electric Potential, Ohm's Law & Series-Parallel Solar Circuits concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Electric Current, Potential Difference & Ohm's Law (V = IR)",
+      "question": "A 12 V solar battery is connected across a 4 Ω LED lamp resistor. Find the current.",
+      "steps": [
+        {
+          "text": "Given voltage V = 12 V and resistance R = 4 Ω.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Rearrange Ohm's Law: I = V ÷ R.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute I = 12 ÷ 4 = 3 A.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If resistance R is doubled while voltage V stays constant, what happens to the current I?",
+        "opts": [
+          {
+            "t": "It becomes half",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "It doubles",
+            "c": false,
+            "m": "Current I = V/R is inversely proportional to resistance."
+          },
+          {
+            "t": "It stays unchanged",
+            "c": false,
+            "m": "Higher resistance reduces current flow for a fixed voltage."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Series vs Parallel Resistor Networks",
+      "question": "Two 6 Ω solar classroom fans are wired in parallel. Find their equivalent resistance.",
+      "steps": [
+        {
+          "text": "Use the parallel formula: 1/Rp = 1/6 + 1/6 = 2/6 = 1/3.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Invert both sides to find Rp.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Equivalent resistance Rp = 3 Ω (less than either individual resistor).",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Why are classroom lights and fans wired in parallel rather than series?",
+        "opts": [
+          {
+            "t": "Each appliance operates independently at full voltage",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "If one bulb fails, all other appliances turn off",
+            "c": false,
+            "m": "That is a drawback of series wiring, not parallel."
+          },
+          {
+            "t": "Parallel wiring increases total resistance",
+            "c": false,
+            "m": "Parallel wiring reduces total equivalent resistance."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Joule's Law of Heating (H = I²Rt) & Electric Power (P = VI)",
+      "question": "Find the power consumed by a 12 V, 2 A solar DC study lamp.",
+      "steps": [
+        {
+          "text": "Given potential difference V = 12 V and current I = 2 A.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Apply the electric power formula: P = V × I.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute P = 12 × 2 = 24 W.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "According to Joule's law H = I²Rt, if current I triples, heat produced becomes:",
+        "opts": [
+          {
+            "t": "9 times as much",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "3 times as much",
+            "c": false,
+            "m": "Heat scales with I², so 3² = 9 times."
+          },
+          {
+            "t": "One-third as much",
+            "c": false,
+            "m": "Heat increases with the square of current."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Electric Current, Potential Difference & Ohm's Law (V = IR)",
+      "question": "A 12 V solar battery is connected across a 4 Ω LED lamp resistor. Find the current.",
+      "steps": [
+        {
+          "prompt": "Given voltage V = 12 V and resistance R = 4 Ω.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Rearrange Ohm's Law: I = V ÷ R.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute I = 12 ÷ 4 = 3 A.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Series vs Parallel Resistor Networks",
+      "question": "Two 6 Ω solar classroom fans are wired in parallel. Find their equivalent resistance.",
+      "steps": [
+        {
+          "prompt": "Use the parallel formula: 1/Rp = 1/6 + 1/6 = 2/6 = 1/3.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Invert both sides to find Rp.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Equivalent resistance Rp = 3 Ω (less than either individual resistor).",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Joule's Law of Heating (H = I²Rt) & Electric Power (P = VI)",
+      "question": "Find the power consumed by a 12 V, 2 A solar DC study lamp.",
+      "steps": [
+        {
+          "prompt": "Given potential difference V = 12 V and current I = 2 A.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Apply the electric power formula: P = V × I.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute P = 12 × 2 = 24 W.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Electric Current, Potential Difference & Ohm's Law (V = IR)",
+      "emoji": "⚡",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Electric Current, Potential Difference & Ohm's Law (V = IR)",
+          "body": "At constant temperature, the potential difference V across a conductor is directly proportional to current I flowing through it: V = I × R.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Electric Current, Potential Difference & Ohm's Law (V = IR)",
+          "instruction": "Move the slider to test how Electric Current, Potential Difference & Ohm's Law (V = IR) scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If resistance R is doubled while voltage V stays constant, what happens to the current I?",
+            "opts": [
+              {
+                "t": "It becomes half",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "It doubles",
+                "c": false,
+                "m": "Current I = V/R is inversely proportional to resistance."
+              },
+              {
+                "t": "It stays unchanged",
+                "c": false,
+                "m": "Higher resistance reduces current flow for a fixed voltage."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Series vs Parallel Resistor Networks",
+      "emoji": "🔌",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Series vs Parallel Resistor Networks",
+          "body": "In series, total resistance adds up (Rs = R₁ + R₂). In parallel, reciprocals add (1/Rp = 1/R₁ + 1/R₂) and each appliance gets full supply voltage.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Series vs Parallel Resistor Networks",
+          "instruction": "Move the slider to test how Series vs Parallel Resistor Networks scales.",
+          "parts": 3,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Why are classroom lights and fans wired in parallel rather than series?",
+            "opts": [
+              {
+                "t": "Each appliance operates independently at full voltage",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "If one bulb fails, all other appliances turn off",
+                "c": false,
+                "m": "That is a drawback of series wiring, not parallel."
+              },
+              {
+                "t": "Parallel wiring increases total resistance",
+                "c": false,
+                "m": "Parallel wiring reduces total equivalent resistance."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Joule's Law of Heating (H = I²Rt) & Electric Power (P = VI)",
+      "emoji": "💡",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Joule's Law of Heating (H = I²Rt) & Electric Power (P = VI)",
+          "body": "Electrical power is P = V × I = I²R, and heat dissipated in a resistor over time t is H = I²Rt.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Joule's Law of Heating (H = I²Rt) & Electric Power (P = VI)",
+          "instruction": "Move the slider to test how Joule's Law of Heating (H = I²Rt) & Electric Power (P = VI) scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "According to Joule's law H = I²Rt, if current I triples, heat produced becomes:",
+            "opts": [
+              {
+                "t": "9 times as much",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "3 times as much",
+                "c": false,
+                "m": "Heat scales with I², so 3² = 9 times."
+              },
+              {
+                "t": "One-third as much",
+                "c": false,
+                "m": "Heat increases with the square of current."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

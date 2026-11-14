@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "NCVET Level 4 — Solar Micro-Irrigation & Jal Seva Technician",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncvetpsscivel4ag_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed NCVET Level 4 — Solar Micro-Irrigation & Jal Seva Technician concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Solar PV Array Tilt & Pump Flow Matching",
+      "question": "A 500 W solar pump delivers 30 L/min at peak sun. How much water is pumped in 40 minutes?",
+      "steps": [
+        {
+          "text": "Identify flow rate Q = 30 L/min and time t = 40 min.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Multiply Q × t: 30 × 40.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Total water pumped = 1,200 L.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What happens to solar pump flow if dust covers 30% of the PV panel surface?",
+        "opts": [
+          {
+            "t": "Current output drops, reducing pump flow rate",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Pump speed increases",
+            "c": false,
+            "m": "Shading or dust reduces photovoltaic current."
+          },
+          {
+            "t": "Water pressure doubles",
+            "c": false,
+            "m": "Regular panel wiping restores rated pump discharge."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Lateral Line Layout & Emitter Spacing",
+      "question": "How many emitters spaced every 0.5 m fit along a 15 m vegetable lateral line?",
+      "steps": [
+        {
+          "text": "Given lateral length L = 15 m and spacing s = 0.5 m.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Divide length by spacing: 15 ÷ 0.5.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Result: 30 emitters along the lateral.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Sandy soil drains faster than clay soil. How should emitter flow rate be chosen for sandy soil?",
+        "opts": [
+          {
+            "t": "Higher discharge rate with shorter, more frequent pulses",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Once a month flood watering",
+            "c": false,
+            "m": "Long single floods sink below sandy root zones."
+          },
+          {
+            "t": "Zero water needed",
+            "c": false,
+            "m": "Pulse irrigation keeps moisture within the root zone."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Jal Seva Water Audit & Community Maintenance Log",
+      "question": "Why do technicians open lateral end-caps for 30 seconds each week?",
+      "steps": [
+        {
+          "text": "Fine silt that passes the main filter settles at the far end of lateral pipes.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Opening the end-cap flushes accumulated silt out with water velocity.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Closing the cap restores uniform pressure to all emitters.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Which tool directly measures root-zone soil moisture tension?",
+        "opts": [
+          {
+            "t": "Tensiometer",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Thermometer",
+            "c": false,
+            "m": "A thermometer measures temperature, not soil moisture tension."
+          },
+          {
+            "t": "Ammeter",
+            "c": false,
+            "m": "An ammeter measures electric current."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Solar PV Array Tilt & Pump Flow Matching",
+      "question": "A 500 W solar pump delivers 30 L/min at peak sun. How much water is pumped in 40 minutes?",
+      "steps": [
+        {
+          "prompt": "Identify flow rate Q = 30 L/min and time t = 40 min.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Multiply Q × t: 30 × 40.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Total water pumped = 1,200 L.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Lateral Line Layout & Emitter Spacing",
+      "question": "How many emitters spaced every 0.5 m fit along a 15 m vegetable lateral line?",
+      "steps": [
+        {
+          "prompt": "Given lateral length L = 15 m and spacing s = 0.5 m.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Divide length by spacing: 15 ÷ 0.5.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Result: 30 emitters along the lateral.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Jal Seva Water Audit & Community Maintenance Log",
+      "question": "Why do technicians open lateral end-caps for 30 seconds each week?",
+      "steps": [
+        {
+          "prompt": "Fine silt that passes the main filter settles at the far end of lateral pipes.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Opening the end-cap flushes accumulated silt out with water velocity.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Closing the cap restores uniform pressure to all emitters.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Solar PV Array Tilt & Pump Flow Matching",
+      "emoji": "☀️",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Solar PV Array Tilt & Pump Flow Matching",
+          "body": "Setting the solar panel tilt angle equal to the local latitude maximizes midday irradiance and DC water pump discharge.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Solar PV Array Tilt & Pump Flow Matching",
+          "instruction": "Move the slider to test how Solar PV Array Tilt & Pump Flow Matching scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What happens to solar pump flow if dust covers 30% of the PV panel surface?",
+            "opts": [
+              {
+                "t": "Current output drops, reducing pump flow rate",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Pump speed increases",
+                "c": false,
+                "m": "Shading or dust reduces photovoltaic current."
+              },
+              {
+                "t": "Water pressure doubles",
+                "c": false,
+                "m": "Regular panel wiping restores rated pump discharge."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Lateral Line Layout & Emitter Spacing",
+      "emoji": "📏",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Lateral Line Layout & Emitter Spacing",
+          "body": "Matching emitter spacing to crop root-zone diameter ensures continuous wetted strips without deep percolation waste.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Lateral Line Layout & Emitter Spacing",
+          "instruction": "Move the slider to test how Lateral Line Layout & Emitter Spacing scales.",
+          "parts": 3,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Sandy soil drains faster than clay soil. How should emitter flow rate be chosen for sandy soil?",
+            "opts": [
+              {
+                "t": "Higher discharge rate with shorter, more frequent pulses",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Once a month flood watering",
+                "c": false,
+                "m": "Long single floods sink below sandy root zones."
+              },
+              {
+                "t": "Zero water needed",
+                "c": false,
+                "m": "Pulse irrigation keeps moisture within the root zone."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Jal Seva Water Audit & Community Maintenance Log",
+      "emoji": "💧",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Jal Seva Water Audit & Community Maintenance Log",
+          "body": "Weekly inspection of lateral end-caps, flush valves, and moisture sensors keeps community micro-irrigation efficiency above 90%.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Jal Seva Water Audit & Community Maintenance Log",
+          "instruction": "Move the slider to test how Jal Seva Water Audit & Community Maintenance Log scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Which tool directly measures root-zone soil moisture tension?",
+            "opts": [
+              {
+                "t": "Tensiometer",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Thermometer",
+                "c": false,
+                "m": "A thermometer measures temperature, not soil moisture tension."
+              },
+              {
+                "t": "Ammeter",
+                "c": false,
+                "m": "An ammeter measures electric current."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

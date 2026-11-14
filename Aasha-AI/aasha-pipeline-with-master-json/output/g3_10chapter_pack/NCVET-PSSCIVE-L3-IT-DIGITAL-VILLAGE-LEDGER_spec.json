@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Offline-First Community Data Ledgers & Verifiable Impact Tables",
+    "subject": "math",
+    "grade": 8,
+    "storage_key": "aasha_ncvetpsscivel3it_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Offline-First Community Data Ledgers & Verifiable Impact Tables concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Structured Rows, Columns & Validation Rules",
+      "question": "Audit a 5-row Jal Seva water log where Row 3 has a negative litre reading (−40 L).",
+      "steps": [
+        {
+          "text": "Check range constraint: water saved must be ≥ 0 L.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Flag Row 3 (−40 L) as a sign-entry error against the paper receipt (40 L).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Correct Row 3 to +40 L and recompute the column sum.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Which check prevents a typist from entering text inside a 'Litres Saved' numeric column?",
+        "opts": [
+          {
+            "t": "Data-type and range validation rule",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Font color formatting",
+            "c": false,
+            "m": "Visual styling does not block invalid data entry."
+          },
+          {
+            "t": "Page margin setup",
+            "c": false,
+            "m": "Use field validation rules to enforce numeric input."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Checksum Totals & Cross-Foot Balancing",
+      "question": "Three cohorts saved 120 L, 150 L, and 130 L of water. Verify the batch total.",
+      "steps": [
+        {
+          "text": "Add Cohort A + Cohort B: 120 + 150 = 270 L.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Add Cohort C: 270 + 130 = 400 L.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Confirm that the summary row matches 400 L before syncing.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What does a mismatch between the row-sum and column-sum in a spreadsheet indicate?",
+        "opts": [
+          {
+            "t": "A formula range or data-entry error in at least one cell",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "The computer screen needs cleaning",
+            "c": false,
+            "m": "Row and column sums must always be mathematically identical."
+          },
+          {
+            "t": "The file size is too small",
+            "c": false,
+            "m": "Cross-foot mismatches always signal a calculation or range omission."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Tamper-Evident Offline Sync & Receipt Hashing",
+      "question": "Why do we store a SHA-256 hash alongside each offline cohort export pack?",
+      "steps": [
+        {
+          "text": "Compute the hash of the JSON payload before saving to local storage.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Recompute the hash on the Centre Server upon upload.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "If both hashes match, the ledger batch is verified intact.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If even one digit in a ledger file changes, what happens to its SHA-256 hash?",
+        "opts": [
+          {
+            "t": "The hash changes completely, alerting the verifier",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "The hash stays 99% identical",
+            "c": false,
+            "m": "Cryptographic hashes exhibit the avalanche effect."
+          },
+          {
+            "t": "Nothing changes",
+            "c": false,
+            "m": "Any byte change produces a completely different SHA-256 digest."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Structured Rows, Columns & Validation Rules",
+      "question": "Audit a 5-row Jal Seva water log where Row 3 has a negative litre reading (−40 L).",
+      "steps": [
+        {
+          "prompt": "Check range constraint: water saved must be ≥ 0 L.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Flag Row 3 (−40 L) as a sign-entry error against the paper receipt (40 L).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Correct Row 3 to +40 L and recompute the column sum.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Checksum Totals & Cross-Foot Balancing",
+      "question": "Three cohorts saved 120 L, 150 L, and 130 L of water. Verify the batch total.",
+      "steps": [
+        {
+          "prompt": "Add Cohort A + Cohort B: 120 + 150 = 270 L.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Add Cohort C: 270 + 130 = 400 L.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Confirm that the summary row matches 400 L before syncing.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Tamper-Evident Offline Sync & Receipt Hashing",
+      "question": "Why do we store a SHA-256 hash alongside each offline cohort export pack?",
+      "steps": [
+        {
+          "prompt": "Compute the hash of the JSON payload before saving to local storage.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Recompute the hash on the Centre Server upon upload.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "If both hashes match, the ledger batch is verified intact.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Structured Rows, Columns & Validation Rules",
+      "emoji": "📋",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Structured Rows, Columns & Validation Rules",
+          "body": "In NCVET Level-3 Domestic Data Entry (SSC/Q0101), every village ledger row must have a unique ID, validated numeric fields, and zero blank mandatory cells.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Structured Rows, Columns & Validation Rules",
+          "instruction": "Move the slider to test how Structured Rows, Columns & Validation Rules scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Which check prevents a typist from entering text inside a 'Litres Saved' numeric column?",
+            "opts": [
+              {
+                "t": "Data-type and range validation rule",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Font color formatting",
+                "c": false,
+                "m": "Visual styling does not block invalid data entry."
+              },
+              {
+                "t": "Page margin setup",
+                "c": false,
+                "m": "Use field validation rules to enforce numeric input."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Checksum Totals & Cross-Foot Balancing",
+      "emoji": "🧮",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Checksum Totals & Cross-Foot Balancing",
+          "body": "A ledger table is cross-balanced when the sum of row totals equals the sum of column totals.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Checksum Totals & Cross-Foot Balancing",
+          "instruction": "Move the slider to test how Checksum Totals & Cross-Foot Balancing scales.",
+          "parts": 3,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What does a mismatch between the row-sum and column-sum in a spreadsheet indicate?",
+            "opts": [
+              {
+                "t": "A formula range or data-entry error in at least one cell",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "The computer screen needs cleaning",
+                "c": false,
+                "m": "Row and column sums must always be mathematically identical."
+              },
+              {
+                "t": "The file size is too small",
+                "c": false,
+                "m": "Cross-foot mismatches always signal a calculation or range omission."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Tamper-Evident Offline Sync & Receipt Hashing",
+      "emoji": "🔒",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Tamper-Evident Offline Sync & Receipt Hashing",
+          "body": "When rural centres operate offline, each batch export records a cryptographic SHA-256 digest so any accidental edit during USB or LAN sync is detected immediately.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Tamper-Evident Offline Sync & Receipt Hashing",
+          "instruction": "Move the slider to test how Tamper-Evident Offline Sync & Receipt Hashing scales.",
+          "parts": 4,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If even one digit in a ledger file changes, what happens to its SHA-256 hash?",
+            "opts": [
+              {
+                "t": "The hash changes completely, alerting the verifier",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "The hash stays 99% identical",
+                "c": false,
+                "m": "Cryptographic hashes exhibit the avalanche effect."
+              },
+              {
+                "t": "Nothing changes",
+                "c": false,
+                "m": "Any byte change produces a completely different SHA-256 digest."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

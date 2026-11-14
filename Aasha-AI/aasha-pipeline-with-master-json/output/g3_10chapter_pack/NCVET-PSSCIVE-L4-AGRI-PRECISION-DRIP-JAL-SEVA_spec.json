@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Precision Drip Irrigation Hydraulics & Soil Moisture Budgeting",
+    "subject": "science",
+    "grade": 8,
+    "storage_key": "aasha_ncvetpsscivel4ag_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Precision Drip Irrigation Hydraulics & Soil Moisture Budgeting concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Emitter Discharge Rate & Irrigation Duty Cycle",
+      "question": "A sapling bed has 10 emitters rated at 2 L/hr each, run for 3 hours. Find total water used.",
+      "steps": [
+        {
+          "text": "Calculate hourly bed flow: 10 emitters × 2 L/hr = 20 L/hr.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Multiply by 3 operating hours: 20 L/hr × 3 hr.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Total root-zone delivery = 60 L with minimal evaporation loss.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "If 8 emitters each deliver 4 L/hr for 2 hours, how much water is supplied?",
+        "opts": [
+          {
+            "t": "64 L",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "32 L",
+            "c": false,
+            "m": "32 L is for 1 hour; multiply by 2 hours to get 64 L."
+          },
+          {
+            "t": "14 L",
+            "c": false,
+            "m": "Multiply emitters × flow rate × hours (8 × 4 × 2)."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Head Loss, Filter Cleaning & Pressure Uniformity",
+      "question": "Inlet pressure before the filter is 2.0 bar and outlet pressure drops to 1.1 bar. What should the technician do?",
+      "steps": [
+        {
+          "text": "Compute pressure differential: ΔP = 2.0 − 1.1 = 0.9 bar (> 0.5 bar threshold).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Shut off the solar pump valve and open the filter flush port.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Rinse the filter mesh until ΔP returns below 0.2 bar.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "What does a large pressure drop between the filter inlet and outlet gauges indicate?",
+        "opts": [
+          {
+            "t": "The filter mesh is clogged and needs flushing",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "The water tank is overflowing",
+            "c": false,
+            "m": "A high ΔP across a filter is the classic sign of sediment clogging."
+          },
+          {
+            "t": "The solar panel is dirty",
+            "c": false,
+            "m": "Inlet pressure is already 2.0 bar; the obstruction is inside the filter."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Water-Use Efficiency vs Flood Irrigation (Jal Seva)",
+      "question": "Flooding a plot takes 500 L, while precision drip needs only 200 L. How much Jal Seva water is saved?",
+      "steps": [
+        {
+          "text": "Subtract drip usage from flood usage: 500 L − 200 L = 300 L saved.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Compute percentage saved: (300 / 500) × 100%.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Result: 60% water conserved per irrigation cycle.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Why does drip irrigation reduce weed growth between crop rows?",
+        "opts": [
+          {
+            "t": "Water is delivered only to the crop root zone, keeping inter-row soil dry",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "Drip emitters spray herbicide automatically",
+            "c": false,
+            "m": "Targeted root-zone moisture starves inter-row weeds naturally."
+          },
+          {
+            "t": "Drip water is boiling hot",
+            "c": false,
+            "m": "Water temperature is ambient; targeted placement stops weeds."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Emitter Discharge Rate & Irrigation Duty Cycle",
+      "question": "A sapling bed has 10 emitters rated at 2 L/hr each, run for 3 hours. Find total water used.",
+      "steps": [
+        {
+          "prompt": "Calculate hourly bed flow: 10 emitters × 2 L/hr = 20 L/hr.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Multiply by 3 operating hours: 20 L/hr × 3 hr.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Total root-zone delivery = 60 L with minimal evaporation loss.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Head Loss, Filter Cleaning & Pressure Uniformity",
+      "question": "Inlet pressure before the filter is 2.0 bar and outlet pressure drops to 1.1 bar. What should the technician do?",
+      "steps": [
+        {
+          "prompt": "Compute pressure differential: ΔP = 2.0 − 1.1 = 0.9 bar (> 0.5 bar threshold).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Shut off the solar pump valve and open the filter flush port.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Rinse the filter mesh until ΔP returns below 0.2 bar.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Water-Use Efficiency vs Flood Irrigation (Jal Seva)",
+      "question": "Flooding a plot takes 500 L, while precision drip needs only 200 L. How much Jal Seva water is saved?",
+      "steps": [
+        {
+          "prompt": "Subtract drip usage from flood usage: 500 L − 200 L = 300 L saved.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Compute percentage saved: (300 / 500) × 100%.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Result: 60% water conserved per irrigation cycle.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Emitter Discharge Rate & Irrigation Duty Cycle",
+      "emoji": "🚿",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Emitter Discharge Rate & Irrigation Duty Cycle",
+          "body": "In NCVET Level-4 Micro-Irrigation (AGR/Q4301), total water delivered equals emitter flow rate (L/hr) multiplied by number of emitters and operating hours.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Emitter Discharge Rate & Irrigation Duty Cycle",
+          "instruction": "Move the slider to test how Emitter Discharge Rate & Irrigation Duty Cycle scales.",
+          "parts": 2,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "If 8 emitters each deliver 4 L/hr for 2 hours, how much water is supplied?",
+            "opts": [
+              {
+                "t": "64 L",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "32 L",
+                "c": false,
+                "m": "32 L is for 1 hour; multiply by 2 hours to get 64 L."
+              },
+              {
+                "t": "14 L",
+                "c": false,
+                "m": "Multiply emitters × flow rate × hours (8 × 4 × 2)."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Head Loss, Filter Cleaning & Pressure Uniformity",
+      "emoji": "🔧",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Head Loss, Filter Cleaning & Pressure Uniformity",
+          "body": "Clogged screen or disc filters cause a pressure drop across the mainline, starving tail-end drippers of uniform flow.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Head Loss, Filter Cleaning & Pressure Uniformity",
+          "instruction": "Move the slider to test how Head Loss, Filter Cleaning & Pressure Uniformity scales.",
+          "parts": 3,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "What does a large pressure drop between the filter inlet and outlet gauges indicate?",
+            "opts": [
+              {
+                "t": "The filter mesh is clogged and needs flushing",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "The water tank is overflowing",
+                "c": false,
+                "m": "A high ΔP across a filter is the classic sign of sediment clogging."
+              },
+              {
+                "t": "The solar panel is dirty",
+                "c": false,
+                "m": "Inlet pressure is already 2.0 bar; the obstruction is inside the filter."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Water-Use Efficiency vs Flood Irrigation (Jal Seva)",
+      "emoji": "🌱",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Water-Use Efficiency vs Flood Irrigation (Jal Seva)",
+          "body": "Flood irrigation loses 50–60% of water to runoff and evaporation, whereas root-zone drip irrigation achieves 85–95% water application efficiency.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Water-Use Efficiency vs Flood Irrigation (Jal Seva)",
+          "instruction": "Move the slider to test how Water-Use Efficiency vs Flood Irrigation (Jal Seva) scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Why does drip irrigation reduce weed growth between crop rows?",
+            "opts": [
+              {
+                "t": "Water is delivered only to the crop root zone, keeping inter-row soil dry",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "Drip emitters spray herbicide automatically",
+                "c": false,
+                "m": "Targeted root-zone moisture starves inter-row weeds naturally."
+              },
+              {
+                "t": "Drip water is boiling hot",
+                "c": false,
+                "m": "Water temperature is ambient; targeted placement stops weeds."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

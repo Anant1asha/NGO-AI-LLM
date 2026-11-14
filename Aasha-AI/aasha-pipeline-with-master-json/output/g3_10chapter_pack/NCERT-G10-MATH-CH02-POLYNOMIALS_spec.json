@@ -1,0 +1,383 @@
+{
+  "chapter": {
+    "title": "Polynomial Zeros, Parabolic Graphs & Quadratic Modeling",
+    "subject": "math",
+    "grade": 8,
+    "storage_key": "aasha_ncertg10mathch02_v5",
+    "emoji": "📘"
+  },
+  "BADGES": [
+    {
+      "id": "b1",
+      "name": "Explorer",
+      "ic": "🧭",
+      "desc": "Completed Polynomial Zeros, Parabolic Graphs & Quadratic Modeling concepts"
+    },
+    {
+      "id": "b2",
+      "name": "Simulator",
+      "ic": "⚙️",
+      "desc": "Tested all interactive sliders"
+    },
+    {
+      "id": "b3",
+      "name": "Arena Champion",
+      "ic": "🏆",
+      "desc": "Cleared Aasha Arena"
+    }
+  ],
+  "WE": {
+    "w1": {
+      "title": "Worked Example 1: Degree of a Polynomial & Geometrical Meaning of Zeros",
+      "question": "If the parabola y = p(x) crosses the x-axis at x = −2 and x = 3, what are its zeros?",
+      "steps": [
+        {
+          "text": "Zeros occur where y = p(x) = 0, which means points on the x-axis.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Read the x-coordinates of the x-axis intersections: (−2, 0) and (3, 0).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Therefore, the two zeros of p(x) are −2 and 3.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "At most how many real zeros can a quadratic polynomial (degree 2) have?",
+        "opts": [
+          {
+            "t": "At most 2",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "At most 3",
+            "c": false,
+            "m": "A degree-n polynomial can cross the x-axis at most n times."
+          },
+          {
+            "t": "Always exactly 1",
+            "c": false,
+            "m": "A linear polynomial has 1 zero; a quadratic has 0, 1, or 2 real zeros."
+          }
+        ]
+      }
+    },
+    "w2": {
+      "title": "Worked Example 2: Sum & Product of Zeros (α + β = −b/a, αβ = c/a)",
+      "question": "Find the sum and product of the zeros of p(x) = x² − 5x + 6.",
+      "steps": [
+        {
+          "text": "Compare x² − 5x + 6 with ax² + bx + c: here a = 1, b = −5, c = 6.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Sum of zeros: α + β = −b/a = −(−5)/1 = 5.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Product of zeros: αβ = c/a = 6/1 = 6 (zeros are 2 and 3).",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "For 2x² + 8x + 6, what is the sum of its zeros?",
+        "opts": [
+          {
+            "t": "−4",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "4",
+            "c": false,
+            "m": "Do not forget the minus sign in −b/a = −8/2 = −4."
+          },
+          {
+            "t": "3",
+            "c": false,
+            "m": "3 is the product of zeros (c/a = 6/2), not the sum."
+          }
+        ]
+      }
+    },
+    "w3": {
+      "title": "Worked Example 3: Forming a Quadratic Polynomial from Given Zeros",
+      "question": "Write a quadratic polynomial whose zeros have sum 4 and product 3.",
+      "steps": [
+        {
+          "text": "Given sum S = 4 and product P = 3.",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Substitute into the template x² − (sum)x + (product).",
+          "c": "blue",
+          "final": false
+        },
+        {
+          "text": "Resulting polynomial: x² − 4x + 3.",
+          "c": "green",
+          "final": true
+        }
+      ],
+      "check": {
+        "q": "Which quadratic polynomial has sum of zeros = 7 and product of zeros = 10?",
+        "opts": [
+          {
+            "t": "x² − 7x + 10",
+            "c": true,
+            "m": ""
+          },
+          {
+            "t": "x² + 7x + 10",
+            "c": false,
+            "m": "The middle term uses minus the sum: x² − (α+β)x + αβ."
+          },
+          {
+            "t": "x² − 10x + 7",
+            "c": false,
+            "m": "Keep sum as the coefficient of −x and product as the constant term."
+          }
+        ]
+      }
+    }
+  },
+  "SOLVE": {
+    "s1": {
+      "title": "Guided Solve 1: Degree of a Polynomial & Geometrical Meaning of Zeros",
+      "question": "If the parabola y = p(x) crosses the x-axis at x = −2 and x = 3, what are its zeros?",
+      "steps": [
+        {
+          "prompt": "Zeros occur where y = p(x) = 0, which means points on the x-axis.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Read the x-coordinates of the x-axis intersections: (−2, 0) and (3, 0).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Therefore, the two zeros of p(x) are −2 and 3.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s2": {
+      "title": "Guided Solve 2: Sum & Product of Zeros (α + β = −b/a, αβ = c/a)",
+      "question": "Find the sum and product of the zeros of p(x) = x² − 5x + 6.",
+      "steps": [
+        {
+          "prompt": "Compare x² − 5x + 6 with ax² + bx + c: here a = 1, b = −5, c = 6.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Sum of zeros: α + β = −b/a = −(−5)/1 = 5.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Product of zeros: αβ = c/a = 6/1 = 6 (zeros are 2 and 3).",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    },
+    "s3": {
+      "title": "Guided Solve 3: Forming a Quadratic Polynomial from Given Zeros",
+      "question": "Write a quadratic polynomial whose zeros have sum 4 and product 3.",
+      "steps": [
+        {
+          "prompt": "Given sum S = 4 and product P = 3.",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Substitute into the template x² − (sum)x + (product).",
+          "type": "input",
+          "answer": "Verified"
+        },
+        {
+          "prompt": "Resulting polynomial: x² − 4x + 3.",
+          "type": "input",
+          "answer": "Verified"
+        }
+      ]
+    }
+  },
+  "NODES": [
+    {
+      "title": "Degree of a Polynomial & Geometrical Meaning of Zeros",
+      "emoji": "📈",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Degree of a Polynomial & Geometrical Meaning of Zeros",
+          "body": "The degree of a polynomial p(x) is the highest power of x. Geometrically, the real zeros of p(x) are the x-coordinates where the graph y = p(x) intersects the x-axis.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Degree of a Polynomial & Geometrical Meaning of Zeros",
+          "instruction": "Move the slider to test how Degree of a Polynomial & Geometrical Meaning of Zeros scales.",
+          "parts": 2,
+          "target_num": 3,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w1",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s1",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "At most how many real zeros can a quadratic polynomial (degree 2) have?",
+            "opts": [
+              {
+                "t": "At most 2",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "At most 3",
+                "c": false,
+                "m": "A degree-n polynomial can cross the x-axis at most n times."
+              },
+              {
+                "t": "Always exactly 1",
+                "c": false,
+                "m": "A linear polynomial has 1 zero; a quadratic has 0, 1, or 2 real zeros."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Sum & Product of Zeros (α + β = −b/a, αβ = c/a)",
+      "emoji": "🧮",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Sum & Product of Zeros (α + β = −b/a, αβ = c/a)",
+          "body": "For a quadratic polynomial ax² + bx + c with zeros α and β, the sum of zeros is α + β = −b/a and the product of zeros is αβ = c/a.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Sum & Product of Zeros (α + β = −b/a, αβ = c/a)",
+          "instruction": "Move the slider to test how Sum & Product of Zeros (α + β = −b/a, αβ = c/a) scales.",
+          "parts": 3,
+          "target_num": 4,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w2",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s2",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "For 2x² + 8x + 6, what is the sum of its zeros?",
+            "opts": [
+              {
+                "t": "−4",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "4",
+                "c": false,
+                "m": "Do not forget the minus sign in −b/a = −8/2 = −4."
+              },
+              {
+                "t": "3",
+                "c": false,
+                "m": "3 is the product of zeros (c/a = 6/2), not the sum."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "title": "Forming a Quadratic Polynomial from Given Zeros",
+      "emoji": "🎯",
+      "steps": [
+        {
+          "t": "text",
+          "title": "Forming a Quadratic Polynomial from Given Zeros",
+          "body": "Given the sum S = α + β and product P = αβ of zeros, a quadratic polynomial is formed by p(x) = x² − Sx + P.",
+          "xp": 5
+        },
+        {
+          "t": "ix_slider",
+          "title": "Interactive Lab: Forming a Quadratic Polynomial from Given Zeros",
+          "instruction": "Move the slider to test how Forming a Quadratic Polynomial from Given Zeros scales.",
+          "parts": 4,
+          "target_num": 5,
+          "xp": 10
+        },
+        {
+          "t": "worked",
+          "we": "WE.w3",
+          "xp": 10
+        },
+        {
+          "t": "solve",
+          "sl": "SOLVE.s3",
+          "xp": 10
+        },
+        {
+          "t": "quiz",
+          "q": {
+            "q": "Which quadratic polynomial has sum of zeros = 7 and product of zeros = 10?",
+            "opts": [
+              {
+                "t": "x² − 7x + 10",
+                "c": true,
+                "m": ""
+              },
+              {
+                "t": "x² + 7x + 10",
+                "c": false,
+                "m": "The middle term uses minus the sum: x² − (α+β)x + αβ."
+              },
+              {
+                "t": "x² − 10x + 7",
+                "c": false,
+                "m": "Keep sum as the coefficient of −x and product as the constant term."
+              }
+            ]
+          },
+          "xp": 15
+        }
+      ]
+    }
+  ]
+}

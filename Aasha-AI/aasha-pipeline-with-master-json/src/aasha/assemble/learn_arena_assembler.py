@@ -93,11 +93,9 @@ class LearnArenaAssembler:
         ph = dict(self.master_ph)
         ph.update(lle.get("PH", {}))
 
-        # L-Truth math-rt isolation: never map algebraic variable 'a' to 'एक' in algebra/math chapters
-        if spec and ('एक' in wm2.get('a', '')):
-            spec_txt = json.dumps(spec, ensure_ascii=False).lower()
-            if any(k in spec_txt for k in ('algebra', 'variable', 'coefficient', 'polynomial', 'equation')):
-                wm2.pop('a', None)
+        # L-Truth math-rt isolation: never map single-letter 'a' to 'एक' in WM2 (stopword & algebraic variable)
+        if 'एक' in wm2.get('a', ''):
+            wm2.pop('a', None)
         emo = dict(self.master_emo)
         return wm2, ph, conn, emo
 
