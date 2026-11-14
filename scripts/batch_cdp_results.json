@@ -1,0 +1,239 @@
+[
+  {
+    "id": "class6_math_ch07_fractions",
+    "grade": "Class 6 Math",
+    "title": "Fractions — Understanding Parts, Slices & Equivalency",
+    "simName": "AVR-P302 Fraction Slices Lab",
+    "sizeBytes": 571425,
+    "sizeKb": "558.0",
+    "wordTap": {
+      "ok": true,
+      "word": "fractions",
+      "wpWord": "fractions",
+      "wpHindi": "भिन्न",
+      "wpPron": "उच्चारण · फ़राक्शन्स"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "भिन्न — हिस्सों, टुकड़ों और समतुल्यता की समझ..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "3 / 6"
+      ],
+      "svgElements": 13
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class6_math_ch07_fractions_verified_cdp.png",
+    "passed": true
+  },
+  {
+    "id": "class6_math_ch10_integers",
+    "grade": "Class 6 Math",
+    "title": "Integers — Positive & Negative Numbers on a Number Line",
+    "simName": "AVR-P301 Number Line Hunter",
+    "sizeBytes": 567866,
+    "sizeKb": "554.6",
+    "wordTap": {
+      "ok": true,
+      "word": "integers",
+      "wpWord": "integers",
+      "wpHindi": "पूर्णांक",
+      "wpPron": "उच्चारण · इन्टिजर्स"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "पूर्णांक — संख्या रेखा पर धनात्मक और ऋणात्मक ..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "Neutral Zero (Center)",
+        "0"
+      ],
+      "svgElements": 27
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class6_math_ch10_integers_verified_cdp.png",
+    "passed": true
+  },
+  {
+    "id": "class8_math_ch02_linear_equations",
+    "grade": "Class 8 Math",
+    "title": "Linear Equations in One Variable — Balance Scale & Transposition",
+    "simName": "AVR-P316 Dynamic Balance Scale",
+    "sizeBytes": 565605,
+    "sizeKb": "552.3",
+    "wordTap": {
+      "ok": true,
+      "word": "linear",
+      "wpWord": "linear",
+      "wpHindi": "रैखिक (घात 1 वाला)",
+      "wpPron": "उच्चारण · लीनियर"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "एक चर वाले रैखिक समीकरण — गतिशील तराज़ू और पक..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "11",
+        "11"
+      ],
+      "svgElements": 16
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class8_math_ch02_linear_equations_verified_cdp.png",
+    "passed": true
+  },
+  {
+    "id": "class8_math_ch09_algebraic_expressions",
+    "grade": "Class 8 Math",
+    "title": "Algebraic Expressions & Identities — Geometric Tile Model",
+    "simName": "AVR-P303 Shape Transformer",
+    "sizeBytes": 564761,
+    "sizeKb": "551.5",
+    "wordTap": {
+      "ok": true,
+      "word": "algebraic",
+      "wpWord": "algebraic",
+      "wpHindi": "बीजीय",
+      "wpPron": "उच्चारण · अलजेब्राइक"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "बीजीय व्यंजक और सर्वसमिकाएँ — ज्यामितीय टाइले..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "5",
+        "25"
+      ],
+      "svgElements": 14
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class8_math_ch09_algebraic_expressions_verified_cdp.png",
+    "passed": true
+  },
+  {
+    "id": "class6_science_ch02_components_of_food",
+    "grade": "Class 6 Science",
+    "title": "Components of Food — Nutrients, Balanced Diet & Chemical Tests",
+    "simName": "AVR-P401 Dropper Lab",
+    "sizeBytes": 571684,
+    "sizeKb": "558.3",
+    "wordTap": {
+      "ok": true,
+      "word": "components",
+      "wpWord": "components",
+      "wpHindi": "घटक",
+      "wpPron": "उच्चारण · कम्पोनेन्ट्स"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "भोजन के घटक — पोषक तत्व, संतुलित आहार और रासा..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "Dilute Iodine",
+        "Deep Blue-Black"
+      ],
+      "svgElements": 8
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class6_science_ch02_components_of_food_verified_cdp.png",
+    "passed": true
+  },
+  {
+    "id": "class8_science_ch04_combustion_and_flame",
+    "grade": "Class 8 Science",
+    "title": "Combustion and Flame — Thermal Zones & Fire Triangle",
+    "simName": "AVR-P311 Thermal Flame Probe",
+    "sizeBytes": 575516,
+    "sizeKb": "562.0",
+    "wordTap": {
+      "ok": true,
+      "word": "combustion",
+      "wpWord": "combustion",
+      "wpHindi": "दहन (जलने की रासायनिक क्रिया)",
+      "wpPron": "उच्चारण · कम्बशन"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "दहन और ज्वाला — तापीय क्षेत्र और अग्नि त्रिको..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "Middle Yellow Zone",
+        "1000°C"
+      ],
+      "svgElements": 17
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class8_science_ch04_combustion_and_flame_verified_cdp.png",
+    "passed": true
+  },
+  {
+    "id": "class10_science_ch09_heredity_evolution",
+    "grade": "Class 10 Science",
+    "title": "Heredity and Evolution — Mendelian Genetics & Punnett Squares",
+    "simName": "AVR-P321 Punnett Square",
+    "sizeBytes": 574909,
+    "sizeKb": "561.4",
+    "wordTap": {
+      "ok": true,
+      "word": "heredity",
+      "wpWord": "heredity",
+      "wpHindi": "आनुवंशिकता (लक्षणों का संचरण)",
+      "wpPron": "उच्चारण · हेरेडिटी"
+    },
+    "sentenceToggle": {
+      "ok": true,
+      "text": "आनुवंशिकता एवं जैव विकास — मेंडेलियन आनुवंशिक..."
+    },
+    "touch": {
+      "total": 8,
+      "violationsCount": 0,
+      "violations": []
+    },
+    "sim": {
+      "ok": true,
+      "readouts": [
+        "F1 Self-Cross (Tt x Tt)",
+        "3 Tall : 1 Dwarf (75% : 25%)"
+      ],
+      "svgElements": 23
+    },
+    "screenshot": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\Aasha-AI\\chapters\\class10_science_ch09_heredity_evolution_verified_cdp.png",
+    "passed": true
+  }
+]
