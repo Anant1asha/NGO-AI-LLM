@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATOR_EXPANSION_FOR_SCIENCE_AND_COMMERCE",
+  "next_focus_unit": "PHASE_G_OFFLINE_STUDENT_MASTERY_EXPORT_AND_CENTRE_LEADERBOARD_SYNC",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -68,9 +68,9 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at": "2026-11-14T19:00:10.717184+00:00",
+  "updated_at": "2026-11-14T22:52:53.749927+00:00",
   "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_CERTIFIED",
+  "active_phase": "PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATORS_AND_MEMORY_PRIME_CERTIFIED",
   "learn_arena_batch": {
     "chapters_compiled": 13,
     "total_html5_modules_generated": 26,
@@ -96,5 +96,18 @@
     "web_upload_sync_and_async_learn_arena": true,
     "web_dual_preview_and_download_endpoints": true,
     "studio_dual_preview_workbench_scorecard": true
+  },
+  "phase_g_domain_svg_sims": {
+    "simulators_added": [
+      "circuit_ohm",
+      "motion_force",
+      "ledger_balance",
+      "drip_flow"
+    ],
+    "chapters_recompiled": 13,
+    "html5_modules_certified": 26,
+    "qa_checks_passed": "871/871",
+    "merkle_root_sha256": "9bec827a481fff11524c22e5a800cfae1e3b558e15db1a33411896c4a48f9240",
+    "serena_memories_auto_seeded": 7
   }
 }

@@ -40,5 +40,17 @@ class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
         self.assertEqual(len(rows), 13)
 
 
+
+    def test_domain_specific_svg_simulators_embedded_in_compiled_chapters(self) -> None:
+        elec_p = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html"
+        force_p = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html"
+        ledger_p = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html"
+        drip_p = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html"
+
+        self.assertIn('"sim":"circuit_ohm"', elec_p.read_text(encoding="utf-8"))
+        self.assertIn('"sim":"motion_force"', force_p.read_text(encoding="utf-8"))
+        self.assertIn('"sim":"ledger_balance"', ledger_p.read_text(encoding="utf-8"))
+        self.assertIn('"sim":"drip_flow"', drip_p.read_text(encoding="utf-8"))
+
 if __name__ == "__main__":
     unittest.main()

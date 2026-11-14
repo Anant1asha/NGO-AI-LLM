@@ -1,8 +1,7 @@
-# AASHA Verification Report — Phase G Teacher Studio, Web UI & CLI Learn/Arena Bridge
-- **Timestamp**: `2026-11-14T19:00:10.717184+00:00`
+# AASHA Verification Report — Phase G Multi-Subject Custom SVG Simulators & Memory Prime Self-Healing
+- **Timestamp**: `2026-11-14T22:52:53.749927+00:00`
 - **Branch**: `aios/v2-bootstrap`
-- **Completed Focus Unit**: `PHASE_G_TEACHER_STUDIO_BATCH_PDF_UPLOAD_AND_LIVE_PREVIEW_BRIDGE`
-- **CLI & Web App**: `python -m aasha.cli --pdf ... --mode learn-arena --provider offline`, `POST /api/upload`, `GET /job/<id>/preview?mode=learn|arena`, `GET /job/<id>/download/learn`, and `GET /job/<id>/download/arena`.
-- **Aasha Studio Workbench**: `renderStudioDualPreviewWorkbench` rendering side-by-side Learn & Arena previews with QA scorecard badges.
-- **Verification**: 6/6 Python unit suites passed, 53/53 SW precache assets verified, 15/15 live HTTP endpoints passed, 97/97 Visual Contract assertions passed, 0 secrets.
-- **Next Focus Unit**: `PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATOR_EXPANSION_FOR_SCIENCE_AND_COMMERCE`
+- **Completed Focus Unit**: `PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATOR_EXPANSION_FOR_SCIENCE_AND_COMMERCE`
+- **Domain SVG Simulators (`aasha-learn-template.html` & `LearnArenaAssembler`)**: Added `vizCircuitOhm` (`circuit_ohm`), `vizMotionForce` (`motion_force`), `vizLedgerBalance` (`ledger_balance`), and `vizDripFlow` (`drip_flow`), and recompiled all 13 chapters (`871/871` QA checks passed).
+- **Stage 3 Memory Prime Self-Healing (`scripts/jagiye_maakiran.ts` & `.serena/memories/`)**: Tracked all 7 core `.serena/memories/*.md` files in Git and added auto-seeding fallback in `jagiye_maakiran.ts`.
+- **Merkle Precache Root**: `9bec827a481fff11524c22e5a800cfae1e3b558e15db1a33411896c4a48f9240` across 53 verified offline assets.
