@@ -509,7 +509,36 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G46: Offline Bilingual Parent Progress Card & Seva Certificate Signer Endpoint
+  app.get('/api/student/:id/seva-certificate', async (req) => {
+    const { id } = req.params;
+    const bal = db.prepare('SELECT balance FROM token_balances WHERE student_id = ?').get(id) || { balance: 0 };
+    const passedRow = db.prepare('SELECT COUNT(DISTINCT chapter_id) AS cnt FROM mastery_events WHERE student_id = ? AND passed = 1').get(id) || { cnt: 0 };
+    const sevaMission = 'Jal Seva: 150 L Rainwater Audit';
+    const canonical = JSON.stringify({
+      chapters_passed: Number(passedRow.cnt || 0),
+      coins_balance: Number(bal.balance || 0),
+      schema_version: '1.0.0',
+      seva_mission: sevaMission,
+      student_id: String(id)
+    });
+    const certificate_sha256 = crypto.createHash('sha256').update(canonical).digest('hex');
+    return {
+      status: 'ok',
+      student_id: id,
+      chapters_passed: Number(passedRow.cnt || 0),
+      coins_balance: Number(bal.balance || 0),
+      seva_mission: sevaMission,
+      certificate_sha256,
+      parent_sms_en: `Aasha Update (${id}): ${passedRow.cnt || 0} chapters mastered, ${bal.balance || 0} Aasha Coins earned, Seva: ${sevaMission}.`,
+      parent_sms_hi: `आशा प्रगति (${id}): ${passedRow.cnt || 0} अध्याय पूर्ण, ${bal.balance || 0} आशा कॉइन्स अर्जित, सेवा: ${sevaMission}।`,
+      offline_verifiable: true
+    };
+  });
+
   return app;
+
 
 
 

@@ -194,7 +194,18 @@ try {
   assert.ok(remData.strugglingNodes.some((n) => n.conceptCode === 'node_lpg_safety'));
   assert.equal(remData.zero_external_urls, true);
 
-  console.log('✅ GAP-V7-01, G43, G44 & G45 LIVE HTTP INTEGRATION TEST PASSED (13/13 endpoint assertions on ephemeral port)');
+
+  // 14. Student Seva Certificate & Bilingual Parent Card Endpoint (Phase G46)
+  const certRes = await fetch(`${baseUrl}/api/student/stu_ananya_01/seva-certificate`);
+  assert.equal(certRes.status, 200);
+  const certData = await certRes.json();
+  assert.equal(certData.status, 'ok');
+  assert.equal(certData.offline_verifiable, true);
+  assert.equal(certData.certificate_sha256.length, 64);
+  assert.ok(certData.parent_sms_hi.includes('आशा प्रगति'));
+
+  console.log('✅ GAP-V7-01, G43, G44, G45 & G46 LIVE HTTP INTEGRATION TEST PASSED (14/14 endpoint assertions on ephemeral port)');
+
 
 
 

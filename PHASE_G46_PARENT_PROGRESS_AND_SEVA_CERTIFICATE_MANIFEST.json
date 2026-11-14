@@ -1,0 +1,26 @@
+{
+  "schema_version": "7.0.0",
+  "phase": "G46_PARENT_PROGRESS_CARD_AND_SEVA_CERTIFICATE_SIGNER",
+  "generated_at_utc": "2026-11-14T04:02:52.294045+00:00",
+  "sample_certificate": {
+    "schema_version": "1.0.0",
+    "student_id": "stu_ananya_01",
+    "chapters_passed": 2,
+    "coins_balance": 100,
+    "seva_mission": "Jal Seva: 150 L Rainwater Audit",
+    "certificate_sha256": "644ac22bed96a10777c5657f354b97d6babb97555287cbe99006d11e0bb55905",
+    "parent_sms_en": "Aasha Update (stu_ananya_01): 2 chapters mastered, 100 Aasha Coins earned, Seva: Jal Seva: 150 L Rainwater Audit.",
+    "parent_sms_hi": "आशा प्रगति (stu_ananya_01): 2 अध्याय पूर्ण, 100 आशा कॉइन्स अर्जित, सेवा: Jal Seva: 150 L Rainwater Audit।",
+    "offline_verifiable": true
+  },
+  "html5_hub": {
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Parent_Progress_And_Seva_Certificate_Signer_Hub_v5.html",
+    "swarm_state": "CERTIFIED_CHECKPOINT",
+    "qa_passed": 28,
+    "qa_total": 28,
+    "size_bytes": 97627,
+    "under_20mib": true,
+    "sha256": "a8d4d998aac4e4e2a293841a1058c00a6e9a1441576d959afc9f4c71eb4235cd"
+  },
+  "next_focus_unit": "PHASE_G_CHUNK_G47_DEC_2026_MVP_RELEASE_FREEZE_AND_FULL_TELEMETRY_RECONCILIATION: Run end-to-end pre-release freeze audit across all 23 certified HTML5 modules, 14 HTTP endpoints, and SQLite catalogues."
+}
