@@ -47,6 +47,7 @@ export const V3_TASK_SPECIFICATION = {
 const args = process.argv.slice(2);
 const IS_AUDIT_ONLY = args.includes('--audit-only');
 const IS_SWARM_MODE = args.includes('--swarm');
+const IS_16_STAGE_MODE = args.includes('--16-stage') || IS_SWARM_MODE;
 
 function assertNonMainBranch(branchName, repoLabel = 'repo') {
   const cleaned = String(branchName || '').trim();
@@ -123,6 +124,17 @@ async function executeIteration(iterationNumber) {
     );
     if (!w0Res.success) throw new Error('Hydrogen/Argon /swarm W0 preflight failed');
   }
+
+  if (IS_16_STAGE_MODE) {
+    console.log('  [16-Stage Executive Engineering Loop v2.0] Running Laya + Chief Executive Swarm 16-Stage Lifecycle...');
+    const s16Res = runCmd(
+      "PYTHONPATH=.:src python3 -c \"import json; from src.aasha.orchestrator.sixteen_stage_executive_loop import Executive16StageLoopOrchestrator; rep = Executive16StageLoopOrchestrator('.').execute_16_stage_cycle(); open('AASHA_16_STAGE_LAST_EXECUTION_REPORT.json','w').write(json.dumps(rep, indent=2)); print('  [16-Stage Certification]:', rep['CERTIFICATION']['verdict'], '| State:', rep['CERTIFICATION']['task_lifecycle_state'], '| Stages:', len(rep['STAGE_STATUS']))\"",
+      ROOT_DIR,
+      { silent: false }
+    );
+    if (!s16Res.success) throw new Error('16-Stage Executive Engineering Loop failed');
+  }
+
   if (IS_AUDIT_ONLY) {
     return { status: 'AUDITED', activePlane };
   }

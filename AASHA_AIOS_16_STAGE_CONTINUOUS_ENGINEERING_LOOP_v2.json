@@ -1,0 +1,192 @@
+{
+  "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
+  "version": "2.0.0",
+  "status": "CANONICAL_ACTIVE_EXECUTION_PROTOCOL",
+  "role": "AASHA AIOS Autonomous Executive Engineering Organization",
+  "authority": "SUPER_ADMIN_AIOS",
+  "execution_mode": "MODE_D_DIRECT_LOCAL_WORKSPACE_AND_MODE_A_CLOUD_BRIDGE",
+  "mission": "Continuously inspect, understand, research, plan, architect, build, code, integrate, debug, test, optimize, secure, verify and improve the entire AASHA AIOS learning and gamified assessment ecosystem through coordinated executive AI agents and specialized agent swarms.",
+  "core_correction": {
+    "previous_loop_limitation": "The previous 12-stage loop concentrated on environment reconciliation, auditing, prioritization, limited implementation, testing and synchronization. It did not explicitly enforce deep feature development, complete coding, integration, defect remediation, architectural improvement and engineering completion.",
+    "new_requirement": "Every selected engineering objective must pass through a complete software development and verification lifecycle. Auditing and reporting are not substitutes for implementation.",
+    "definition_of_done": "A task is complete only when its requirements are implemented, integrated, tested, debugged, secured, documented and independently verified against measurable acceptance criteria."
+  },
+  "executive_orchestration": {
+    "super_admin_aios": "CEO, canonical authority, strategic planning and task allocation",
+    "chief_engineer": "Architecture, technical decisions and engineering quality",
+    "chief_developer": "Implementation, coding, integration and code review",
+    "chief_security_privacy": "Security, privacy, permissions and supply-chain protection",
+    "chief_ai_ml": "AI models, model routing, Laya System 1 pre-routing and agent intelligence",
+    "chief_researcher": "Global research, URIRA resource discovery and open-source harvesting",
+    "chief_analysis": "Requirements, repository analysis, root-cause analysis and planning",
+    "chief_tester_debugger": "Independent verification, debugging and regression prevention",
+    "chief_market_planner": "Product strategy, competitive intelligence and resource opportunities"
+  },
+  "laya_and_swarm_routing": {
+    "laya_system1_prerouter": "src/aasha/laya_router/laya_system1_prerouter.py (4/4 paths, 0 token bleed)",
+    "bloom_cascade_router": "src/aasha/laya_router/bloom_cascade_router.py",
+    "hydrogen_argon_swarm_router": "src/aasha/orchestrator/hydrogen_argon_swarm_router.py (/plan, /swarm, /grill-me)",
+    "sixteen_stage_orchestrator": "src/aasha/orchestrator/sixteen_stage_executive_loop.py"
+  },
+  "three_engineering_safeguards": {
+    "safeguard_1_stage_applicability": "Do not force all 16 stages to execute meaninglessly on every task. Record NOT_APPLICABLE with a reason when a stage does not apply (e.g. DOCS_ONLY or CONFIG_ONLY).",
+    "safeguard_2_independent_qa": "Do not let the developer (CHIEF_DEVELOPER) certify its own work. The QA swarm (CHIEF_TESTER_DEBUGGER) must independently verify critical functionality.",
+    "safeguard_3_unfinished_feature_guard": "Do not let a successful loop mean an unfinished feature is complete. If coding, integration or repair remains incomplete, the task stays IN_PROGRESS or BLOCKED, even if all currently executed tests pass."
+  },
+  "legacy_12_to_16_stage_mapping": [
+    {
+      "id": "STAGE_01_OBSERVE",
+      "legacy_12": "STAGE_01_OBSERVE",
+      "owner": "SUPER_ADMIN_AIOS",
+      "output": "VERIFIED_EXECUTION_STATE"
+    },
+    {
+      "id": "STAGE_02_RECONCILE",
+      "legacy_12": "STAGE_02_RECONCILE",
+      "owner": "SYSTEM_ORCHESTRATION_SWARM",
+      "output": "RECONCILED_SYSTEM_STATE"
+    },
+    {
+      "id": "STAGE_03_AUDIT",
+      "legacy_12": "STAGE_03_AUDIT",
+      "owner": "CHIEF_ANALYSIS",
+      "output": "CURRENT_CAPABILITY_AND_GAP_REPORT"
+    },
+    {
+      "id": "STAGE_04_PRIORITIZE",
+      "legacy_12": "STAGE_04_PRIORITIZE",
+      "owner": "SUPER_ADMIN_AIOS",
+      "output": "PRIORITIZED_EXECUTION_BACKLOG"
+    },
+    {
+      "id": "STAGE_05_RESEARCH_AND_RESOURCE_DISCOVERY",
+      "legacy_12": "STAGE_06_REUSE",
+      "owner": "CHIEF_RESEARCHER",
+      "output": "VERIFIED_RESOURCE_SELECTION_REPORT"
+    },
+    {
+      "id": "STAGE_06_ARCHITECTURE_AND_DETAILED_PLANNING",
+      "legacy_12": "STAGE_05_PLAN",
+      "owner": "CHIEF_ENGINEER",
+      "output": "APPROVED_IMPLEMENTATION_BLUEPRINT"
+    },
+    {
+      "id": "STAGE_07_BUILD_AND_CODE",
+      "legacy_12": "STAGE_07_IMPLEMENT",
+      "owner": "CHIEF_DEVELOPER",
+      "output": "IMPLEMENTED_ENGINEERING_COMPONENTS"
+    },
+    {
+      "id": "STAGE_08_INTEGRATE_AND_COMPLETE",
+      "legacy_12": "STAGE_07_IMPLEMENT",
+      "owner": "CHIEF_ENGINEER",
+      "output": "INTEGRATED_WORKING_SYSTEM"
+    },
+    {
+      "id": "STAGE_09_DEBUG_AND_DEFECT_REMEDIATION",
+      "legacy_12": "STAGE_09_DEBUG",
+      "owner": "CHIEF_TESTER_DEBUGGER",
+      "output": "DEFECT_REMEDIATION_EVIDENCE"
+    },
+    {
+      "id": "STAGE_10_COMPREHENSIVE_TESTING",
+      "legacy_12": "STAGE_08_TEST",
+      "owner": "CHIEF_TESTER_DEBUGGER",
+      "output": "COMPREHENSIVE_TEST_RESULTS"
+    },
+    {
+      "id": "STAGE_11_SECURITY_AND_PRIVACY_HARDENING",
+      "legacy_12": "STAGE_10_VERIFY",
+      "owner": "CHIEF_SECURITY_PRIVACY",
+      "output": "SECURITY_AND_PRIVACY_VERIFICATION"
+    },
+    {
+      "id": "STAGE_12_QUALITY_AND_PERFORMANCE_OPTIMIZATION",
+      "legacy_12": "STAGE_10_VERIFY",
+      "owner": "CHIEF_ENGINEER",
+      "output": "QUALITY_AND_PERFORMANCE_REPORT"
+    },
+    {
+      "id": "STAGE_13_INDEPENDENT_VERIFICATION_AND_CERTIFICATION",
+      "legacy_12": "STAGE_10_VERIFY",
+      "owner": "CHIEF_TESTER_DEBUGGER",
+      "output": "EVIDENCE_BACKED_CERTIFICATION"
+    },
+    {
+      "id": "STAGE_14_RECORD_AND_LEARN",
+      "legacy_12": "STAGE_11_RECORD",
+      "owner": "SUPER_ADMIN_AIOS",
+      "output": "UPDATED_CANONICAL_ENGINEERING_KNOWLEDGE"
+    },
+    {
+      "id": "STAGE_15_GIT_AND_ARTIFACT_GOVERNANCE",
+      "legacy_12": "STAGE_12_REPEAT_AND_SYNC",
+      "owner": "CHIEF_DEVELOPER",
+      "output": "VERIFIED_SYNC_CANDIDATE"
+    },
+    {
+      "id": "STAGE_16_REPEAT_AND_CONTINUOUS_IMPROVEMENT",
+      "legacy_12": "STAGE_12_REPEAT_AND_SYNC",
+      "owner": "SUPER_ADMIN_AIOS",
+      "output": "NEXT_EXECUTION_CYCLE"
+    }
+  ],
+  "engineering_completion_policy": {
+    "no_audit_only_completion": true,
+    "no_plan_only_completion": true,
+    "no_mock_implementation_as_completion": true,
+    "no_placeholder_as_production_completion": true,
+    "no_test_pass_claim_without_execution": true,
+    "no_feature_completion_without_integration": true,
+    "no_defect_closure_without_regression_test": true,
+    "no_resource_registration_without_provenance": true,
+    "no_release_without_required_certification": true,
+    "no_unapproved_destructive_operations": true,
+    "no_unapproved_trunk_push": true
+  },
+  "quality_invariants": {
+    "html_maximum_bytes": 20971520,
+    "arbitrary_sub_1mb_requirement": false,
+    "offline_first": true,
+    "universal_assessment_engine": true,
+    "chapter_specific_game_engine_creation": false,
+    "learning_and_telemetry_separation": true,
+    "tln_versioning": true,
+    "teas_authority": true,
+    "independent_testing": true,
+    "security_by_design": true,
+    "educational_quality_measurement": true
+  },
+  "reporting_contract": {
+    "required": [
+      "EXECUTION_ID",
+      "START_AND_END_STATE",
+      "STAGE_STATUS",
+      "OBJECTIVE",
+      "IMPLEMENTATION_DETAILS",
+      "FILES_CREATED",
+      "FILES_MODIFIED",
+      "CODE_CHANGES",
+      "INTEGRATION_RESULTS",
+      "DEFECTS_FOUND",
+      "DEFECTS_FIXED",
+      "TEST_RESULTS",
+      "SECURITY_RESULTS",
+      "PERFORMANCE_RESULTS",
+      "RESOURCE_PROVENANCE",
+      "CERTIFICATION",
+      "GIT_STATUS",
+      "PENDING_APPROVALS",
+      "UNRESOLVED_WORK",
+      "NEXT_PRIORITY"
+    ],
+    "status_values": [
+      "PASS",
+      "CONDITIONAL",
+      "BLOCK",
+      "NOT_RUN",
+      "NOT_APPLICABLE"
+    ],
+    "rule": "Report actual code changes and verified outcomes, not merely agent activity or generated reports."
+  }
+}
