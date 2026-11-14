@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AVR-P408: Virtual Biochemical Dropper Assay Lab</title>
+<style>
+:root {
+  --bg: #070e17;
+  --panel: #111f30;
+  --border: #1d3652;
+  --teal: #31e6c4;
+  --gold: #ffc247;
+  --rose: #ff5f78;
+  --text: #f0f6fc;
+  --muted: #8ba2b6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+body { background: var(--bg); color: var(--text); padding: 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+.lab-card { width: 100%; max-width: 500px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.badge { background: rgba(49,230,196,.15); color: var(--teal); font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; letter-spacing: .5px; }
+h1 { font-size: 17px; font-weight: 800; }
+.canvas-wrap { position: relative; width: 100%; height: 260px; background: #04080e; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+canvas { width: 100%; height: 100%; display: block; }
+.status-pill { position: absolute; top: 12px; right: 12px; background: rgba(17,31,48,.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; backdrop-filter: blur(4px); }
+.status-pill b { color: var(--gold); }
+.controls { display: flex; flex-direction: column; gap: 10px; }
+label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button.sample-btn, button.drop-btn { min-height: 44px; min-width: 44px; border: 1px solid var(--border); background: #0a1522; color: var(--text); border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .15s ease; padding: 6px 10px; }
+button.sample-btn.on { background: rgba(49,230,196,.2); border-color: var(--teal); color: var(--teal); }
+button.drop-btn { background: rgba(255,194,71,.15); border-color: var(--gold); color: var(--gold); }
+button.drop-btn:active { background: rgba(255,194,71,.35); }
+.readout-box { background: #09131f; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.5; }
+.result-tag { font-weight: 800; color: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="lab-card">
+  <div class="header">
+    <span class="badge">AVR-P408 · BIOCHEMICAL LAB</span>
+    <h1>Nutrient Dropper Assay</h1>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="labCanvas" width="460" height="260"></canvas>
+    <div class="status-pill">
+      <div>Test: <b id="testLabel">Starch Assay</b></div>
+      <div>Result: <b id="resultStatus">Pending Reagent</b></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label>1. Select Food Sample:</label>
+    <div class="btn-grid">
+      <button class="sample-btn on" id="btnPotato">🥔 Raw Potato (Starch)</button>
+      <button class="sample-btn" id="btnDal">🥣 Boiled Dal (Protein)</button>
+      <button class="sample-btn" id="btnButter">🧈 Butter (Fat)</button>
+      <button class="sample-btn" id="btnAmla">🍋 Amla / Lemon (Vit C)</button>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+      <label>2. Dispense Reagent:</label>
+      <button class="drop-btn" id="btnDispense">💧 Drop Reagent (Click)</button>
+    </div>
+  </div>
+
+  <div class="readout-box" id="assayReadout">
+    <span class="result-tag" id="rTitle">Iodine Starch Test:</span>
+    <span id="rBody"> Raw potato contains abundant complex carbohydrate (starch). Dispense dilute Iodine solution to observe the diagnostic charge-transfer color transition!</span>
+  </div>
+</div>
+
+<script>
+window.__AASHA_EVENTS__ = window.__AASHA_EVENTS__ || [];
+window.AASHA = {
+  emit: function(type, payload) {
+    window.__AASHA_EVENTS__.push({ type: type, payload: payload, ts: Date.now() });
+    window.dispatchEvent(new CustomEvent('aasha:telemetry', { detail: { type: type, payload: payload } }));
+  }
+};
+
+const canvas = document.getElementById('labCanvas');
+const ctx = canvas.getContext('2d');
+
+let currentSample = 'potato';
+let reagentAdded = false;
+let colorProgress = 0.0;
+let drops = [];
+let bubbles = [];
+
+const samples = {
+  potato: {
+    name: 'Raw Potato (Starch)',
+    test: 'Iodine Test for Starch',
+    reagent: 'Dilute Iodine Solution (Brown)',
+    baseCol: [230, 220, 190],
+    targetCol: [20, 25, 75], // Deep Blue-Black
+    desc: 'Dilute Iodine complexes with amylose helix in starch, shifting color to intense BLUE-BLACK complex!',
+    tag: 'Starch Confirmed (Blue-Black)'
+  },
+  dal: {
+    name: 'Boiled Dal (Protein)',
+    test: 'Biuret Test for Protein',
+    reagent: 'CuSO4 + Caustic Soda (Biuret)',
+    baseCol: [210, 170, 130],
+    targetCol: [139, 92, 246], // Rich Violet
+    desc: 'Copper ions coordinate with peptide bonds in alkaline solution, producing a magnificent VIOLET color!',
+    tag: 'Protein Confirmed (Violet)'
+  },
+  butter: {
+    name: 'Butter (Fat)',
+    test: 'Translucency Paper Test',
+    reagent: 'Paper Friction Compression',
+    baseCol: [255, 240, 180],
+    targetCol: [234, 179, 8], // Translucent Grease
+    desc: 'Fats leave an unmistakable translucent oily patch on paper that permanently allows light transmission!',
+    tag: 'Fats Confirmed (Translucent)'
+  },
+  amla: {
+    name: 'Amla / Lemon (Vit C)',
+    test: 'DCPIP Decolorization Test',
+    reagent: 'Blue DCPIP Indicator',
+    baseCol: [210, 240, 190],
+    targetCol: [240, 253, 244], // Decolorized / Clear
+    desc: 'Ascorbic acid (Vitamin C) acts as a powerful antioxidant, completely reducing and decolorizing the blue dye!',
+    tag: 'Vitamin C Confirmed (Bleached)'
+  }
+};
+
+function addDrop() {
+  drops.push({ x: 230, y: 55, vy: 3.5, rad: 5, col: '#ffc247' });
+  window.AASHA.emit('REAGENT_DISPENSED', { sample: currentSample });
+}
+
+function updateSimulation() {
+  // Update falling drops
+  for (let i = drops.length - 1; i >= 0; i--) {
+    const d = drops[i];
+    d.y += d.vy;
+    d.vy += 0.2; // Gravity
+    if (d.y >= 165) {
+      // Reached liquid surface
+      drops.splice(i, 1);
+      reagentAdded = true;
+      // Add reaction effervescence bubbles
+      for (let b = 0; b < 12; b++) {
+        bubbles.push({
+          x: 215 + Math.random() * 30,
+          y: 200 + Math.random() * 20,
+          vy: -0.8 - Math.random() * 1.2,
+          rad: 2 + Math.random() * 2.5,
+          life: 30 + Math.random() * 20
+        });
+      }
+    }
+  }
+
+  // Update color diffusion
+  if (reagentAdded && colorProgress < 1.0) {
+    colorProgress = Math.min(1.0, colorProgress + 0.04);
+    if (colorProgress >= 1.0) {
+      document.getElementById('resultStatus').textContent = samples[currentSample].tag;
+      document.getElementById('resultStatus').style.color = '#31e6c4';
+      document.getElementById('rTitle').textContent = samples[currentSample].test + ' [CONFIRMED]:';
+      document.getElementById('rBody').textContent = ' ' + samples[currentSample].desc;
+      window.AASHA.emit('ASSAY_COMPLETE', { sample: currentSample, result: samples[currentSample].tag });
+    }
+  }
+
+  // Update bubbles
+  for (let i = bubbles.length - 1; i >= 0; i--) {
+    const b = bubbles[i];
+    b.y += b.vy;
+    b.life--;
+    if (b.life <= 0 || b.y <= 165) bubbles.splice(i, 1);
+  }
+}
+
+function drawLab() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Stand Rack
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(150, 235, 160, 14);
+  ctx.fillRect(160, 110, 14, 125);
+  ctx.fillRect(286, 110, 14, 125);
+
+  // Test Tube Glass
+  const s = samples[currentSample];
+  const r = Math.round(s.baseCol[0] + (s.targetCol[0] - s.baseCol[0]) * colorProgress);
+  const g = Math.round(s.baseCol[1] + (s.targetCol[1] - s.baseCol[1]) * colorProgress);
+  const b = Math.round(s.baseCol[2] + (s.targetCol[2] - s.baseCol[2]) * colorProgress);
+
+  // Test tube liquid
+  ctx.fillStyle = `rgb(${r},${g},${b})`;
+  ctx.beginPath();
+  ctx.roundRect(212, 165, 36, 60, [0, 0, 18, 18]);
+  ctx.fill();
+
+  // Draw Effervescence Bubbles
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  for (const bub of bubbles) {
+    ctx.beginPath();
+    ctx.arc(bub.x, bub.y, bub.rad, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Glass Outline
+  ctx.strokeStyle = '#94a3b8';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(210, 100);
+  ctx.lineTo(210, 210);
+  ctx.arc(230, 210, 20, Math.PI, 0, true);
+  ctx.lineTo(250, 100);
+  ctx.stroke();
+
+  // Glass Rim
+  ctx.strokeRect(206, 96, 48, 6);
+
+  // Dropper
+  ctx.fillStyle = '#64748b';
+  ctx.fillRect(227, 15, 6, 35);
+  ctx.fillStyle = '#ef4444'; // Rubber bulb
+  ctx.beginPath();
+  ctx.arc(230, 15, 10, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Draw Falling Drops
+  ctx.fillStyle = '#d97706';
+  for (const d of drops) {
+    ctx.beginPath();
+    ctx.arc(d.x, d.y, d.rad, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function loop() {
+  updateSimulation();
+  drawLab();
+  requestAnimationFrame(loop);
+}
+
+function selectSample(key) {
+  currentSample = key;
+  reagentAdded = false;
+  colorProgress = 0.0;
+  drops = [];
+  bubbles = [];
+
+  document.querySelectorAll('.sample-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('testLabel').textContent = samples[key].test;
+  document.getElementById('resultStatus').textContent = 'Pending Reagent';
+  document.getElementById('resultStatus').style.color = '#ffc247';
+  document.getElementById('rTitle').textContent = samples[key].test + ':';
+  document.getElementById('rBody').textContent = ' Dispense ' + samples[key].reagent + ' onto ' + samples[key].name + ' to observe chemical detection.';
+  window.AASHA.emit('SAMPLE_SELECT', { sample: key });
+}
+
+document.getElementById('btnPotato').addEventListener('click', (e) => { selectSample('potato'); e.target.classList.add('on'); });
+document.getElementById('btnDal').addEventListener('click', (e) => { selectSample('dal'); e.target.classList.add('on'); });
+document.getElementById('btnButter').addEventListener('click', (e) => { selectSample('butter'); e.target.classList.add('on'); });
+document.getElementById('btnAmla').addEventListener('click', (e) => { selectSample('amla'); e.target.classList.add('on'); });
+document.getElementById('btnDispense').addEventListener('click', addDrop);
+
+loop();
+window.AASHA.emit('SIMULATION_MOUNT', { id: 'AVR-P408' });
+</script>
+</body>
+</html>

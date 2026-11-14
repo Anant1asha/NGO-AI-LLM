@@ -154,6 +154,61 @@ export const HARVEST_INGESTION_CANDIDATES = [
     topics: ['Place Value', 'Ten Frames', 'Base 10', 'Number Sense'],
     provenance: 'KingsMath Foundation / AASHA V6 Engine',
     license: 'MIT'
+  },
+  {
+    id: 'AVR-P407',
+    name: 'Candle Flame Convection & Fire Triangle',
+    family: 'thermal-convection',
+    sourcePath: path.join(cdnInteractivesDir, 'AVR-P407-candle-flame-thermal-convection.html'),
+    subject: 'Science',
+    classes: [6, 7, 8, 9, 10],
+    topics: ['Candle Flame Zones', 'Combustion', 'Fire Triangle', 'Thermal Convection'],
+    provenance: 'Open-Source Canvas Particle Convection (MIT cleanroom)',
+    license: 'MIT'
+  },
+  {
+    id: 'AVR-P408',
+    name: 'Biochemical Nutrient Dropper Assay',
+    family: 'biochemical-assay',
+    sourcePath: path.join(cdnInteractivesDir, 'AVR-P408-biochemical-dropper-assay-lab.html'),
+    subject: 'Science',
+    classes: [6, 7, 8, 9, 10, 11, 12],
+    topics: ['Biochemical Assays', 'Starch Iodine Test', 'Biuret Protein Test', 'Food Nutrients'],
+    provenance: 'Open-Source Science Labs (MIT cleanroom)',
+    license: 'MIT'
+  },
+  {
+    id: 'AVR-P409',
+    name: 'Mechanical Balance Scale & Algebraic Transposition',
+    family: 'algebra-balance',
+    sourcePath: path.join(cdnInteractivesDir, 'AVR-P409-balance-scale-linear-equations.html'),
+    subject: 'Mathematics',
+    classes: [6, 7, 8, 9, 10],
+    topics: ['Linear Equations', 'Balance Scale', 'Transposition', 'Equality Explorer'],
+    provenance: 'PhET Equality Explorer (MIT cleanroom extract)',
+    license: 'MIT'
+  },
+  {
+    id: 'AVR-P410',
+    name: 'Mendelian Genetics & Punnett Matrix',
+    family: 'genetics-matrix',
+    sourcePath: path.join(cdnInteractivesDir, 'AVR-P410-mendelian-genetics-punnett-matrix.html'),
+    subject: 'Science',
+    classes: [9, 10, 11, 12],
+    topics: ['Mendelian Genetics', 'Punnett Squares', 'Monohybrid Cross', 'Sex Determination'],
+    provenance: 'Mendelian Inheritance Simulator (MIT cleanroom)',
+    license: 'MIT'
+  },
+  {
+    id: 'AVR-P411',
+    name: 'Fraction Pizza & Equivalence Blocks',
+    family: 'fraction-manipulative',
+    sourcePath: path.join(cdnInteractivesDir, 'AVR-P411-fraction-pizza-and-3d-blocks.html'),
+    subject: 'Mathematics',
+    classes: [3, 4, 5, 6, 7, 8],
+    topics: ['Fractions', 'Fraction Pizza', 'Equivalent Fractions', 'Percentage Conversion'],
+    provenance: 'KingsMath FractionPizza & PhET Fractions (MIT cleanroom)',
+    license: 'MIT'
   }
 ];
 

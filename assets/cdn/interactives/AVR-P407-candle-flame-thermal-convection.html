@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AVR-P407: Candle Flame Thermal Convection & Fire Triangle Lab</title>
+<style>
+:root {
+  --bg: #070e17;
+  --panel: #111f30;
+  --border: #1d3652;
+  --teal: #31e6c4;
+  --gold: #ffc247;
+  --rose: #ff5f78;
+  --text: #f0f6fc;
+  --muted: #8ba2b6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+body { background: var(--bg); color: var(--text); padding: 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+.lab-card { width: 100%; max-width: 500px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.badge { background: rgba(49,230,196,.15); color: var(--teal); font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; letter-spacing: .5px; }
+h1 { font-size: 17px; font-weight: 800; }
+.canvas-wrap { position: relative; width: 100%; height: 260px; background: #04080e; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+canvas { width: 100%; height: 100%; display: block; }
+.probe-info { position: absolute; top: 12px; right: 12px; background: rgba(17,31,48,.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; backdrop-filter: blur(4px); }
+.probe-info b { font-size: 14px; color: var(--gold); }
+.controls { display: flex; flex-direction: column; gap: 10px; }
+.ctl-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+label { font-size: 13px; color: var(--muted); font-weight: 600; }
+input[type=range] { flex: 1; accent-color: var(--teal); height: 8px; min-height: 44px; }
+.switch-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+button.btn-toggle { min-height: 44px; min-width: 44px; border: 1px solid var(--border); background: #0a1522; color: var(--text); border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .15s ease; padding: 6px; }
+button.btn-toggle.active { background: rgba(49,230,196,.2); border-color: var(--teal); color: var(--teal); }
+button.btn-toggle.cut { background: rgba(255,95,120,.2); border-color: var(--rose); color: var(--rose); text-decoration: line-through; }
+.readout-box { background: #09131f; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.5; }
+.zone-name { font-weight: 800; color: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="lab-card" id="app">
+  <div class="header">
+    <span class="badge">AVR-P407 · THERMAL LAB</span>
+    <h1>Candle Flame & Convection</h1>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="flameCanvas" width="460" height="260"></canvas>
+    <div class="probe-info" id="probeDisplay">
+      <div>Zone: <b id="zName">Outer Blue</b></div>
+      <div>Temp: <b id="zTemp">1400°C</b></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="ctl-row">
+      <label for="probeSlider">Probe Height:</label>
+      <input type="range" id="probeSlider" min="1" max="3" value="1" step="1">
+    </div>
+
+    <label>Fire Triangle Cut-off (Click to toggle):</label>
+    <div class="switch-bar">
+      <button class="btn-toggle active" id="btnOxygen" aria-label="Toggle Oxygen">O₂ (Air)</button>
+      <button class="btn-toggle active" id="btnFuel" aria-label="Toggle Fuel">Wax (Fuel)</button>
+      <button class="btn-toggle active" id="btnHeat" aria-label="Toggle Heat">Heat (Ignition)</button>
+    </div>
+  </div>
+
+  <div class="readout-box" id="infoBox">
+    <span class="zone-name" id="descTitle">Outer Blue Non-Luminous Zone:</span>
+    <span id="descBody"> Complete combustion zone with unlimited oxygen. Hottest part (~1400°C). Used by goldsmiths with metallic blowpipes to melt gold cleanly!</span>
+  </div>
+</div>
+
+<script>
+window.__AASHA_EVENTS__ = window.__AASHA_EVENTS__ || [];
+window.AASHA = {
+  emit: function(type, payload) {
+    window.__AASHA_EVENTS__.push({ type: type, payload: payload, ts: Date.now() });
+    window.dispatchEvent(new CustomEvent('aasha:telemetry', { detail: { type: type, payload: payload } }));
+  }
+};
+
+const canvas = document.getElementById('flameCanvas');
+const ctx = canvas.getContext('2d');
+const slider = document.getElementById('probeSlider');
+const zName = document.getElementById('zName');
+const zTemp = document.getElementById('zTemp');
+const descTitle = document.getElementById('descTitle');
+const descBody = document.getElementById('descBody');
+
+const btnO2 = document.getElementById('btnOxygen');
+const btnFuel = document.getElementById('btnFuel');
+const btnHeat = document.getElementById('btnHeat');
+
+let state = {
+  probeZone: 1, // 1: Outer Blue, 2: Middle Yellow, 3: Inner Dark
+  oxygen: true,
+  fuel: true,
+  heat: true,
+  flameIntensity: 1.0,
+  smokeParticles: [],
+  flameParticles: []
+};
+
+// 60 FPS Particle Convection Loop
+function Particle(x, y, vx, vy, life, col) {
+  this.x = x; this.y = y; this.vx = vx; this.vy = vy;
+  this.maxLife = life; this.life = life; this.col = col;
+}
+
+function updateParticles() {
+  const isBurning = state.oxygen && state.fuel && state.heat;
+  state.flameIntensity += (isBurning ? 1.0 - state.flameIntensity : -state.flameIntensity) * 0.1;
+
+  // Emit flame particles if burning
+  if (state.flameIntensity > 0.05) {
+    const count = Math.floor(6 * state.flameIntensity);
+    for (let i = 0; i < count; i++) {
+      const px = 230 + (Math.random() - 0.5) * 16;
+      const py = 175;
+      const vx = (Math.random() - 0.5) * 0.8;
+      const vy = -1.5 - Math.random() * 2.5;
+      state.flameParticles.push(new Particle(px, py, vx, vy, 25 + Math.random() * 20, '#ffc247'));
+    }
+  } else if (!isBurning && state.smokeParticles.length < 50) {
+    // Emit smoldering smoke
+    const px = 230 + (Math.random() - 0.5) * 8;
+    const py = 175;
+    state.smokeParticles.push(new Particle(px, py, (Math.random() - 0.5) * 1.2, -1.0 - Math.random() * 1.5, 60, 'rgba(150,170,190,'));
+  }
+
+  // Update Flame
+  for (let i = state.flameParticles.length - 1; i >= 0; i--) {
+    const p = state.flameParticles[i];
+    p.x += p.vx; p.y += p.vy; p.life--;
+    if (p.life <= 0) state.flameParticles.splice(i, 1);
+  }
+
+  // Update Smoke
+  for (let i = state.smokeParticles.length - 1; i >= 0; i--) {
+    const p = state.smokeParticles[i];
+    p.x += p.vx; p.y += p.vy; p.life--;
+    if (p.life <= 0) state.smokeParticles.splice(i, 1);
+  }
+}
+
+function drawScene() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 1. Draw Candle & Wick
+  ctx.fillStyle = '#f8fafc';
+  ctx.fillRect(205, 185, 50, 75);
+  ctx.strokeStyle = '#94a3b8';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(205, 185, 50, 75);
+
+  // Candle wick
+  ctx.strokeStyle = '#1e293b';
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(230, 185);
+  ctx.lineTo(230, 168);
+  ctx.stroke();
+
+  // 2. Draw Flame Zones if burning
+  if (state.flameIntensity > 0.05) {
+    ctx.save();
+    ctx.globalAlpha = state.flameIntensity;
+
+    // Outer Blue Zone
+    ctx.fillStyle = 'rgba(59, 130, 246, 0.45)';
+    ctx.beginPath();
+    ctx.ellipse(230, 135, 34, 55, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Middle Luminous Yellow Zone
+    ctx.fillStyle = 'rgba(250, 204, 21, 0.85)';
+    ctx.beginPath();
+    ctx.ellipse(230, 145, 22, 40, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Inner Dark Core (Wax vapors)
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
+    ctx.beginPath();
+    ctx.ellipse(230, 165, 10, 18, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Flame Convection Particles
+    for (const p of state.flameParticles) {
+      const alpha = p.life / p.maxLife;
+      ctx.fillStyle = p.col;
+      ctx.globalAlpha = alpha * state.flameIntensity;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, (1 - alpha) * 8 + 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  // Draw Smoke if extinguishing
+  for (const p of state.smokeParticles) {
+    const alpha = (p.life / p.maxLife) * 0.4;
+    ctx.fillStyle = p.col + alpha + ')';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, (1 - p.life / p.maxLife) * 18 + 4, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // 3. Draw Thermal Metallic Probe
+  let py = 100; // Zone 1
+  if (state.probeZone === 2) py = 145; // Zone 2
+  if (state.probeZone === 3) py = 168; // Zone 3
+
+  // Rod
+  ctx.strokeStyle = '#ef4444';
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(380, py);
+  ctx.lineTo(230, py);
+  ctx.stroke();
+
+  // Probe tip sensor
+  ctx.fillStyle = '#f87171';
+  ctx.beginPath();
+  ctx.arc(230, py, 6, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Handle
+  ctx.fillStyle = '#334155';
+  ctx.fillRect(380, py - 8, 70, 16);
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 10px sans-serif';
+  ctx.fillText('PROBE', 395, py + 4);
+}
+
+function loop() {
+  updateParticles();
+  drawScene();
+  requestAnimationFrame(loop);
+}
+
+function updateReadout() {
+  const isBurning = state.oxygen && state.fuel && state.heat;
+  if (!isBurning) {
+    zName.textContent = 'Extinguished';
+    zTemp.textContent = '25°C';
+    zTemp.style.color = '#8ba2b6';
+    descTitle.textContent = 'Fire Extinguished:';
+    let reason = [];
+    if (!state.oxygen) reason.push('O₂ supply cut off');
+    if (!state.fuel) reason.push('Fuel starved');
+    if (!state.heat) reason.push('Cooled below ignition temp');
+    descBody.textContent = ' The fire triangle was broken (' + reason.join(', ') + '). Combustion ceased immediately!';
+    return;
+  }
+
+  if (state.probeZone === 1) {
+    zName.textContent = 'Outer Blue';
+    zTemp.textContent = '1400°C';
+    zTemp.style.color = '#60a5fa';
+    descTitle.textContent = 'Outer Blue Non-Luminous Zone:';
+    descBody.textContent = ' Complete combustion zone with unlimited oxygen. Hottest part (~1400°C). Used by goldsmiths with metallic blowpipes to melt gold cleanly!';
+  } else if (state.probeZone === 2) {
+    zName.textContent = 'Middle Yellow';
+    zTemp.textContent = '1000°C';
+    zTemp.style.color = '#facc15';
+    descTitle.textContent = 'Middle Luminous Zone:';
+    descBody.textContent = ' Incomplete combustion due to limited air. Moderately hot (~1000°C). Glowing unburnt carbon particles produce bright yellow light and black soot!';
+  } else {
+    zName.textContent = 'Inner Dark Core';
+    zTemp.textContent = '800°C';
+    zTemp.style.color = '#94a3b8';
+    descTitle.textContent = 'Innermost Dark Zone:';
+    descBody.textContent = ' Least hot zone (~800°C). Contains unburnt wax vapors escaping from the wick. If you place a glass slide here, an unburnt wax ring forms!';
+  }
+
+  window.AASHA.emit('ZONE_UPDATE', { zone: state.probeZone, temp: zTemp.textContent });
+}
+
+slider.addEventListener('input', (e) => {
+  state.probeZone = +e.target.value;
+  updateReadout();
+});
+
+function wireToggle(btn, prop) {
+  btn.addEventListener('click', () => {
+    state[prop] = !state[prop];
+    btn.classList.toggle('active', state[prop]);
+    btn.classList.toggle('cut', !state[prop]);
+    updateReadout();
+    window.AASHA.emit('TRIANGLE_TOGGLE', { component: prop, active: state[prop] });
+  });
+}
+
+wireToggle(btnO2, 'oxygen');
+wireToggle(btnFuel, 'fuel');
+wireToggle(btnHeat, 'heat');
+
+loop();
+updateReadout();
+window.AASHA.emit('SIMULATION_MOUNT', { id: 'AVR-P407' });
+</script>
+</body>
+</html>

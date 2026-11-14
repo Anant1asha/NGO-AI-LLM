@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-03T20:40:01.688Z",
+  "generated_at": "2026-11-14T20:12:20.074Z",
   "local_cdn_root": "assets/cdn",
   "statistics": {
-    "interactives_count": 28,
-    "foundations_count": 27,
+    "interactives_count": 33,
+    "foundations_count": 28,
     "harvest_candidates_count": 40,
     "substrates_count": 3,
-    "total_interactives_bundle_bytes": 544177
+    "total_interactives_bundle_bytes": 599156
   },
   "interactives": [
     {
@@ -602,6 +602,36 @@
       "id": "AVR-P321",
       "name": "Cause Effect Reveal",
       "family": "animation",
+      "filename": "AVR-P321-bio-mendelian-punnett-square-sim.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P321-bio-mendelian-punnett-square-sim.html",
+      "bundle_bytes": 18719,
+      "sha256": "8e8bca0c23cfcbd130a8b2bc4075a5cdbc6bb04475363f72ab06c14231bac7a3",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Cross-Curricular",
+      "classes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Cause and Effect",
+        "Physical Reactions",
+        "Chain Events"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P321",
+      "name": "Cause Effect Reveal",
+      "family": "animation",
       "filename": "AVR-P321-cause-effect-reveal.html",
       "local_cdn_path": "assets/cdn/interactives/AVR-P321-cause-effect-reveal.html",
       "bundle_bytes": 2356,
@@ -737,8 +767,8 @@
       "family": "interactive",
       "filename": "AVR-P405-ten-frame-place-value-mastery.html",
       "local_cdn_path": "assets/cdn/interactives/AVR-P405-ten-frame-place-value-mastery.html",
-      "bundle_bytes": 54127,
-      "sha256": "ef8285cbf6ce445fd777fd9bbda70d93dc52900c739a3a7a5f5c03991b43aa6c",
+      "bundle_bytes": 59757,
+      "sha256": "369eb24bc858a90d939daa3a9099cb91c431fcda7dc36316db09cec157b4c4c0",
       "ceiling_bytes": 20971520,
       "offline_certified": true,
       "subject": "Mathematics",
@@ -769,13 +799,67 @@
       "sha256": "27691315d0d9ac00c1365682bac1d71dbd7b0a1f1cf9570d9229543f47f65f53",
       "ceiling_bytes": 20971520,
       "offline_certified": true,
-      "subject": "General",
+      "subject": "Mathematics",
       "classes": [
         1,
         2,
         3,
         4,
         5,
+        6,
+        7,
+        8
+      ],
+      "topics": [
+        "Universal Gamified Assessment",
+        "KingsMath Mastery"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P407",
+      "name": "candle flame thermal convection",
+      "family": "interactive",
+      "filename": "AVR-P407-candle-flame-thermal-convection.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P407-candle-flame-thermal-convection.html",
+      "bundle_bytes": 11475,
+      "sha256": "dc1f9ec053f0ecfbe050b8891d5fc6c23d16a47e6face8535b83daa637c9030f",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Science",
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Candle Flame Zones",
+        "Combustion",
+        "Fire Triangle",
+        "Thermal Convection"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P408",
+      "name": "biochemical dropper assay lab",
+      "family": "interactive",
+      "filename": "AVR-P408-biochemical-dropper-assay-lab.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P408-biochemical-dropper-assay-lab.html",
+      "bundle_bytes": 10616,
+      "sha256": "aef1ded2332f7609fbf91303e78b47fbf9d29b93582d7e86a6e0b8553cadfd02",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Science",
+      "classes": [
         6,
         7,
         8,
@@ -785,7 +869,10 @@
         12
       ],
       "topics": [
-        "Interactive Model"
+        "Biochemical Assays",
+        "Starch Iodine Test",
+        "Biuret Protein Test",
+        "Food Nutrients"
       ],
       "board": "All Boards (CBSE, ICSE, NCERT, State)",
       "contract": "AashaExperienceContract",
@@ -793,29 +880,91 @@
       "provenance": "AASHA original implementation of harvested mechanic"
     },
     {
-      "id": "AVR-P321-bio",
-      "name": "Mendelian Genetics: Punnett Square Interactive Sim",
-      "family": "genetics-biology",
-      "filename": "AVR-P321-bio-mendelian-punnett-square-sim.html",
-      "local_cdn_path": "assets/cdn/interactives/AVR-P321-bio-mendelian-punnett-square-sim.html",
-      "bundle_bytes": 18719,
-      "sha256": "8e8bca0c23cfcbd130a8b2bc4075a5cdbc6bb04475363f72ab06c14231bac7a3",
+      "id": "AVR-P409",
+      "name": "balance scale linear equations",
+      "family": "interactive",
+      "filename": "AVR-P409-balance-scale-linear-equations.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P409-balance-scale-linear-equations.html",
+      "bundle_bytes": 9795,
+      "sha256": "852957e90119bd50cb3dc7df7b51ca9c0fd731a4da01d2adeba6550c6759dd2c",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "topics": [
+        "Linear Equations",
+        "Balance Scale",
+        "Transposition",
+        "Equality Explorer"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P410",
+      "name": "mendelian genetics punnett matrix",
+      "family": "interactive",
+      "filename": "AVR-P410-mendelian-genetics-punnett-matrix.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P410-mendelian-genetics-punnett-matrix.html",
+      "bundle_bytes": 8706,
+      "sha256": "f36aa33ec45562a3ffc60022fd3e95b629f5bb6dd2e517b7a24ce956495e1663",
       "ceiling_bytes": 20971520,
       "offline_certified": true,
       "subject": "Science",
       "classes": [
-        10
+        9,
+        10,
+        11,
+        12
       ],
       "topics": [
-        "Heredity",
         "Mendelian Genetics",
+        "Punnett Squares",
         "Monohybrid Cross",
-        "Punnett Square"
+        "Sex Determination"
       ],
-      "board": "All Boards (NCERT, CBSE, ICSE, State)",
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
       "contract": "AashaExperienceContract",
       "license": "MIT",
-      "provenance": "AASHA original implementation of harvested AVR-P321 mechanic"
+      "provenance": "AASHA original implementation of harvested mechanic"
+    },
+    {
+      "id": "AVR-P411",
+      "name": "fraction pizza and 3d blocks",
+      "family": "interactive",
+      "filename": "AVR-P411-fraction-pizza-and-3d-blocks.html",
+      "local_cdn_path": "assets/cdn/interactives/AVR-P411-fraction-pizza-and-3d-blocks.html",
+      "bundle_bytes": 8757,
+      "sha256": "c394c7ee342509fee7b99e1028c4e7024e59c4ba3d6a9d5b3e25d3b589405dc9",
+      "ceiling_bytes": 20971520,
+      "offline_certified": true,
+      "subject": "Mathematics",
+      "classes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "topics": [
+        "Fractions",
+        "Fraction Pizza",
+        "Equivalent Fractions",
+        "Percentage Conversion"
+      ],
+      "board": "All Boards (CBSE, ICSE, NCERT, State)",
+      "contract": "AashaExperienceContract",
+      "license": "MIT",
+      "provenance": "AASHA original implementation of harvested mechanic"
     }
   ],
   "foundations": [
@@ -1525,6 +1674,36 @@
         "progressive_pedagogical_hints",
         "distractor_misconception_diagnostics",
         "zero_token_bleed_offline"
+      ],
+      "reuse_strategy": "EXTRACT"
+    },
+    {
+      "id": "F28",
+      "name": "OpenMAIC Governed Interactive Simulation Primitives",
+      "repo": "https://github.com/THU-MAIC/OpenMAIC",
+      "license": "MIT",
+      "subjects": [
+        "Physics",
+        "Science",
+        "Mathematics",
+        "Kinematics"
+      ],
+      "classes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "mechanics": [
+        "multi_parameter_sliders",
+        "interactive_simulation_primitives",
+        "trajectory_kinematics_canvas",
+        "velocity_vector_decomposition",
+        "gravity_vacuum_drag_sandbox",
+        "offline_canvas_animation_loop"
       ],
       "reuse_strategy": "EXTRACT"
     }

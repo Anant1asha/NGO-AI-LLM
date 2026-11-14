@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AVR-P411: Multi-Modal Fraction Pizza & Equivalent Blocks</title>
+<style>
+:root {
+  --bg: #070e17;
+  --panel: #111f30;
+  --border: #1d3652;
+  --teal: #31e6c4;
+  --gold: #ffc247;
+  --rose: #ff5f78;
+  --text: #f0f6fc;
+  --muted: #8ba2b6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+body { background: var(--bg); color: var(--text); padding: 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+.lab-card { width: 100%; max-width: 500px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.badge { background: rgba(49,230,196,.15); color: var(--teal); font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; letter-spacing: .5px; }
+h1 { font-size: 17px; font-weight: 800; }
+.canvas-wrap { position: relative; width: 100%; height: 260px; background: #04080e; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+canvas { width: 100%; height: 100%; display: block; }
+.status-pill { position: absolute; top: 12px; right: 12px; background: rgba(17,31,48,.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; backdrop-filter: blur(4px); }
+.status-pill b { color: var(--teal); }
+.controls { display: flex; flex-direction: column; gap: 10px; }
+.ctl-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+label { font-size: 13px; color: var(--muted); font-weight: 600; }
+input[type=range] { flex: 1; accent-color: var(--teal); height: 8px; min-height: 44px; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button.slice-btn { min-height: 44px; min-width: 44px; border: 1px solid var(--border); background: #0a1522; color: var(--text); border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .15s ease; padding: 6px 10px; }
+button.slice-btn:hover { background: rgba(49,230,196,.1); border-color: var(--teal); color: var(--teal); }
+button.slice-btn:active { background: rgba(49,230,196,.25); }
+.readout-box { background: #09131f; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.5; }
+.frac-tag { font-weight: 800; color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="lab-card">
+  <div class="header">
+    <span class="badge">AVR-P411 · FRACTION LAB</span>
+    <h1>Pizza & Equivalence Blocks</h1>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="fracCanvas" width="460" height="260"></canvas>
+    <div class="status-pill">
+      <div>Fraction: <b id="fracLabel">3 / 6</b></div>
+      <div>Percent: <b id="pctLabel">50.0%</b></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="ctl-row">
+      <label for="numSlider">Numerator (Slices Taken):</label>
+      <input type="range" id="numSlider" min="0" max="6" value="3" step="1">
+    </div>
+    <div class="ctl-row">
+      <label for="denSlider">Denominator (Total Slices):</label>
+      <input type="range" id="denSlider" min="2" max="10" value="6" step="1">
+    </div>
+
+    <div class="btn-grid">
+      <button class="slice-btn" id="btnHalf">⚡ Set to 1/2 Equivalent</button>
+      <button class="slice-btn" id="btnThreeFourth">⚡ Set to 3/4</button>
+    </div>
+  </div>
+
+  <div class="readout-box" id="fracReadout">
+    <span class="frac-tag" id="equivTitle">Equivalent Value: 3/6 = 1/2</span>
+    <div id="equivDesc" style="margin-top:4px; color:var(--muted)">
+      Whether you cut a roti into 2 big halves or 6 smaller slices, taking 3 of the 6 slices gives you the exact same amount of food (50%)!
+    </div>
+  </div>
+</div>
+
+<script>
+window.__AASHA_EVENTS__ = window.__AASHA_EVENTS__ || [];
+window.AASHA = {
+  emit: function(type, payload) {
+    window.__AASHA_EVENTS__.push({ type: type, payload: payload, ts: Date.now() });
+    window.dispatchEvent(new CustomEvent('aasha:telemetry', { detail: { type: type, payload: payload } }));
+  }
+};
+
+const canvas = document.getElementById('fracCanvas');
+const ctx = canvas.getContext('2d');
+const numSlider = document.getElementById('numSlider');
+const denSlider = document.getElementById('denSlider');
+
+let num = 3;
+let den = 6;
+
+function drawPizza() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cx = 130, cy = 130, r = 85;
+
+  // 1. Pizza Crust Base
+  ctx.fillStyle = '#b45309';
+  ctx.beginPath();
+  ctx.arc(cx, cy, r + 6, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = '#fde68a';
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 2. Draw Slices
+  const anglePerSlice = (Math.PI * 2) / den;
+  for (let i = 0; i < den; i++) {
+    const startA = i * anglePerSlice - Math.PI / 2;
+    const endA = startA + anglePerSlice;
+
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, startA, endA);
+    ctx.closePath();
+
+    if (i < num) {
+      // Shaded / Selected Slices (Teal Herb Pizza)
+      ctx.fillStyle = 'rgba(49, 230, 196, 0.85)';
+      ctx.fill();
+      ctx.strokeStyle = '#0f766e';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Little olive/tomato topping
+      const midA = startA + anglePerSlice / 2;
+      const tx = cx + Math.cos(midA) * (r * 0.6);
+      const ty = cy + Math.sin(midA) * (r * 0.6);
+      ctx.fillStyle = '#ef4444';
+      ctx.beginPath();
+      ctx.arc(tx, ty, 5, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      // Unselected Slices (Cheese)
+      ctx.fillStyle = 'rgba(254, 243, 199, 0.45)';
+      ctx.fill();
+      ctx.strokeStyle = '#d97706';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  }
+
+  // 3. Right Side: Linear Equivalent Fraction Strip
+  const sx = 260, sy = 60, sw = 170, sh = 32;
+
+  // Whole bar
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(sx, sy, sw, sh);
+  ctx.strokeStyle = '#475569';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(sx, sy, sw, sh);
+
+  // Filled section
+  const filledW = (num / den) * sw;
+  ctx.fillStyle = '#31e6c4';
+  ctx.fillRect(sx, sy, filledW, sh);
+
+  // Divide lines
+  const segW = sw / den;
+  ctx.strokeStyle = '#0f172a';
+  ctx.lineWidth = 2;
+  for (let i = 1; i < den; i++) {
+    ctx.beginPath();
+    ctx.moveTo(sx + i * segW, sy);
+    ctx.lineTo(sx + i * segW, sy + sh);
+    ctx.stroke();
+  }
+
+  // Reference 1/2 bar below
+  const sy2 = sy + 65;
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(sx, sy2, sw, sh);
+  ctx.strokeStyle = '#475569';
+  ctx.strokeRect(sx, sy2, sw, sh);
+
+  // Fill 1/2
+  ctx.fillStyle = '#ffc247';
+  ctx.fillRect(sx, sy2, sw * 0.5, sh);
+  ctx.strokeStyle = '#0f172a';
+  ctx.beginPath();
+  ctx.moveTo(sx + sw * 0.5, sy2);
+  ctx.lineTo(sx + sw * 0.5, sy2 + sh);
+  ctx.stroke();
+
+  // Labels
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 12px sans-serif';
+  ctx.fillText('Your Fraction: ' + num + '/' + den, sx, sy - 8);
+  ctx.fillText('Half Reference: 1/2 (50%)', sx, sy2 - 8);
+}
+
+function updateReadout() {
+  numSlider.max = den;
+  if (num > den) num = den;
+  numSlider.value = num;
+
+  const pct = ((num / den) * 100).toFixed(1);
+  document.getElementById('fracLabel').textContent = num + ' / ' + den;
+  document.getElementById('pctLabel').textContent = pct + '%';
+
+  // Check equivalence
+  const isHalf = (num * 2 === den);
+  if (isHalf) {
+    document.getElementById('equivTitle').textContent = `Equivalent Value: ${num}/${den} = 1/2`;
+    document.getElementById('equivDesc').textContent = `Taking ${num} out of ${den} slices is mathematically identical to taking half the pizza (${pct}%)!`;
+  } else {
+    document.getElementById('equivTitle').textContent = `Fraction: ${num}/${den} (${pct}%)`;
+    document.getElementById('equivDesc').textContent = `${num} parts out of ${den} equal parts. Decimal equivalent: ${(num / den).toFixed(3)}.`;
+  }
+
+  drawPizza();
+  window.AASHA.emit('FRACTION_UPDATE', { num, den, pct });
+}
+
+numSlider.addEventListener('input', (e) => {
+  num = +e.target.value;
+  updateReadout();
+});
+
+denSlider.addEventListener('input', (e) => {
+  den = +e.target.value;
+  updateReadout();
+});
+
+document.getElementById('btnHalf').addEventListener('click', () => {
+  den = 6;
+  num = 3;
+  denSlider.value = 6;
+  numSlider.value = 3;
+  updateReadout();
+});
+
+document.getElementById('btnThreeFourth').addEventListener('click', () => {
+  den = 8;
+  num = 6;
+  denSlider.value = 8;
+  numSlider.value = 6;
+  updateReadout();
+});
+
+updateReadout();
+window.AASHA.emit('SIMULATION_MOUNT', { id: 'AVR-P411' });
+</script>
+</body>
+</html>

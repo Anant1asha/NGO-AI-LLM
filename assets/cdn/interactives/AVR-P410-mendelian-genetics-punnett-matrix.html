@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AVR-P410: Mendelian Genetics & Punnett Matrix Simulator</title>
+<style>
+:root {
+  --bg: #070e17;
+  --panel: #111f30;
+  --border: #1d3652;
+  --teal: #31e6c4;
+  --gold: #ffc247;
+  --rose: #ff5f78;
+  --text: #f0f6fc;
+  --muted: #8ba2b6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+body { background: var(--bg); color: var(--text); padding: 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+.lab-card { width: 100%; max-width: 500px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.badge { background: rgba(49,230,196,.15); color: var(--teal); font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; letter-spacing: .5px; }
+h1 { font-size: 17px; font-weight: 800; }
+.canvas-wrap { position: relative; width: 100%; height: 260px; background: #04080e; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+canvas { width: 100%; height: 100%; display: block; }
+.status-pill { position: absolute; top: 12px; right: 12px; background: rgba(17,31,48,.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; backdrop-filter: blur(4px); }
+.status-pill b { color: var(--gold); }
+.controls { display: flex; flex-direction: column; gap: 10px; }
+label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button.cross-btn { min-height: 44px; min-width: 44px; border: 1px solid var(--border); background: #0a1522; color: var(--text); border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .15s ease; padding: 8px 10px; }
+button.cross-btn.on { background: rgba(49,230,196,.2); border-color: var(--teal); color: var(--teal); }
+.readout-box { background: #09131f; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.5; }
+.ratio-tag { font-weight: 800; color: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="lab-card">
+  <div class="header">
+    <span class="badge">AVR-P410 · GENETICS LAB</span>
+    <h1>Mendelian Punnett Matrix</h1>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="genCanvas" width="460" height="260"></canvas>
+    <div class="status-pill">
+      <div>Ratio: <b id="phenoRatio">3 Tall : 1 Dwarf</b></div>
+      <div>Genotype: <b id="genoRatio">1:2:1</b></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label>Select Breeding Generation:</label>
+    <div class="btn-grid">
+      <button class="cross-btn" id="btnP1">P₁ Pure Cross (TT × tt)</button>
+      <button class="cross-btn on" id="btnF1">F₁ Self-Cross (Tt × Tt)</button>
+      <button class="cross-btn" id="btnBack">Back-Cross (TT × Tt)</button>
+      <button class="cross-btn" id="btnSex">Sex Chromosomes (XX × XY)</button>
+    </div>
+  </div>
+
+  <div class="readout-box" id="genReadout">
+    <span class="ratio-tag" id="genTitle">F₁ Monohybrid Self-Cross:</span>
+    <span id="genBody"> Crossing heterozygous parents (Tt × Tt) produces 75% Tall plants (TT, Tt) and 25% Dwarf plants (tt) in the classic 3:1 phenotypic ratio!</span>
+  </div>
+</div>
+
+<script>
+window.__AASHA_EVENTS__ = window.__AASHA_EVENTS__ || [];
+window.AASHA = {
+  emit: function(type, payload) {
+    window.__AASHA_EVENTS__.push({ type: type, payload: payload, ts: Date.now() });
+    window.dispatchEvent(new CustomEvent('aasha:telemetry', { detail: { type: type, payload: payload } }));
+  }
+};
+
+const canvas = document.getElementById('genCanvas');
+const ctx = canvas.getContext('2d');
+
+let mode = 'f1';
+
+const modes = {
+  p1: {
+    p1: ['T', 'T'], p2: ['t', 't'],
+    title: 'Parental Pure Cross (TT × tt)',
+    pheno: '100% Tall (All Tt)',
+    geno: '100% Heterozygous Tt',
+    body: 'Mendel crossed pure tall (TT) with pure dwarf (tt). All F1 offspring display the dominant tall phenotype because T completely masks t!',
+    isSex: false
+  },
+  f1: {
+    p1: ['T', 't'], p2: ['T', 't'],
+    title: 'F₁ Monohybrid Self-Cross (Tt × Tt)',
+    pheno: '3 Tall : 1 Dwarf (75% : 25%)',
+    geno: '1 TT : 2 Tt : 1 tt',
+    body: 'When F1 hybrid plants self-pollinate, the hidden recessive dwarf trait (tt) miraculously reappears in 25% of offspring!',
+    isSex: false
+  },
+  back: {
+    p1: ['T', 'T'], p2: ['T', 't'],
+    title: 'Back-Cross (TT × Tt)',
+    pheno: '100% Tall (0% Dwarf)',
+    geno: '1 TT : 1 Tt',
+    body: 'Crossing with homozygous dominant guarantees 100% tall offspring, split equally between pure TT (50%) and carrier Tt (50%).',
+    isSex: false
+  },
+  sex: {
+    p1: ['X', 'Y'], p2: ['X', 'X'],
+    title: 'Human Sex Determination (XX × XY)',
+    pheno: '50% Female : 50% Male',
+    geno: '2 XX : 2 XY',
+    body: 'Mothers contribute an X chromosome. The fertilizing sperm from the father carries either X (female) or Y (male), determining biological sex with 50/50 probability!',
+    isSex: true
+  }
+};
+
+function drawPunnett() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cfg = modes[mode];
+
+  // Grid coordinates
+  const gx = 160, gy = 65, cw = 110, ch = 85;
+
+  // Header Parent 1 Gametes (Horizontal)
+  ctx.fillStyle = '#31e6c4';
+  ctx.font = 'bold 12px sans-serif';
+  ctx.fillText(cfg.isSex ? 'Father (XY) ➔' : 'Parent 1 Gametes ➔', 40, 45);
+
+  ctx.fillStyle = '#31e6c4';
+  ctx.font = 'bold 18px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(cfg.p1[0], gx + cw * 0.5, 48);
+  ctx.fillText(cfg.p1[1], gx + cw * 1.5, 48);
+
+  // Header Parent 2 Gametes (Vertical)
+  ctx.fillStyle = '#ffc247';
+  ctx.font = 'bold 12px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText(cfg.isSex ? 'Mother' : 'Parent 2', 40, 100);
+  ctx.fillText(cfg.isSex ? '(XX) ➔' : 'Gametes', 40, 116);
+
+  ctx.fillStyle = '#ffc247';
+  ctx.font = 'bold 18px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(cfg.p2[0], gx - 25, gy + ch * 0.5 + 6);
+  ctx.fillText(cfg.p2[1], gx - 25, gy + ch * 1.5 + 6);
+
+  // 4 Cells
+  for (let r = 0; r < 2; r++) {
+    for (let c = 0; c < 2; c++) {
+      const x = gx + c * cw;
+      const y = gy + r * ch;
+      const a1 = cfg.p2[r];
+      const a2 = cfg.p1[c];
+
+      // Form genotype
+      let g = '';
+      let isDominant = false;
+      let label = '';
+
+      if (cfg.isSex) {
+        g = a2 === 'Y' ? (a1 + 'Y') : 'XX';
+        isDominant = (g === 'XY');
+        label = isDominant ? '👦 Boy (XY)' : '👧 Girl (XX)';
+      } else {
+        g = (a1 === 'T' || a2 === 'T') && (a1 === 't' || a2 === 't') ? 'Tt' : (a1 + a2);
+        isDominant = g.includes('T');
+        label = isDominant ? '🌱 Tall Pea' : '🌾 Dwarf Sprout';
+      }
+
+      ctx.fillStyle = isDominant ? 'rgba(49,230,196,0.12)' : 'rgba(255,95,120,0.12)';
+      ctx.fillRect(x, y, cw, ch);
+      ctx.strokeStyle = isDominant ? '#31e6c4' : '#ff5f78';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x, y, cw, ch);
+
+      ctx.fillStyle = isDominant ? '#31e6c4' : '#ff5f78';
+      ctx.font = 'bold 22px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(g, x + cw / 2, y + 40);
+
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillStyle = isDominant ? '#a7f3d0' : '#fecdd3';
+      ctx.fillText(label, x + cw / 2, y + 65);
+    }
+  }
+}
+
+function setMode(newMode) {
+  mode = newMode;
+  document.querySelectorAll('.cross-btn').forEach(b => b.classList.remove('on'));
+  const cfg = modes[mode];
+  document.getElementById('phenoRatio').textContent = cfg.pheno;
+  document.getElementById('genoRatio').textContent = cfg.geno;
+  document.getElementById('genTitle').textContent = cfg.title + ':';
+  document.getElementById('genBody').textContent = ' ' + cfg.body;
+  drawPunnett();
+  window.AASHA.emit('GENETICS_MODE', { mode: newMode, pheno: cfg.pheno, geno: cfg.geno });
+}
+
+document.getElementById('btnP1').addEventListener('click', (e) => { setMode('p1'); e.target.classList.add('on'); });
+document.getElementById('btnF1').addEventListener('click', (e) => { setMode('f1'); e.target.classList.add('on'); });
+document.getElementById('btnBack').addEventListener('click', (e) => { setMode('back'); e.target.classList.add('on'); });
+document.getElementById('btnSex').addEventListener('click', (e) => { setMode('sex'); e.target.classList.add('on'); });
+
+drawPunnett();
+window.AASHA.emit('SIMULATION_MOUNT', { id: 'AVR-P410' });
+</script>
+</body>
+</html>

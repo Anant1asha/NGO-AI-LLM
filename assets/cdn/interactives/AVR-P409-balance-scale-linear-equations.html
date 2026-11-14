@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AVR-P409: Mechanical Balance Scale & Algebraic Transposition Lab</title>
+<style>
+:root {
+  --bg: #070e17;
+  --panel: #111f30;
+  --border: #1d3652;
+  --teal: #31e6c4;
+  --gold: #ffc247;
+  --rose: #ff5f78;
+  --text: #f0f6fc;
+  --muted: #8ba2b6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+body { background: var(--bg); color: var(--text); padding: 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+.lab-card { width: 100%; max-width: 500px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.badge { background: rgba(49,230,196,.15); color: var(--teal); font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; letter-spacing: .5px; }
+h1 { font-size: 17px; font-weight: 800; }
+.canvas-wrap { position: relative; width: 100%; height: 260px; background: #04080e; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+canvas { width: 100%; height: 100%; display: block; }
+.status-pill { position: absolute; top: 12px; right: 12px; background: rgba(17,31,48,.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; backdrop-filter: blur(4px); }
+.status-pill b { color: var(--gold); }
+.controls { display: flex; flex-direction: column; gap: 10px; }
+label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button.step-btn { min-height: 44px; min-width: 44px; border: 1px solid var(--border); background: #0a1522; color: var(--text); border-radius: 8px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all .15s ease; padding: 8px 12px; }
+button.step-btn:hover { background: rgba(49,230,196,.1); border-color: var(--teal); color: var(--teal); }
+button.step-btn:active { background: rgba(49,230,196,.25); }
+.readout-box { background: #09131f; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.5; }
+.eq-tag { font-weight: 800; color: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="lab-card">
+  <div class="header">
+    <span class="badge">AVR-P409 · ALGEBRA LAB</span>
+    <h1>Dynamic Balance Scale</h1>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="scaleCanvas" width="460" height="260"></canvas>
+    <div class="status-pill">
+      <div>State: <b id="balanceState">Balanced</b></div>
+      <div>Angle: <b id="tiltAngle">0.0°</b></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label>Algebraic Transposition Operations:</label>
+    <div class="btn-grid">
+      <button class="step-btn" id="btnSub3">➖ Subtract 3 (Both Sides)</button>
+      <button class="step-btn" id="btnDiv2">➗ Divide by 2 (Isolate x)</button>
+      <button class="step-btn" id="btnAddWeight">➕ Add 1 to Right Pan</button>
+      <button class="step-btn" id="btnReset">🔄 Reset Equation</button>
+    </div>
+  </div>
+
+  <div class="readout-box" id="eqReadout">
+    <span class="eq-tag" id="eqStepTitle">Equation: 2x + 3 = 11</span>
+    <div id="eqStepDesc" style="margin-top:4px; color:var(--muted)">
+      Left Pan: 2 bags of x + 3 unit weights. Right Pan: 11 unit weights. Both pans have equal total mass, maintaining perfect horizontal equilibrium!
+    </div>
+  </div>
+</div>
+
+<script>
+window.__AASHA_EVENTS__ = window.__AASHA_EVENTS__ || [];
+window.AASHA = {
+  emit: function(type, payload) {
+    window.__AASHA_EVENTS__.push({ type: type, payload: payload, ts: Date.now() });
+    window.dispatchEvent(new CustomEvent('aasha:telemetry', { detail: { type: type, payload: payload } }));
+  }
+};
+
+const canvas = document.getElementById('scaleCanvas');
+const ctx = canvas.getContext('2d');
+
+let state = {
+  leftX: 2,
+  leftConst: 3,
+  rightVal: 11,
+  xVal: 4,
+  angle: 0.0,
+  targetAngle: 0.0,
+  angularVelocity: 0.0
+};
+
+function calculateTilt() {
+  const leftMass = state.leftX * state.xVal + state.leftConst;
+  const rightMass = state.rightVal;
+  const diff = leftMass - rightMass;
+  // Damped torque tilt angle
+  state.targetAngle = Math.max(-0.25, Math.min(0.25, diff * 0.04));
+}
+
+function updatePhysics() {
+  calculateTilt();
+  const spring = 0.08;
+  const damping = 0.82;
+  const force = (state.targetAngle - state.angle) * spring;
+  state.angularVelocity = (state.angularVelocity + force) * damping;
+  state.angle += state.angularVelocity;
+
+  const deg = (state.angle * (180 / Math.PI)).toFixed(1);
+  document.getElementById('tiltAngle').textContent = deg + '°';
+  const balanced = Math.abs(state.angle) < 0.015;
+  document.getElementById('balanceState').textContent = balanced ? 'Balanced' : (state.angle > 0 ? 'Left Heavier' : 'Right Heavier');
+  document.getElementById('balanceState').style.color = balanced ? '#31e6c4' : '#ff5f78';
+}
+
+function drawScale() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cx = 230, cy = 130;
+
+  // 1. Fulcrum Stand
+  ctx.fillStyle = '#334155';
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - 10);
+  ctx.lineTo(cx - 30, cy + 110);
+  ctx.lineTo(cx + 30, cy + 110);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(cx - 70, cy + 110, 140, 15);
+
+  // 2. Rotating Beam
+  ctx.save();
+  ctx.translate(cx, cy - 10);
+  ctx.rotate(state.angle);
+
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillRect(-150, -6, 300, 12);
+  ctx.fillStyle = '#0284c7';
+  ctx.beginPath();
+  ctx.arc(0, 0, 8, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Left & Right attachment points
+  const lx = -135, rx = 135;
+
+  ctx.restore();
+
+  // Calculate Pan Positions
+  const leftX = cx + Math.cos(state.angle) * (-135);
+  const leftY = (cy - 10) + Math.sin(state.angle) * (-135);
+
+  const rightX = cx + Math.cos(state.angle) * 135;
+  const rightY = (cy - 10) + Math.sin(state.angle) * 135;
+
+  // 3. Hanging Strings & Left Pan
+  ctx.strokeStyle = '#94a3b8';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(leftX, leftY);
+  ctx.lineTo(leftX - 35, leftY + 70);
+  ctx.moveTo(leftX, leftY);
+  ctx.lineTo(leftX + 35, leftY + 70);
+  ctx.stroke();
+
+  ctx.fillStyle = '#1e293b';
+  ctx.strokeStyle = '#64748b';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.ellipse(leftX, leftY + 70, 45, 10, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+
+  // 4. Hanging Strings & Right Pan
+  ctx.beginPath();
+  ctx.moveTo(rightX, rightY);
+  ctx.lineTo(rightX - 35, rightY + 70);
+  ctx.moveTo(rightX, rightY);
+  ctx.lineTo(rightX + 35, rightY + 70);
+  ctx.stroke();
+
+  ctx.fillStyle = '#1e293b';
+  ctx.strokeStyle = '#64748b';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.ellipse(rightX, rightY + 70, 45, 10, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+
+  // 5. Draw Weights on Left Pan (x bags + unit weights)
+  let wx = leftX - 25;
+  for (let i = 0; i < state.leftX; i++) {
+    ctx.fillStyle = '#31e6c4';
+    ctx.fillRect(wx, leftY + 45, 20, 22);
+    ctx.fillStyle = '#0f172a';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('x', wx + 6, leftY + 60);
+    wx += 24;
+  }
+  let cxw = leftX - 20;
+  for (let i = 0; i < state.leftConst; i++) {
+    ctx.fillStyle = '#ffc247';
+    ctx.beginPath();
+    ctx.arc(cxw + (i % 4) * 12, leftY + 40 - Math.floor(i / 4) * 12, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // 6. Draw Weights on Right Pan
+  for (let i = 0; i < state.rightVal; i++) {
+    ctx.fillStyle = '#ffc247';
+    ctx.beginPath();
+    const rxPos = rightX - 25 + (i % 5) * 12;
+    const ryPos = rightY + 60 - Math.floor(i / 5) * 12;
+    ctx.arc(rxPos, ryPos, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function loop() {
+  updatePhysics();
+  drawScale();
+  requestAnimationFrame(loop);
+}
+
+document.getElementById('btnSub3').addEventListener('click', () => {
+  if (state.leftConst >= 3 && state.rightVal >= 3) {
+    state.leftConst -= 3;
+    state.rightVal -= 3;
+    document.getElementById('eqStepTitle').textContent = 'Step 1: 2x = 8';
+    document.getElementById('eqStepDesc').textContent = 'Subtracted 3 from BOTH pans simultaneously. The balance remains perfectly level!';
+    window.AASHA.emit('EQUATION_STEP', { step: 1, eq: '2x = 8' });
+  }
+});
+
+document.getElementById('btnDiv2').addEventListener('click', () => {
+  if (state.leftX === 2 && state.leftConst === 0 && state.rightVal === 8) {
+    state.leftX = 1;
+    state.rightVal = 4;
+    document.getElementById('eqStepTitle').textContent = 'Step 2: x = 4 (Solution!)';
+    document.getElementById('eqStepDesc').textContent = 'Divided both pans by 2. Each x weight equals exactly 4 units! The scale is in perfect harmony.';
+    window.AASHA.emit('EQUATION_SOLVED', { x: 4 });
+  }
+});
+
+document.getElementById('btnAddWeight').addEventListener('click', () => {
+  state.rightVal += 1;
+  document.getElementById('eqStepTitle').textContent = 'Imbalance Introduced!';
+  document.getElementById('eqStepDesc').textContent = 'Added weight to the right pan without adding to the left. The scale tilts right, proving equality was broken!';
+  window.AASHA.emit('IMBALANCE_TEST', { rightVal: state.rightVal });
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  state.leftX = 2;
+  state.leftConst = 3;
+  state.rightVal = 11;
+  document.getElementById('eqStepTitle').textContent = 'Equation: 2x + 3 = 11';
+  document.getElementById('eqStepDesc').textContent = 'Left Pan: 2 bags of x + 3 unit weights. Right Pan: 11 unit weights.';
+  window.AASHA.emit('RESET', {});
+});
+
+loop();
+window.AASHA.emit('SIMULATION_MOUNT', { id: 'AVR-P409' });
+</script>
+</body>
+</html>

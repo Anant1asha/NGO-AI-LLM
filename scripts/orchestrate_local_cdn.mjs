@@ -62,7 +62,13 @@ const AVR_CURRICULAR_MAP = {
   'AVR-P402': { subject: 'Physics', classes: [11, 12], topics: ['Lorentz Force', 'Magnetic Field', 'Cyclotron Motion', 'Electrodynamics'] },
   'AVR-P403': { subject: 'Physics', classes: [11, 12], topics: ['Error Analysis', 'Percentage Error', 'Propagation of Errors', 'Significant Figures'] },
   'AVR-P404': { subject: 'Physics', classes: [11], topics: ['Dimensional Analysis', 'Dimensions of Physical Quantities', 'Unit Conversion'] },
-  'AVR-P405': { subject: 'Mathematics', classes: [1, 2, 3, 4], topics: ['Place Value', 'Ten Frames', 'Base 10', 'Number Sense'] }
+  'AVR-P405': { subject: 'Mathematics', classes: [1, 2, 3, 4], topics: ['Place Value', 'Ten Frames', 'Base 10', 'Number Sense'] },
+  'AVR-P406': { subject: 'Mathematics', classes: [1, 2, 3, 4, 5, 6, 7, 8], topics: ['Universal Gamified Assessment', 'KingsMath Mastery'] },
+  'AVR-P407': { subject: 'Science', classes: [6, 7, 8, 9, 10], topics: ['Candle Flame Zones', 'Combustion', 'Fire Triangle', 'Thermal Convection'] },
+  'AVR-P408': { subject: 'Science', classes: [6, 7, 8, 9, 10, 11, 12], topics: ['Biochemical Assays', 'Starch Iodine Test', 'Biuret Protein Test', 'Food Nutrients'] },
+  'AVR-P409': { subject: 'Mathematics', classes: [6, 7, 8, 9, 10], topics: ['Linear Equations', 'Balance Scale', 'Transposition', 'Equality Explorer'] },
+  'AVR-P410': { subject: 'Science', classes: [9, 10, 11, 12], topics: ['Mendelian Genetics', 'Punnett Squares', 'Monohybrid Cross', 'Sex Determination'] },
+  'AVR-P411': { subject: 'Mathematics', classes: [3, 4, 5, 6, 7, 8], topics: ['Fractions', 'Fraction Pizza', 'Equivalent Fractions', 'Percentage Conversion'] }
 };
 
 function ensureDir(dir) {
