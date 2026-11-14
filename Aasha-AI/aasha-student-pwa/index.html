@@ -136,9 +136,10 @@
       const target = e.target.closest('[data-action]');
       if (!target) return;
       const action = target.getAttribute('data-action');
-      if (action === 'launch-chapter' || action === 'launch-practice') {
+      if (action === 'launch-chapter' || action === 'launch-practice' || action === 'launch-arena' || action === 'switch-player-mode') {
         const chId = target.getAttribute('data-chapter-id');
-        modalMount.innerHTML = renderChapterPlayerModal(chId);
+        const mode = target.getAttribute('data-mode') || (action === 'launch-arena' || action === 'launch-practice' ? 'arena' : 'learn');
+        modalMount.innerHTML = renderChapterPlayerModal(chId, mode);
       } else if (action === 'close-chapter-player' || action === 'cancel-pin-modal') {
         modalMount.innerHTML = '';
         persistAndRefresh();

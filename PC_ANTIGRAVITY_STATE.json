@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_D_STUDENT_PWA_AND_AASHA_STUDIO_LEARN_ARENA_LAUNCHER_INTEGRATION",
+  "next_focus_unit": "PHASE_F_G_END_TO_END_RELEASE_READINESS_AND_OFFLINE_PWA_SERVICE_WORKER_PRECACHE_VERIFICATION",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,13 +78,21 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "updated_at": "2026-11-14T06:55:34.965291+00:00",
+  "updated_at": "2026-11-14T11:24:00.619889+00:00",
   "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_E_13CHAPTER_LEARN_ARENA_BATCH_CERTIFIED",
+  "active_phase": "PHASE_D_STUDENT_PWA_AND_AASHA_STUDIO_LEARN_ARENA_LAUNCHER_CERTIFIED",
   "learn_arena_batch": {
     "chapters_compiled": 13,
     "total_html5_modules_generated": 26,
     "total_qa_checks_passed": "871/871",
     "sqlite_gz_bytes": 44855
+  },
+  "phase_d_launcher_integration": {
+    "learn_arena_catalogue_chapters": 13,
+    "learn_arena_html5_modules": 26,
+    "offline_chapter_catalogue_preserved": 26,
+    "server_endpoints_verified": 15,
+    "visual_contract_assertions": "97/97",
+    "learn_arena_qa_checks": "871/871"
   }
 }

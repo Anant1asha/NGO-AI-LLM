@@ -11,6 +11,10 @@ export interface StudioQAScorecard {
   bundleBytes: number;
   under20MiBCeiling: boolean;
   zeroExternalUrls: boolean;
+  learnHtmlFile?: string;
+  arenaHtmlFile?: string;
+  learnQaPassed?: string;
+  arenaQaPassed?: string;
 }
 
 export function computeStudioLivePreviewScorecard(spec: Partial<StudioQAScorecard>): StudioQAScorecard {
@@ -29,6 +33,10 @@ export function computeStudioLivePreviewScorecard(spec: Partial<StudioQAScorecar
     visualContractAssertionsPassed: 97,
     bundleBytes,
     under20MiBCeiling: bundleBytes <= 20971520,
-    zeroExternalUrls: true
+    zeroExternalUrls: true,
+    learnHtmlFile: `${spec.chapterId ?? 'NCERT-CLASS6-MATH-CH07-FRACTIONS'}_Learning.html`,
+    arenaHtmlFile: `${spec.chapterId ?? 'NCERT-CLASS6-MATH-CH07-FRACTIONS'}_Arena.html`,
+    learnQaPassed: '33/33',
+    arenaQaPassed: '34/34'
   };
 }

@@ -135,6 +135,22 @@ export function renderFacilitatorPinModal(actionLabel = "Fulfill Store Order", i
   `.trim();
 }
 
+export const LEARN_ARENA_13_CATALOGUE = [
+  { id: "NCERT-G06-MATH-CH07-FRACTIONS", titleEn: "Class 6 Math Ch 07: Fractions on the Number Line & Equivalent Ratios", titleHi: "संख्या रेखा पर भिन्न और समतुल्य अनुपात", grade: 6, subject: "Mathematics", learnFile: "NCERT-G06-MATH-CH07-FRACTIONS_Learning.html", arenaFile: "NCERT-G06-MATH-CH07-FRACTIONS_Arena.html" },
+  { id: "NCERT-G07-MATH-CH11-PERIMETER-AREA", titleEn: "Class 7 Math Ch 11: Perimeter and Area of Polygons & Community Gardens", titleHi: "बहुभुज और सामुदायिक उद्यानों का परिमाप और क्षेत्रफल", grade: 7, subject: "Mathematics", learnFile: "NCERT-G07-MATH-CH11-PERIMETER-AREA_Learning.html", arenaFile: "NCERT-G07-MATH-CH11-PERIMETER-AREA_Arena.html" },
+  { id: "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES", titleEn: "Class 8 Math Ch 08: Comparing Quantities, Percentages & Micro-Savings", titleHi: "राशियों की तुलना, प्रतिशत और सहकारी बचत", grade: 8, subject: "Mathematics", learnFile: "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Learning.html", arenaFile: "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Arena.html" },
+  { id: "NCERT-G09-SCI-CH08-FORCE-MOTION", titleEn: "Class 9 Science Ch 08: Force, Newton's Laws of Motion & Momentum", titleHi: "बल, न्यूटन के गति के नियम और संवेग संरक्षण", grade: 9, subject: "Science", learnFile: "NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html", arenaFile: "NCERT-G09-SCI-CH08-FORCE-MOTION_Arena.html" },
+  { id: "NCERT-G09-SCI-CH10-WORK-ENERGY", titleEn: "Class 9 Science Ch 10: Work, Kinetic & Potential Energy in Micro-Grids", titleHi: "नवीकरणीय माइक्रोग्रिड में कार्य, गतिज और स्थितिज ऊर्जा", grade: 9, subject: "Science", learnFile: "NCERT-G09-SCI-CH10-WORK-ENERGY_Learning.html", arenaFile: "NCERT-G09-SCI-CH10-WORK-ENERGY_Arena.html" },
+  { id: "NCERT-G10-MATH-CH02-POLYNOMIALS", titleEn: "Class 10 Math Ch 02: Polynomial Zeros, Parabolic Graphs & Modeling", titleHi: "बहुपद के शून्यक, परवलयिक ग्राफ और द्विघात मॉडलिंग", grade: 10, subject: "Mathematics", learnFile: "NCERT-G10-MATH-CH02-POLYNOMIALS_Learning.html", arenaFile: "NCERT-G10-MATH-CH02-POLYNOMIALS_Arena.html" },
+  { id: "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS", titleEn: "Class 10 Science Ch 06: Life Processes, Stomatal Transpiration & Nutrition", titleHi: "जैव प्रक्रम, रंध्रीय वाष्पोत्सर्जन और कोशिकीय पोषण", grade: 10, subject: "Science", learnFile: "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Learning.html", arenaFile: "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Arena.html" },
+  { id: "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW", titleEn: "Class 10 Science Ch 12: Electric Potential, Ohm's Law & Solar Circuits", titleHi: "विद्युत विभव, ओम का नियम और सौर परिपथ", grade: 10, subject: "Science", learnFile: "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html", arenaFile: "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Arena.html" },
+  { id: "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER", titleEn: "NCVET L3 IT: Offline-First Community Data Ledgers & Impact Tables", titleHi: "ऑफ़लाइन-प्रथम सामुदायिक डेटा खाता और सत्यापन योग्य प्रभाव तालिका", grade: 10, subject: "Computer Science", learnFile: "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html", arenaFile: "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Arena.html" },
+  { id: "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA", titleEn: "NCVET L4 Agri: Precision Drip Irrigation Hydraulics & Soil Moisture", titleHi: "सटीक ड्रिप सिंचाई हाइड्रोलिक्स और मृदा नमी बजट", grade: 10, subject: "Science", learnFile: "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html", arenaFile: "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Arena.html" },
+  { id: "NCVET_PSSCIVE_L3_IT_DataEntry_v5", titleEn: "NCVET L3 Job Role: Domestic Data Entry & Digital Village Ledger", titleHi: "एनसीवीईटी स्तर 3 — घरेलू डेटा एंट्री और डिजिटल ग्राम बहीखाता", grade: 11, subject: "Computer Science", learnFile: "NCVET_PSSCIVE_L3_IT_DataEntry_Learning.html", arenaFile: "NCVET_PSSCIVE_L3_IT_DataEntry_Arena.html" },
+  { id: "NCVET_PSSCIVE_L4_Agri_SolarDrip_v5", titleEn: "NCVET L4 Job Role: Solar Micro-Irrigation & Jal Seva Technician", titleHi: "एनसीवीईटी स्तर 4 — सौर सूक्ष्म सिंचाई और जल सेवा तकनीशियन", grade: 11, subject: "Science", learnFile: "NCVET_PSSCIVE_L4_Agri_SolarDrip_Learning.html", arenaFile: "NCVET_PSSCIVE_L4_Agri_SolarDrip_Arena.html" },
+  { id: "NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5", titleEn: "NCVET L4 Job Role: Rural Solar Food Dehydrator Unit Operator", titleHi: "एनसीवीईटी स्तर 4 — ग्रामीण सौर खाद्य निर्जलीकरण इकाई ऑपरेटर", grade: 12, subject: "Science", learnFile: "NCVET_PSSCIVE_L4_Food_SolarDehydrator_Learning.html", arenaFile: "NCVET_PSSCIVE_L4_Food_SolarDehydrator_Arena.html" }
+];
+
 export const OFFLINE_CHAPTER_CATALOGUE = [
   { id: "ch_econ_01", titleEn: "NCERT Economics Ch 1: Story of Village Palampur", titleHi: "अर्थशास्त्र अध्याय 1: पालमपुर गाँव की कहानी", grade: 9, subject: "Economics", bundleFile: "ncert_economics_ch1_modal.html" },
   { id: "ch_bst_12", titleEn: "Business Studies Class 12: Nature & Principles of Management", titleHi: "व्यवसाय अध्ययन: प्रबंध की प्रकृति और सिद्धांत", grade: 12, subject: "Commerce", bundleFile: "business_studies_class12_ch1_ch2.html" },
@@ -183,10 +199,16 @@ export function renderLearnCatalogue(state = {}) {
           <span style="font-size:0.85rem;font-weight:600;color:${done ? '#15803d' : '#64748b'};">
             ${done ? `✅ Completed (${bestScore}%)` : '📴 Ready Offline (< 20 MiB)'}
           </span>
-          <button type="button" class="btn-launch-chapter" data-action="launch-chapter" data-chapter-id="${ch.id}" data-bundle-file="${ch.bundleFile}"
-                  style="min-width:44px;min-height:44px;padding:8px 16px;border-radius:10px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
-            ${done ? '🔄 Replay / पुनः अभ्यास' : '▶️ Start Lesson / शुरू करें'}
-          </button>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button type="button" class="btn-launch-chapter" data-action="launch-chapter" data-mode="learn" data-chapter-id="${ch.id}" data-bundle-file="${ch.learnFile || ch.bundleFile}"
+                    style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:10px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+              ${done ? '🔄 Replay Learn / पाठ' : '▶️ Aasha Learn / पाठ'}
+            </button>
+            <button type="button" class="btn-launch-arena" data-action="launch-arena" data-mode="arena" data-chapter-id="${ch.id}" data-bundle-file="${ch.arenaFile || ch.bundleFile}"
+                    style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:10px;border:none;background:#7c3aed;color:#ffffff;font-weight:700;cursor:pointer;">
+              ⚔️ Aasha Arena / अखाड़ा
+            </button>
+          </div>
         </div>
       </article>
     `;
@@ -205,19 +227,30 @@ export function renderLearnCatalogue(state = {}) {
   `.trim();
 }
 
-export function renderChapterPlayerModal(chapterId) {
-  const ch = OFFLINE_CHAPTER_CATALOGUE.find((c) => c.id === chapterId) || OFFLINE_CHAPTER_CATALOGUE[10];
+export function renderChapterPlayerModal(chapterId, mode = "learn") {
+  const pairMatch = LEARN_ARENA_13_CATALOGUE.find((c) => c.id === chapterId);
+  const ch = pairMatch || OFFLINE_CHAPTER_CATALOGUE.find((c) => c.id === chapterId) || OFFLINE_CHAPTER_CATALOGUE[10];
+  const activeMode = String(mode || "learn").toLowerCase() === "arena" ? "arena" : "learn";
+  const targetFile = activeMode === "arena"
+    ? (ch.arenaFile || (ch.bundleFile ? ch.bundleFile.replace(/_Learning\.html$|\.html$/, "_Arena.html") : "NCERT-G06-MATH-CH07-FRACTIONS_Arena.html"))
+    : (ch.learnFile || ch.bundleFile || "NCERT-G06-MATH-CH07-FRACTIONS_Learning.html");
   return `
-    <div id="chapter-player-modal" role="dialog" aria-modal="true" aria-label="${ch.titleEn}"
+    <div id="chapter-player-modal" data-active-mode="${activeMode}" role="dialog" aria-modal="true" aria-label="${ch.titleEn}"
          style="position:fixed;inset:0;background:#0f172a;display:flex;flex-direction:column;z-index:9998;">
-      <header style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:#1e293b;color:#f8fafc;">
-        <strong>📖 ${ch.titleHi}</strong>
-        <button type="button" data-action="close-chapter-player"
-                style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:8px;border:none;background:#ef4444;color:#ffffff;font-weight:700;cursor:pointer;">
-          ✖ Close / बंद करें
-        </button>
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 16px;background:#1e293b;color:#f8fafc;">
+        <strong>${activeMode === "arena" ? "⚔️" : "📖"} ${ch.titleHi} (${activeMode === "arena" ? "Aasha Arena" : "Aasha Learn"})</strong>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button type="button" data-action="switch-player-mode" data-chapter-id="${ch.id}" data-mode="${activeMode === 'arena' ? 'learn' : 'arena'}"
+                  style="min-width:44px;min-height:44px;padding:8px 12px;border-radius:8px;border:none;background:${activeMode === 'arena' ? '#0f766e' : '#7c3aed'};color:#ffffff;font-weight:700;cursor:pointer;">
+            ${activeMode === "arena" ? "📖 Switch to Learn" : "⚔️ Switch to Arena"}
+          </button>
+          <button type="button" data-action="close-chapter-player"
+                  style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:8px;border:none;background:#ef4444;color:#ffffff;font-weight:700;cursor:pointer;">
+            ✖ Close / बंद करें
+          </button>
+        </div>
       </header>
-      <iframe id="chapter-player-iframe" src="/chapters/${ch.bundleFile}" title="${ch.titleEn}"
+      <iframe id="chapter-player-iframe" src="/chapters/${targetFile}" title="${ch.titleEn}"
               sandbox="allow-scripts allow-same-origin"
               style="flex:1;width:100%;border:none;background:#0f172a;"></iframe>
     </div>
