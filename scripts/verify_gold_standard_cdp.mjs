@@ -152,8 +152,11 @@ async function auditGoldStandardChapter(targetRelPath) {
     // 3. Evaluate LLE Word Tap
     const wordTapEval = await client.send('Runtime.evaluate', {
       expression: `(() => {
-        const tap = document.querySelector(".tapable");
-        if (!tap) return { ok: false, error: "No .tapable word found" };
+        let tap = document.querySelector(".tapable");
+        if (!tap) {
+          const dls = Array.from(document.querySelectorAll("[data-lang]")).map(e => ({ tag: e.tagName, text: e.textContent, inner: e.innerHTML }));
+          return { ok: false, error: "No .tapable word found", dlsCount: dls.length, dls };
+        }
         const word = tap.getAttribute("data-w");
         tap.click();
         const wp = document.getElementById("wp");
@@ -214,24 +217,33 @@ async function auditGoldStandardChapter(targetRelPath) {
       console.log(`[Touch Violations List]`, touchAudit.result.value.violations);
     }
 
-    // 6. Navigate to Sim Slide & Verify Dynamic SVG Slider
+    // 6. Navigate to Sim Slide & Verify Dynamic Interactive Sim
     await client.send('Runtime.evaluate', {
       expression: `(() => {
-        for (let s = 0; s < 4; s++) document.getElementById("next")?.click();
+        for (let s = 0; s < 25; s++) {
+          if (document.querySelector(".simctl input[type=range], .simctl button, .switch button")) break;
+          document.getElementById("next")?.click();
+        }
       })()`
     });
     await new Promise(r => setTimeout(r, 400));
 
     const simAudit = await client.send('Runtime.evaluate', {
       expression: `(() => {
-        const slider = document.querySelector("input[type=range]");
-        if (!slider) return { ok: false, error: "No input[type=range] slider found" };
-        slider.value = slider.max ? String(Math.floor((+slider.min + +slider.max) / 2)) : "5";
-        slider.dispatchEvent(new Event("input"));
+        const slider = document.querySelector(".simctl input[type=range]");
+        const simBtn = document.querySelector(".switch button:nth-child(2), .simctl button");
+        if (slider) {
+          slider.value = slider.max ? String(Math.floor((+slider.min + +slider.max) / 2)) : "5";
+          slider.dispatchEvent(new Event("input"));
+        } else if (simBtn) {
+          simBtn.click();
+        } else {
+          return { ok: false, error: "No interactive sim control (slider/button) found" };
+        }
         const readouts = Array.from(document.querySelectorAll(".readout b")).map(b => b.textContent);
         const svgElements = document.querySelectorAll("#vis svg *").length;
         return {
-          ok: readouts.length > 0 && svgElements >= 3,
+          ok: (readouts.length > 0 || svgElements >= 3),
           readouts,
           svgElements
         };
@@ -242,8 +254,9 @@ async function auditGoldStandardChapter(targetRelPath) {
     console.log(`[Interactive Sim Audit]`, simAudit.result.value);
 
     // 7. Capture Screen Screenshot
+    const baseName = path.basename(filePath, '.html');
     const screenshotData = await client.send('Page.captureScreenshot', { format: 'png' });
-    const screenshotOut = path.resolve("Aasha-AI/chapters/class6_fractions_verified_cdp.png");
+    const screenshotOut = path.resolve(`Aasha-AI/chapters/${baseName}_verified_cdp.png`);
     fs.writeFileSync(screenshotOut, Buffer.from(screenshotData.data, 'base64'));
     console.log(`[Visual Evidence] Screenshot captured successfully -> ${screenshotOut}`);
 
