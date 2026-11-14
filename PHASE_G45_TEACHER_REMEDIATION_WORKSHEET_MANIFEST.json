@@ -1,0 +1,20 @@
+{
+  "schema_version": "7.0.0",
+  "phase": "G45_OFFLINE_TEACHER_REMEDIATION_WORKSHEET_AND_COHORT_EXPORT",
+  "generated_at_utc": "2026-11-14T03:32:02.691183+00:00",
+  "remediation_worksheets": {
+    "rel_path": "Aasha-AI/experience_registry/remediation_worksheets_v1.json",
+    "total_worksheets": 3,
+    "sha256": "7e3031d395627d46f40d83e4b6fba123a086cca3268216ed91d069f469f37fd8"
+  },
+  "html5_hub": {
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Teacher_Remediation_Worksheet_And_Cohort_Export_Hub_v5.html",
+    "swarm_state": "CERTIFIED_CHECKPOINT",
+    "qa_passed": 28,
+    "qa_total": 28,
+    "size_bytes": 97637,
+    "under_20mib": true,
+    "sha256": "9b7156fe34b31377fed00f1cf2b25bb44c69991ad17a5da4a7dc00584e695c17"
+  },
+  "next_focus_unit": "PHASE_G_CHUNK_G46_OFFLINE_PARENT_SMS_PROGRESS_CARD_AND_SEVA_CERTIFICATE_SIGNER: Build offline bilingual parent progress report card generator and Eco/Jal Seva certificate signer."
+}

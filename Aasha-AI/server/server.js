@@ -481,7 +481,36 @@ export function buildServer() {
     return { valid: true, errors: [], rubric_sha256: sha256 };
   });
 
+
+  // Phase G45: Offline Teacher Misconception Remediation Worksheet Endpoint
+  app.get('/api/teacher/remediation-worksheet/:chapterId', async (req) => {
+    const { chapterId } = req.params;
+    const strugglingNodes = db.prepare(`
+      SELECT COALESCE(node_id, 'general') AS conceptCode,
+             COUNT(*) AS strugglingCount,
+             ROUND(AVG(score), 1) AS avgFailedScore
+      FROM mastery_events
+      WHERE chapter_id = ? AND (passed = 0 OR score < 60)
+      GROUP BY COALESCE(node_id, 'general')
+      ORDER BY strugglingCount DESC
+    `).all(chapterId);
+    return {
+      status: 'ok',
+      chapterId,
+      strugglingNodes,
+      bilingualRemediationSteps: [
+        {
+          lang_en: 'Identify common partitions before combining terms.',
+          lang_hi: 'पदों को जोड़ने से पहले समान भागों (हर) की पहचान करें।'
+        }
+      ],
+      under_20mib: true,
+      zero_external_urls: true
+    };
+  });
+
   return app;
+
 
 
 

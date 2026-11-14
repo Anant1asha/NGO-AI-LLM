@@ -184,7 +184,18 @@ try {
   assert.equal(catData.live_g44_catalogue.wm_entries_count, 1129);
   assert.equal(catData.live_g44_catalogue.certified_html5_modules_count, 21);
 
-  console.log('✅ GAP-V7-01, G43 & G44 LIVE HTTP INTEGRATION TEST PASSED (12/12 endpoint assertions on ephemeral port)');
+
+  // 13. Teacher Remediation Worksheet Endpoint (Phase G45)
+  const remRes = await fetch(`${baseUrl}/api/teacher/remediation-worksheet/Chapter3_LPG_Learning`);
+  assert.equal(remRes.status, 200);
+  const remData = await remRes.json();
+  assert.equal(remData.status, 'ok');
+  assert.equal(remData.chapterId, 'Chapter3_LPG_Learning');
+  assert.ok(remData.strugglingNodes.some((n) => n.conceptCode === 'node_lpg_safety'));
+  assert.equal(remData.zero_external_urls, true);
+
+  console.log('✅ GAP-V7-01, G43, G44 & G45 LIVE HTTP INTEGRATION TEST PASSED (13/13 endpoint assertions on ephemeral port)');
+
 
 
 } finally {

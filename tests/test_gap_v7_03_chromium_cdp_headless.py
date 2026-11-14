@@ -162,9 +162,10 @@ class TestGapV703ChromiumCDPHeadless(unittest.TestCase):
                         REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/V7_System_Wide_Audit_And_Argon_Swarm_Observability_Hub_v5.html",
                         REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/Multi_Centre_Delta_Rubric_And_10Pack_1129WM_Hub_v5.html",
                         REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/SQLite_Gzip_Catalogue_And_PWA_Cache_Auditor_Hub_v5.html",
+                        REPO_ROOT / "AASHA_Visual_Mass_Harvest_Phase3/Teacher_Remediation_Worksheet_And_Cohort_Export_Hub_v5.html",
                     ]
                 )
-                self.assertEqual(len(modules_to_verify), 21)
+                self.assertEqual(len(modules_to_verify), 22)
 
                 for mod_path in modules_to_verify:
                     self.assertTrue(mod_path.exists(), f"Missing {mod_path}")
