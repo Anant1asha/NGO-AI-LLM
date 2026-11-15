@@ -84,6 +84,14 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
                   style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:1px solid #0f766e;background:#ffffff;color:#0f766e;font-weight:700;cursor:pointer;">
             🖨️ Printable NGO Audit Card / प्रिंट रिपोर्ट
           </button>
+          <button type="button" id="btn-export-usb-cohort-pack" data-action="export-usb-cohort-pack"
+                  style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:none;background:#1d4ed8;color:#ffffff;font-weight:700;cursor:pointer;">
+            💾 Export USB Cohort Pack / यूएसबी पैक
+          </button>
+          <button type="button" id="btn-import-usb-cohort-pack" data-action="import-usb-cohort-pack"
+                  style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:1px solid #1d4ed8;background:#eff6ff;color:#1e3a8a;font-weight:700;cursor:pointer;">
+            📥 Import USB Cohort Pack / पैक मर्ज करें
+          </button>
           <button id="btn-teacher-restock-modal" class="teacher-restock-btn"
                   style="min-width:44px;min-height:44px;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;">
             📦 Restock Inventory (Staff PIN)
@@ -866,4 +874,147 @@ export function renderPrintableCohortAuditReportHtml(cohortSummary = {}, centerI
   </table>
 </body>
 </html>`.trim();
+}
+
+
+function computeUsbPackSignature(pack) {
+  const students = Array.isArray(pack.students)
+    ? [...pack.students].map((s) => ({
+        studentId: String(s.studentId || s.id || ""),
+        masteryPct: Number(s.masteryPct ?? s.avg_score ?? 0),
+        tokenBalance: Number(s.tokenBalance ?? s.coin_balance ?? 0),
+        chaptersPassed: Number(s.chaptersPassed ?? s.chapters_passed ?? 0)
+      })).sort((a, b) => a.studentId.localeCompare(b.studentId))
+    : [];
+  const ncvet = Array.isArray(pack.ncvetCompletedTasks) ? [...pack.ncvetCompletedTasks].sort() : [];
+  const canonical = JSON.stringify({
+    schemaVersion: "aasha.usb.cohort.pack.v1",
+    centerId: String(pack.centerId || "CENTER-UP-GN-01"),
+    students,
+    ncvetCompletedTasks: ncvet
+  });
+  let h = 0x811c9dc5;
+  for (let i = 0; i < canonical.length; i++) {
+    h ^= canonical.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return "fnv1a32:" + h.toString(16).padStart(8, "0");
+}
+
+export function exportSignedUsbCohortPack(state = {}, centerId = "CENTER-UP-GN-01") {
+  const prog = state.progress || {};
+  const chapterProgress = {};
+  for (const [cid, entry] of Object.entries(prog)) {
+    if (entry && typeof entry === "object") {
+      chapterProgress[cid] = {
+        completed: Boolean(entry.completed),
+        scorePct: Number(entry.scorePct || 0)
+      };
+    }
+  }
+  const cohortStudents = Array.isArray(state.cohortSummary?.students) ? state.cohortSummary.students : [];
+  const localPassedCount = Object.values(chapterProgress).filter((p) => p.completed).length;
+  const localScores = Object.values(chapterProgress).map((p) => p.scorePct).filter((n) => n > 0);
+  const localAvg = localScores.length ? Number((localScores.reduce((a, b) => a + b, 0) / localScores.length).toFixed(1)) : 0;
+  const localStudentEntry = {
+    studentId: String(state.studentId || "stu_local_01"),
+    name: String(state.studentName || "Aasha Scholar"),
+    masteryPct: localAvg,
+    tokenBalance: Number(state.coins || 0),
+    chaptersPassed: localPassedCount
+  };
+  const studentMap = new Map();
+  for (const s of [localStudentEntry, ...cohortStudents]) {
+    const sid = String(s.studentId || s.id || "");
+    if (!sid) continue;
+    const prev = studentMap.get(sid);
+    if (!prev) {
+      studentMap.set(sid, {
+        studentId: sid,
+        name: String(s.name || sid),
+        masteryPct: Number(s.masteryPct ?? s.avg_score ?? 0),
+        tokenBalance: Number(s.tokenBalance ?? s.coin_balance ?? 0),
+        chaptersPassed: Number(s.chaptersPassed ?? s.chapters_passed ?? 0)
+      });
+    } else {
+      prev.masteryPct = Math.max(prev.masteryPct, Number(s.masteryPct ?? s.avg_score ?? 0));
+      prev.tokenBalance = Math.max(prev.tokenBalance, Number(s.tokenBalance ?? s.coin_balance ?? 0));
+      prev.chaptersPassed = Math.max(prev.chaptersPassed, Number(s.chaptersPassed ?? s.chapters_passed ?? 0));
+    }
+  }
+  const pack = {
+    schemaVersion: "aasha.usb.cohort.pack.v1",
+    centerId: String(centerId || "CENTER-UP-GN-01"),
+    exportedAt: state.exportedAt || new Date().toISOString(),
+    chapterProgress,
+    ncvetCompletedTasks: Array.isArray(state.ncvetCompletedTasks) ? [...new Set(state.ncvetCompletedTasks)].sort() : [],
+    students: [...studentMap.values()],
+    misconceptions: Array.isArray(state.cohortSummary?.misconceptions) ? state.cohortSummary.misconceptions : []
+  };
+  pack.packSignature = computeUsbPackSignature(pack);
+  return pack;
+}
+
+export function mergeSignedUsbCohortPack(state = {}, incomingPack = {}) {
+  if (!incomingPack || typeof incomingPack !== "object" || incomingPack.schemaVersion !== "aasha.usb.cohort.pack.v1") {
+    return { ok: false, error: "INVALID_USB_PACK_SCHEMA" };
+  }
+  const expectedSig = computeUsbPackSignature(incomingPack);
+  if (incomingPack.packSignature !== expectedSig) {
+    return { ok: false, error: "USB_PACK_SIGNATURE_MISMATCH", expectedSignature: expectedSig };
+  }
+  state.progress = state.progress || {};
+  let mergedChaptersCount = 0;
+  for (const [cid, inc] of Object.entries(incomingPack.chapterProgress || {})) {
+    const cur = state.progress[cid] || { completed: false, scorePct: 0 };
+    const nextScore = Math.max(Number(cur.scorePct || 0), Number(inc?.scorePct || 0));
+    const nextDone = Boolean(cur.completed || inc?.completed || nextScore >= 60);
+    state.progress[cid] = {
+      completed: nextDone,
+      scorePct: nextScore,
+      updatedAt: new Date().toISOString()
+    };
+    mergedChaptersCount++;
+  }
+  const curNcvet = Array.isArray(state.ncvetCompletedTasks) ? state.ncvetCompletedTasks : [];
+  const incNcvet = Array.isArray(incomingPack.ncvetCompletedTasks) ? incomingPack.ncvetCompletedTasks : [];
+  state.ncvetCompletedTasks = [...new Set([...curNcvet, ...incNcvet])].sort();
+
+  state.cohortSummary = state.cohortSummary || {};
+  const curStudents = Array.isArray(state.cohortSummary.students) ? state.cohortSummary.students : [];
+  const incStudents = Array.isArray(incomingPack.students) ? incomingPack.students : [];
+  const byId = new Map();
+  for (const s of [...curStudents, ...incStudents]) {
+    const sid = String(s.studentId || s.id || "");
+    if (!sid) continue;
+    const prev = byId.get(sid);
+    if (!prev) {
+      byId.set(sid, {
+        studentId: sid,
+        name: String(s.name || sid),
+        masteryPct: Number(s.masteryPct ?? s.avg_score ?? 0),
+        tokenBalance: Number(s.tokenBalance ?? s.coin_balance ?? 0),
+        chaptersPassed: Number(s.chaptersPassed ?? s.chapters_passed ?? 0)
+      });
+    } else {
+      prev.masteryPct = Math.max(prev.masteryPct, Number(s.masteryPct ?? s.avg_score ?? 0));
+      prev.tokenBalance = Math.max(prev.tokenBalance, Number(s.tokenBalance ?? s.coin_balance ?? 0));
+      prev.chaptersPassed = Math.max(prev.chaptersPassed, Number(s.chaptersPassed ?? s.chapters_passed ?? 0));
+    }
+  }
+  const mergedStudents = [...byId.values()];
+  state.cohortSummary.students = mergedStudents;
+  state.cohortSummary.totalStudents = mergedStudents.length;
+  state.cohortSummary.avgMasteryPct = mergedStudents.length
+    ? Number((mergedStudents.reduce((a, s) => a + s.masteryPct, 0) / mergedStudents.length).toFixed(1))
+    : 0;
+  state.cohortSummary.totalTokensMinted = mergedStudents.reduce((a, s) => a + s.tokenBalance, 0);
+
+  return {
+    ok: true,
+    mergedChaptersCount,
+    mergedStudentsCount: mergedStudents.length,
+    mergedNcvetCount: state.ncvetCompletedTasks.length,
+    packSignature: incomingPack.packSignature
+  };
 }

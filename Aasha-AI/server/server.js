@@ -656,7 +656,114 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G: Sneakernet USB/SD Cohort Pack Export & High-Water-Mark Conflict-Safe Import Endpoints
+  app.get('/api/sync/export-cohort-pack', async () => {
+    const students = db.prepare(`
+      SELECT tb.student_id AS studentId,
+             COALESCE(s.name, ss.student_name, tb.student_id) AS name,
+             tb.balance AS tokenBalance,
+             tb.lifetime_earned AS lifetimeCoins,
+             COUNT(DISTINCT CASE WHEN me.passed = 1 THEN me.chapter_id END) AS chaptersPassed,
+             COALESCE(ROUND(AVG(me.score), 1), 0) AS masteryPct
+      FROM token_balances tb
+      LEFT JOIN students s ON s.id = tb.student_id
+      LEFT JOIN student_snapshots ss ON ss.student_id = tb.student_id
+      LEFT JOIN mastery_events me ON me.student_id = tb.student_id
+      GROUP BY tb.student_id
+      ORDER BY tb.student_id ASC
+    `).all();
+    const masteryEvents = db.prepare(`
+      SELECT student_id AS studentId, chapter_id AS chapterId, COALESCE(node_id, 'final') AS nodeId,
+             MAX(score) AS score, MAX(passed) AS passed
+      FROM mastery_events
+      GROUP BY student_id, chapter_id, COALESCE(node_id, 'final')
+    `).all();
+    const pack = {
+      schemaVersion: 'aasha.usb.cohort.pack.v1',
+      centerId: 'CENTER-UP-GN-01',
+      students,
+      masteryEvents
+    };
+    const pack_sha256 = crypto.createHash('sha256').update(JSON.stringify(pack), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      ...pack,
+      pack_sha256
+    };
+  });
+
+  app.post('/api/sync/import-cohort-pack', async (req, reply) => {
+    const pack = req.body || {};
+    if (pack.schemaVersion !== 'aasha.usb.cohort.pack.v1') {
+      return reply.code(400).send({ status: 'error', error: 'INVALID_USB_PACK_SCHEMA' });
+    }
+    const now = new Date().toISOString();
+    const incStudents = Array.isArray(pack.students) ? pack.students : [];
+    const incEvents = Array.isArray(pack.masteryEvents) ? pack.masteryEvents : [];
+    let students_upserted = 0;
+    let mastery_records_merged = 0;
+    let net_coins_added = 0;
+
+    const tx = db.transaction(() => {
+      for (const s of incStudents) {
+        const sid = String(s.studentId || s.id || '');
+        if (!sid) continue;
+        const name = String(s.name || sid);
+        const incBal = Number(s.tokenBalance || 0);
+        const incLife = Number(s.lifetimeCoins ?? incBal);
+        db.prepare(`
+          INSERT INTO students (id, name, created_at)
+          VALUES (?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET name = excluded.name
+        `).run(sid, name, now);
+        const curBalRow = db.prepare('SELECT balance, lifetime_earned FROM token_balances WHERE student_id = ?').get(sid);
+        if (!curBalRow) {
+          db.prepare('INSERT INTO token_balances (student_id, balance, lifetime_earned, updated_at) VALUES (?, ?, ?, ?)')
+            .run(sid, incBal, incLife, now);
+          net_coins_added += incBal;
+        } else {
+          const newBal = Math.max(Number(curBalRow.balance || 0), incBal);
+          const newLife = Math.max(Number(curBalRow.lifetime_earned || 0), incLife);
+          net_coins_added += Math.max(0, newBal - Number(curBalRow.balance || 0));
+          db.prepare('UPDATE token_balances SET balance = ?, lifetime_earned = ?, updated_at = ? WHERE student_id = ?')
+            .run(newBal, newLife, now, sid);
+        }
+        students_upserted++;
+      }
+      for (const ev of incEvents) {
+        const sid = String(ev.studentId || '');
+        const cid = String(ev.chapterId || '');
+        const nid = String(ev.nodeId || 'final');
+        const score = Number(ev.score || 0);
+        const passed = score >= 60 || ev.passed ? 1 : 0;
+        if (!sid || !cid) continue;
+        const evId = `usb_${sid}_${cid}_${nid}`;
+        const existing = db.prepare('SELECT score FROM mastery_events WHERE id = ?').get(evId);
+        if (!existing) {
+          db.prepare('INSERT INTO mastery_events (id, student_id, chapter_id, node_id, score, passed, recorded_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+            .run(evId, sid, cid, nid, score, passed, now);
+          mastery_records_merged++;
+        } else if (score > Number(existing.score || 0)) {
+          db.prepare('UPDATE mastery_events SET score = ?, passed = ? WHERE id = ?')
+            .run(score, passed, evId);
+          mastery_records_merged++;
+        }
+      }
+    });
+    tx();
+    return {
+      status: 'merged',
+      schema_version: 'aasha.usb.cohort.pack.v1',
+      students_upserted,
+      mastery_records_merged,
+      net_coins_added,
+      idempotent: true
+    };
+  });
+
   return app;
+
 
 
 
