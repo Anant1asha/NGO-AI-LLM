@@ -1,7 +1,6 @@
-# AASHA Verification Report — Phase G Offline Student Mastery Export & Centre Leaderboard Sync
-- **Timestamp**: `2026-11-15T02:50:14.635386+00:00`
+# AASHA Verification Report — Phase G Teacher Remediation Group Auto-Assignment from Arena Wrong Answers
+- **Timestamp**: `2026-11-15T06:57:13.272535+00:00`
 - **Branch**: `aios/v2-bootstrap`
-- **Completed Focus Unit**: `PHASE_G_OFFLINE_STUDENT_MASTERY_EXPORT_AND_CENTRE_LEADERBOARD_SYNC`
-- **Learn & Arena `TEAS_CHAPTER_MASTERY` `postMessage` Bridge**: Embedded in `aasha-learn-template.html` (`case "end"`) and `aasha-arena-template.html` (`finish()`), recompiled across all 26 HTML5 modules (`871/871` QA checks passed).
-- **Centre Server Leaderboard (`GET /api/leaderboard`) & PWA Card (`renderCentreLeaderboardCard`)**: Live SQLite ranking of students by lifetime coins, mastered chapters, and top score percentage.
-- **Merkle Precache Root**: `3bad57a515c65e110dcf3b311918db0c4fab760f5cc5edebc1057e273e417aae` across 53 verified offline assets.
+- **Completed Focus Unit**: `PHASE_G_TEACHER_REMEDIATION_GROUP_AUTO_ASSIGNMENT_FROM_ARENA_WRONG_ANSWERS`
+- **Arena Wrong-Answer Remediation Bridge (`Aasha-AI/aasha-student-pwa/src/app.js` & `index.html`)**: Automatically logs `<nodeId>_remediation` events when `wrong > 0` or `scorePct < 60`, populates `state.cohortSummary.misconceptions`, syncs to `/api/teacher/misconception-analytics`, and launches the Aasha Learn player modal via the `🛠️ Reteach / पुनः समझाएँ` button (`data-action="launch-remediation-group"`).
+- **Merkle Precache Root**: `85c7605d117d316cb5cc563a91ef7f7c905b7b3440592a3366834844a09b0ee1` across 53 verified offline assets.

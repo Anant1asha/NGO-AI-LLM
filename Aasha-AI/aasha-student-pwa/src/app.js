@@ -263,27 +263,66 @@ export function handleChapterMasteryMessage(state, payload = {}) {
   }
   const chapterId = String(payload.chapterId);
   const scorePct = Number(payload.score ?? payload.scorePct ?? 85);
+  const wrongCount = Number(payload.wrong || 0);
+  const nodeId = String(payload.nodeId || "final_mastery");
+  const ts = payload.timestamp || new Date().toISOString();
+
   state.progress = state.progress || {};
   const prevBest = Number(state.progress[chapterId]?.scorePct || 0);
   state.progress[chapterId] = {
     completed: scorePct >= 60,
     scorePct: Math.max(prevBest, scorePct),
-    updatedAt: payload.timestamp || new Date().toISOString()
+    updatedAt: ts
   };
   const rewardRes = awardChapterPassReward(state, chapterId, scorePct);
-  const outboxLen = enqueueSyncEvent(state, {
+  let outboxLen = enqueueSyncEvent(state, {
     chapterId,
-    nodeId: payload.nodeId || "final_mastery",
+    nodeId,
     score: scorePct,
-    timestamp: payload.timestamp || new Date().toISOString()
+    timestamp: ts
   });
+
+  // Auto-assign remediation hotspot when Arena reports wrong > 0 or scorePct < 60
+  let remediationAssigned = false;
+  if (wrongCount > 0 || scorePct < 60) {
+    remediationAssigned = true;
+    const remNodeId = `${nodeId}_remediation`;
+    const diagScore = Math.min(55, Math.max(20, 100 - wrongCount * 15));
+    outboxLen = enqueueSyncEvent(state, {
+      id: `misc_${chapterId}_${remNodeId}_${Date.now()}`,
+      chapterId,
+      nodeId: remNodeId,
+      score: diagScore,
+      passed: false,
+      timestamp: ts
+    });
+    state.cohortSummary = state.cohortSummary || {};
+    state.cohortSummary.misconceptions = Array.isArray(state.cohortSummary.misconceptions)
+      ? state.cohortSummary.misconceptions
+      : [];
+    const existing = state.cohortSummary.misconceptions.find(
+      (m) => m.chapterId === chapterId && m.conceptCode === remNodeId
+    );
+    if (existing) {
+      existing.strugglingCount = Number(existing.strugglingCount || 1) + 1;
+    } else {
+      state.cohortSummary.misconceptions.push({
+        chapterId,
+        conceptCode: remNodeId,
+        strugglingCount: 1,
+        sampleWrongOptions: [`${wrongCount} missed in Arena`]
+      });
+    }
+  }
+
   return {
     handled: true,
     chapterId,
     scorePct,
     awarded: rewardRes.awarded,
     totalCoins: rewardRes.totalCoins,
-    outboxLength: outboxLen
+    outboxLength: outboxLen,
+    remediationAssigned
   };
 }
 
@@ -525,7 +564,7 @@ export function renderMisconceptionHeatmapCard(misconceptions = []) {
   }
   const items = misconceptions.map((m) => `
     <li style="padding:8px 0;border-bottom:1px solid #fed7aa;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
-      <span>🔥 <strong>${m.chapterId} (${m.conceptCode})</strong> — ${m.strugglingCount} students struggling (Distractors: ${m.sampleWrongOptions.join(", ") || "N/A"})</span>
+      <span>🔥 <strong>${m.chapterId} (${m.conceptCode})</strong> — ${m.strugglingCount} students struggling (Distractors: ${Array.isArray(m.sampleWrongOptions) && m.sampleWrongOptions.length ? m.sampleWrongOptions.join(", ") : "Arena Concept Check"})</span>
       <button type="button" data-action="launch-remediation-group" data-chapter-id="${m.chapterId}" data-concept-code="${m.conceptCode}"
               style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#ea580c;color:#ffffff;font-weight:700;cursor:pointer;">
         🛠️ Reteach / पुनः समझाएँ

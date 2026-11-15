@@ -8,7 +8,8 @@ import {
   renderLearnCatalogue,
   renderChapterPlayerModal,
   handleChapterMasteryMessage,
-  renderCentreLeaderboardCard
+  renderCentreLeaderboardCard,
+  renderMisconceptionHeatmapCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -35,13 +36,20 @@ const pwaState = { coins: 100, progress: {}, syncOutbox: [] };
 const masteryRes = handleChapterMasteryMessage(pwaState, {
   type: 'TEAS_CHAPTER_MASTERY',
   chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS',
-  nodeId: 'arena_boss',
-  score: 92
+  nodeId: 'arena_sec2',
+  score: 88,
+  wrong: 2
 });
 assert.equal(masteryRes.handled, true);
 assert.equal(masteryRes.awarded, 100);
+assert.equal(masteryRes.remediationAssigned, true);
 assert.equal(pwaState.coins, 200);
-assert.equal(pwaState.syncOutbox.length, 1);
+assert.equal(pwaState.syncOutbox.length, 2, 'Must enqueue both mastery pass and diagnostic remediation event when wrong > 0');
+assert.equal(pwaState.cohortSummary.misconceptions.length, 1);
+assert.equal(pwaState.cohortSummary.misconceptions[0].conceptCode, 'arena_sec2_remediation');
+const heatmapHtml = renderMisconceptionHeatmapCard(pwaState.cohortSummary.misconceptions);
+assert.ok(heatmapHtml.includes('data-action="launch-remediation-group"'));
+assert.ok(heatmapHtml.includes('2 missed in Arena'));
 
 // 3. Verify Centre Server GET /api/catalogue/learn-arena-modules live endpoint
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'aasha-phase-d-http-'));
@@ -79,6 +87,19 @@ try {
   const lbHtml = renderCentreLeaderboardCard(lbBody.leaders);
   assert.ok(lbHtml.includes('id="centre-leaderboard-card"'));
   assert.ok(lbHtml.includes('stu_leader_01'));
+
+  // Verify syncing pwaState.syncOutbox to /api/sync/quiz-results populates /api/teacher/misconception-analytics
+  await fetch(`${baseUrl}/api/sync/quiz-results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentId: 'stu_remed_01', events: pwaState.syncOutbox })
+  });
+  const maRes = await fetch(`${baseUrl}/api/teacher/misconception-analytics`);
+  assert.equal(maRes.status, 200);
+  const maBody = await maRes.json();
+  assert.ok(maBody.hotspots.some((h) => h.chapterId === 'NCERT-G06-MATH-CH07-FRACTIONS' && h.conceptCode === 'arena_sec2_remediation'));
+  const serverHeatmapHtml = renderMisconceptionHeatmapCard(maBody.hotspots);
+  assert.ok(serverHeatmapHtml.includes('arena_sec2_remediation'));
 } finally {
   await app.close();
 }
