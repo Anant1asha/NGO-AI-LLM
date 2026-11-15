@@ -9,7 +9,10 @@ import {
   renderChapterPlayerModal,
   handleChapterMasteryMessage,
   renderCentreLeaderboardCard,
-  renderMisconceptionHeatmapCard
+  renderMisconceptionHeatmapCard,
+  toggleNcvetPracticalTask,
+  exportSignedNcvetPortfolio,
+  renderNcvetPortfolioChecklistCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -100,6 +103,30 @@ try {
   assert.ok(maBody.hotspots.some((h) => h.chapterId === 'NCERT-G06-MATH-CH07-FRACTIONS' && h.conceptCode === 'arena_sec2_remediation'));
   const serverHeatmapHtml = renderMisconceptionHeatmapCard(maBody.hotspots);
   assert.ok(serverHeatmapHtml.includes('arena_sec2_remediation'));
+
+  // Verify NCVET Practical Skill Portfolio Checklist & GET /api/student/:id/ncvet-portfolio
+  const ncvetRes = toggleNcvetPracticalTask(pwaState, 'ncvet_agr_q4301');
+  assert.equal(ncvetRes.ok, true);
+  assert.equal(ncvetRes.completed, true);
+  assert.equal(pwaState.coins, 225);
+  const signedPort = exportSignedNcvetPortfolio(pwaState);
+  assert.ok(signedPort.signature.startsWith('fnv1a32:'));
+  assert.ok(signedPort.qpCodesVerified.includes('AGR/Q4301'));
+  const ncvetCardHtml = renderNcvetPortfolioChecklistCard(pwaState);
+  assert.ok(ncvetCardHtml.includes('id="ncvet-portfolio-checklist-card"'));
+  assert.ok(ncvetCardHtml.includes('AGR/Q4301'));
+
+  await fetch(`${baseUrl}/api/sync/quiz-results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentId: 'stu_ncvet_01', events: pwaState.syncOutbox })
+  });
+  const srvPortRes = await fetch(`${baseUrl}/api/student/stu_ncvet_01/ncvet-portfolio`);
+  assert.equal(srvPortRes.status, 200);
+  const srvPort = await srvPortRes.json();
+  assert.equal(srvPort.status, 'ok');
+  assert.ok(srvPort.verified_qp_codes.includes('AGR/Q4301'));
+  assert.equal(srvPort.portfolio_sha256.length, 64);
 } finally {
   await app.close();
 }

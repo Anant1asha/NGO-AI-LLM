@@ -74,6 +74,8 @@
       handleChapterMasteryMessage,
       handlePinModalConfirm,
       exportStudentProgressSnapshot,
+      toggleNcvetPracticalTask,
+      exportSignedNcvetPortfolio,
       syncNowWithServer
     } from './src/app.js';
 
@@ -157,6 +159,17 @@
       } else if (action === 'filter-grade') {
         state.activeGrade = target.getAttribute('data-grade') || 'ALL';
         persistAndRefresh();
+      } else if (action === 'toggle-ncvet-task') {
+        const taskId = target.getAttribute('data-task-id');
+        toggleNcvetPracticalTask(state, taskId);
+        persistAndRefresh();
+      } else if (action === 'export-ncvet-portfolio') {
+        const port = exportSignedNcvetPortfolio(state);
+        const blob = new Blob([JSON.stringify(port, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${port.studentId}_ncvet_portfolio.json`;
+        a.click();
       } else if (action === 'export-student-snapshot') {
         const snap = exportStudentProgressSnapshot(state);
         const blob = new Blob([JSON.stringify(snap, null, 2)], { type: 'application/json' });
