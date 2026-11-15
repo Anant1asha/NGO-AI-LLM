@@ -59,6 +59,7 @@
   <div id="toast-mount" style="padding:0 16px;"></div>
   <main id="app-mount" style="padding:16px;"></main>
   <div id="modal-mount"></div>
+  <input type="file" id="usb-cohort-pack-file-input" accept=".json,application/json" style="display:none;" />
   <nav class="bottom-nav" aria-label="Primary Student Navigation">
     <button class="nav-btn" data-tab="home">🏠 Home</button>
     <button class="nav-btn" data-tab="learn">📚 Learn</button>
@@ -78,6 +79,8 @@
       exportSignedNcvetPortfolio,
       exportCohortMasteryCsv,
       renderPrintableCohortAuditReportHtml,
+      exportSignedUsbCohortPack,
+      mergeSignedUsbCohortPack,
       syncNowWithServer
     } from './src/app.js';
 
@@ -193,8 +196,35 @@
         a.href = URL.createObjectURL(blob);
         a.download = `${snap.studentId}_aasha_backup.json`;
         a.click();
+      } else if (action === 'export-usb-cohort-pack') {
+        const pack = exportSignedUsbCohortPack(state);
+        const blob = new Blob([JSON.stringify(pack, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${pack.centerId}_usb_cohort_pack.json`;
+        a.click();
+      } else if (action === 'import-usb-cohort-pack') {
+        const fileInput = document.getElementById('usb-cohort-pack-file-input');
+        if (fileInput) fileInput.click();
       }
     });
+
+
+    const usbFileInput = document.getElementById('usb-cohort-pack-file-input');
+    if (usbFileInput) {
+      usbFileInput.addEventListener('change', async (ev) => {
+        const file = ev.target.files && ev.target.files[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const res = mergeSignedUsbCohortPack(state, JSON.parse(text));
+          if (res.ok) {
+            toastMount.innerHTML = `<div role="status" style="min-height:44px;padding:12px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:12px;">✅ Merged USB Cohort Pack (${res.mergedStudentsCount} students, ${res.mergedChaptersCount} chapters)</div>`;
+            persistAndRefresh();
+          }
+        } catch (_) {}
+      });
+    }
 
     window.addEventListener('message', (ev) => {
       if (ev.data && ev.data.type === 'TEAS_CHAPTER_MASTERY') {

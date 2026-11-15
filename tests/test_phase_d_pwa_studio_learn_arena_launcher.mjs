@@ -14,7 +14,9 @@ import {
   exportSignedNcvetPortfolio,
   renderNcvetPortfolioChecklistCard,
   exportCohortMasteryCsv,
-  renderPrintableCohortAuditReportHtml
+  renderPrintableCohortAuditReportHtml,
+  exportSignedUsbCohortPack,
+  mergeSignedUsbCohortPack
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -153,6 +155,75 @@ try {
   assert.equal(srvCsv.status, 'ok');
   assert.ok(srvCsv.csv.includes('SUMMARY_TOTAL'));
   assert.equal(srvCsv.csv_sha256.length, 64);
+
+  // Verify Offline USB Cohort Pack Exporter & High-Water-Mark Conflict Merger + Server /api/sync/export-cohort-pack & import-cohort-pack
+  const usbPack = exportSignedUsbCohortPack(pwaState, 'CENTER-UP-GN-01');
+  assert.equal(usbPack.schemaVersion, 'aasha.usb.cohort.pack.v1');
+  assert.ok(usbPack.packSignature.startsWith('fnv1a32:'));
+
+  const targetTabletState = {
+    studentId: 'stu_tablet_02',
+    studentName: 'Meera',
+    coins: 100,
+    progress: {
+      'NCERT-G06-MATH-CH07-FRACTIONS': { completed: true, scorePct: 70 }
+    },
+    ncvetCompletedTasks: ['ncvet_ssc_q0101'],
+    cohortSummary: {
+      students: [{ studentId: 'stu_local_01', name: 'Aasha Scholar', masteryPct: 65, tokenBalance: 100, chaptersPassed: 1 }]
+    }
+  };
+  const mergeRes = mergeSignedUsbCohortPack(targetTabletState, usbPack);
+  assert.equal(mergeRes.ok, true);
+  assert.equal(targetTabletState.progress['NCERT-G06-MATH-CH07-FRACTIONS'].scorePct, 88);
+  assert.ok(targetTabletState.ncvetCompletedTasks.includes('ncvet_agr_q4301'));
+  assert.ok(targetTabletState.ncvetCompletedTasks.includes('ncvet_ssc_q0101'));
+  const mergedScholar = targetTabletState.cohortSummary.students.find((s) => s.studentId === 'stu_local_01');
+  assert.equal(mergedScholar.tokenBalance, 225);
+
+  // Tamper check
+  const tamperedPack = { ...usbPack, packSignature: 'fnv1a32:00000000' };
+  const tamperRes = mergeSignedUsbCohortPack(targetTabletState, tamperedPack);
+  assert.equal(tamperRes.ok, false);
+  assert.equal(tamperRes.error, 'USB_PACK_SIGNATURE_MISMATCH');
+
+  const srvExportRes = await fetch(`${baseUrl}/api/sync/export-cohort-pack`);
+  assert.equal(srvExportRes.status, 200);
+  const srvPack = await srvExportRes.json();
+  assert.equal(srvPack.schemaVersion, 'aasha.usb.cohort.pack.v1');
+  assert.equal(srvPack.pack_sha256.length, 64);
+
+  const srvImportRes = await fetch(`${baseUrl}/api/sync/import-cohort-pack`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      schemaVersion: 'aasha.usb.cohort.pack.v1',
+      centerId: 'CENTER-UP-GN-02',
+      students: [{ studentId: 'stu_usb_remote_01', name: 'Kabir', tokenBalance: 175, lifetimeCoins: 175 }],
+      masteryEvents: [{ studentId: 'stu_usb_remote_01', chapterId: 'NCERT-G09-SCI-CH08-FORCE-MOTION', nodeId: 'arena_full', score: 94, passed: 1 }]
+    })
+  });
+  assert.equal(srvImportRes.status, 200);
+  const srvImportBody = await srvImportRes.json();
+  assert.equal(srvImportBody.status, 'merged');
+  assert.equal(srvImportBody.students_upserted, 1);
+  assert.equal(srvImportBody.mastery_records_merged, 1);
+  assert.equal(srvImportBody.net_coins_added, 175);
+
+  // Replay idempotency check (high-water-mark should add 0 coins on identical replay)
+  const srvImportReplay = await fetch(`${baseUrl}/api/sync/import-cohort-pack`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      schemaVersion: 'aasha.usb.cohort.pack.v1',
+      centerId: 'CENTER-UP-GN-02',
+      students: [{ studentId: 'stu_usb_remote_01', name: 'Kabir', tokenBalance: 175, lifetimeCoins: 175 }],
+      masteryEvents: [{ studentId: 'stu_usb_remote_01', chapterId: 'NCERT-G09-SCI-CH08-FORCE-MOTION', nodeId: 'arena_full', score: 94, passed: 1 }]
+    })
+  });
+  const srvReplayBody = await srvImportReplay.json();
+  assert.equal(srvReplayBody.net_coins_added, 0);
+  assert.equal(srvReplayBody.mastery_records_merged, 0);
 } finally {
   await app.close();
 }
