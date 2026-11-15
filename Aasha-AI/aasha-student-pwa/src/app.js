@@ -427,6 +427,7 @@ export function renderRewardsBadges(state = {}) {
       <h3 style="margin:0 0 8px;font-size:1rem;">🛍️ Redemption Receipts / स्टोर रसीदें</h3>
       <ul style="list-style:none;padding:0;margin:0;">${historyHtml}</ul>
       ${renderCentreLeaderboardCard(state.leaderboard || [])}
+      ${renderNcvetPortfolioChecklistCard(state)}
     </section>
   `.trim();
 }
@@ -659,6 +660,103 @@ export function renderCentreLeaderboardCard(leaders = []) {
              style="padding:14px;border-radius:12px;background:#f8fafc;border:1px solid #cbd5e1;margin-top:16px;">
       <h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a;">🏅 Centre Scholar Leaderboard / केंद्र लीडरबोर्ड</h3>
       <ul style="list-style:none;padding:0;margin:0;">${rows || '<li style="color:#64748b;">Complete a chapter or Arena battle to appear on the leaderboard!</li>'}</ul>
+    </section>
+  `.trim();
+}
+
+export const NCVET_PRACTICAL_CHECKLIST = [
+  { id: "ncvet_ssc_q0101", qpCode: "SSC/Q0101", chapterId: "NCVET_PSSCIVE_L3_IT_DataEntry_v5", titleEn: "L3 Domestic Data Entry: Cross-Foot Village Ledger Audit", titleHi: "स्तर 3 डेटा एंट्री: ग्राम बहीखाता क्रॉस-फुट सत्यापन", rewardCoins: 25 },
+  { id: "ncvet_agr_q4301", qpCode: "AGR/Q4301", chapterId: "NCVET_PSSCIVE_L4_Agri_SolarDrip_v5", titleEn: "L4 Micro-Irrigation Technician: Filter ΔP & Emitter Calibration", titleHi: "स्तर 4 सूक्ष्म सिंचाई: फ़िल्टर दाब और ड्रिपर अंशांकन", rewardCoins: 25 },
+  { id: "ncvet_fic_q0106", qpCode: "FIC/Q0106", chapterId: "NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5", titleEn: "L4 Solar Food Dehydrator: Moisture Reduction & Hygienic Sealing", titleHi: "स्तर 4 सौर खाद्य निर्जलीकरण: नमी नियंत्रण और स्वच्छ पैकेजिंग", rewardCoins: 25 }
+];
+
+export function toggleNcvetPracticalTask(state = {}, taskId = "") {
+  state.ncvetCompletedTasks = Array.isArray(state.ncvetCompletedTasks) ? state.ncvetCompletedTasks : [];
+  const task = NCVET_PRACTICAL_CHECKLIST.find((t) => t.id === taskId);
+  if (!task) return { ok: false, completed: false };
+  const idx = state.ncvetCompletedTasks.indexOf(taskId);
+  let completed = false;
+  if (idx === -1) {
+    state.ncvetCompletedTasks.push(taskId);
+    state.coins = Number(state.coins || 0) + task.rewardCoins;
+    completed = true;
+    enqueueSyncEvent(state, {
+      id: `ncvet_${taskId}_${Date.now()}`,
+      chapterId: task.chapterId,
+      nodeId: `practical_${task.qpCode}`,
+      score: 100,
+      passed: true,
+      timestamp: new Date().toISOString()
+    });
+  } else {
+    state.ncvetCompletedTasks.splice(idx, 1);
+    completed = false;
+  }
+  return { ok: true, taskId, completed, completedCount: state.ncvetCompletedTasks.length, coins: state.coins };
+}
+
+export function exportSignedNcvetPortfolio(state = {}) {
+  const completedTasks = Array.isArray(state.ncvetCompletedTasks) ? [...state.ncvetCompletedTasks].sort() : [];
+  const prog = state.progress || {};
+  const masteredNcvetChapters = NCVET_PRACTICAL_CHECKLIST
+    .map((t) => t.chapterId)
+    .filter((cid) => prog[cid]?.completed)
+    .sort();
+  const payload = {
+    schemaVersion: "aasha.ncvet.portfolio.v1",
+    studentId: String(state.studentId || "stu_local_01"),
+    studentName: String(state.studentName || "Aasha Scholar"),
+    completedPracticalTasks: completedTasks,
+    masteredNcvetChapters,
+    qpCodesVerified: NCVET_PRACTICAL_CHECKLIST.filter((t) => completedTasks.includes(t.id)).map((t) => t.qpCode),
+    exportedAt: state.exportedAt || new Date().toISOString()
+  };
+  const canonical = JSON.stringify({
+    studentId: payload.studentId,
+    completedPracticalTasks: payload.completedPracticalTasks,
+    masteredNcvetChapters: payload.masteredNcvetChapters,
+    qpCodesVerified: payload.qpCodesVerified
+  });
+  let h = 0x811c9dc5;
+  for (let i = 0; i < canonical.length; i++) {
+    h ^= canonical.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  payload.signature = "fnv1a32:" + h.toString(16).padStart(8, "0");
+  return payload;
+}
+
+export function renderNcvetPortfolioChecklistCard(state = {}) {
+  const completed = Array.isArray(state.ncvetCompletedTasks) ? state.ncvetCompletedTasks : [];
+  const portfolio = exportSignedNcvetPortfolio(state);
+  const itemsHtml = NCVET_PRACTICAL_CHECKLIST.map((t) => {
+    const isDone = completed.includes(t.id);
+    return `
+      <li class="ncvet-task-row" data-task-id="${t.id}" data-qp-code="${t.qpCode}"
+          style="padding:10px 0;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div>
+          <span style="font-size:0.78rem;font-weight:700;padding:2px 8px;border-radius:6px;background:#dbeafe;color:#1e40af;">${t.qpCode}</span>
+          <strong style="margin-left:6px;color:#0f172a;">${t.titleEn}</strong>
+          <div style="font-size:0.85rem;color:#475569;margin-top:2px;">${t.titleHi}</div>
+        </div>
+        <button type="button" data-action="toggle-ncvet-task" data-task-id="${t.id}"
+                style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:8px;border:none;background:${isDone ? '#16a34a' : '#0f766e'};color:#ffffff;font-weight:700;cursor:pointer;">
+          ${isDone ? '✅ Verified / सत्यापित' : '☑️ Log Practical (+25 🪙)'}
+        </button>
+      </li>
+    `;
+  }).join("");
+  return `
+    <section id="ncvet-portfolio-checklist-card" aria-label="NCVET Practical Skill Portfolio Checklist"
+             style="padding:14px;border-radius:12px;background:#eff6ff;border:1px solid #bfdbfe;margin-top:16px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#1e3a8a;">🛠️ NCVET / PSSCIVE Practical Skill Portfolio (${completed.length}/3 QP Verified)</h3>
+        <button type="button" id="btn-export-ncvet-portfolio" data-action="export-ncvet-portfolio"
+                style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:8px;border:none;background:#1d4ed8;color:#ffffff;font-weight:700;cursor:pointer;">
+          📜 Export Signed NCVET Portfolio (${portfolio.signature})
+        </button>
+      </header>
+      <ul style="list-style:none;padding:0;margin:0;">${itemsHtml}</ul>
     </section>
   `.trim();
 }

@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_G_TEACHER_REMEDIATION_GROUP_AUTO_ASSIGNMENT_FROM_ARENA_WRONG_ANSWERS",
+  "next_focus_unit": "PHASE_G_OFFLINE_COHORT_CSV_AND_PRINTABLE_PROGRESS_REPORT_EXPORTER",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,9 +78,9 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "updated_at": "2026-11-15T02:50:14.635386+00:00",
+  "updated_at": "2026-11-15T11:15:38.224305+00:00",
   "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_G_OFFLINE_STUDENT_MASTERY_POSTMESSAGE_AND_LEADERBOARD_CERTIFIED",
+  "active_phase": "PHASE_G_NCVET_JOB_ROLE_PRACTICAL_PORTFOLIO_CERTIFIED",
   "learn_arena_batch": {
     "chapters_compiled": 13,
     "total_html5_modules_generated": 26,
@@ -127,5 +127,21 @@
     "qa_checks_passed": "871/871",
     "centre_leaderboard_endpoint": "GET /api/leaderboard",
     "merkle_root_sha256": "3bad57a515c65e110dcf3b311918db0c4fab760f5cc5edebc1057e273e417aae"
+  },
+  "phase_g_arena_remediation_auto_assign": {
+    "wrong_answer_diagnostic_outbox_enabled": true,
+    "one_click_reteach_launcher_wired": true,
+    "server_misconception_analytics_aligned": true,
+    "merkle_root_sha256": "85c7605d117d316cb5cc563a91ef7f7c905b7b3440592a3366834844a09b0ee1"
+  },
+  "phase_g_ncvet_portfolio": {
+    "qp_codes_supported": [
+      "SSC/Q0101",
+      "AGR/Q4301",
+      "FIC/Q0106"
+    ],
+    "pwa_checklist_card": "renderNcvetPortfolioChecklistCard",
+    "server_endpoint": "GET /api/student/:id/ncvet-portfolio",
+    "merkle_root_sha256": "324af8834425f85c204a3e78e031433be6dc8053c53c9e097e417fb5838259f7"
   }
 }

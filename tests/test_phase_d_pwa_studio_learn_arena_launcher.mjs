@@ -8,7 +8,11 @@ import {
   renderLearnCatalogue,
   renderChapterPlayerModal,
   handleChapterMasteryMessage,
-  renderCentreLeaderboardCard
+  renderCentreLeaderboardCard,
+  renderMisconceptionHeatmapCard,
+  toggleNcvetPracticalTask,
+  exportSignedNcvetPortfolio,
+  renderNcvetPortfolioChecklistCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -35,13 +39,20 @@ const pwaState = { coins: 100, progress: {}, syncOutbox: [] };
 const masteryRes = handleChapterMasteryMessage(pwaState, {
   type: 'TEAS_CHAPTER_MASTERY',
   chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS',
-  nodeId: 'arena_boss',
-  score: 92
+  nodeId: 'arena_sec2',
+  score: 88,
+  wrong: 2
 });
 assert.equal(masteryRes.handled, true);
 assert.equal(masteryRes.awarded, 100);
+assert.equal(masteryRes.remediationAssigned, true);
 assert.equal(pwaState.coins, 200);
-assert.equal(pwaState.syncOutbox.length, 1);
+assert.equal(pwaState.syncOutbox.length, 2, 'Must enqueue both mastery pass and diagnostic remediation event when wrong > 0');
+assert.equal(pwaState.cohortSummary.misconceptions.length, 1);
+assert.equal(pwaState.cohortSummary.misconceptions[0].conceptCode, 'arena_sec2_remediation');
+const heatmapHtml = renderMisconceptionHeatmapCard(pwaState.cohortSummary.misconceptions);
+assert.ok(heatmapHtml.includes('data-action="launch-remediation-group"'));
+assert.ok(heatmapHtml.includes('2 missed in Arena'));
 
 // 3. Verify Centre Server GET /api/catalogue/learn-arena-modules live endpoint
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'aasha-phase-d-http-'));
@@ -79,6 +90,43 @@ try {
   const lbHtml = renderCentreLeaderboardCard(lbBody.leaders);
   assert.ok(lbHtml.includes('id="centre-leaderboard-card"'));
   assert.ok(lbHtml.includes('stu_leader_01'));
+
+  // Verify syncing pwaState.syncOutbox to /api/sync/quiz-results populates /api/teacher/misconception-analytics
+  await fetch(`${baseUrl}/api/sync/quiz-results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentId: 'stu_remed_01', events: pwaState.syncOutbox })
+  });
+  const maRes = await fetch(`${baseUrl}/api/teacher/misconception-analytics`);
+  assert.equal(maRes.status, 200);
+  const maBody = await maRes.json();
+  assert.ok(maBody.hotspots.some((h) => h.chapterId === 'NCERT-G06-MATH-CH07-FRACTIONS' && h.conceptCode === 'arena_sec2_remediation'));
+  const serverHeatmapHtml = renderMisconceptionHeatmapCard(maBody.hotspots);
+  assert.ok(serverHeatmapHtml.includes('arena_sec2_remediation'));
+
+  // Verify NCVET Practical Skill Portfolio Checklist & GET /api/student/:id/ncvet-portfolio
+  const ncvetRes = toggleNcvetPracticalTask(pwaState, 'ncvet_agr_q4301');
+  assert.equal(ncvetRes.ok, true);
+  assert.equal(ncvetRes.completed, true);
+  assert.equal(pwaState.coins, 225);
+  const signedPort = exportSignedNcvetPortfolio(pwaState);
+  assert.ok(signedPort.signature.startsWith('fnv1a32:'));
+  assert.ok(signedPort.qpCodesVerified.includes('AGR/Q4301'));
+  const ncvetCardHtml = renderNcvetPortfolioChecklistCard(pwaState);
+  assert.ok(ncvetCardHtml.includes('id="ncvet-portfolio-checklist-card"'));
+  assert.ok(ncvetCardHtml.includes('AGR/Q4301'));
+
+  await fetch(`${baseUrl}/api/sync/quiz-results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentId: 'stu_ncvet_01', events: pwaState.syncOutbox })
+  });
+  const srvPortRes = await fetch(`${baseUrl}/api/student/stu_ncvet_01/ncvet-portfolio`);
+  assert.equal(srvPortRes.status, 200);
+  const srvPort = await srvPortRes.json();
+  assert.equal(srvPort.status, 'ok');
+  assert.ok(srvPort.verified_qp_codes.includes('AGR/Q4301'));
+  assert.equal(srvPort.portfolio_sha256.length, 64);
 } finally {
   await app.close();
 }
