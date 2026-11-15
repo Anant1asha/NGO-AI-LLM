@@ -51,6 +51,10 @@ class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
         self.assertIn('"sim":"motion_force"', force_p.read_text(encoding="utf-8"))
         self.assertIn('"sim":"ledger_balance"', ledger_p.read_text(encoding="utf-8"))
         self.assertIn('"sim":"drip_flow"', drip_p.read_text(encoding="utf-8"))
+        self.assertIn("TEAS_CHAPTER_MASTERY", elec_p.read_text(encoding="utf-8"))
+        arena_elec = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Arena.html"
+        self.assertIn("TEAS_CHAPTER_MASTERY", arena_elec.read_text(encoding="utf-8"))
+        self.assertIn("NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW", arena_elec.read_text(encoding="utf-8"))
 
 if __name__ == "__main__":
     unittest.main()

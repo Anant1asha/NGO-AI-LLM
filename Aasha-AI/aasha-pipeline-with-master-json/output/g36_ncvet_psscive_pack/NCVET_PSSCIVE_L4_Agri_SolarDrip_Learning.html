@@ -2831,6 +2831,18 @@ function render(){
       title = '<div class="kindrow"><span class="kind">Done</span></div><h1 data-lang>'+esc(s.t)+'</h1>';
       txt = '<p class="sub" data-lang>'+esc(s.s||"")+'</p><p class="b" data-lang>'+esc(s.b||"")+'</p>';
       vis = vizCard("star","open the arena next");
+      try {
+        if (window.parent && typeof window.parent.postMessage === "function") {
+          window.parent.postMessage({
+            type: "TEAS_CHAPTER_MASTERY",
+            chapterId: "NCVET_PSSCIVE_L4_Agri_SolarDrip_v5",
+            nodeId: "learn_complete",
+            mode: "learn",
+            score: 85,
+            timestamp: new Date().toISOString()
+          }, "*");
+        }
+      } catch (_e) {}
       break;
     default:
       title = '<h2 data-lang>'+esc(s.t||"")+'</h2>'; txt = '<p class="b" data-lang>'+esc(s.b||"")+'</p>';

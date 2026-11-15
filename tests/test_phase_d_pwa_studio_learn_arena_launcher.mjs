@@ -7,7 +7,8 @@ import {
   OFFLINE_CHAPTER_CATALOGUE,
   renderLearnCatalogue,
   renderChapterPlayerModal,
-  handleChapterMasteryMessage
+  handleChapterMasteryMessage,
+  renderCentreLeaderboardCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -60,6 +61,24 @@ try {
   assert.equal(body.under_20mib, true);
   assert.equal(body.zero_external_urls, true);
   assert.equal(body.modules.length, 13);
+
+  // Verify live /api/sync/quiz-results -> /api/leaderboard round-trip
+  await fetch(`${baseUrl}/api/sync/quiz-results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      studentId: 'stu_leader_01',
+      events: [{ id: 'ev_lb_1', chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS', nodeId: 'arena_full', score: 95 }]
+    })
+  });
+  const lbRes = await fetch(`${baseUrl}/api/leaderboard`);
+  assert.equal(lbRes.status, 200);
+  const lbBody = await lbRes.json();
+  assert.equal(lbBody.status, 'ok');
+  assert.ok(lbBody.leaders.some((l) => l.studentId === 'stu_leader_01' && l.lifetimeCoins >= 100));
+  const lbHtml = renderCentreLeaderboardCard(lbBody.leaders);
+  assert.ok(lbHtml.includes('id="centre-leaderboard-card"'));
+  assert.ok(lbHtml.includes('stu_leader_01'));
 } finally {
   await app.close();
 }
