@@ -16,7 +16,10 @@ import {
   exportCohortMasteryCsv,
   renderPrintableCohortAuditReportHtml,
   exportSignedUsbCohortPack,
-  mergeSignedUsbCohortPack
+  mergeSignedUsbCohortPack,
+  buildPhoneticReadAloudDrill,
+  speakLleTermOffline,
+  renderVocabularyFlashcardDeck
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -224,6 +227,40 @@ try {
   const srvReplayBody = await srvImportReplay.json();
   assert.equal(srvReplayBody.net_coins_added, 0);
   assert.equal(srvReplayBody.mastery_records_merged, 0);
+
+  // Verify Offline Student Voice Phonetic Read-Aloud & LLE Pronunciation Drill + Server /api/catalogue/lle-phonetic-drill
+  const drill = buildPhoneticReadAloudDrill('photosynthesis');
+  assert.equal(drill.termEn, 'photosynthesis');
+  assert.equal(drill.phoneticHi, 'फ़ोटोसिंथेसिस');
+  assert.equal(drill.syllablesHi, 'फ़ो-टो-सिं-थे-सिस');
+  assert.ok(drill.bilingualPrompt.includes('फ़ो-टो-सिं-थे-सिस'));
+
+  const spokenEvents = [];
+  const mockSynth = {
+    cancel() {},
+    speak(u) { spokenEvents.push(u); }
+  };
+  globalThis.SpeechSynthesisUtterance = class {
+    constructor(text) { this.text = text; this.lang = ''; this.rate = 1; }
+  };
+  const speakRes = speakLleTermOffline({ termEn: 'denominator' }, mockSynth);
+  assert.equal(speakRes.ok, true);
+  assert.equal(speakRes.spoken, true);
+  assert.equal(spokenEvents.length, 2);
+  assert.equal(spokenEvents[0].lang, 'en-IN');
+  assert.equal(spokenEvents[1].lang, 'hi-IN');
+
+  const flashDeckHtml = renderVocabularyFlashcardDeck();
+  assert.ok(flashDeckHtml.includes('data-action="speak-lle-word"'));
+  assert.ok(flashDeckHtml.includes('मो-नो-मि-यल'));
+
+  const srvLleRes = await fetch(`${baseUrl}/api/catalogue/lle-phonetic-drill`);
+  assert.equal(srvLleRes.status, 200);
+  const srvLle = await srvLleRes.json();
+  assert.equal(srvLle.status, 'ok');
+  assert.equal(srvLle.wm2_count, 1557);
+  assert.equal(srvLle.ph_count, 763);
+  assert.equal(srvLle.pack_sha256.length, 64);
 } finally {
   await app.close();
 }

@@ -134,8 +134,8 @@
     "server_endpoint": "GET /api/student/:id/ncvet-portfolio",
     "merkle_root_sha256": "324af8834425f85c204a3e78e031433be6dc8053c53c9e097e417fb5838259f7"
   },
-  "last_updated_utc": "2026-11-15T19:17:19Z",
-  "active_focus_unit": "PHASE_G_OFFLINE_PEER_SYNC_USB_COHORT_PACK_IMPORTER_AND_CONFLICT_MERGER",
-  "last_completed_focus_unit": "PHASE_G_OFFLINE_PEER_SYNC_USB_COHORT_PACK_IMPORTER_AND_CONFLICT_MERGER",
-  "sw_merkle_root": "3aa9edcf75e9d6bb0096581aba5fb509a2b6a921cfe02433f81f743310fe1ee8"
+  "last_updated_utc": "2026-11-15T22:40:01Z",
+  "active_focus_unit": "PHASE_G_OFFLINE_STUDENT_VOICE_PHONETIC_READ_ALOUD_AND_LLE_PRONUNCIATION_DRILL",
+  "last_completed_focus_unit": "PHASE_G_OFFLINE_STUDENT_VOICE_PHONETIC_READ_ALOUD_AND_LLE_PRONUNCIATION_DRILL",
+  "sw_merkle_root": "e7ba08840ebbd7e1b41ac3e8a0121d410911f26966ca1984740973f8472de2b5"
 }
