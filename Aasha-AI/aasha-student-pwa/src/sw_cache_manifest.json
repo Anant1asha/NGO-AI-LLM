@@ -1,13 +1,13 @@
 {
   "schema_version": "2.2.0",
   "cache_version": "aasha-student-pwa-v2.2",
-  "generated_at_utc": "2026-11-15T11:14:14.007826+00:00",
+  "generated_at_utc": "2026-11-15T15:16:36.670067+00:00",
   "total_assets": 53,
   "certified_html5_modules_count": 47,
-  "total_precache_bytes": 27874008,
+  "total_precache_bytes": 27877941,
   "under_20mib_ceiling": true,
   "zero_external_urls": true,
-  "merkle_root_sha256": "324af8834425f85c204a3e78e031433be6dc8053c53c9e097e417fb5838259f7",
+  "merkle_root_sha256": "187226ee9be818f73d192efaf62eb9c6007f8d7d11f9e6c1dfe5612273d816cd",
   "assets": [
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/sw.js",
@@ -16,8 +16,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/app.js",
-      "size_bytes": 56406,
-      "sha256": "7c20d85c5d61cf7266778ba7d569f84fd28a3ebc48f6a103426f1844bbb663ff"
+      "size_bytes": 60339,
+      "sha256": "e4fdde570ef04c59b20effbd97df235b071dc14f3a7e33f1646676a3b32b6fe2"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/rewards.js",

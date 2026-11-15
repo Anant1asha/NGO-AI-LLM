@@ -143,5 +143,9 @@
     "pwa_checklist_card": "renderNcvetPortfolioChecklistCard",
     "server_endpoint": "GET /api/student/:id/ncvet-portfolio",
     "merkle_root_sha256": "324af8834425f85c204a3e78e031433be6dc8053c53c9e097e417fb5838259f7"
-  }
+  },
+  "last_updated_utc": "2026-11-15T15:18:54Z",
+  "active_focus_unit": "PHASE_G_OFFLINE_COHORT_CSV_AND_PRINTABLE_PROGRESS_REPORT_EXPORTER",
+  "last_completed_focus_unit": "PHASE_G_OFFLINE_COHORT_CSV_AND_PRINTABLE_PROGRESS_REPORT_EXPORTER",
+  "sw_merkle_root": "187226ee9be818f75d72f5f4e6002b86d60e8c6b7ef2e30a38ca0f578b801941"
 }

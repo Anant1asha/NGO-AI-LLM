@@ -12,7 +12,9 @@ import {
   renderMisconceptionHeatmapCard,
   toggleNcvetPracticalTask,
   exportSignedNcvetPortfolio,
-  renderNcvetPortfolioChecklistCard
+  renderNcvetPortfolioChecklistCard,
+  exportCohortMasteryCsv,
+  renderPrintableCohortAuditReportHtml
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -127,6 +129,30 @@ try {
   assert.equal(srvPort.status, 'ok');
   assert.ok(srvPort.verified_qp_codes.includes('AGR/Q4301'));
   assert.equal(srvPort.portfolio_sha256.length, 64);
+
+  // Verify Offline Cohort CSV & Printable NGO Audit Report Exporter + GET /api/teacher/cohort-export-csv
+  const sampleCohort = {
+    totalStudents: 2,
+    avgMasteryPct: 89.5,
+    totalTokensMinted: 250,
+    students: [
+      { studentId: 'stu_1', name: 'Aarav', masteryPct: 87, tokenBalance: 100 },
+      { studentId: 'stu_2', name: 'Diya', masteryPct: 92, tokenBalance: 150 }
+    ]
+  };
+  const csvOut = exportCohortMasteryCsv(sampleCohort, 'CENTER-UP-GN-01');
+  assert.ok(csvOut.includes('center_id,student_id,student_name,mastery_pct,token_balance,chapters_passed'));
+  assert.ok(csvOut.includes('SUMMARY_TOTAL,All Cohort Learners (2),89.5,250,0'));
+  const printHtml = renderPrintableCohortAuditReportHtml(sampleCohort, 'CENTER-UP-GN-01');
+  assert.ok(printHtml.includes('Annanth Aasha Foundation — Monthly Cohort Progress'));
+  assert.ok(printHtml.includes('Aarav') && printHtml.includes('Diya'));
+
+  const srvCsvRes = await fetch(`${baseUrl}/api/teacher/cohort-export-csv`);
+  assert.equal(srvCsvRes.status, 200);
+  const srvCsv = await srvCsvRes.json();
+  assert.equal(srvCsv.status, 'ok');
+  assert.ok(srvCsv.csv.includes('SUMMARY_TOTAL'));
+  assert.equal(srvCsv.csv_sha256.length, 64);
 } finally {
   await app.close();
 }

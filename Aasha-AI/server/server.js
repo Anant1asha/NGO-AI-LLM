@@ -623,6 +623,39 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G: Offline Cohort Mastery & NGO Audit CSV Export Endpoint
+  app.get('/api/teacher/cohort-export-csv', async () => {
+    const rows = db.prepare(`
+      SELECT tb.student_id AS studentId,
+             COALESCE(s.name, ss.student_name, tb.student_id) AS studentName,
+             tb.balance AS tokenBalance,
+             tb.lifetime_earned AS lifetimeCoins,
+             COUNT(DISTINCT CASE WHEN me.passed = 1 THEN me.chapter_id END) AS chaptersPassed,
+             COALESCE(ROUND(AVG(me.score), 1), 0) AS avgScorePct
+      FROM token_balances tb
+      LEFT JOIN students s ON s.id = tb.student_id
+      LEFT JOIN student_snapshots ss ON ss.student_id = tb.student_id
+      LEFT JOIN mastery_events me ON me.student_id = tb.student_id
+      GROUP BY tb.student_id
+      ORDER BY lifetimeCoins DESC
+    `).all();
+    const header = 'center_id,student_id,student_name,avg_score_pct,token_balance,lifetime_coins,chapters_passed';
+    const lines = rows.map((r) => `CENTER-UP-GN-01,${r.studentId},${String(r.studentName || r.studentId).replace(/,/g, ' ')},${r.avgScorePct},${r.tokenBalance},${r.lifetimeCoins},${r.chaptersPassed}`);
+    const totalLifetime = rows.reduce((a, r) => a + Number(r.lifetimeCoins || 0), 0);
+    const avgAll = rows.length ? (rows.reduce((a, r) => a + Number(r.avgScorePct || 0), 0) / rows.length).toFixed(1) : '0.0';
+    lines.push(`CENTER-UP-GN-01,SUMMARY_TOTAL,All Cohort Learners (${rows.length}),${avgAll},0,${totalLifetime},0`);
+    const csv = [header, ...lines].join('\n');
+    const csv_sha256 = crypto.createHash('sha256').update(csv, 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      center_id: 'CENTER-UP-GN-01',
+      row_count: rows.length,
+      csv,
+      csv_sha256
+    };
+  });
+
   return app;
 
 
