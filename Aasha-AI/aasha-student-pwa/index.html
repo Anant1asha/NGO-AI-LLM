@@ -76,6 +76,8 @@
       exportStudentProgressSnapshot,
       toggleNcvetPracticalTask,
       exportSignedNcvetPortfolio,
+      exportCohortMasteryCsv,
+      renderPrintableCohortAuditReportHtml,
       syncNowWithServer
     } from './src/app.js';
 
@@ -169,6 +171,20 @@
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = `${port.studentId}_ncvet_portfolio.json`;
+        a.click();
+      } else if (action === 'export-cohort-csv') {
+        const csv = exportCohortMasteryCsv(state.cohortSummary || {});
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aasha_cohort_mastery_report.csv';
+        a.click();
+      } else if (action === 'export-cohort-printable') {
+        const htmlDoc = renderPrintableCohortAuditReportHtml(state.cohortSummary || {});
+        const blob = new Blob([htmlDoc], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aasha_cohort_printable_audit_report.html';
         a.click();
       } else if (action === 'export-student-snapshot') {
         const snap = exportStudentProgressSnapshot(state);

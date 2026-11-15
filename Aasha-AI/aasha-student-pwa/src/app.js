@@ -75,10 +75,20 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
              style="padding:16px;padding-bottom:calc(96px + env(safe-area-inset-bottom, 16px));">
       <header style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
         <h2 style="margin:0;">🏫 Centre Cohort & Store Dashboard / केंद्र डैशबोर्ड</h2>
-        <button id="btn-teacher-restock-modal" class="teacher-restock-btn"
-                style="min-width:44px;min-height:44px;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;">
-          📦 Restock Inventory (Staff PIN)
-        </button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" id="btn-export-cohort-csv" data-action="export-cohort-csv"
+                  style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+            📄 Export Cohort CSV / सीएसवी
+          </button>
+          <button type="button" id="btn-export-cohort-printable" data-action="export-cohort-printable"
+                  style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:1px solid #0f766e;background:#ffffff;color:#0f766e;font-weight:700;cursor:pointer;">
+            🖨️ Printable NGO Audit Card / प्रिंट रिपोर्ट
+          </button>
+          <button id="btn-teacher-restock-modal" class="teacher-restock-btn"
+                  style="min-width:44px;min-height:44px;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;">
+            📦 Restock Inventory (Staff PIN)
+          </button>
+        </div>
       </header>
       ${alertsHtml}
       <div class="kpi-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px;">
@@ -798,4 +808,62 @@ export function renderNcvetPortfolioChecklistCard(state = {}) {
       <ul style="list-style:none;padding:0;margin:0;">${itemsHtml}</ul>
     </section>
   `.trim();
+}
+
+export function exportCohortMasteryCsv(cohortSummary = {}, centerId = "CENTER-UP-GN-01") {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  const header = "center_id,student_id,student_name,mastery_pct,token_balance,chapters_passed";
+  const rows = students.map((s) => {
+    const sid = String(s.studentId || s.id || "stu_unknown").replace(/,/g, " ");
+    const name = String(s.name || sid).replace(/,/g, " ");
+    const mastery = Number(s.masteryPct ?? s.avg_score ?? 0).toFixed(1);
+    const tokens = Number(s.tokenBalance ?? s.coin_balance ?? 0);
+    const passed = Number(s.chaptersPassed ?? s.chapters_passed ?? 1);
+    return `${centerId},${sid},${name},${mastery},${tokens},${passed}`;
+  });
+  const totalStudents = Number(cohortSummary.totalStudents ?? students.length);
+  const avgMastery = Number(cohortSummary.avgMasteryPct ?? 0).toFixed(1);
+  const totalTokens = Number(cohortSummary.totalTokensMinted ?? 0);
+  const summaryRow = `${centerId},SUMMARY_TOTAL,All Cohort Learners (${totalStudents}),${avgMastery},${totalTokens},0`;
+  return [header, ...rows, summaryRow].join("\n");
+}
+
+export function renderPrintableCohortAuditReportHtml(cohortSummary = {}, centerId = "CENTER-UP-GN-01") {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  const totalStudents = Number(cohortSummary.totalStudents ?? students.length);
+  const avgMastery = Number(cohortSummary.avgMasteryPct ?? 0).toFixed(1);
+  const totalTokens = Number(cohortSummary.totalTokensMinted ?? 0);
+  const rowsHtml = students.map((s, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td>${s.studentId || s.id || ""}</td>
+      <td>${s.name || s.studentId || ""}</td>
+      <td>${Number(s.masteryPct ?? s.avg_score ?? 0).toFixed(1)}%</td>
+      <td>${Number(s.tokenBalance ?? s.coin_balance ?? 0)}</td>
+    </tr>
+  `).join("");
+  return `<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Annanth Aasha Foundation — Cohort Progress Report (${centerId})</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #0f172a; }
+    h1 { margin: 0 0 4px; color: #0f766e; font-size: 1.35rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; font-size: 0.9rem; }
+    th { background: #f0fdfa; }
+  </style>
+</head>
+<body>
+  <h1>Annanth Aasha Foundation — Monthly Cohort Progress &amp; Seva Audit / मासिक केंद्र प्रगति रिपोर्ट</h1>
+  <p><strong>Centre ID:</strong> ${centerId} • <strong>Students / विद्यार्थी:</strong> ${totalStudents} • <strong>Avg Mastery / औसत दक्षता:</strong> ${avgMastery}% • <strong>Total Coins / कुल कॉइन्स:</strong> ${totalTokens}</p>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Student ID</th><th>Name / नाम</th><th>Mastery / दक्षता</th><th>Coins / कॉइन्स</th></tr>
+    </thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+</body>
+</html>`.trim();
 }
