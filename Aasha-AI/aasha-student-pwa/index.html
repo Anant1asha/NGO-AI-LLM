@@ -81,6 +81,8 @@
       renderPrintableCohortAuditReportHtml,
       exportSignedUsbCohortPack,
       mergeSignedUsbCohortPack,
+      buildPhoneticReadAloudDrill,
+      speakLleTermOffline,
       syncNowWithServer
     } from './src/app.js';
 
@@ -206,6 +208,20 @@
       } else if (action === 'import-usb-cohort-pack') {
         const fileInput = document.getElementById('usb-cohort-pack-file-input');
         if (fileInput) fileInput.click();
+      } else if (action === 'speak-lle-word') {
+        const res = speakLleTermOffline({
+          termEn: target.getAttribute('data-term-en') || '',
+          meaningHi: target.getAttribute('data-meaning-hi') || '',
+          phoneticHi: target.getAttribute('data-phonetic-hi') || '',
+          syllablesHi: target.getAttribute('data-syllables-hi') || ''
+        });
+        toastMount.innerHTML = `<div id="lle-phonetic-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0f2fe;color:#0369a1;margin-top:10px;font-weight:600;">${res.drill.bilingualPrompt}</div>`;
+      } else if (action === 'player-read-aloud') {
+        const res = speakLleTermOffline({
+          termEn: target.getAttribute('data-title-en') || '',
+          meaningHi: target.getAttribute('data-title-hi') || ''
+        });
+        toastMount.innerHTML = `<div id="lle-phonetic-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0f2fe;color:#0369a1;margin-top:10px;font-weight:600;">${res.drill.bilingualPrompt}</div>`;
       }
     });
 

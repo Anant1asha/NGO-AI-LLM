@@ -258,6 +258,10 @@ export function renderChapterPlayerModal(chapterId, mode = "learn") {
       <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 16px;background:#1e293b;color:#f8fafc;">
         <strong>${activeMode === "arena" ? "⚔️" : "📖"} ${ch.titleHi} (${activeMode === "arena" ? "Aasha Arena" : "Aasha Learn"})</strong>
         <div style="display:flex;gap:8px;align-items:center;">
+          <button type="button" id="btn-player-read-aloud" data-action="player-read-aloud" data-chapter-id="${ch.id}" data-title-en="${ch.titleEn}" data-title-hi="${ch.titleHi}"
+                  style="min-width:44px;min-height:44px;padding:8px 12px;border-radius:8px;border:none;background:#0284c7;color:#ffffff;font-weight:700;cursor:pointer;">
+            🔊 Read Aloud / सुनें
+          </button>
           <button type="button" data-action="switch-player-mode" data-chapter-id="${ch.id}" data-mode="${activeMode === 'arena' ? 'learn' : 'arena'}"
                   style="min-width:44px;min-height:44px;padding:8px 12px;border-radius:8px;border:none;background:${activeMode === 'arena' ? '#0f766e' : '#7c3aed'};color:#ffffff;font-weight:700;cursor:pointer;">
             ${activeMode === "arena" ? "📖 Switch to Learn" : "⚔️ Switch to Arena"}
@@ -674,31 +678,85 @@ export function renderProfileBackupCard(state = {}) {
   `.trim();
 }
 
-export function renderVocabularyFlashcardDeck(words = [
-  { termEn: "monomial", meaningHi: "एकपदी (मोनोमियल)" },
-  { termEn: "binomial", meaningHi: "द्विपदी (बाइनोमियल)" },
-  { termEn: "identity", meaningHi: "सर्वसमिका (आइडेंटिटी)" },
-  { termEn: "factorisation", meaningHi: "गुणनखंडन (फ़ैक्टराइज़ेशन)" }
-]) {
-  const list = Array.isArray(words) && words.length > 0 ? words : [
-    { termEn: "monomial", meaningHi: "एकपदी (मोनोमियल)" }
-  ];
-  const cardsHtml = list.map((w, idx) => `
-    <div class="lle-flashcard-item" data-term-en="${w.termEn}" style="padding:12px;border-radius:10px;border:1px solid #cbd5e1;background:#ffffff;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
+export const OFFLINE_LLE_PHONETIC_DICTIONARY = [
+  { termEn: "monomial", meaningHi: "एकपदी (मोनोमियल)", phoneticHi: "मोनोमियल", syllablesHi: "मो-नो-मि-यल" },
+  { termEn: "binomial", meaningHi: "द्विपदी (बाइनोमियल)", phoneticHi: "बाइनोमियल", syllablesHi: "बा-इ-नो-मि-यल" },
+  { termEn: "identity", meaningHi: "सर्वसमिका (आइडेंटिटी)", phoneticHi: "आइडेंटिटी", syllablesHi: "आ-इ-डें-टि-टी" },
+  { termEn: "factorisation", meaningHi: "गुणनखंडन (फ़ैक्टराइज़ेशन)", phoneticHi: "फ़ैक्टराइज़ेशन", syllablesHi: "फ़ै-क्ट-रा-इ-ज़े-शन" },
+  { termEn: "photosynthesis", meaningHi: "प्रकाश संश्लेषण (फ़ोटोसिंथेसिस)", phoneticHi: "फ़ोटोसिंथेसिस", syllablesHi: "फ़ो-टो-सिं-थे-सिस" },
+  { termEn: "denominator", meaningHi: "हर (डिनॉमिनेटर)", phoneticHi: "डिनॉमिनेटर", syllablesHi: "डि-नॉ-मि-ने-टर" }
+];
+
+export function buildPhoneticReadAloudDrill(termEn = "", meaningHi = "", phoneticHi = "", syllablesHi = "") {
+  const cleanEn = String(termEn || "concept").trim();
+  const lookup = OFFLINE_LLE_PHONETIC_DICTIONARY.find((d) => d.termEn.toLowerCase() === cleanEn.toLowerCase());
+  const resolvedMeaning = String(meaningHi || lookup?.meaningHi || cleanEn).trim();
+  const resolvedPhonetic = String(phoneticHi || lookup?.phoneticHi || cleanEn).trim();
+  const resolvedSyllables = String(syllablesHi || lookup?.syllablesHi || resolvedPhonetic).trim();
+  return {
+    termEn: cleanEn,
+    meaningHi: resolvedMeaning,
+    phoneticHi: resolvedPhonetic,
+    syllablesHi: resolvedSyllables,
+    utteranceEn: cleanEn,
+    utteranceHi: `${resolvedPhonetic} — अर्थ: ${resolvedMeaning}`,
+    bilingualPrompt: `🔊 ${cleanEn} (${resolvedSyllables}) → ${resolvedMeaning}`
+  };
+}
+
+export function speakLleTermOffline(termObj = {}, synth = typeof window !== "undefined" ? window.speechSynthesis : null) {
+  const drill = buildPhoneticReadAloudDrill(
+    termObj.termEn,
+    termObj.meaningHi,
+    termObj.phoneticHi,
+    termObj.syllablesHi
+  );
+  let spoken = false;
+  if (synth && typeof synth.speak === "function" && typeof SpeechSynthesisUtterance !== "undefined") {
+    try {
+      synth.cancel();
+      const uEn = new SpeechSynthesisUtterance(drill.utteranceEn);
+      uEn.lang = "en-IN";
+      uEn.rate = 0.9;
+      const uHi = new SpeechSynthesisUtterance(drill.utteranceHi);
+      uHi.lang = "hi-IN";
+      uHi.rate = 0.92;
+      synth.speak(uEn);
+      synth.speak(uHi);
+      spoken = true;
+    } catch (_) {}
+  }
+  return { ok: true, spoken, drill };
+}
+
+export function renderVocabularyFlashcardDeck(words = OFFLINE_LLE_PHONETIC_DICTIONARY.slice(0, 4)) {
+  const list = Array.isArray(words) && words.length > 0 ? words : [OFFLINE_LLE_PHONETIC_DICTIONARY[0]];
+  const cardsHtml = list.map((w, idx) => {
+    const drill = buildPhoneticReadAloudDrill(w.termEn, w.meaningHi, w.phoneticHi, w.syllablesHi);
+    return `
+    <div class="lle-flashcard-item" data-term-en="${drill.termEn}" style="padding:12px;border-radius:10px;border:1px solid #cbd5e1;background:#ffffff;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
       <div>
-        <strong style="color:#0f172a;">📖 ${w.termEn}</strong>
-        <span style="color:#0f766e;font-weight:600;margin-left:8px;">→ ${w.meaningHi}</span>
+        <strong style="color:#0f172a;">📖 ${drill.termEn}</strong>
+        <span style="color:#0f766e;font-weight:600;margin-left:8px;">→ ${drill.meaningHi}</span>
+        <div class="lle-phonetic-badge" style="font-size:0.82rem;color:#0369a1;margin-top:4px;">🗣️ उच्चारण (PH): <strong>${drill.syllablesHi}</strong></div>
       </div>
-      <button type="button" class="btn-mark-word-learned" data-action="mark-word-learned" data-term-en="${w.termEn}" data-index="${idx}"
-              style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
-        ✅ Got It / समझ गया
-      </button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="button" class="btn-speak-lle-word" data-action="speak-lle-word" data-term-en="${drill.termEn}" data-meaning-hi="${drill.meaningHi}" data-phonetic-hi="${drill.phoneticHi}" data-syllables-hi="${drill.syllablesHi}"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:1px solid #0284c7;background:#e0f2fe;color:#0369a1;font-weight:700;cursor:pointer;">
+          🔊 Speak / उच्चारण सुनें
+        </button>
+        <button type="button" class="btn-mark-word-learned" data-action="mark-word-learned" data-term-en="${drill.termEn}" data-index="${idx}"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+          ✅ Got It / समझ गया
+        </button>
+      </div>
     </div>
-  `).join("");
+  `;
+  }).join("");
   return `
     <section id="lle-vocabulary-flashcard-deck" aria-label="Bilingual LLE Vocabulary Flashcards"
              style="padding:14px;border-radius:12px;background:#f0fdfa;border:1px solid #99f6e4;margin-top:14px;">
-      <h3 style="margin:0 0 8px;font-size:1rem;color:#115e59;">🗣️ 8-Layer Bilingual LLE Flashcards / शब्दावली अभ्यास (544 Terms)</h3>
+      <h3 style="margin:0 0 8px;font-size:1rem;color:#115e59;">🗣️ 8-Layer Bilingual LLE Flashcards &amp; Phonetic Read-Aloud / शब्दावली और उच्चारण अभ्यास (1,557 WM2 • 763 PH)</h3>
       <div class="flashcard-items-container">${cardsHtml}</div>
     </section>
   `.trim();

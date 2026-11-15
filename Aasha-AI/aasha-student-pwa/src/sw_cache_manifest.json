@@ -7,7 +7,7 @@
   "total_precache_bytes": 27877941,
   "under_20mib_ceiling": true,
   "zero_external_urls": true,
-  "merkle_root_sha256": "3aa9edcf75e9d6bb0096581aba5fb509a2b6a921cfe02433f81f743310fe1ee8",
+  "merkle_root_sha256": "e7ba08840ebbd7e1b41ac3e8a0121d410911f26966ca1984740973f8472de2b5",
   "assets": [
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/sw.js",
@@ -16,8 +16,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/app.js",
-      "size_bytes": 67549,
-      "sha256": "e6d1a9affabcd77a52e02e306b86fbb716dce4fb30cf5ea1af0be0452e3f1272"
+      "size_bytes": 71426,
+      "sha256": "59ce826694e9588da43d6691f1c29c85959d536017854b9fa1f91c2ab2d4248c"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/rewards.js",
