@@ -299,10 +299,21 @@ for p in ('PC_ANTIGRAVITY_STATE.json', 'COLAB_ANTIGRAVITY_STATE.json', 'IDE_CLOU
 AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_CLOUD_ASYNC_BUS.json', encoding='utf-8')))
 `;
 
+  const executeStateSync = (sha) => {
+    const tmpPy = path.join(ROOT_DIR, '.scratch', 'sync_state_tmp.py');
+    fs.mkdirSync(path.dirname(tmpPy), { recursive: true });
+    fs.writeFileSync(tmpPy, syncG30ToStatePy(sha), 'utf-8');
+    try {
+      runCmd(`python3 "${tmpPy}"`, ROOT_DIR, { silent: false });
+    } finally {
+      if (fs.existsSync(tmpPy)) fs.unlinkSync(tmpPy);
+    }
+  };
+
   if (noopEval.allowCommit) {
     updateVerificationReport(tests, activePlane, nextFocusUnitG31, timestamp, g30Summary, authGate);
     updateChangelog(tests, activePlane, nextFocusUnitG31, timestamp, headShaBefore, g30Summary);
-    runCmd(`python3 -c "${syncG30ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    executeStateSync(headShaBefore);
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json',
       ROOT_DIR,
@@ -321,7 +332,7 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
       { silent: false }
     );
     finalCommitSha = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
-    runCmd(`python3 -c "${syncG30ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    executeStateSync(finalCommitSha);
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md && git commit --amend --no-edit',
       ROOT_DIR,
