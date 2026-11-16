@@ -1,7 +1,7 @@
 {
   "phase": "G36",
   "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
-  "generated_at_utc": "2026-11-13T07:17:50.734160+00:00",
+  "generated_at_utc": "2026-11-16T16:18:11.005654+00:00",
   "roles_compiled": 3,
   "all_certified": true,
   "compiled_roles": [
@@ -11,11 +11,11 @@
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L3_IT_DataEntry_v5.html",
       "avr_mechanic": "AVR-P315",
       "swarm_state": "CERTIFIED_CHECKPOINT",
-      "qa_passed": 28,
-      "qa_total": 28,
-      "size_bytes": 97733,
+      "qa_passed": 32,
+      "qa_total": 32,
+      "size_bytes": 97897,
       "under_20mib": true,
-      "sha256": "1ed951d83087ad8e5841f49187167c556fa293e3f67cfae85f0960e8ba6d4d65"
+      "sha256": "71a8fa57e295fb4bcaa1b2db8d8e89b0b1622e6c5e1971fb352bcc6442fee8f0"
     },
     {
       "role_id": "NCVET-PSSCIVE-L4-AGRI-SOLAR-DRIP-TECHNICIAN",
@@ -23,11 +23,11 @@
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L4_Agri_SolarDrip_v5.html",
       "avr_mechanic": "AVR-P316",
       "swarm_state": "CERTIFIED_CHECKPOINT",
-      "qa_passed": 28,
-      "qa_total": 28,
-      "size_bytes": 97617,
+      "qa_passed": 32,
+      "qa_total": 32,
+      "size_bytes": 97781,
       "under_20mib": true,
-      "sha256": "801ff58ccecc0bf67b5793cfd25835624cd206becc36eba29fb12e1d85a6cf71"
+      "sha256": "3488e058c74cc27d1ee9518e8083e7efcad1f3032f41d7b316dd04f2de3e01d2"
     },
     {
       "role_id": "NCVET-PSSCIVE-L4-FOOD-SOLAR-DEHYDRATOR-OPERATOR",
@@ -35,19 +35,19 @@
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5.html",
       "avr_mechanic": "AVR-P320",
       "swarm_state": "CERTIFIED_CHECKPOINT",
-      "qa_passed": 28,
-      "qa_total": 28,
-      "size_bytes": 97590,
+      "qa_passed": 32,
+      "qa_total": 32,
+      "size_bytes": 97754,
       "under_20mib": true,
-      "sha256": "eda2bbae40dc88849bcfa3c82ad6aacfd308d552f7308886be7671ef3fc6e5ca"
+      "sha256": "e0d165ff85776b74c6caadae3e4cfad39467b2b16b9a157d1f2dac73c05ea067"
     }
   ],
   "ota_delta_pack": {
-    "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/ota_delta_pack_g35_to_g36.json.gz",
+    "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g36_ncvet_psscive_pack\\ota_delta_pack_g35_to_g36.json.gz",
     "raw_bytes": 1778,
-    "gzip_bytes": 697,
+    "gzip_bytes": 706,
     "under_20mib": true,
-    "sha256": "2254d1d1a73ded381587a9b1d319e85cf6847b974d9ed0730e3b94196e792275"
+    "sha256": "198873c21971022e79b923779504ff2c831aa5e6e619f0766f998733ef077ee6"
   },
   "next_focus_unit": "PHASE_G_CHUNK_G37_PLAYWRIGHT_HEADLESS_COLAB_GATE_AND_RELEASE_CANDIDATE_TAGGING: Execute Colab-side bundle push (scripts/apply_bundle_and_push.sh), live Playwright DOM smoke gate, and December 31 2026 MVP Release Candidate Certification."
 }

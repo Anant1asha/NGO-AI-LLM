@@ -1,7 +1,7 @@
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
-  "generated_at_utc": "2026-11-16T16:03:46.684909+00:00",
+  "generated_at_utc": "2026-11-16T16:17:28.550899+00:00",
   "sqlite_10pack_catalogue": {
     "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content_10pack.db",
     "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content_10pack.db.gz",
@@ -9,9 +9,9 @@
     "tln_nodes_exported": 30,
     "wm_vocabulary_exported": 1129,
     "raw_db_bytes": 413696,
-    "gzip_db_bytes": 53028,
+    "gzip_db_bytes": 53027,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "6f4067ee2109a414e98b58b74f0332194e420b92230278926e4f8bb0e082081c"
+    "gzip_sha256": "ccff394975943c8dadad0887becb477dd7dbb324fc1a4a6737c312723492ec40"
   },
   "facilitator_bridge": {
     "hotspotClusters": 2,
@@ -20,7 +20,7 @@
     "dashboardValid": true,
     "flashcardValid": true,
     "signedPackValid": true,
-    "integrityHash": "fnv1a32:c8272865"
+    "integrityHash": "fnv1a32:876d49d6"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
@@ -29,14 +29,14 @@
     "qa_total": 32,
     "size_bytes": 97682,
     "under_20mib": true,
-    "sha256": "12e0e0334d65590a7fb0bac99ca194541eb525b4a59b5cc6392b3cb65b21dec6",
+    "sha256": "f8116b3776d4a4e2467c6f60ce974f23b9e99d424aca7ee6bd18936a3e1bb48d",
     "compounding_db": {
       "db_path": "aasha_operational.db",
       "wm_rows_stored": 1129,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 26
+      "build_cache_records": 31
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."
