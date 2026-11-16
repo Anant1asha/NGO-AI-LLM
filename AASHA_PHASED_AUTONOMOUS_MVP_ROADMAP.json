@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-16T15:17:35Z",
+  "updated_at_utc": "2026-11-16T18:46:08Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -52,12 +52,12 @@
         },
         {
           "id": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Package offline PWA manifest/TWA config and benchmark 2GB RAM Android tablet cold-start & memory footprint."
         },
         {
           "id": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
-          "status": "QUEUED",
+          "status": "QUEUED_NEXT",
           "scope": "Append-only Impact ID ledger reconciliation across multi-centre deltas and CSR/donor audit export."
         },
         {

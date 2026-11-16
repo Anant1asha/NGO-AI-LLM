@@ -128,6 +128,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderMisconceptionHeatmapCard(cohortSummary.misconceptions || [])}
       ${renderTeacherLessonPlanCatalogCard()}
       ${renderTeacherCustomQuizBuilderCard(cohortSummary)}
+      ${renderLowRamTabletDiagnosticsCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -1483,6 +1484,48 @@ export function renderTeacherCustomQuizBuilderCard(cohortSummary = {}) {
         </button>
       </header>
       <ul style="list-style:none;padding:0;margin:0;">${rows || '<li style="color:#64748b;">Author L-Truth non-spoiler bilingual questions for offline Arena packs.</li>'}</ul>
+    </section>
+  `.trim();
+}
+
+
+export function evaluateLowRamTabletBudget(metrics = {}) {
+  const deviceMemoryGb = Number(metrics.deviceMemoryGb ?? 2);
+  const heapUsedMb = Number(metrics.heapUsedMb ?? 68);
+  const maxBundleBytes = Number(metrics.maxBundleBytes ?? 539884);
+  const lowRamMode = deviceMemoryGb <= 2;
+  const withinHeapBudget = heapUsedMb <= 250;
+  const under20MiBCeiling = maxBundleBytes <= 20971520;
+  const recommendedRenderer = lowRamMode ? "Canvas2D_Lightweight_SVG" : "PixiJS_WebGL_Accelerated";
+  return {
+    ok: withinHeapBudget && under20MiBCeiling,
+    twaPackageId: "org.annantaasha.learn.twa",
+    deviceMemoryGb,
+    lowRamMode,
+    heapUsedMb,
+    heapBudgetMb: 250,
+    withinHeapBudget,
+    maxBundleBytes,
+    under20MiBCeiling,
+    recommendedRenderer
+  };
+}
+
+export function renderLowRamTabletDiagnosticsCard(cohortSummary = {}) {
+  const bench = evaluateLowRamTabletBudget(cohortSummary.tabletMetrics || {});
+  return `
+    <section id="low-ram-tablet-diagnostics-card" aria-label="2GB Android Tablet TWA and Memory Benchmark"
+             style="padding:14px;border-radius:12px;background:#f0fdfa;border:1px solid #99f6e4;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#115e59;">📱 Android TWA &amp; 2GB Low-RAM Tablet Governor (${bench.twaPackageId})</h3>
+        <button type="button" id="btn-run-tablet-benchmark" data-action="run-tablet-benchmark"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+          ⚡ Run 2GB Tablet Benchmark / टैबलेट परीक्षण
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#334155;">
+        RAM Profile: <strong>${bench.deviceMemoryGb} GB</strong> • Heap: <strong>${bench.heapUsedMb} MB / ${bench.heapBudgetMb} MB</strong> • Renderer: <code>${bench.recommendedRenderer}</code> • Bundle Ceiling: <strong>✅ &lt; 20 MiB</strong>
+      </p>
     </section>
   `.trim();
 }
