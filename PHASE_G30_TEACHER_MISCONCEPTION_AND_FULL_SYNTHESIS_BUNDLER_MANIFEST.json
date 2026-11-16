@@ -101,19 +101,23 @@
     "total_assessment_count": 5,
     "wm_dictionary_count": 296,
     "conn_dictionary_count": 46,
-    "synthesized_html_bytes": 47691,
+    "synthesized_html_bytes": 79099,
     "under_20mib_ceiling": true,
     "self_healing_qa_passed": true,
     "final_qa_violations": 0,
-    "synthesized_html_sha256": "62d7fc53005304bc8427bce8309a3846f240b0b7203a4eda2ffbddb90b38ba6e"
+    "synthesized_html_sha256": "b4f3ffe36e3791f44d9a2a654aaee597ee14715df81fbb3a585c760f9be2dcbd"
   },
   "offline_plugin_base64_bundler": {
+    "status": "PASS",
+    "assets_present": true,
+    "engine_verified": true,
     "avr_mechanics_bundled": 21,
     "all_21_avr_mechanics_verified": true,
     "total_raw_js_bytes": 20785,
     "total_data_uri_chars": 28832,
     "zero_external_cdn_urls": true,
     "under_20mib_ceiling": true,
+    "missing_assets_count": 0,
     "sample_bundled_mechanics": [
       {
         "resource_id": "AVR-P301",
@@ -155,8 +159,8 @@
   },
   "html5_hub": {
     "file_name": "Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
-    "file_path": "/working_dir/c_dc69f23207b9a38d/aasha_aios_unified_repo/AASHA_Visual_Mass_Harvest_Phase3/Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
-    "size_bytes": 9577,
+    "file_path": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\AASHA_Visual_Mass_Harvest_Phase3\\Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
+    "size_bytes": 9784,
     "under_20mib_ceiling": true,
     "self_healing_qa_report": {
       "initial_violation_count": 0,
@@ -168,6 +172,6 @@
       "final_violations": [],
       "passed": true
     },
-    "sha256": "7c7865726d6f87e6890012e3e7617a572021fc29761d06daaade9075224a7797"
+    "sha256": "80a9c05d71afafe79077f5291ecab1ad65ac106b65f0de1c84240239f4e7c084"
   }
 }

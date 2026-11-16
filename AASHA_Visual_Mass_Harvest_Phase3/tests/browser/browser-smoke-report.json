@@ -1,0 +1,107 @@
+[
+  {
+    "resource": "AVR-P301-number-line-marker.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P301-number-line-marker.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P301-number-line-marker.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P302-fraction-strip.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P302-fraction-strip.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P302-fraction-strip.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P303-shape-transformer.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P303-shape-transformer.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P303-shape-transformer.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P304-timeline-scrubber.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P304-timeline-scrubber.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P304-timeline-scrubber.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P305-process-branch.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P305-process-branch.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P305-process-branch.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P306-hotspot-reveal.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P306-hotspot-reveal.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P306-hotspot-reveal.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P307-layer-reveal.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P307-layer-reveal.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P307-layer-reveal.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P308-node-connector.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P308-node-connector.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P308-node-connector.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P309-grid-coordinate-picker.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P309-grid-coordinate-picker.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P309-grid-coordinate-picker.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P310-distance-ruler.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P310-distance-ruler.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P310-distance-ruler.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P311-particle-temperature.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P311-particle-temperature.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P311-particle-temperature.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P312-particle-diffusion.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P312-particle-diffusion.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P312-particle-diffusion.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P313-atom-builder.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P313-atom-builder.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P313-atom-builder.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P314-switch-circuit.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P314-switch-circuit.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P314-switch-circuit.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P315-logic-gate.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P315-logic-gate.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P315-logic-gate.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P316-system-flow.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P316-system-flow.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P316-system-flow.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P317-parameterized-spring.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P317-parameterized-spring.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P317-parameterized-spring.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P318-population-growth.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P318-population-growth.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P318-population-growth.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P319-projectile-explorer.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P319-projectile-explorer.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P319-projectile-explorer.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P320-bar-data-manipulator.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P320-bar-data-manipulator.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P320-bar-data-manipulator.html\", waiting until \"load\"\\n')"
+  },
+  {
+    "resource": "AVR-P321-cause-effect-reveal.html",
+    "status": "FAIL",
+    "exception": "Error('Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8765/resources/AVR-P321-cause-effect-reveal.html\\nCall log:\\n  - navigating to \"http://127.0.0.1:8765/resources/AVR-P321-cause-effect-reveal.html\", waiting until \"load\"\\n')"
+  }
+]
