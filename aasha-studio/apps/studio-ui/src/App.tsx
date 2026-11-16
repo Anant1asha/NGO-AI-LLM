@@ -63,3 +63,21 @@ export function renderStudioDualPreviewWorkbench(
     </section>
   `.trim();
 }
+
+
+export interface StudioCustomQuestionSpec {
+  chapterId: string;
+  promptEn: string;
+  promptHi: string;
+  correctOption: string;
+  wrongOption: string;
+  misconceptionHi: string;
+}
+
+export function buildStudioCustomArenaQuestion(spec: StudioCustomQuestionSpec) {
+  return {
+    ...spec,
+    lTruthNonSpoilerVerified: !spec.misconceptionHi.includes(`= ${spec.correctOption}`),
+    schemaVersion: 'aasha.studio.custom.mcq.v1'
+  };
+}

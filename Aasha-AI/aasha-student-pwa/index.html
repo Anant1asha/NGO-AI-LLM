@@ -91,6 +91,7 @@
       renderFacilitatorRestockModal,
       restockStoreInventoryItem,
       exportStoreInventoryAuditLedger,
+      authorCustomBilingualQuestion,
       syncNowWithServer
     } from './src/app.js';
 
@@ -286,6 +287,21 @@
         a.href = URL.createObjectURL(blob);
         a.download = `${ledger.centerId}_store_audit_ledger.json`;
         a.click();
+      } else if (action === 'add-custom-bilingual-question') {
+        const res = authorCustomBilingualQuestion(state, {
+          chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS',
+          promptEn: 'Which fraction represents 3 equal parts out of 4 in a village field?',
+          promptHi: 'खेत के 4 बराबर भागों में से 3 भाग कौन-सा भिन्न दर्शाता है?',
+          correctOption: '3/4',
+          wrongOption: '4/3',
+          misconceptionHi: 'आपने कुल भागों (हर) को अंश के स्थान पर रख दिया है; कुल बराबर भाग नीचे (हर में) लिखे जाते हैं।'
+        });
+        if (res.ok) {
+          state.cohortSummary = state.cohortSummary || {};
+          state.cohortSummary.customQuestions = state.customQuestions;
+          toastMount.innerHTML = `<div id="custom-quiz-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#f3e8ff;color:#581c87;margin-top:10px;font-weight:600;">🧪 Added L-Truth Verified MCQ (${res.totalCustomQuestions} total)</div>`;
+          persistAndRefresh();
+        }
       }
     });
 

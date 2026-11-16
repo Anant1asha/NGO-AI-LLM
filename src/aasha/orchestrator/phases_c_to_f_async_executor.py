@@ -138,6 +138,24 @@ export function renderStudioDualPreviewWorkbench(
     </section>
   `.trim();
 }
+
+
+export interface StudioCustomQuestionSpec {
+  chapterId: string;
+  promptEn: string;
+  promptHi: string;
+  correctOption: string;
+  wrongOption: string;
+  misconceptionHi: string;
+}
+
+export function buildStudioCustomArenaQuestion(spec: StudioCustomQuestionSpec) {
+  return {
+    ...spec,
+    lTruthNonSpoilerVerified: !spec.misconceptionHi.includes(`= ${spec.correctOption}`),
+    schemaVersion: 'aasha.studio.custom.mcq.v1'
+  };
+}
 """
         studio_app_path.write_text(studio_tsx, encoding="utf-8")
         created.append("aasha-studio/apps/studio-ui/src/App.tsx")
