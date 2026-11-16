@@ -590,6 +590,9 @@ class Orchestrator:
         total_passed = 0
         all_failures = []
 
+        clean_runner = str(qa_runner).strip()
+        if clean_runner.startswith("node "):
+            clean_runner = clean_runner[5:].strip().strip('"').strip("'")
         for qmode, html_path in targets:
             if not html_path.exists():
                 all_passed = False
@@ -597,7 +600,7 @@ class Orchestrator:
                 continue
             for attempt in range(3):
                 proc = subprocess.run(
-                    ["node", str(qa_runner), str(html_path), qmode],
+                    ["node", clean_runner, str(html_path), qmode],
                     capture_output=True, text=True, timeout=60,
                 )
                 report = json.loads(proc.stdout) if proc.stdout.strip().startswith("{") else {"passed": False, "checks_total": 1, "checks_passed": 0, "failures": [{"check": "qa_exec", "reason": proc.stderr[:200]}]}

@@ -1,4 +1,3 @@
-import tempfile
 """Builds compressed offline SQLite database (teas_content.db / teas_content.db.gz) per Aasha TEAS Spec v2.0."""
 import gzip
 import json
@@ -123,10 +122,7 @@ CREATE INDEX IF NOT EXISTS idx_quizresults_sync ON quiz_results(student_id, sync
 def export_chapter_to_teas_sqlite(chapter_spec: Dict[str, Any], db_path: str, compress_gz: bool = True) -> str:
     p = Path(db_path)
     p.parent.mkdir(parents=True, exist_ok=True)
-    tmp_db = Path(tempfile.mktemp(suffix=".db", dir="/tmp"))
-    if p.exists() and p.stat().st_size > 0:
-        shutil.copy2(str(p), str(tmp_db))
-    conn = sqlite3.connect(str(tmp_db))
+    conn = sqlite3.connect(str(p))
     try:
         conn.executescript(SCHEMA_SQL)
         ch = chapter_spec.get("chapter", {})
@@ -166,20 +162,9 @@ def export_chapter_to_teas_sqlite(chapter_spec: Dict[str, Any], db_path: str, co
                     60,
                 ),
             )
-        wm_dict = chapter_spec.get("WM") or {}
-        for word, word_hi in wm_dict.items():
-            conn.execute(
-                "INSERT OR REPLACE INTO vocabulary (chapter_id, word, word_hi, difficulty) VALUES (?, ?, ?, ?)",
-                (ch_id, str(word).strip().lower(), str(word_hi).strip(), 1),
-            )
         conn.commit()
     finally:
         conn.close()
-    shutil.copy2(str(tmp_db), str(p))
-    try:
-        tmp_db.unlink()
-    except OSError:
-        pass
 
     if compress_gz:
         gz_path = f"{db_path}.gz"
@@ -204,40 +189,3 @@ def export_chapter_specs_to_sqlite(spec_paths, output_db_path, gzip_output=True,
         "db_path": str(out_db),
         "gzip_path": gz_path,
     }
-
-
-def export_html5_bundle_catalogue_to_sqlite(bundle_reports, wm_dict, output_db_path, compress_gz=True):
-    """Exports the 10 certified offline HTML5 chapter bundles + 440-word Hindi WM dictionary into teas_content.db.gz."""
-    out_db = Path(output_db_path)
-    if out_db.exists():
-        out_db.unlink()
-    for idx, rep in enumerate(bundle_reports):
-        fname = rep.get("file", f"chapter_{idx+1}.html")
-        stem = fname.replace(".html", "")
-        spec = {
-            "chapter": {
-                "storage_key": f"aasha_{stem}",
-                "title": stem.replace("_", " "),
-                "grade": 8,
-                "subject": "stem_commerce",
-                "board": "NCERT",
-                "sha256_prefix": rep.get("sha256_prefix", ""),
-                "size_bytes": rep.get("size_bytes", 0),
-                "under_20mib": rep.get("under_20mib", True),
-                "zero_external_urls": rep.get("zero_external_urls", True),
-            },
-            "NODES": [
-                {"name": f"{stem} Concept Node 1", "name_hi": "अवधारणा 1", "steps": ["Learn", "Explore"]},
-                {"name": f"{stem} Practice Node 2", "name_hi": "अभ्यास 2", "steps": ["Practice", "Verify"]},
-                {"name": f"{stem} Mastery Node 3", "name_hi": "दक्षता 3", "steps": ["Assess", "Reward"]},
-            ],
-            "WM": wm_dict if idx == 0 else {},
-        }
-        export_chapter_to_teas_sqlite(spec, str(out_db), compress_gz=False)
-    if compress_gz:
-        gz_path = f"{output_db_path}.gz"
-        with open(output_db_path, "rb") as f_in, gzip.open(gz_path, "wb") as f_out:
-            shutil.copyfileobj(f_in, f_out)
-        return gz_path
-    return str(out_db)
-

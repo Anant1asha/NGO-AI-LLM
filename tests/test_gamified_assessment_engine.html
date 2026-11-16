@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AASHA AIOS — Universal Gamified Assessment Engine (F27)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #020617;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .header {
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .title-group h1 {
+      font-size: 20px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .title-group p {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .controls-panel {
+      max-width: 900px;
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .selector-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+    select, button {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    select:focus, button:hover {
+      border-color: #38bdf8;
+      background: #334155;
+    }
+    #game-container {
+      max-width: 900px;
+      width: 100%;
+      min-height: 520px;
+      margin-bottom: 16px;
+    }
+    .telemetry-tray {
+      max-width: 900px;
+      width: 100%;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #4ade80;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+    .telemetry-tray .log-entry {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="title-group">
+      <h1>🎮 AASHA AIOS Universal Gamified Assessment Engine</h1>
+      <p>Foundation F27 — Cleanroom Adaptation from KingsMath Web Games (CC BY-NC 4.0)</p>
+    </div>
+    <div style="font-size: 12px; color: #10b981; font-weight: 700; background: rgba(16, 185, 129, 0.1); padding: 6px 12px; border-radius: 20px; border: 1px solid #10b981;">
+      ✔ 100% Offline | Zero Token Bleed | Web Audio Synthesizer
+    </div>
+  </div>
+
+  <div class="controls-panel">
+    <div class="selector-group">
+      <label for="mode-select">Game Mode:</label>
+      <select id="mode-select">
+        <option value="speed_racer">🏎️ Speed Racer (Lane Dodger)</option>
+        <option value="lilypad_hopper">🐸 Lilypad Hopper (River Step)</option>
+        <option value="category_sorter">📦 Category Classifier (Sorter)</option>
+        <option value="memory_match">🃏 Memory Matcher (Flip Pairs)</option>
+      </select>
+    </div>
+
+    <div class="selector-group">
+      <label for="subject-select">Curriculum Subject:</label>
+      <select id="subject-select">
+        <option value="science">🔬 Science: Physics & Biology</option>
+        <option value="math">📐 Mathematics: Arithmetic & Geometry</option>
+        <option value="history">🏛️ Social Studies: History & Civics</option>
+        <option value="grammar">📚 English Grammar: Parts of Speech</option>
+      </select>
+    </div>
+
+    <div class="selector-group">
+      <button id="btn-restart">🔄 Reset Engine</button>
+      <button id="btn-pause">⏸️ Pause</button>
+    </div>
+  </div>
+
+  <!-- Game Container -->
+  <div id="game-container"></div>
+
+  <!-- Real-time Telemetry & State Inspector -->
+  <div class="telemetry-tray" id="telemetry-log">
+    <div class="log-entry" style="color: #94a3b8;">[System Ready] Awaiting user interaction...</div>
+  </div>
+
+  <!-- Load Engine Adapter -->
+  <script src="../Aasha-AI/experience_registry/adapters/aasha_gamified_assessment_adapter.js"></script>
+
+  <script>
+    // Assessment Datasets for Multiple Subjects
+    const CURRICULUM_DATA = {
+      science: [
+        {
+          id: 'sci_1',
+          prompt: 'What force pulls objects toward the center of the Earth?',
+          options: ['Gravity', 'Friction', 'Magnetism', 'Tension'],
+          correctAnswer: 'Gravity',
+          category: 'Physics',
+          hints: ['Think of an apple falling from a tree.', 'Formulated by Sir Isaac Newton.'],
+          misconceptions: { 'Friction': 'Friction opposes surface motion, not gravitational pull.' }
+        },
+        {
+          id: 'sci_2',
+          prompt: 'Which cellular organelle is known as the "Powerhouse of the Cell"?',
+          options: ['Mitochondria', 'Nucleus', 'Ribosome', 'Vacuole'],
+          correctAnswer: 'Mitochondria',
+          category: 'Biology',
+          hints: ['It produces ATP energy.', 'Found in eukaryotic cells.'],
+          misconceptions: { 'Nucleus': 'The nucleus stores genetic material DNA, not ATP production.' }
+        },
+        {
+          id: 'sci_3',
+          prompt: 'What is the pH level of pure distilled water at 25°C?',
+          options: ['pH 7 (Neutral)', 'pH 2 (Acidic)', 'pH 14 (Basic)', 'pH 0'],
+          correctAnswer: 'pH 7 (Neutral)',
+          category: 'Chemistry',
+          hints: ['Equal concentration of H+ and OH- ions.', 'Right in the middle of 0 to 14.']
+        }
+      ],
+      math: [
+        {
+          id: 'math_1',
+          prompt: 'Find the perimeter of a square with side length 7 cm.',
+          options: ['28 cm', '49 cm²', '14 cm', '21 cm'],
+          correctAnswer: '28 cm',
+          category: 'Geometry',
+          hints: ['Perimeter of square = 4 × side', 'Multiply 4 by 7.'],
+          misconceptions: { '49 cm²': '49 cm² is the AREA (7 × 7), not the perimeter.' }
+        },
+        {
+          id: 'math_2',
+          prompt: 'What is the value of 15% of 200?',
+          options: ['30', '20', '35', '15'],
+          correctAnswer: '30',
+          category: 'Arithmetic',
+          hints: ['10% of 200 = 20, 5% of 200 = 10', '20 + 10 = ?']
+        },
+        {
+          id: 'math_3',
+          prompt: 'Which integer is neither positive nor negative?',
+          options: ['0', '1', '-1', 'Infinity'],
+          correctAnswer: '0',
+          category: 'Number System',
+          hints: ['The origin point on the number line.', 'Divides positive and negative numbers.']
+        }
+      ],
+      history: [
+        {
+          id: 'hist_1',
+          prompt: 'Who was the Chairperson of the Drafting Committee of the Indian Constitution?',
+          options: ['Dr. B.R. Ambedkar', 'Mahatma Gandhi', 'Jawaharlal Nehru', 'Dr. Rajendra Prasad'],
+          correctAnswer: 'Dr. B.R. Ambedkar',
+          category: 'Civics',
+          hints: ['Known as the Chief Architect of the Constitution.'],
+          misconceptions: { 'Dr. Rajendra Prasad': 'Dr. Rajendra Prasad was the President of the Constituent Assembly.' }
+        },
+        {
+          id: 'hist_2',
+          prompt: 'In which year did India gain independence from British rule?',
+          options: ['1947', '1950', '1857', '1942'],
+          correctAnswer: '1947',
+          category: 'History',
+          hints: ['15th of August.', 'Celebrated annually as Independence Day.']
+        }
+      ],
+      grammar: [
+        {
+          id: 'gram_1',
+          prompt: 'Identify the Part of Speech: "The cheetah runs QUICKLY."',
+          options: ['Adverb', 'Adjective', 'Noun', 'Verb'],
+          correctAnswer: 'Adverb',
+          category: 'Grammar',
+          hints: ['It modifies the verb "runs" explaining HOW it runs.', 'Ends in -ly.'],
+          misconceptions: { 'Adjective': 'Adjectives describe nouns; adverbs describe verbs or adjectives.' }
+        },
+        {
+          id: 'gram_2',
+          prompt: 'Identify the Part of Speech: "HIMALAYAS are magnificent mountains."',
+          options: ['Proper Noun', 'Pronoun', 'Conjunction', 'Preposition'],
+          correctAnswer: 'Proper Noun',
+          category: 'Grammar',
+          hints: ['A specific named mountain range.', 'Always begins with a capital letter.']
+        }
+      ]
+    };
+
+    const container = document.getElementById('game-container');
+    const modeSelect = document.getElementById('mode-select');
+    const subjectSelect = document.getElementById('subject-select');
+    const restartBtn = document.getElementById('btn-restart');
+    const pauseBtn = document.getElementById('btn-pause');
+    const telemetryLog = document.getElementById('telemetry-log');
+
+    let currentAdapter = null;
+
+    function logTelemetry(type, payload) {
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${type}: ${JSON.stringify(payload)}`;
+      telemetryLog.prepend(entry);
+    }
+
+    function launchEngine() {
+      if (currentAdapter) {
+        currentAdapter.destroy();
+      }
+
+      const selectedMode = modeSelect.value;
+      const selectedSubject = subjectSelect.value;
+      const questions = CURRICULUM_DATA[selectedSubject] || CURRICULUM_DATA.science;
+
+      currentAdapter = new AashaGamifiedAssessmentAdapter({
+        gameMode: selectedMode,
+        experienceId: `${selectedSubject}_${selectedMode}`
+      });
+
+      // Listen for custom AASHA AIOS telemetry events
+      container.addEventListener('aasha:telemetry', (e) => {
+        logTelemetry(e.detail.type || 'telemetry', e.detail.payload || {});
+      });
+
+      container.addEventListener('aasha:state_change', (e) => {
+        // State updates logged at fine intervals
+      });
+
+      currentAdapter.mount(container, {
+        gameMode: selectedMode,
+        questions: questions,
+        durationSeconds: 90,
+        soundEnabled: true,
+        maxLives: 3
+      });
+
+      logTelemetry('ENGINE_LAUNCHED', { mode: selectedMode, subject: selectedSubject, count: questions.length });
+    }
+
+    modeSelect.addEventListener('change', launchEngine);
+    subjectSelect.addEventListener('change', launchEngine);
+    restartBtn.addEventListener('click', () => {
+      if (currentAdapter) currentAdapter.reset();
+    });
+
+    let isPaused = false;
+    pauseBtn.addEventListener('click', () => {
+      if (!currentAdapter) return;
+      if (isPaused) {
+        currentAdapter.resume();
+        pauseBtn.textContent = '⏸️ Pause';
+        isPaused = false;
+      } else {
+        currentAdapter.pause();
+        pauseBtn.textContent = '▶️ Resume';
+        isPaused = true;
+      }
+    });
+
+    // Initial Launch
+    window.addEventListener('DOMContentLoaded', launchEngine);
+  </script>
+</body>
+</html>

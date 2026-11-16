@@ -41,7 +41,7 @@ def compile_pdf_to_learn_arena(
     cfg.pipeline.template_path = str(PIPELINE_ROOT / "template" / "v5-engine-template.html")
     cfg.pipeline.defaults_path = str(PIPELINE_ROOT / "config" / "defaults_expanded_v2.json")
     cfg.pipeline.schema_path = str(PIPELINE_ROOT / "schema" / "chapter_spec.schema.json")
-    cfg.pipeline.qa_runner = str(PIPELINE_ROOT / "qa" / "run_qa.js")
+    cfg.pipeline.qa_runner = f"node {PIPELINE_ROOT / 'qa' / 'run_qa.js'}"
 
     if work_dir:
         cfg.pipeline.work_dir = str(work_dir)

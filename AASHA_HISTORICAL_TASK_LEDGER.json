@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-13T11:26:53.885980+00:00",
-  "total_phase_manifests": 37,
-  "total_python_test_suites": 61,
+  "generated_at_utc": "2026-11-16T13:02:56.965233+00:00",
+  "total_phase_manifests": 43,
+  "total_python_test_suites": 76,
   "status_counts": {
-    "LIVE_VERIFIED_PASS": 37,
+    "LIVE_VERIFIED_PASS": 43,
     "PARTIAL": 0,
     "BLOCKED": 0,
-    "UNKNOWN_OFFLINE_WINDOWS": 1
+    "UNKNOWN_OFFLINE_WINDOWS": 0
   },
   "entries": [
     {
@@ -166,7 +166,7 @@
       "task_id": "G29",
       "title": "Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Centre Server + Student PWA TEAS Store Redemption Sync Verification",
       "manifest_file": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
-      "manifest_sha256": "0fc2ca5ba6e46c8e4f5e97ce2edff0b8ef40c58b5714756d0383752d0d333d83",
+      "manifest_sha256": "fb10a6bad520b8c4965c521f0994072add3b7c7a6a7d1f7a5db70a6b59e9fd37",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 47
     },
@@ -174,7 +174,7 @@
       "task_id": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
       "title": "PHASE_G2_INFINITY_RAP_AND_P2P_MANIFEST",
       "manifest_file": "PHASE_G2_INFINITY_RAP_AND_P2P_MANIFEST.json",
-      "manifest_sha256": "6d5e730b1cf030c7fd63f003d50bfa39d833deca015729f0055a4f8e09ebf4cc",
+      "manifest_sha256": "15ce6679b64c25dfb8460fda5749024d190dac7a6251258f3da4d965348c824d",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -182,7 +182,7 @@
       "task_id": "G30",
       "title": "Teacher Cohort Misconception Hotspot Analytics (/api/teacher/misconception-analytics), FrontendCodeSynthesizer 3-Level Assessment (Warmup/Deep-Dive/Boss) & Offline Plugin Base64 Bundler Verification",
       "manifest_file": "PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json",
-      "manifest_sha256": "448e0ee169c2102d49f232ea562a5ea817b046aa0379356d4bb476b5b9478b26",
+      "manifest_sha256": "317a300e1fee08c8d54ca9d4e32b3f604cff641c1355abf7e254638f573db290",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 48
     },
@@ -259,6 +259,46 @@
       "verified_chunk_count": null
     },
     {
+      "task_id": "G41_V7_SYSTEM_WIDE_AUDIT_AND_OBSERVABILITY",
+      "title": "PHASE_G41_V7_SYSTEM_WIDE_AUDIT_MANIFEST",
+      "manifest_file": "PHASE_G41_V7_SYSTEM_WIDE_AUDIT_MANIFEST.json",
+      "manifest_sha256": "9cad0f0de8db9a9682610fda8fd7148f3f9563706ef3af323b60857d83e74015",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G43_SERVER_DELTA_RUBRIC_API_AND_10PACK_1129WM_UPGRADE",
+      "title": "PHASE_G43_SERVER_DELTA_RUBRIC_AND_10PACK_1129WM_MANIFEST",
+      "manifest_file": "PHASE_G43_SERVER_DELTA_RUBRIC_AND_10PACK_1129WM_MANIFEST.json",
+      "manifest_sha256": "53c19d5ed8f3672e825598789ef89c72eaf33466e43e4d264b7c7c7f6ab7d766",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G44_SQLITE_GZIP_CATALOGUE_REBUILD_AND_PWA_CACHE_AUDITOR",
+      "title": "PHASE_G44_SQLITE_CATALOGUE_AND_PWA_CACHE_MANIFEST",
+      "manifest_file": "PHASE_G44_SQLITE_CATALOGUE_AND_PWA_CACHE_MANIFEST.json",
+      "manifest_sha256": "b0469edf445bed64770ef7acd5941c35b0e345d1ba4e3de23befa0451830092a",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G45_OFFLINE_TEACHER_REMEDIATION_WORKSHEET_AND_COHORT_EXPORT",
+      "title": "PHASE_G45_TEACHER_REMEDIATION_WORKSHEET_MANIFEST",
+      "manifest_file": "PHASE_G45_TEACHER_REMEDIATION_WORKSHEET_MANIFEST.json",
+      "manifest_sha256": "970932062ceb3f8d17b4a0fb77172ab6bc0d586f4e2d0567ccc6b015b9ddb13f",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G46_PARENT_PROGRESS_CARD_AND_SEVA_CERTIFICATE_SIGNER",
+      "title": "PHASE_G46_PARENT_PROGRESS_AND_SEVA_CERTIFICATE_MANIFEST",
+      "manifest_file": "PHASE_G46_PARENT_PROGRESS_AND_SEVA_CERTIFICATE_MANIFEST.json",
+      "manifest_sha256": "9c6e60f43c2c451ef7c25c4a376d003fb81b239be735524b746beaecec071533",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
       "task_id": "PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION",
       "title": "PHASE_G4_KNOWLEDGE_GRAPH_AND_TEACHER_COPILOT_MANIFEST",
       "manifest_file": "PHASE_G4_KNOWLEDGE_GRAPH_AND_TEACHER_COPILOT_MANIFEST.json",
@@ -295,6 +335,14 @@
       "title": "PHASE_G9_EXAM_SIMULATOR_AND_APPRENTICESHIP_MANIFEST",
       "manifest_file": "PHASE_G9_EXAM_SIMULATOR_AND_APPRENTICESHIP_MANIFEST.json",
       "manifest_sha256": "60018ae7ae9f38dab5833d5808e30ba439da39fda905c9084dc663585ad10be3",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_MANIFEST",
+      "title": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_MANIFEST",
+      "manifest_file": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_MANIFEST.json",
+      "manifest_sha256": "b2ccd8bbe759e645b7d29f7b064529eb3e9c9671ea15cbe29a59fc8728a34e2a",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },

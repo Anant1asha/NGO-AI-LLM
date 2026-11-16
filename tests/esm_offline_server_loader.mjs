@@ -1,10 +1,10 @@
 // ESM loader hook for offline sandbox testing of Aasha-AI/server/server.js
 // Maps fastify, @fastify/cors, and better-sqlite3 to real local HTTP + Python SQLite3 drivers
 // when node_modules is absent in offline sandbox.
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 
-const SHIM_DIR = path.dirname(new URL(import.meta.url).pathname);
+const SHIM_DIR = path.dirname(fileURLToPath(import.meta.url));
 
 export async function resolve(specifier, context, nextResolve) {
   if (specifier === 'fastify') {

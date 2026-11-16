@@ -23,8 +23,10 @@ elif op in ('run', 'get', 'all'):
         print(json.dumps([dict(r) for r in rows]))
 `;
 
+const PY_CMD = process.platform === 'win32' ? 'python' : 'python3';
+
 function callSqlite(dbPath, op, sql, params = []) {
-  const out = execFileSync('python3', ['-c', PY_BRIDGE], {
+  const out = execFileSync(PY_CMD, ['-c', PY_BRIDGE], {
     input: JSON.stringify({ db_path: dbPath, op, sql, params }),
     encoding: 'utf8',
     maxBuffer: 10 * 1024 * 1024

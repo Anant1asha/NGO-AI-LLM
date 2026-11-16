@@ -1,0 +1,70 @@
+﻿{
+    "schema_version":  "1.0.0",
+    "timestamp_utc":  "2026-11-14T22:35:03.2527121Z",
+    "pc_hostname":  "DESKTOP-7RHB41C",
+    "workspace_root":  "C:\\Users\\admin\\Downloads\\NGO AI LLM",
+    "infrastructure":  {
+                           "antigravity_running":  true,
+                           "docker_running":  false,
+                           "gemini_proxy_running":  false,
+                           "ninerouter_running":  true,
+                           "node_version":  "v24.19.0",
+                           "python_version":  "Python 3.15.0b3"
+                       },
+    "repositories":  {
+                         "ngo_ai_llm_root":  {
+                                                 "branch":  "aios/v2-bootstrap",
+                                                 "head_commit":  "eb594ee3aa21a2caf0571c9d5fbcf513960047cc",
+                                                 "dirty_file_count":  807,
+                                                 "dirty_files_sample":  [
+                                                                            " M .gitignore",
+                                                                            " M AASHA_Visual_Mass_Harvest_Phase3/DEC_2026_MVP_Release_Freeze_G47_Certification_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/E2E_Regression_G39_Golden_Master_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/MVP_Release_Candidate_G37_Certification_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Multi_Centre_Delta_Rubric_And_10Pack_1129WM_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Parent_Progress_And_Seva_Certificate_Signer_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Rainwater_Weir_Folk_Science_Toy_Kit_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/SQLite_Gzip_Catalogue_And_PWA_Cache_Auditor_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Solar_Drip_Tactile_Science_Atlas_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/Teacher_Remediation_Worksheet_And_Cohort_Export_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/V7_System_Wide_Audit_And_Argon_Swarm_Observability_Hub_v5.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/sanitized/Chapter3_LPG_Learning.html",
+                                                                            " D AASHA_Visual_Mass_Harvest_Phase3/sanitized/Quadratic_Equations_Class10_Pro.html",
+                                                                            " D ARGON_AIOS_COLAB_HANDOVER.md",
+                                                                            " M Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js"
+                                                                        ]
+                                             },
+                         "aasha_ai_monorepo":  {
+                                                   "branch":  "aios/v2-bootstrap",
+                                                   "head_commit":  "eb594ee3aa21a2caf0571c9d5fbcf513960047cc",
+                                                   "dirty_file_count":  807,
+                                                   "dirty_files_sample":  [
+                                                                              " M .gitignore",
+                                                                              " M AASHA_Visual_Mass_Harvest_Phase3/DEC_2026_MVP_Release_Freeze_G47_Certification_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/E2E_Regression_G39_Golden_Master_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/MVP_Release_Candidate_G37_Certification_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Multi_Centre_Delta_Rubric_And_10Pack_1129WM_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Parent_Progress_And_Seva_Certificate_Signer_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Rainwater_Weir_Folk_Science_Toy_Kit_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/SQLite_Gzip_Catalogue_And_PWA_Cache_Auditor_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Solar_Drip_Tactile_Science_Atlas_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Teacher_Misconception_Full_Synthesis_Plugin_Bundler_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/Teacher_Remediation_Worksheet_And_Cohort_Export_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/V7_System_Wide_Audit_And_Argon_Swarm_Observability_Hub_v5.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/sanitized/Chapter3_LPG_Learning.html",
+                                                                              " D AASHA_Visual_Mass_Harvest_Phase3/sanitized/Quadratic_Equations_Class10_Pro.html",
+                                                                              " D ARGON_AIOS_COLAB_HANDOVER.md",
+                                                                              " M Aasha-AI/Aasha-AIOS/tests/contract/test_visual_contract.js"
+                                                                          ]
+                                               }
+                     }
+}

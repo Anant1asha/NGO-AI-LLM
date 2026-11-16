@@ -18,28 +18,16 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-try:
-    from flask import (
-        Flask,
-        abort,
-        jsonify,
-        render_template,
-        request,
-        send_file,
-        url_for,
-        redirect,
-    )
-except ImportError:
-    from .flask_shim import (
-        Flask,
-        abort,
-        jsonify,
-        render_template,
-        request,
-        send_file,
-        url_for,
-        redirect,
-    )
+from flask import (
+    Flask,
+    abort,
+    jsonify,
+    render_template,
+    request,
+    send_file,
+    url_for,
+    redirect,
+)
 import threading
 
 from ..config import Config
@@ -57,6 +45,17 @@ def create_app(config: Config) -> Flask:
         jobs = orch.list_jobs()
         return render_template("upload.html", jobs=jobs[:5])
 
+    @app.route("/plugins")
+    def plugins_view():
+        # In a real app we'd fetch from PluginRegistry, here we use placeholder or actual registry if available
+        try:
+            from ..plugins import create_default_registry
+            registry = create_default_registry()
+            plugins = registry.list_all()
+        except Exception:
+            plugins = []
+        return render_template("plugins.html", plugins=plugins)
+
     @app.route("/jobs")
     def jobs_list():
         jobs = orch.list_jobs()
@@ -73,40 +72,18 @@ def create_app(config: Config) -> Flask:
     @app.route("/job/<job_id>/preview")
     def job_preview(job_id: str):
         work_dir = orch.get_job_work_dir(job_id)
-        mode = request.args.get("mode", "learn")
-        candidates = (
-            [work_dir / "chapter_arena.html", work_dir / "chapter.html"]
-            if mode == "arena"
-            else [work_dir / "chapter_learning.html", work_dir / "chapter.html"]
-        )
-        html_path = next((p for p in candidates if p.exists()), None)
-        if not html_path:
+        html_path = work_dir / "chapter.html"
+        if not html_path.exists():
             abort(404)
         return send_file(str(html_path))
 
     @app.route("/job/<job_id>/download/html")
     def download_html(job_id: str):
         work_dir = orch.get_job_work_dir(job_id)
-        html_path = next((p for p in [work_dir / "chapter.html", work_dir / "chapter_learning.html"] if p.exists()), None)
-        if not html_path:
-            abort(404)
-        return send_file(str(html_path), as_attachment=True, download_name=html_path.name)
-
-    @app.route("/job/<job_id>/download/learn")
-    def download_learn(job_id: str):
-        work_dir = orch.get_job_work_dir(job_id)
-        html_path = work_dir / "chapter_learning.html"
+        html_path = work_dir / "chapter.html"
         if not html_path.exists():
             abort(404)
-        return send_file(str(html_path), as_attachment=True, download_name="chapter_Learning.html")
-
-    @app.route("/job/<job_id>/download/arena")
-    def download_arena(job_id: str):
-        work_dir = orch.get_job_work_dir(job_id)
-        html_path = work_dir / "chapter_arena.html"
-        if not html_path.exists():
-            abort(404)
-        return send_file(str(html_path), as_attachment=True, download_name="chapter_Arena.html")
+        return send_file(str(html_path), as_attachment=True, download_name="chapter.html")
 
     @app.route("/job/<job_id>/download/spec")
     def download_spec(job_id: str):
@@ -156,7 +133,18 @@ def create_app(config: Config) -> Flask:
         job = orch.get_job(job_id)
         if not job:
             abort(404)
-        return jsonify(job.model_dump())
+        
+        work_dir = orch.get_job_work_dir(job_id)
+        try:
+            from ..pipeline.agent_bus import AgentBus
+            bus = AgentBus(work_dir)
+            messages = bus.read_all()
+        except Exception:
+            messages = []
+            
+        data = job.model_dump()
+        data["messages"] = messages
+        return jsonify(data)
 
     @app.route("/api/upload", methods=["POST"])
     def api_upload():
@@ -165,16 +153,19 @@ def create_app(config: Config) -> Flask:
             return jsonify({"error": "No file uploaded"}), 400
 
         subject = request.form.get("subject", "math")
-        grade = int(request.form.get("grade", 8))
-        provider = request.form.get("provider", "offline")
-        mode = request.form.get("mode", "learn-arena")
-        sync_run = request.form.get("sync", "0") == "1"
+        grade = int(request.form.get("grade", 4))
+        provider = request.form.get("provider", "openai")
+        mode = request.form.get("mode", "v5-engine")
+        board = request.form.get("board", "CBSE")
+        language = request.form.get("language", "en")
 
         # Save to temp, create job
         import tempfile
         tmp = Path(tempfile.mktemp(suffix=".pdf"))
         file.save(str(tmp))
 
+        # We pass mode, but create_job currently doesn't accept board/language,
+        # but we can pass them if they are supported or at least pass mode.
         job_id = orch.create_job(
             pdf_path=tmp,
             subject=subject,
@@ -183,10 +174,6 @@ def create_app(config: Config) -> Flask:
             mode=mode,
         )
 
-        if sync_run:
-            job = orch.run_pipeline(job_id)
-            return jsonify({"job_id": job_id, "status": job.status, "outputs": job.outputs})
-
         # Start pipeline in background
         def run_in_background():
             orch.run_pipeline(job_id)
@@ -194,6 +181,6 @@ def create_app(config: Config) -> Flask:
         thread = threading.Thread(target=run_in_background, daemon=True)
         thread.start()
 
-        return jsonify({"job_id": job_id, "mode": mode, "provider": provider})
+        return jsonify({"job_id": job_id})
 
     return app

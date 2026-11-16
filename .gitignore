@@ -1,3 +1,5 @@
+# Dependencies & Runtimes
+node_modules/
 __pycache__/
 *.pyc
 *.pyo
@@ -5,4 +7,24 @@ __pycache__/
 .qa_syntax_check.js
 *.tmp
 .plugin_cache/
-node_modules/
+
+# Large Bundles & Archives
+*.bundle
+*.tar.gz
+*.zip
+
+# Build outputs & caches
+**/dist/
+**/build/
+.artifacts/
+**/.artifacts/
+.llm_cache/
+**/.llm_cache/
+.jobs/
+**/.jobs/
+
+# Local Tools, Scratches & Generated Knowledge Graphs
+graphify-out/
+scratch/
+external_sources/
+gemini-web2api/

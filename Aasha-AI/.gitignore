@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Environment, Secrets, and Cryptographic Private Keys
+*.log
+.env
+.env.*
+.env.local
+*.pem
+*.key
+*.pkcs8
+*private_key*
+.keys/
+secrets/
+
+# Router: daily usage tracking (auto-generated, resets daily)
+router_usage.json
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.Thumbs.db
+desktop.ini
+Desktop.ini
+*.gdoc
+*.gsheet
+*.gslides
+.tmp.driveupload/
+
+# Build and temp
+dist/
+build/
+*.tmp
+temp/
+.scratch/
+**/.scratch/
+scratch/
+**/scratch/
+*cookie*
+*.cookie
+*.zip
+.claude/
+
+# IEC Compiler & Browser Test Artifacts
+.chrome_temp_*/
+.chrome_temp_profile/
+.chrome_temp_profile*/
+*.bak
+chapters/test_*.html
+
+# Ephemeral Runtime Cache & Local Databases
+packages/memory-engine/storage/*.json
+*.db
+staging_pdfs/
+**/staging_pdfs/
+
+
+
