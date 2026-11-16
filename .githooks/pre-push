@@ -1,0 +1,27 @@
+#!/bin/sh
+# AASHA AIOS - Strict Git Pre-Push Hook: Branch Protection Invariant
+# SEC-001 / BRANCH-PROTECTION-INVARIANT
+# Hard-rejects any direct or automated push targeting protected branches:
+# master, main, production, release, or HEAD.
+# Strictly enforces that all autonomous cycles push exclusively to non-main task branches (aios/v2-bootstrap).
+
+remote="$1"
+url="$2"
+
+PROTECTED_REGEX="^refs/heads/(master|main|production|release)$"
+
+while read -r local_ref local_oid remote_ref remote_oid; do
+    if echo "$remote_ref" | grep -Eq "$PROTECTED_REGEX"; then
+        echo "" >&2
+        echo "======================================================================" >&2
+        echo "❌ [SEC-001/BRANCH-PROTECTION-VIOLATION] PUSH BLOCKED BY PRE-PUSH HOOK!" >&2
+        echo "Direct or automated push to protected branch '$remote_ref' is prohibited." >&2
+        echo "AASHA AIOS policy invariant strictly requires targeting 'aios/v2-bootstrap'." >&2
+        echo "Zero automated pushes to master/main are permitted." >&2
+        echo "======================================================================" >&2
+        echo "" >&2
+        exit 1
+    fi
+done
+
+exit 0
