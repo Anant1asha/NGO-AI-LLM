@@ -22,7 +22,10 @@ import {
   renderVocabularyFlashcardDeck,
   registerSharedTabletStudent,
   switchActiveTabletStudent,
-  renderSharedTabletStudentSwitcherCard
+  renderSharedTabletStudentSwitcherCard,
+  recordDailyLearningStreak,
+  completeCommunitySevaChallenge,
+  renderDailyStreakAndSevaCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -317,6 +320,55 @@ try {
   const srvRoster = await srvRosterRes.json();
   assert.equal(srvRoster.status, 'ok');
   assert.ok(srvRoster.profiles.some((p) => p.studentId === 'stu_shared_02' && p.studentName === 'Riya Verma'));
+
+  // Verify Daily Learning Streak & Bilingual Community Seva Challenge Tracker + Server /api/student/:id/seva-challenge
+  const streakRes1 = recordDailyLearningStreak(pwaState, '2026-11-16');
+  assert.equal(streakRes1.ok, true);
+  assert.equal(streakRes1.bonusAwarded, 15);
+  assert.equal(streakRes1.streakDays, 2);
+
+  // Same-day check-in must be idempotent (0 bonus coins)
+  const streakResSameDay = recordDailyLearningStreak(pwaState, '2026-11-16');
+  assert.equal(streakResSameDay.bonusAwarded, 0);
+  assert.equal(streakResSameDay.alreadyCheckedIn, true);
+
+  // Next consecutive day increments streak to 3
+  const streakRes2 = recordDailyLearningStreak(pwaState, '2026-11-17');
+  assert.equal(streakRes2.streakDays, 3);
+  assert.equal(streakRes2.bonusAwarded, 15);
+
+  const sevaRes = completeCommunitySevaChallenge(pwaState, 'seva_jal_audit');
+  assert.equal(sevaRes.ok, true);
+  assert.equal(sevaRes.rewardCoins, 30);
+  assert.equal(sevaRes.completedCount, 1);
+
+  const sevaCardHtml = renderDailyStreakAndSevaCard(pwaState);
+  assert.ok(sevaCardHtml.includes('id="daily-streak-seva-card"'));
+  assert.ok(sevaCardHtml.includes('3-Day Learning Streak'));
+
+  const srvSevaPost1 = await fetch(`${baseUrl}/api/student/stu_local_01/seva-challenge`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ challengeId: 'seva_jal_audit', rewardCoins: 30 })
+  });
+  assert.equal(srvSevaPost1.status, 200);
+  const srvSevaBody1 = await srvSevaPost1.json();
+  assert.equal(srvSevaBody1.coinsAwarded, 30);
+
+  // Idempotent replay check
+  const srvSevaPost2 = await fetch(`${baseUrl}/api/student/stu_local_01/seva-challenge`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ challengeId: 'seva_jal_audit', rewardCoins: 30 })
+  });
+  const srvSevaBody2 = await srvSevaPost2.json();
+  assert.equal(srvSevaBody2.coinsAwarded, 0);
+
+  const srvSevaGet = await fetch(`${baseUrl}/api/student/stu_local_01/seva-challenges`);
+  assert.equal(srvSevaGet.status, 200);
+  const srvSevaList = await srvSevaGet.json();
+  assert.equal(srvSevaList.completedCount, 1);
+  assert.equal(srvSevaList.seva_ledger_sha256.length, 64);
 } finally {
   await app.close();
 }

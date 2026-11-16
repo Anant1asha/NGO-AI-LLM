@@ -866,7 +866,73 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G: Student Daily Streak & Bilingual Community Seva Challenge Endpoints
+  app.post('/api/student/:id/seva-challenge', async (req, reply) => {
+    const { id } = req.params;
+    const body = req.body || {};
+    const challengeId = String(body.challengeId || '').trim();
+    if (!challengeId) {
+      return reply.code(400).send({ status: 'error', error: 'MISSING_CHALLENGE_ID' });
+    }
+    const rewardCoins = Math.max(0, Number(body.rewardCoins ?? 30));
+    const now = new Date().toISOString();
+    const evId = `seva_${id}_${challengeId}`;
+    let coinsAwarded = 0;
+
+    const tx = db.transaction(() => {
+      const existing = db.prepare('SELECT id FROM mastery_events WHERE id = ?').get(evId);
+      if (!existing) {
+        db.prepare('INSERT INTO mastery_events (id, student_id, chapter_id, node_id, score, passed, recorded_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+          .run(evId, id, 'SEVA_COMMUNITY_MISSION', challengeId, 100, 1, now);
+        db.prepare(`
+          INSERT INTO token_balances (student_id, balance, lifetime_earned, updated_at)
+          VALUES (?, ?, ?, ?)
+          ON CONFLICT(student_id) DO UPDATE SET
+            balance = balance + excluded.balance,
+            lifetime_earned = lifetime_earned + excluded.lifetime_earned,
+            updated_at = excluded.updated_at
+        `).run(id, rewardCoins, rewardCoins, now);
+        coinsAwarded = rewardCoins;
+      }
+    });
+    tx();
+    const balRow = db.prepare('SELECT balance, lifetime_earned FROM token_balances WHERE student_id = ?').get(id) || { balance: 0, lifetime_earned: 0 };
+    return {
+      status: 'ok',
+      studentId: id,
+      challengeId,
+      coinsAwarded,
+      coinsBalance: Number(balRow.balance || 0),
+      lifetimeCoins: Number(balRow.lifetime_earned || 0),
+      idempotent: true
+    };
+  });
+
+  app.get('/api/student/:id/seva-challenges', async (req) => {
+    const { id } = req.params;
+    const rows = db.prepare(`
+      SELECT node_id AS challengeId, score, recorded_at AS completedAt
+      FROM mastery_events
+      WHERE student_id = ? AND chapter_id = 'SEVA_COMMUNITY_MISSION' AND passed = 1
+      ORDER BY node_id ASC
+    `).all(id);
+    const canonical = JSON.stringify({
+      student_id: String(id),
+      completed_challenges: rows.map((r) => r.challengeId)
+    });
+    const seva_ledger_sha256 = crypto.createHash('sha256').update(canonical, 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      studentId: id,
+      completedCount: rows.length,
+      challenges: rows,
+      seva_ledger_sha256
+    };
+  });
+
   return app;
+
 
 
 
