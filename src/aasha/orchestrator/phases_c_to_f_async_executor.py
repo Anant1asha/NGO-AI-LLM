@@ -107,6 +107,37 @@ export function computeStudioLivePreviewScorecard(spec: Partial<StudioQAScorecar
     zeroExternalUrls: true
   };
 }
+
+export interface LearnArenaModulePair {
+  id: string;
+  titleEn: string;
+  titleHi: string;
+  grade: number;
+  subject: string;
+  learnFile: string;
+  arenaFile: string;
+  qaChecksPassed?: string;
+}
+
+export function renderStudioDualPreviewWorkbench(
+  mod: LearnArenaModulePair,
+  activeMode: 'learn' | 'arena' = 'learn',
+  baseUrl = '/chapters'
+): string {
+  const target = activeMode === 'arena' ? mod.arenaFile : mod.learnFile;
+  return `
+    <section id="studio-dual-preview-workbench" data-chapter-id="${mod.id}" data-mode="${activeMode}">
+      <header>
+        <h3>${mod.titleEn} (${mod.titleHi})</h3>
+        <div>
+          <button type="button" data-action="studio-preview-learn" data-file="${mod.learnFile}">📖 Learn Mode</button>
+          <button type="button" data-action="studio-preview-arena" data-file="${mod.arenaFile}">⚔️ Arena Mode</button>
+        </div>
+      </header>
+      <iframe id="studio-preview-iframe" src="${baseUrl}/${target}" title="${mod.titleEn}"></iframe>
+    </section>
+  `.trim();
+}
 """
         studio_app_path.write_text(studio_tsx, encoding="utf-8")
         created.append("aasha-studio/apps/studio-ui/src/App.tsx")

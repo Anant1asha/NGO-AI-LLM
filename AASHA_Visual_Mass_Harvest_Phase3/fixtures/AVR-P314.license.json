@@ -1,0 +1,13 @@
+{
+  "resource_id": "AVR-P314",
+  "bundled_third_party_code": [],
+  "bundled_third_party_assets": [],
+  "reference_only_sources": [
+    "PhET / SceneryStack",
+    "all-science-sims",
+    "myPhysicsLab",
+    "GeoGebra",
+    "Pashasan learning-simulation-platform",
+    "SimuTutor"
+  ]
+}

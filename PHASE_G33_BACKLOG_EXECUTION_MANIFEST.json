@@ -1,6 +1,6 @@
 {
   "phase": "G33",
-  "generated_at_utc": "2026-11-12T19:43:43.916721+00:00",
+  "generated_at_utc": "2026-11-16T12:10:36.043836+00:00",
   "backlog_01_node_vm_lle": {
     "wm_count": 1129,
     "conn_count": 85,
@@ -32,15 +32,15 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 12
+      "build_cache_records": 147
     }
   },
   "backlog_02_g3_fractions_upgrade": {
     "swarm_final_state": "CERTIFIED_CHECKPOINT",
     "qa_checks_passed": 28,
     "qa_checks_total": 28,
-    "size_bytes": 93704,
+    "size_bytes": 97978,
     "under_20mib_ceiling": true,
-    "sha256": "35108626567b952f4b037b4fa2029f9bdcf0a2dcc8620b1f9dffca6da5041908"
+    "sha256": "00b893a5f85cab44539a5092a3a0cfb27c61e8219bbe49ee87dc6eec17b989b7"
   }
 }

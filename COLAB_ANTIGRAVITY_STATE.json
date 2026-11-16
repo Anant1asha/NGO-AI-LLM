@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_G_OFFLINE_COHORT_CSV_AND_PRINTABLE_PROGRESS_REPORT_EXPORTER",
+  "next_focus_unit": "G48_OFFLINE_STORE_INVENTORY_RESTOCK_AND_REDEMPTION_AUDIT_LEDGER",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -61,81 +61,15 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 57,
+  "lamport_epoch": 65,
   "vector_clock": {
-    "plane_1_drive": 57,
+    "plane_1_drive": 65,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at": "2026-11-15T11:15:38.224305+00:00",
-  "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_G_NCVET_JOB_ROLE_PRACTICAL_PORTFOLIO_CERTIFIED",
-  "learn_arena_batch": {
-    "chapters_compiled": 13,
-    "total_html5_modules_generated": 26,
-    "total_qa_checks_passed": "871/871",
-    "sqlite_gz_bytes": 44855
-  },
-  "phase_d_launcher_integration": {
-    "learn_arena_catalogue_chapters": 13,
-    "learn_arena_html5_modules": 26,
-    "offline_chapter_catalogue_preserved": 26,
-    "server_endpoints_verified": 15,
-    "visual_contract_assertions": "97/97",
-    "learn_arena_qa_checks": "871/871"
-  },
-  "phase_fg_sw_precache": {
-    "cache_version": "aasha-student-pwa-v2.2",
-    "total_precached_assets": 53,
-    "certified_html5_modules_count": 47,
-    "merkle_root_sha256": "2f6d7043965b84876e6f8fb89bed9b7c38f059647a0f02ba0c0d435f493abf4c"
-  },
-  "phase_g_studio_web_cli_bridge": {
-    "cli_learn_arena_single_and_batch": true,
-    "web_upload_sync_and_async_learn_arena": true,
-    "web_dual_preview_and_download_endpoints": true,
-    "studio_dual_preview_workbench_scorecard": true
-  },
-  "phase_g_domain_svg_sims": {
-    "simulators_added": [
-      "circuit_ohm",
-      "motion_force",
-      "ledger_balance",
-      "drip_flow"
-    ],
-    "chapters_recompiled": 13,
-    "html5_modules_certified": 26,
-    "qa_checks_passed": "871/871",
-    "merkle_root_sha256": "9bec827a481fff11524c22e5a800cfae1e3b558e15db1a33411896c4a48f9240",
-    "serena_memories_auto_seeded": 7
-  },
-  "phase_g_mastery_and_leaderboard": {
-    "teas_chapter_mastery_postmessage_embedded": true,
-    "chapters_recompiled": 13,
-    "html5_modules_certified": 26,
-    "qa_checks_passed": "871/871",
-    "centre_leaderboard_endpoint": "GET /api/leaderboard",
-    "merkle_root_sha256": "3bad57a515c65e110dcf3b311918db0c4fab760f5cc5edebc1057e273e417aae"
-  },
-  "phase_g_arena_remediation_auto_assign": {
-    "wrong_answer_diagnostic_outbox_enabled": true,
-    "one_click_reteach_launcher_wired": true,
-    "server_misconception_analytics_aligned": true,
-    "merkle_root_sha256": "85c7605d117d316cb5cc563a91ef7f7c905b7b3440592a3366834844a09b0ee1"
-  },
-  "phase_g_ncvet_portfolio": {
-    "qp_codes_supported": [
-      "SSC/Q0101",
-      "AGR/Q4301",
-      "FIC/Q0106"
-    ],
-    "pwa_checklist_card": "renderNcvetPortfolioChecklistCard",
-    "server_endpoint": "GET /api/student/:id/ncvet-portfolio",
-    "merkle_root_sha256": "324af8834425f85c204a3e78e031433be6dc8053c53c9e097e417fb5838259f7"
-  },
-  "last_updated_utc": "2026-11-16T10:34:49Z",
-  "active_focus_unit": "PHASE_G_OFFLINE_TEACHER_LESSON_PLAN_AND_CLASSROOM_ACTIVITY_SHEET_GENERATOR",
-  "last_completed_focus_unit": "PHASE_G_OFFLINE_TEACHER_LESSON_PLAN_AND_CLASSROOM_ACTIVITY_SHEET_GENERATOR",
-  "sw_merkle_root": "3b65accff954ec32766282bb3a45b2a2258401a75e014869c55a14594e08c632"
+  "last_updated_utc": "2026-11-16T12:12:46Z",
+  "active_focus_unit": "G48_OFFLINE_STORE_INVENTORY_RESTOCK_AND_REDEMPTION_AUDIT_LEDGER",
+  "last_completed_focus_unit": "ECOSYSTEM_DEEP_AUDIT_REPAIR_AND_16STAGE_PHASED_REPLAN",
+  "sw_merkle_root": "37718e5039f1ab5a16e0c8070eba2a76a04cce3687bcbbd2d4c245496cff5ef6"
 }

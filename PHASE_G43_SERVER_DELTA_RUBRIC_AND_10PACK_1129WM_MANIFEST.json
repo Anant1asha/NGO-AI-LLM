@@ -1,13 +1,23 @@
 {
   "schema_version": "7.0.0",
   "phase": "G43_SERVER_DELTA_RUBRIC_API_AND_10PACK_1129WM_UPGRADE",
-  "generated_at_utc": "2026-11-13T19:18:45.046366+00:00",
+  "generated_at_utc": "2026-11-16T12:11:36.754958+00:00",
   "ten_chapter_pack_upgrade": {
-    "modules_upgraded": 10,
+    "modules_upgraded": 30,
     "wm_entries_per_module": 1129,
     "conn_entries_per_module": 85,
     "all_passed_28_of_28": true,
     "modules": [
+      {
+        "file": "NCERT-G06-MATH-CH07-FRACTIONS_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1410867,
+        "under_20mib": true,
+        "sha256": "a8b3deaff8aca3d418c3f0130b63a8cd000aa573ec13ea47ecbeef21dac88ba9"
+      },
       {
         "file": "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
         "wm_entries": 1129,
@@ -17,6 +27,26 @@
         "size_bytes": 125831,
         "under_20mib": true,
         "sha256": "a6be7570d6456f6b15cc840e213e72b5e5994e6a8a3ec206e19f44ae214f1ed6"
+      },
+      {
+        "file": "NCERT-G06-MATH-CH07-FRACTIONS_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539593,
+        "under_20mib": true,
+        "sha256": "c0a85ec3be65486a1523a25a9fa99676c387a6912f0698fe36abed46c0857434"
+      },
+      {
+        "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1410945,
+        "under_20mib": true,
+        "sha256": "da00dee0b98ba6a3ef3336d71e799967c8d195649b0d1b5ec39934cb3af08af7"
       },
       {
         "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
@@ -29,6 +59,26 @@
         "sha256": "1402c355bfbe4ab30ed1dd8d9393c6b8cf6941d75a52fcf35bcbe909d3998fc8"
       },
       {
+        "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539317,
+        "under_20mib": true,
+        "sha256": "931135640b25263e7733c767d6ee397c0fc313eb7f8d0714fe7faebd20348f89"
+      },
+      {
+        "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411184,
+        "under_20mib": true,
+        "sha256": "2cdd023dc51440cc4d0dd828f054c405f1e22bda532a5288588529b65cb59461"
+      },
+      {
         "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
         "wm_entries": 1129,
         "conn_entries": 85,
@@ -37,6 +87,26 @@
         "size_bytes": 125451,
         "under_20mib": true,
         "sha256": "5ca27228fe51783d7450b3e76b4c870a235abfc60ffc85ed89063776c964e34f"
+      },
+      {
+        "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539635,
+        "under_20mib": true,
+        "sha256": "36ae9997bf0ae670436c6f13e191064539d6a459a587a9726300274b8757e34b"
+      },
+      {
+        "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411440,
+        "under_20mib": true,
+        "sha256": "fdb2a876c1222baf8499c2e0af21a2e777e2347ddefffef32c83d43c2f6e8a1d"
       },
       {
         "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
@@ -49,6 +119,26 @@
         "sha256": "b3c0f66d10303eeb37273128c05bad0f26f3d7baac37cd84ad108d6e3dba273d"
       },
       {
+        "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539597,
+        "under_20mib": true,
+        "sha256": "84d40685da1333f518085cd34344c6c62f6523ffaa8343409477640e7aa11f7c"
+      },
+      {
+        "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411395,
+        "under_20mib": true,
+        "sha256": "cbc77f7c5e3f59c3d4cafdcd097e64e42353358c078defa34579d35bdee045fd"
+      },
+      {
         "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
         "wm_entries": 1129,
         "conn_entries": 85,
@@ -57,6 +147,26 @@
         "size_bytes": 127371,
         "under_20mib": true,
         "sha256": "b1a96c356e9a901ce27d955dda86e9d86636eb45015827fa139bff192a58de64"
+      },
+      {
+        "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539598,
+        "under_20mib": true,
+        "sha256": "2610831a4cc73bac75735fe11b0864337a11086872dac8c42e4d029ed3b21116"
+      },
+      {
+        "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411446,
+        "under_20mib": true,
+        "sha256": "9a4374dac32a5d5be9e77b188d11cc7a5a9cd78aa7f935c641f54ec7148f23d1"
       },
       {
         "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
@@ -69,6 +179,26 @@
         "sha256": "caadc93539b758dfb47ee021647a79859e75da149dedabb0bf381ab0ee83b69b"
       },
       {
+        "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539689,
+        "under_20mib": true,
+        "sha256": "11d9b9d0461dabb35d89e487a82839a8700773468fb6c7b1a42fc6cf06448bfb"
+      },
+      {
+        "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411659,
+        "under_20mib": true,
+        "sha256": "983b8d2e168513237eeb9241d789d418b0e4c8cfb9648bc0a3fee53cb87dc045"
+      },
+      {
         "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
         "wm_entries": 1129,
         "conn_entries": 85,
@@ -77,6 +207,26 @@
         "size_bytes": 126805,
         "under_20mib": true,
         "sha256": "0409137320754bd75c7516aef5ab8ba1072e52b52e4e24af6a9db763253e775f"
+      },
+      {
+        "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539780,
+        "under_20mib": true,
+        "sha256": "8953cae15be0ea0e62a757becbdfa0736550dd718f01cdf97227d989cb563905"
+      },
+      {
+        "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411591,
+        "under_20mib": true,
+        "sha256": "cba3ad0ccc0abe9e116553139fbca485a3e2bd14712d3ab205c9b7089908d9ad"
       },
       {
         "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
@@ -89,6 +239,26 @@
         "sha256": "9724b61e7c35c7832ae18c4b3491d37530518e5583b6d155a815f5701f74d942"
       },
       {
+        "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539745,
+        "under_20mib": true,
+        "sha256": "98fc71140ad503de50f9aa4485545f923f034d98c55d9a841e58ad3db3f00498"
+      },
+      {
+        "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1411740,
+        "under_20mib": true,
+        "sha256": "80f637b0f12e9f1c72a5e5d33bb04e388ad4e421b278825cc72984295e897cc6"
+      },
+      {
         "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
         "wm_entries": 1129,
         "conn_entries": 85,
@@ -99,6 +269,26 @@
         "sha256": "f52deb18c1ebfbb09517bc466729631e0c84083d69c498445cb3f73f1706703d"
       },
       {
+        "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 539751,
+        "under_20mib": true,
+        "sha256": "99ec4d497c11292805fd1551f519eb3508a83ad9c8930fb403ee9d8845539670"
+      },
+      {
+        "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Arena.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 34,
+        "qa_total": 34,
+        "size_bytes": 1412090,
+        "under_20mib": true,
+        "sha256": "e83b80f569fa44de08d853f3960a7802f3934a7d6dc921552e916653f7755b6c"
+      },
+      {
         "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
         "wm_entries": 1129,
         "conn_entries": 85,
@@ -107,6 +297,16 @@
         "size_bytes": 126791,
         "under_20mib": true,
         "sha256": "7fc48876bffeeb904c73ed177b301f89823940f11a2ed967ba03895741aa6bd7"
+      },
+      {
+        "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html",
+        "wm_entries": 1129,
+        "conn_entries": 85,
+        "qa_passed": 33,
+        "qa_total": 33,
+        "size_bytes": 540003,
+        "under_20mib": true,
+        "sha256": "407ef62926790fe0478534896b2d61bc41a64b623118f86dfdef4e35d65881e9"
       }
     ]
   },
@@ -117,7 +317,7 @@
     "qa_total": 28,
     "size_bytes": 97546,
     "under_20mib": true,
-    "sha256": "f61eb8289fc3b7b6a4456f028a875095973322f40d20025cc1c556f9c6b0b171"
+    "sha256": "0bd3adc89a5127fefe0c25966bd5ce262ea1f3976fc780454541dcfdd252a164"
   },
   "next_focus_unit": "PHASE_G_CHUNK_G44_SQLITE_GZIP_CATALOGUE_REBUILD_AND_OFFLINE_PWA_BUNDLE_AUDITOR: Rebuild teas_content.db.gz with upgraded 10-chapter 1,129 WM specs and certify offline PWA service-worker cache manifest."
 }

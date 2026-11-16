@@ -35,6 +35,9 @@ const html = fs.readFileSync(htmlPath, 'utf-8');
 const failures = [];
 let checksTotal = 0;
 let checksPassed = 0;
+const isLearn = mode === 'learn' || (html.includes('const SLIDES =') && html.includes('applyLang'));
+const isArena = mode === 'arena' || (html.includes('const QUESTIONS =') && html.includes('bootPixi'));
+const isFullSynthesis = !isLearn && !isArena && (mode === 'full-synthesis' || (html.includes('concept-card') && !html.includes('var NODES=')));
 
 function check(name, passed, reason) {
     checksTotal++;
@@ -80,9 +83,6 @@ function checkStructure() {
     check('no_confirm', !html.includes('confirm('), 'confirm() found');
     check('no_alert', !html.includes('alert('), 'alert() found');
 
-    const isLearn = mode === 'learn' || (html.includes('const SLIDES =') && html.includes('applyLang'));
-    const isArena = mode === 'arena' || (html.includes('const QUESTIONS =') && html.includes('bootPixi'));
-    const isFullSynthesis = !isLearn && !isArena && (mode === 'full-synthesis' || (html.includes('concept-card') && !html.includes('var NODES=')));
     if (isLearn) {
         check('has_learn_slides', html.includes('const SLIDES ='), 'SLIDES not found');
         check('has_learn_action_gate', html.includes('needsAction') || html.includes('DONE') || html.includes('wireCheck') || html.includes('const done'), 'Action gating not found');
@@ -125,7 +125,7 @@ function checkStructure() {
     // File size (allowing self-contained offline media up to 20MB)
     const sizeKB = Buffer.byteLength(html, 'utf-8') / 1024;
     const hasInlinedMedia = html.includes('data:image') || html.includes('data:text') || html.includes('base64') || html.includes('PHET') || html.includes('atob');
-    const sizeLimitKB = (mode === 'full-synthesis' || mode === 'learn' || mode === 'arena' || hasInlinedMedia) ? 20480 : 500;
+    const sizeLimitKB = (isFullSynthesis || isLearn || isArena || hasInlinedMedia) ? 20480 : 500;
     check('file_size', sizeKB < sizeLimitKB, `File is ${sizeKB.toFixed(0)}KB (limit ${sizeLimitKB}KB)`);
 
     // Has exit button
@@ -194,7 +194,7 @@ function checkCriticalRules() {
     check('rule5_skip_button', mode === 'learn' || (html.includes('const SLIDES =') && !html.includes('const QUESTIONS =')) || html.includes('skip') || html.includes('Skip'), 'No skip button found');
 
     // Rule 7: _weCheckRendered flag
-    const isFullSynth = mode === 'full-synthesis' || mode === 'learn' || mode === 'arena' || (html.includes('concept-card') && !html.includes('var NODES='));
+    const isFullSynth = isFullSynthesis || isLearn || isArena;
     check('rule7_weCheckRendered', isFullSynth || html.includes('_weCheckRendered') || html.includes('weCheckRendered'), '_weCheckRendered flag not found');
 
     // Rule 8: localStorage bounds check

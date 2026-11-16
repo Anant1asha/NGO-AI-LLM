@@ -11,10 +11,6 @@ export interface StudioQAScorecard {
   bundleBytes: number;
   under20MiBCeiling: boolean;
   zeroExternalUrls: boolean;
-  learnHtmlFile?: string;
-  arenaHtmlFile?: string;
-  learnQaPassed?: string;
-  arenaQaPassed?: string;
 }
 
 export function computeStudioLivePreviewScorecard(spec: Partial<StudioQAScorecard>): StudioQAScorecard {
@@ -33,31 +29,37 @@ export function computeStudioLivePreviewScorecard(spec: Partial<StudioQAScorecar
     visualContractAssertionsPassed: 97,
     bundleBytes,
     under20MiBCeiling: bundleBytes <= 20971520,
-    zeroExternalUrls: true,
-    learnHtmlFile: `${spec.chapterId ?? 'NCERT-CLASS6-MATH-CH07-FRACTIONS'}_Learning.html`,
-    arenaHtmlFile: `${spec.chapterId ?? 'NCERT-CLASS6-MATH-CH07-FRACTIONS'}_Arena.html`,
-    learnQaPassed: '33/33',
-    arenaQaPassed: '34/34'
+    zeroExternalUrls: true
   };
 }
 
-export function renderStudioDualPreviewWorkbench(spec: Partial<StudioQAScorecard> = {}, activePane: 'learn' | 'arena' | 'split' = 'split'): string {
-  const sc = computeStudioLivePreviewScorecard(spec);
+export interface LearnArenaModulePair {
+  id: string;
+  titleEn: string;
+  titleHi: string;
+  grade: number;
+  subject: string;
+  learnFile: string;
+  arenaFile: string;
+  qaChecksPassed?: string;
+}
+
+export function renderStudioDualPreviewWorkbench(
+  mod: LearnArenaModulePair,
+  activeMode: 'learn' | 'arena' = 'learn',
+  baseUrl = '/chapters'
+): string {
+  const target = activeMode === 'arena' ? mod.arenaFile : mod.learnFile;
   return `
-    <section id="aasha-studio-dual-workbench" data-chapter-id="${sc.chapterId}" data-pane="${activePane}">
-      <header class="studio-workbench-header">
-        <h2>🎨 Aasha Studio — Schoolbook PDF → Learn &amp; Arena Workbench (${sc.chapterId})</h2>
-        <div class="studio-scorecard-badges">
-          <span class="badge-qa-learn">📖 Learn QA: ${sc.learnQaPassed}</span>
-          <span class="badge-qa-arena">⚔️ Arena QA: ${sc.arenaQaPassed}</span>
-          <span class="badge-vc">✅ Visual Contract: ${sc.visualContractAssertionsPassed}/97</span>
-          <span class="badge-size">📦 Under 20 MiB: ${sc.under20MiBCeiling ? 'YES' : 'NO'}</span>
+    <section id="studio-dual-preview-workbench" data-chapter-id="${mod.id}" data-mode="${activeMode}">
+      <header>
+        <h3>${mod.titleEn} (${mod.titleHi})</h3>
+        <div>
+          <button type="button" data-action="studio-preview-learn" data-file="${mod.learnFile}">📖 Learn Mode</button>
+          <button type="button" data-action="studio-preview-arena" data-file="${mod.arenaFile}">⚔️ Arena Mode</button>
         </div>
       </header>
-      <div class="studio-preview-grid" style="display:grid;grid-template-columns:${activePane === 'split' ? '1fr 1fr' : '1fr'};gap:16px;">
-        ${activePane !== 'arena' ? `<iframe id="studio-preview-learn" src="/chapters/${sc.learnHtmlFile}" title="Aasha Learn Preview (${sc.chapterId})" sandbox="allow-scripts allow-same-origin"></iframe>` : ''}
-        ${activePane !== 'learn' ? `<iframe id="studio-preview-arena" src="/chapters/${sc.arenaHtmlFile}" title="Aasha Arena Preview (${sc.chapterId})" sandbox="allow-scripts allow-same-origin"></iframe>` : ''}
-      </div>
+      <iframe id="studio-preview-iframe" src="${baseUrl}/${target}" title="${mod.titleEn}"></iframe>
     </section>
   `.trim();
 }

@@ -1,0 +1,338 @@
+[
+  {
+    "resource_id": "AVR-P302",
+    "bytes": 2491,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P301",
+    "bytes": 2416,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P320",
+    "bytes": 2195,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P304",
+    "bytes": 2370,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P319",
+    "bytes": 2340,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P314",
+    "bytes": 2590,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P312",
+    "bytes": 2204,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P321",
+    "bytes": 2356,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P318",
+    "bytes": 2317,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P317",
+    "bytes": 2311,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P303",
+    "bytes": 2313,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P313",
+    "bytes": 2298,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P307",
+    "bytes": 2382,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P310",
+    "bytes": 2121,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P311",
+    "bytes": 2048,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P308",
+    "bytes": 2224,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P305",
+    "bytes": 2678,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P315",
+    "bytes": 2333,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P306",
+    "bytes": 2199,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P316",
+    "bytes": 2210,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  },
+  {
+    "resource_id": "AVR-P309",
+    "bytes": 2260,
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "exists": true,
+      "no_network": true,
+      "no_external_assets": true,
+      "tln": true,
+      "lle": true,
+      "teas": true,
+      "offline": true,
+      "js_syntax": true
+    }
+  }
+]

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-11-13T07:31:22.278220+00:00",
+  "last_updated": "2026-11-16T12:10:41.799107+00:00",
   "foundations": [
     {
       "id": "F01",
@@ -3399,8 +3399,8 @@
       "file": "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
       "avr_mechanic": "AVR-P301",
       "curriculum": "NCERT",
-      "size_bytes": 97698,
-      "sha256": "090d7673c2c06bc6fd24cb34a9183a85b897d175f6f25a680b601d95cb5f0cdc",
+      "size_bytes": 97783,
+      "sha256": "ff6340bd8f2101a986d9d5fa62933ad737db4efa38bcc83fd630c0732963721b",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3411,8 +3411,8 @@
       "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
       "avr_mechanic": "AVR-P303",
       "curriculum": "NCERT",
-      "size_bytes": 97824,
-      "sha256": "946f3b47aabd45f3684aadb92f93d0adb1292339c451b92d96797603dc139ca1",
+      "size_bytes": 97909,
+      "sha256": "a4b0bd62ea3df115fbaeaa7890f53d87c32fc427f6b3866942f16c1502fb0a10",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3423,8 +3423,8 @@
       "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
       "avr_mechanic": "AVR-P320",
       "curriculum": "NCERT",
-      "size_bytes": 97681,
-      "sha256": "ed7a8e1af1e38987bbcdcc4e5fbc7144feb84e82e620d278eaa78482c3b7e54c",
+      "size_bytes": 97766,
+      "sha256": "38f7e6586385882fb12b713fb4b3a7959a7ccd9296a0e81fc9b8476ff6329521",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3435,8 +3435,8 @@
       "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
       "avr_mechanic": "AVR-P319",
       "curriculum": "NCERT",
-      "size_bytes": 97721,
-      "sha256": "c6b897fe4d390feea77f3343e56e726569998f7dbc0cf76dae7c9f4dcee7b0b2",
+      "size_bytes": 97806,
+      "sha256": "62a196a4f45cf9e95926b866671d46c2bb42443dac69757bd10af570bb4a44af",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3447,8 +3447,8 @@
       "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
       "avr_mechanic": "AVR-P317",
       "curriculum": "NCERT",
-      "size_bytes": 97754,
-      "sha256": "eb9a97e6c9fdbee132f6afc5e13975cea5215e39a893aae57494c528fbfa4d60",
+      "size_bytes": 97839,
+      "sha256": "4a5c6254bfa2b1ea94828016ed5722fb73d4b0533533da880581562250bfe772",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3459,8 +3459,8 @@
       "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
       "avr_mechanic": "AVR-P309",
       "curriculum": "NCERT",
-      "size_bytes": 97562,
-      "sha256": "d385f5e585a293f2c913a4e34f4c91006f2038d60ed76059548f1557ddc4bfcf",
+      "size_bytes": 97647,
+      "sha256": "45a1d948776d879afe73a2cfded33f530267a013cda0673756c5aae0b25f5196",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3471,8 +3471,8 @@
       "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
       "avr_mechanic": "AVR-P305",
       "curriculum": "NCERT",
-      "size_bytes": 98100,
-      "sha256": "6a4f729cf52d1da199f2a8027690f75d85049757cd914b1435c926400191643d",
+      "size_bytes": 98185,
+      "sha256": "28a1b0948571952a04825833c3b6e324c9bb967adde91296006dea51bda082c2",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3483,8 +3483,8 @@
       "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
       "avr_mechanic": "AVR-P314",
       "curriculum": "NCERT",
-      "size_bytes": 97998,
-      "sha256": "25c9deae882803d133c795a6204e0be035e1e97fd99851c190e2bf59bbd428d4",
+      "size_bytes": 98083,
+      "sha256": "71b3eae5453a9b0230d26ff9cfc445c5804fa29d1c2058774bbced258419c45f",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3495,8 +3495,8 @@
       "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
       "avr_mechanic": "AVR-P315",
       "curriculum": "NCVET/PSSCIVE",
-      "size_bytes": 97881,
-      "sha256": "49085d5de53b1edd151bfd7f03c3eab13728bca4bd88ff58cff2f9e82715cddb",
+      "size_bytes": 97966,
+      "sha256": "efcb32cc78eedb8386db0cd23bf7d36b972824e0e4ea99a23597da5008ac2fbb",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3507,8 +3507,8 @@
       "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
       "avr_mechanic": "AVR-P316",
       "curriculum": "NCVET/PSSCIVE",
-      "size_bytes": 97799,
-      "sha256": "13e7b69623db78e652ce68d8873c7df8303eed706f16f93977e2202b0dea2931",
+      "size_bytes": 97884,
+      "sha256": "fbab0c6daa4bfcf7379087b2e70768b6b6649fd343605a8440657686b65c21c9",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3519,8 +3519,8 @@
       "file": "NCVET_PSSCIVE_L3_IT_DataEntry_v5.html",
       "avr_mechanic": "AVR-P315",
       "curriculum": "NCVET/PSSCIVE",
-      "size_bytes": 97733,
-      "sha256": "1ed951d83087ad8e5841f49187167c556fa293e3f67cfae85f0960e8ba6d4d65",
+      "size_bytes": 97818,
+      "sha256": "a4c04a6dbcf8e9863d0a11dcdc96e16680d37556a0babb981aa8a07d7f5d9aba",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3531,8 +3531,8 @@
       "file": "NCVET_PSSCIVE_L4_Agri_SolarDrip_v5.html",
       "avr_mechanic": "AVR-P316",
       "curriculum": "NCVET/PSSCIVE",
-      "size_bytes": 97617,
-      "sha256": "801ff58ccecc0bf67b5793cfd25835624cd206becc36eba29fb12e1d85a6cf71",
+      "size_bytes": 97702,
+      "sha256": "0c86e4edbf76e99ba6db44d5814fff4217e67db8504879bad13975f94c558595",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28
@@ -3543,8 +3543,8 @@
       "file": "NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5.html",
       "avr_mechanic": "AVR-P320",
       "curriculum": "NCVET/PSSCIVE",
-      "size_bytes": 97590,
-      "sha256": "eda2bbae40dc88849bcfa3c82ad6aacfd308d552f7308886be7671ef3fc6e5ca",
+      "size_bytes": 97675,
+      "sha256": "faaf3c9351053d81bf2fbca6e25f2bfceae68ff11e4d7cb42195b20f0f4e1951",
       "qa_passed": true,
       "checks_passed": 28,
       "checks_total": 28

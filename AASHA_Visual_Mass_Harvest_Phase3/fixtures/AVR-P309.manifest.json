@@ -1,0 +1,55 @@
+{
+  "resource_id": "AVR-P309",
+  "version": "1.0.0",
+  "family": "spatial",
+  "name": "Grid Coordinate Picker",
+  "source_patterns": [
+    "PhET/SceneryStack",
+    "all-science-sims",
+    "myPhysicsLab",
+    "Pashasan",
+    "SimuTutor"
+  ],
+  "implementation": {
+    "aasha_native": true,
+    "bundled_third_party_code": [],
+    "bundled_third_party_assets": []
+  },
+  "contracts": {
+    "tln": {
+      "content_injection": true,
+      "mastery_decision": false
+    },
+    "lle": {
+      "locale": "en-IN",
+      "tap_to_reveal": true,
+      "content_injected": true
+    },
+    "teas": {
+      "evidence_only": true,
+      "mastery_decision": false,
+      "sequence_monotonic": true
+    }
+  },
+  "offline": {
+    "network_required": false,
+    "external_urls": 0,
+    "external_assets": 0
+  },
+  "bundle": {
+    "production_bytes": 2260,
+    "sha256": "ab4cae31cda9e44d24409711732edfa165e717ffc18d9ca8f36e4b518d03821a",
+    "ceiling_bytes": 20971520,
+    "pass": true
+  },
+  "verification": {
+    "static": "PASS",
+    "js_syntax": "PASS",
+    "browser_smoke": "NOT_CERTIFIED"
+  },
+  "license": {
+    "aasha_code": "original",
+    "third_party_runtime": "none",
+    "source_licenses_not_relicensed": true
+  }
+}

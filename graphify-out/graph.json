@@ -1,0 +1,34 @@
+{
+  "version": "3.0.0",
+  "nodes": [
+    {
+      "id": "NineRouterGatewayFailoverManager",
+      "kind": "class",
+      "repo": "NGO-AI-LLM"
+    },
+    {
+      "id": "UnifiedThreePlaneStateSchemaLock",
+      "kind": "class",
+      "repo": "NGO-AI-LLM"
+    },
+    {
+      "id": "ZeroNoOpCommitGuard",
+      "kind": "class",
+      "repo": "NGO-AI-LLM"
+    }
+  ],
+  "edges": [
+    {
+      "from": "aasha_continuous_loop.mjs",
+      "to": "NineRouterGatewayFailoverManager"
+    },
+    {
+      "from": "aasha_continuous_loop.mjs",
+      "to": "UnifiedThreePlaneStateSchemaLock"
+    },
+    {
+      "from": "aasha_continuous_loop.mjs",
+      "to": "ZeroNoOpCommitGuard"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "exists": true,
+  "no_network": true,
+  "no_external_assets": true,
+  "tln": true,
+  "lle": true,
+  "teas": true,
+  "offline": true,
+  "js_syntax": true
+}

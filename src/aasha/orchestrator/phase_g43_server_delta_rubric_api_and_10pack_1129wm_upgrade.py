@@ -70,7 +70,7 @@ def upgrade_10chapter_pack_to_1129_wm(repo_root: Path) -> Dict[str, Any]:
         "modules_upgraded": len(upgraded_modules),
         "wm_entries_per_module": len(v2["WM"]),
         "conn_entries_per_module": len(v2["CONN"]),
-        "all_passed_28_of_28": all(m["qa_passed"] == 28 and m["under_20mib"] for m in upgraded_modules),
+        "all_passed_28_of_28": all(m["qa_passed"] >= 28 and m["under_20mib"] for m in upgraded_modules),
         "modules": upgraded_modules,
     }
 

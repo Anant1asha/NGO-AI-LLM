@@ -1,7 +1,7 @@
 {
   "phase": "G36",
   "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
-  "generated_at_utc": "2026-11-13T07:17:50.734160+00:00",
+  "generated_at_utc": "2026-11-16T12:10:39.241462+00:00",
   "roles_compiled": 3,
   "all_certified": true,
   "compiled_roles": [
@@ -13,9 +13,9 @@
       "swarm_state": "CERTIFIED_CHECKPOINT",
       "qa_passed": 28,
       "qa_total": 28,
-      "size_bytes": 97733,
+      "size_bytes": 97818,
       "under_20mib": true,
-      "sha256": "1ed951d83087ad8e5841f49187167c556fa293e3f67cfae85f0960e8ba6d4d65"
+      "sha256": "a4c04a6dbcf8e9863d0a11dcdc96e16680d37556a0babb981aa8a07d7f5d9aba"
     },
     {
       "role_id": "NCVET-PSSCIVE-L4-AGRI-SOLAR-DRIP-TECHNICIAN",
@@ -25,9 +25,9 @@
       "swarm_state": "CERTIFIED_CHECKPOINT",
       "qa_passed": 28,
       "qa_total": 28,
-      "size_bytes": 97617,
+      "size_bytes": 97702,
       "under_20mib": true,
-      "sha256": "801ff58ccecc0bf67b5793cfd25835624cd206becc36eba29fb12e1d85a6cf71"
+      "sha256": "0c86e4edbf76e99ba6db44d5814fff4217e67db8504879bad13975f94c558595"
     },
     {
       "role_id": "NCVET-PSSCIVE-L4-FOOD-SOLAR-DEHYDRATOR-OPERATOR",
@@ -37,17 +37,17 @@
       "swarm_state": "CERTIFIED_CHECKPOINT",
       "qa_passed": 28,
       "qa_total": 28,
-      "size_bytes": 97590,
+      "size_bytes": 97675,
       "under_20mib": true,
-      "sha256": "eda2bbae40dc88849bcfa3c82ad6aacfd308d552f7308886be7671ef3fc6e5ca"
+      "sha256": "faaf3c9351053d81bf2fbca6e25f2bfceae68ff11e4d7cb42195b20f0f4e1951"
     }
   ],
   "ota_delta_pack": {
     "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/ota_delta_pack_g35_to_g36.json.gz",
     "raw_bytes": 1778,
-    "gzip_bytes": 697,
+    "gzip_bytes": 695,
     "under_20mib": true,
-    "sha256": "2254d1d1a73ded381587a9b1d319e85cf6847b974d9ed0730e3b94196e792275"
+    "sha256": "4473422a30e70e27c59cd05390d5b3c3b29d774e5f8a7342136ce088701c1030"
   },
   "next_focus_unit": "PHASE_G_CHUNK_G37_PLAYWRIGHT_HEADLESS_COLAB_GATE_AND_RELEASE_CANDIDATE_TAGGING: Execute Colab-side bundle push (scripts/apply_bundle_and_push.sh), live Playwright DOM smoke gate, and December 31 2026 MVP Release Candidate Certification."
 }

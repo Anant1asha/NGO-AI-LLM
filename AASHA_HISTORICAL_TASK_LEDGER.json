@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-13T11:26:53.885980+00:00",
-  "total_phase_manifests": 37,
-  "total_python_test_suites": 61,
+  "generated_at_utc": "2026-11-16T12:10:01.358711+00:00",
+  "total_phase_manifests": 43,
+  "total_python_test_suites": 76,
   "status_counts": {
-    "LIVE_VERIFIED_PASS": 37,
+    "LIVE_VERIFIED_PASS": 43,
     "PARTIAL": 0,
     "BLOCKED": 0,
     "UNKNOWN_OFFLINE_WINDOWS": 1
@@ -166,7 +166,7 @@
       "task_id": "G29",
       "title": "Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Centre Server + Student PWA TEAS Store Redemption Sync Verification",
       "manifest_file": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
-      "manifest_sha256": "0fc2ca5ba6e46c8e4f5e97ce2edff0b8ef40c58b5714756d0383752d0d333d83",
+      "manifest_sha256": "263a2b5a5f20d12a343caf2e2f266328efb25fc1148f13c1bfbe1d187ddd4609",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 47
     },
@@ -190,7 +190,7 @@
       "task_id": "G31",
       "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
       "manifest_file": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json",
-      "manifest_sha256": "317c6f92ee819627a7f60f859a8902865f386d3bd237febbea09dae5a5ec3c8b",
+      "manifest_sha256": "65745a5bee66fa6e872a2527b676904069130897f5ae62bc40ccb9a3a678d1b9",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -198,7 +198,7 @@
       "task_id": "G33",
       "title": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST",
       "manifest_file": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST.json",
-      "manifest_sha256": "556c0f7ff88247a21f5a12f0aa216f76a76397a09da32056d80947cb69469ba4",
+      "manifest_sha256": "757312d33360d28e2229cf332637d61cc90445172dcd437bd55f2de4439fe188",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -206,7 +206,7 @@
       "task_id": "G34",
       "title": "PHASE_G34_10CHAPTER_GAMIFIED_UPGRADE_MANIFEST",
       "manifest_file": "PHASE_G34_10CHAPTER_GAMIFIED_UPGRADE_MANIFEST.json",
-      "manifest_sha256": "0ae87944182866ff7fb33b930cf1af34e5834d41e800fbc0a4fad0ca535afb25",
+      "manifest_sha256": "bf8af54f7f609fa03586190c9fb89be85255efc201468d8474a59c913c9a13b6",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -214,7 +214,7 @@
       "task_id": "G35",
       "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
       "manifest_file": "PHASE_G35_10PACK_SQLITE_AND_FACILITATOR_BRIDGE_MANIFEST.json",
-      "manifest_sha256": "5b88e774e59e8fa807efc8a55a530798f7a58b4204cdbefba15321f7bd0c0183",
+      "manifest_sha256": "68c9b32c0f71bd431a601ad2f094fe3cc0053b87112f8ba17b60c3ac3b67bd0c",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -222,7 +222,7 @@
       "task_id": "G36",
       "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
       "manifest_file": "PHASE_G36_NCVET_VOCATIONAL_AND_OTA_DELTA_MANIFEST.json",
-      "manifest_sha256": "a73ab516a7ca88a72575ea8f5597f4c1d04ce2927a847865f21d295e88c325d2",
+      "manifest_sha256": "6efd8b9b2e46a7f77550919823bbb9707a412d399913849974f93681c3edda6f",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -230,7 +230,7 @@
       "task_id": "G37",
       "title": "Experience Registry Sync (13 Certified Chapters + 21 AVR), DOM Smoke Gate & Dec 31 2026 MVP Release Candidate Certification",
       "manifest_file": "PHASE_G37_MVP_RELEASE_CANDIDATE_MANIFEST.json",
-      "manifest_sha256": "a1512d57e026e47d2aec6c795b8da1af77ab2ec48d030cf99559663fb3d481b2",
+      "manifest_sha256": "3075193121e6d7f26ee647e7529020588d172c0ad21f0a07981ac3b89663bea1",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -238,7 +238,7 @@
       "task_id": "G38",
       "title": "100-Learner Multi-Centre Rural Cohort Offline Field Pilot & Double-Entry TEAS Ledger Audit",
       "manifest_file": "PHASE_G38_100LEARNER_FIELD_PILOT_MANIFEST.json",
-      "manifest_sha256": "28fd8f6c210206ec37f093fb613fff8f9b4546bca06131c04c222f0f1d2d29ce",
+      "manifest_sha256": "3ab3ebdd6356339dca6266991407bfbebc9ceb78c5700e9b0ce02b7620116e39",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -246,7 +246,7 @@
       "task_id": "G39_GOLDEN_MASTER_RC",
       "title": "End-to-End 17-Module QA Regression Gate & December 31, 2026 MVP Golden Master Release Candidate Seal",
       "manifest_file": "PHASE_G39_E2E_REGRESSION_AND_GOLDEN_MASTER_MANIFEST.json",
-      "manifest_sha256": "cb7427095b920ec7ee71f343c84d60766452856ecc1636abfae0ea7ad3e7d09a",
+      "manifest_sha256": "e9e22a8e348efee794b3181748e38cc5bee57ba55e586eeaa99c15aa21a55f99",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -255,6 +255,46 @@
       "title": "PHASE_G3_1000_AGENT_SWARM_AND_10CHAPTER_PACK_MANIFEST",
       "manifest_file": "PHASE_G3_1000_AGENT_SWARM_AND_10CHAPTER_PACK_MANIFEST.json",
       "manifest_sha256": "4eb1f09931efd7d3f03b30d4ca1726d8974be5ff3a3302040b80f641c11bf230",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G41_V7_SYSTEM_WIDE_AUDIT_AND_OBSERVABILITY",
+      "title": "PHASE_G41_V7_SYSTEM_WIDE_AUDIT_MANIFEST",
+      "manifest_file": "PHASE_G41_V7_SYSTEM_WIDE_AUDIT_MANIFEST.json",
+      "manifest_sha256": "fce0254c0f5c1a577a97a61558040716cc1e7a80552c319752c88bc3149dc740",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G43_SERVER_DELTA_RUBRIC_API_AND_10PACK_1129WM_UPGRADE",
+      "title": "PHASE_G43_SERVER_DELTA_RUBRIC_AND_10PACK_1129WM_MANIFEST",
+      "manifest_file": "PHASE_G43_SERVER_DELTA_RUBRIC_AND_10PACK_1129WM_MANIFEST.json",
+      "manifest_sha256": "49030b9579ba41f906314b52e08d9fc2e65c6cdc552ab3a938d29b75c56bf582",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G44_SQLITE_GZIP_CATALOGUE_REBUILD_AND_PWA_CACHE_AUDITOR",
+      "title": "PHASE_G44_SQLITE_CATALOGUE_AND_PWA_CACHE_MANIFEST",
+      "manifest_file": "PHASE_G44_SQLITE_CATALOGUE_AND_PWA_CACHE_MANIFEST.json",
+      "manifest_sha256": "b0ba8ee53645cbf6722eb41e824606a82dfadbb9c21cb3f3ddfec1ccf9a5680a",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G45_OFFLINE_TEACHER_REMEDIATION_WORKSHEET_AND_COHORT_EXPORT",
+      "title": "PHASE_G45_TEACHER_REMEDIATION_WORKSHEET_MANIFEST",
+      "manifest_file": "PHASE_G45_TEACHER_REMEDIATION_WORKSHEET_MANIFEST.json",
+      "manifest_sha256": "bf32957819cfa7f29380c300fe0313c36aa079af28db505520191c35e86f288d",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "G46_PARENT_PROGRESS_CARD_AND_SEVA_CERTIFICATE_SIGNER",
+      "title": "PHASE_G46_PARENT_PROGRESS_AND_SEVA_CERTIFICATE_MANIFEST",
+      "manifest_file": "PHASE_G46_PARENT_PROGRESS_AND_SEVA_CERTIFICATE_MANIFEST.json",
+      "manifest_sha256": "f47e41f86569507835aa8a8d93b0661e360f9397e102235e5fa98b2523f9f8ed",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -295,6 +335,14 @@
       "title": "PHASE_G9_EXAM_SIMULATOR_AND_APPRENTICESHIP_MANIFEST",
       "manifest_file": "PHASE_G9_EXAM_SIMULATOR_AND_APPRENTICESHIP_MANIFEST.json",
       "manifest_sha256": "60018ae7ae9f38dab5833d5808e30ba439da39fda905c9084dc663585ad10be3",
+      "status": "LIVE_VERIFIED_PASS",
+      "verified_chunk_count": null
+    },
+    {
+      "task_id": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_MANIFEST",
+      "title": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_MANIFEST",
+      "manifest_file": "PHASE_G_TEACHER_STUDIO_WEB_CLI_BRIDGE_MANIFEST.json",
+      "manifest_sha256": "b2ccd8bbe759e645b7d29f7b064529eb3e9c9671ea15cbe29a59fc8728a34e2a",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
