@@ -105,7 +105,7 @@
     "under_20mib_ceiling": true,
     "self_healing_qa_passed": true,
     "final_qa_violations": 0,
-    "synthesized_html_sha256": "3c41d782f25bcb140e3d27fe709075c7e30aa2f11f3eec0c4be5949b1881f9a7"
+    "synthesized_html_sha256": "1ac9c0be75ad3f2808979b6ef54596615e362b5772ea4954c524a1aa961ac60a"
   },
   "offline_plugin_base64_bundler": {
     "status": "PASS",
