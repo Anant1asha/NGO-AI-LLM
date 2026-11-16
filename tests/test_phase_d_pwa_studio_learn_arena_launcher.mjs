@@ -35,7 +35,11 @@ import {
   authorCustomBilingualQuestion,
   renderTeacherCustomQuizBuilderCard,
   evaluateLowRamTabletBudget,
-  renderLowRamTabletDiagnosticsCard
+  renderLowRamTabletDiagnosticsCard,
+  appendDonorImpactLedgerEntry,
+  verifyImpactLedgerChain,
+  exportCsrImpactAuditPack,
+  renderDonorImpactLedgerCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -522,6 +526,50 @@ try {
   assert.equal(srvBench.within_2gb_ram_budget, true);
   assert.equal(srvBench.under_20mib_ceiling, true);
   assert.equal(srvBench.benchmark_sha256.length, 64);
+
+  // Verify G51 Append-Only Hash-Chained NGO Donor Impact ID Ledger & CSR Audit Exporter
+  const imp1 = appendDonorImpactLedgerEntry(pwaState, { impactId: 'IMP-GN-001', beneficiariesCount: 15, chaptersMastered: 13, sevaHours: 6 });
+  assert.equal(imp1.ok, true);
+  assert.equal(imp1.entry.prevHash, 'GENESIS_00000000');
+
+  const imp2 = appendDonorImpactLedgerEntry(pwaState, { impactId: 'IMP-GN-002', beneficiariesCount: 12, chaptersMastered: 10, sevaHours: 4 });
+  assert.equal(imp2.ok, true);
+  assert.equal(imp2.entry.prevHash, imp1.entry.entryHash);
+
+  const chainOk = verifyImpactLedgerChain(pwaState.donorImpactLedger);
+  assert.equal(chainOk.valid, true);
+  assert.equal(chainOk.totalEntries, 2);
+
+  // Tamper check on Impact Ledger chain
+  const tamperedLedger = [{ ...pwaState.donorImpactLedger[0], beneficiariesCount: 999 }, pwaState.donorImpactLedger[1]];
+  const chainBad = verifyImpactLedgerChain(tamperedLedger);
+  assert.equal(chainBad.valid, false);
+  assert.equal(chainBad.brokenAt, 0);
+
+  const csrPack = exportCsrImpactAuditPack(pwaState, 'CENTER-UP-GN-01');
+  assert.equal(csrPack.totalBeneficiaries, 27);
+  assert.equal(csrPack.totalSevaHours, 10);
+  assert.equal(csrPack.chainValid, true);
+
+  const impactCardHtml = renderDonorImpactLedgerCard({ donorImpactLedger: pwaState.donorImpactLedger });
+  assert.ok(impactCardHtml.includes('id="donor-impact-ledger-card"'));
+  assert.ok(impactCardHtml.includes('27'));
+
+  const srvImp1 = await fetch(`${baseUrl}/api/impact/append-ledger`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ impactId: 'IMP-SRV-001', beneficiariesCount: 20, chaptersMastered: 13, sevaHours: 8 })
+  });
+  assert.equal(srvImp1.status, 200);
+  const srvImp1Body = await srvImp1.json();
+  assert.equal(srvImp1Body.prev_hash, 'GENESIS_00000000');
+
+  const srvImpExport = await fetch(`${baseUrl}/api/impact/csr-audit-export`);
+  assert.equal(srvImpExport.status, 200);
+  const srvImpData = await srvImpExport.json();
+  assert.equal(srvImpData.chain_valid, true);
+  assert.equal(srvImpData.total_beneficiaries, 20);
+  assert.equal(srvImpData.ledger_sha256.length, 64);
 } finally {
   await app.close();
 }

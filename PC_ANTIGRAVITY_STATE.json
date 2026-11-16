@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
+  "next_focus_unit": "G52_DEC_31_2026_FINAL_GOLDEN_MASTER_FREEZE_AND_DEPLOYMENT_KIT",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-16T18:46:08Z",
-  "active_focus_unit": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
-  "last_completed_focus_unit": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
-  "sw_merkle_root": "586417b47eea61194becb15362613eaac4cb7480e0cf8d04c4ec2e6f6b9e6980"
+  "last_updated_utc": "2026-11-16T20:17:28Z",
+  "active_focus_unit": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
+  "last_completed_focus_unit": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
+  "sw_merkle_root": "01d3e89889ecec9c68d17df496cbb5fce6a169e7746aa488aa0ea0ef063f8c6a"
 }

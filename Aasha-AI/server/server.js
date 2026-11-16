@@ -85,6 +85,17 @@ db.exec(`
     misconception_hi TEXT NOT NULL,
     created_at TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS ngo_impact_ledger (
+    impact_id TEXT PRIMARY KEY,
+    center_id TEXT NOT NULL,
+    beneficiaries_count INTEGER NOT NULL DEFAULT 1,
+    chapters_mastered INTEGER NOT NULL DEFAULT 0,
+    seva_hours REAL NOT NULL DEFAULT 1,
+    csr_category TEXT NOT NULL,
+    prev_hash TEXT NOT NULL,
+    entry_hash TEXT NOT NULL,
+    recorded_at TEXT NOT NULL
+  );
   CREATE TABLE IF NOT EXISTS synced_cohort_packs (
     integrity_hash TEXT PRIMARY KEY,
     center_id TEXT NOT NULL,
@@ -1090,7 +1101,73 @@ export function buildServer() {
     return { ...payload, benchmark_sha256 };
   });
 
+
+  // Phase G51: Append-Only Hash-Chained NGO Impact ID Ledger & CSR Audit Export Endpoints
+  app.post('/api/impact/append-ledger', async (req, reply) => {
+    const body = req.body || {};
+    const impactId = String(body.impactId || '').trim();
+    const centerId = String(body.centerId || 'CENTER-UP-GN-01').trim();
+    if (!impactId) {
+      return reply.code(400).send({ status: 'error', error: 'MISSING_IMPACT_ID' });
+    }
+    const existing = db.prepare('SELECT impact_id, entry_hash FROM ngo_impact_ledger WHERE impact_id = ?').get(impactId);
+    if (existing) {
+      return { status: 'ok', impactId, entry_hash: existing.entry_hash, idempotent: true };
+    }
+    const lastRow = db.prepare('SELECT entry_hash FROM ngo_impact_ledger ORDER BY rowid DESC LIMIT 1').get();
+    const prevHash = lastRow ? lastRow.entry_hash : 'GENESIS_00000000';
+    const beneficiariesCount = Math.max(0, Number(body.beneficiariesCount ?? 1));
+    const chaptersMastered = Math.max(0, Number(body.chaptersMastered ?? 0));
+    const sevaHours = Math.max(0, Number(body.sevaHours ?? 1));
+    const csrCategory = String(body.csrCategory || 'Schedule-VII Education & Skill Development');
+    const canonical = JSON.stringify({ impactId, centerId, beneficiariesCount, chaptersMastered, sevaHours, csrCategory, prevHash });
+    const entryHash = crypto.createHash('sha256').update(canonical, 'utf-8').digest('hex');
+    const now = new Date().toISOString();
+    db.prepare(`
+      INSERT INTO ngo_impact_ledger (impact_id, center_id, beneficiaries_count, chapters_mastered, seva_hours, csr_category, prev_hash, entry_hash, recorded_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(impactId, centerId, beneficiariesCount, chaptersMastered, sevaHours, csrCategory, prevHash, entryHash, now);
+    return {
+      status: 'ok',
+      impactId,
+      prev_hash: prevHash,
+      entry_hash: entryHash,
+      idempotent: false
+    };
+  });
+
+  app.get('/api/impact/csr-audit-export', async () => {
+    const entries = db.prepare(`
+      SELECT impact_id AS impactId, center_id AS centerId, beneficiaries_count AS beneficiariesCount,
+             chapters_mastered AS chaptersMastered, seva_hours AS sevaHours, csr_category AS csrCategory,
+             prev_hash AS prevHash, entry_hash AS entryHash, recorded_at AS recordedAt
+      FROM ngo_impact_ledger
+      ORDER BY rowid ASC
+    `).all();
+    let expectedPrev = 'GENESIS_00000000';
+    let chainValid = true;
+    for (const e of entries) {
+      if (e.prevHash !== expectedPrev) { chainValid = false; break; }
+      expectedPrev = e.entryHash;
+    }
+    const totalBeneficiaries = entries.reduce((a, e) => a + Number(e.beneficiariesCount || 0), 0);
+    const totalSevaHours = entries.reduce((a, e) => a + Number(e.sevaHours || 0), 0);
+    const ledger_sha256 = crypto.createHash('sha256').update(JSON.stringify(entries), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      schema_version: 'aasha.csr.impact.ledger.v1',
+      organization: 'Annanth Aasha Foundation',
+      total_entries: entries.length,
+      total_beneficiaries: totalBeneficiaries,
+      total_seva_hours: totalSevaHours,
+      chain_valid: chainValid,
+      entries,
+      ledger_sha256
+    };
+  });
+
   return app;
+
 
 
 

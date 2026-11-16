@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
+            "NEXT_PRIORITY": "G52_DEC_31_2026_FINAL_GOLDEN_MASTER_FREEZE_AND_DEPLOYMENT_KIT",
         }
 
         self.validate_20_field_report(report)
