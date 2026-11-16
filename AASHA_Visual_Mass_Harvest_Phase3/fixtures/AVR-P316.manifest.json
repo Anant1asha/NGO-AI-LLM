@@ -1,0 +1,55 @@
+{
+  "resource_id": "AVR-P316",
+  "version": "1.0.0",
+  "family": "circuit",
+  "name": "System Flow",
+  "source_patterns": [
+    "PhET/SceneryStack",
+    "all-science-sims",
+    "myPhysicsLab",
+    "Pashasan",
+    "SimuTutor"
+  ],
+  "implementation": {
+    "aasha_native": true,
+    "bundled_third_party_code": [],
+    "bundled_third_party_assets": []
+  },
+  "contracts": {
+    "tln": {
+      "content_injection": true,
+      "mastery_decision": false
+    },
+    "lle": {
+      "locale": "en-IN",
+      "tap_to_reveal": true,
+      "content_injected": true
+    },
+    "teas": {
+      "evidence_only": true,
+      "mastery_decision": false,
+      "sequence_monotonic": true
+    }
+  },
+  "offline": {
+    "network_required": false,
+    "external_urls": 0,
+    "external_assets": 0
+  },
+  "bundle": {
+    "production_bytes": 2210,
+    "sha256": "9eb87c03ae3c82cd81e01be399bdc007b19e9c1164784506c27f5125021b344b",
+    "ceiling_bytes": 20971520,
+    "pass": true
+  },
+  "verification": {
+    "static": "PASS",
+    "js_syntax": "PASS",
+    "browser_smoke": "NOT_CERTIFIED"
+  },
+  "license": {
+    "aasha_code": "original",
+    "third_party_runtime": "none",
+    "source_licenses_not_relicensed": true
+  }
+}

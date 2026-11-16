@@ -1,0 +1,55 @@
+{
+  "resource_id": "AVR-P301",
+  "version": "1.0.0",
+  "family": "number-line",
+  "name": "Number Line Marker",
+  "source_patterns": [
+    "PhET/SceneryStack",
+    "all-science-sims",
+    "myPhysicsLab",
+    "Pashasan",
+    "SimuTutor"
+  ],
+  "implementation": {
+    "aasha_native": true,
+    "bundled_third_party_code": [],
+    "bundled_third_party_assets": []
+  },
+  "contracts": {
+    "tln": {
+      "content_injection": true,
+      "mastery_decision": false
+    },
+    "lle": {
+      "locale": "en-IN",
+      "tap_to_reveal": true,
+      "content_injected": true
+    },
+    "teas": {
+      "evidence_only": true,
+      "mastery_decision": false,
+      "sequence_monotonic": true
+    }
+  },
+  "offline": {
+    "network_required": false,
+    "external_urls": 0,
+    "external_assets": 0
+  },
+  "bundle": {
+    "production_bytes": 2416,
+    "sha256": "cd6ef3778544abfa6c94b99cc3cdf991194f970f67dfbd4a68e68e48247b5a30",
+    "ceiling_bytes": 20971520,
+    "pass": true
+  },
+  "verification": {
+    "static": "PASS",
+    "js_syntax": "PASS",
+    "browser_smoke": "NOT_CERTIFIED"
+  },
+  "license": {
+    "aasha_code": "original",
+    "third_party_runtime": "none",
+    "source_licenses_not_relicensed": true
+  }
+}
