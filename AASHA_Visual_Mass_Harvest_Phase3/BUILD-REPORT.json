@@ -1,0 +1,8 @@
+{
+  "built_capabilities": 21,
+  "all_static_checks_pass": true,
+  "total_bytes": 48656,
+  "largest_bytes": 2678,
+  "browser_smoke": "NOT_CERTIFIED",
+  "third_party_runtime_bundled": 0
+}

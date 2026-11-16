@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
@@ -41,3 +42,48 @@
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."
 }
+=======
+{
+  "phase": "G35",
+  "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
+  "generated_at_utc": "2026-11-16T12:10:38.605789+00:00",
+  "sqlite_10pack_catalogue": {
+    "db_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db",
+    "gzip_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db.gz",
+    "chapters_exported": 10,
+    "tln_nodes_exported": 30,
+    "wm_vocabulary_exported": 1129,
+    "raw_db_bytes": 442368,
+    "gzip_db_bytes": 50905,
+    "under_20mib_ceiling": true,
+    "gzip_sha256": "56236148ab8e224d463dbd07a348974db1fcf250e3e3da6d198e2fd8d8419a70"
+  },
+  "facilitator_bridge": {
+    "hotspotClusters": 2,
+    "topHotspotChapter": "NCERT-G06-MATH-CH07-FRACTIONS",
+    "topHotspotStruggling": 2,
+    "dashboardValid": true,
+    "flashcardValid": true,
+    "signedPackValid": true,
+    "integrityHash": "fnv1a32:5303dd25"
+  },
+  "html5_hub": {
+    "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
+    "swarm_state": "CERTIFIED_CHECKPOINT",
+    "qa_passed": 28,
+    "qa_total": 28,
+    "size_bytes": 97603,
+    "under_20mib": true,
+    "sha256": "e976e5e3965670fca5b00a9e817f2fea0253149ced98ff44a7391da891638d73",
+    "compounding_db": {
+      "db_path": "aasha_operational.db",
+      "wm_rows_stored": 1129,
+      "conn_rows_stored": 85,
+      "reusable_mechanics_stored": 5,
+      "open_source_foundations_stored": 7,
+      "build_cache_records": 149
+    }
+  },
+  "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."
+}
+>>>>>>> 6274ebc (fix(ecosystem): resolve all Python/QA/Chrome/Studio defects and replan 16-stage phased MVP roadmap)

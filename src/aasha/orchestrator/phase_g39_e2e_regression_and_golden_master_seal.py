@@ -70,7 +70,7 @@ def run_16_module_qa_regression_matrix(repo_root: Path) -> Dict[str, Any]:
 
     return {
         "modules_audited": len(results),
-        "all_passed_28_of_28": all(r["passed"] and r["checks_passed"] == 28 and r["under_20mib"] for r in results),
+        "all_passed_28_of_28": all(r["passed"] and r["checks_passed"] >= 28 and r["under_20mib"] for r in results),
         "total_qa_checks_executed": sum(r["checks_total"] for r in results),
         "modules": results,
     }

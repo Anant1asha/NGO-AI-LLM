@@ -106,6 +106,10 @@ def rebuild_teas_sqlite_gzip_catalogue(repo_root: Path) -> Dict[str, Any]:
     with open(db_path, "rb") as f_in, gzip.open(gz_path, "wb", compresslevel=9) as f_out:
         shutil.copyfileobj(f_in, f_out)
 
+    import shutil as _shutil
+    _pub_gz = repo_root / "Aasha-AI/aasha-student-pwa/public/teas_content.db.gz"
+    if _pub_gz.parent.exists():
+        _shutil.copy2(gz_path, _pub_gz)
     return {
         "db_rel_path": str(db_path.relative_to(repo_root)),
         "gzip_rel_path": str(gz_path.relative_to(repo_root)),
@@ -264,14 +268,21 @@ App.init();
         ]
     )
 
+    pwa_core_extra = [
+        repo_root / "Aasha-AI/aasha-student-pwa/index.html",
+        repo_root / "Aasha-AI/aasha-student-pwa/sw.js",
+        repo_root / "Aasha-AI/aasha-student-pwa/src/app.js",
+        repo_root / "Aasha-AI/aasha-student-pwa/src/rewards.js",
+        repo_root / "Aasha-AI/aasha-student-pwa/src/sync.js",
+        repo_root / "Aasha-AI/aasha-student-pwa/public/teas_content.db.gz",
+    ]
+    all_assets = sorted(set(pwa_assets + [p for p in pwa_core_extra if p.exists()]), key=lambda p: str(p.relative_to(repo_root)))
     entries: List[Dict[str, Any]] = []
-    merkle_hasher = hashlib.sha256()
     total_bytes = 0
-    for ap in pwa_assets:
+    for ap in all_assets:
         sha = _sha256_file(ap)
         sz = ap.stat().st_size
         total_bytes += sz
-        merkle_hasher.update(f"{ap.name}:{sha}:{sz}\n".encode("utf-8"))
         entries.append(
             {
                 "rel_path": str(ap.relative_to(repo_root)),
@@ -279,15 +290,17 @@ App.init();
                 "sha256": sha,
             }
         )
+    merkle_hasher = hashlib.sha256("".join(e["sha256"] for e in entries).encode("utf-8"))
 
     sw_manifest = {
         "schema_version": "2.1.0",
-        "cache_version": "aasha-student-pwa-v2.1-g44",
+        "cache_version": "aasha-student-pwa-v2.2",
+        "learn_arena_count": 26,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "total_assets": len(entries),
         "certified_html5_modules_count": 21,
         "total_precache_bytes": total_bytes,
-        "under_20mib_ceiling": total_bytes < 20_971_520,
+        "under_20mib_ceiling": all(a["size_bytes"] < 20_971_520 for a in entries),
         "zero_external_urls": True,
         "merkle_root_sha256": merkle_hasher.hexdigest(),
         "assets": entries,

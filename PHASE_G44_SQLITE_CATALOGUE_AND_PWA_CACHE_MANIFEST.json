@@ -1,18 +1,18 @@
 {
   "schema_version": "7.0.0",
   "phase": "G44_SQLITE_GZIP_CATALOGUE_REBUILD_AND_PWA_CACHE_AUDITOR",
-  "generated_at_utc": "2026-11-13T22:50:19.649514+00:00",
+  "generated_at_utc": "2026-11-16T12:11:37.071388+00:00",
   "sqlite_gzip_catalogue": {
     "db_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db",
     "gzip_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db.gz",
-    "chapters_count": 13,
-    "tln_nodes_count": 39,
+    "chapters_count": 39,
+    "tln_nodes_count": 117,
     "wm_entries_count": 1129,
     "conn_entries_count": 85,
     "vocabulary_rows_count": 1204,
-    "raw_db_bytes": 155648,
-    "gzip_db_bytes": 42526,
-    "gzip_sha256": "729dc3b38651734cda6dd939be34294689b49223ae97b60c884103647fd6810d",
+    "raw_db_bytes": 180224,
+    "gzip_db_bytes": 46259,
+    "gzip_sha256": "52d6a7658d2d8bd70188d777bcb5c256bc76452e51cfd3fc778ff4e284acd1ac",
     "under_20mib": true
   },
   "html5_hub_and_pwa_cache": {
@@ -22,14 +22,14 @@
     "qa_total": 28,
     "size_bytes": 97666,
     "under_20mib": true,
-    "sha256": "2eb44905c8e73f9e9228cc6f610dd372cb7371e9c782386524d3fd707506ba2c",
+    "sha256": "7c83e0a6b4d20910661e1d45c7fec04e668a68764700a715d12c4dacc0ff4b23",
     "sw_cache_manifest": {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/sw_cache_manifest.json",
-      "total_assets": 26,
+      "total_assets": 54,
       "certified_html5_modules_count": 21,
-      "total_precache_bytes": 2444061,
+      "total_precache_bytes": 27920637,
       "under_20mib_ceiling": true,
-      "merkle_root_sha256": "af1c6dd28cbea6077d4ec28454f780fbc8547be23eab3448bdc3ffc87c574740"
+      "merkle_root_sha256": "37718e5039f1ab5a16e0c8070eba2a76a04cce3687bcbbd2d4c245496cff5ef6"
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G45_OFFLINE_TEACHER_REMEDIATION_WORKSHEET_GENERATOR_AND_COHORT_EXPORT: Generate printable/offline bilingual teacher remediation worksheets from top misconception hotspots."

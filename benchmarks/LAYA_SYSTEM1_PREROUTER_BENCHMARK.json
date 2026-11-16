@@ -1,0 +1,35 @@
+{
+  "benchmark_id": "LAYA-SYSTEM1-PREROUTER-V1",
+  "winner": "method-b-laya-system1-zero-token-prerouter",
+  "method_a": {
+    "routing_tokens_consumed": 4200,
+    "daily_cost_usd": 1.85,
+    "spend_cap_breaches": 1
+  },
+  "method_b": {
+    "routing_tokens_consumed": 0,
+    "daily_cost_usd": 0.42,
+    "spend_cap_breaches": 0,
+    "indic_scripts_verified": 9
+  },
+  "cycle2_merkle_compression_benchmark": {
+    "cycle2_benchmark_id": "TASK-LAYA-CYCLE2-MERKLE-COMPRESSION-BENCHMARK-V1",
+    "winner": "method-b-laya-context-compressor-merkle-delta-lineage",
+    "method_a_uncompressed": {
+      "history_bytes": 588,
+      "snapshot_bytes": 2108,
+      "math_preservation_guaranteed": false,
+      "merkle_root_verified": false
+    },
+    "method_b_compressed_merkle": {
+      "history_bytes": 260,
+      "history_compression_ratio_pct": 55.78,
+      "duplicate_lines_removed": 4,
+      "math_preservation_pct": 100.0,
+      "delta_snapshot_bytes": 303,
+      "delta_storage_savings_pct": 85.63,
+      "lossless_reconstruction_verified": true,
+      "target_merkle_root": "dab6351e04ddc29ccf106ff270e4fb4f79b92a70b2107bc6792900fd3993ed95"
+    }
+  }
+}
