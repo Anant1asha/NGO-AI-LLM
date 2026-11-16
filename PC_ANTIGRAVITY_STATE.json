@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
+  "next_focus_unit": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-16T15:17:35Z",
-  "active_focus_unit": "G49_OFFLINE_TEACHER_ASSESSMENT_BUILDER_AND_CUSTOM_QUIZ_INJECTOR",
-  "last_completed_focus_unit": "G49_OFFLINE_TEACHER_ASSESSMENT_BUILDER_AND_CUSTOM_QUIZ_INJECTOR",
-  "sw_merkle_root": "4d3cf6436d03eac547c897b521c1f1e5980e8cd48d078c8c89a7c2f593a1ebb0"
+  "last_updated_utc": "2026-11-16T18:46:08Z",
+  "active_focus_unit": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
+  "last_completed_focus_unit": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
+  "sw_merkle_root": "586417b47eea61194becb15362613eaac4cb7480e0cf8d04c4ec2e6f6b9e6980"
 }

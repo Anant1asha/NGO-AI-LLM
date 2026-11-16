@@ -33,7 +33,9 @@ import {
   exportStoreInventoryAuditLedger,
   validateNonSpoilerMisconception,
   authorCustomBilingualQuestion,
-  renderTeacherCustomQuizBuilderCard
+  renderTeacherCustomQuizBuilderCard,
+  evaluateLowRamTabletBudget,
+  renderLowRamTabletDiagnosticsCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -496,6 +498,30 @@ try {
   const srvListBody = await srvListQ.json();
   assert.equal(srvListBody.count, 1);
   assert.equal(srvListBody.questions_sha256.length, 64);
+
+  // Verify G50 Android TWA Wrapper & 2GB Low-RAM Tablet Benchmark + Server /api/system/tablet-benchmark
+  const lowRamBench = evaluateLowRamTabletBudget({ deviceMemoryGb: 2, heapUsedMb: 68, maxBundleBytes: 539884 });
+  assert.equal(lowRamBench.ok, true);
+  assert.equal(lowRamBench.lowRamMode, true);
+  assert.equal(lowRamBench.recommendedRenderer, 'Canvas2D_Lightweight_SVG');
+  assert.equal(lowRamBench.twaPackageId, 'org.annantaasha.learn.twa');
+
+  const highRamBench = evaluateLowRamTabletBudget({ deviceMemoryGb: 4, heapUsedMb: 90, maxBundleBytes: 539884 });
+  assert.equal(highRamBench.lowRamMode, false);
+  assert.equal(highRamBench.recommendedRenderer, 'PixiJS_WebGL_Accelerated');
+
+  const diagHtml = renderLowRamTabletDiagnosticsCard({});
+  assert.ok(diagHtml.includes('id="low-ram-tablet-diagnostics-card"'));
+  assert.ok(diagHtml.includes('org.annantaasha.learn.twa'));
+
+  const srvBenchRes = await fetch(`${baseUrl}/api/system/tablet-benchmark`);
+  assert.equal(srvBenchRes.status, 200);
+  const srvBench = await srvBenchRes.json();
+  assert.equal(srvBench.status, 'ok');
+  assert.equal(srvBench.twa_package_id, 'org.annantaasha.learn.twa');
+  assert.equal(srvBench.within_2gb_ram_budget, true);
+  assert.equal(srvBench.under_20mib_ceiling, true);
+  assert.equal(srvBench.benchmark_sha256.length, 64);
 } finally {
   await app.close();
 }

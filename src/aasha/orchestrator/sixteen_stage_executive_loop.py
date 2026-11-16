@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G50_ANDROID_TWA_WRAPPER_AND_LOW_RAM_TABLET_BENCHMARK",
+            "NEXT_PRIORITY": "G51_MULTI_CENTRE_FEDERATED_SYNC_SCHEDULER_AND_NGO_DONOR_IMPACT_LEDGER",
         }
 
         self.validate_20_field_report(report)

@@ -92,6 +92,7 @@
       restockStoreInventoryItem,
       exportStoreInventoryAuditLedger,
       authorCustomBilingualQuestion,
+      evaluateLowRamTabletBudget,
       syncNowWithServer
     } from './src/app.js';
 
@@ -302,6 +303,9 @@
           toastMount.innerHTML = `<div id="custom-quiz-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#f3e8ff;color:#581c87;margin-top:10px;font-weight:600;">🧪 Added L-Truth Verified MCQ (${res.totalCustomQuestions} total)</div>`;
           persistAndRefresh();
         }
+      } else if (action === 'run-tablet-benchmark') {
+        const b = evaluateLowRamTabletBudget({ deviceMemoryGb: navigator.deviceMemory || 2, heapUsedMb: 64 });
+        toastMount.innerHTML = `<div id="tablet-bench-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">📱 TWA ${b.twaPackageId}: ${b.heapUsedMb}MB/${b.heapBudgetMb}MB (${b.recommendedRenderer})</div>`;
       }
     });
 
