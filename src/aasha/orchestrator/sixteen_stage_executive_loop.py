@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G52_DEC_31_2026_FINAL_GOLDEN_MASTER_FREEZE_AND_DEPLOYMENT_KIT",
+            "NEXT_PRIORITY": "G53_OFFLINE_PARENT_SMS_AND_WHATSAPP_DIGEST_OUTBOX_BATCH_GENERATOR",
         }
 
         self.validate_20_field_report(report)

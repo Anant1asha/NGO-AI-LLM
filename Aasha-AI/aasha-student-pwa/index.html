@@ -94,6 +94,7 @@
       authorCustomBilingualQuestion,
       evaluateLowRamTabletBudget,
       exportCsrImpactAuditPack,
+      exportGoldenMasterDeploymentKit,
       syncNowWithServer
     } from './src/app.js';
 
@@ -313,6 +314,13 @@
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = `${pack.centerId}_csr_impact_audit.json`;
+        a.click();
+      } else if (action === 'export-golden-master-kit') {
+        const kit = exportGoldenMasterDeploymentKit(state);
+        const blob = new Blob([JSON.stringify(kit, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${kit.releaseTag}_deployment_kit.json`;
         a.click();
       }
     });

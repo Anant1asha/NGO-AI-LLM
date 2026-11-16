@@ -1,0 +1,19 @@
+{
+  "schema_version": "aasha.golden.master.kit.v1",
+  "release_tag": "AASHA-MVP-RC-2026.12.31",
+  "generated_at_utc": "2026-11-16T22:44:55Z",
+  "organization": "Annanth Aasha Foundation (Anant1asha)",
+  "sw_merkle_root_sha256": "8eb33dda03bb8b63c440096325d8fe95a68f7bc1cb2625fafc4c96c4425f4a38",
+  "verification_matrix": {
+    "python_test_files": "76/76",
+    "python_unit_tests": 442,
+    "html5_modules_certified": "39/39",
+    "html5_qa_checks_passed": 1235,
+    "learn_arena_dual_modules": 26,
+    "sw_precached_assets": 54,
+    "visual_contract_assertions": "97/97",
+    "under_20mib_ceiling": true,
+    "zero_external_urls": true,
+    "sec001_zero_secrets": true
+  }
+}

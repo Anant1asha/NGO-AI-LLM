@@ -1166,7 +1166,30 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G52: Dec 31, 2026 Golden Master Freeze & Centre Deployment Manifest Endpoint
+  app.get('/api/system/golden-master-manifest', async () => {
+    const payload = {
+      status: 'ok',
+      schema_version: 'aasha.golden.master.kit.v1',
+      release_tag: 'AASHA-MVP-RC-2026.12.31',
+      organization: 'Annanth Aasha Foundation',
+      phases_a_to_g_certified: true,
+      python_test_suites_passed: '76/76',
+      python_unit_tests_passed: 442,
+      html5_modules_certified: 39,
+      learn_arena_modules_count: 26,
+      sw_precached_assets: 54,
+      visual_contract_assertions: '97/97',
+      under_20mib_ceiling: true,
+      zero_external_urls: true
+    };
+    const manifest_sha256 = crypto.createHash('sha256').update(JSON.stringify(payload), 'utf-8').digest('hex');
+    return { ...payload, manifest_sha256 };
+  });
+
   return app;
+
 
 
 

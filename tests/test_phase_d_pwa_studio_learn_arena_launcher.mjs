@@ -39,7 +39,9 @@ import {
   appendDonorImpactLedgerEntry,
   verifyImpactLedgerChain,
   exportCsrImpactAuditPack,
-  renderDonorImpactLedgerCard
+  renderDonorImpactLedgerCard,
+  exportGoldenMasterDeploymentKit,
+  renderGoldenMasterReleaseCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -570,6 +572,25 @@ try {
   assert.equal(srvImpData.chain_valid, true);
   assert.equal(srvImpData.total_beneficiaries, 20);
   assert.equal(srvImpData.ledger_sha256.length, 64);
+
+  // Verify G52 Dec 31, 2026 Golden Master Freeze & Deployment Kit + Server /api/system/golden-master-manifest
+  const gmKit = exportGoldenMasterDeploymentKit(pwaState, 'CENTER-UP-GN-01');
+  assert.equal(gmKit.releaseTag, 'AASHA-MVP-RC-2026.12.31');
+  assert.equal(gmKit.certifiedLearnArenaModules, 26);
+  assert.equal(gmKit.precachedAssetsCount, 54);
+  assert.ok(gmKit.kitSignature.startsWith('fnv1a32:'));
+
+  const gmCardHtml = renderGoldenMasterReleaseCard(pwaState);
+  assert.ok(gmCardHtml.includes('id="golden-master-release-card"'));
+  assert.ok(gmCardHtml.includes('AASHA-MVP-RC-2026.12.31'));
+
+  const srvGmRes = await fetch(`${baseUrl}/api/system/golden-master-manifest`);
+  assert.equal(srvGmRes.status, 200);
+  const srvGm = await srvGmRes.json();
+  assert.equal(srvGm.status, 'ok');
+  assert.equal(srvGm.release_tag, 'AASHA-MVP-RC-2026.12.31');
+  assert.equal(srvGm.phases_a_to_g_certified, true);
+  assert.equal(srvGm.manifest_sha256.length, 64);
 } finally {
   await app.close();
 }
