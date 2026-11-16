@@ -3,8 +3,14 @@ Unit tests for Phase G30: Teacher Cohort Misconception Hotspot Analytics (/api/t
 FrontendCodeSynthesizer 3-Level Assessment (Warmup/Deep-Dive/Boss) & Offline Plugin Base64 Bundler Verification.
 """
 
+import sys
 import unittest
 from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+for _p in [str(_REPO_ROOT), str(_REPO_ROOT / "src")]:
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 
 from src.aasha.orchestrator.phase_g28_swarm_clarity_aios_learning_gamified_orchestrator import (
     inspect_html5_qa_violations,
