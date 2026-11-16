@@ -1,20 +1,10 @@
 {
   "phase": "G33",
-  "generated_at_utc": "2026-11-12T19:43:43.916721+00:00",
+  "generated_at_utc": "2026-11-16T15:46:16.866634+00:00",
   "backlog_01_node_vm_lle": {
     "wm_count": 1129,
     "conn_count": 85,
     "sources_harvested": [
-      {
-        "source": "Chapter3_LPG_Learning.html",
-        "wm_extracted": 402,
-        "conn_extracted": 18
-      },
-      {
-        "source": "Class8_Science_Cricket.html",
-        "wm_extracted": 172,
-        "conn_extracted": 18
-      },
       {
         "source": "Fractions_Gamified_v5_3.html",
         "wm_extracted": 296,
@@ -32,15 +22,15 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 12
+      "build_cache_records": 23
     }
   },
   "backlog_02_g3_fractions_upgrade": {
     "swarm_final_state": "CERTIFIED_CHECKPOINT",
-    "qa_checks_passed": 28,
-    "qa_checks_total": 28,
-    "size_bytes": 93704,
+    "qa_checks_passed": 32,
+    "qa_checks_total": 32,
+    "size_bytes": 98053,
     "under_20mib_ceiling": true,
-    "sha256": "35108626567b952f4b037b4fa2029f9bdcf0a2dcc8620b1f9dffca6da5041908"
+    "sha256": "ea556ae34fac4b4051783c355b516155cf24129ae32b69115e815b11103227d4"
   }
 }

@@ -1,17 +1,17 @@
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
-  "generated_at_utc": "2026-11-13T02:40:17.231507+00:00",
+  "generated_at_utc": "2026-11-16T15:55:13.213574+00:00",
   "sqlite_10pack_catalogue": {
-    "db_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db",
-    "gzip_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db.gz",
+    "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db",
+    "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db.gz",
     "chapters_exported": 10,
     "tln_nodes_exported": 30,
     "wm_vocabulary_exported": 1129,
-    "raw_db_bytes": 442368,
-    "gzip_db_bytes": 50905,
+    "raw_db_bytes": 413696,
+    "gzip_db_bytes": 53020,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "65ffda7b4abc3bc065b742d2d308db18f96714bbc882ad6708e67e0c939b5efd"
+    "gzip_sha256": "e92cfcab633a40988062c97e625ff3102666d436fd0a0707c756de9ad5a302cd"
   },
   "facilitator_bridge": {
     "hotspotClusters": 2,
@@ -20,23 +20,23 @@
     "dashboardValid": true,
     "flashcardValid": true,
     "signedPackValid": true,
-    "integrityHash": "fnv1a32:cdcafbcd"
+    "integrityHash": "fnv1a32:d9cf1ffd"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
     "swarm_state": "CERTIFIED_CHECKPOINT",
-    "qa_passed": 28,
-    "qa_total": 28,
-    "size_bytes": 97518,
+    "qa_passed": 32,
+    "qa_total": 32,
+    "size_bytes": 97682,
     "under_20mib": true,
-    "sha256": "a495ac897e01b7e0792778cd58ba29a92deea2b21175e503ad592f5075b3a479",
+    "sha256": "43621773e5127651d6305c87eb04259e288c83285007d3cdbb25f0b970ecfc5e",
     "compounding_db": {
       "db_path": "aasha_operational.db",
       "wm_rows_stored": 1129,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 15
+      "build_cache_records": 25
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."

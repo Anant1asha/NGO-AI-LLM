@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-16T15:18:25.143407+00:00",
+  "generated_at_utc": "2026-11-16T15:43:25.215054+00:00",
   "colab_state_completed_chunk": "G30",
   "colab_state_active_chunk": "G31",
   "g29_reconciliation": {
     "status": "LIVE_VERIFIED_PASS",
-    "manifest_sha256": "fb10a6bad520b8c4965c521f0994072add3b7c7a6a7d1f7a5db70a6b59e9fd37"
+    "manifest_sha256": "5ec7dffecf61760d89428e09598e0630d9214cc7dfa2973eb55c81f4a87fcfc1"
   },
   "g30_reconciliation": {
     "status": "LIVE_VERIFIED_PASS",
-    "manifest_sha256": "6ae3be0394b3cf6e42d581897dc16e1c3162f7233b3481cb2d6f3c0a5a8bbdab",
+    "manifest_sha256": "610fd111909de4a64f486cd9f06eecf3e0ef9aefc8afb51c0f01e2ae9cd8a7dd",
     "verified_chunk_count": 48,
     "top_hotspot": "G6_CH07_N4_LIKE_UNLIKE_ADD",
     "avr_bundled": 21

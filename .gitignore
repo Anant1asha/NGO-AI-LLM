@@ -28,3 +28,4 @@ graphify-out/
 scratch/
 external_sources/
 gemini-web2api/
+vendor_cache/
