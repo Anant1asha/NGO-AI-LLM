@@ -127,6 +127,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       </table>
       ${renderMisconceptionHeatmapCard(cohortSummary.misconceptions || [])}
       ${renderTeacherLessonPlanCatalogCard()}
+      ${renderTeacherCustomQuizBuilderCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -1416,4 +1417,72 @@ export function exportStoreInventoryAuditLedger(state = {}, centerId = "CENTER-U
   }
   payload.ledgerSignature = "fnv1a32:" + h.toString(16).padStart(8, "0");
   return payload;
+}
+
+
+export function validateNonSpoilerMisconception(correctOption = "", misconceptionText = "") {
+  const ans = String(correctOption || "").trim().toLowerCase();
+  const hint = String(misconceptionText || "").trim().toLowerCase();
+  if (!ans || !hint) {
+    return { valid: false, error: "EMPTY_ANSWER_OR_MISCONCEPTION" };
+  }
+  const spoilerPrefixes = ["is ", "= ", "=", "giving ", "becomes ", "answer is ", "उत्तर "];
+  for (const pfx of spoilerPrefixes) {
+    if (hint.includes(pfx + ans)) {
+      return { valid: false, error: "SPOILER_LEAK_IN_MISCONCEPTION" };
+    }
+  }
+  return { valid: true };
+}
+
+export function authorCustomBilingualQuestion(state = {}, qSpec = {}) {
+  const chapterId = String(qSpec.chapterId || "NCERT-G06-MATH-CH07-FRACTIONS").trim();
+  const promptEn = String(qSpec.promptEn || "").trim();
+  const promptHi = String(qSpec.promptHi || "").trim();
+  const correctOption = String(qSpec.correctOption || "").trim();
+  const wrongOption = String(qSpec.wrongOption || "").trim();
+  const misconceptionHi = String(qSpec.misconceptionHi || "").trim();
+  if (!promptEn || !promptHi || !correctOption || !wrongOption) {
+    return { ok: false, error: "MISSING_QUESTION_FIELDS" };
+  }
+  const v = validateNonSpoilerMisconception(correctOption, misconceptionHi);
+  if (!v.valid) {
+    return { ok: false, error: v.error };
+  }
+  state.customQuestions = Array.isArray(state.customQuestions) ? state.customQuestions : [];
+  const item = {
+    id: `custom_q_${state.customQuestions.length + 1}`,
+    chapterId,
+    promptEn,
+    promptHi,
+    correctOption,
+    wrongOption,
+    misconceptionHi,
+    lTruthVerified: true,
+    createdAt: new Date().toISOString()
+  };
+  state.customQuestions.push(item);
+  return { ok: true, question: item, totalCustomQuestions: state.customQuestions.length };
+}
+
+export function renderTeacherCustomQuizBuilderCard(cohortSummary = {}) {
+  const customList = Array.isArray(cohortSummary.customQuestions) ? cohortSummary.customQuestions : [];
+  const rows = customList.map((q) => `
+    <li class="custom-question-row" data-question-id="${q.id}" style="padding:6px 0;border-bottom:1px solid #e2e8f0;">
+      <strong>[${q.chapterId}]</strong> ${q.promptEn} / ${q.promptHi} <span style="color:#0f766e;">(✅ L-Truth Verified)</span>
+    </li>
+  `).join("");
+  return `
+    <section id="teacher-custom-quiz-builder-card" aria-label="Bilingual Teacher Custom Quiz Builder"
+             style="padding:14px;border-radius:12px;background:#faf5ff;border:1px solid #e9d5ff;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#581c87;">🧪 Teacher Custom Bilingual Arena Quiz Builder / शिक्षक प्रश्न निर्माता (${customList.length} Custom MCQs)</h3>
+        <button type="button" id="btn-add-custom-question" data-action="add-custom-bilingual-question"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#7c3aed;color:#ffffff;font-weight:700;cursor:pointer;">
+          ➕ Add Verified Bilingual MCQ / नया प्रश्न जोड़ें
+        </button>
+      </header>
+      <ul style="list-style:none;padding:0;margin:0;">${rows || '<li style="color:#64748b;">Author L-Truth non-spoiler bilingual questions for offline Arena packs.</li>'}</ul>
+    </section>
+  `.trim();
 }

@@ -30,7 +30,10 @@ import {
   renderTeacherLessonPlanCatalogCard,
   renderFacilitatorRestockModal,
   restockStoreInventoryItem,
-  exportStoreInventoryAuditLedger
+  exportStoreInventoryAuditLedger,
+  validateNonSpoilerMisconception,
+  authorCustomBilingualQuestion,
+  renderTeacherCustomQuizBuilderCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -435,6 +438,64 @@ try {
   assert.equal(srvLedger.status, 'ok');
   assert.equal(srvLedger.item_count, 4);
   assert.equal(srvLedger.ledger_sha256.length, 64);
+
+  // Verify G49 Offline Teacher Custom Bilingual Assessment Builder & Non-Spoiler Validator + Server /api/teacher/custom-questions
+  const spoilerCheck = validateNonSpoilerMisconception('12', 'Remember that the answer is 12 when multiplying.');
+  assert.equal(spoilerCheck.valid, false);
+  assert.equal(spoilerCheck.error, 'SPOILER_LEAK_IN_MISCONCEPTION');
+
+  const cleanCheck = validateNonSpoilerMisconception('12', 'Check how many equal partitions are in each row before multiplying.');
+  assert.equal(cleanCheck.valid, true);
+
+  const qRes = authorCustomBilingualQuestion(pwaState, {
+    chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS',
+    promptEn: 'Which fraction represents 3 equal parts out of 4?',
+    promptHi: '4 बराबर भागों में से 3 भाग कौन-सा भिन्न है?',
+    correctOption: '3/4',
+    wrongOption: '4/3',
+    misconceptionHi: 'कुल बराबर भाग हर (नीचे) में लिखे जाते हैं।'
+  });
+  assert.equal(qRes.ok, true);
+  assert.equal(qRes.totalCustomQuestions, 1);
+
+  const qbHtml = renderTeacherCustomQuizBuilderCard({ customQuestions: pwaState.customQuestions });
+  assert.ok(qbHtml.includes('id="teacher-custom-quiz-builder-card"'));
+  assert.ok(qbHtml.includes('L-Truth Verified'));
+
+  const srvSpoilerPost = await fetch(`${baseUrl}/api/teacher/custom-questions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS',
+      promptEn: 'What is 6 + 6?',
+      promptHi: '6 + 6 क्या है?',
+      correctOption: '12',
+      wrongOption: '10',
+      misconceptionHi: 'The answer is 12.'
+    })
+  });
+  assert.equal(srvSpoilerPost.status, 400);
+
+  const srvValidPost = await fetch(`${baseUrl}/api/teacher/custom-questions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id: 'custom_frac_q1',
+      chapterId: 'NCERT-G06-MATH-CH07-FRACTIONS',
+      promptEn: 'Which fraction represents 3 equal parts out of 4?',
+      promptHi: '4 बराबर भागों में से 3 भाग कौन-सा भिन्न है?',
+      correctOption: '3/4',
+      wrongOption: '4/3',
+      misconceptionHi: 'कुल बराबर भाग हर (नीचे) में लिखे जाते हैं।'
+    })
+  });
+  assert.equal(srvValidPost.status, 200);
+
+  const srvListQ = await fetch(`${baseUrl}/api/teacher/custom-questions/NCERT-G06-MATH-CH07-FRACTIONS`);
+  assert.equal(srvListQ.status, 200);
+  const srvListBody = await srvListQ.json();
+  assert.equal(srvListBody.count, 1);
+  assert.equal(srvListBody.questions_sha256.length, 64);
 } finally {
   await app.close();
 }

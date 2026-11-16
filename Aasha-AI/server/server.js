@@ -75,6 +75,16 @@ db.exec(`
     coins_minted INTEGER NOT NULL DEFAULT 0,
     merged_at_utc TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS custom_teacher_questions (
+    id TEXT PRIMARY KEY,
+    chapter_id TEXT NOT NULL,
+    prompt_en TEXT NOT NULL,
+    prompt_hi TEXT NOT NULL,
+    correct_option TEXT NOT NULL,
+    wrong_option TEXT NOT NULL,
+    misconception_hi TEXT NOT NULL,
+    created_at TEXT NOT NULL
+  );
   CREATE TABLE IF NOT EXISTS synced_cohort_packs (
     integrity_hash TEXT PRIMARY KEY,
     center_id TEXT NOT NULL,
@@ -1001,7 +1011,68 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G49: Offline Teacher Custom Bilingual Assessment Builder & Non-Spoiler Validator Endpoints
+  app.post('/api/teacher/custom-questions', async (req, reply) => {
+    const body = req.body || {};
+    const chapterId = String(body.chapterId || '').trim();
+    const promptEn = String(body.promptEn || '').trim();
+    const promptHi = String(body.promptHi || '').trim();
+    const correctOption = String(body.correctOption || '').trim();
+    const wrongOption = String(body.wrongOption || '').trim();
+    const misconceptionHi = String(body.misconceptionHi || '').trim();
+    if (!chapterId || !promptEn || !promptHi || !correctOption || !wrongOption || !misconceptionHi) {
+      return reply.code(400).send({ status: 'error', error: 'MISSING_QUESTION_FIELDS' });
+    }
+    const lowAns = correctOption.toLowerCase();
+    const lowHint = misconceptionHi.toLowerCase();
+    for (const pfx of ['is ', '= ', '=', 'giving ', 'becomes ', 'answer is ', 'उत्तर ']) {
+      if (lowHint.includes(pfx + lowAns)) {
+        return reply.code(400).send({ status: 'error', error: 'SPOILER_LEAK_IN_MISCONCEPTION' });
+      }
+    }
+    const qId = String(body.id || `custom_${chapterId}_${Date.now()}`);
+    const now = new Date().toISOString();
+    db.prepare(`
+      INSERT INTO custom_teacher_questions (id, chapter_id, prompt_en, prompt_hi, correct_option, wrong_option, misconception_hi, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
+        prompt_en = excluded.prompt_en,
+        prompt_hi = excluded.prompt_hi,
+        correct_option = excluded.correct_option,
+        wrong_option = excluded.wrong_option,
+        misconception_hi = excluded.misconception_hi
+    `).run(qId, chapterId, promptEn, promptHi, correctOption, wrongOption, misconceptionHi, now);
+    return {
+      status: 'ok',
+      questionId: qId,
+      chapterId,
+      l_truth_verified: true
+    };
+  });
+
+  app.get('/api/teacher/custom-questions/:chapterId', async (req) => {
+    const { chapterId } = req.params;
+    const questions = db.prepare(`
+      SELECT id, chapter_id AS chapterId, prompt_en AS promptEn, prompt_hi AS promptHi,
+             correct_option AS correctOption, wrong_option AS wrongOption, misconception_hi AS misconceptionHi
+      FROM custom_teacher_questions
+      WHERE chapter_id = ?
+      ORDER BY id ASC
+    `).all(chapterId);
+    const questions_sha256 = crypto.createHash('sha256').update(JSON.stringify(questions), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      chapterId,
+      count: questions.length,
+      questions,
+      questions_sha256,
+      l_truth_verified: true
+    };
+  });
+
   return app;
+
 
 
 
