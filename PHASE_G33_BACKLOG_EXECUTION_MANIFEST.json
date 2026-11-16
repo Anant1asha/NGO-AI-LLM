@@ -1,6 +1,6 @@
 {
   "phase": "G33",
-  "generated_at_utc": "2026-11-16T15:46:16.866634+00:00",
+  "generated_at_utc": "2026-11-16T16:14:55.708665+00:00",
   "backlog_01_node_vm_lle": {
     "wm_count": 1129,
     "conn_count": 85,
@@ -22,7 +22,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 23
+      "build_cache_records": 29
     }
   },
   "backlog_02_g3_fractions_upgrade": {

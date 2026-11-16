@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-16T16:07:50.491384+00:00",
+  "generated_at_utc": "2026-11-16T16:12:10.525631+00:00",
   "total_phase_manifests": 43,
   "total_python_test_suites": 76,
   "status_counts": {
@@ -158,7 +158,7 @@
       "task_id": "G28",
       "title": "Swarm Clarity: AASHA AIOS Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM)",
       "manifest_file": "PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json",
-      "manifest_sha256": "1fd2b769f984d36ea829b0925a0ce26945ce00714abb4d5c61018a2d31a96dac",
+      "manifest_sha256": "867ae30fc9f4e1cd7470202c6e97eb7da9a0fd44b43588d56a3894a5f2eadbc2",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 46
     },
@@ -166,7 +166,7 @@
       "task_id": "G29",
       "title": "Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Centre Server + Student PWA TEAS Store Redemption Sync Verification",
       "manifest_file": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
-      "manifest_sha256": "f9f91e1c4c441b607d5ac81e8d319e54138870a9f13a8a4e4db9c05e748cdceb",
+      "manifest_sha256": "506c93bf0796d3397cb30b9351bfac88d1d45296b43b7f84fac97c1fd31a9ebf",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 47
     },

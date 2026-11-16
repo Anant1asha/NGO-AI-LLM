@@ -399,7 +399,7 @@
     "raw_db_bytes": 192512,
     "gzip_db_bytes": 15498,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "89db42a8ecc0cd43ea40537e9f22fa610e1371c56d2ac26f50f743ce8283bf69"
+    "gzip_sha256": "de0a939c850eb82bce9ada1f7590b854bd4da55db65117a1f15db81f4008febc"
   },
   "centre_server_fastify_store_sync": {
     "serverHealthStatus": "ok",
@@ -416,7 +416,7 @@
     "cohortPackLocalValid": true,
     "cohortPackServerStatus": "ingested",
     "cohortPackReconciledOrders": 1,
-    "cohortPackIntegrityHash": "fnv1a32:2d8938f0",
+    "cohortPackIntegrityHash": "fnv1a32:40418608",
     "snapshotLocalValid": true,
     "snapshotBackupStatus": "backed_up",
     "snapshotRestoredChaptersCount": 3,
@@ -437,6 +437,6 @@
       "final_violations": [],
       "passed": true
     },
-    "sha256": "76a83e1824e3bc42a6331907b0af2f84d56733600ed8a46bff45fdd76e3c7fa3"
+    "sha256": "d9314925433c7b36fe4b6bb06ebe11bf45cb417475ea71d97209569349729598"
   }
 }
