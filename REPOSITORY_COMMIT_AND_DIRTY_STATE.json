@@ -1,24 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-16T14:11:42.742926+00:00",
+  "generated_at_utc": "2026-11-16T15:18:25.143407+00:00",
   "branch": "aios/v2-bootstrap",
-  "head_sha": "39fddd2b4ebfecd5b2fc09665f8ca8eb31c745ab",
-  "dirty_entries_count": 15,
+  "head_sha": "58829036dbc4c325b237b750e73718cc5cce3a8b",
+  "dirty_entries_count": 5,
   "dirty_entries_sample": [
-    " M AASHA_16_STAGE_LAST_EXECUTION_REPORT.json",
-    " M AASHA_HISTORICAL_TASK_LEDGER.json",
-    "M  CHANGELOG.md",
-    " M G29_G30_STATE_RECONCILIATION.json",
-    " M LIVE_ACCESS_AND_PLANE_STATUS.json",
-    "M  PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json",
-    " M REPOSITORY_COMMIT_AND_DIRTY_STATE.json",
-    "M  VERIFICATION_REPORT.md",
+    " M PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json",
+    " M SPRINT_VERIFICATION_REPORT.md",
     " M aasha_operational.db",
-    " M aasha_operational_mirror.json",
-    " M package.json",
-    " M scripts/verify_branch_protection.mjs",
-    " M scripts/verify_sprint_integrity.mjs",
     " M tests/test_cycle5_stage7_10chapter_batch_compiler.py",
-    "?? SPRINT_VERIFICATION_REPORT.md"
+    "?? scripts/run_unified_py_tests.py"
   ]
 }
