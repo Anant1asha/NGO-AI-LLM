@@ -77,7 +77,7 @@ def export_10pack_to_teas_sqlite_catalogue(repo_root: Path) -> Dict[str, Any]:
             "zero_external_urls": True,
         })
 
-    out_db_path = pack_dir / "teas_content.db"
+    out_db_path = pack_dir / "teas_content_10pack.db"
     gz_path_str = sqlite_exporter.export_html5_bundle_catalogue_to_sqlite(
         bundle_reports, wm_dict, str(out_db_path), compress_gz=True
     )

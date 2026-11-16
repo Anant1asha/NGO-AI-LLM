@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-16T15:43:25.215054+00:00",
+  "generated_at_utc": "2026-11-16T16:07:50.491384+00:00",
   "total_phase_manifests": 43,
   "total_python_test_suites": 76,
   "status_counts": {
@@ -158,7 +158,7 @@
       "task_id": "G28",
       "title": "Swarm Clarity: AASHA AIOS Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM)",
       "manifest_file": "PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json",
-      "manifest_sha256": "174807b76ab4e6c43eacabea596b3167709765708755192eb21f355b6e9ee64d",
+      "manifest_sha256": "1fd2b769f984d36ea829b0925a0ce26945ce00714abb4d5c61018a2d31a96dac",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 46
     },
@@ -166,7 +166,7 @@
       "task_id": "G29",
       "title": "Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Centre Server + Student PWA TEAS Store Redemption Sync Verification",
       "manifest_file": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
-      "manifest_sha256": "5ec7dffecf61760d89428e09598e0630d9214cc7dfa2973eb55c81f4a87fcfc1",
+      "manifest_sha256": "f9f91e1c4c441b607d5ac81e8d319e54138870a9f13a8a4e4db9c05e748cdceb",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 47
     },
@@ -182,7 +182,7 @@
       "task_id": "G30",
       "title": "Teacher Cohort Misconception Hotspot Analytics (/api/teacher/misconception-analytics), FrontendCodeSynthesizer 3-Level Assessment (Warmup/Deep-Dive/Boss) & Offline Plugin Base64 Bundler Verification",
       "manifest_file": "PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json",
-      "manifest_sha256": "610fd111909de4a64f486cd9f06eecf3e0ef9aefc8afb51c0f01e2ae9cd8a7dd",
+      "manifest_sha256": "e52c86d807d56af400346893f0847be9945388f003f6eeaeb06d0409eb5648b2",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 48
     },
@@ -190,7 +190,7 @@
       "task_id": "G31",
       "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
       "manifest_file": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json",
-      "manifest_sha256": "ad0c1a1e7a3a9a3f9edb62044adebfae6bda7ffbf78f3a9302d8cb4adccbafdc",
+      "manifest_sha256": "dd4e58a23a77f29f160e50f232e9afdba9a4a46bd68cf8dbad3a28d80b07bb93",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -198,7 +198,7 @@
       "task_id": "G33",
       "title": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST",
       "manifest_file": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST.json",
-      "manifest_sha256": "556c0f7ff88247a21f5a12f0aa216f76a76397a09da32056d80947cb69469ba4",
+      "manifest_sha256": "68e09bf4ece992bab54a678c3e0c02eeb3a0032353ac262f4e90bc4d80105dfb",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -206,7 +206,7 @@
       "task_id": "G34",
       "title": "PHASE_G34_10CHAPTER_GAMIFIED_UPGRADE_MANIFEST",
       "manifest_file": "PHASE_G34_10CHAPTER_GAMIFIED_UPGRADE_MANIFEST.json",
-      "manifest_sha256": "0ae87944182866ff7fb33b930cf1af34e5834d41e800fbc0a4fad0ca535afb25",
+      "manifest_sha256": "891113e169b1f09d3ebfd137bbcd0f01c3370d1bda3ca72c513d7384337f2da9",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -214,7 +214,7 @@
       "task_id": "G35",
       "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
       "manifest_file": "PHASE_G35_10PACK_SQLITE_AND_FACILITATOR_BRIDGE_MANIFEST.json",
-      "manifest_sha256": "5b88e774e59e8fa807efc8a55a530798f7a58b4204cdbefba15321f7bd0c0183",
+      "manifest_sha256": "a4691acdcf0f359bb553ae7a691c27ec64a42871e93377569d7d8d2f333c9dcd",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
