@@ -1,0 +1,349 @@
+{
+  "phase": "AASHA Visual Mass Harvest & Mechanic Extraction \u2014 Phase 3",
+  "pipeline": "Discover \u2192 Individualize \u2192 Audit \u2192 Extract \u2192 Normalize \u2192 Build \u2192 Test \u2192 Measure \u2192 Certify \u2192 Catalogue",
+  "candidate_resources": [
+    {
+      "harvest_id": "HARV-0001",
+      "source": "PhET",
+      "resource": "Graphing Lines",
+      "family": "graph",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0002",
+      "source": "PhET",
+      "resource": "Build an Atom",
+      "family": "molecule",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0003",
+      "source": "PhET",
+      "resource": "Build a Molecule",
+      "family": "molecule",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0004",
+      "source": "PhET",
+      "resource": "States of Matter",
+      "family": "particle",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0005",
+      "source": "PhET",
+      "resource": "pH Scale",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0006",
+      "source": "PhET",
+      "resource": "Projectile Data Lab",
+      "family": "graph/parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0007",
+      "source": "all-science-sims",
+      "resource": "Projectile Motion",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0008",
+      "source": "all-science-sims",
+      "resource": "Logic Gates & Circuits",
+      "family": "circuit/system",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0009",
+      "source": "all-science-sims",
+      "resource": "Cell Explorer",
+      "family": "diagram/anatomy",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0010",
+      "source": "all-science-sims",
+      "resource": "DNA Transcription & Translation",
+      "family": "process/diagram",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0011",
+      "source": "all-science-sims",
+      "resource": "Moon Phases",
+      "family": "timeline/spatial",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0012",
+      "source": "all-science-sims",
+      "resource": "Hydrologic Cycle",
+      "family": "process",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0013",
+      "source": "all-science-sims",
+      "resource": "Sorting Visualizer",
+      "family": "data visualization",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0014",
+      "source": "all-science-sims",
+      "resource": "Linear Regression Playground",
+      "family": "graph",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0015",
+      "source": "myPhysicsLab",
+      "resource": "Pendulum",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0016",
+      "source": "myPhysicsLab",
+      "resource": "Spring",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "candidate pattern"
+    },
+    {
+      "harvest_id": "HARV-0017",
+      "source": "GeoGebra",
+      "resource": "Geometry construction",
+      "family": "geometry",
+      "decision": "AUDIT",
+      "evidence_status": "license/source audit required"
+    },
+    {
+      "harvest_id": "HARV-0018",
+      "source": "Pashasan",
+      "resource": "Fit-line slider",
+      "family": "graph interaction",
+      "decision": "EXTRACT",
+      "evidence_status": "pattern source"
+    },
+    {
+      "harvest_id": "HARV-0019",
+      "source": "SimuTutor",
+      "resource": "Electric field",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "pattern source"
+    },
+    {
+      "harvest_id": "HARV-0020",
+      "source": "SimuTutor",
+      "resource": "Pendulum",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "pattern source"
+    },
+    {
+      "harvest_id": "HARV-0021",
+      "source": "PhET",
+      "resource": "Projectile Motion",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; individual dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0022",
+      "source": "PhET",
+      "resource": "Wave Interference",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0023",
+      "source": "PhET",
+      "resource": "Circuit Construction Kit: DC",
+      "family": "circuit/system",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0024",
+      "source": "PhET",
+      "resource": "Circuit Construction Kit Common",
+      "family": "circuit/system",
+      "decision": "EXTRACT",
+      "evidence_status": "shared component; inspect for reusable mechanics"
+    },
+    {
+      "harvest_id": "HARV-0025",
+      "source": "PhET",
+      "resource": "Build an Atom",
+      "family": "molecule/particle",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0026",
+      "source": "PhET",
+      "resource": "Forces and Motion: Basics",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0027",
+      "source": "PhET",
+      "resource": "Bending Light",
+      "family": "optics/parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0028",
+      "source": "PhET",
+      "resource": "Natural Selection",
+      "family": "process/population",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0029",
+      "source": "PhET",
+      "resource": "Plinko Probability",
+      "family": "probability/data visualization",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0030",
+      "source": "PhET",
+      "resource": "Geometric Optics: Basics",
+      "family": "geometry/optics",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; GPL-3.0 shown on repository page; asset/dependency audit pending"
+    },
+    {
+      "harvest_id": "HARV-0031",
+      "source": "PhET",
+      "resource": "pH Scale",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; GPL-3.0 shown on repository page; asset/dependency audit pending"
+    },
+    {
+      "harvest_id": "HARV-0032",
+      "source": "PhET",
+      "resource": "pH Scale: Basics",
+      "family": "parameterized simulation",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; GPL-3.0 shown on repository page; asset/dependency audit pending"
+    },
+    {
+      "harvest_id": "HARV-0033",
+      "source": "PhET",
+      "resource": "Charges and Fields",
+      "family": "field/diagram",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0034",
+      "source": "PhET",
+      "resource": "States of Matter: Basics",
+      "family": "molecule/particle",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0035",
+      "source": "PhET",
+      "resource": "Area Model Introduction",
+      "family": "geometry/visual math",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub repo identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0036",
+      "source": "PhET",
+      "resource": "Number Line: Operations",
+      "family": "number-line",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub org/repository identified; shared number-line component worth inspecting"
+    },
+    {
+      "harvest_id": "HARV-0037",
+      "source": "PhET",
+      "resource": "Number Line: Distance",
+      "family": "number-line",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub org/repository identified; shared number-line component worth inspecting"
+    },
+    {
+      "harvest_id": "HARV-0038",
+      "source": "PhET",
+      "resource": "Ratio and Proportion",
+      "family": "ratio/visual math",
+      "decision": "EXTRACT",
+      "evidence_status": "GitHub org/repository identified; dependency/license audit pending"
+    },
+    {
+      "harvest_id": "HARV-0039",
+      "source": "GeoGebra",
+      "resource": "Graphing Calculator",
+      "family": "graph/geometry",
+      "decision": "AUDIT",
+      "evidence_status": "GitHub mirror identified; licensing explicitly requires separate audit"
+    },
+    {
+      "harvest_id": "HARV-0040",
+      "source": "GeoGebra",
+      "resource": "Geometry App",
+      "family": "geometry",
+      "decision": "AUDIT",
+      "evidence_status": "GitHub mirror identified; licensing explicitly requires separate audit"
+    }
+  ],
+  "built_resources": [
+    "AVR-P301",
+    "AVR-P302",
+    "AVR-P303",
+    "AVR-P304",
+    "AVR-P305",
+    "AVR-P306",
+    "AVR-P307",
+    "AVR-P308",
+    "AVR-P309",
+    "AVR-P310",
+    "AVR-P311",
+    "AVR-P312",
+    "AVR-P313",
+    "AVR-P314",
+    "AVR-P315",
+    "AVR-P316",
+    "AVR-P317",
+    "AVR-P318",
+    "AVR-P319",
+    "AVR-P320",
+    "AVR-P321"
+  ]
+}

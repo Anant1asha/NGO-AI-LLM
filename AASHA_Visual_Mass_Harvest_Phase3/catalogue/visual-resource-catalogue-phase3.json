@@ -1,0 +1,1161 @@
+{
+  "phase": "AASHA Visual Mass Harvest & Mechanic Extraction \u2014 Phase 3",
+  "pipeline": "Discover \u2192 Individualize \u2192 Audit \u2192 Extract \u2192 Normalize \u2192 Build \u2192 Test \u2192 Measure \u2192 Certify \u2192 Catalogue",
+  "resources": [
+    {
+      "resource_id": "AVR-P301",
+      "version": "1.0.0",
+      "family": "number-line",
+      "name": "Number Line Marker",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2416,
+        "sha256": "cd6ef3778544abfa6c94b99cc3cdf991194f970f67dfbd4a68e68e48247b5a30",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P302",
+      "version": "1.0.0",
+      "family": "number-line",
+      "name": "Fraction Strip",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2491,
+        "sha256": "be7f4c01e5f821990646809dc8a154da92866d815a2e8a1608de9e6d50e60f04",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P303",
+      "version": "1.0.0",
+      "family": "geometry",
+      "name": "Shape Transformer",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2313,
+        "sha256": "699fa6faa9136b79722f88eb9290c55c20e42327894ae79be894bcfdbb2d02f3",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P304",
+      "version": "1.0.0",
+      "family": "timeline",
+      "name": "Timeline Scrubber",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2370,
+        "sha256": "02964f53ee754ed41a2f3caf71042b37c21f3c40bb8b57accdee853d43c51dc2",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P305",
+      "version": "1.0.0",
+      "family": "process",
+      "name": "Process Branch",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2678,
+        "sha256": "ee786cf6aefdece6bae0f2ed6df1baee009bd68a20280519effb1c0781826fe2",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P306",
+      "version": "1.0.0",
+      "family": "diagram",
+      "name": "Hotspot Reveal",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2199,
+        "sha256": "3d6109f7de548d6b982add1108bff29f4a41c9d1f8fd336bfd848def436a08ca",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P307",
+      "version": "1.0.0",
+      "family": "diagram",
+      "name": "Layer Reveal",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2382,
+        "sha256": "e4d02f015514b65bbf79752f271a460361eaba5b7acb5aef3f24da9836e5f58f",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P308",
+      "version": "1.0.0",
+      "family": "anatomy",
+      "name": "Node Connector",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2224,
+        "sha256": "1a8d57a74f0de70bb6ccbe678b4e92b18310c3fcdcec2c5a9fe4c73c4de8a2e8",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P309",
+      "version": "1.0.0",
+      "family": "spatial",
+      "name": "Grid Coordinate Picker",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2260,
+        "sha256": "ab4cae31cda9e44d24409711732edfa165e717ffc18d9ca8f36e4b518d03821a",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P310",
+      "version": "1.0.0",
+      "family": "spatial",
+      "name": "Distance Ruler",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2121,
+        "sha256": "1b9e0f586cb22739aae18daf653cae1ebbefa7fa9e6f539a380ad236082388c4",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P311",
+      "version": "1.0.0",
+      "family": "molecule",
+      "name": "Particle Temperature",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2279,
+        "sha256": "92a226d92129c2c56a2c44ea802ef727cda16fe7831b5f1dcb9a0dadab57035f",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P312",
+      "version": "1.0.0",
+      "family": "molecule",
+      "name": "Particle Diffusion",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2204,
+        "sha256": "1505b6f51aa5d880b0eb1922b50beb2a2706854cab01f85e70e17a6647ae1c8b",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P313",
+      "version": "1.0.0",
+      "family": "molecule",
+      "name": "Atom Builder",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2298,
+        "sha256": "0f7bc3b6c90f72c0f0d157aa29529ff5814f3421b1489a99d249cb3512ebf939",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P314",
+      "version": "1.0.0",
+      "family": "circuit",
+      "name": "Switch Circuit",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2590,
+        "sha256": "fe137790b37a6ace7616185d9eea80e58a6150afb30900473f21f5879809870b",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P315",
+      "version": "1.0.0",
+      "family": "circuit",
+      "name": "Logic Gate",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2333,
+        "sha256": "bbc7d816d07c56afc4db101b2beb7396f64e1f6992a15363a4f9a9753f96e2d7",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P316",
+      "version": "1.0.0",
+      "family": "circuit",
+      "name": "System Flow",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2210,
+        "sha256": "9eb87c03ae3c82cd81e01be399bdc007b19e9c1164784506c27f5125021b344b",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P317",
+      "version": "1.0.0",
+      "family": "simulation",
+      "name": "Parameterized Spring",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2311,
+        "sha256": "32d615cc340ab5d687cf934b349511477339a8e10876431b25e44ee25cd82656",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P318",
+      "version": "1.0.0",
+      "family": "simulation",
+      "name": "Population Growth",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2317,
+        "sha256": "7f3b4c5133c7314873f23e80b47af6e4f3d295d4cff8dc1812e786b80a86fdde",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P319",
+      "version": "1.0.0",
+      "family": "simulation",
+      "name": "Projectile Explorer",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2340,
+        "sha256": "990a2c804e3c2914c39018d3d03556dcb987623dfda1b96105958501e9031e2b",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P320",
+      "version": "1.0.0",
+      "family": "data-viz",
+      "name": "Bar Data Manipulator",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2195,
+        "sha256": "b1e6d5aeed04263c97eb23ca23789a3663c0eb2a1f2d9227f17c70b168d7b5c9",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    },
+    {
+      "resource_id": "AVR-P321",
+      "version": "1.0.0",
+      "family": "animation",
+      "name": "Cause Effect Reveal",
+      "source_patterns": [
+        "PhET/SceneryStack",
+        "all-science-sims",
+        "myPhysicsLab",
+        "Pashasan",
+        "SimuTutor"
+      ],
+      "implementation": {
+        "aasha_native": true,
+        "bundled_third_party_code": [],
+        "bundled_third_party_assets": []
+      },
+      "contracts": {
+        "tln": {
+          "content_injection": true,
+          "mastery_decision": false
+        },
+        "lle": {
+          "locale": "en-IN",
+          "tap_to_reveal": true,
+          "content_injected": true
+        },
+        "teas": {
+          "evidence_only": true,
+          "mastery_decision": false,
+          "sequence_monotonic": true
+        }
+      },
+      "offline": {
+        "network_required": false,
+        "external_urls": 0,
+        "external_assets": 0
+      },
+      "bundle": {
+        "production_bytes": 2356,
+        "sha256": "5781687404c50f2517b6b738b970d790e235a206131418a700644615f1477684",
+        "ceiling_bytes": 20971520,
+        "pass": true
+      },
+      "verification": {
+        "static": "PASS",
+        "js_syntax": "PASS",
+        "browser_smoke": "NOT_CERTIFIED"
+      },
+      "license": {
+        "aasha_code": "original",
+        "third_party_runtime": "none",
+        "source_licenses_not_relicensed": true
+      }
+    }
+  ]
+}
