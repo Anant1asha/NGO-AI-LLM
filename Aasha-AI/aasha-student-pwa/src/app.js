@@ -122,6 +122,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
         <tbody>${rowsHtml}</tbody>
       </table>
       ${renderMisconceptionHeatmapCard(cohortSummary.misconceptions || [])}
+      ${renderTeacherLessonPlanCatalogCard()}
     </section>
   `.trim();
 }
@@ -1254,6 +1255,69 @@ export function renderDailyStreakAndSevaCard(state = {}) {
         </button>
       </header>
       <ul style="list-style:none;padding:0;margin:0;">${itemsHtml}</ul>
+    </section>
+  `.trim();
+}
+
+
+export function generateChapterLessonPlanHtml(chapterId = "NCERT-G06-MATH-CH07-FRACTIONS") {
+  const ch = LEARN_ARENA_13_CATALOGUE.find((c) => c.id === chapterId)
+    || OFFLINE_CHAPTER_CATALOGUE.find((c) => c.id === chapterId)
+    || LEARN_ARENA_13_CATALOGUE[0];
+  const learnMod = ch.learnFile || ch.bundleFile || `${ch.id}_Learning.html`;
+  const arenaMod = ch.arenaFile || ch.bundleFile || `${ch.id}_Arena.html`;
+  return `<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Annanth Aasha Foundation — 40-Min Bilingual Lesson Plan (${ch.id})</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #0f172a; }
+    h1 { margin: 0 0 6px; color: #0f766e; font-size: 1.3rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; font-size: 0.9rem; }
+    th { background: #f0fdfa; }
+  </style>
+</head>
+<body>
+  <h1>Annanth Aasha Foundation — 40-Minute Bilingual Classroom Lesson Plan / कक्षा शिक्षण योजना</h1>
+  <p><strong>Chapter:</strong> ${ch.titleEn} (${ch.titleHi}) • <strong>Grade:</strong> ${ch.grade} • <strong>Subject:</strong> ${ch.subject}</p>
+  <p><strong>Offline Modules:</strong> 📖 <code>${learnMod}</code> | ⚔️ <code>${arenaMod}</code></p>
+  <table>
+    <thead>
+      <tr><th>Time / समय</th><th>Stage / चरण</th><th>Bilingual Facilitator Activity / शिक्षक गतिविधि (60% EN / 40% HI LLE)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00–10 min</td><td>1. Real-World Seva Hook / स्थानीय उदाहरण</td><td>Introduce ${ch.titleEn} (${ch.titleHi}) using a Greater Noida village ledger or field measurement chalkboard problem.</td></tr>
+      <tr><td>10–25 min</td><td>2. Interactive SVG &amp; LLE Lab / दृश्य और शब्दावली अभ्यास</td><td>Launch <code>${learnMod}</code>, practice Phonetic (PH) &amp; Word-Map (WM2) flashcards aloud, and manipulate the interactive SVG simulator.</td></tr>
+      <tr><td>25–35 min</td><td>3. Aasha Arena Group Challenge / समूह अखाड़ा प्रश्नोत्तरी</td><td>Run <code>${arenaMod}</code> in 2-student teams; review any remediation tags triggered on wrong answers.</td></tr>
+      <tr><td>35–40 min</td><td>4. Chalkboard Exit Ticket &amp; Seva Pledge / श्यामपट्ट मूल्यांकन</td><td>Verify 2 chalkboard exit questions, log NCVET/Seva practical tasks, and award +50/+100 Aasha Coins.</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>`.trim();
+}
+
+export function renderTeacherLessonPlanCatalogCard(chapters = LEARN_ARENA_13_CATALOGUE) {
+  const list = Array.isArray(chapters) && chapters.length > 0 ? chapters : LEARN_ARENA_13_CATALOGUE;
+  const rows = list.map((ch) => `
+    <li class="lesson-plan-row" data-chapter-id="${ch.id}"
+        style="padding:8px 0;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+      <div>
+        <strong style="color:#0f172a;">📘 ${ch.titleEn}</strong>
+        <div style="font-size:0.84rem;color:#475569;">${ch.titleHi} (Class ${ch.grade} • ${ch.subject})</div>
+      </div>
+      <button type="button" class="btn-export-lesson-plan" data-action="export-chapter-lesson-plan" data-chapter-id="${ch.id}"
+              style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+        📋 40-Min Lesson Plan / शिक्षण योजना
+      </button>
+    </li>
+  `).join("");
+  return `
+    <section id="teacher-lesson-plan-catalog-card" aria-label="Bilingual 40-Minute Classroom Lesson Plans"
+             style="padding:14px;border-radius:12px;background:#f0fdfa;border:1px solid #99f6e4;margin-top:14px;">
+      <h3 style="margin:0 0 8px;font-size:1rem;color:#115e59;">📋 40-Minute Bilingual Classroom Lesson Plans &amp; Chalkboard Guides (${list.length} Chapters)</h3>
+      <ul style="list-style:none;padding:0;margin:0;">${rows}</ul>
     </section>
   `.trim();
 }

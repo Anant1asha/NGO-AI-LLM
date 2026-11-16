@@ -25,7 +25,9 @@ import {
   renderSharedTabletStudentSwitcherCard,
   recordDailyLearningStreak,
   completeCommunitySevaChallenge,
-  renderDailyStreakAndSevaCard
+  renderDailyStreakAndSevaCard,
+  generateChapterLessonPlanHtml,
+  renderTeacherLessonPlanCatalogCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -369,6 +371,26 @@ try {
   const srvSevaList = await srvSevaGet.json();
   assert.equal(srvSevaList.completedCount, 1);
   assert.equal(srvSevaList.seva_ledger_sha256.length, 64);
+
+  // Verify Offline 40-Minute Bilingual Classroom Lesson Plan Generator + Server /api/teacher/lesson-plan/:chapterId
+  const lpHtml = generateChapterLessonPlanHtml('NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW');
+  assert.ok(lpHtml.includes('40-Minute Bilingual Classroom Lesson Plan'));
+  assert.ok(lpHtml.includes('NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html'));
+  assert.ok(lpHtml.includes('NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Arena.html'));
+  assert.ok(!/https?:\/\//i.test(lpHtml));
+
+  const lpCatHtml = renderTeacherLessonPlanCatalogCard();
+  assert.ok(lpCatHtml.includes('id="teacher-lesson-plan-catalog-card"'));
+  assert.ok(lpCatHtml.includes('data-action="export-chapter-lesson-plan"'));
+
+  const srvLpRes = await fetch(`${baseUrl}/api/teacher/lesson-plan/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW`);
+  assert.equal(srvLpRes.status, 200);
+  const srvLp = await srvLpRes.json();
+  assert.equal(srvLp.status, 'ok');
+  assert.equal(srvLp.duration_minutes, 40);
+  assert.equal(srvLp.blocks.length, 4);
+  assert.equal(srvLp.lesson_plan_sha256.length, 64);
+  assert.equal(srvLp.zero_external_urls, true);
 } finally {
   await app.close();
 }

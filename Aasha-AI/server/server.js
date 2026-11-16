@@ -931,7 +931,33 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G: Offline 40-Minute Bilingual Classroom Lesson Plan Generator Endpoint
+  app.get('/api/teacher/lesson-plan/:chapterId', async (req) => {
+    const { chapterId } = req.params;
+    const blocks = [
+      { stage: 1, minutes: 10, title_en: 'Real-World Seva Hook & Chalkboard Warm-Up', title_hi: 'स्थानीय उदाहरण और श्यामपट्ट प्रारंभिक प्रश्न' },
+      { stage: 2, minutes: 15, title_en: '60% EN / 40% HI LLE & Interactive SVG Simulator Lab', title_hi: 'द्विभाषी शब्दावली (WM2/PH) और संवादात्मक प्रयोगशाला' },
+      { stage: 3, minutes: 10, title_en: 'Aasha Arena Group Combat & Misconception Check', title_hi: 'आशा अखाड़ा समूह प्रश्नोत्तरी और भ्रांति निवारण' },
+      { stage: 4, minutes: 5, title_en: 'Chalkboard Exit Ticket & Seva Pledge', title_hi: 'श्यामपट्ट मूल्यांकन और सेवा संकल्प' }
+    ];
+    const duration_minutes = blocks.reduce((a, b) => a + b.minutes, 0);
+    const lesson_plan_html = `<!DOCTYPE html><html lang="hi-IN"><head><meta charset="UTF-8"><title>Lesson Plan ${chapterId}</title></head><body><h1>40-Minute Bilingual Lesson Plan: ${chapterId}</h1><p>Duration: ${duration_minutes} minutes</p></body></html>`;
+    const canonical = JSON.stringify({ chapterId, duration_minutes, blocks });
+    const lesson_plan_sha256 = crypto.createHash('sha256').update(canonical, 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      chapterId,
+      duration_minutes,
+      blocks,
+      lesson_plan_html,
+      lesson_plan_sha256,
+      zero_external_urls: true
+    };
+  });
+
   return app;
+
 
 
 

@@ -87,6 +87,7 @@
       switchActiveTabletStudent,
       recordDailyLearningStreak,
       completeCommunitySevaChallenge,
+      generateChapterLessonPlanHtml,
       syncNowWithServer
     } from './src/app.js';
 
@@ -250,6 +251,15 @@
           toastMount.innerHTML = `<div id="seva-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">🌱 Seva Challenge Complete! (+${res.rewardCoins} 🪙)</div>`;
           persistAndRefresh();
         }
+      } else if (action === 'export-chapter-lesson-plan') {
+        const chId = target.getAttribute('data-chapter-id') || 'NCERT-G06-MATH-CH07-FRACTIONS';
+        const planHtml = generateChapterLessonPlanHtml(chId);
+        const blob = new Blob([planHtml], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${chId}_40min_lesson_plan.html`;
+        a.click();
+        toastMount.innerHTML = `<div id="lesson-plan-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">📋 Exported 40-Min Lesson Plan (${chId})</div>`;
       }
     });
 
