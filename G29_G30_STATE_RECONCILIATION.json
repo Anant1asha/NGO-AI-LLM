@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-16T13:02:56.965233+00:00",
+  "generated_at_utc": "2026-11-16T14:11:42.742926+00:00",
   "colab_state_completed_chunk": "F2",
   "colab_state_active_chunk": "ALL_DONE",
   "g29_reconciliation": {
@@ -9,7 +9,7 @@
   },
   "g30_reconciliation": {
     "status": "LIVE_VERIFIED_PASS",
-    "manifest_sha256": "317a300e1fee08c8d54ca9d4e32b3f604cff641c1355abf7e254638f573db290",
+    "manifest_sha256": "1cef6a6e3d729862e2e9179bc6dcdf028338a310de47ef538312585815dfd398",
     "verified_chunk_count": 48,
     "top_hotspot": "G6_CH07_N4_LIKE_UNLIKE_ADD",
     "avr_bundled": 21
