@@ -19,7 +19,10 @@ import {
   mergeSignedUsbCohortPack,
   buildPhoneticReadAloudDrill,
   speakLleTermOffline,
-  renderVocabularyFlashcardDeck
+  renderVocabularyFlashcardDeck,
+  registerSharedTabletStudent,
+  switchActiveTabletStudent,
+  renderSharedTabletStudentSwitcherCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -261,6 +264,59 @@ try {
   assert.equal(srvLle.wm2_count, 1557);
   assert.equal(srvLle.ph_count, 763);
   assert.equal(srvLle.pack_sha256.length, 64);
+
+  // Verify Shared-Tablet Multi-Student Profile Switcher & Session Isolation + Server /api/student/register-local-profile
+  const regRes = registerSharedTabletStudent(pwaState, {
+    studentId: 'stu_shared_02',
+    studentName: 'Riya Verma',
+    grade: 9,
+    pin: '2468',
+    initialCoins: 120
+  });
+  assert.equal(regRes.ok, true);
+  assert.ok(regRes.profileCount >= 2);
+
+  // Wrong PIN must reject profile switch
+  const badPinSwitch = switchActiveTabletStudent(pwaState, 'stu_shared_02', '0000');
+  assert.equal(badPinSwitch.ok, false);
+  assert.equal(badPinSwitch.error, 'INVALID_STUDENT_PIN');
+
+  // Correct PIN switches to Riya Verma with isolated state (0 chapters completed, 120 coins)
+  const goodSwitch = switchActiveTabletStudent(pwaState, 'stu_shared_02', '2468');
+  assert.equal(goodSwitch.ok, true);
+  assert.equal(pwaState.studentId, 'stu_shared_02');
+  assert.equal(pwaState.studentName, 'Riya Verma');
+  assert.equal(pwaState.coins, 120);
+  assert.equal(Object.keys(pwaState.progress).length, 0);
+  assert.equal(pwaState.ncvetCompletedTasks.length, 0);
+
+  // Switch back to original scholar and verify zero session loss (coins=225, NCVET AGR/Q4301 preserved)
+  const backSwitch = switchActiveTabletStudent(pwaState, 'stu_local_01');
+  assert.equal(backSwitch.ok, true);
+  assert.equal(pwaState.studentId, 'stu_local_01');
+  assert.equal(pwaState.coins, 225);
+  assert.ok(pwaState.ncvetCompletedTasks.includes('ncvet_agr_q4301'));
+
+  const switcherHtml = renderSharedTabletStudentSwitcherCard(pwaState);
+  assert.ok(switcherHtml.includes('id="shared-tablet-student-switcher-card"'));
+  assert.ok(switcherHtml.includes('Riya Verma'));
+
+  const srvRegRes = await fetch(`${baseUrl}/api/student/register-local-profile`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentId: 'stu_shared_02', studentName: 'Riya Verma', grade: 9, initialCoins: 120 })
+  });
+  assert.equal(srvRegRes.status, 200);
+  const srvRegBody = await srvRegRes.json();
+  assert.equal(srvRegBody.status, 'ok');
+  assert.equal(srvRegBody.coinsBalance, 120);
+  assert.equal(srvRegBody.session_isolated, true);
+
+  const srvRosterRes = await fetch(`${baseUrl}/api/student/shared-tablet-profiles`);
+  assert.equal(srvRosterRes.status, 200);
+  const srvRoster = await srvRosterRes.json();
+  assert.equal(srvRoster.status, 'ok');
+  assert.ok(srvRoster.profiles.some((p) => p.studentId === 'stu_shared_02' && p.studentName === 'Riya Verma'));
 } finally {
   await app.close();
 }

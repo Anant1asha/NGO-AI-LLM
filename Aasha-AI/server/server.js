@@ -800,7 +800,74 @@ export function buildServer() {
     return { ...payload, pack_sha256 };
   });
 
+
+  // Phase G: Shared-Tablet Multi-Student Profile Registration & Roster Endpoints
+  app.post('/api/student/register-local-profile', async (req, reply) => {
+    const body = req.body || {};
+    const studentId = String(body.studentId || '').trim();
+    if (!studentId) {
+      return reply.code(400).send({ status: 'error', error: 'MISSING_STUDENT_ID' });
+    }
+    const studentName = String(body.studentName || studentId).trim();
+    const grade = Number(body.grade || 8);
+    const preferredLang = String(body.preferredLang || 'hi').trim();
+    const initialCoins = Math.max(0, Number(body.initialCoins ?? 100));
+    const now = new Date().toISOString();
+
+    const tx = db.transaction(() => {
+      db.prepare(`
+        INSERT INTO students (id, name, grade, preferred_lang, created_at)
+        VALUES (?, ?, ?, ?, ?)
+        ON CONFLICT(id) DO UPDATE SET
+          name = excluded.name,
+          grade = excluded.grade,
+          preferred_lang = excluded.preferred_lang
+      `).run(studentId, studentName, grade, preferredLang, now);
+
+      const curBal = db.prepare('SELECT balance, lifetime_earned FROM token_balances WHERE student_id = ?').get(studentId);
+      if (!curBal) {
+        db.prepare('INSERT INTO token_balances (student_id, balance, lifetime_earned, updated_at) VALUES (?, ?, ?, ?)')
+          .run(studentId, initialCoins, initialCoins, now);
+      }
+    });
+    tx();
+    const balRow = db.prepare('SELECT balance, lifetime_earned FROM token_balances WHERE student_id = ?').get(studentId) || { balance: initialCoins, lifetime_earned: initialCoins };
+    return {
+      status: 'ok',
+      studentId,
+      studentName,
+      grade,
+      preferredLang,
+      coinsBalance: Number(balRow.balance || 0),
+      lifetimeCoins: Number(balRow.lifetime_earned || 0),
+      session_isolated: true
+    };
+  });
+
+  app.get('/api/student/shared-tablet-profiles', async () => {
+    const profiles = db.prepare(`
+      SELECT s.id AS studentId,
+             s.name AS studentName,
+             s.grade AS grade,
+             s.preferred_lang AS preferredLang,
+             COALESCE(tb.balance, 0) AS coinsBalance,
+             COALESCE(tb.lifetime_earned, 0) AS lifetimeCoins,
+             COUNT(DISTINCT CASE WHEN me.passed = 1 THEN me.chapter_id END) AS chaptersMastered
+      FROM students s
+      LEFT JOIN token_balances tb ON tb.student_id = s.id
+      LEFT JOIN mastery_events me ON me.student_id = s.id
+      GROUP BY s.id
+      ORDER BY s.created_at ASC, s.id ASC
+    `).all();
+    return {
+      status: 'ok',
+      count: profiles.length,
+      profiles
+    };
+  });
+
   return app;
+
 
 
 

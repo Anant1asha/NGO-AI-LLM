@@ -83,6 +83,8 @@
       mergeSignedUsbCohortPack,
       buildPhoneticReadAloudDrill,
       speakLleTermOffline,
+      registerSharedTabletStudent,
+      switchActiveTabletStudent,
       syncNowWithServer
     } from './src/app.js';
 
@@ -222,6 +224,19 @@
           meaningHi: target.getAttribute('data-title-hi') || ''
         });
         toastMount.innerHTML = `<div id="lle-phonetic-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0f2fe;color:#0369a1;margin-top:10px;font-weight:600;">${res.drill.bilingualPrompt}</div>`;
+      } else if (action === 'switch-tablet-student') {
+        const sid = target.getAttribute('data-student-id') || '';
+        const res = switchActiveTabletStudent(state, sid);
+        if (res.ok) {
+          toastMount.innerHTML = `<div id="tablet-switcher-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">🔄 Active Learner: ${res.activeStudentName} (🪙 ${res.coins})</div>`;
+          persistAndRefresh();
+        }
+      } else if (action === 'register-tablet-student') {
+        const nextNum = Object.keys(state.tabletProfiles || {}).length + 1;
+        const newId = `stu_tablet_0${nextNum}`;
+        registerSharedTabletStudent(state, { studentId: newId, studentName: `Scholar ${nextNum}`, grade: 8, initialCoins: 100 });
+        switchActiveTabletStudent(state, newId);
+        persistAndRefresh();
       }
     });
 
