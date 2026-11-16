@@ -426,6 +426,7 @@ export function renderRewardsBadges(state = {}) {
       </div>
       <h3 style="margin:0 0 8px;font-size:1rem;">🛍️ Redemption Receipts / स्टोर रसीदें</h3>
       <ul style="list-style:none;padding:0;margin:0;">${historyHtml}</ul>
+      ${renderCentreLeaderboardCard(state.leaderboard || [])}
     </section>
   `.trim();
 }
@@ -641,6 +642,23 @@ export function renderVocabularyFlashcardDeck(words = [
              style="padding:14px;border-radius:12px;background:#f0fdfa;border:1px solid #99f6e4;margin-top:14px;">
       <h3 style="margin:0 0 8px;font-size:1rem;color:#115e59;">🗣️ 8-Layer Bilingual LLE Flashcards / शब्दावली अभ्यास (544 Terms)</h3>
       <div class="flashcard-items-container">${cardsHtml}</div>
+    </section>
+  `.trim();
+}
+
+export function renderCentreLeaderboardCard(leaders = []) {
+  const rows = (Array.isArray(leaders) ? leaders : []).slice(0, 10).map((l, idx) => {
+    const medal = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `#${idx + 1}`;
+    return `<li class="leaderboard-row" data-student-id="${l.studentId}" style="padding:8px 0;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;">
+      <span><strong>${medal} ${l.studentName || l.studentId}</strong> (${l.chaptersMastered || 0} ch)</span>
+      <span style="font-weight:700;color:#0f766e;">🪙 ${l.lifetimeCoins ?? l.coinsBalance ?? 0} Coins</span>
+    </li>`;
+  }).join("");
+  return `
+    <section id="centre-leaderboard-card" aria-label="Centre Scholar Leaderboard"
+             style="padding:14px;border-radius:12px;background:#f8fafc;border:1px solid #cbd5e1;margin-top:16px;">
+      <h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a;">🏅 Centre Scholar Leaderboard / केंद्र लीडरबोर्ड</h3>
+      <ul style="list-style:none;padding:0;margin:0;">${rows || '<li style="color:#64748b;">Complete a chapter or Arena battle to appear on the leaderboard!</li>'}</ul>
     </section>
   `.trim();
 }

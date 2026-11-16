@@ -1,6 +1,6 @@
 {
   "phase": "G34",
-  "generated_at_utc": "2026-11-16T16:17:17.461157+00:00",
+  "generated_at_utc": "2026-11-16T17:44:57.454917+00:00",
   "phonetic_lle_closure": {
     "wm_total": 1129,
     "phonetics_completed": 0,
@@ -11,7 +11,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 30
+      "build_cache_records": 82
     }
   },
   "g3_10chapter_pack_upgrade": {

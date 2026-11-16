@@ -116,6 +116,7 @@ class LearnArenaAssembler:
         """Convert chapter_spec NODES, WE, SOLVE into action-gated Aasha Learn SLIDES."""
         ch = spec.get("chapter", {})
         title = ch.get("title", "Interactive Chapter")
+        chapter_id = ch.get("chapter_id") or ch.get("storage_key", "chapter")
         subject = ch.get("subject", "math")
         grade = ch.get("grade", 8)
         nodes = spec.get("NODES", [])
@@ -374,6 +375,7 @@ class LearnArenaAssembler:
         """Return (learn_html, arena_html) strings."""
         ch = spec.get("chapter", {})
         title = ch.get("title", "Interactive Chapter")
+        chapter_id = ch.get("chapter_id") or ch.get("storage_key", "chapter")
         subject = ch.get("subject", "math")
         grade = ch.get("grade", 8)
         badge = f"{subject.title()} · Class {grade}"
@@ -384,6 +386,7 @@ class LearnArenaAssembler:
 
         learn_html = self.learn_template
         for ph_key, val in {
+            "{{CHAPTER_ID}}": chapter_id,
             "{{CHAPTER_TITLE}}": title,
             "{{CHAPTER_BADGE}}": badge,
             "{{WM2_JSON}}": self._serialize(wm2),
@@ -397,6 +400,7 @@ class LearnArenaAssembler:
 
         arena_html = self.arena_template
         for ph_key, val in {
+            "{{CHAPTER_ID}}": chapter_id,
             "{{CHAPTER_TITLE}}": title,
             "{{CHAPTER_BADGE}}": badge,
             "{{WM2_JSON}}": self._serialize(wm2),

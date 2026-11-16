@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "PHASE_G_OFFLINE_STUDENT_MASTERY_EXPORT_AND_CENTRE_LEADERBOARD_SYNC",
+  "next_focus_unit": "PHASE_G_TEACHER_REMEDIATION_GROUP_AUTO_ASSIGNMENT_FROM_ARENA_WRONG_ANSWERS",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,9 +78,9 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "updated_at": "2026-11-14T22:52:53.749927+00:00",
+  "updated_at": "2026-11-15T02:50:14.635386+00:00",
   "branch": "aios/v2-bootstrap",
-  "active_phase": "PHASE_G_MULTI_SUBJECT_CUSTOM_SVG_SIMULATORS_AND_MEMORY_PRIME_CERTIFIED",
+  "active_phase": "PHASE_G_OFFLINE_STUDENT_MASTERY_POSTMESSAGE_AND_LEADERBOARD_CERTIFIED",
   "learn_arena_batch": {
     "chapters_compiled": 13,
     "total_html5_modules_generated": 26,
@@ -119,5 +119,13 @@
     "qa_checks_passed": "871/871",
     "merkle_root_sha256": "9bec827a481fff11524c22e5a800cfae1e3b558e15db1a33411896c4a48f9240",
     "serena_memories_auto_seeded": 7
+  },
+  "phase_g_mastery_and_leaderboard": {
+    "teas_chapter_mastery_postmessage_embedded": true,
+    "chapters_recompiled": 13,
+    "html5_modules_certified": 26,
+    "qa_checks_passed": "871/871",
+    "centre_leaderboard_endpoint": "GET /api/leaderboard",
+    "merkle_root_sha256": "3bad57a515c65e110dcf3b311918db0c4fab760f5cc5edebc1057e273e417aae"
   }
 }

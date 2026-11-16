@@ -1,7 +1,7 @@
 {
   "phase": "G31",
   "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
-  "generated_at_utc": "2026-11-16T16:14:31.091374+00:00",
+  "generated_at_utc": "2026-11-16T17:46:14.294500+00:00",
   "lle_harvest": {
     "expanded_config_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/config/defaults_expanded_v2.json",
     "wm_count": 1129,
@@ -26,7 +26,7 @@
     "conn_rows_stored": 85,
     "reusable_mechanics_stored": 5,
     "open_source_foundations_stored": 7,
-    "build_cache_records": 28
+    "build_cache_records": 33
   },
   "open_source_foundations_count": 7,
   "reusable_mechanics_count": 5,
@@ -34,21 +34,21 @@
     "swarm_final_state": "CERTIFIED_CHECKPOINT",
     "transitions": [
       {
-        "timestamp_utc": "2026-11-16T16:14:11.092833+00:00",
+        "timestamp_utc": "2026-11-16T17:45:30.357071+00:00",
         "from": "HYDROGEN_ORCHESTRATE",
         "to": "ARGON_EXECUTE",
         "reason": "Contract validated; dispatching Argon specialist",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       },
       {
-        "timestamp_utc": "2026-11-16T16:14:11.409462+00:00",
+        "timestamp_utc": "2026-11-16T17:45:30.884990+00:00",
         "from": "ARGON_EXECUTE",
         "to": "HYDROGEN_INDEPENDENT_QA",
         "reason": "Argon finished; switching to Hydrogen independent QA",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       },
       {
-        "timestamp_utc": "2026-11-16T16:14:31.089482+00:00",
+        "timestamp_utc": "2026-11-16T17:46:14.275349+00:00",
         "from": "HYDROGEN_INDEPENDENT_QA",
         "to": "CERTIFIED_CHECKPOINT",
         "reason": "Independent QA passed",
@@ -60,6 +60,6 @@
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html",
     "size_bytes": 135501,
     "under_20mib_ceiling": true,
-    "sha256": "4b7b3785a96615ec275c28dd2798088e72f12172bd9726ccf5af160ed0e885cf"
+    "sha256": "6abbd23d70ccb776ad2d8df8ace19886487461c64dfd48bf70c59a46c5880962"
   }
 }

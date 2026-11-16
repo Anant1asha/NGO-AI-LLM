@@ -559,6 +559,27 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G: Centre Cohort Leaderboard Endpoint
+  app.get('/api/leaderboard', async () => {
+    const leaders = db.prepare(`
+      SELECT tb.student_id AS studentId,
+             COALESCE(s.name, ss.student_name, tb.student_id) AS studentName,
+             tb.balance AS coinsBalance,
+             tb.lifetime_earned AS lifetimeCoins,
+             COUNT(DISTINCT CASE WHEN me.passed = 1 THEN me.chapter_id END) AS chaptersMastered,
+             COALESCE(MAX(me.score), 0) AS topScorePct
+      FROM token_balances tb
+      LEFT JOIN students s ON s.id = tb.student_id
+      LEFT JOIN student_snapshots ss ON ss.student_id = tb.student_id
+      LEFT JOIN mastery_events me ON me.student_id = tb.student_id
+      GROUP BY tb.student_id
+      ORDER BY lifetimeCoins DESC, chaptersMastered DESC, topScorePct DESC
+      LIMIT 25
+    `).all();
+    return { status: 'ok', count: leaders.length, leaders };
+  });
+
   return app;
 
 

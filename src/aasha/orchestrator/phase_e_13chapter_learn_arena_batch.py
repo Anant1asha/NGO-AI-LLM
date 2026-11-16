@@ -936,6 +936,7 @@ def build_spec_from_entry(entry: dict[str, Any]) -> dict[str, Any]:
 
     return {
         "chapter": {
+            "chapter_id": cid,
             "title": entry["title"],
             "subject": entry["subject"],
             "grade": entry["grade"],
