@@ -360,6 +360,7 @@ export function renderHomeDashboard(state = {}) {
         <div style="font-size:0.82rem;font-weight:700;color:#334155;margin-bottom:8px;">📊 SUBJECT MASTERY BREAKDOWN / विषयवार प्रगति</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">${subjectPills}</div>
       </div>
+      ${renderSharedTabletStudentSwitcherCard(state)}
       ${renderProfileBackupCard(state)}
     </section>
   `.trim();
@@ -1036,4 +1037,101 @@ export function mergeSignedUsbCohortPack(state = {}, incomingPack = {}) {
     mergedNcvetCount: state.ncvetCompletedTasks.length,
     packSignature: incomingPack.packSignature
   };
+}
+
+
+function snapshotCurrentLearnerIntoVault(state = {}) {
+  state.tabletProfiles = state.tabletProfiles && typeof state.tabletProfiles === "object" ? state.tabletProfiles : {};
+  const curId = String(state.studentId || "stu_local_01");
+  const existing = state.tabletProfiles[curId] || {};
+  state.tabletProfiles[curId] = {
+    studentId: curId,
+    studentName: String(state.studentName || existing.studentName || "Aasha Scholar"),
+    grade: Number(state.studentGrade || existing.grade || 8),
+    pin: String(existing.pin || ""),
+    coins: Number(state.coins ?? existing.coins ?? 0),
+    progress: JSON.parse(JSON.stringify(state.progress || {})),
+    redemptions: JSON.parse(JSON.stringify(state.redemptions || [])),
+    ncvetCompletedTasks: Array.isArray(state.ncvetCompletedTasks) ? [...state.ncvetCompletedTasks] : []
+  };
+}
+
+export function registerSharedTabletStudent(state = {}, profile = {}) {
+  const studentId = String(profile.studentId || "").trim();
+  if (!studentId) return { ok: false, error: "MISSING_STUDENT_ID" };
+  snapshotCurrentLearnerIntoVault(state);
+  const existing = state.tabletProfiles[studentId] || {};
+  state.tabletProfiles[studentId] = {
+    studentId,
+    studentName: String(profile.studentName || existing.studentName || studentId).trim(),
+    grade: Number(profile.grade || existing.grade || 8),
+    pin: String(profile.pin ?? existing.pin ?? ""),
+    coins: Number(profile.initialCoins ?? existing.coins ?? 100),
+    progress: existing.progress || {},
+    redemptions: existing.redemptions || [],
+    ncvetCompletedTasks: existing.ncvetCompletedTasks || []
+  };
+  return {
+    ok: true,
+    studentId,
+    studentName: state.tabletProfiles[studentId].studentName,
+    profileCount: Object.keys(state.tabletProfiles).length
+  };
+}
+
+export function switchActiveTabletStudent(state = {}, targetStudentId = "", enteredPin = "") {
+  const targetId = String(targetStudentId || "").trim();
+  if (!targetId) return { ok: false, error: "MISSING_TARGET_STUDENT_ID" };
+  snapshotCurrentLearnerIntoVault(state);
+  const target = state.tabletProfiles[targetId];
+  if (!target) {
+    return { ok: false, error: "STUDENT_PROFILE_NOT_FOUND" };
+  }
+  if (target.pin && String(enteredPin || "") !== String(target.pin)) {
+    return { ok: false, error: "INVALID_STUDENT_PIN" };
+  }
+  state.studentId = target.studentId;
+  state.studentName = target.studentName;
+  state.studentGrade = Number(target.grade || 8);
+  state.coins = Number(target.coins || 0);
+  state.progress = JSON.parse(JSON.stringify(target.progress || {}));
+  state.redemptions = JSON.parse(JSON.stringify(target.redemptions || []));
+  state.ncvetCompletedTasks = Array.isArray(target.ncvetCompletedTasks) ? [...target.ncvetCompletedTasks] : [];
+  return {
+    ok: true,
+    activeStudentId: state.studentId,
+    activeStudentName: state.studentName,
+    coins: state.coins,
+    completedChaptersCount: Object.values(state.progress).filter((p) => p && p.completed).length
+  };
+}
+
+export function renderSharedTabletStudentSwitcherCard(state = {}) {
+  const activeId = String(state.studentId || "stu_local_01");
+  const vault = state.tabletProfiles && typeof state.tabletProfiles === "object"
+    ? Object.values(state.tabletProfiles)
+    : [{ studentId: activeId, studentName: String(state.studentName || "Aasha Scholar"), grade: 8, coins: Number(state.coins || 0), progress: state.progress || {} }];
+  const pillsHtml = vault.map((p) => {
+    const isCurrent = p.studentId === activeId;
+    const chCount = Object.values(p.progress || {}).filter((x) => x && x.completed).length;
+    return `
+      <button type="button" class="btn-switch-tablet-student" data-action="switch-tablet-student" data-student-id="${p.studentId}"
+              style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:10px;border:2px solid ${isCurrent ? '#0f766e' : '#cbd5e1'};background:${isCurrent ? '#ccfbf1' : '#ffffff'};color:#0f172a;font-weight:700;cursor:pointer;">
+        ${isCurrent ? '🟢' : '👤'} ${p.studentName} (Cl.${p.grade || 8} • ${chCount} ch • 🪙 ${Number(p.coins || 0)})
+      </button>
+    `;
+  }).join("");
+  return `
+    <section id="shared-tablet-student-switcher-card" aria-label="Shared Tablet Multi-Student Switcher"
+             style="padding:14px;border-radius:12px;background:#f0fdf4;border:1px solid #bbf7d0;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#14532d;">👥 Shared-Tablet Learner Switcher / सहपाठी प्रोफ़ाइल बदलें (${vault.length} Profiles)</h3>
+        <button type="button" id="btn-register-tablet-student" data-action="register-tablet-student"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#15803d;color:#ffffff;font-weight:700;cursor:pointer;">
+          ➕ Add Tablet Learner / नया विद्यार्थी
+        </button>
+      </header>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">${pillsHtml}</div>
+    </section>
+  `.trim();
 }
