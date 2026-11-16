@@ -399,6 +399,7 @@ export function renderHomeDashboard(state = {}) {
         <div style="font-size:0.82rem;font-weight:700;color:#334155;margin-bottom:8px;">📊 SUBJECT MASTERY BREAKDOWN / विषयवार प्रगति</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">${subjectPills}</div>
       </div>
+      ${renderDailyStreakAndSevaCard(state)}
       ${renderSharedTabletStudentSwitcherCard(state)}
       ${renderProfileBackupCard(state)}
     </section>
@@ -1171,6 +1172,127 @@ export function renderSharedTabletStudentSwitcherCard(state = {}) {
         </button>
       </header>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">${pillsHtml}</div>
+    </section>
+  `.trim();
+}
+
+
+export const COMMUNITY_SEVA_CHALLENGES = [
+  { id: "seva_jal_audit", titleEn: "Jal Seva: Village Tap & Drip Leak Audit (150 L Saved)", titleHi: "जल सेवा: ग्राम नल और ड्रिप रिसाव निरीक्षण (150 लीटर बचत)", rewardCoins: 30 },
+  { id: "seva_vriksha_poshan", titleEn: "Vriksha Seva: Neem & Tulsi Sapling Mulching Care", titleHi: "वृक्ष सेवा: नीम और तुलसी पौधरोपण एवं मल्चिंग देखभाल", rewardCoins: 30 },
+  { id: "seva_vidya_peer", titleEn: "Vidya Seva: Peer Coaching 2 Classmates in Bilingual LLE", titleHi: "विद्या सेवा: 2 सहपाठियों को द्विभाषी शब्दावली (LLE) अभ्यास कराना", rewardCoins: 40 }
+];
+
+export function recordDailyLearningStreak(state = {}, dateIso = new Date().toISOString().slice(0, 10)) {
+  const cleanDate = String(dateIso || new Date().toISOString().slice(0, 10)).slice(0, 10);
+  const prevDate = state.lastStudyDate ? String(state.lastStudyDate).slice(0, 10) : "";
+  state.streakDays = Math.max(1, Number(state.streakDays || 1));
+  if (prevDate === cleanDate) {
+    return {
+      ok: true,
+      streakDays: state.streakDays,
+      bonusAwarded: 0,
+      coins: Number(state.coins || 0),
+      alreadyCheckedIn: true
+    };
+  }
+  if (prevDate) {
+    const dPrev = new Date(prevDate + "T00:00:00Z");
+    const dCur = new Date(cleanDate + "T00:00:00Z");
+    const diffDays = Math.round((dCur.getTime() - dPrev.getTime()) / 86400000);
+    if (diffDays === 1) {
+      state.streakDays += 1;
+    } else if (diffDays > 1) {
+      state.streakDays = 1;
+    }
+  } else {
+    state.streakDays += 1;
+  }
+  state.lastStudyDate = cleanDate;
+  state.coins = Number(state.coins || 0) + 15;
+  enqueueSyncEvent(state, {
+    id: `streak_${cleanDate}_${state.studentId || "stu_local_01"}`,
+    chapterId: "DAILY_LEARNING_STREAK",
+    nodeId: "daily_streak_checkin",
+    score: 100,
+    passed: true,
+    timestamp: new Date().toISOString()
+  });
+  return {
+    ok: true,
+    streakDays: state.streakDays,
+    bonusAwarded: 15,
+    coins: state.coins,
+    alreadyCheckedIn: false
+  };
+}
+
+export function completeCommunitySevaChallenge(state = {}, challengeId = "") {
+  const challenge = COMMUNITY_SEVA_CHALLENGES.find((c) => c.id === challengeId);
+  if (!challenge) {
+    return { ok: false, error: "UNKNOWN_SEVA_CHALLENGE" };
+  }
+  state.completedSevaChallenges = Array.isArray(state.completedSevaChallenges) ? state.completedSevaChallenges : [];
+  if (state.completedSevaChallenges.includes(challengeId)) {
+    return {
+      ok: true,
+      challengeId,
+      alreadyCompleted: true,
+      rewardCoins: 0,
+      coins: Number(state.coins || 0),
+      completedCount: state.completedSevaChallenges.length
+    };
+  }
+  state.completedSevaChallenges.push(challengeId);
+  state.coins = Number(state.coins || 0) + challenge.rewardCoins;
+  enqueueSyncEvent(state, {
+    id: `seva_${challengeId}_${state.studentId || "stu_local_01"}`,
+    chapterId: "SEVA_COMMUNITY_MISSION",
+    nodeId: challengeId,
+    score: 100,
+    passed: true,
+    timestamp: new Date().toISOString()
+  });
+  return {
+    ok: true,
+    challengeId,
+    alreadyCompleted: false,
+    rewardCoins: challenge.rewardCoins,
+    coins: state.coins,
+    completedCount: state.completedSevaChallenges.length
+  };
+}
+
+export function renderDailyStreakAndSevaCard(state = {}) {
+  const streakDays = Math.max(1, Number(state.streakDays || 1));
+  const completed = Array.isArray(state.completedSevaChallenges) ? state.completedSevaChallenges : [];
+  const itemsHtml = COMMUNITY_SEVA_CHALLENGES.map((c) => {
+    const isDone = completed.includes(c.id);
+    return `
+      <li class="seva-challenge-row" data-challenge-id="${c.id}"
+          style="padding:8px 0;border-bottom:1px solid #fde68a;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+        <div>
+          <strong style="color:#0f172a;">🌱 ${c.titleEn}</strong>
+          <div style="font-size:0.84rem;color:#475569;">${c.titleHi}</div>
+        </div>
+        <button type="button" data-action="complete-seva-challenge" data-challenge-id="${c.id}"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:${isDone ? '#16a34a' : '#d97706'};color:#ffffff;font-weight:700;cursor:pointer;">
+          ${isDone ? '✅ Seva Logged / पूर्ण' : `⚡ Log Seva (+${c.rewardCoins} 🪙)`}
+        </button>
+      </li>
+    `;
+  }).join("");
+  return `
+    <section id="daily-streak-seva-card" aria-label="Daily Learning Streak and Community Seva Missions"
+             style="padding:14px;border-radius:12px;background:#fffbeb;border:1px solid #fde68a;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#92400e;">🔥 ${streakDays}-Day Learning Streak &amp; Seva Challenges / दैनिक अभ्यास और सेवा (${completed.length}/3)</h3>
+        <button type="button" id="btn-daily-streak-checkin" data-action="daily-streak-checkin"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#b45309;color:#ffffff;font-weight:700;cursor:pointer;">
+          📅 Daily Check-In (+15 🪙)
+        </button>
+      </header>
+      <ul style="list-style:none;padding:0;margin:0;">${itemsHtml}</ul>
     </section>
   `.trim();
 }
