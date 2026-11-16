@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G48_OFFLINE_STORE_INVENTORY_RESTOCK_AND_REDEMPTION_AUDIT_LEDGER",
+            "NEXT_PRIORITY": "G49_OFFLINE_TEACHER_ASSESSMENT_BUILDER_AND_CUSTOM_QUIZ_INJECTOR",
         }
 
         self.validate_20_field_report(report)

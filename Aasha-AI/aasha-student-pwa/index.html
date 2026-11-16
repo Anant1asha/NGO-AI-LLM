@@ -88,6 +88,9 @@
       recordDailyLearningStreak,
       completeCommunitySevaChallenge,
       generateChapterLessonPlanHtml,
+      renderFacilitatorRestockModal,
+      restockStoreInventoryItem,
+      exportStoreInventoryAuditLedger,
       syncNowWithServer
     } from './src/app.js';
 
@@ -260,6 +263,29 @@
         a.download = `${chId}_40min_lesson_plan.html`;
         a.click();
         toastMount.innerHTML = `<div id="lesson-plan-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">📋 Exported 40-Min Lesson Plan (${chId})</div>`;
+      } else if (action === 'open-restock-modal') {
+        modalMount.innerHTML = renderFacilitatorRestockModal();
+      } else if (action === 'cancel-restock-modal') {
+        modalMount.innerHTML = '';
+      } else if (action === 'confirm-restock-modal') {
+        const itemId = document.getElementById('restock-item-select')?.value || '';
+        const qty = Number(document.getElementById('restock-qty-input')?.value || 0);
+        const pin = document.getElementById('restock-pin-input')?.value || '';
+        const res = restockStoreInventoryItem(state, itemId, qty, pin);
+        if (res.ok) {
+          modalMount.innerHTML = '';
+          toastMount.innerHTML = `<div id="restock-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">📦 Restocked ${res.itemId} → ${res.newStock} units</div>`;
+          persistAndRefresh();
+        } else {
+          toastMount.innerHTML = `<div id="restock-toast" role="alert" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#fef2f2;color:#991b1b;margin-top:10px;font-weight:600;">❌ ${res.error}</div>`;
+        }
+      } else if (action === 'export-store-ledger') {
+        const ledger = exportStoreInventoryAuditLedger(state);
+        const blob = new Blob([JSON.stringify(ledger, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${ledger.centerId}_store_audit_ledger.json`;
+        a.click();
       }
     });
 

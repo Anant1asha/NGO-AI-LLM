@@ -956,7 +956,53 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G48: Store Inventory Restock (Staff PIN) & Physical Stock Audit Ledger Endpoints
+  app.post('/api/store/restock', async (req, reply) => {
+    const body = req.body || {};
+    const itemId = String(body.itemId || '').trim();
+    const qty = Number(body.qty || 0);
+    const staffPin = String(body.staffPin || '');
+    const expectedPin = process.env.AASHA_STAFF_PIN || '1234';
+    if (staffPin !== expectedPin) {
+      return reply.code(403).send({ status: 'error', error: 'INVALID_STAFF_PIN' });
+    }
+    if (!itemId || !Number.isFinite(qty) || qty <= 0) {
+      return reply.code(400).send({ status: 'error', error: 'INVALID_RESTOCK_QTY' });
+    }
+    const existing = db.prepare('SELECT item_id, stock_qty FROM store_items WHERE item_id = ?').get(itemId);
+    if (!existing) {
+      return reply.code(404).send({ status: 'error', error: 'STORE_ITEM_NOT_FOUND' });
+    }
+    const newStock = Number(existing.stock_qty || 0) + qty;
+    db.prepare('UPDATE store_items SET stock_qty = ? WHERE item_id = ?').run(newStock, itemId);
+    return {
+      status: 'ok',
+      itemId,
+      previousStock: Number(existing.stock_qty || 0),
+      addedQty: qty,
+      newStock
+    };
+  });
+
+  app.get('/api/store/audit-ledger', async () => {
+    const items = db.prepare('SELECT item_id AS itemId, title_en AS titleEn, title_hi AS titleHi, cost_coins AS costCoins, stock_qty AS stockQty FROM store_items ORDER BY item_id ASC').all();
+    const redemptions = db.prepare('SELECT redemption_id AS redemptionId, student_id AS studentId, item_id AS itemId, cost_coins AS costCoins, redeemed_at AS redeemedAt FROM redemptions ORDER BY redeemed_at DESC').all();
+    const canonical = JSON.stringify({ items, redemptionCount: redemptions.length });
+    const ledger_sha256 = crypto.createHash('sha256').update(canonical, 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      schema_version: 'aasha.store.audit.ledger.v1',
+      item_count: items.length,
+      redemption_count: redemptions.length,
+      items,
+      redemptions,
+      ledger_sha256
+    };
+  });
+
   return app;
+
 
 
 

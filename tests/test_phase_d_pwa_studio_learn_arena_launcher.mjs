@@ -27,7 +27,10 @@ import {
   completeCommunitySevaChallenge,
   renderDailyStreakAndSevaCard,
   generateChapterLessonPlanHtml,
-  renderTeacherLessonPlanCatalogCard
+  renderTeacherLessonPlanCatalogCard,
+  renderFacilitatorRestockModal,
+  restockStoreInventoryItem,
+  exportStoreInventoryAuditLedger
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -391,6 +394,47 @@ try {
   assert.equal(srvLp.blocks.length, 4);
   assert.equal(srvLp.lesson_plan_sha256.length, 64);
   assert.equal(srvLp.zero_external_urls, true);
+
+  // Verify G48 Offline Store Inventory Restock (Staff PIN) & Audit Ledger + Server /api/store/restock & /api/store/audit-ledger
+  const restockModalHtml = renderFacilitatorRestockModal();
+  assert.ok(restockModalHtml.includes('id="facilitator-restock-modal"'));
+
+  const badRestock = restockStoreInventoryItem(pwaState, 'item_notebook_a4', 25, '0000');
+  assert.equal(badRestock.ok, false);
+  assert.equal(badRestock.error, 'INVALID_STAFF_PIN');
+
+  const goodRestock = restockStoreInventoryItem(pwaState, 'item_notebook_a4', 25, '1234');
+  assert.equal(goodRestock.ok, true);
+  assert.equal(goodRestock.newStock, 75);
+
+  const storeLedger = exportStoreInventoryAuditLedger(pwaState, 'CENTER-UP-GN-01');
+  assert.equal(storeLedger.schemaVersion, 'aasha.store.audit.ledger.v1');
+  assert.equal(storeLedger.inventory.item_notebook_a4, 75);
+  assert.ok(storeLedger.ledgerSignature.startsWith('fnv1a32:'));
+
+  const srvBadRestock = await fetch(`${baseUrl}/api/store/restock`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ itemId: 'item_notebook_a4', qty: 20, staffPin: '9999' })
+  });
+  assert.equal(srvBadRestock.status, 403);
+
+  const srvGoodRestock = await fetch(`${baseUrl}/api/store/restock`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ itemId: 'item_notebook_a4', qty: 20, staffPin: '1234' })
+  });
+  assert.equal(srvGoodRestock.status, 200);
+  const srvRestockBody = await srvGoodRestock.json();
+  assert.equal(srvRestockBody.addedQty, 20);
+  assert.ok(srvRestockBody.newStock >= 70);
+
+  const srvLedgerRes = await fetch(`${baseUrl}/api/store/audit-ledger`);
+  assert.equal(srvLedgerRes.status, 200);
+  const srvLedger = await srvLedgerRes.json();
+  assert.equal(srvLedger.status, 'ok');
+  assert.equal(srvLedger.item_count, 4);
+  assert.equal(srvLedger.ledger_sha256.length, 64);
 } finally {
   await app.close();
 }

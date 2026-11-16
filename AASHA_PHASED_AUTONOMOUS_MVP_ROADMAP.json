@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-16T12:12:46Z",
+  "updated_at_utc": "2026-11-16T12:27:51Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -42,12 +42,12 @@
       "ordered_units": [
         {
           "id": "G48_OFFLINE_STORE_INVENTORY_RESTOCK_AND_REDEMPTION_AUDIT_LEDGER",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Wire Facilitator Restock Inventory (Staff PIN) modal, POST /api/store/restock, and GET /api/store/audit-ledger."
         },
         {
           "id": "G49_OFFLINE_TEACHER_ASSESSMENT_BUILDER_AND_CUSTOM_QUIZ_INJECTOR",
-          "status": "QUEUED",
+          "status": "QUEUED_NEXT",
           "scope": "Allow centre teachers in Aasha Studio & PWA to author custom bilingual MCQs and inject them into offline Arena packs."
         },
         {

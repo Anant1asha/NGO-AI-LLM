@@ -92,7 +92,11 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
                   style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:1px solid #1d4ed8;background:#eff6ff;color:#1e3a8a;font-weight:700;cursor:pointer;">
             📥 Import USB Cohort Pack / पैक मर्ज करें
           </button>
-          <button id="btn-teacher-restock-modal" class="teacher-restock-btn"
+          <button type="button" id="btn-export-store-ledger" data-action="export-store-ledger"
+                  style="min-width:44px;min-height:44px;padding:10px 14px;border-radius:8px;border:1px solid #0f766e;background:#f0fdfa;color:#0f766e;font-weight:700;cursor:pointer;">
+            🧾 Store Audit Ledger / स्टॉक खाता
+          </button>
+          <button id="btn-teacher-restock-modal" data-action="open-restock-modal" class="teacher-restock-btn"
                   style="min-width:44px;min-height:44px;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;">
             📦 Restock Inventory (Staff PIN)
           </button>
@@ -1359,4 +1363,96 @@ export function renderTeacherLessonPlanCatalogCard(chapters = LEARN_ARENA_13_CAT
       <ul style="list-style:none;padding:0;margin:0;">${rows}</ul>
     </section>
   `.trim();
+}
+
+
+export function renderFacilitatorRestockModal(storeItems = TIER1_STORE_CATALOG) {
+  const opts = (Array.isArray(storeItems) ? storeItems : TIER1_STORE_CATALOG).map((item) =>
+    `<option value="${item.id}">${item.icon} ${item.titleEn} (${item.titleHi})</option>`
+  ).join("");
+  return `
+    <div id="facilitator-restock-modal" role="dialog" aria-modal="true" aria-labelledby="restock-modal-title"
+         style="position:fixed;inset:0;background:rgba(15,23,42,0.72);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px;">
+      <div style="background:#ffffff;border-radius:16px;max-width:400px;width:100%;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+        <h3 id="restock-modal-title" style="margin:0 0 10px;font-size:1.05rem;color:#0f172a;">📦 Restock Centre Store / स्टोर स्टॉक जोड़ें</h3>
+        <label style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">Item / वस्तु</label>
+        <select id="restock-item-select" style="width:100%;min-height:44px;padding:8px;border-radius:8px;border:1px solid #cbd5e1;margin-bottom:10px;">${opts}</select>
+        <label style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">Quantity to Add / मात्रा</label>
+        <input id="restock-qty-input" type="number" min="1" max="500" value="25"
+               style="width:100%;min-height:44px;padding:8px;border-radius:8px;border:1px solid #cbd5e1;margin-bottom:10px;" />
+        <label style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">Staff PIN / स्टाफ पिन</label>
+        <input id="restock-pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="Staff PIN"
+               style="width:100%;min-height:44px;padding:8px;border-radius:8px;border:1px solid #cbd5e1;margin-bottom:14px;" />
+        <div style="display:flex;gap:10px;justify-content:flex-end;">
+          <button type="button" data-action="cancel-restock-modal"
+                  style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;">
+            Cancel / रद्द करें
+          </button>
+          <button type="button" data-action="confirm-restock-modal"
+                  style="min-width:44px;min-height:44px;padding:8px 14px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+            ✅ Confirm Restock
+          </button>
+        </div>
+      </div>
+    </div>
+  `.trim();
+}
+
+export function restockStoreInventoryItem(state = {}, itemId = "", qty = 0, staffPin = "") {
+  const validPin = String(state.staffPin || "1234");
+  if (String(staffPin || "") !== validPin) {
+    return { ok: false, error: "INVALID_STAFF_PIN" };
+  }
+  const addQty = Number(qty || 0);
+  if (!itemId || !Number.isFinite(addQty) || addQty <= 0) {
+    return { ok: false, error: "INVALID_RESTOCK_QTY" };
+  }
+  state.storeInventory = state.storeInventory && typeof state.storeInventory === "object"
+    ? state.storeInventory
+    : Object.fromEntries(TIER1_STORE_CATALOG.map((it) => [it.id, 50]));
+  const prevQty = Number(state.storeInventory[itemId] ?? 50);
+  const newQty = prevQty + addQty;
+  state.storeInventory[itemId] = newQty;
+  state.storeAuditLog = Array.isArray(state.storeAuditLog) ? state.storeAuditLog : [];
+  const entry = {
+    txId: `restock_${itemId}_${Date.now()}`,
+    type: "RESTOCK",
+    itemId,
+    deltaQty: addQty,
+    resultingStock: newQty,
+    timestamp: new Date().toISOString()
+  };
+  state.storeAuditLog.push(entry);
+  return { ok: true, itemId, previousStock: prevQty, newStock: newQty, entry };
+}
+
+export function exportStoreInventoryAuditLedger(state = {}, centerId = "CENTER-UP-GN-01") {
+  const inventory = state.storeInventory && typeof state.storeInventory === "object"
+    ? state.storeInventory
+    : Object.fromEntries(TIER1_STORE_CATALOG.map((it) => [it.id, 50]));
+  const redemptions = Array.isArray(state.redemptions) ? state.redemptions : [];
+  const restocks = Array.isArray(state.storeAuditLog) ? state.storeAuditLog : [];
+  const payload = {
+    schemaVersion: "aasha.store.audit.ledger.v1",
+    centerId: String(centerId || "CENTER-UP-GN-01"),
+    inventory,
+    totalRedemptions: redemptions.length,
+    totalRestockEvents: restocks.length,
+    redemptions,
+    restocks,
+    exportedAt: state.exportedAt || new Date().toISOString()
+  };
+  const canonical = JSON.stringify({
+    centerId: payload.centerId,
+    inventory: payload.inventory,
+    totalRedemptions: payload.totalRedemptions,
+    totalRestockEvents: payload.totalRestockEvents
+  });
+  let h = 0x811c9dc5;
+  for (let i = 0; i < canonical.length; i++) {
+    h ^= canonical.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  payload.ledgerSignature = "fnv1a32:" + h.toString(16).padStart(8, "0");
+  return payload;
 }
