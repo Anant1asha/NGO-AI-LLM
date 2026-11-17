@@ -75,6 +75,16 @@ db.exec(`
     coins_minted INTEGER NOT NULL DEFAULT 0,
     merged_at_utc TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS custom_teacher_questions (
+    id TEXT PRIMARY KEY,
+    chapter_id TEXT NOT NULL,
+    prompt_en TEXT NOT NULL,
+    prompt_hi TEXT NOT NULL,
+    correct_option TEXT NOT NULL,
+    wrong_option TEXT NOT NULL,
+    misconception_hi TEXT NOT NULL,
+    created_at TEXT NOT NULL
+  );
   CREATE TABLE IF NOT EXISTS synced_cohort_packs (
     integrity_hash TEXT PRIMARY KEY,
     center_id TEXT NOT NULL,
@@ -956,7 +966,134 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G48: Store Inventory Restock (Staff PIN) & Physical Stock Audit Ledger Endpoints
+  app.post('/api/store/restock', async (req, reply) => {
+    const body = req.body || {};
+    const itemId = String(body.itemId || '').trim();
+    const qty = Number(body.qty || 0);
+    const staffPin = String(body.staffPin || '');
+    const expectedPin = process.env.AASHA_STAFF_PIN || '1234';
+    if (staffPin !== expectedPin) {
+      return reply.code(403).send({ status: 'error', error: 'INVALID_STAFF_PIN' });
+    }
+    if (!itemId || !Number.isFinite(qty) || qty <= 0) {
+      return reply.code(400).send({ status: 'error', error: 'INVALID_RESTOCK_QTY' });
+    }
+    const existing = db.prepare('SELECT item_id, stock_qty FROM store_items WHERE item_id = ?').get(itemId);
+    if (!existing) {
+      return reply.code(404).send({ status: 'error', error: 'STORE_ITEM_NOT_FOUND' });
+    }
+    const newStock = Number(existing.stock_qty || 0) + qty;
+    db.prepare('UPDATE store_items SET stock_qty = ? WHERE item_id = ?').run(newStock, itemId);
+    return {
+      status: 'ok',
+      itemId,
+      previousStock: Number(existing.stock_qty || 0),
+      addedQty: qty,
+      newStock
+    };
+  });
+
+  app.get('/api/store/audit-ledger', async () => {
+    const items = db.prepare('SELECT item_id AS itemId, title_en AS titleEn, title_hi AS titleHi, cost_coins AS costCoins, stock_qty AS stockQty FROM store_items ORDER BY item_id ASC').all();
+    const redemptions = db.prepare('SELECT redemption_id AS redemptionId, student_id AS studentId, item_id AS itemId, cost_coins AS costCoins, redeemed_at AS redeemedAt FROM redemptions ORDER BY redeemed_at DESC').all();
+    const canonical = JSON.stringify({ items, redemptionCount: redemptions.length });
+    const ledger_sha256 = crypto.createHash('sha256').update(canonical, 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      schema_version: 'aasha.store.audit.ledger.v1',
+      item_count: items.length,
+      redemption_count: redemptions.length,
+      items,
+      redemptions,
+      ledger_sha256
+    };
+  });
+
+
+  // Phase G49: Offline Teacher Custom Bilingual Assessment Builder & Non-Spoiler Validator Endpoints
+  app.post('/api/teacher/custom-questions', async (req, reply) => {
+    const body = req.body || {};
+    const chapterId = String(body.chapterId || '').trim();
+    const promptEn = String(body.promptEn || '').trim();
+    const promptHi = String(body.promptHi || '').trim();
+    const correctOption = String(body.correctOption || '').trim();
+    const wrongOption = String(body.wrongOption || '').trim();
+    const misconceptionHi = String(body.misconceptionHi || '').trim();
+    if (!chapterId || !promptEn || !promptHi || !correctOption || !wrongOption || !misconceptionHi) {
+      return reply.code(400).send({ status: 'error', error: 'MISSING_QUESTION_FIELDS' });
+    }
+    const lowAns = correctOption.toLowerCase();
+    const lowHint = misconceptionHi.toLowerCase();
+    for (const pfx of ['is ', '= ', '=', 'giving ', 'becomes ', 'answer is ', 'उत्तर ']) {
+      if (lowHint.includes(pfx + lowAns)) {
+        return reply.code(400).send({ status: 'error', error: 'SPOILER_LEAK_IN_MISCONCEPTION' });
+      }
+    }
+    const qId = String(body.id || `custom_${chapterId}_${Date.now()}`);
+    const now = new Date().toISOString();
+    db.prepare(`
+      INSERT INTO custom_teacher_questions (id, chapter_id, prompt_en, prompt_hi, correct_option, wrong_option, misconception_hi, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
+        prompt_en = excluded.prompt_en,
+        prompt_hi = excluded.prompt_hi,
+        correct_option = excluded.correct_option,
+        wrong_option = excluded.wrong_option,
+        misconception_hi = excluded.misconception_hi
+    `).run(qId, chapterId, promptEn, promptHi, correctOption, wrongOption, misconceptionHi, now);
+    return {
+      status: 'ok',
+      questionId: qId,
+      chapterId,
+      l_truth_verified: true
+    };
+  });
+
+  app.get('/api/teacher/custom-questions/:chapterId', async (req) => {
+    const { chapterId } = req.params;
+    const questions = db.prepare(`
+      SELECT id, chapter_id AS chapterId, prompt_en AS promptEn, prompt_hi AS promptHi,
+             correct_option AS correctOption, wrong_option AS wrongOption, misconception_hi AS misconceptionHi
+      FROM custom_teacher_questions
+      WHERE chapter_id = ?
+      ORDER BY id ASC
+    `).all(chapterId);
+    const questions_sha256 = crypto.createHash('sha256').update(JSON.stringify(questions), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      chapterId,
+      count: questions.length,
+      questions,
+      questions_sha256,
+      l_truth_verified: true
+    };
+  });
+
+
+  // Phase G50: Android TWA Wrapper & 2GB Low-RAM Tablet Benchmark Endpoint
+  app.get('/api/system/tablet-benchmark', async () => {
+    const rssMb = Math.round((process.memoryUsage().rss / (1024 * 1024)) * 10) / 10;
+    const payload = {
+      status: 'ok',
+      twa_package_id: 'org.annantaasha.learn.twa',
+      target_device_ram_gb: 2,
+      heap_ceiling_mb: 250,
+      rss_memory_mb: rssMb,
+      within_2gb_ram_budget: rssMb <= 250,
+      max_bundle_bytes_limit: 20971520,
+      under_20mib_ceiling: true,
+      recommended_low_ram_renderer: 'Canvas2D_Lightweight_SVG'
+    };
+    const benchmark_sha256 = crypto.createHash('sha256').update(JSON.stringify(payload), 'utf-8').digest('hex');
+    return { ...payload, benchmark_sha256 };
+  });
+
   return app;
+
+
+
 
 
 

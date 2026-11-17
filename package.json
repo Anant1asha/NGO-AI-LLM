@@ -45,7 +45,7 @@
     "verify:sprint:quick": "node scripts/verify_sprint_integrity.mjs --quick",
     "test:all": "npm --prefix Aasha-AI test && npm --prefix aasha-studio test && npm --prefix multi-agent-tui test",
     "tui": "npm --prefix multi-agent-tui run dev",
-    "laya:test": "npm --prefix Aasha-AI exec -- tsx Aasha-AI/tests/laya_router.test.ts",
+    "laya:test": "cd Aasha-AI && npx tsx tests/laya_router.test.ts",
     "audit:gateway": "node scripts/check_gateway_status.js",
     "chapter:compile": "npm --prefix Aasha-AI run build:chapter",
     "chapter:bootstrap": "powershell -ExecutionPolicy Bypass -File Aasha-AI/aasha-pipeline-with-master-json/bootstrap.ps1",

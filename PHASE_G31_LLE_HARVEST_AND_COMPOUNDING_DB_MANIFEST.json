@@ -1,7 +1,7 @@
 {
   "phase": "G31",
   "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
-  "generated_at_utc": "2026-11-16T12:10:34.997003+00:00",
+  "generated_at_utc": "2026-11-17T15:08:58.835307+00:00",
   "lle_harvest": {
     "expanded_config_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/config/defaults_expanded_v2.json",
     "wm_count": 1129,
@@ -13,22 +13,12 @@
         "conn": 46
       },
       {
-        "source": "Chapter3_LPG_Learning.html",
-        "wm": 2,
-        "conn": 18
-      },
-      {
-        "source": "Class8_Science_Cricket.html",
-        "wm": 2,
-        "conn": 18
-      },
-      {
         "source": "Polynomials_Class10_Gamified_v5.html",
         "wm": 361,
         "conn": 46
       }
     ],
-    "sha256": "7fb499b544849a461e558a946ca7f854b618a098903f528e4b4a0804a8744361"
+    "sha256": "12383ce8565fa34d9ace1c0df4f1df9955b9e3533b1482d70536d19d9e458e92"
   },
   "compounding_db": {
     "db_path": "aasha_operational.db",
@@ -36,7 +26,7 @@
     "conn_rows_stored": 85,
     "reusable_mechanics_stored": 5,
     "open_source_foundations_stored": 7,
-    "build_cache_records": 146
+    "build_cache_records": 154
   },
   "open_source_foundations_count": 7,
   "reusable_mechanics_count": 5,
@@ -44,32 +34,32 @@
     "swarm_final_state": "CERTIFIED_CHECKPOINT",
     "transitions": [
       {
-        "timestamp_utc": "2026-11-16T12:10:34.779309+00:00",
+        "timestamp_utc": "2026-11-17T15:08:50.578696+00:00",
         "from": "HYDROGEN_ORCHESTRATE",
         "to": "ARGON_EXECUTE",
         "reason": "Contract validated; dispatching Argon specialist",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       },
       {
-        "timestamp_utc": "2026-11-16T12:10:34.797112+00:00",
+        "timestamp_utc": "2026-11-17T15:08:50.829366+00:00",
         "from": "ARGON_EXECUTE",
         "to": "HYDROGEN_INDEPENDENT_QA",
         "reason": "Argon finished; switching to Hydrogen independent QA",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       },
       {
-        "timestamp_utc": "2026-11-16T12:10:34.996709+00:00",
+        "timestamp_utc": "2026-11-17T15:08:58.833738+00:00",
         "from": "HYDROGEN_INDEPENDENT_QA",
         "to": "CERTIFIED_CHECKPOINT",
         "reason": "Independent QA passed",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       }
     ],
-    "qa_checks_passed": 28,
-    "qa_checks_total": 28,
+    "qa_checks_passed": 32,
+    "qa_checks_total": 32,
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html",
-    "size_bytes": 107212,
+    "size_bytes": 107499,
     "under_20mib_ceiling": true,
-    "sha256": "044259a1166251d29040bbe65bd36e3898b5cf3f292513c9750d725abdf2aab3"
+    "sha256": "f9fdbfbdeb5d0dce6fba913dcd6c241f9d1a03e9642a35ac535a38a323afec62"
   }
 }

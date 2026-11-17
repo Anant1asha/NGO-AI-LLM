@@ -142,7 +142,7 @@ class AntiContradictionGroundingOracle:
         claimed_files: Sequence[str],
         expected_sha256_map: Optional[Dict[str, str]] = None,
     ) -> Dict[str, Any]:
-        root = pathlib.Path(workspace_root)
+        root = pathlib.Path(workspace_root).resolve()
         verified_files: Dict[str, Dict[str, Any]] = {}
         contradictions: List[str] = []
 
@@ -377,7 +377,7 @@ class AsyncLocalIDEBridgeBus:
         workspace_root: str | pathlib.Path,
         bus_manifest: Dict[str, Any],
     ) -> Dict[str, str]:
-        root = pathlib.Path(workspace_root)
+        root = pathlib.Path(workspace_root).resolve()
         bus_path = root / "IDE_CLOUD_ASYNC_BUS.json"
         bus_path.write_text(json.dumps(bus_manifest, indent=2), encoding="utf-8")
 
