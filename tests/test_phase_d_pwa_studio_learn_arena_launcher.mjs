@@ -517,16 +517,19 @@ try {
   assert.equal(srvListBody.count, 1);
   assert.equal(srvListBody.questions_sha256.length, 64);
 
-  // Verify G50 Android TWA Wrapper & 2GB Low-RAM Tablet Benchmark + Server /api/system/tablet-benchmark
-  const lowRamBench = evaluateLowRamTabletBudget({ deviceMemoryGb: 2, heapUsedMb: 68, maxBundleBytes: 539884 });
-  assert.equal(lowRamBench.ok, true);
-  assert.equal(lowRamBench.lowRamMode, true);
-  assert.equal(lowRamBench.recommendedRenderer, 'Canvas2D_Lightweight_SVG');
-  assert.equal(lowRamBench.twaPackageId, 'org.annantaasha.learn.twa');
+  // Verify G50 4GB+ RAM 5G Smartphone High-Fidelity WebGL2 & Distraction-Free Offline Engine + Server /api/system/tablet-benchmark
+  const defaultBench = evaluateLowRamTabletBudget({ heapUsedMb: 96, maxBundleBytes: 539884 });
+  assert.equal(defaultBench.ok, true);
+  assert.equal(defaultBench.deviceMemoryGb, 4);
+  assert.equal(defaultBench.lowRamMode, false);
+  assert.equal(defaultBench.creativeFreedomUnlocked, true);
+  assert.equal(defaultBench.offlineRationale, 'UNSUPERVISED_HOME_DISTRACTION_FREE_STUDY');
+  assert.equal(defaultBench.recommendedRenderer, 'PixiJS_WebGL2_60fps_HighFidelity_Sim_Video');
+  assert.equal(defaultBench.twaPackageId, 'org.annantaasha.learn.twa');
 
   const highRamBench = evaluateLowRamTabletBudget({ deviceMemoryGb: 4, heapUsedMb: 90, maxBundleBytes: 539884 });
   assert.equal(highRamBench.lowRamMode, false);
-  assert.equal(highRamBench.recommendedRenderer, 'PixiJS_WebGL_Accelerated');
+  assert.equal(highRamBench.recommendedRenderer, 'PixiJS_WebGL2_60fps_HighFidelity_Sim_Video');
 
   const diagHtml = renderLowRamTabletDiagnosticsCard({});
   assert.ok(diagHtml.includes('id="low-ram-tablet-diagnostics-card"'));

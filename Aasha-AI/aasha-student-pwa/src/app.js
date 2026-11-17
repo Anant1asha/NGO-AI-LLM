@@ -1541,41 +1541,52 @@ export function renderTeacherCustomQuizBuilderCard(cohortSummary = {}) {
 
 
 export function evaluateLowRamTabletBudget(metrics = {}) {
-  const deviceMemoryGb = Number(metrics.deviceMemoryGb ?? 2);
-  const heapUsedMb = Number(metrics.heapUsedMb ?? 68);
+  const deviceMemoryGb = Number(metrics.deviceMemoryGb ?? 4);
+  const heapUsedMb = Number(metrics.heapUsedMb ?? 96);
   const maxBundleBytes = Number(metrics.maxBundleBytes ?? 539884);
-  const lowRamMode = deviceMemoryGb <= 2;
-  const withinHeapBudget = heapUsedMb <= 250;
+  const lowRamMode = false; // Full creative freedom on modern 4GB+ RAM 5G smartphones; never downgrade to SVG-only
+  const heapBudgetMb = 1024;
+  const withinHeapBudget = heapUsedMb <= heapBudgetMb;
   const under20MiBCeiling = maxBundleBytes <= 20971520;
-  const recommendedRenderer = lowRamMode ? "Canvas2D_Lightweight_SVG" : "PixiJS_WebGL_Accelerated";
+  const recommendedRenderer = "PixiJS_WebGL2_60fps_HighFidelity_Sim_Video";
+  const offlineRationale = "UNSUPERVISED_HOME_DISTRACTION_FREE_STUDY";
+  const styleCatalogArchetypes = [
+    "Interactive_WebGL2_Physics_Sim",
+    "Gamified_60fps_Boss_Arena",
+    "Cinematic_Bilingual_Story_Studio",
+    "Rich_Multimedia_Video_Canvas_Lab"
+  ];
   return {
     ok: withinHeapBudget && under20MiBCeiling,
     twaPackageId: "org.annantaasha.learn.twa",
     deviceMemoryGb,
     lowRamMode,
     heapUsedMb,
-    heapBudgetMb: 250,
+    heapBudgetMb,
     withinHeapBudget,
     maxBundleBytes,
     under20MiBCeiling,
-    recommendedRenderer
+    recommendedRenderer,
+    offlineRationale,
+    creativeFreedomUnlocked: true,
+    styleCatalogArchetypes
   };
 }
 
 export function renderLowRamTabletDiagnosticsCard(cohortSummary = {}) {
   const bench = evaluateLowRamTabletBudget(cohortSummary.tabletMetrics || {});
   return `
-    <section id="low-ram-tablet-diagnostics-card" aria-label="2GB Android Tablet TWA and Memory Benchmark"
+    <section id="low-ram-tablet-diagnostics-card" aria-label="4GB+ RAM 5G Smartphone High-Fidelity WebGL2 and Distraction-Free Offline Engine"
              style="padding:14px;border-radius:12px;background:#f0fdfa;border:1px solid #99f6e4;margin-top:14px;">
       <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-        <h3 style="margin:0;font-size:1rem;color:#115e59;">📱 Android TWA &amp; 2GB Low-RAM Tablet Governor (${bench.twaPackageId})</h3>
+        <h3 style="margin:0;font-size:1rem;color:#115e59;">📱 4GB+ 5G Smartphone High-Fidelity WebGL2 &amp; Distraction-Free Offline Engine (${bench.twaPackageId})</h3>
         <button type="button" id="btn-run-tablet-benchmark" data-action="run-tablet-benchmark"
                 style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
-          ⚡ Run 2GB Tablet Benchmark / टैबलेट परीक्षण
+          ⚡ Verify 4GB+ 5G High-Fidelity Engine / उच्च-गुणवत्ता इंजन जाँच
         </button>
       </header>
       <p style="margin:0;font-size:0.88rem;color:#334155;">
-        RAM Profile: <strong>${bench.deviceMemoryGb} GB</strong> • Heap: <strong>${bench.heapUsedMb} MB / ${bench.heapBudgetMb} MB</strong> • Renderer: <code>${bench.recommendedRenderer}</code> • Bundle Ceiling: <strong>✅ &lt; 20 MiB</strong>
+        Target: <strong>${bench.deviceMemoryGb} GB+ 5G Smartphone</strong> • Heap: <strong>${bench.heapUsedMb} MB / ${bench.heapBudgetMb} MB</strong> • Renderer: <code>${bench.recommendedRenderer}</code> • Rationale: <code>${bench.offlineRationale}</code> • Child HTML Cap: <strong>✅ &lt; 20 MiB</strong>
       </p>
     </section>
   `.trim();
