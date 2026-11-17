@@ -1,7 +1,7 @@
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
-  "generated_at_utc": "2026-11-17T15:10:48.265502+00:00",
+  "generated_at_utc": "2026-11-17T15:55:14.712678+00:00",
   "sqlite_10pack_catalogue": {
     "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content_10pack.db",
     "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content_10pack.db.gz",
@@ -9,9 +9,9 @@
     "tln_nodes_exported": 30,
     "wm_vocabulary_exported": 1129,
     "raw_db_bytes": 413696,
-    "gzip_db_bytes": 53027,
+    "gzip_db_bytes": 53026,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "5965975b3aa2e83a57c9c1c42a9c5d2d3419a4f28cabd432c688dcb8088750d2"
+    "gzip_sha256": "ca645783bb20c541859128e806ab80d2aaa5b2133397e1d6c1c5488ec87008b4"
   },
   "facilitator_bridge": {
     "hotspotClusters": 2,
@@ -20,7 +20,7 @@
     "dashboardValid": true,
     "flashcardValid": true,
     "signedPackValid": true,
-    "integrityHash": "fnv1a32:9577fb0b"
+    "integrityHash": "fnv1a32:58d711c1"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
@@ -29,14 +29,14 @@
     "qa_total": 32,
     "size_bytes": 97682,
     "under_20mib": true,
-    "sha256": "f8116b3776d4a4e2467c6f60ce974f23b9e99d424aca7ee6bd18936a3e1bb48d",
+    "sha256": "e0146d3d6bdbdb686e63c63f8e7da23ab05a41026592443c7bd71298fc6d8548",
     "compounding_db": {
       "db_path": "aasha_operational.db",
       "wm_rows_stored": 1129,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 157
+      "build_cache_records": 177
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."

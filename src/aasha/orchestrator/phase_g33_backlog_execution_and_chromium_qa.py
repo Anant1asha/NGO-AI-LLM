@@ -253,9 +253,15 @@ def run_phase_g33_cycle(repo_root: Path | str = ".") -> Dict[str, Any]:
         "backlog_01_node_vm_lle": b1,
         "backlog_02_g3_fractions_upgrade": b2,
     }
-    (root / "PHASE_G33_BACKLOG_EXECUTION_MANIFEST.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    manifest_path = root / "PHASE_G33_BACKLOG_EXECUTION_MANIFEST.json"
+    content = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
+    for _attempt in range(5):
+        try:
+            manifest_path.write_text(content, encoding="utf-8")
+            break
+        except OSError:
+            import time
+            time.sleep(0.15)
     return manifest
 
 

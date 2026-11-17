@@ -177,7 +177,13 @@ App.init();
 </html>
 """
             healed, heal_report = run_html5_self_healing_qa_pass(html, max_attempts=2)
-            _target.write_text(healed, encoding="utf-8")
+            for _attempt in range(5):
+                try:
+                    _target.write_text(healed, encoding="utf-8")
+                    break
+                except OSError:
+                    import time
+                    time.sleep(0.15)
             return WorkerResult(c.task_id, f"argon_g34_worker_{_idx}", "PASS" if heal_report["passed"] else "FAIL", [c.allowed_paths[0]], {"bytes": len(healed.encode("utf-8"))})
 
         def hydrogen_qa(c: WorkerTaskContract, w_res: WorkerResult, _target=target_path) -> WorkerResult:

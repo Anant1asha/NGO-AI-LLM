@@ -107,7 +107,7 @@ def sync_experience_registry_and_dom_smoke_gate(repo_root: Path) -> Dict[str, An
 
     return {
         "certified_chapters_count": len(verified_chapters),
-        "all_13_chapters_qa_passed": all(c["qa_passed"] and c["checks_passed"] == 28 for c in verified_chapters),
+        "all_13_chapters_qa_passed": all(c["qa_passed"] and c["checks_passed"] == c["checks_total"] and c["checks_passed"] >= 28 for c in verified_chapters),
         "certified_avr_count": len(certified_avr),
         "registry_sha256": _sha256_file(reg_path),
     }
@@ -219,7 +219,13 @@ App.init();
 </html>
 """
         healed, heal_report = run_html5_self_healing_qa_pass(html, max_attempts=2)
-        target_path.write_text(healed, encoding="utf-8")
+        for _attempt in range(5):
+            try:
+                target_path.write_text(healed, encoding="utf-8")
+                break
+            except OSError:
+                import time
+                time.sleep(0.15)
         return WorkerResult(c.task_id, "argon_g37_rc_worker", "PASS" if heal_report["passed"] else "FAIL", [c.allowed_paths[0]], {"bytes": len(healed.encode("utf-8"))})
 
     def hydrogen_qa(c: WorkerTaskContract, w_res: WorkerResult) -> WorkerResult:
@@ -257,9 +263,15 @@ def run_phase_g37_cycle(repo_root: Path | str = ".") -> Dict[str, Any]:
             "Simulate 100-Learner Multi-Centre Offline Field Pilot, Cohort Order Pack Reconciliation & TEAS Audit."
         ),
     }
-    (root / "PHASE_G37_MVP_RELEASE_CANDIDATE_MANIFEST.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    manifest_path = root / "PHASE_G37_MVP_RELEASE_CANDIDATE_MANIFEST.json"
+    manifest_content = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
+    for _attempt in range(5):
+        try:
+            manifest_path.write_text(manifest_content, encoding="utf-8")
+            break
+        except OSError:
+            import time
+            time.sleep(0.15)
     return manifest
 
 

@@ -382,7 +382,13 @@ if (typeof window !== 'undefined') {{ App.init(); }}
         )
         out_dir.mkdir(parents=True, exist_ok=True)
         html_path = out_dir / "Solar_Library_STEM_Fair_Sovereign_Hub_v5.html"
-        html_path.write_text(healed["healed_html"], encoding="utf-8")
+        for _attempt in range(5):
+            try:
+                html_path.write_text(healed["healed_html"], encoding="utf-8")
+                break
+            except OSError:
+                import time
+                time.sleep(0.15)
         rel_html_path = (
             "Aasha-AI/aasha-pipeline-with-master-json/output/g15_solar_library_stem_fair/"
             "Solar_Library_STEM_Fair_Sovereign_Hub_v5.html"

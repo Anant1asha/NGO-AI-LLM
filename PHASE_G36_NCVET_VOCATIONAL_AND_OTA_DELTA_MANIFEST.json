@@ -1,7 +1,7 @@
 {
   "phase": "G36",
   "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
-  "generated_at_utc": "2026-11-17T15:11:21.489446+00:00",
+  "generated_at_utc": "2026-11-17T15:49:47.724182+00:00",
   "roles_compiled": 3,
   "all_certified": true,
   "compiled_roles": [
@@ -45,9 +45,9 @@
   "ota_delta_pack": {
     "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g36_ncvet_psscive_pack\\ota_delta_pack_g35_to_g36.json.gz",
     "raw_bytes": 1778,
-    "gzip_bytes": 703,
+    "gzip_bytes": 706,
     "under_20mib": true,
-    "sha256": "73dad16012fa5861fe834e61ef1810e634426287f2af0d0a64aaf0c060af2b82"
+    "sha256": "5325e595d1095acd4a20757560ce78fedf07308e578c3199cec348646faaa156"
   },
   "next_focus_unit": "PHASE_G_CHUNK_G37_PLAYWRIGHT_HEADLESS_COLAB_GATE_AND_RELEASE_CANDIDATE_TAGGING: Execute Colab-side bundle push (scripts/apply_bundle_and_push.sh), live Playwright DOM smoke gate, and December 31 2026 MVP Release Candidate Certification."
 }
