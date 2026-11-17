@@ -18,6 +18,7 @@ import shutil
 import sqlite3
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -954,6 +955,17 @@ def build_spec_from_entry(entry: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _safe_write_text(path: Path, text: str, encoding: str = "utf-8") -> None:
+    for attempt in range(5):
+        try:
+            path.write_text(text, encoding=encoding)
+            return
+        except OSError:
+            if attempt == 4:
+                raise
+            time.sleep(0.1 * (attempt + 1))
+
+
 def compile_and_certify_13_chapter_learn_arena_batch() -> dict[str, Any]:
     tpl_dir = PIPELINE_ROOT / "template"
     cfg_dir = PIPELINE_ROOT / "config"
@@ -983,9 +995,9 @@ def compile_and_certify_13_chapter_learn_arena_batch() -> dict[str, Any]:
         arena_path = out_dir / f"{base_stem}_Arena.html"
         spec_path = out_dir / f"{base_stem}_spec.json"
 
-        learn_path.write_text(learn_html, encoding="utf-8")
-        arena_path.write_text(arena_html, encoding="utf-8")
-        spec_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
+        _safe_write_text(learn_path, learn_html, encoding="utf-8")
+        _safe_write_text(arena_path, arena_html, encoding="utf-8")
+        _safe_write_text(spec_path, json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
 
         pair_audit: dict[str, Any] = {"chapter_id": cid, "title": entry["title"]}
         for mode, hpath in [("learn", learn_path), ("arena", arena_path)]:
@@ -1048,8 +1060,19 @@ def compile_and_certify_13_chapter_learn_arena_batch() -> dict[str, Any]:
     conn.close()
 
     gz_path = PIPELINE_ROOT / "output" / "g3_10chapter_pack" / "teas_content.db.gz"
-    with open(db_path, "rb") as f_in, gzip.open(gz_path, "wb") as f_out:
+    tmp_gz = gz_path.with_suffix(".tmp.gz")
+    with open(db_path, "rb") as f_in, gzip.open(tmp_gz, "wb") as f_out:
         shutil.copyfileobj(f_in, f_out)
+    for attempt in range(5):
+        try:
+            if gz_path.exists():
+                gz_path.unlink()
+            tmp_gz.replace(gz_path)
+            break
+        except OSError:
+            time.sleep(0.2)
+    if tmp_gz.exists() and not gz_path.exists():
+        tmp_gz.replace(gz_path)
 
     # Update PWA sw_cache_manifest.json with the 26 Learn & Arena modules
     sw_manifest_path = REPO_ROOT / "Aasha-AI" / "aasha-student-pwa" / "src" / "sw_cache_manifest.json"

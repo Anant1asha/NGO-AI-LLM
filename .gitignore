@@ -5,6 +5,7 @@ __pycache__/
 *.pyo
 .scratch/
 .qa_syntax_check.js
+.qa_syntax_check*.js
 *.tmp
 .plugin_cache/
 

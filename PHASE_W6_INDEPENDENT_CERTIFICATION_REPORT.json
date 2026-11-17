@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "phase": "W6_INDEPENDENT_CERTIFICATION",
-  "generated_at_utc": "2026-11-16T12:12:14.255222+00:00",
-  "git_head": "1ca5fd9a2fa6cff1501051c751217832ce019b7d",
+  "generated_at_utc": "2026-11-17T15:32:16.537662+00:00",
+  "git_head": "c8817009ed550b0001e0549b0e5d44a767e5883c",
   "git_branch": "aios/v2-bootstrap",
   "github_push_note": "Offline sandbox cannot push directly; commits packaged in aasha_aios_v2_bootstrap_full.bundle on Google Drive.",
   "priority_1_w1_w5_verification": {
@@ -38,13 +38,13 @@
   "priority_4_qa_replay": {
     "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html": {
       "passed": true,
-      "checks_passed": 28,
-      "checks_total": 28
+      "checks_passed": 32,
+      "checks_total": 32
     },
     "AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html": {
       "passed": true,
-      "checks_passed": 28,
-      "checks_total": 28
+      "checks_passed": 32,
+      "checks_total": 32
     }
   }
 }
