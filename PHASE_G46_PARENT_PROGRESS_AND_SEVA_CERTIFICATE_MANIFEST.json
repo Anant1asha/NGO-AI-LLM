@@ -1,7 +1,7 @@
 {
   "schema_version": "7.0.0",
   "phase": "G46_PARENT_PROGRESS_CARD_AND_SEVA_CERTIFICATE_SIGNER",
-  "generated_at_utc": "2026-11-16T12:11:37.485418+00:00",
+  "generated_at_utc": "2026-11-17T15:22:59.117729+00:00",
   "sample_certificate": {
     "schema_version": "1.0.0",
     "student_id": "stu_ananya_01",
@@ -16,11 +16,11 @@
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Parent_Progress_And_Seva_Certificate_Signer_Hub_v5.html",
     "swarm_state": "CERTIFIED_CHECKPOINT",
-    "qa_passed": 28,
-    "qa_total": 28,
-    "size_bytes": 97627,
+    "qa_passed": 32,
+    "qa_total": 32,
+    "size_bytes": 97706,
     "under_20mib": true,
-    "sha256": "a8d4d998aac4e4e2a293841a1058c00a6e9a1441576d959afc9f4c71eb4235cd"
+    "sha256": "b2e62008f419c223c589d68a30cf3b67ecc27a3ca679054fdd74f724e723fcc9"
   },
   "next_focus_unit": "PHASE_G_CHUNK_G47_DEC_2026_MVP_RELEASE_FREEZE_AND_FULL_TELEMETRY_RECONCILIATION: Run end-to-end pre-release freeze audit across all 23 certified HTML5 modules, 14 HTTP endpoints, and SQLite catalogues."
 }
