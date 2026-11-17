@@ -27,8 +27,8 @@
     "chapters_count": 10,
     "tln_nodes_count": 40,
     "teas_assessments_count": 40,
-    "compressed_gz_bytes": 7432,
-    "gz_sha256": "c58d50fa6a71ec1dbf4e09ecb0641dc0c99b7d1c2983a014172349b4c7dd5b09"
+    "compressed_gz_bytes": 7491,
+    "gz_sha256": "ae87a3c6baa5bd0e58b041a915ff34d7c021a3981948d6e98d39954b146bbd85"
   },
   "chapter_certificates": [
     {
@@ -214,5 +214,5 @@
   ],
   "daily_spend_cap_usd": 1.0,
   "next_focus_unit": "G4: Autonomous Cross-Grade Knowledge Graph Distillation, Adaptive Student Mastery Twins & Teacher Co-Pilot Pack",
-  "g3_manifest_sha256": "7dbefa9143e8ab850b8cb3876c9e7ac94c7585439702566d893ffa91d2906190"
+  "g3_manifest_sha256": "db7b72de3a549cd8325263031acaf7b4ed6a11ce32e21ed1d2f15320325d5137"
 }

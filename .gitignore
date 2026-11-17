@@ -10,8 +10,14 @@ __pycache__/
 
 # Large Bundles & Archives
 *.bundle
+*.bundle.lock
 *.tar.gz
 *.zip
+
+# SQLite transient files
+*.db-journal
+*.db-wal
+*.db-shm
 
 # Build outputs & caches
 **/dist/
