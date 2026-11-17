@@ -1272,7 +1272,50 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G55: Offline Bilingual LLE Concept Glossary Search Endpoint
+  app.get('/api/catalogue/lle-glossary-search', async (req) => {
+    const q = String((req.query && req.query.q) || '').trim().toLowerCase();
+    const packPath = path.resolve(__dirname, '../aasha-pipeline-with-master-json/src/aasha/data/lle_master_pack.json');
+    const matches = [];
+    const baseEntries = [
+      { term_en: 'monomial', meaning_hi: 'एकपदी (मोनोमियल)', phonetic_hi: 'मोनोमियल' },
+      { term_en: 'binomial', meaning_hi: 'द्विपदी (बाइनोमियल)', phonetic_hi: 'बाइनोमियल' },
+      { term_en: 'photosynthesis', meaning_hi: 'प्रकाश संश्लेषण (फ़ोटोसिंथेसिस)', phonetic_hi: 'फ़ोटोसिंथेसिस' },
+      { term_en: 'denominator', meaning_hi: 'हर (डिनॉमिनेटर)', phonetic_hi: 'डिनॉमिनेटर' }
+    ];
+    for (const item of baseEntries) {
+      if (!q || item.term_en.toLowerCase().includes(q) || item.meaning_hi.includes(q) || item.phonetic_hi.includes(q)) {
+        matches.push(item);
+      }
+    }
+    try {
+      if (fs.existsSync(packPath)) {
+        const rawPack = JSON.parse(fs.readFileSync(packPath, 'utf-8'));
+        const wm2 = rawPack.WM2 || {};
+        const ph = rawPack.PH || {};
+        for (const [k, v] of Object.entries(wm2)) {
+          if (matches.length >= 25) break;
+          if (!q || k.toLowerCase().includes(q) || String(v).toLowerCase().includes(q)) {
+            if (!matches.some((m) => m.term_en.toLowerCase() === k.toLowerCase())) {
+              matches.push({ term_en: k, meaning_hi: String(v), phonetic_hi: String(ph[k] || k) });
+            }
+          }
+        }
+      }
+    } catch (_) {}
+    const results_sha256 = crypto.createHash('sha256').update(JSON.stringify(matches), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      query: q,
+      match_count: matches.length,
+      matches,
+      results_sha256
+    };
+  });
+
   return app;
+
 
 
 

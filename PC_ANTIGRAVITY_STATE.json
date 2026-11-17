@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G55_OFFLINE_BILINGUAL_CONCEPT_GLOSSARY_SEARCH_AND_PRINTABLE_FLASHCARD_SHEET",
+  "next_focus_unit": "G56_OFFLINE_FACILITATOR_ATTENDANCE_AND_SCHOLARSHIP_ELIGIBILITY_TRACKER",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-17T07:05:59Z",
-  "active_focus_unit": "G54_OFFLINE_STUDENT_PEER_STUDY_BUDDY_PAIRING_AND_GROUP_ARENA_MATCHMAKER",
-  "last_completed_focus_unit": "G54_OFFLINE_STUDENT_PEER_STUDY_BUDDY_PAIRING_AND_GROUP_ARENA_MATCHMAKER",
-  "sw_merkle_root": "e45cd62dd0a01cd629cac2f580964aa7149b5605e444ebc71020483229e10956"
+  "last_updated_utc": "2026-11-17T10:38:00Z",
+  "active_focus_unit": "G55_OFFLINE_BILINGUAL_CONCEPT_GLOSSARY_SEARCH_AND_PRINTABLE_FLASHCARD_SHEET",
+  "last_completed_focus_unit": "G55_OFFLINE_BILINGUAL_CONCEPT_GLOSSARY_SEARCH_AND_PRINTABLE_FLASHCARD_SHEET",
+  "sw_merkle_root": "bdfbff610fa8f9b2070ced336cb4d9b6c025f0b185d35c8afb49fe89fb3abfdd"
 }

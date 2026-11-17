@@ -45,7 +45,9 @@ import {
   generateCohortParentSmsOutboxBatch,
   renderParentSmsDigestOutboxCard,
   matchPeerStudyBuddies,
-  renderPeerStudyBuddyMatchmakerCard
+  renderPeerStudyBuddyMatchmakerCard,
+  searchOfflineLleGlossary,
+  renderPrintableLleFlashcardWallChartHtml
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -639,6 +641,28 @@ try {
   assert.equal(srvPairs.status, 'ok');
   assert.ok(srvPairs.pair_count >= 1);
   assert.equal(srvPairs.pairs_sha256.length, 64);
+
+  // Verify G55 Offline Bilingual LLE Concept Glossary Search & Printable Wall-Chart + Server /api/catalogue/lle-glossary-search
+  const enMatches = searchOfflineLleGlossary('photo');
+  assert.equal(enMatches.length, 1);
+  assert.equal(enMatches[0].termEn, 'photosynthesis');
+
+  const hiMatches = searchOfflineLleGlossary('द्विपदी');
+  assert.equal(hiMatches.length, 1);
+  assert.equal(hiMatches[0].termEn, 'binomial');
+
+  const wallChartHtml = renderPrintableLleFlashcardWallChartHtml();
+  assert.ok(wallChartHtml.includes('Bilingual LLE Classroom Wall-Chart'));
+  assert.ok(Buffer.byteLength(wallChartHtml, 'utf-8') < 20 * 1024 * 1024);
+  assert.ok(!/https?:\/\//i.test(wallChartHtml));
+
+  const srvGlossRes = await fetch(`${baseUrl}/api/catalogue/lle-glossary-search?q=photo`);
+  assert.equal(srvGlossRes.status, 200);
+  const srvGloss = await srvGlossRes.json();
+  assert.equal(srvGloss.status, 'ok');
+  assert.ok(srvGloss.match_count >= 1);
+  assert.ok(srvGloss.matches.some((m) => m.term_en === 'photosynthesis'));
+  assert.equal(srvGloss.results_sha256.length, 64);
 } finally {
   await app.close();
 }

@@ -96,6 +96,7 @@
       exportCsrImpactAuditPack,
       exportGoldenMasterDeploymentKit,
       generateCohortParentSmsOutboxBatch,
+      renderPrintableLleFlashcardWallChartHtml,
       syncNowWithServer
     } from './src/app.js';
 
@@ -329,6 +330,13 @@
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = `${batch.centerId}_parent_sms_outbox.json`;
+        a.click();
+      } else if (action === 'export-printable-lle-wallchart') {
+        const wallHtml = renderPrintableLleFlashcardWallChartHtml(state.flashcards);
+        const blob = new Blob([wallHtml], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aasha_lle_classroom_wallchart.html';
         a.click();
       }
     });

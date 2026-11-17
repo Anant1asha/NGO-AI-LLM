@@ -769,7 +769,13 @@ export function renderVocabularyFlashcardDeck(words = OFFLINE_LLE_PHONETIC_DICTI
   return `
     <section id="lle-vocabulary-flashcard-deck" aria-label="Bilingual LLE Vocabulary Flashcards"
              style="padding:14px;border-radius:12px;background:#f0fdfa;border:1px solid #99f6e4;margin-top:14px;">
-      <h3 style="margin:0 0 8px;font-size:1rem;color:#115e59;">🗣️ 8-Layer Bilingual LLE Flashcards &amp; Phonetic Read-Aloud / शब्दावली और उच्चारण अभ्यास (1,557 WM2 • 763 PH)</h3>
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#115e59;">🗣️ 8-Layer Bilingual LLE Flashcards &amp; Phonetic Read-Aloud / शब्दावली और उच्चारण अभ्यास (1,557 WM2 • 763 PH)</h3>
+        <button type="button" id="btn-export-printable-lle-wallchart" data-action="export-printable-lle-wallchart"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+          🖨️ Print LLE Wall-Chart / शब्दावली चार्ट
+        </button>
+      </header>
       <div class="flashcard-items-container">${cardsHtml}</div>
     </section>
   `.trim();
@@ -1827,4 +1833,54 @@ export function renderPeerStudyBuddyMatchmakerCard(cohortSummary = {}) {
       <ul style="list-style:none;padding:0;margin:0;">${rowsHtml || '<li style="color:#475569;">All cohort learners are at ≥80% mastery or awaiting initial assessment.</li>'}</ul>
     </section>
   `.trim();
+}
+
+
+export function searchOfflineLleGlossary(query = "", dictionary = OFFLINE_LLE_PHONETIC_DICTIONARY) {
+  const list = Array.isArray(dictionary) && dictionary.length > 0 ? dictionary : OFFLINE_LLE_PHONETIC_DICTIONARY;
+  const q = String(query || "").trim().toLowerCase();
+  if (!q) return [...list];
+  return list.filter((item) => {
+    const hay = `${item.termEn || ""} ${item.meaningHi || ""} ${item.phoneticHi || ""} ${item.syllablesHi || ""}`.toLowerCase();
+    return hay.includes(q);
+  });
+}
+
+export function renderPrintableLleFlashcardWallChartHtml(words = OFFLINE_LLE_PHONETIC_DICTIONARY, centerId = "CENTER-UP-GN-01") {
+  const list = Array.isArray(words) && words.length > 0 ? words : OFFLINE_LLE_PHONETIC_DICTIONARY;
+  const rowsHtml = list.map((w, idx) => {
+    const d = buildPhoneticReadAloudDrill(w.termEn, w.meaningHi, w.phoneticHi, w.syllablesHi);
+    return `
+      <tr>
+        <td>${idx + 1}</td>
+        <td><strong>${d.termEn}</strong></td>
+        <td>${d.syllablesHi}</td>
+        <td>${d.meaningHi}</td>
+      </tr>
+    `;
+  }).join("");
+  return `<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Annanth Aasha Foundation — Bilingual LLE Classroom Wall-Chart (${centerId})</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #0f172a; }
+    h1 { margin: 0 0 6px; color: #0f766e; font-size: 1.3rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; font-size: 0.92rem; }
+    th { background: #f0fdfa; }
+  </style>
+</head>
+<body>
+  <h1>Annanth Aasha Foundation — Bilingual LLE Classroom Wall-Chart / द्विभाषी शब्दावली चार्ट (${centerId})</h1>
+  <p><strong>60% English / 40% हिन्दी LLE</strong> • Terms Listed: <strong>${list.length}</strong> (Child HTML Output &lt; 20 MiB)</p>
+  <table>
+    <thead>
+      <tr><th>#</th><th>English STEM Term</th><th>Phonetic Syllables (उच्चारण)</th><th>Hindi Conceptual Meaning (हिन्दी अर्थ)</th></tr>
+    </thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+</body>
+</html>`.trim();
 }
