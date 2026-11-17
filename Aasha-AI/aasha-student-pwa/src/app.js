@@ -131,6 +131,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderLowRamTabletDiagnosticsCard(cohortSummary)}
       ${renderDonorImpactLedgerCard(cohortSummary)}
       ${renderGoldenMasterReleaseCard(cohortSummary)}
+      ${renderParentSmsDigestOutboxCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -1711,6 +1712,63 @@ export function renderGoldenMasterReleaseCard(cohortSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#064e3b;">
         Certified Modules: <strong>${kit.certifiedLearnArenaModules} Learn+Arena (${kit.certifiedTotalHtml5Modules} Total HTML5)</strong> • Precache: <strong>${kit.precachedAssetsCount} Assets (&lt; 20 MiB)</strong> • LLE: <strong>1,557 WM2 / 763 PH</strong>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+export function generateCohortParentSmsOutboxBatch(cohortSummary = {}, centerId = "CENTER-UP-GN-01") {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  const messages = students.map((s) => {
+    const sid = String(s.studentId || s.id || "stu_unknown");
+    const name = String(s.name || sid);
+    const mastery = Number(s.masteryPct ?? s.avg_score ?? 0).toFixed(1);
+    const coins = Number(s.tokenBalance ?? s.coin_balance ?? 0);
+    return {
+      studentId: sid,
+      studentName: name,
+      masteryPct: Number(mastery),
+      coinsBalance: coins,
+      smsEn: `Namaste Parent! Aasha Progress for ${name} (${sid}): Mastery ${mastery}%, Earned Coins: ${coins}. — Annanth Aasha Foundation`,
+      smsHi: `नमस्ते अभिभावक! ${name} (${sid}) की आशा केंद्र प्रगति: दक्षता ${mastery}%, अर्जित आशा कॉइन्स: ${coins}। — Annanth Aasha Foundation`
+    };
+  });
+  const batch = {
+    schemaVersion: "aasha.parent.sms.batch.v1",
+    centerId: String(centerId || "CENTER-UP-GN-01"),
+    totalMessages: messages.length,
+    messages,
+    exportedAt: cohortSummary.exportedAt || new Date().toISOString()
+  };
+  const canonical = JSON.stringify({
+    centerId: batch.centerId,
+    totalMessages: batch.totalMessages,
+    studentIds: messages.map((m) => m.studentId)
+  });
+  let h = 0x811c9dc5;
+  for (let i = 0; i < canonical.length; i++) {
+    h ^= canonical.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  batch.batchSignature = "fnv1a32:" + h.toString(16).padStart(8, "0");
+  return batch;
+}
+
+export function renderParentSmsDigestOutboxCard(cohortSummary = {}) {
+  const batch = generateCohortParentSmsOutboxBatch(cohortSummary);
+  return `
+    <section id="parent-sms-digest-outbox-card" aria-label="Bilingual Parent SMS and WhatsApp Digest Outbox"
+             style="padding:14px;border-radius:12px;background:#f0fdf4;border:1px solid #bbf7d0;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#14532d;">📲 Bilingual Parent SMS &amp; WhatsApp Progress Outbox (${batch.totalMessages} Families)</h3>
+        <button type="button" id="btn-export-parent-sms-batch" data-action="export-parent-sms-batch"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#16a34a;color:#ffffff;font-weight:700;cursor:pointer;">
+          📤 Export Parent SMS Batch / अभिभावक संदेश (${batch.batchSignature})
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#166534;">
+        Ready for offline facilitator SMS/WhatsApp dispatch in <strong>हिन्दी + English</strong> (${batch.totalMessages} learner cards queued).
       </p>
     </section>
   `.trim();

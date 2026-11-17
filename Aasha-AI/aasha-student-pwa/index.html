@@ -95,6 +95,7 @@
       evaluateLowRamTabletBudget,
       exportCsrImpactAuditPack,
       exportGoldenMasterDeploymentKit,
+      generateCohortParentSmsOutboxBatch,
       syncNowWithServer
     } from './src/app.js';
 
@@ -321,6 +322,13 @@
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = `${kit.releaseTag}_deployment_kit.json`;
+        a.click();
+      } else if (action === 'export-parent-sms-batch') {
+        const batch = generateCohortParentSmsOutboxBatch(state.cohortSummary || {});
+        const blob = new Blob([JSON.stringify(batch, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${batch.centerId}_parent_sms_outbox.json`;
         a.click();
       }
     });

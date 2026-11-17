@@ -41,7 +41,9 @@ import {
   exportCsrImpactAuditPack,
   renderDonorImpactLedgerCard,
   exportGoldenMasterDeploymentKit,
-  renderGoldenMasterReleaseCard
+  renderGoldenMasterReleaseCard,
+  generateCohortParentSmsOutboxBatch,
+  renderParentSmsDigestOutboxCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -591,6 +593,25 @@ try {
   assert.equal(srvGm.release_tag, 'AASHA-MVP-RC-2026.12.31');
   assert.equal(srvGm.phases_a_to_g_certified, true);
   assert.equal(srvGm.manifest_sha256.length, 64);
+
+  // Verify G53 Offline Parent SMS & WhatsApp Digest Outbox Batch Generator + Server /api/teacher/parent-sms-batch
+  const smsBatch = generateCohortParentSmsOutboxBatch(sampleCohort, 'CENTER-UP-GN-01');
+  assert.equal(smsBatch.schemaVersion, 'aasha.parent.sms.batch.v1');
+  assert.equal(smsBatch.totalMessages, 2);
+  assert.ok(smsBatch.messages[0].smsHi.includes('नमस्ते अभिभावक!'));
+  assert.ok(smsBatch.batchSignature.startsWith('fnv1a32:'));
+
+  const smsCardHtml = renderParentSmsDigestOutboxCard(sampleCohort);
+  assert.ok(smsCardHtml.includes('id="parent-sms-digest-outbox-card"'));
+  assert.ok(smsCardHtml.includes('2 Families'));
+
+  const srvSmsRes = await fetch(`${baseUrl}/api/teacher/parent-sms-batch`);
+  assert.equal(srvSmsRes.status, 200);
+  const srvSms = await srvSmsRes.json();
+  assert.equal(srvSms.status, 'ok');
+  assert.ok(srvSms.message_count >= 1);
+  assert.ok(srvSms.messages[0].sms_hi.includes('नमस्ते अभिभावक!'));
+  assert.equal(srvSms.batch_sha256.length, 64);
 } finally {
   await app.close();
 }

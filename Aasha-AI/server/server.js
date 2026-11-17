@@ -1188,7 +1188,44 @@ export function buildServer() {
     return { ...payload, manifest_sha256 };
   });
 
+
+  // Phase G53: Offline Bilingual Parent SMS & WhatsApp Digest Outbox Batch Endpoint
+  app.get('/api/teacher/parent-sms-batch', async () => {
+    const rows = db.prepare(`
+      SELECT tb.student_id AS studentId,
+             COALESCE(s.name, ss.student_name, tb.student_id) AS studentName,
+             tb.balance AS coinsBalance,
+             COUNT(DISTINCT CASE WHEN me.passed = 1 THEN me.chapter_id END) AS chaptersPassed,
+             COALESCE(ROUND(AVG(me.score), 1), 0) AS avgScorePct
+      FROM token_balances tb
+      LEFT JOIN students s ON s.id = tb.student_id
+      LEFT JOIN student_snapshots ss ON ss.student_id = tb.student_id
+      LEFT JOIN mastery_events me ON me.student_id = tb.student_id
+      GROUP BY tb.student_id
+      ORDER BY tb.student_id ASC
+    `).all();
+    const messages = rows.map((r) => ({
+      studentId: r.studentId,
+      studentName: r.studentName,
+      chaptersPassed: Number(r.chaptersPassed || 0),
+      avgScorePct: Number(r.avgScorePct || 0),
+      coinsBalance: Number(r.coinsBalance || 0),
+      sms_en: `Namaste Parent! Aasha Progress for ${r.studentName} (${r.studentId}): ${r.chaptersPassed || 0} chapters mastered (${r.avgScorePct || 0}%), ${r.coinsBalance || 0} Aasha Coins earned.`,
+      sms_hi: `नमस्ते अभिभावक! ${r.studentName} (${r.studentId}) की आशा केंद्र प्रगति: ${r.chaptersPassed || 0} अध्याय पूर्ण (${r.avgScorePct || 0}%), ${r.coinsBalance || 0} आशा कॉइन्स अर्जित।`
+    }));
+    const batch_sha256 = crypto.createHash('sha256').update(JSON.stringify(messages), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      schema_version: 'aasha.parent.sms.batch.v1',
+      center_id: 'CENTER-UP-GN-01',
+      message_count: messages.length,
+      messages,
+      batch_sha256
+    };
+  });
+
   return app;
+
 
 
 
