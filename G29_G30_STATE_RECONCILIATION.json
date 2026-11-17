@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-17T15:32:40.421497+00:00",
-  "colab_state_completed_chunk": "G30",
-  "colab_state_active_chunk": "G31",
+  "generated_at_utc": "2026-11-17T15:45:59.108578+00:00",
+  "colab_state_completed_chunk": "F2",
+  "colab_state_active_chunk": "ALL_DONE",
   "g29_reconciliation": {
     "status": "LIVE_VERIFIED_PASS",
     "manifest_sha256": "d8f67e5a513545bdfeb6b242d8caea2a8cd247676482e0128bf4ed63dbd1fb6f"
