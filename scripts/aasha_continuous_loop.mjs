@@ -21,7 +21,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 // Aasha-AI pipeline registers its own `aasha` package and would shadow src/aasha.
 const PY_SRC = path.join(ROOT_DIR, 'src');
 const PIPELINE_SRC = path.join(ROOT_DIR, 'Aasha-AI', 'aasha-pipeline-with-master-json', 'src');
-const DEFAULT_PYTHONPATH = [PY_SRC, PIPELINE_SRC].join(path.delimiter);
+const DEFAULT_PYTHONPATH = [ROOT_DIR, PY_SRC, PIPELINE_SRC].join(path.delimiter);
 const PYTHONPATH_PREFIX = '';
 const TARGET_TASK_BRANCH = 'aios/v2-bootstrap';
 const PROTECTED_BRANCHES = new Set(['main', 'master', 'HEAD', 'production', 'release', '']);
