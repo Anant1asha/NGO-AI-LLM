@@ -1385,7 +1385,38 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G57: Offline Village Panchayat Noticeboard Honour Roll Poster & LAN Share Card Endpoint
+  app.get('/api/teacher/panchayat-poster', async () => {
+    const top_scholars = db.prepare(`
+      SELECT tb.student_id AS studentId,
+             COALESCE(s.name, ss.student_name, tb.student_id) AS studentName,
+             tb.balance AS tokenBalance,
+             tb.lifetime_earned AS lifetimeCoins,
+             COALESCE(ROUND(AVG(me.score), 1), 0) AS avgScorePct
+      FROM token_balances tb
+      LEFT JOIN students s ON s.id = tb.student_id
+      LEFT JOIN student_snapshots ss ON ss.student_id = tb.student_id
+      LEFT JOIN mastery_events me ON me.student_id = tb.student_id
+      GROUP BY tb.student_id
+      ORDER BY lifetimeCoins DESC, avgScorePct DESC
+      LIMIT 10
+    `).all();
+    const payload = {
+      status: 'ok',
+      center_id: 'CENTER-UP-GN-01',
+      organization: 'Annanth Aasha Foundation',
+      lan_share_url: 'aasha://centre/CENTER-UP-GN-01',
+      scholar_count: top_scholars.length,
+      top_scholars,
+      zero_external_urls: true
+    };
+    const poster_sha256 = crypto.createHash('sha256').update(JSON.stringify(payload), 'utf-8').digest('hex');
+    return { ...payload, poster_sha256 };
+  });
+
   return app;
+
 
 
 

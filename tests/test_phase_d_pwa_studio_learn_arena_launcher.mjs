@@ -50,7 +50,10 @@ import {
   renderPrintableLleFlashcardWallChartHtml,
   recordStudentDailyAttendance,
   evaluateScholarshipEligibility,
-  renderFacilitatorAttendanceAndScholarshipCard
+  renderFacilitatorAttendanceAndScholarshipCard,
+  generateOfflineLanShareMatrixSvg,
+  renderVillagePanchayatNoticeboardPosterHtml,
+  renderVillagePanchayatPosterCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -696,6 +699,27 @@ try {
   assert.equal(srvSchol.status, 'ok');
   assert.ok(srvSchol.eligible_count >= 1);
   assert.equal(srvSchol.eligibility_sha256.length, 64);
+
+  // Verify G57 Offline Village Panchayat Noticeboard Poster & LAN Matrix + Server /api/teacher/panchayat-poster
+  const svgMat = generateOfflineLanShareMatrixSvg('aasha://centre/CENTER-UP-GN-01');
+  assert.ok(svgMat.includes('class="offline-lan-matrix-svg"'));
+
+  const posterHtml = renderVillagePanchayatNoticeboardPosterHtml(sampleCohort, 'CENTER-UP-GN-01');
+  assert.ok(posterHtml.includes('ग्राम पंचायत गौरव पट्ट'));
+  assert.ok(posterHtml.includes('Diya'));
+  assert.ok(Buffer.byteLength(posterHtml, 'utf-8') < 20 * 1024 * 1024);
+  assert.ok(!/https?:\/\//i.test(posterHtml));
+
+  const posterCardHtml = renderVillagePanchayatPosterCard(sampleCohort);
+  assert.ok(posterCardHtml.includes('id="village-panchayat-poster-card"'));
+
+  const srvPosterRes = await fetch(`${baseUrl}/api/teacher/panchayat-poster`);
+  assert.equal(srvPosterRes.status, 200);
+  const srvPoster = await srvPosterRes.json();
+  assert.equal(srvPoster.status, 'ok');
+  assert.ok(srvPoster.scholar_count >= 1);
+  assert.equal(srvPoster.zero_external_urls, true);
+  assert.equal(srvPoster.poster_sha256.length, 64);
 } finally {
   await app.close();
 }

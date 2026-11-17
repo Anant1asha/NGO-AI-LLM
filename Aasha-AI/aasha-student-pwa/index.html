@@ -98,6 +98,7 @@
       generateCohortParentSmsOutboxBatch,
       renderPrintableLleFlashcardWallChartHtml,
       recordStudentDailyAttendance,
+      renderVillagePanchayatNoticeboardPosterHtml,
       syncNowWithServer
     } from './src/app.js';
 
@@ -346,6 +347,13 @@
         }
         toastMount.innerHTML = `<div id="attendance-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">☑️ Marked Daily Attendance for ${students.length} Learners</div>`;
         persistAndRefresh();
+      } else if (action === 'export-panchayat-poster') {
+        const posterHtml = renderVillagePanchayatNoticeboardPosterHtml(state.cohortSummary || {});
+        const blob = new Blob([posterHtml], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aasha_village_panchayat_honour_roll_poster.html';
+        a.click();
       }
     });
 

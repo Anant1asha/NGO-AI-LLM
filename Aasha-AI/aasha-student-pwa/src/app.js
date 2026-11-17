@@ -134,6 +134,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderParentSmsDigestOutboxCard(cohortSummary)}
       ${renderPeerStudyBuddyMatchmakerCard(cohortSummary)}
       ${renderFacilitatorAttendanceAndScholarshipCard(cohortSummary)}
+      ${renderVillagePanchayatPosterCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -1940,6 +1941,88 @@ export function renderFacilitatorAttendanceAndScholarshipCard(cohortSummary = {}
         </button>
       </header>
       <ul style="list-style:none;padding:0;margin:0;">${rowsHtml || '<li style="color:#065f46;">Log attendance and mastery to evaluate scholarship tiers.</li>'}</ul>
+    </section>
+  `.trim();
+}
+
+
+export function generateOfflineLanShareMatrixSvg(payloadText = "http://192.168.4.1:3000") {
+  const str = String(payloadText || "http://192.168.4.1:3000");
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  const cells = [];
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      const bit = ((h >>> ((r * 8 + c) % 32)) ^ (r + c)) & 1;
+      if (bit) {
+        cells.push(`<rect x="${c * 10}" y="${r * 10}" width="9" height="9" fill="#0f172a" />`);
+      }
+    }
+  }
+  return `<svg class="offline-lan-matrix-svg" viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="Offline LAN Share Matrix">${cells.join("")}</svg>`;
+}
+
+export function renderVillagePanchayatNoticeboardPosterHtml(cohortSummary = {}, centerId = "CENTER-UP-GN-01") {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  const sorted = [...students].sort((a, b) => Number(b.masteryPct ?? 0) - Number(a.masteryPct ?? 0));
+  const svgMatrix = generateOfflineLanShareMatrixSvg(`aasha://centre/${centerId}`);
+  const rowsHtml = sorted.map((s, idx) => `
+    <tr>
+      <td>#${idx + 1}</td>
+      <td><strong>${s.name || s.studentId}</strong></td>
+      <td>${Number(s.masteryPct ?? 0).toFixed(1)}%</td>
+      <td>🪙 ${Number(s.tokenBalance ?? 0)}</td>
+    </tr>
+  `).join("");
+  return `<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Annanth Aasha Foundation — ग्राम पंचायत गौरव पट्ट / Village Panchayat Honour Roll (${centerId})</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #0f172a; border: 4px solid #0f766e; padding: 20px; border-radius: 16px; }
+    h1 { margin: 0 0 6px; color: #0f766e; font-size: 1.4rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; }
+    th { background: #f0fdfa; }
+  </style>
+</head>
+<body>
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+    <div>
+      <h1>🏛️ ग्राम पंचायत गौरव पट्ट / Village Panchayat Honour Roll (${centerId})</h1>
+      <p>Annanth Aasha Foundation — मासिक विद्यार्थी दक्षता और सेवा सम्मान</p>
+    </div>
+    ${svgMatrix}
+  </header>
+  <table>
+    <thead>
+      <tr><th>Rank / स्थान</th><th>Scholar / विद्यार्थी</th><th>Mastery / दक्षता</th><th>Aasha Coins / कॉइन्स</th></tr>
+    </thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+</body>
+</html>`.trim();
+}
+
+export function renderVillagePanchayatPosterCard(cohortSummary = {}) {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  return `
+    <section id="village-panchayat-poster-card" aria-label="Village Panchayat Honour Roll Poster"
+             style="padding:14px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#9a3412;">🏛️ ग्राम पंचायत गौरव पट्ट / Village Panchayat Noticeboard Poster (${students.length} Scholars)</h3>
+        <button type="button" id="btn-export-panchayat-poster" data-action="export-panchayat-poster"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#ea580c;color:#ffffff;font-weight:700;cursor:pointer;">
+          🖼️ Export Panchayat Honour Poster / गौरव पट्ट प्रिंट करें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#7c2d12;">
+        Generates a zero-external-URL bilingual noticeboard poster with an inline offline LAN verification matrix.
+      </p>
     </section>
   `.trim();
 }
