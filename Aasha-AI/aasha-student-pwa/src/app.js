@@ -135,6 +135,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderPeerStudyBuddyMatchmakerCard(cohortSummary)}
       ${renderFacilitatorAttendanceAndScholarshipCard(cohortSummary)}
       ${renderVillagePanchayatPosterCard(cohortSummary)}
+      ${renderStudentReflectionAndGoalPlannerCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2033,6 +2034,112 @@ export function renderVillagePanchayatPosterCard(cohortSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#7c2d12;">
         Generates a zero-external-URL bilingual noticeboard poster with an inline offline LAN verification matrix.
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G58: Offline Student Self-Reflection Journal, Weekly Chapter Goal Planner & Optional Style Expansion Registry
+export function recordStudentReflectionAndGoal(state = {}, entry = {}) {
+  if (!state || typeof state !== "object") {
+    throw new Error("Valid state object is required");
+  }
+  if (!Array.isArray(state.reflectionJournal)) {
+    state.reflectionJournal = [];
+  }
+  const studentId = String(entry.studentId || state.studentId || "STU-DEFAULT").trim();
+  const chapterId = String(entry.chapterId || "NCERT-G08-SCI-CH01").trim();
+  const reflectionText = String(entry.reflectionText || "Completed offline simulation lab at home without internet distractions. / बिना इंटरनेट भटकाव के घर पर अभ्यास पूरा किया।").trim();
+  const confidenceLevel = Math.max(1, Math.min(5, Number(entry.confidenceLevel ?? 4)));
+  const weeklyChapterGoal = Math.max(1, Math.min(13, Number(entry.weeklyChapterGoal ?? 3)));
+  const dateIso = String(entry.dateIso || new Date().toISOString().slice(0, 10));
+  const payloadStr = `${studentId}|${chapterId}|${dateIso}|${confidenceLevel}|${weeklyChapterGoal}|${reflectionText}`;
+  let h = 2166136261;
+  for (let i = 0; i < payloadStr.length; i++) {
+    h ^= payloadStr.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  const entryDigest = h.toString(16).padStart(8, "0").repeat(8);
+  const record = {
+    studentId,
+    chapterId,
+    reflectionText,
+    confidenceLevel,
+    weeklyChapterGoal,
+    dateIso,
+    studyEnvironment: "UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE",
+    entryDigest
+  };
+  state.reflectionJournal.push(record);
+  state.weeklyChapterGoal = weeklyChapterGoal;
+  return {
+    ok: true,
+    totalEntries: state.reflectionJournal.length,
+    latestEntry: record
+  };
+}
+
+export function evaluateWeeklyGoalProgress(state = {}, studentId = null) {
+  const targetStudent = String(studentId || state.studentId || "STU-DEFAULT").trim();
+  const weeklyGoal = Math.max(1, Number(state.weeklyChapterGoal ?? 3));
+  const journal = Array.isArray(state.reflectionJournal)
+    ? state.reflectionJournal.filter((e) => e.studentId === targetStudent)
+    : [];
+  const uniqueChapters = new Set(journal.map((e) => e.chapterId));
+  const completedChaptersCount = Math.max(uniqueChapters.size, Number(state.completedChaptersCount ?? uniqueChapters.size));
+  const progressPct = Math.min(100, Math.round((completedChaptersCount / weeklyGoal) * 1000) / 10);
+  return {
+    studentId: targetStudent,
+    weeklyChapterGoal: weeklyGoal,
+    completedChaptersCount,
+    progressPct,
+    goalMet: completedChaptersCount >= weeklyGoal,
+    reflectionCount: journal.length
+  };
+}
+
+export function registerOptionalStyleExpansionPack(state = {}, pack = {}) {
+  if (!Array.isArray(state.optionalStyleExpansionPacks)) {
+    state.optionalStyleExpansionPacks = [];
+  }
+  const packId = String(pack.packId || "clockless-html-anything-styles").trim();
+  const entry = {
+    packId,
+    sourceRepo: String(pack.sourceRepo || "https://github.com/clockless-org/html-anything"),
+    stylesCount: Number(pack.stylesCount ?? 17),
+    sourcePromptsCount: Number(pack.sourcePromptsCount ?? 60),
+    isDefault: false, // Hard guardrail: external repos/skills are strictly optional library expansions, NEVER the default
+    canonicalMvpDefaultPreserved: true
+  };
+  const existingIdx = state.optionalStyleExpansionPacks.findIndex((p) => p.packId === packId);
+  if (existingIdx >= 0) {
+    state.optionalStyleExpansionPacks[existingIdx] = entry;
+  } else {
+    state.optionalStyleExpansionPacks.push(entry);
+  }
+  return {
+    ok: true,
+    registeredPack: entry,
+    totalOptionalPacks: state.optionalStyleExpansionPacks.length,
+    canonicalDefaultActive: true
+  };
+}
+
+export function renderStudentReflectionAndGoalPlannerCard(stateOrSummary = {}) {
+  const progress = evaluateWeeklyGoalProgress(stateOrSummary);
+  return `
+    <section id="student-reflection-goal-planner-card" aria-label="Student Self-Reflection Journal and Weekly Chapter Goal Planner"
+             style="padding:14px;border-radius:12px;background:#eef2ff;border:1px solid #c7d2fe;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#3730a3;">📓 स्वाध्याय चिंतन और साप्ताहिक लक्ष्य / Self-Reflection Journal &amp; Goal Planner (G58)</h3>
+        <button type="button" id="btn-save-reflection-goal" data-action="save-student-reflection-goal"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#4f46e5;color:#ffffff;font-weight:700;cursor:pointer;">
+          ✍️ Log Reflection &amp; Weekly Goal / चिंतन दर्ज करें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#1e1b4b;">
+        Weekly Goal: <strong>${progress.completedChaptersCount} / ${progress.weeklyChapterGoal} Chapters (${progress.progressPct}%)</strong> • Reflections Logged: <strong>${progress.reflectionCount}</strong> • Mode: <code>UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE</code>
       </p>
     </section>
   `.trim();

@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G58_OFFLINE_STUDENT_SELF_REFLECTION_JOURNAL_AND_GOAL_PLANNER",
+            "NEXT_PRIORITY": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
         }
 
         self.validate_20_field_report(report)

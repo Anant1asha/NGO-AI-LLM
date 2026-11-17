@@ -1419,6 +1419,75 @@ export function buildServer() {
     return { ...payload, poster_sha256 };
   });
 
+  // Phase G58: Offline Student Self-Reflection Journal & Weekly Chapter Goal Planner Endpoints
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS student_reflection_goals (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      reflection_text TEXT NOT NULL,
+      confidence_level INTEGER NOT NULL DEFAULT 4,
+      weekly_chapter_goal INTEGER NOT NULL DEFAULT 3,
+      study_environment TEXT NOT NULL DEFAULT 'UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE',
+      entry_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/reflection-goal', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const chapterId = String(body.chapterId || 'NCERT-G08-SCI-CH01').trim();
+    const reflectionText = String(body.reflectionText || '').trim();
+    if (!studentId || !reflectionText) {
+      return reply.code(400).send({ error: 'studentId and reflectionText are required' });
+    }
+    const confidenceLevel = Math.max(1, Math.min(5, Number(body.confidenceLevel ?? 4)));
+    const weeklyChapterGoal = Math.max(1, Math.min(13, Number(body.weeklyChapterGoal ?? 3)));
+    const createdAt = new Date().toISOString();
+    const entrySha256 = crypto.createHash('sha256')
+      .update(`${studentId}|${chapterId}|${reflectionText}|${confidenceLevel}|${weeklyChapterGoal}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO student_reflection_goals (student_id, chapter_id, reflection_text, confidence_level, weekly_chapter_goal, entry_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `).run(studentId, chapterId, reflectionText, confidenceLevel, weeklyChapterGoal, entrySha256, createdAt);
+    return {
+      status: 'ok',
+      studentId,
+      chapterId,
+      confidenceLevel,
+      weeklyChapterGoal,
+      studyEnvironment: 'UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE',
+      entry_sha256: entrySha256
+    };
+  });
+
+  app.get('/api/student/reflection-goal/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const entries = db.prepare(`
+      SELECT student_id AS studentId, chapter_id AS chapterId, reflection_text AS reflectionText,
+             confidence_level AS confidenceLevel, weekly_chapter_goal AS weeklyChapterGoal,
+             study_environment AS studyEnvironment, entry_sha256 AS entrySha256, created_at AS createdAt
+      FROM student_reflection_goals
+      WHERE student_id = ?
+      ORDER BY id DESC
+    `).all(studentId);
+    const weeklyChapterGoal = entries.length > 0 ? entries[0].weeklyChapterGoal : 3;
+    const uniqueChapters = new Set(entries.map((e) => e.chapterId)).size;
+    const journal_sha256 = crypto.createHash('sha256').update(JSON.stringify(entries), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      studentId,
+      weeklyChapterGoal,
+      completedChaptersCount: uniqueChapters,
+      goalMet: uniqueChapters >= weeklyChapterGoal,
+      count: entries.length,
+      entries,
+      journal_sha256
+    };
+  });
+
   return app;
 
 

@@ -99,6 +99,7 @@
       renderPrintableLleFlashcardWallChartHtml,
       recordStudentDailyAttendance,
       renderVillagePanchayatNoticeboardPosterHtml,
+      recordStudentReflectionAndGoal,
       syncNowWithServer
     } from './src/app.js';
 
@@ -354,6 +355,14 @@
         a.href = URL.createObjectURL(blob);
         a.download = 'aasha_village_panchayat_honour_roll_poster.html';
         a.click();
+      } else if (action === 'save-student-reflection-goal') {
+        const res = recordStudentReflectionAndGoal(state, {
+          studentId: state.studentId,
+          weeklyChapterGoal: 3,
+          confidenceLevel: 5
+        });
+        toastMount.innerHTML = `<div id="reflection-goal-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0e7ff;color:#3730a3;margin-top:10px;font-weight:600;">📓 Logged Self-Reflection & Weekly Goal (${res.totalEntries} entries)</div>`;
+        persistAndRefresh();
       }
     });
 

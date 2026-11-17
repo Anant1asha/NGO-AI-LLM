@@ -53,7 +53,11 @@ import {
   renderFacilitatorAttendanceAndScholarshipCard,
   generateOfflineLanShareMatrixSvg,
   renderVillagePanchayatNoticeboardPosterHtml,
-  renderVillagePanchayatPosterCard
+  renderVillagePanchayatPosterCard,
+  recordStudentReflectionAndGoal,
+  evaluateWeeklyGoalProgress,
+  registerOptionalStyleExpansionPack,
+  renderStudentReflectionAndGoalPlannerCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -723,6 +727,58 @@ try {
   assert.ok(srvPoster.scholar_count >= 1);
   assert.equal(srvPoster.zero_external_urls, true);
   assert.equal(srvPoster.poster_sha256.length, 64);
+
+  // Verify G58 Student Self-Reflection Journal, Weekly Goal Planner & Optional Style Expansion Guardrail
+  const reflState = { studentId: 'STU-GN-101', reflectionJournal: [] };
+  const reflRes = recordStudentReflectionAndGoal(reflState, {
+    studentId: 'STU-GN-101',
+    chapterId: 'NCERT-G08-SCI-CH01',
+    reflectionText: 'Practiced crop production sim offline at home without distractions.',
+    confidenceLevel: 5,
+    weeklyChapterGoal: 2
+  });
+  assert.equal(reflRes.ok, true);
+  assert.equal(reflRes.totalEntries, 1);
+  assert.equal(reflRes.latestEntry.studyEnvironment, 'UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE');
+
+  const goalProg = evaluateWeeklyGoalProgress(reflState, 'STU-GN-101');
+  assert.equal(goalProg.weeklyChapterGoal, 2);
+  assert.equal(goalProg.completedChaptersCount, 1);
+  assert.equal(goalProg.progressPct, 50);
+
+  const optStyle = registerOptionalStyleExpansionPack(reflState, {
+    packId: 'clockless-html-anything-styles',
+    stylesCount: 17,
+    sourcePromptsCount: 60
+  });
+  assert.equal(optStyle.ok, true);
+  assert.equal(optStyle.registeredPack.isDefault, false);
+  assert.equal(optStyle.registeredPack.canonicalMvpDefaultPreserved, true);
+
+  const reflCardHtml = renderStudentReflectionAndGoalPlannerCard(reflState);
+  assert.ok(reflCardHtml.includes('id="student-reflection-goal-planner-card"'));
+
+  const postReflRes = await fetch(`${baseUrl}/api/student/reflection-goal`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      studentId: 'STU-GN-101',
+      chapterId: 'NCERT-G08-SCI-CH01',
+      reflectionText: 'Completed WebGL2 physics lab offline at home.',
+      confidenceLevel: 5,
+      weeklyChapterGoal: 2
+    })
+  });
+  assert.equal(postReflRes.status, 200);
+  const postReflBody = await postReflRes.json();
+  assert.equal(postReflBody.status, 'ok');
+  assert.equal(postReflBody.entry_sha256.length, 64);
+
+  const getReflRes = await fetch(`${baseUrl}/api/student/reflection-goal/STU-GN-101`);
+  assert.equal(getReflRes.status, 200);
+  const getReflBody = await getReflRes.json();
+  assert.equal(getReflBody.count, 1);
+  assert.equal(getReflBody.journal_sha256.length, 64);
 } finally {
   await app.close();
 }
