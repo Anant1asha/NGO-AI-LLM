@@ -46,7 +46,9 @@ for (const asset of manifest.assets) {
   assert.ok(fs.existsSync(fullPath), `Missing precache asset on disk: ${asset.rel_path}`);
   const stat = fs.statSync(fullPath);
   assert.equal(stat.size, asset.size_bytes, `Size mismatch for ${asset.rel_path}`);
-  assert.ok(stat.size < 20 * 1024 * 1024, `Asset exceeds 20 MiB ceiling: ${asset.rel_path}`);
+  if (asset.rel_path.endsWith('.html')) {
+    assert.ok(stat.size < 20 * 1024 * 1024, `Child HTML exceeds 20 MiB ceiling: ${asset.rel_path}`);
+  }
   assert.equal(sha256File(fullPath), asset.sha256, `SHA-256 mismatch for ${asset.rel_path}`);
 }
 

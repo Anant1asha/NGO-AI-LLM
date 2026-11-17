@@ -43,7 +43,9 @@ import {
   exportGoldenMasterDeploymentKit,
   renderGoldenMasterReleaseCard,
   generateCohortParentSmsOutboxBatch,
-  renderParentSmsDigestOutboxCard
+  renderParentSmsDigestOutboxCard,
+  matchPeerStudyBuddies,
+  renderPeerStudyBuddyMatchmakerCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -612,6 +614,31 @@ try {
   assert.ok(srvSms.message_count >= 1);
   assert.ok(srvSms.messages[0].sms_hi.includes('नमस्ते अभिभावक!'));
   assert.equal(srvSms.batch_sha256.length, 64);
+
+  // Verify G54 Offline Student Peer Study Buddy Pairing & Group Arena Matchmaker + Server /api/teacher/peer-study-pairs
+  const mixedCohort = {
+    students: [
+      { studentId: 'stu_mentor_1', name: 'Ananya', masteryPct: 94 },
+      { studentId: 'stu_mentee_1', name: 'Rohan', masteryPct: 52 }
+    ]
+  };
+  const buddyRes = matchPeerStudyBuddies(mixedCohort.students, 'NCERT-G06-MATH-CH07-FRACTIONS');
+  assert.equal(buddyRes.ok, true);
+  assert.equal(buddyRes.pairCount, 1);
+  assert.equal(buddyRes.pairs[0].mentorName, 'Ananya');
+  assert.equal(buddyRes.pairs[0].menteeName, 'Rohan');
+
+  const buddyHtml = renderPeerStudyBuddyMatchmakerCard(mixedCohort);
+  assert.ok(buddyHtml.includes('id="peer-study-buddy-matchmaker-card"'));
+  assert.ok(buddyHtml.includes('Ananya'));
+  assert.ok(buddyHtml.includes('Rohan'));
+
+  const srvPairsRes = await fetch(`${baseUrl}/api/teacher/peer-study-pairs`);
+  assert.equal(srvPairsRes.status, 200);
+  const srvPairs = await srvPairsRes.json();
+  assert.equal(srvPairs.status, 'ok');
+  assert.ok(srvPairs.pair_count >= 1);
+  assert.equal(srvPairs.pairs_sha256.length, 64);
 } finally {
   await app.close();
 }

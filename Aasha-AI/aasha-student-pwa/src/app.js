@@ -132,6 +132,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderDonorImpactLedgerCard(cohortSummary)}
       ${renderGoldenMasterReleaseCard(cohortSummary)}
       ${renderParentSmsDigestOutboxCard(cohortSummary)}
+      ${renderPeerStudyBuddyMatchmakerCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -1770,6 +1771,60 @@ export function renderParentSmsDigestOutboxCard(cohortSummary = {}) {
       <p style="margin:0;font-size:0.88rem;color:#166534;">
         Ready for offline facilitator SMS/WhatsApp dispatch in <strong>हिन्दी + English</strong> (${batch.totalMessages} learner cards queued).
       </p>
+    </section>
+  `.trim();
+}
+
+
+export function matchPeerStudyBuddies(students = [], defaultChapterId = "NCERT-G06-MATH-CH07-FRACTIONS") {
+  const list = Array.isArray(students) ? students : [];
+  const normalized = list.map((s) => ({
+    studentId: String(s.studentId || s.id || "stu_unknown"),
+    name: String(s.name || s.studentId || "Scholar"),
+    masteryPct: Number(s.masteryPct ?? s.avg_score ?? 0)
+  }));
+  const mentors = normalized.filter((s) => s.masteryPct >= 80).sort((a, b) => b.masteryPct - a.masteryPct);
+  const mentees = normalized.filter((s) => s.masteryPct < 80).sort((a, b) => a.masteryPct - b.masteryPct);
+  const pairs = [];
+  if (mentors.length > 0 && mentees.length > 0) {
+    for (let i = 0; i < mentees.length; i++) {
+      const mentor = mentors[i % mentors.length];
+      const mentee = mentees[i];
+      pairs.push({
+        pairId: `pair_${i + 1}`,
+        mentorId: mentor.studentId,
+        mentorName: mentor.name,
+        mentorMasteryPct: mentor.masteryPct,
+        menteeId: mentee.studentId,
+        menteeName: mentee.name,
+        menteeMasteryPct: mentee.masteryPct,
+        targetChapterId: defaultChapterId,
+        vidyaSevaBonusCoins: 40
+      });
+    }
+  }
+  return { ok: true, pairCount: pairs.length, pairs };
+}
+
+export function renderPeerStudyBuddyMatchmakerCard(cohortSummary = {}) {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  const topChapter = cohortSummary.misconceptions?.[0]?.chapterId || "NCERT-G06-MATH-CH07-FRACTIONS";
+  const matchRes = matchPeerStudyBuddies(students, topChapter);
+  const rowsHtml = matchRes.pairs.map((p) => `
+    <li class="peer-buddy-row" data-pair-id="${p.pairId}"
+        style="padding:8px 0;border-bottom:1px solid #e0e7ff;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span>🤝 <strong>${p.mentorName}</strong> (${p.mentorMasteryPct}%) → <strong>${p.menteeName}</strong> (${p.menteeMasteryPct}%) • <code>${p.targetChapterId}</code></span>
+      <button type="button" data-action="launch-peer-buddy-session" data-chapter-id="${p.targetChapterId}"
+              style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#4f46e5;color:#ffffff;font-weight:700;cursor:pointer;">
+        ▶️ Start Peer Session (+${p.vidyaSevaBonusCoins} 🪙)
+      </button>
+    </li>
+  `).join("");
+  return `
+    <section id="peer-study-buddy-matchmaker-card" aria-label="Peer Study Buddy Matchmaker"
+             style="padding:14px;border-radius:12px;background:#eef2ff;border:1px solid #c7d2fe;margin-top:14px;">
+      <h3 style="margin:0 0 8px;font-size:1rem;color:#312e81;">🤝 Peer Vidya Seva Study Buddy Matchmaker / सहपाठी अध्ययन जोड़ी (${matchRes.pairCount} Pairs)</h3>
+      <ul style="list-style:none;padding:0;margin:0;">${rowsHtml || '<li style="color:#475569;">All cohort learners are at ≥80% mastery or awaiting initial assessment.</li>'}</ul>
     </section>
   `.trim();
 }

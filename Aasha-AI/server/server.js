@@ -1224,7 +1224,56 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G54: Offline Peer Study Buddy Pairing & Group Arena Matchmaker Endpoint
+  app.get('/api/teacher/peer-study-pairs', async () => {
+    const mentors = db.prepare(`
+      SELECT me.student_id AS studentId, COALESCE(s.name, me.student_id) AS name,
+             me.chapter_id AS chapterId, MAX(me.score) AS score
+      FROM mastery_events me
+      LEFT JOIN students s ON s.id = me.student_id
+      WHERE me.score >= 80
+      GROUP BY me.student_id, me.chapter_id
+      ORDER BY score DESC
+    `).all();
+    const mentees = db.prepare(`
+      SELECT me.student_id AS studentId, COALESCE(s.name, me.student_id) AS name,
+             me.chapter_id AS chapterId, MIN(me.score) AS score
+      FROM mastery_events me
+      LEFT JOIN students s ON s.id = me.student_id
+      WHERE me.score < 80
+      GROUP BY me.student_id, me.chapter_id
+      ORDER BY score ASC
+    `).all();
+    const pairs = [];
+    for (let i = 0; i < mentees.length; i++) {
+      const m = mentees[i];
+      const sameChMentor = mentors.find((mt) => mt.chapterId === m.chapterId && mt.studentId !== m.studentId) || mentors[0];
+      if (sameChMentor && sameChMentor.studentId !== m.studentId) {
+        pairs.push({
+          pairId: `srv_pair_${i + 1}`,
+          chapterId: m.chapterId,
+          mentorId: sameChMentor.studentId,
+          mentorName: sameChMentor.name,
+          mentorScore: sameChMentor.score,
+          menteeId: m.studentId,
+          menteeName: m.name,
+          menteeScore: m.score,
+          vidyaSevaBonusCoins: 40
+        });
+      }
+    }
+    const pairs_sha256 = crypto.createHash('sha256').update(JSON.stringify(pairs), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      pair_count: pairs.length,
+      pairs,
+      pairs_sha256
+    };
+  });
+
   return app;
+
 
 
 
