@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G56_OFFLINE_FACILITATOR_ATTENDANCE_AND_SCHOLARSHIP_ELIGIBILITY_TRACKER",
+            "NEXT_PRIORITY": "G57_OFFLINE_VILLAGE_PANCHAYAT_NOTICEBOARD_POSTER_AND_QR_SHARE_CARD",
         }
 
         self.validate_20_field_report(report)

@@ -47,7 +47,10 @@ import {
   matchPeerStudyBuddies,
   renderPeerStudyBuddyMatchmakerCard,
   searchOfflineLleGlossary,
-  renderPrintableLleFlashcardWallChartHtml
+  renderPrintableLleFlashcardWallChartHtml,
+  recordStudentDailyAttendance,
+  evaluateScholarshipEligibility,
+  renderFacilitatorAttendanceAndScholarshipCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -663,6 +666,36 @@ try {
   assert.ok(srvGloss.match_count >= 1);
   assert.ok(srvGloss.matches.some((m) => m.term_en === 'photosynthesis'));
   assert.equal(srvGloss.results_sha256.length, 64);
+
+  // Verify G56 Offline Facilitator Attendance & Scholarship Eligibility Tracker + Server /api/teacher/attendance & /api/teacher/scholarship-eligibility
+  const att1 = recordStudentDailyAttendance(pwaState, 'stu_1', '2026-11-17');
+  assert.equal(att1.ok, true);
+  assert.equal(att1.totalDaysPresent, 1);
+
+  const scholRes = evaluateScholarshipEligibility(sampleCohort, pwaState.attendanceLog);
+  assert.equal(scholRes.ok, true);
+  assert.equal(scholRes.eligibleCount, 2);
+  assert.ok(scholRes.roster.some((r) => r.studentId === 'stu_2' && r.tier === 'Aasha Merit Fellow (Tier-A)'));
+
+  const scholHtml = renderFacilitatorAttendanceAndScholarshipCard(sampleCohort, pwaState.attendanceLog);
+  assert.ok(scholHtml.includes('id="facilitator-attendance-scholarship-card"'));
+  assert.ok(scholHtml.includes('Aasha Merit Fellow (Tier-A)'));
+
+  const srvAttRes = await fetch(`${baseUrl}/api/teacher/attendance`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentId: 'stu_leader_01', dateIso: '2026-11-17' })
+  });
+  assert.equal(srvAttRes.status, 200);
+  const srvAttBody = await srvAttRes.json();
+  assert.equal(srvAttBody.daysPresent, 1);
+
+  const srvScholRes = await fetch(`${baseUrl}/api/teacher/scholarship-eligibility`);
+  assert.equal(srvScholRes.status, 200);
+  const srvSchol = await srvScholRes.json();
+  assert.equal(srvSchol.status, 'ok');
+  assert.ok(srvSchol.eligible_count >= 1);
+  assert.equal(srvSchol.eligibility_sha256.length, 64);
 } finally {
   await app.close();
 }

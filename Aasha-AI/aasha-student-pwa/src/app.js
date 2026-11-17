@@ -133,6 +133,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderGoldenMasterReleaseCard(cohortSummary)}
       ${renderParentSmsDigestOutboxCard(cohortSummary)}
       ${renderPeerStudyBuddyMatchmakerCard(cohortSummary)}
+      ${renderFacilitatorAttendanceAndScholarshipCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -1883,4 +1884,62 @@ export function renderPrintableLleFlashcardWallChartHtml(words = OFFLINE_LLE_PHO
   </table>
 </body>
 </html>`.trim();
+}
+
+
+export function recordStudentDailyAttendance(state = {}, studentId = "stu_local_01", dateIso = new Date().toISOString().slice(0, 10)) {
+  const sid = String(studentId || "stu_local_01").trim();
+  const d = String(dateIso || new Date().toISOString().slice(0, 10)).slice(0, 10);
+  state.attendanceLog = state.attendanceLog && typeof state.attendanceLog === "object" ? state.attendanceLog : {};
+  const cur = Array.isArray(state.attendanceLog[sid]) ? state.attendanceLog[sid] : [];
+  if (!cur.includes(d)) {
+    cur.push(d);
+    cur.sort();
+  }
+  state.attendanceLog[sid] = cur;
+  return { ok: true, studentId: sid, dateIso: d, totalDaysPresent: cur.length };
+}
+
+export function evaluateScholarshipEligibility(cohortSummary = {}, attendanceLog = {}) {
+  const students = Array.isArray(cohortSummary.students) ? cohortSummary.students : [];
+  const roster = students.map((s) => {
+    const sid = String(s.studentId || s.id || "stu_unknown");
+    const name = String(s.name || sid);
+    const masteryPct = Number(s.masteryPct ?? s.avg_score ?? 0);
+    const tokenBalance = Number(s.tokenBalance ?? s.coin_balance ?? 0);
+    const loggedDays = Array.isArray(attendanceLog[sid]) ? attendanceLog[sid].length : Number(s.daysPresent ?? 1);
+    const eligible = masteryPct >= 75 && tokenBalance >= 100 && loggedDays >= 1;
+    const tier = masteryPct >= 90 && eligible
+      ? "Aasha Merit Fellow (Tier-A)"
+      : eligible
+      ? "Aasha Seva Scholar (Tier-B)"
+      : "In Progress";
+    return { studentId: sid, name, masteryPct, tokenBalance, daysPresent: loggedDays, eligible, tier };
+  });
+  const eligibleCount = roster.filter((r) => r.eligible).length;
+  return { ok: true, eligibleCount, totalEvaluated: roster.length, roster };
+}
+
+export function renderFacilitatorAttendanceAndScholarshipCard(cohortSummary = {}, attendanceLog = {}) {
+  const evalRes = evaluateScholarshipEligibility(cohortSummary, attendanceLog);
+  const rowsHtml = evalRes.roster.map((r) => `
+    <li class="scholarship-row" data-student-id="${r.studentId}"
+        style="padding:6px 0;border-bottom:1px solid #d1fae5;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span>🎓 <strong>${r.name}</strong> (${r.masteryPct}% • ${r.daysPresent}d present • 🪙 ${r.tokenBalance})</span>
+      <span style="font-weight:700;color:${r.eligible ? '#047857' : '#64748b'};">${r.eligible ? `✅ ${r.tier}` : '⏳ In Progress'}</span>
+    </li>
+  `).join("");
+  return `
+    <section id="facilitator-attendance-scholarship-card" aria-label="Attendance and Scholarship Eligibility Tracker"
+             style="padding:14px;border-radius:12px;background:#ecfdf5;border:1px solid #a7f3d0;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#065f46;">🎓 Attendance &amp; Scholarship Eligibility Tracker / उपस्थिति और छात्रवृत्ति (${evalRes.eligibleCount}/${evalRes.totalEvaluated} Eligible)</h3>
+        <button type="button" id="btn-mark-cohort-attendance" data-action="mark-cohort-attendance"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#047857;color:#ffffff;font-weight:700;cursor:pointer;">
+          ☑️ Mark Today's Cohort Attendance / आज की उपस्थिति
+        </button>
+      </header>
+      <ul style="list-style:none;padding:0;margin:0;">${rowsHtml || '<li style="color:#065f46;">Log attendance and mastery to evaluate scholarship tiers.</li>'}</ul>
+    </section>
+  `.trim();
 }

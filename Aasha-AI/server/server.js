@@ -96,6 +96,12 @@ db.exec(`
     entry_hash TEXT NOT NULL,
     recorded_at TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS student_attendance (
+    student_id TEXT NOT NULL,
+    attendance_date TEXT NOT NULL,
+    recorded_at TEXT NOT NULL,
+    PRIMARY KEY (student_id, attendance_date)
+  );
   CREATE TABLE IF NOT EXISTS synced_cohort_packs (
     integrity_hash TEXT PRIMARY KEY,
     center_id TEXT NOT NULL,
@@ -1314,7 +1320,73 @@ export function buildServer() {
     };
   });
 
+
+  // Phase G56: Offline Facilitator Attendance & Scholarship Eligibility Tracker Endpoints
+  app.post('/api/teacher/attendance', async (req, reply) => {
+    const body = req.body || {};
+    const studentId = String(body.studentId || '').trim();
+    if (!studentId) {
+      return reply.code(400).send({ status: 'error', error: 'MISSING_STUDENT_ID' });
+    }
+    const dateIso = String(body.dateIso || new Date().toISOString().slice(0, 10)).slice(0, 10);
+    const now = new Date().toISOString();
+    db.prepare(`
+      INSERT OR IGNORE INTO student_attendance (student_id, attendance_date, recorded_at)
+      VALUES (?, ?, ?)
+    `).run(studentId, dateIso, now);
+    const cntRow = db.prepare('SELECT COUNT(*) AS cnt FROM student_attendance WHERE student_id = ?').get(studentId) || { cnt: 1 };
+    return {
+      status: 'ok',
+      studentId,
+      dateIso,
+      daysPresent: Number(cntRow.cnt || 1)
+    };
+  });
+
+  app.get('/api/teacher/scholarship-eligibility', async () => {
+    const rows = db.prepare(`
+      SELECT tb.student_id AS studentId,
+             COALESCE(s.name, ss.student_name, tb.student_id) AS studentName,
+             tb.balance AS tokenBalance,
+             tb.lifetime_earned AS lifetimeCoins,
+             COALESCE(ROUND(AVG(me.score), 1), 0) AS avgScorePct,
+             (SELECT COUNT(*) FROM student_attendance sa WHERE sa.student_id = tb.student_id) AS daysPresent
+      FROM token_balances tb
+      LEFT JOIN students s ON s.id = tb.student_id
+      LEFT JOIN student_snapshots ss ON ss.student_id = tb.student_id
+      LEFT JOIN mastery_events me ON me.student_id = tb.student_id
+      GROUP BY tb.student_id
+      ORDER BY avgScorePct DESC
+    `).all();
+    const candidates = rows.map((r) => {
+      const avgScore = Number(r.avgScorePct || 0);
+      const lifeCoins = Number(r.lifetimeCoins || 0);
+      const days = Math.max(1, Number(r.daysPresent || 0));
+      const eligible = avgScore >= 75 && lifeCoins >= 100;
+      const tier = avgScore >= 90 && eligible ? 'Aasha Merit Fellow (Tier-A)' : (eligible ? 'Aasha Seva Scholar (Tier-B)' : 'In Progress');
+      return {
+        studentId: r.studentId,
+        studentName: r.studentName,
+        avgScorePct: avgScore,
+        lifetimeCoins: lifeCoins,
+        daysPresent: days,
+        eligible,
+        tier
+      };
+    });
+    const eligible_count = candidates.filter((c) => c.eligible).length;
+    const eligibility_sha256 = crypto.createHash('sha256').update(JSON.stringify(candidates), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      eligible_count,
+      total_evaluated: candidates.length,
+      candidates,
+      eligibility_sha256
+    };
+  });
+
   return app;
+
 
 
 

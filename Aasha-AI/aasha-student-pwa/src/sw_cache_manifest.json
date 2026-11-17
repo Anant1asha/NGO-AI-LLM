@@ -8,7 +8,7 @@
   "total_precache_bytes": 27920637,
   "under_20mib_ceiling": true,
   "zero_external_urls": true,
-  "merkle_root_sha256": "bdfbff610fa8f9b2070ced336cb4d9b6c025f0b185d35c8afb49fe89fb3abfdd",
+  "merkle_root_sha256": "3e2c12d23412e9cf86773c71d8a617f53e4066a22aef6c3a6d9e5b39242edb6e",
   "assets": [
     {
       "rel_path": "AASHA_Visual_Mass_Harvest_Phase3/E2E_Regression_G39_Golden_Master_Hub_v5.html",
@@ -252,8 +252,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/index.html",
-      "size_bytes": 18930,
-      "sha256": "876ecdf0aa1b7637cdfc77d316e4efe49b5f11d921e1cd8465be58b652a329bf"
+      "size_bytes": 19573,
+      "sha256": "2e88f9cd85aae775684ad50a9b24f6b3b8e26ca4dbd9e1d94434bc1e56f0a609"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/public/teas_content.db.gz",
@@ -262,8 +262,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/app.js",
-      "size_bytes": 113536,
-      "sha256": "e2e05a78e8cce3b56f7468d13bb9b0284227de2a74ec2d001174dbb5b43f3633"
+      "size_bytes": 117277,
+      "sha256": "12c952ab6e79f8b562a23500968822fe5bd67c19dfb8e779b82363af9a93876c"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/rewards.js",

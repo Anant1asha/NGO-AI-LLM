@@ -97,6 +97,7 @@
       exportGoldenMasterDeploymentKit,
       generateCohortParentSmsOutboxBatch,
       renderPrintableLleFlashcardWallChartHtml,
+      recordStudentDailyAttendance,
       syncNowWithServer
     } from './src/app.js';
 
@@ -338,6 +339,13 @@
         a.href = URL.createObjectURL(blob);
         a.download = 'aasha_lle_classroom_wallchart.html';
         a.click();
+      } else if (action === 'mark-cohort-attendance') {
+        const students = Array.isArray(state.cohortSummary?.students) ? state.cohortSummary.students : [{ studentId: state.studentId }];
+        for (const s of students) {
+          recordStudentDailyAttendance(state, s.studentId || s.id);
+        }
+        toastMount.innerHTML = `<div id="attendance-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">☑️ Marked Daily Attendance for ${students.length} Learners</div>`;
+        persistAndRefresh();
       }
     });
 
