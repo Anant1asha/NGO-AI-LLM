@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G63_OFFLINE_FAMILY_PROGRESS_CERTIFICATE_AND_BILINGUAL_AUDIO_CELEBRATION_CARD",
+            "NEXT_PRIORITY": "G64_OFFLINE_TEACHER_REMEDIAL_MICRO_PLAYLIST_GENERATOR",
         }
 
         self.validate_20_field_report(report)

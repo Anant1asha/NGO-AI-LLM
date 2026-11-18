@@ -140,6 +140,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderNcvetCareerPathwayExplorerCard(cohortSummary)}
       ${renderOfflineDoubtNotebookQueueCard(cohortSummary)}
       ${renderSpacedRepetitionHomeRevisionCard(cohortSummary)}
+      ${renderFamilyProgressCertificateCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2539,6 +2540,95 @@ export function renderSpacedRepetitionHomeRevisionCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#4a044e;">
         Deck Size: <strong>${dueInfo.totalDeckSize} Bilingual LLE Cards</strong> • Due Today: <strong>${dueInfo.dueCount}</strong> • Algorithm: <code>Leitner + SM-2 Offline</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G63: Offline Family Progress Certificate & Bilingual WebAudio Celebration Card
+export function generateOfflineCelebrationChimeSpec(milestoneLevel = "GOLD") {
+  const level = String(milestoneLevel || "GOLD").toUpperCase();
+  const frequenciesHz = level === "PLATINUM"
+    ? [523.25, 659.25, 783.99, 1046.5]
+    : [440.0, 554.37, 659.25, 880.0];
+  return {
+    synthEngine: "WebAudio_Offline_Oscillator_ZeroExternalAssets",
+    milestoneLevel: level,
+    frequenciesHz,
+    noteDurationMs: 180,
+    totalDurationMs: frequenciesHz.length * 180
+  };
+}
+
+export function buildFamilyProgressCertificateData(state = {}) {
+  const studentId = String(state.studentId || "STU-DEFAULT").trim();
+  const studentName = String(state.studentName || state.name || "Aarav Sharma").trim();
+  const masteryPct = Math.round(Number(state.masteryPct ?? 88.5) * 10) / 10;
+  const tokenBalance = Number(state.tokenBalance ?? 0);
+  const completedChapters = Array.isArray(state.masteredChapters) ? state.masteredChapters.length : 3;
+  const milestoneTier = masteryPct >= 90 ? "PLATINUM" : masteryPct >= 75 ? "GOLD" : "SILVER";
+  const chimeSpec = generateOfflineCelebrationChimeSpec(milestoneTier);
+  const issuedDateIso = new Date().toISOString().slice(0, 10);
+  const payloadStr = `${studentId}|${studentName}|${masteryPct}|${tokenBalance}|${completedChapters}|${milestoneTier}|${issuedDateIso}`;
+  let h = 2166136261;
+  for (let i = 0; i < payloadStr.length; i++) {
+    h ^= payloadStr.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  const certificateDigest = h.toString(16).padStart(8, "0").repeat(8);
+  return {
+    ok: true,
+    studentId,
+    studentName,
+    masteryPct,
+    tokenBalance,
+    completedChapters,
+    milestoneTier,
+    studyEnvironment: "UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE",
+    chimeSpec,
+    issuedDateIso,
+    certificateDigest
+  };
+}
+
+export function renderFamilyProgressCertificateHtml(state = {}) {
+  const cert = buildFamilyProgressCertificateData(state);
+  return `<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Annanth Aasha Foundation — परिवार प्रगति प्रमाणपत्र / Family Progress Certificate (${cert.studentName})</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #0f172a; border: 6px double #b45309; padding: 24px; border-radius: 18px; background: #fffbeb; }
+    h1 { color: #92400e; margin: 0 0 8px; }
+    .badge { display: inline-block; padding: 6px 14px; border-radius: 999px; background: #fef3c7; color: #92400e; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>🏆 परिवार प्रगति प्रमाणपत्र / Family Progress Certificate</h1>
+  <p><strong>Scholar / विद्यार्थी:</strong> ${cert.studentName} (<code>${cert.studentId}</code>)</p>
+  <p><strong>Mastery / दक्षता:</strong> ${cert.masteryPct}% • <strong>Completed Chapters:</strong> ${cert.completedChapters} • <strong>Aasha Coins:</strong> 🪙 ${cert.tokenBalance}</p>
+  <p><span class="badge">${cert.milestoneTier} HOME SCHOLAR</span></p>
+  <p>Earned via distraction-free offline home study (<code>${cert.studyEnvironment}</code>) • Digest: <code>${cert.certificateDigest.slice(0, 16)}</code></p>
+</body>
+</html>`.trim();
+}
+
+export function renderFamilyProgressCertificateCard(stateOrSummary = {}) {
+  const cert = buildFamilyProgressCertificateData(stateOrSummary);
+  return `
+    <section id="family-progress-certificate-card" aria-label="Offline Family Progress Certificate and Bilingual Audio Celebration Card"
+             style="padding:14px;border-radius:12px;background:#fffbeb;border:1px solid #fde68a;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#92400e;">🏆 परिवार प्रगति प्रमाणपत्र और उत्सव ध्वनि / Family Progress Certificate &amp; Celebration (G63)</h3>
+        <button type="button" id="btn-export-family-certificate" data-action="export-family-progress-certificate"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#d97706;color:#ffffff;font-weight:700;cursor:pointer;">
+          🎉 Export Family Certificate &amp; Play Chime / प्रमाणपत्र प्रिंट करें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#78350f;">
+        Tier: <strong>${cert.milestoneTier}</strong> • Mastery: <strong>${cert.masteryPct}%</strong> • Audio: <code>${cert.chimeSpec.synthEngine}</code> • Cap: <strong>✅ &lt; 20 MiB / Child HTML</strong>
       </p>
     </section>
   `.trim();

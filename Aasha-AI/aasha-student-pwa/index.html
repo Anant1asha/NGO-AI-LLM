@@ -104,6 +104,7 @@
       matchStudentCareerPathways,
       bookmarkStudentDoubtOffline,
       scheduleSpacedRepetitionReview,
+      renderFamilyProgressCertificateHtml,
       syncNowWithServer
     } from './src/app.js';
 
@@ -388,6 +389,14 @@
         const res = scheduleSpacedRepetitionReview(state, { studentId: state.studentId, qualityRating: 5 });
         toastMount.innerHTML = `<div id="spaced-rep-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#fae8ff;color:#701a75;margin-top:10px;font-weight:600;">🔔 SM-2 Card Scheduled (Box ${res.updatedCard.leitnerBox}, Next: ${res.updatedCard.nextReviewIso}, +${res.updatedCard.coinsAwarded} Coins)</div>`;
         persistAndRefresh();
+      } else if (action === 'export-family-progress-certificate') {
+        const certHtml = renderFamilyProgressCertificateHtml(state);
+        const blob = new Blob([certHtml], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aasha_family_progress_certificate.html';
+        a.click();
+        toastMount.innerHTML = `<div id="family-cert-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#fef3c7;color:#92400e;margin-top:10px;font-weight:600;">🏆 Exported Offline Family Progress Certificate</div>`;
       }
     });
 

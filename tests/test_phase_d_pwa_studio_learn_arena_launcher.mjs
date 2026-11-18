@@ -69,7 +69,11 @@ import {
   renderOfflineDoubtNotebookQueueCard,
   scheduleSpacedRepetitionReview,
   getDueHomeRevisionDeck,
-  renderSpacedRepetitionHomeRevisionCard
+  renderSpacedRepetitionHomeRevisionCard,
+  generateOfflineCelebrationChimeSpec,
+  buildFamilyProgressCertificateData,
+  renderFamilyProgressCertificateHtml,
+  renderFamilyProgressCertificateCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -926,6 +930,24 @@ try {
   const getSrBody = await getSrRes.json();
   assert.equal(getSrBody.count, 1);
   assert.equal(getSrBody.deck_sha256.length, 64);
+
+  // Verify G63 Offline Family Progress Certificate & Bilingual Audio Celebration Card
+  const chime = generateOfflineCelebrationChimeSpec('PLATINUM');
+  assert.equal(chime.frequenciesHz.length, 4);
+  const certData = buildFamilyProgressCertificateData({ studentId: 'STU-GN-101', studentName: 'Aarav', masteryPct: 92.5, tokenBalance: 120 });
+  assert.equal(certData.milestoneTier, 'PLATINUM');
+  assert.equal(certData.certificateDigest.length, 64);
+  const certHtml = renderFamilyProgressCertificateHtml({ studentId: 'STU-GN-101', studentName: 'Aarav', masteryPct: 92.5 });
+  assert.ok(certHtml.includes('PLATINUM HOME SCHOLAR'));
+  const certCard = renderFamilyProgressCertificateCard({ studentId: 'STU-GN-101', masteryPct: 92.5 });
+  assert.ok(certCard.includes('id="family-progress-certificate-card"'));
+
+  const getCertRes = await fetch(`${baseUrl}/api/student/family-certificate/STU-GN-101`);
+  assert.equal(getCertRes.status, 200);
+  const getCertBody = await getCertRes.json();
+  assert.equal(getCertBody.status, 'ok');
+  assert.equal(getCertBody.zero_external_urls, true);
+  assert.equal(getCertBody.certificate_sha256.length, 64);
 } finally {
   await app.close();
 }
