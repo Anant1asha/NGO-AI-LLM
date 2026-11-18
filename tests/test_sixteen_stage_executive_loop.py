@@ -80,5 +80,34 @@ class TestSixteenStageExecutiveLoop(unittest.TestCase):
         self.assertEqual(rep_blk["CERTIFICATION"]["verdict"], "BLOCK")
 
 
+    def test_expanded_executive_plan_blueprint_and_parallel_lanes(self) -> None:
+        orch = Executive16StageLoopOrchestrator(".")
+        req = TaskExecutionRequest(objective_id="G85-PLAN-TEST", title="Verify expanded executive /plan blueprint")
+        plan = orch.build_executive_execution_plan(req)
+        self.assertEqual(plan["schema_version"], "aasha.executive.plan.v2")
+        self.assertEqual(len(plan["parallel_execution_lanes"]), 5)
+        self.assertEqual(len(plan["stage_gates"]), 16)
+        self.assertTrue(plan["hard_invariants"]["windows_safe_git_pathspec"])
+        rep = orch.execute_16_stage_cycle(req)
+        self.assertIn("executive_plan_v2", rep["IMPLEMENTATION_DETAILS"])
+
+
+    def test_coding_and_build_execution_contract_and_syntax_check(self) -> None:
+        orch = Executive16StageLoopOrchestrator(".")
+        req = TaskExecutionRequest(
+            objective_id="G85-BUILD-CONTRACT",
+            title="Verify 4-subphase coding & build contract + real syntax verification",
+            files_modified=["src/aasha/orchestrator/sixteen_stage_executive_loop.py"],
+        )
+        plan = orch.build_executive_execution_plan(req)
+        contract = plan["coding_and_build_execution_contract"]
+        self.assertEqual(len(contract["mandatory_subphases"]), 4)
+        self.assertTrue(contract["require_real_syntax_compile_check"])
+        rep = orch.execute_16_stage_cycle(req)
+        bcheck = rep["IMPLEMENTATION_DETAILS"]["build_syntax_verification"]
+        self.assertTrue(bcheck["build_syntax_ok"])
+        self.assertEqual(bcheck["files_syntax_checked"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -195,6 +195,102 @@ class Executive16StageLoopOrchestrator:
             "reason": "All coding, integration, defect remediation, security, and independent QA checks verified complete.",
         }
 
+    def build_executive_execution_plan(self, req: TaskExecutionRequest) -> Dict[str, Any]:
+        """
+        Expanded /plan Executive Blueprint for Stages 01-16:
+        Produces conflict-free officer write-scope locks, 5 parallel execution lanes,
+        stage-level acceptance gates, and Windows/Colab safe git governance.
+        """
+        stage_gates: Dict[str, Dict[str, Any]] = {}
+        for st_meta in CANONICAL_16_STAGES:
+            sid = st_meta["id"]
+            applicable, reason = self.evaluate_stage_applicability(sid, req.task_profile)
+            stage_gates[sid] = {
+                "owner": st_meta["owner"],
+                "applicable": applicable,
+                "reason": reason,
+                "acceptance_gate": st_meta["output"],
+            }
+        return {
+            "schema_version": "aasha.executive.plan.v2",
+            "objective_id": req.objective_id,
+            "task_profile": req.task_profile,
+            "swarm_write_locks": {
+                "CHIEF_RESEARCHER": ["docs/", "Aasha-AI/experience_registry/"],
+                "CHIEF_DEVELOPER": ["src/aasha/orchestrator/", "Aasha-AI/server/", "Aasha-AI/aasha-student-pwa/"],
+                "CHIEF_TESTER_DEBUGGER": ["tests/", "VERIFICATION_REPORT.md"],
+                "CHIEF_SECURITY_PRIVACY": [".gitignore", "scripts/lint_staged_secrets.mjs"],
+                "SUPER_ADMIN_AIOS": ["AASHA_PHASED_AUTONOMOUS_MVP_ROADMAP.json", "PC_ANTIGRAVITY_STATE.json", "COLAB_ANTIGRAVITY_STATE.json", "CHANGELOG.md"],
+            },
+            "parallel_execution_lanes": [
+                {"lane": "LANE_1_OBSERVE_RECONCILE_AUDIT", "stages": ["STAGE_01_OBSERVE", "STAGE_02_RECONCILE", "STAGE_03_AUDIT", "STAGE_04_PRIORITIZE"]},
+                {"lane": "LANE_2_RESOURCE_AND_ARCHITECTURE", "stages": ["STAGE_05_RESEARCH_AND_RESOURCE_DISCOVERY", "STAGE_06_ARCHITECTURE_AND_DETAILED_PLANNING"]},
+                {"lane": "LANE_3_BUILD_AND_INTEGRATE", "stages": ["STAGE_07_BUILD_AND_CODE", "STAGE_08_INTEGRATE_AND_COMPLETE"]},
+                {"lane": "LANE_4_DEBUG_TEST_SECURITY_CERTIFY", "stages": ["STAGE_09_DEBUG_AND_DEFECT_REMEDIATION", "STAGE_10_COMPREHENSIVE_TESTING", "STAGE_11_SECURITY_AND_PRIVACY_HARDENING", "STAGE_12_QUALITY_AND_PERFORMANCE_OPTIMIZATION", "STAGE_13_INDEPENDENT_VERIFICATION_AND_CERTIFICATION"]},
+                {"lane": "LANE_5_RECORD_GIT_BUNDLE_REPEAT", "stages": ["STAGE_14_RECORD_AND_LEARN", "STAGE_15_GIT_AND_ARTIFACT_GOVERNANCE", "STAGE_16_REPEAT_AND_CONTINUOUS_IMPROVEMENT"]},
+            ],
+            "coding_and_build_execution_contract": {
+                "mandatory_subphases": [
+                    {
+                        "id": "BUILD_SUBPHASE_1_SCHEMA_AND_ORCHESTRATOR",
+                        "scope": "Python/SQLite schema & 7-Agent PDF->HTML5 orchestrator modules",
+                        "paths": ["src/aasha/orchestrator/", "Aasha-AI/aasha-pipeline-with-master-json/src/"],
+                    },
+                    {
+                        "id": "BUILD_SUBPHASE_2_SERVER_API_AND_LEDGER",
+                        "scope": "Fastify HTTP endpoints & transactional SQLite persistence",
+                        "paths": ["Aasha-AI/server/server.js"],
+                    },
+                    {
+                        "id": "BUILD_SUBPHASE_3_PWA_STUDIO_UI_AND_OFFLINE_CACHE",
+                        "scope": "Student PWA / Teacher Studio UI & SW precache manifest",
+                        "paths": ["Aasha-AI/aasha-student-pwa/src/app.js", "Aasha-AI/aasha-student-pwa/src/sw_cache_manifest.json"],
+                    },
+                    {
+                        "id": "BUILD_SUBPHASE_4_UNIT_AND_HTTP_INTEGRATION_TESTS",
+                        "scope": "Python unittest + live Fastify HTTP + tamper/cap negative tests",
+                        "paths": ["tests/"],
+                    },
+                ],
+                "zero_stub_placeholder_policy": True,
+                "require_real_syntax_compile_check": True,
+                "require_non_empty_code_diff_for_feature_tasks": True,
+            },
+            "hard_invariants": {
+                "child_html_max_bytes": 20971520,
+                "zero_external_urls": True,
+                "independent_qa_required": True,
+                "repair_limit": self.MAX_REPAIR_LIMIT,
+                "windows_safe_git_pathspec": True,
+            },
+            "stage_gates": stage_gates,
+        }
+
+    def verify_build_artifacts_syntax(self, touched_files: List[str]) -> Dict[str, Any]:
+        """Run real syntax/compile checks (py_compile / node -c) on touched code files."""
+        checked: List[str] = []
+        errors: List[str] = []
+        for rel in touched_files:
+            fp = (self.repo_root / rel).resolve()
+            if not fp.is_file():
+                continue
+            if fp.suffix == ".py":
+                res = subprocess.run(["python3", "-m", "py_compile", str(fp)], capture_output=True, text=True)
+                checked.append(rel)
+                if res.returncode != 0:
+                    errors.append(f"{rel}: {res.stderr.strip()}")
+            elif fp.suffix in {".js", ".mjs"}:
+                res = subprocess.run(["node", "-c", str(fp)], capture_output=True, text=True)
+                checked.append(rel)
+                if res.returncode != 0:
+                    errors.append(f"{rel}: {res.stderr.strip()}")
+        return {
+            "files_syntax_checked": len(checked),
+            "checked_list": checked,
+            "syntax_errors": errors,
+            "build_syntax_ok": len(errors) == 0,
+        }
+
     def execute_16_stage_cycle(self, req: Optional[TaskExecutionRequest] = None) -> Dict[str, Any]:
         start_ts = datetime.now(timezone.utc).isoformat()
         if req is None:
@@ -219,8 +315,10 @@ class Executive16StageLoopOrchestrator:
                 unresolved_work=[],
             )
 
-        # Safeguard 2 check upfront
+        # Safeguard 2 check upfront + Expanded /plan Executive Blueprint
         indep_qa = self.enforce_independent_qa_certification(req.builder_agent_id, req.verifier_agent_id)
+        exec_plan = self.build_executive_execution_plan(req)
+        build_syntax = self.verify_build_artifacts_syntax(req.files_created + req.files_modified)
 
         # Verify HTML5 < 20 MiB invariant across output packs
         html_files = sorted(
@@ -253,7 +351,7 @@ class Executive16StageLoopOrchestrator:
 
         completion = self.evaluate_true_task_completion(
             req=req,
-            all_executed_tests_passed=under_20mib,
+            all_executed_tests_passed=(under_20mib and build_syntax["build_syntax_ok"]),
             security_passed=True,
         )
         stage_status["STAGE_13_INDEPENDENT_VERIFICATION_AND_CERTIFICATION"]["status"] = completion["certification_verdict"]
@@ -280,6 +378,8 @@ class Executive16StageLoopOrchestrator:
                 "laya_system1_prerouter": "4/4 paths verified, 0 token bleed",
                 "backward_compatible_12_to_16_map": True,
                 "three_engineering_safeguards_enforced": True,
+                "executive_plan_v2": exec_plan,
+                "build_syntax_verification": build_syntax,
             },
             "FILES_CREATED": req.files_created,
             "FILES_MODIFIED": req.files_modified,
@@ -338,7 +438,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
+            "NEXT_PRIORITY": "G85_OFFLINE_STUDENT_MASTERY_LEADERBOARD_AND_STREAK_BADGES",
         }
 
         self.validate_20_field_report(report)

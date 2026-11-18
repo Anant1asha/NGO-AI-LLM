@@ -252,5 +252,20 @@
     "required_git_flag": "git add --pathspec-from-file=-",
     "clean_desktop_ini_in_dot_git": true,
     "doc_ref": "docs/WINDOWS_GIT_LONGPATHS_AND_PATHSPEC_RULE.md"
+  },
+  "coding_and_build_execution_contract": {
+    "schema_version": "aasha.build.contract.v2",
+    "enforced_on_stages": [
+      "STAGE_07_BUILD_AND_CODE",
+      "STAGE_08_INTEGRATE_AND_COMPLETE"
+    ],
+    "mandatory_subphases": [
+      "BUILD_SUBPHASE_1_SCHEMA_AND_ORCHESTRATOR",
+      "BUILD_SUBPHASE_2_SERVER_API_AND_LEDGER",
+      "BUILD_SUBPHASE_3_PWA_STUDIO_UI_AND_OFFLINE_CACHE",
+      "BUILD_SUBPHASE_4_UNIT_AND_HTTP_INTEGRATION_TESTS"
+    ],
+    "require_real_syntax_compile_check": true,
+    "zero_stub_placeholder_policy": true
   }
 }
