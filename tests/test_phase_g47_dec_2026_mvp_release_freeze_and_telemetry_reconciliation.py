@@ -23,8 +23,8 @@ class TestPhaseG47ReleaseFreeze(unittest.TestCase):
 
         hub = manifest["html5_hub"]
         self.assertEqual(hub["swarm_state"], "CERTIFIED_CHECKPOINT")
-        self.assertEqual(hub["qa_passed"], 28)
-        self.assertEqual(hub["qa_total"], 28)
+        self.assertEqual(hub["qa_passed"], hub["qa_total"])
+        self.assertGreaterEqual(hub["qa_passed"], 28)
         self.assertTrue(hub["under_20mib"])
 
 

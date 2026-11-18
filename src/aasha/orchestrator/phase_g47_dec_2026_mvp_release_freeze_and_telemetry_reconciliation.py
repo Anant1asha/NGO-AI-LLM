@@ -34,11 +34,33 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+CANONICAL_10_CHAPTERS: List[str] = [
+    "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
+    "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
+    "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
+    "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
+    "NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
+    "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
+    "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
+    "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
+    "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
+    "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
+]
+
+CANONICAL_3_NCVET: List[str] = [
+    "NCVET_PSSCIVE_L3_IT_DataEntry_v5.html",
+    "NCVET_PSSCIVE_L4_Agri_SolarDrip_v5.html",
+    "NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5.html",
+]
+
+
 def audit_23_certified_html5_modules_and_sqlite(repo_root: Path) -> Dict[str, Any]:
     qa_js = repo_root / "Aasha-AI" / "aasha-pipeline-with-master-json" / "qa" / "run_qa.js"
+    pack_dir = repo_root / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack"
+    ncvet_dir = repo_root / "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack"
     candidates = sorted(
-        list((repo_root / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack").glob("*.html"))
-        + list((repo_root / "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack").glob("*.html"))
+        [pack_dir / ch for ch in CANONICAL_10_CHAPTERS]
+        + [ncvet_dir / n for n in CANONICAL_3_NCVET]
         + [
             repo_root / "AASHA_Visual_Mass_Harvest_Phase3/Enriched_G31_Cricket_Arena_LLE_Hub_v5.html",
             repo_root / "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",

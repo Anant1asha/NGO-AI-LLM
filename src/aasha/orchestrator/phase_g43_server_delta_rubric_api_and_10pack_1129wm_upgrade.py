@@ -32,6 +32,20 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+CANONICAL_10_CHAPTER_FILES: List[str] = [
+    "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
+    "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
+    "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
+    "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
+    "NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
+    "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
+    "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
+    "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
+    "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
+    "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
+]
+
+
 def upgrade_10chapter_pack_to_1129_wm(repo_root: Path) -> Dict[str, Any]:
     v2 = json.loads(
         (repo_root / "Aasha-AI" / "aasha-pipeline-with-master-json" / "config" / "defaults_expanded_v2.json").read_text(
@@ -45,7 +59,10 @@ def upgrade_10chapter_pack_to_1129_wm(repo_root: Path) -> Dict[str, Any]:
     qa_js = repo_root / "Aasha-AI" / "aasha-pipeline-with-master-json" / "qa" / "run_qa.js"
 
     upgraded_modules: List[Dict[str, Any]] = []
-    for html_path in sorted(pack_dir.glob("*.html")):
+    for fname in CANONICAL_10_CHAPTER_FILES:
+        html_path = pack_dir / fname
+        if not html_path.is_file():
+            continue
         txt = html_path.read_text(encoding="utf-8")
         txt = re.sub(r"var WM=\{[^\n]*\};", f"var WM={wm_json};", txt, count=1)
         txt = re.sub(r"var CONN=\{[^\n]*\};", f"var CONN={conn_json};", txt, count=1)

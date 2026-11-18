@@ -1,12 +1,12 @@
 {
   "phase": "G37",
   "title": "Experience Registry Sync (13 Certified Chapters + 21 AVR), DOM Smoke Gate & Dec 31 2026 MVP Release Candidate Certification",
-  "generated_at_utc": "2026-11-17T17:45:16.229196+00:00",
+  "generated_at_utc": "2026-11-18T18:09:20.935914+00:00",
   "experience_registry_sync": {
     "certified_chapters_count": 13,
     "all_13_chapters_qa_passed": true,
     "certified_avr_count": 21,
-    "registry_sha256": "bf51593daca919304c0142fc82179d8bf0669e9d963401c4f32fe1bdf83938fa"
+    "registry_sha256": "f057c03a7a77fb2abb4f34444a9af040ab89bc06b35bdf9f38ce8df11ca37197"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/MVP_Release_Candidate_G37_Certification_Hub_v5.html",
@@ -22,7 +22,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 181
+      "build_cache_records": 203
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G38_RURAL_COHORT_FIELD_PILOT_SIMULATION_AND_TEAS_LEDGER_AUDIT: Simulate 100-Learner Multi-Centre Offline Field Pilot, Cohort Order Pack Reconciliation & TEAS Audit."

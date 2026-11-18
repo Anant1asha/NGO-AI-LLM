@@ -1,7 +1,7 @@
 {
   "phase": "G36",
   "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
-  "generated_at_utc": "2026-11-17T15:49:47.724182+00:00",
+  "generated_at_utc": "2026-11-18T18:07:26.573302+00:00",
   "roles_compiled": 3,
   "all_certified": true,
   "compiled_roles": [
@@ -47,7 +47,7 @@
     "raw_bytes": 1778,
     "gzip_bytes": 706,
     "under_20mib": true,
-    "sha256": "5325e595d1095acd4a20757560ce78fedf07308e578c3199cec348646faaa156"
+    "sha256": "e0398c097968284bf33b9e741d8f711943d13623e025288880ea065f9a8029cd"
   },
   "next_focus_unit": "PHASE_G_CHUNK_G37_PLAYWRIGHT_HEADLESS_COLAB_GATE_AND_RELEASE_CANDIDATE_TAGGING: Execute Colab-side bundle push (scripts/apply_bundle_and_push.sh), live Playwright DOM smoke gate, and December 31 2026 MVP Release Candidate Certification."
 }

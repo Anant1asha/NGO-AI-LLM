@@ -179,7 +179,7 @@
     "tln_nodes_stored": 4,
     "wm_vocabulary_stored": 296,
     "sqlite_db_bytes": 180224,
-    "sqlite_gz_bytes": 12733
+    "sqlite_gz_bytes": 12732
   },
   "gamified_teas_ecosystem_stage": {
     "catalogSize": 4,
@@ -252,6 +252,6 @@
       "final_violations": [],
       "passed": true
     },
-    "sha256": "cacbb359979df999af0febc509385ff5c1cab3ef1df8f0982d02164a20fa62ca"
+    "sha256": "2e108cba464bf7939d1bb0e0cc3deec6df4b1bffc793f1845f8b571674e58265"
   }
 }

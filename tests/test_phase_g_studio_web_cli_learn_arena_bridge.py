@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import io
+import os
 import subprocess
 import sys
 import tempfile
@@ -78,7 +79,7 @@ pipeline:
                     "--config",
                     str(cfg_yaml),
                 ],
-                env={"PYTHONPATH": f"{PIPELINE_SRC}:{SRC_ROOT}"},
+                env={**os.environ, "PYTHONPATH": os.pathsep.join([str(PIPELINE_SRC), str(SRC_ROOT)])},
                 capture_output=True,
                 text=True,
                 check=True,
@@ -137,19 +138,23 @@ pipeline:
             prev_learn = client.get(f"/job/{job_id}/preview?mode=learn")
             self.assertEqual(prev_learn.status_code, 200)
             self.assertIn(b"const SLIDES =", prev_learn.data)
+            prev_learn.close()
 
             prev_arena = client.get(f"/job/{job_id}/preview?mode=arena")
             self.assertEqual(prev_arena.status_code, 200)
             self.assertIn(b"bootPixi", prev_arena.data)
+            prev_arena.close()
 
             # Download Learn & Arena
             dl_learn = client.get(f"/job/{job_id}/download/learn")
             self.assertEqual(dl_learn.status_code, 200)
             self.assertIn(b"Sound Waves", dl_learn.data)
+            dl_learn.close()
 
             dl_arena = client.get(f"/job/{job_id}/download/arena")
             self.assertEqual(dl_arena.status_code, 200)
             self.assertIn(b"Sound Waves", dl_arena.data)
+            dl_arena.close()
 
     def test_studio_dual_preview_workbench_contract(self) -> None:
         studio_tsx = (REPO_ROOT / "aasha-studio/apps/studio-ui/src/App.tsx").read_text(encoding="utf-8")
