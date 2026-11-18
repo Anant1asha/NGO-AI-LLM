@@ -1,9 +1,6 @@
 ---
 trigger: always_on
-description: >-
-  Universal Git Staging Policy for Windows, Colab & Agentic AI. Enforces pathspecs,
-  prohibits file enumeration in CLI arguments (avoiding Windows 32k character limit),
-  mandates long paths, desktop.ini cleanup, and pre-commit secret scanning.
+description: Mandatory pathspec-only Git staging to prevent Windows command line buffer overflow errors.
 globs: "**/*"
 ---
 

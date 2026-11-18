@@ -20,7 +20,7 @@ class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
 
         self.assertEqual(manifest["chapters_compiled"], 13)
         self.assertEqual(manifest["total_html5_modules_generated"], 26)
-        self.assertEqual(manifest["total_qa_checks_passed"], "871/871")
+        self.assertEqual(manifest["total_qa_checks_passed"], "975/975")
 
         for mod in manifest["modules"]:
             learn_p = REPO_ROOT / mod["learn_file"]
@@ -29,8 +29,8 @@ class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
             self.assertTrue(arena_p.exists(), f"Missing {arena_p}")
             self.assertLess(learn_p.stat().st_size, 20 * 1024 * 1024)
             self.assertLess(arena_p.stat().st_size, 20 * 1024 * 1024)
-            self.assertEqual(mod["learn_qa"], "33/33")
-            self.assertEqual(mod["arena_qa"], "34/34")
+            self.assertEqual(mod["learn_qa"], "37/37")
+            self.assertEqual(mod["arena_qa"], "38/38")
 
         db_path = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db"
         conn = sqlite3.connect(str(db_path))

@@ -1,0 +1,42 @@
+{
+  "name": "aasha-ai",
+  "version": "1.0.0",
+  "scripts": {
+    "admin:status": "tsx admin_memory_cli.ts status",
+    "admin:backup": "tsx admin_memory_cli.ts backup",
+    "admin:rules": "tsx admin_memory_cli.ts rules",
+    "admin:seed": "tsx admin_memory_cli.ts seed-rules",
+    "admin:seed-foundations": "tsx admin_memory_cli.ts seed-foundations",
+    "admin:match": "tsx admin_memory_cli.ts match-foundation",
+    "admin:init-chapter": "tsx admin_memory_cli.ts init-chapter",
+    "chapter:init": "tsx admin_memory_cli.ts init-chapter",
+    "admin:experience": "tsx admin_memory_cli.ts add-experience",
+    "admin:learn": "tsx admin_memory_cli.ts learn",
+    "version:snapshot": "tsx admin_memory_cli.ts version-snapshot",
+    "version:certify": "tsx admin_memory_cli.ts version-certify",
+    "version:approve": "tsx admin_memory_cli.ts version-approve",
+    "version:capture-lesson": "tsx admin_memory_cli.ts version-capture-lesson",
+    "version:list": "tsx admin_memory_cli.ts version-list",
+    "version:verify": "tsx admin_memory_cli.ts version-verify",
+    "version:rollback": "tsx admin_memory_cli.ts version-rollback",
+    "vocab:sync": "tsx admin_memory_cli.ts sync-vocab",
+    "memory:prime": "tsx ../scripts/jagiye_maakiran.ts",
+    "test:ltruth": "node benchmarks/qa_ltruth_benchmark.js",
+    "test:master": "node ../tests/e2e_all_chapters_suite.js",
+    "test:server": "npm --prefix server test",
+    "test:all": "node benchmarks/qa_ltruth_benchmark.js && node ../tests/e2e_all_chapters_suite.js && npm run test:server",
+    "test": "npm run test:all",
+    "validate": "npm run test:ltruth",
+    "dev:api": "node Aasha-Learning-Impact-Ecosystem-v0.3-full-repo/services/api/src/server.js",
+    "dev:learner": "node Aasha-Learning-Impact-Ecosystem-v0.3-full-repo/apps/learner-web/src/server.js",
+    "build:chapter": "tsx packages/v6-engine/compile_beta_chapter.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

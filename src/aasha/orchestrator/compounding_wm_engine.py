@@ -84,7 +84,8 @@ def seed_compounding_wm_from_defaults(
     v2 = json.loads(defaults_v2_path.read_text(encoding="utf-8"))
     wm: Dict[str, str] = v2.get("WM", {})
     now_iso = datetime.now(timezone.utc).isoformat()
-    with sqlite3.connect(db_path) as conn:
+    conn = sqlite3.connect(db_path)
+    try:
         _ensure_wm_table(conn)
         rows = [
             (str(w).strip().lower(), str(h).strip(), "core", "BASELINE_V2", 1, now_iso)
@@ -101,6 +102,8 @@ def seed_compounding_wm_from_defaults(
         )
         conn.commit()
         count = conn.execute("SELECT COUNT(*) FROM wm_compounding_lexicon").fetchone()[0]
+    finally:
+        conn.close()
     return int(count)
 
 
@@ -123,7 +126,8 @@ def autosave_and_disburse_chapter_wm(
     norm_domain = (domain or "science").strip().lower()
     new_terms = new_terms or {}
 
-    with sqlite3.connect(db_path) as conn:
+    conn = sqlite3.connect(db_path)
+    try:
         _ensure_wm_table(conn)
         existing_rows = conn.execute(
             "SELECT word, hindi_meaning, domain FROM wm_compounding_lexicon"
@@ -157,6 +161,8 @@ def autosave_and_disburse_chapter_wm(
         all_rows = conn.execute(
             "SELECT word, hindi_meaning, domain FROM wm_compounding_lexicon ORDER BY word ASC"
         ).fetchall()
+    finally:
+        conn.close()
 
     # Sync expanded cumulative WM back to defaults_expanded_v2.json
     v2 = json.loads(defaults_v2_path.read_text(encoding="utf-8"))

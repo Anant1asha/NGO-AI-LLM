@@ -397,9 +397,9 @@
     "tln_nodes_exported": 16,
     "wm_vocabulary_exported": 296,
     "raw_db_bytes": 188416,
-    "gzip_db_bytes": 12745,
+    "gzip_db_bytes": 15415,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "1b3fb3b02043014ea7b3086cc646a609a26cb9d333279a6b26d9e845cb691f3d"
+    "gzip_sha256": "663e4a312d32a35b16c25e58c52936a3039e6f03526ba9e60eb49b1ec0b088fe"
   },
   "centre_server_fastify_store_sync": {
     "serverHealthStatus": "ok",
@@ -416,7 +416,7 @@
     "cohortPackLocalValid": true,
     "cohortPackServerStatus": "ingested",
     "cohortPackReconciledOrders": 1,
-    "cohortPackIntegrityHash": "fnv1a32:6ddb3325",
+    "cohortPackIntegrityHash": "fnv1a32:57659207",
     "snapshotLocalValid": true,
     "snapshotBackupStatus": "backed_up",
     "snapshotRestoredChaptersCount": 3,
@@ -424,8 +424,8 @@
   },
   "html5_hub": {
     "file_name": "Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html",
-    "file_path": "/working_dir/c_dc69f23207b9a38d/aasha_aios_unified_repo/AASHA_Visual_Mass_Harvest_Phase3/Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html",
-    "size_bytes": 8942,
+    "file_path": "C:\\Users\\admin\\Downloads\\NGO AI LLM\\AASHA_Visual_Mass_Harvest_Phase3\\Multi_Chapter_V5_Batch_Centre_Server_Store_Sync_Hub_v5.html",
+    "size_bytes": 9137,
     "under_20mib_ceiling": true,
     "self_healing_qa_report": {
       "initial_violation_count": 0,
@@ -437,6 +437,6 @@
       "final_violations": [],
       "passed": true
     },
-    "sha256": "2240d9783d6649770dddfb2fc1db2c5a0aa3a3aa0e8e27f8c26dde8544e814f9"
+    "sha256": "c6cc7ccb1011bf5b8c468463e02909c997bae8dd759c5da1fed10cd38fb26cd7"
   }
 }

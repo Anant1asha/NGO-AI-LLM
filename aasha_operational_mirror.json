@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-16T12:10:01.358711+00:00",
+  "generated_at_utc": "2026-11-18T21:48:45.543159+00:00",
   "cost_usd": 0.0,
   "purpose": "Free Plane 1/2 mirror of local operational DB & state while Windows PC is offline",
-  "git_head_sha": "1ca5fd9a2fa6cff1501051c751217832ce019b7d",
-  "lamport_epoch": 64,
-  "operational_db_sha256": "0b0b747694a5cc4d6ac913b2dcf96cfd208e618ccf767f6d470b1e20b7fa38b3",
+  "git_head_sha": "6b8abadbdc59db8f782e2f2c52b233cd46357bdd",
+  "lamport_epoch": 70,
+  "operational_db_sha256": "6c18a68ee6ce2d17474698fb47163670ed01379dc0abdb8a0e849918c27b9c30",
   "operational_db_tables": {
     "memory_nodes": [
       {
@@ -22,7 +22,7 @@
         "category": "simulation",
         "hook_name": "phet_sim (equality, mixed_numbers)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "mechanic_id": "MECH-CANVAS-TACTILE",
@@ -30,7 +30,7 @@
         "category": "interactive_canvas",
         "hook_name": "ix_pizza / ix_bar / ix_area / numline / add_merge / division",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "mechanic_id": "MECH-CRICKET-INNINGS",
@@ -38,7 +38,7 @@
         "category": "gamified_assessment",
         "hook_name": "cricket_innings (overs, wickets, WebAudio, streak)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "mechanic_id": "MECH-ARENA-ROUNDS",
@@ -46,7 +46,7 @@
         "category": "gamified_assessment",
         "hook_name": "arena_rounds (multi-mode challenge + badges + TTS)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "mechanic_id": "MECH-LPG-GLOSSARY-SAN",
@@ -54,7 +54,7 @@
         "category": "bilingual_lle",
         "hook_name": "showWord() + 1256 WM entries (confirm() sanitized to inline modal)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       }
     ],
     "open_source_foundations": [
@@ -64,7 +64,7 @@
         "license": "MIT / LGPL",
         "url": "https://github.com/jsxgraph/jsxgraph",
         "capability": "Zero-dependency interactive geometry, function plotting, and multi-touch Canvas/SVG",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "foundation_id": "OS-ALGEOBRA",
@@ -72,7 +72,7 @@
         "license": "MIT",
         "url": "https://github.com/sibaku/algeobra",
         "capability": "Dynamic geometry primitives rendered to offline HTML5 Canvas/SVG",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "foundation_id": "OS-ECHARTS",
@@ -80,7 +80,7 @@
         "license": "Apache-2.0",
         "url": "https://strapi.io/blog/chart-libraries",
         "capability": "Selective Canvas/SVG charting (~135 KB gzipped) for Data Handling & teacher analytics",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "foundation_id": "OS-CYTOSCAPE",
@@ -88,7 +88,7 @@
         "license": "MIT",
         "url": "https://js.cytoscape.org/",
         "capability": "Pure JS zero-dependency graph & TLN concept-map visualization with touch support",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "foundation_id": "OS-CANVAS-CONFETTI",
@@ -96,7 +96,7 @@
         "license": "ISC",
         "url": "https://github.com/catdad/canvas-confetti",
         "capability": "Lightweight offline celebration confetti bursts for TEAS mastery milestones",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "foundation_id": "OS-SQLJS",
@@ -104,7 +104,7 @@
         "license": "MIT / Public Domain",
         "url": "https://github.com/sql-js/sql.js/",
         "capability": "Offline in-browser SQLite querying for teas_content.db.gz in PWA/HTML5",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "foundation_id": "OS-PHET-OFFLINE",
@@ -112,7 +112,7 @@
         "license": "CC BY / CC BY-NC 4.0 (NGO Educational)",
         "url": "https://phet.colorado.edu/en/simulations/energy-skate-park",
         "capability": "Single-file offline HTML5 science & math simulations with telemetry disabled",
-        "verified_at": "2026-11-16T12:08:15.696399+00:00"
+        "verified_at": "2026-11-16T12:11:13.243759+00:00"
       }
     ],
     "build_cache_metrics": [
@@ -1411,6 +1411,78 @@
         "mechanics_available": 5,
         "os_foundations_available": 7,
         "created_at": "2026-11-16T12:08:15.696399+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-0468fd17",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:34.489569+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-4bb74f94",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:34.752214+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-f6801ffd",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:35.797000+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-8b9b2056",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:36.050746+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-ccbb2711",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:38.577588+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-6e77c7c1",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:42.017545+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-2a935a76",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:10:42.365069+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-6684beca",
+        "phase": "G31",
+        "wm_available": 1129,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-16T12:11:13.243759+00:00"
       }
     ],
     "codebase_sources": [
@@ -1425,7 +1497,7 @@
         "byte_size": 2416,
         "tags": "avr,offline,html5,tactile,avr-p301",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.431209+00:00"
+        "cached_at": "2026-11-16T12:10:35.002093+00:00"
       },
       {
         "asset_id": "AVR-P302-HTML",
@@ -1438,7 +1510,7 @@
         "byte_size": 2491,
         "tags": "avr,offline,html5,tactile,avr-p302",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.439389+00:00"
+        "cached_at": "2026-11-16T12:10:35.010217+00:00"
       },
       {
         "asset_id": "AVR-P303-HTML",
@@ -1451,7 +1523,7 @@
         "byte_size": 2313,
         "tags": "avr,offline,html5,tactile,avr-p303",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.445962+00:00"
+        "cached_at": "2026-11-16T12:10:35.017178+00:00"
       },
       {
         "asset_id": "AVR-P304-HTML",
@@ -1464,7 +1536,7 @@
         "byte_size": 2370,
         "tags": "avr,offline,html5,tactile,avr-p304",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.452809+00:00"
+        "cached_at": "2026-11-16T12:10:35.024436+00:00"
       },
       {
         "asset_id": "AVR-P305-HTML",
@@ -1477,7 +1549,7 @@
         "byte_size": 2678,
         "tags": "avr,offline,html5,tactile,avr-p305",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.459400+00:00"
+        "cached_at": "2026-11-16T12:10:35.030881+00:00"
       },
       {
         "asset_id": "AVR-P306-HTML",
@@ -1490,7 +1562,7 @@
         "byte_size": 2199,
         "tags": "avr,offline,html5,tactile,avr-p306",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.466488+00:00"
+        "cached_at": "2026-11-16T12:10:35.037946+00:00"
       },
       {
         "asset_id": "AVR-P307-HTML",
@@ -1503,7 +1575,7 @@
         "byte_size": 2382,
         "tags": "avr,offline,html5,tactile,avr-p307",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.472838+00:00"
+        "cached_at": "2026-11-16T12:10:35.044819+00:00"
       },
       {
         "asset_id": "AVR-P308-HTML",
@@ -1516,7 +1588,7 @@
         "byte_size": 2224,
         "tags": "avr,offline,html5,tactile,avr-p308",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.479720+00:00"
+        "cached_at": "2026-11-16T12:10:35.051566+00:00"
       },
       {
         "asset_id": "AVR-P309-HTML",
@@ -1529,7 +1601,7 @@
         "byte_size": 2260,
         "tags": "avr,offline,html5,tactile,avr-p309",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.486138+00:00"
+        "cached_at": "2026-11-16T12:10:35.057968+00:00"
       },
       {
         "asset_id": "AVR-P310-HTML",
@@ -1542,7 +1614,7 @@
         "byte_size": 2121,
         "tags": "avr,offline,html5,tactile,avr-p310",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.492685+00:00"
+        "cached_at": "2026-11-16T12:10:35.064472+00:00"
       },
       {
         "asset_id": "AVR-P311-HTML",
@@ -1555,7 +1627,7 @@
         "byte_size": 2048,
         "tags": "avr,offline,html5,tactile,avr-p311",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.499547+00:00"
+        "cached_at": "2026-11-16T12:10:35.070929+00:00"
       },
       {
         "asset_id": "AVR-P312-HTML",
@@ -1568,7 +1640,7 @@
         "byte_size": 2204,
         "tags": "avr,offline,html5,tactile,avr-p312",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.505703+00:00"
+        "cached_at": "2026-11-16T12:10:35.077773+00:00"
       },
       {
         "asset_id": "AVR-P313-HTML",
@@ -1581,7 +1653,7 @@
         "byte_size": 2298,
         "tags": "avr,offline,html5,tactile,avr-p313",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.512044+00:00"
+        "cached_at": "2026-11-16T12:10:35.084215+00:00"
       },
       {
         "asset_id": "AVR-P314-HTML",
@@ -1594,7 +1666,7 @@
         "byte_size": 2590,
         "tags": "avr,offline,html5,tactile,avr-p314",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.518485+00:00"
+        "cached_at": "2026-11-16T12:10:35.091108+00:00"
       },
       {
         "asset_id": "AVR-P315-HTML",
@@ -1607,7 +1679,7 @@
         "byte_size": 2333,
         "tags": "avr,offline,html5,tactile,avr-p315",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.524655+00:00"
+        "cached_at": "2026-11-16T12:10:35.098285+00:00"
       },
       {
         "asset_id": "AVR-P316-HTML",
@@ -1620,7 +1692,7 @@
         "byte_size": 2210,
         "tags": "avr,offline,html5,tactile,avr-p316",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.531370+00:00"
+        "cached_at": "2026-11-16T12:10:35.104624+00:00"
       },
       {
         "asset_id": "AVR-P317-HTML",
@@ -1633,7 +1705,7 @@
         "byte_size": 2311,
         "tags": "avr,offline,html5,tactile,avr-p317",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.538520+00:00"
+        "cached_at": "2026-11-16T12:10:35.111938+00:00"
       },
       {
         "asset_id": "AVR-P318-HTML",
@@ -1646,7 +1718,7 @@
         "byte_size": 2317,
         "tags": "avr,offline,html5,tactile,avr-p318",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.544942+00:00"
+        "cached_at": "2026-11-16T12:10:35.118894+00:00"
       },
       {
         "asset_id": "AVR-P319-HTML",
@@ -1659,7 +1731,7 @@
         "byte_size": 2340,
         "tags": "avr,offline,html5,tactile,avr-p319",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.551215+00:00"
+        "cached_at": "2026-11-16T12:10:35.125704+00:00"
       },
       {
         "asset_id": "AVR-P320-HTML",
@@ -1672,7 +1744,7 @@
         "byte_size": 2195,
         "tags": "avr,offline,html5,tactile,avr-p320",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.557467+00:00"
+        "cached_at": "2026-11-16T12:10:35.132621+00:00"
       },
       {
         "asset_id": "AVR-P321-HTML",
@@ -1685,7 +1757,7 @@
         "byte_size": 2356,
         "tags": "avr,offline,html5,tactile,avr-p321",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.563512+00:00"
+        "cached_at": "2026-11-16T12:10:35.139933+00:00"
       },
       {
         "asset_id": "AVR-P301-JS",
@@ -1698,7 +1770,7 @@
         "byte_size": 1082,
         "tags": "avr,js,base64_ready,avr-p301",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.570116+00:00"
+        "cached_at": "2026-11-16T12:10:35.147293+00:00"
       },
       {
         "asset_id": "AVR-P302-JS",
@@ -1711,7 +1783,7 @@
         "byte_size": 1165,
         "tags": "avr,js,base64_ready,avr-p302",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.576713+00:00"
+        "cached_at": "2026-11-16T12:10:35.154139+00:00"
       },
       {
         "asset_id": "AVR-P303-JS",
@@ -1724,7 +1796,7 @@
         "byte_size": 984,
         "tags": "avr,js,base64_ready,avr-p303",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.582713+00:00"
+        "cached_at": "2026-11-16T12:10:35.161528+00:00"
       },
       {
         "asset_id": "AVR-P304-JS",
@@ -1737,7 +1809,7 @@
         "byte_size": 1041,
         "tags": "avr,js,base64_ready,avr-p304",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.588988+00:00"
+        "cached_at": "2026-11-16T12:10:35.167847+00:00"
       },
       {
         "asset_id": "AVR-P305-JS",
@@ -1750,7 +1822,7 @@
         "byte_size": 1356,
         "tags": "avr,js,base64_ready,avr-p305",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.595422+00:00"
+        "cached_at": "2026-11-16T12:10:35.174100+00:00"
       },
       {
         "asset_id": "AVR-P306-JS",
@@ -1763,7 +1835,7 @@
         "byte_size": 877,
         "tags": "avr,js,base64_ready,avr-p306",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.602320+00:00"
+        "cached_at": "2026-11-16T12:10:35.180858+00:00"
       },
       {
         "asset_id": "AVR-P307-JS",
@@ -1776,7 +1848,7 @@
         "byte_size": 1064,
         "tags": "avr,js,base64_ready,avr-p307",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.609231+00:00"
+        "cached_at": "2026-11-16T12:10:35.187531+00:00"
       },
       {
         "asset_id": "AVR-P308-JS",
@@ -1789,7 +1861,7 @@
         "byte_size": 902,
         "tags": "avr,js,base64_ready,avr-p308",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.615863+00:00"
+        "cached_at": "2026-11-16T12:10:35.194471+00:00"
       },
       {
         "asset_id": "AVR-P309-JS",
@@ -1802,7 +1874,7 @@
         "byte_size": 922,
         "tags": "avr,js,base64_ready,avr-p309",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.623403+00:00"
+        "cached_at": "2026-11-16T12:10:35.201174+00:00"
       },
       {
         "asset_id": "AVR-P310-JS",
@@ -1815,7 +1887,7 @@
         "byte_size": 799,
         "tags": "avr,js,base64_ready,avr-p310",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.629741+00:00"
+        "cached_at": "2026-11-16T12:10:35.207904+00:00"
       },
       {
         "asset_id": "AVR-P311-JS",
@@ -1828,7 +1900,7 @@
         "byte_size": 713,
         "tags": "avr,js,base64_ready,avr-p311",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.635789+00:00"
+        "cached_at": "2026-11-16T12:10:35.215368+00:00"
       },
       {
         "asset_id": "AVR-P312-JS",
@@ -1841,7 +1913,7 @@
         "byte_size": 873,
         "tags": "avr,js,base64_ready,avr-p312",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.642080+00:00"
+        "cached_at": "2026-11-16T12:10:35.222701+00:00"
       },
       {
         "asset_id": "AVR-P313-JS",
@@ -1854,7 +1926,7 @@
         "byte_size": 979,
         "tags": "avr,js,base64_ready,avr-p313",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.648711+00:00"
+        "cached_at": "2026-11-16T12:10:35.229348+00:00"
       },
       {
         "asset_id": "AVR-P314-JS",
@@ -1867,7 +1939,7 @@
         "byte_size": 1268,
         "tags": "avr,js,base64_ready,avr-p314",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.654761+00:00"
+        "cached_at": "2026-11-16T12:10:35.235850+00:00"
       },
       {
         "asset_id": "AVR-P315-JS",
@@ -1880,7 +1952,7 @@
         "byte_size": 1019,
         "tags": "avr,js,base64_ready,avr-p315",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.661084+00:00"
+        "cached_at": "2026-11-16T12:10:35.242362+00:00"
       },
       {
         "asset_id": "AVR-P316-JS",
@@ -1893,7 +1965,7 @@
         "byte_size": 894,
         "tags": "avr,js,base64_ready,avr-p316",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.667214+00:00"
+        "cached_at": "2026-11-16T12:10:35.249360+00:00"
       },
       {
         "asset_id": "AVR-P317-JS",
@@ -1906,7 +1978,7 @@
         "byte_size": 974,
         "tags": "avr,js,base64_ready,avr-p317",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.674695+00:00"
+        "cached_at": "2026-11-16T12:10:35.256240+00:00"
       },
       {
         "asset_id": "AVR-P318-JS",
@@ -1919,7 +1991,7 @@
         "byte_size": 986,
         "tags": "avr,js,base64_ready,avr-p318",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.680813+00:00"
+        "cached_at": "2026-11-16T12:10:35.262827+00:00"
       },
       {
         "asset_id": "AVR-P319-JS",
@@ -1932,7 +2004,7 @@
         "byte_size": 1005,
         "tags": "avr,js,base64_ready,avr-p319",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.687151+00:00"
+        "cached_at": "2026-11-16T12:10:35.269571+00:00"
       },
       {
         "asset_id": "AVR-P320-JS",
@@ -1945,7 +2017,7 @@
         "byte_size": 860,
         "tags": "avr,js,base64_ready,avr-p320",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.693822+00:00"
+        "cached_at": "2026-11-16T12:10:35.276020+00:00"
       },
       {
         "asset_id": "AVR-P321-JS",
@@ -1958,7 +2030,7 @@
         "byte_size": 1022,
         "tags": "avr,js,base64_ready,avr-p321",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.700553+00:00"
+        "cached_at": "2026-11-16T12:10:35.282556+00:00"
       },
       {
         "asset_id": "CORE-V5-TEMPLATE",
@@ -1971,7 +2043,7 @@
         "byte_size": 104652,
         "tags": "v5,template,html5,offline",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.708100+00:00"
+        "cached_at": "2026-11-16T12:10:35.289534+00:00"
       },
       {
         "asset_id": "CORE-LLE-V2",
@@ -1984,7 +2056,7 @@
         "byte_size": 96834,
         "tags": "lle,hindi,wm,conn,dictionary",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.715478+00:00"
+        "cached_at": "2026-11-16T12:10:35.296559+00:00"
       },
       {
         "asset_id": "CORE-CODE-SYNTH",
@@ -1997,7 +2069,7 @@
         "byte_size": 18607,
         "tags": "synthesizer,3level,assessment",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.721975+00:00"
+        "cached_at": "2026-11-16T12:10:35.304260+00:00"
       },
       {
         "asset_id": "CORE-ASSET-BUNDLER",
@@ -2010,7 +2082,7 @@
         "byte_size": 1113,
         "tags": "bundler,base64,offline",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.728320+00:00"
+        "cached_at": "2026-11-16T12:10:35.311281+00:00"
       },
       {
         "asset_id": "CORE-PWA-SYNC",
@@ -2023,7 +2095,7 @@
         "byte_size": 6763,
         "tags": "pwa,teas,sync,misconception",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.734572+00:00"
+        "cached_at": "2026-11-16T12:10:35.317445+00:00"
       },
       {
         "asset_id": "CORE-CENTRE-SERVER",
@@ -2036,7 +2108,7 @@
         "byte_size": 41660,
         "tags": "fastify,sqlite,centre_server,store",
         "drive_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-        "cached_at": "2026-11-16T12:07:38.741034+00:00"
+        "cached_at": "2026-11-16T12:10:35.323967+00:00"
       }
     ],
     "lle_vocabulary": [
@@ -2045,1400 +2117,3119 @@
         "meaning_hi": "\u092d\u093f\u0928\u094d\u0928 (fraction)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "fractions",
         "meaning_hi": "\u092d\u093f\u0928\u094d\u0928 (fractions)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "numerator",
         "meaning_hi": "\u0905\u0902\u0936 (numerator)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "denominator",
         "meaning_hi": "\u0939\u0930 (denominator)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "equivalent",
         "meaning_hi": "\u0938\u092e\u0924\u0941\u0932\u094d\u092f (equivalent)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "perimeter",
         "meaning_hi": "\u092a\u0930\u093f\u092e\u093e\u092a (perimeter)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "area",
         "meaning_hi": "\u0915\u094d\u0937\u0947\u0924\u094d\u0930\u092b\u0932 (area)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "polynomial",
         "meaning_hi": "\u092c\u0939\u0941\u092a\u0926 (polynomial)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "percentage",
         "meaning_hi": "\u092a\u094d\u0930\u0924\u093f\u0936\u0924 (percentage)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "ratio",
         "meaning_hi": "\u0905\u0928\u0941\u092a\u093e\u0924 (ratio)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "proportion",
         "meaning_hi": "\u0938\u092e\u093e\u0928\u0941\u092a\u093e\u0924 (proportion)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "equation",
         "meaning_hi": "\u0938\u092e\u0940\u0915\u0930\u0923 (equation)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "variable",
         "meaning_hi": "\u091a\u0930 (variable)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "constant",
         "meaning_hi": "\u0905\u091a\u0930 (constant)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "integer",
         "meaning_hi": "\u092a\u0942\u0930\u094d\u0923\u093e\u0902\u0915 (integer)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "triangle",
         "meaning_hi": "\u0924\u094d\u0930\u093f\u092d\u0941\u091c (triangle)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "rectangle",
         "meaning_hi": "\u0906\u092f\u0924 (rectangle)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "square",
         "meaning_hi": "\u0935\u0930\u094d\u0917 (square)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "circle",
         "meaning_hi": "\u0935\u0943\u0924\u094d\u0924 (circle)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "angle",
         "meaning_hi": "\u0915\u094b\u0923 (angle)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_001",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_001 (concept_term_001)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_002",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_002 (concept_term_002)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_003",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_003 (concept_term_003)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_004",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_004 (concept_term_004)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_005",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_005 (concept_term_005)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_006",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_006 (concept_term_006)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_007",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_007 (concept_term_007)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_008",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_008 (concept_term_008)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_009",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_009 (concept_term_009)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_010",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_010 (concept_term_010)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_011",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_011 (concept_term_011)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_012",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_012 (concept_term_012)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_013",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_013 (concept_term_013)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_014",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_014 (concept_term_014)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_015",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_015 (concept_term_015)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_016",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_016 (concept_term_016)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_017",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_017 (concept_term_017)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_018",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_018 (concept_term_018)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_019",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_019 (concept_term_019)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_020",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_020 (concept_term_020)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_021",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_021 (concept_term_021)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_022",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_022 (concept_term_022)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_023",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_023 (concept_term_023)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_024",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_024 (concept_term_024)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_025",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_025 (concept_term_025)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_026",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_026 (concept_term_026)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_027",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_027 (concept_term_027)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_028",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_028 (concept_term_028)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_029",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_029 (concept_term_029)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_030",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_030 (concept_term_030)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_031",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_031 (concept_term_031)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_032",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_032 (concept_term_032)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_033",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_033 (concept_term_033)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_034",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_034 (concept_term_034)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_035",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_035 (concept_term_035)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_036",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_036 (concept_term_036)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_037",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_037 (concept_term_037)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_038",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_038 (concept_term_038)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_039",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_039 (concept_term_039)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_040",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_040 (concept_term_040)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_041",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_041 (concept_term_041)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_042",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_042 (concept_term_042)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_043",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_043 (concept_term_043)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_044",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_044 (concept_term_044)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_045",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_045 (concept_term_045)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_046",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_046 (concept_term_046)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_047",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_047 (concept_term_047)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_048",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_048 (concept_term_048)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_049",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_049 (concept_term_049)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_050",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_050 (concept_term_050)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_051",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_051 (concept_term_051)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_052",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_052 (concept_term_052)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_053",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_053 (concept_term_053)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_054",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_054 (concept_term_054)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_055",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_055 (concept_term_055)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_056",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_056 (concept_term_056)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_057",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_057 (concept_term_057)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_058",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_058 (concept_term_058)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_059",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_059 (concept_term_059)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_060",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_060 (concept_term_060)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_061",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_061 (concept_term_061)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_062",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_062 (concept_term_062)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_063",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_063 (concept_term_063)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_064",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_064 (concept_term_064)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_065",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_065 (concept_term_065)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_066",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_066 (concept_term_066)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_067",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_067 (concept_term_067)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_068",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_068 (concept_term_068)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_069",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_069 (concept_term_069)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_070",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_070 (concept_term_070)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_071",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_071 (concept_term_071)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_072",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_072 (concept_term_072)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_073",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_073 (concept_term_073)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_074",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_074 (concept_term_074)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_075",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_075 (concept_term_075)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_076",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_076 (concept_term_076)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_077",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_077 (concept_term_077)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_078",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_078 (concept_term_078)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_079",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_079 (concept_term_079)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_080",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_080 (concept_term_080)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_081",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_081 (concept_term_081)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_082",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_082 (concept_term_082)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_083",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_083 (concept_term_083)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_084",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_084 (concept_term_084)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_085",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_085 (concept_term_085)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_086",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_086 (concept_term_086)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_087",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_087 (concept_term_087)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_088",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_088 (concept_term_088)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_089",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_089 (concept_term_089)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_090",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_090 (concept_term_090)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_091",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_091 (concept_term_091)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_092",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_092 (concept_term_092)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_093",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_093 (concept_term_093)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_094",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_094 (concept_term_094)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_095",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_095 (concept_term_095)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_096",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_096 (concept_term_096)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_097",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_097 (concept_term_097)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_098",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_098 (concept_term_098)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_099",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_099 (concept_term_099)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_100",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_100 (concept_term_100)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_101",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_101 (concept_term_101)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_102",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_102 (concept_term_102)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_103",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_103 (concept_term_103)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_104",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_104 (concept_term_104)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_105",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_105 (concept_term_105)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_106",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_106 (concept_term_106)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_107",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_107 (concept_term_107)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_108",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_108 (concept_term_108)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_109",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_109 (concept_term_109)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_110",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_110 (concept_term_110)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_111",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_111 (concept_term_111)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_112",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_112 (concept_term_112)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_113",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_113 (concept_term_113)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_114",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_114 (concept_term_114)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_115",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_115 (concept_term_115)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_116",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_116 (concept_term_116)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_117",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_117 (concept_term_117)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_118",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_118 (concept_term_118)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_119",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_119 (concept_term_119)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_120",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_120 (concept_term_120)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_121",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_121 (concept_term_121)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_122",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_122 (concept_term_122)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_123",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_123 (concept_term_123)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_124",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_124 (concept_term_124)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_125",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_125 (concept_term_125)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_126",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_126 (concept_term_126)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_127",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_127 (concept_term_127)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_128",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_128 (concept_term_128)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_129",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_129 (concept_term_129)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_130",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_130 (concept_term_130)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_131",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_131 (concept_term_131)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_132",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_132 (concept_term_132)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_133",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_133 (concept_term_133)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_134",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_134 (concept_term_134)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_135",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_135 (concept_term_135)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_136",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_136 (concept_term_136)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_137",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_137 (concept_term_137)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_138",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_138 (concept_term_138)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_139",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_139 (concept_term_139)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_140",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_140 (concept_term_140)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_141",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_141 (concept_term_141)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_142",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_142 (concept_term_142)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_143",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_143 (concept_term_143)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_144",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_144 (concept_term_144)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_145",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_145 (concept_term_145)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_146",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_146 (concept_term_146)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_147",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_147 (concept_term_147)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_148",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_148 (concept_term_148)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_149",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_149 (concept_term_149)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_150",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_150 (concept_term_150)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_151",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_151 (concept_term_151)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_152",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_152 (concept_term_152)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_153",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_153 (concept_term_153)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_154",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_154 (concept_term_154)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_155",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_155 (concept_term_155)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_156",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_156 (concept_term_156)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_157",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_157 (concept_term_157)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_158",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_158 (concept_term_158)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_159",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_159 (concept_term_159)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_160",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_160 (concept_term_160)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_161",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_161 (concept_term_161)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_162",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_162 (concept_term_162)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_163",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_163 (concept_term_163)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_164",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_164 (concept_term_164)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_165",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_165 (concept_term_165)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_166",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_166 (concept_term_166)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_167",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_167 (concept_term_167)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_168",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_168 (concept_term_168)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_169",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_169 (concept_term_169)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_170",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_170 (concept_term_170)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_171",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_171 (concept_term_171)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_172",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_172 (concept_term_172)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_173",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_173 (concept_term_173)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_174",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_174 (concept_term_174)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_175",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_175 (concept_term_175)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_176",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_176 (concept_term_176)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_177",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_177 (concept_term_177)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_178",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_178 (concept_term_178)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_179",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_179 (concept_term_179)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
       },
       {
         "term_en": "concept_term_180",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_180 (concept_term_180)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-16T12:08:15.696399+00:00"
+        "updated_at": "2026-11-16T12:11:13.243759+00:00"
+      }
+    ],
+    "concept_nodes": [
+      {
+        "id": "serena_mem_core",
+        "name": "mem:core",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: core - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":98}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "id": "serena_mem_local_memory",
+        "name": "mem:local_memory",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: local_memory - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":106}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "id": "serena_mem_tech_stack",
+        "name": "mem:tech_stack",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: tech_stack - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":104}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "id": "serena_mem_suggested_commands",
+        "name": "mem:suggested_commands",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: suggested_commands - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":112}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "id": "serena_mem_conventions",
+        "name": "mem:conventions",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: conventions - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":105}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "id": "serena_mem_task_completion",
+        "name": "mem:task_completion",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: task_completion - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":109}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "id": "serena_mem_memory_maintenance",
+        "name": "mem:memory_maintenance",
+        "domain": "AASHA_AIOS",
+        "category": "SemanticMemory",
+        "metadata": "{\"preview\":\"# Serena Memory: memory_maintenance - Ecosystem: AASHA AIOS Autonomous Agent System - Branch: aios/v2-bootstrap \",\"size\":112}",
+        "created_at": "2026-11-18 21:43:32",
+        "updated_at": "2026-11-18 21:43:32"
+      }
+    ],
+    "operational_state": [
+      {
+        "key": "mem0:Global:offline_constraint",
+        "value": "Strictly zero remote CDN calls; self-contained files under 20MB",
+        "tier": "mem0",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "key": "mem0:Global:pedagogy_anchor",
+        "value": "Authoritative derivation from Kid's Own Prescribed Book first",
+        "tier": "mem0",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "key": "mem0:Global:certification_law",
+        "value": "DESIGN_VERIFIED != RUNTIME_VERIFIED; CODE_VERIFIED != FAILURE_PATH_TEST_VERIFIED; CLIENT_ROUTE_BLOCKED != PROVIDER_BILLING_ZERO; SUBPROCESS_INGESTION != INGESTION_FAILURE; TESTED_POPULATION != FUTURE_OUTPUT_SET",
+        "tier": "mem0",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "key": "mem0:Global:ingestion_mode",
+        "value": "PYTHON_SUBPROCESS_PYMUPDF = RUNTIME-VERIFIED / CURRENTLY-ACCEPTED (Not a defect)",
+        "tier": "mem0",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "key": "mem0:Domain:vernacular_substrate",
+        "value": "Hindi primary focus with pre-LLE LaTeX math insulation",
+        "tier": "mem0",
+        "updated_at": "2026-11-18 21:43:32"
+      },
+      {
+        "key": "mem0:Domain:assessment_rule",
+        "value": "Zero-spoiler misconception explanations in m attribute",
+        "tier": "mem0",
+        "updated_at": "2026-11-18 21:43:32"
+      }
+    ],
+    "memory_sync_audit_log": [
+      {
+        "id": 1,
+        "status": "SYNC_COMPLETED",
+        "details": "{\"actions\":[\"Reconciled 7 Serena memories into concept_nodes\",\"Synced 6 Mem0 records into operational_state\"],\"totalRecords\":13,\"timestamp\":\"2026-11-18T21:43:32.440Z\"}",
+        "created_at": "2026-11-18 21:43:32"
+      }
+    ],
+    "sqlite_sequence": [
+      {
+        "name": "memory_sync_audit_log",
+        "seq": 1
+      }
+    ],
+    "wm_compounding_lexicon": [
+      {
+        "word": "100",
+        "hindi_meaning": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "a",
+        "hindi_meaning": "\u090f\u0915 (\u090f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "abroad",
+        "hindi_meaning": "{\"h\":\"\u0935\u093f\u0926\u0947\u0936 \u092e\u0947\u0902\",\"p\":\"\u0905\u092c\u094d\u0930\u0949\u0921\"} (abroad)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "access",
+        "hindi_meaning": "{\"h\":\"\u092a\u0939\u0941\u0901\u091a\",\"p\":\"\u090f\u0915\u094d\u0938\u0947\u0938\"} (access)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "account",
+        "hindi_meaning": "{\"h\":\"\u0916\u093e\u0924\u093e\",\"p\":\"\u0905\u0915\u093e\u0909\u0902\u091f\"} (account)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "accountable",
+        "hindi_meaning": "{\"h\":\"\u091c\u0935\u093e\u092c\u0926\u0947\u0939\",\"p\":\"\u0905\u0915\u093e\u0909\u0902\u091f\u0947\u092c\u0932\"} (accountable)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "accountancy",
+        "hindi_meaning": "{\"h\":\"\u0932\u0947\u0916\u093e\u0936\u093e\u0938\u0928\",\"p\":\"\u0905\u0915\u093e\u0909\u0902\u091f\u0947\u0902\u0938\u0940\"} (accountancy)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "add",
+        "hindi_meaning": "\u091c\u094b\u0921\u093c\u0928\u093e (\u0910\u0921)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "added",
+        "hindi_meaning": "{\"h\":\"\u091c\u094b\u0921\u093c\u093e \u0917\u092f\u093e\",\"p\":\"\u0910\u0921\u0947\u0921\"} (added)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "addition",
+        "hindi_meaning": "\u091c\u094b\u0921\u093c (\u0905\u0921\u093f\u0936\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "addressed",
+        "hindi_meaning": "{\"h\":\"\u0938\u0941\u0932\u091d\u093e\u092f\u093e (\u0927\u094d\u092f\u093e\u0928 \u0926\u093f\u092f\u093e)\",\"p\":\"\u0910\u0921\u094d\u0930\u0947\u0938\u094d\u0921\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "adversely",
+        "hindi_meaning": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0915\u0942\u0932 \u0930\u0942\u092a \u0938\u0947 (\u0928\u0941\u0915\u0938\u093e\u0928\u0926\u0947\u0939)\",\"p\":\"\u0910\u0921\u0935\u0930\u094d\u0938\u0932\u0940\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "advocating",
+        "hindi_meaning": "{\"h\":\"\u092a\u0948\u0930\u0935\u0940 \u0915\u0930\u0928\u093e (\u0938\u092e\u0930\u094d\u0925\u0928)\",\"p\":\"\u0910\u0921\u0935\u094b\u0915\u0947\u091f\u093f\u0902\u0917\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "aerodynamics",
+        "hindi_meaning": "\u0935\u093e\u092f\u0941\u0917\u0924\u093f\u0915\u0940",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 3,
+        "updated_at": "2026-11-18T21:48:06.386318+00:00"
+      },
+      {
+        "word": "aerospace",
+        "hindi_meaning": "{\"h\":\"\u0935\u093e\u092f\u0941-\u0905\u0902\u0924\u0930\u093f\u0915\u094d\u0937\",\"p\":\"\u090f\u092f\u0930\u094b\u0938\u094d\u092a\u0947\u0938\"} (aerospace)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "again",
+        "hindi_meaning": "\u092b\u093f\u0930 \u0938\u0947 (\u0905\u0917\u0947\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "aggravated",
+        "hindi_meaning": "{\"h\":\"\u0914\u0930 \u092c\u093f\u0917\u093e\u0921\u093c\u093e\",\"p\":\"\u0910\u0917\u094d\u0930\u0935\u0947\u091f\u0947\u0921\"} (aggravated)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "aggregate",
+        "hindi_meaning": "{\"h\":\"\u0938\u092e\u0917\u094d\u0930 (\u0915\u0941\u0932 \u091c\u094b\u0921\u093c)\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0917\u0947\u091f\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "aggregates",
+        "hindi_meaning": "{\"h\":\"\u0938\u092e\u0917\u094d\u0930 \u0930\u093e\u0936\u093f\u092f\u093e\u0901\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0917\u0947\u091f\u094d\u0938\"} (aggregates)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "agrarian",
+        "hindi_meaning": "\u0915\u0943\u0937\u093f-\u092a\u094d\u0930\u0927\u093e\u0928",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 7,
+        "updated_at": "2026-11-18T21:48:18.977847+00:00"
+      },
+      {
+        "word": "agreement",
+        "hindi_meaning": "{\"h\":\"\u0938\u092e\u091d\u094c\u0924\u093e\",\"p\":\"\u0905\u0917\u094d\u0930\u0940\u092e\u0947\u0902\u091f\"} (agreement)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "agreements",
+        "hindi_meaning": "{\"h\":\"\u0938\u092e\u091d\u094c\u0924\u0947\",\"p\":\"\u0905\u0917\u094d\u0930\u0940\u092e\u0947\u0902\u091f\u094d\u0938\"} (agreements)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "agricultural",
+        "hindi_meaning": "{\"h\":\"\u0915\u0943\u0937\u093f \u0938\u0902\u092c\u0902\u0927\u0940\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0915\u0932\u094d\u091a\u0930\u0932\"} (agricultural)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "agriculture",
+        "hindi_meaning": "{\"h\":\"\u0915\u0943\u0937\u093f\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0915\u0932\u094d\u091a\u0930\"} (agriculture)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "alcohol",
+        "hindi_meaning": "{\"h\":\"\u0936\u0930\u093e\u092c\",\"p\":\"\u0910\u0932\u094d\u0915\u094b\u0939\u0949\u0932\"} (alcohol)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "all",
+        "hindi_meaning": "\u0938\u092d\u0940 (\u0911\u0932)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "allege",
+        "hindi_meaning": "{\"h\":\"\u0906\u0930\u094b\u092a \u0932\u0917\u093e\u0928\u093e\",\"p\":\"\u0905\u0932\u0947\u091c\"} (allege)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "alpha",
+        "hindi_meaning": "\u0905\u0932\u094d\u092b\u093e (\u0905\u0932\u094d\u092b\u093e)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "also",
+        "hindi_meaning": "\u092d\u0940 (\u0911\u0932\u094d\u0938\u094b)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "always",
+        "hindi_meaning": "\u0939\u092e\u0947\u0936\u093e (\u0911\u0932\u094d\u0935\u0947\u091c\u093c)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "amount",
+        "hindi_meaning": "\u092e\u093e\u0924\u094d\u0930\u093e (\u0905\u092e\u093e\u0909\u0902\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "and",
+        "hindi_meaning": "\u0914\u0930 (\u0910\u0902\u0921)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "angle",
+        "hindi_meaning": "\u0915\u094b\u0923 (angle)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "answer",
+        "hindi_meaning": "\u0909\u0924\u094d\u0924\u0930 (\u0906\u0902\u0938\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "application",
+        "hindi_meaning": "\u0905\u0928\u0941\u092a\u094d\u0930\u092f\u094b\u0917 (\u090f\u092a\u094d\u0932\u093f\u0915\u0947\u0936\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "applied",
+        "hindi_meaning": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "appraisal",
+        "hindi_meaning": "{\"h\":\"\u092e\u0942\u0932\u094d\u092f\u093e\u0902\u0915\u0928\",\"p\":\"\u0905\u092a\u094d\u0930\u0947\u091c\u093c\u0932\"} (appraisal)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "approximate",
+        "hindi_meaning": "\u0932\u0917\u092d\u0917 (\u0905\u092a\u094d\u0930\u0949\u0915\u094d\u0938\u093f\u092e\u0947\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "arbitrary",
+        "hindi_meaning": "{\"h\":\"\u092e\u0928\u092e\u093e\u0928\u093e\",\"p\":\"\u0906\u0930\u094d\u092c\u093f\u091f\u094d\u0930\u0947\u0930\u0940\"} (arbitrary)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "are",
+        "hindi_meaning": "\u0939\u0948\u0902 (\u0906\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "area",
+        "hindi_meaning": "\u0915\u094d\u0937\u0947\u0924\u094d\u0930\u092b\u0932 (area)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "around",
+        "hindi_meaning": "\u091a\u093e\u0930\u094b\u0902 \u0913\u0930 (\u0905\u0930\u093e\u0909\u0902\u0921)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "artery",
+        "hindi_meaning": "\u0927\u092e\u0928\u0940",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 5,
+        "updated_at": "2026-11-18T21:48:18.612850+00:00"
+      },
+      {
+        "word": "assessment",
+        "hindi_meaning": "{\"h\":\"\u092e\u0942\u0932\u094d\u092f\u093e\u0902\u0915\u0928\",\"p\":\"\u0905\u0938\u0947\u0938\u092e\u0947\u0902\u091f\"} (assessment)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "assets",
+        "hindi_meaning": "{\"h\":\"\u0938\u0902\u092a\u0924\u094d\u0924\u093f\u092f\u093e\u0901\",\"p\":\"\u0910\u0938\u0947\u091f\u094d\u0938\"} (assets)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "ate",
+        "hindi_meaning": "\u0916\u093e\u092f\u093e (\u090f\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "atomic",
+        "hindi_meaning": "{\"h\":\"\u092a\u0930\u092e\u093e\u0923\u0941\",\"p\":\"\u0910\u091f\u0949\u092e\u093f\u0915\"} (atomic)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "autonomy",
+        "hindi_meaning": "{\"h\":\"\u0938\u094d\u0935\u093e\u092f\u0924\u094d\u0924\u0924\u093e (\u0906\u091c\u093c\u093e\u0926\u0940)\",\"p\":\"\u0911\u091f\u094b\u0928\u0949\u092e\u0940\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "available",
+        "hindi_meaning": "{\"h\":\"\u0909\u092a\u0932\u092c\u094d\u0927\",\"p\":\"\u0905\u0935\u0947\u0932\u0947\u092c\u0932\"} (available)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "axis",
+        "hindi_meaning": "\u0905\u0915\u094d\u0937 (\u090f\u0915\u094d\u0938\u093f\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "back",
+        "hindi_meaning": "\u092a\u0940\u091b\u0947 (\u092c\u0948\u0915)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "baker",
+        "hindi_meaning": "{\"h\":\"\u092c\u0947\u0915\u0930 (\u0930\u094b\u091f\u0940 \u092c\u0928\u093e\u0928\u0947 \u0935\u093e\u0932\u093e)\",\"p\":\"\u092c\u0947\u0915\u0930\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "bank",
+        "hindi_meaning": "{\"h\":\"\u092c\u0948\u0902\u0915\",\"p\":\"\u092c\u0948\u0902\u0915\"} (bank)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "banking",
+        "hindi_meaning": "{\"h\":\"\u092c\u0948\u0902\u0915\u093f\u0902\u0917\",\"p\":\"\u092c\u0948\u0902\u0915\u093f\u0902\u0917\"} (banking)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "banks",
+        "hindi_meaning": "{\"h\":\"\u092c\u0948\u0902\u0915\",\"p\":\"\u092c\u0948\u0902\u0915\u094d\u0938\"} (banks)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "bar",
+        "hindi_meaning": "\u092a\u091f\u094d\u091f\u0940 (\u092c\u093e\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "barometer",
+        "hindi_meaning": "\u092c\u0948\u0930\u094b\u092e\u0940\u091f\u0930",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 3,
+        "updated_at": "2026-11-18T21:48:06.111707+00:00"
+      },
+      {
+        "word": "barrier",
+        "hindi_meaning": "{\"h\":\"\u092c\u093e\u0927\u093e\",\"p\":\"\u092c\u0948\u0930\u093f\u092f\u0930\"} (barrier)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "barriers",
+        "hindi_meaning": "{\"h\":\"\u092c\u093e\u0927\u093e\u090f\u0901\",\"p\":\"\u092c\u0948\u0930\u093f\u092f\u0930\u094d\u0938\"} (barriers)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "barter",
+        "hindi_meaning": "{\"h\":\"\u0935\u0938\u094d\u0924\u0941 \u0935\u093f\u0928\u093f\u092e\u092f\",\"p\":\"\u092c\u093e\u0930\u094d\u091f\u0930\"} (barter)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "base",
+        "hindi_meaning": "\u0906\u0927\u093e\u0930 (\u092c\u0947\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "because",
+        "hindi_meaning": "\u0915\u094d\u092f\u094b\u0902\u0915\u093f (\u092c\u093f\u0915\u0949\u091c\u093c)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "becomes",
+        "hindi_meaning": "\u092c\u0928\u0924\u093e (\u092c\u093f\u0915\u092e\u094d\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "begins",
+        "hindi_meaning": "{\"h\":\"\u0936\u0941\u0930\u0942 \u0939\u094b\u0924\u0940 \u0939\u0948\",\"p\":\"\u092c\u093f\u0917\u093f\u0928\u094d\u0938\"} (begins)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "beta",
+        "hindi_meaning": "\u092c\u0940\u091f\u093e (\u092c\u0940\u091f\u093e)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "bilateral",
+        "hindi_meaning": "{\"h\":\"\u0926\u094d\u0935\u093f\u092a\u0915\u094d\u0937\u0940\u092f (\u0926\u094b \u0926\u0947\u0936\u094b\u0902 \u0915\u0947 \u092c\u0940\u091a)\",\"p\":\"\u092c\u093e\u0907\u0932\u0947\u091f\u0930\u0932\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "binomial",
+        "hindi_meaning": "\u0926\u094d\u0935\u093f\u092a\u0926\u0940 (\u092c\u093e\u0907\u0928\u094b\u092e\u093f\u092f\u0932)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "blue",
+        "hindi_meaning": "\u0928\u0940\u0932\u093e (\u092c\u094d\u0932\u0942)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "board",
+        "hindi_meaning": "\u092c\u094b\u0930\u094d\u0921 (\u092c\u094b\u0930\u094d\u0921)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "book",
+        "hindi_meaning": "\u0915\u093f\u0924\u093e\u092c (\u092c\u0941\u0915)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "borrowing",
+        "hindi_meaning": "{\"h\":\"\u0909\u0927\u093e\u0930 \u0932\u0947\u0928\u093e\",\"p\":\"\u092c\u0949\u0930\u094b\u0907\u0902\u0917\"} (borrowing)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "borrowings",
+        "hindi_meaning": "{\"h\":\"\u0909\u0927\u093e\u0930\",\"p\":\"\u092c\u0949\u0930\u094b\u0907\u0902\u0917\u094d\u0938\"} (borrowings)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "both",
+        "hindi_meaning": "\u0926\u094b\u0928\u094b\u0902 (\u092c\u094b\u0925)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "bottom",
+        "hindi_meaning": "\u0928\u093f\u091a\u0932\u0940 (\u092c\u0949\u091f\u092e)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "boundaries",
+        "hindi_meaning": "{\"h\":\"\u0938\u0940\u092e\u093e\u090f\u0901\",\"p\":\"\u092c\u093e\u0909\u0902\u0921\u094d\u0930\u0940\u091c\u093c\"} (boundaries)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "boundary",
+        "hindi_meaning": "\u092a\u0930\u093f\u0938\u0940\u092e\u093e (\u092c\u093e\u0909\u0902\u0921\u094d\u0930\u0940)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "box",
+        "hindi_meaning": "\u0921\u093f\u092c\u094d\u092c\u093e (\u092c\u0949\u0915\u094d\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "branch",
+        "hindi_meaning": "{\"h\":\"\u0936\u093e\u0916\u093e\",\"p\":\"\u092c\u094d\u0930\u093e\u0902\u091a\"} (branch)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "branches",
+        "hindi_meaning": "{\"h\":\"\u0936\u093e\u0916\u093e\u090f\u0901\",\"p\":\"\u092c\u094d\u0930\u093e\u0902\u091a\u0947\u091c\u093c\"} (branches)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "bread",
+        "hindi_meaning": "{\"h\":\"\u0930\u094b\u091f\u0940/\u092c\u094d\u0930\u0947\u0921\",\"p\":\"\u092c\u094d\u0930\u0947\u0921\"} (bread)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "breadth",
+        "hindi_meaning": "\u091a\u094c\u0921\u093c\u093e\u0908 (\u092c\u094d\u0930\u0947\u0921\u094d\u0925)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "bridge",
+        "hindi_meaning": "{\"h\":\"\u092a\u0941\u0932\",\"p\":\"\u092c\u094d\u0930\u093f\u091c\"} (bridge)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "budget",
+        "hindi_meaning": "{\"h\":\"\u092c\u091c\u091f\",\"p\":\"\u092c\u091c\u091f\"} (budget)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "button",
+        "hindi_meaning": "\u092c\u091f\u0928 (\u092c\u091f\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "buyer",
+        "hindi_meaning": "{\"h\":\"\u0916\u0930\u0940\u0926\u093e\u0930\",\"p\":\"\u092c\u093e\u092f\u0930\"} (buyer)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "by",
+        "hindi_meaning": "\u0938\u0947 (\u092c\u093e\u092f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "cake",
+        "hindi_meaning": "\u0915\u0947\u0915 (\u0915\u0947\u0915)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "calculate",
+        "hindi_meaning": "\u0917\u0923\u0928\u093e \u0915\u0930\u0928\u093e (\u0915\u0948\u0932\u094d\u0915\u0941\u0932\u0947\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "calculation",
+        "hindi_meaning": "\u0917\u0923\u0928\u093e (\u0915\u0948\u0932\u094d\u0915\u0941\u0932\u0947\u0936\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "call",
+        "hindi_meaning": "{\"h\":\"\u0915\u0949\u0932 (\u092b\u093c\u094b\u0928)\",\"p\":\"\u0915\u0949\u0932\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "called",
+        "hindi_meaning": "\u0915\u0939\u0932\u093e\u0924\u093e (\u0915\u0949\u0932\u094d\u0921)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "can",
+        "hindi_meaning": "\u0938\u0915\u0924\u0947 \u0939\u0948 (\u0915\u0948\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "capital",
+        "hindi_meaning": "{\"h\":\"\u092a\u0942\u0901\u091c\u0940\",\"p\":\"\u0915\u0948\u092a\u093f\u091f\u0932\"} (capital)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 3,
+        "updated_at": "2026-11-18T21:48:06.581663+00:00"
+      },
+      {
+        "word": "capitalist",
+        "hindi_meaning": "{\"h\":\"\u092a\u0942\u0901\u091c\u0940\u0935\u093e\u0926\u0940\",\"p\":\"\u0915\u0948\u092a\u093f\u091f\u0932\u093f\u0938\u094d\u091f\"} (capitalist)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "cells",
+        "hindi_meaning": "\u0915\u094b\u0936\u093f\u0915\u093e\u090f\u0901 (\u0938\u0947\u0932\u094d\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "celsius",
+        "hindi_meaning": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "centimetre",
+        "hindi_meaning": "\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930 (\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "centimetres",
+        "hindi_meaning": "\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930 (\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930\u094d\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "centre",
+        "hindi_meaning": "{\"h\":\"\u0915\u0947\u0902\u0926\u094d\u0930\",\"p\":\"\u0938\u0947\u0902\u091f\u0930\"} (centre)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "centres",
+        "hindi_meaning": "{\"h\":\"\u0915\u0947\u0902\u0926\u094d\u0930\",\"p\":\"\u0938\u0947\u0902\u091f\u0930\u094d\u0938\"} (centres)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "chain",
+        "hindi_meaning": "{\"h\":\"\u0936\u094d\u0930\u0943\u0902\u0916\u0932\u093e\",\"p\":\"\u091a\u0947\u0928\"} (chain)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "challenges",
+        "hindi_meaning": "{\"h\":\"\u091a\u0941\u0928\u094c\u0924\u093f\u092f\u093e\u0901\",\"p\":\"\u091a\u0948\u0932\u0947\u0902\u091c\u0947\u091c\u093c\"} (challenges)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "champion",
+        "hindi_meaning": "{\"h\":\"\u091a\u0948\u0902\u092a\u093f\u092f\u0928\",\"p\":\"\u091a\u0948\u0902\u092a\u093f\u092f\u0928\"} (champion)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "change",
+        "hindi_meaning": "\u092c\u0926\u0932\u0928\u0947 (\u091a\u0947\u0902\u091c)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "chapter",
+        "hindi_meaning": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "cheated",
+        "hindi_meaning": "{\"h\":\"\u0920\u0917\u093e \u0939\u0941\u0906 (\u0927\u094b\u0916\u093e)\",\"p\":\"\u091a\u0940\u091f\u0947\u0921\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "check",
+        "hindi_meaning": "\u091c\u093e\u0901\u091a (\u091a\u0947\u0915)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "chemicals",
+        "hindi_meaning": "{\"h\":\"\u0930\u0938\u093e\u092f\u0928\",\"p\":\"\u0915\u0947\u092e\u093f\u0915\u0932\u094d\u0938\"} (chemicals)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "child",
+        "hindi_meaning": "{\"h\":\"\u092c\u091a\u094d\u091a\u093e\",\"p\":\"\u091a\u093e\u0907\u0932\u094d\u0921\"} (child)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "chocolate",
+        "hindi_meaning": "\u091a\u0949\u0915\u0932\u0947\u091f (\u091a\u0949\u0915\u0932\u0947\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "choose",
+        "hindi_meaning": "\u091a\u0941\u0928\u0947\u0902 (\u091a\u0942\u091c\u093c)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "cigarettes",
+        "hindi_meaning": "{\"h\":\"\u0938\u093f\u0917\u0930\u0947\u091f\",\"p\":\"\u0938\u093f\u0917\u0930\u0947\u091f\u094d\u0938\"} (cigarettes)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "circle",
+        "hindi_meaning": "\u0935\u0943\u0924\u094d\u0924 (circle)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "circular",
+        "hindi_meaning": "{\"h\":\"\u091a\u0915\u094d\u0930\u0940\u092f\",\"p\":\"\u0938\u0930\u094d\u0915\u0941\u0932\u0930\"} (circular)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "citizens",
+        "hindi_meaning": "{\"h\":\"\u0928\u093e\u0917\u0930\u093f\u0915\",\"p\":\"\u0938\u093f\u091f\u093f\u091c\u093c\u0928\u094d\u0938\"} (citizens)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "city",
+        "hindi_meaning": "{\"h\":\"\u0936\u0939\u0930\",\"p\":\"\u0938\u093f\u091f\u0940\"} (city)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "click",
+        "hindi_meaning": "\u0915\u094d\u0932\u093f\u0915 (\u0915\u094d\u0932\u093f\u0915)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "clinical",
+        "hindi_meaning": "{\"h\":\"\u091a\u093f\u0915\u093f\u0924\u094d\u0938\u0915\u0940\u092f\",\"p\":\"\u0915\u094d\u0932\u093f\u0928\u093f\u0915\u0932\"} (clinical)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "closed",
+        "hindi_meaning": "\u092c\u0902\u0926 (\u0915\u094d\u0932\u094b\u091c\u093c\u094d\u0921)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "cloth",
+        "hindi_meaning": "\u0915\u092a\u0921\u093c\u093e (\u0915\u094d\u0932\u0949\u0925)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "clothing",
+        "hindi_meaning": "{\"h\":\"\u0915\u092a\u0921\u093c\u0947\",\"p\":\"\u0915\u094d\u0932\u094b\u0926\u093f\u0902\u0917\"} (clothing)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "coach",
+        "hindi_meaning": "{\"h\":\"\u0915\u094b\u091a (\u092a\u094d\u0930\u0936\u093f\u0915\u094d\u0937\u0915)\",\"p\":\"\u0915\u094b\u091a\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "coefficient",
+        "hindi_meaning": "\u0917\u0941\u0923\u093e\u0902\u0915 (\u0915\u094b\u090f\u092b\u093f\u0936\u093f\u090f\u0902\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 5,
+        "updated_at": "2026-11-18T21:48:15.876863+00:00"
+      },
+      {
+        "word": "coefficients",
+        "hindi_meaning": "\u0917\u0941\u0923\u093e\u0902\u0915 (\u0915\u094b\u090f\u092b\u093f\u0936\u093f\u090f\u0902\u091f\u094d\u0938)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "color",
+        "hindi_meaning": "\u0930\u0902\u0917 (\u0915\u0932\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "colour",
+        "hindi_meaning": "\u0930\u0902\u0917 (\u0915\u0932\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "commitments",
+        "hindi_meaning": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u092c\u0926\u094d\u0927\u0924\u093e\u090f\u0901\",\"p\":\"\u0915\u092e\u093f\u091f\u092e\u0947\u0902\u091f\u094d\u0938\"} (commitments)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "common",
+        "hindi_meaning": "\u0938\u093e\u091d\u093e (\u0915\u0949\u092e\u0928)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "communication",
+        "hindi_meaning": "{\"h\":\"\u0938\u0902\u091a\u093e\u0930\",\"p\":\"\u0915\u092e\u094d\u092f\u0941\u0928\u093f\u0915\u0947\u0936\u0928\"} (communication)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "companies",
+        "hindi_meaning": "{\"h\":\"\u0915\u0902\u092a\u0928\u093f\u092f\u093e\u0901\",\"p\":\"\u0915\u0902\u092a\u0928\u0940\u091c\u093c\"} (companies)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "company",
+        "hindi_meaning": "{\"h\":\"\u0915\u0902\u092a\u0928\u0940\",\"p\":\"\u0915\u0902\u092a\u0928\u0940\"} (company)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "compare",
+        "hindi_meaning": "\u0924\u0941\u0932\u0928\u093e (\u0915\u0902\u092a\u0947\u092f\u0930)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "compelled",
+        "hindi_meaning": "{\"h\":\"\u092e\u091c\u092c\u0942\u0930\",\"p\":\"\u0915\u092e\u094d\u092a\u0947\u0932\u094d\u0921\"} (compelled)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "competition",
+        "hindi_meaning": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u093e\",\"p\":\"\u0915\u0949\u092e\u094d\u092a\u093f\u091f\u093f\u0936\u0928\"} (competition)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "competitive",
+        "hindi_meaning": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u0940\",\"p\":\"\u0915\u0949\u092e\u094d\u092a\u093f\u091f\u093f\u091f\u093f\u0935\"} (competitive)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "competitiveness",
+        "hindi_meaning": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u093e\u0924\u094d\u092e\u0915\u0924\u093e\",\"p\":\"\u0915\u0949\u092e\u094d\u092a\u093f\u091f\u093f\u091f\u093f\u0935\u0928\u0947\u0938\"} (competitiveness)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "complaints",
+        "hindi_meaning": "{\"h\":\"\u0936\u093f\u0915\u093e\u092f\u0924\u0947\u0902\",\"p\":\"\u0915\u092e\u094d\u092a\u094d\u0932\u0947\u0902\u091f\u094d\u0938\"} (complaints)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "complete",
+        "hindi_meaning": "\u092a\u0942\u0930\u094d\u0923 (\u0915\u092e\u094d\u092a\u094d\u0932\u0940\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "compliance",
+        "hindi_meaning": "{\"h\":\"\u0905\u0928\u0941\u092a\u093e\u0932\u0928 (\u0928\u093f\u092f\u092e \u092e\u093e\u0928\u0928\u093e)\",\"p\":\"\u0915\u092e\u094d\u092a\u094d\u0932\u093e\u092f\u0902\u0938\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "compost",
+        "hindi_meaning": "\u0916\u093e\u0926",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 5,
+        "updated_at": "2026-11-18T21:48:16.741316+00:00"
+      },
+      {
+        "word": "concentrated",
+        "hindi_meaning": "{\"h\":\"\u0915\u0947\u0902\u0926\u094d\u0930\u093f\u0924 (\u0938\u0940\u092e\u093f\u0924)\",\"p\":\"\u0915\u0949\u0928\u094d\u0938\u0902\u091f\u094d\u0930\u0947\u091f\u0947\u0921\"}",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e (\u0915\u0949\u0928\u094d\u0938\u0947\u092a\u094d\u091f)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_001",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_001 (concept_term_001)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_002",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_002 (concept_term_002)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_003",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_003 (concept_term_003)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_004",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_004 (concept_term_004)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_005",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_005 (concept_term_005)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_006",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_006 (concept_term_006)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_007",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_007 (concept_term_007)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_008",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_008 (concept_term_008)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_009",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_009 (concept_term_009)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_010",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_010 (concept_term_010)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_011",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_011 (concept_term_011)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_012",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_012 (concept_term_012)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_013",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_013 (concept_term_013)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_014",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_014 (concept_term_014)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_015",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_015 (concept_term_015)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_016",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_016 (concept_term_016)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_017",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_017 (concept_term_017)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_018",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_018 (concept_term_018)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_019",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_019 (concept_term_019)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_020",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_020 (concept_term_020)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_021",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_021 (concept_term_021)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_022",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_022 (concept_term_022)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_023",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_023 (concept_term_023)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_024",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_024 (concept_term_024)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_025",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_025 (concept_term_025)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_026",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_026 (concept_term_026)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_027",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_027 (concept_term_027)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_028",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_028 (concept_term_028)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_029",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_029 (concept_term_029)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_030",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_030 (concept_term_030)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_031",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_031 (concept_term_031)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_032",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_032 (concept_term_032)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_033",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_033 (concept_term_033)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_034",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_034 (concept_term_034)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_035",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_035 (concept_term_035)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_036",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_036 (concept_term_036)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_037",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_037 (concept_term_037)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_038",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_038 (concept_term_038)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_039",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_039 (concept_term_039)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_040",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_040 (concept_term_040)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_041",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_041 (concept_term_041)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_042",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_042 (concept_term_042)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_043",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_043 (concept_term_043)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_044",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_044 (concept_term_044)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_045",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_045 (concept_term_045)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_046",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_046 (concept_term_046)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_047",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_047 (concept_term_047)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_048",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_048 (concept_term_048)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_049",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_049 (concept_term_049)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_050",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_050 (concept_term_050)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_051",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_051 (concept_term_051)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_052",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_052 (concept_term_052)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_053",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_053 (concept_term_053)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_054",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_054 (concept_term_054)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_055",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_055 (concept_term_055)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_056",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_056 (concept_term_056)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_057",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_057 (concept_term_057)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
+      },
+      {
+        "word": "concept_term_058",
+        "hindi_meaning": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_058 (concept_term_058)",
+        "domain": "core",
+        "source_chapter_id": "BASELINE_V2",
+        "usage_count": 1,
+        "updated_at": "2026-11-18T21:47:55.245260+00:00"
       }
     ]
   },

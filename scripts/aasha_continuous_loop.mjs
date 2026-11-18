@@ -61,13 +61,15 @@ function assertNonMainBranch(branchName, repoLabel = 'repo') {
   return cleaned;
 }
 
+const PYTHON_PATH_ENV = ['.', 'src', ROOT_DIR, path.join(ROOT_DIR, 'src')].join(path.delimiter);
+
 function runCmd(cmd, cwd = ROOT_DIR, opts = {}) {
   try {
     const stdout = execSync(cmd, {
       cwd,
       encoding: 'utf-8',
       stdio: opts.silent ? 'pipe' : 'inherit',
-      env: { ...process.env, NODE_ENV: 'test', MEMO0_OFFLINE: '1', ALLOW_PAID_GEMINI_FALLBACK: 'false', ...opts.env }
+      env: { ...process.env, PYTHONPATH: PYTHON_PATH_ENV, NODE_ENV: 'test', MEMO0_OFFLINE: '1', ALLOW_PAID_GEMINI_FALLBACK: 'false', ...opts.env }
     });
     return { success: true, stdout: stdout || '', code: 0 };
   } catch (err) {
@@ -87,7 +89,7 @@ function runCmdCapture(cmd, cwd = ROOT_DIR) {
       cwd,
       encoding: 'utf-8',
       stdio: 'pipe',
-      env: { ...process.env, NODE_ENV: 'test', MEMO0_OFFLINE: '1', ALLOW_PAID_GEMINI_FALLBACK: 'false' }
+      env: { ...process.env, PYTHONPATH: PYTHON_PATH_ENV, NODE_ENV: 'test', MEMO0_OFFLINE: '1', ALLOW_PAID_GEMINI_FALLBACK: 'false' }
     }).trim();
   } catch {
     return '';
@@ -112,7 +114,7 @@ async function executeIteration(iterationNumber) {
   console.log(`  Git Branch: ${rootBranch} @ ${rootCommit.slice(0, 7)}`);
 
   const memVerify = runCmd(
-    `PYTHONPATH=src python3 -c "import json; from aasha.orchestrator.phase_a_foundation_hardening import PersistentFourTierMemoryHealthVerifier; print(json.dumps(PersistentFourTierMemoryHealthVerifier.verify_and_heal('.')))"`,
+    `python3 -c "import json; from aasha.orchestrator.phase_a_foundation_hardening import PersistentFourTierMemoryHealthVerifier; print(json.dumps(PersistentFourTierMemoryHealthVerifier.verify_and_heal('.')))"`,
     ROOT_DIR,
     { silent: true }
   );
@@ -122,7 +124,7 @@ async function executeIteration(iterationNumber) {
   if (IS_SWARM_MODE) {
     console.log('  [Hydrogen <-> Argon /swarm Router] Running W0 reconciliation & contract check...');
     const w0Res = runCmd(
-      "PYTHONPATH=.:src python3 -c \"import json; from src.aasha.orchestrator.w0_live_reconciliation import run_w0_live_reconciliation; from src.aasha.orchestrator.hydrogen_argon_swarm_router import HydrogenArgonSwarmRouter; r=HydrogenArgonSwarmRouter(); print(json.dumps({'w0': run_w0_live_reconciliation('.'), 'mode': r.parse_command_mode('/plan /swarm /grill-me')}))\"",
+      "python3 -c \"import json; from src.aasha.orchestrator.w0_live_reconciliation import run_w0_live_reconciliation; from src.aasha.orchestrator.hydrogen_argon_swarm_router import HydrogenArgonSwarmRouter; r=HydrogenArgonSwarmRouter(); print(json.dumps({'w0': run_w0_live_reconciliation('.'), 'mode': r.parse_command_mode('/plan /swarm /grill-me')}))\"",
       ROOT_DIR,
       { silent: false }
     );
@@ -132,7 +134,7 @@ async function executeIteration(iterationNumber) {
   if (IS_16_STAGE_MODE) {
     console.log('  [16-Stage Executive Engineering Loop v2.0] Running Laya + Chief Executive Swarm 16-Stage Lifecycle...');
     const s16Res = runCmd(
-      "PYTHONPATH=.:src python3 -c \"import json; from src.aasha.orchestrator.sixteen_stage_executive_loop import Executive16StageLoopOrchestrator; rep = Executive16StageLoopOrchestrator('.').execute_16_stage_cycle(); open('AASHA_16_STAGE_LAST_EXECUTION_REPORT.json','w').write(json.dumps(rep, indent=2)); print('  [16-Stage Certification]:', rep['CERTIFICATION']['verdict'], '| State:', rep['CERTIFICATION']['task_lifecycle_state'], '| Stages:', len(rep['STAGE_STATUS']))\"",
+      "python3 -c \"import json; from src.aasha.orchestrator.sixteen_stage_executive_loop import Executive16StageLoopOrchestrator; rep = Executive16StageLoopOrchestrator('.').execute_16_stage_cycle(); open('AASHA_16_STAGE_LAST_EXECUTION_REPORT.json','w').write(json.dumps(rep, indent=2)); print('  [16-Stage Certification]:', rep['CERTIFICATION']['verdict'], '| State:', rep['CERTIFICATION']['task_lifecycle_state'], '| Stages:', len(rep['STAGE_STATUS']))\"",
       ROOT_DIR,
       { silent: false }
     );
@@ -146,7 +148,7 @@ async function executeIteration(iterationNumber) {
   // 3. PRIORITIZE, 4. PLAN, 5. HARVEST & 6. BUILD (EXECUTE CHUNK G30)
   console.log(`\n--- [STAGE 3-6/12: EXECUTE CHUNK G30 (TEACHER MISCONCEPTION ANALYTICS, 3-LEVEL SYNTHESIZER & BASE64 BUNDLER)] ---`);
   const g30Exec = runCmd(
-    `PYTHONPATH=.:src python3 -c "import json; from src.aasha.orchestrator.phase_g30_teacher_misconception_analytics_and_full_synthesis_plugin_bundler import execute_chunk_g30_teacher_misconception_and_full_synthesis_bundler; print(json.dumps(execute_chunk_g30_teacher_misconception_and_full_synthesis_bundler('.')))"`,
+    `python3 -c "import json; from src.aasha.orchestrator.phase_g30_teacher_misconception_analytics_and_full_synthesis_plugin_bundler import execute_chunk_g30_teacher_misconception_and_full_synthesis_bundler; print(json.dumps(execute_chunk_g30_teacher_misconception_and_full_synthesis_bundler('.')))"`,
     ROOT_DIR,
     { silent: true }
   );
@@ -162,7 +164,7 @@ async function executeIteration(iterationNumber) {
 
   // Suite 1: All 50 Python Unified Suites (405 Live Assertions / 673 Cumulative Unit Tests)
   const pyTests = runCmd(
-    `PYTHONPATH=.:src python3 -c "import glob, importlib.util, unittest; files = sorted(glob.glob('tests/test_*.py')); total = 0\nfor f in files:\n  spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n  for k, fn in sorted(vars(m).items()):\n    if k.startswith('test_') and callable(fn):\n      fn(); total += 1\n    elif isinstance(fn, type) and issubclass(fn, unittest.TestCase) and fn is not unittest.TestCase:\n      suite = unittest.defaultTestLoader.loadTestsFromTestCase(fn)\n      res = unittest.TextTestRunner(verbosity=0).run(suite)\n      assert res.wasSuccessful(), f'Failed in {f}'\n      total += res.testsRun\nprint(f'Executed {total} unit tests across {len(files)} suites')"`,
+    `python3 -c "import glob, importlib.util, unittest; files = sorted(glob.glob('tests/test_*.py')); total = 0\nfor f in files:\n  spec = importlib.util.spec_from_file_location('m', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n  for k, fn in sorted(vars(m).items()):\n    if k.startswith('test_') and callable(fn):\n      fn(); total += 1\n    elif isinstance(fn, type) and issubclass(fn, unittest.TestCase) and fn is not unittest.TestCase:\n      suite = unittest.defaultTestLoader.loadTestsFromTestCase(fn)\n      res = unittest.TextTestRunner(verbosity=0).run(suite)\n      assert res.wasSuccessful(), f'Failed in {f}'\n      total += res.testsRun\nprint(f'Executed {total} unit tests across {len(files)} suites')"`,
     ROOT_DIR,
     { silent: false }
   );
@@ -288,7 +290,7 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
   if (noopEval.allowCommit) {
     updateVerificationReport(tests, activePlane, nextFocusUnitG31, timestamp, g30Summary, authGate);
     updateChangelog(tests, activePlane, nextFocusUnitG31, timestamp, headShaBefore, g30Summary);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG30ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    runCmd(`python3 -c "${syncG30ToStatePy(headShaBefore).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md CHANGELOG.md VERIFICATION_REPORT.md PHASE_G30_TEACHER_MISCONCEPTION_AND_FULL_SYNTHESIS_BUNDLER_MANIFEST.json',
       ROOT_DIR,
@@ -307,7 +309,7 @@ AsyncLocalIDEBridgeBus.write_local_ide_sync_artifacts('.', json.load(open('IDE_C
       { silent: false }
     );
     finalCommitSha = runCmdCapture('git rev-parse HEAD', ROOT_DIR);
-    runCmd(`PYTHONPATH=src python3 -c "${syncG30ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
+    runCmd(`python3 -c "${syncG30ToStatePy(finalCommitSha).replace(/\n/g, '; ')}"`, ROOT_DIR, { silent: true });
     runCmd(
       'git add PC_ANTIGRAVITY_STATE.json COLAB_ANTIGRAVITY_STATE.json IDE_CLOUD_ASYNC_BUS.json .serena/memories/active_chunk_context.md && git commit --amend --no-edit',
       ROOT_DIR,
@@ -392,7 +394,14 @@ function printSection18Report(info) {
   console.log('======================================================================\n');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isMain = Boolean(
+  process.argv[1] && (
+    path.resolve(process.argv[1]).toLowerCase() === path.resolve(__filename).toLowerCase() ||
+    import.meta.url === `file://${process.argv[1]}`
+  )
+);
+
+if (isMain) {
   executeIteration(1).catch(err => {
     console.error('V3 Continuous Chunk Engine failed:', err);
     process.exit(1);

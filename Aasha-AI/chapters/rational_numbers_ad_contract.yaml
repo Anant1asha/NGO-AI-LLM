@@ -1,0 +1,89 @@
+title: "Rational Numbers — Class 8 (AD Textbook Edition)"
+subject: "Mathematics"
+class: "Class 8"
+textbook_source: "AD Class 8 Mathematics Chapter 1: Rational Numbers (Exact Exercises 1A, 1B, 1C & Prescribed Board Questions)"
+curriculum_framework: "NCERT / NEP-2020 Universal Teaching Language System"
+
+learning_objectives:
+  - objective: "Understand why real-world pricing and measurement necessitate numbers in the form p/q (integers, q != 0) using Seema & Sachin's pen purchase scenario (5 pens for ₹22 -> ₹22/5 = ₹4.40 per pen)."
+    competency: "Conceptual Inception & Rational Number Definition"
+  - objective: "Master the 4 fundamental operations (+, -, *, /) across identical and differing denominators using LCM scaling and cross-cancellation."
+    competency: "Procedural Arithmetic Fluency"
+  - objective: "Comprehensively prove and apply the 5 core algebraic properties: Closure, Commutative, Associative, Distributive, and Identities/Inverses (0, 1)."
+    competency: "Mathematical Logic, Verification & Regrouping"
+  - objective: "Solve 100% of the textbook exercises (Exercise 1A: 30, Exercise 1B: 13, Exercise 1C: 27, and Prescribed Board Solved: 5 = 75 questions total) inside a tiered gamified assessment engine."
+    competency: "Mastery Assessment & Multi-Tier Problem Solving"
+
+nodes_flow:
+  - node_id: "node_1"
+    title: "The Stationery Shop & The Birth of Rational Numbers"
+    hook: "Seema wants 3 pens, Sachin wants 2. Individual cost is ₹5. A wholesale pack of 5 pens costs ₹22. Cost per pen = 22/5 = ₹4.40! Neither whole nor integer: A rational number p/q."
+    theory: "Rational numbers are numbers of the form p/q where p, q are integers and q != 0. Division by zero is undefined. Integers can be expressed as a/1. In standard form, q > 0 and HCF(|p|, q) = 1. The Stationery Shop transaction (₹22 / 5 pens = ₹4.40 per pen) proves why real-world pricing demands rational numbers beyond integers."
+    we_ref: "we_ad_embark"
+    interactive_type: "pen_shop_calculator_and_standard_form"
+
+  - node_id: "node_2"
+    title: "Operations: Addition & Subtraction (Exercise 1A)"
+    hook: "How do we add portions with unequal denominators like -9/7 and 5/8? By finding LCM and equalizing slice sizes!"
+    theory: "Addition with same denominator: (a/b) + (c/b) = (a+c)/b. With different denominators: LCM(b, d) scales fractions into common units. Subtraction of c/d from a/b means a/b + (-c/d). Additive inverse of a/b is -a/b."
+    we_ref: "we_ad_add_sub"
+    interactive_type: "lcm_slice_equalizer"
+
+  - node_id: "node_3"
+    title: "Operations: Multiplication & Division (Exercise 1A)"
+    hook: "Why is division just multiplying by a flipped reciprocal twin? Because dividing means asking how many fractions fit!"
+    theory: "Product of rational numbers = (Product of numerators) / (Product of denominators) = (a*c)/(b*d). Reciprocal of a/b is b/a (product = 1). Division: (a/b) / (c/d) = (a/b) * (d/c). Division by 0 is undefined!"
+    we_ref: "we_ad_mult_div"
+    interactive_type: "reciprocal_balance_flipper"
+
+  - node_id: "node_4"
+    title: "Properties of Addition & Subtraction (Exercise 1B)"
+    hook: "Does changing the order or grouping of sums alter the answer? What about subtraction?"
+    theory: "Closure: Sum and difference of rational numbers are rational. Commutative Property: a/b + c/d = c/d + a/b (subtraction is NOT commutative). Associative Property: (a/b + c/d) + e/f = a/b + (c/d + e/f). Additive identity is 0."
+    we_ref: "we_ad_props_add"
+    interactive_type: "commutative_associative_tile_swapper"
+
+  - node_id: "node_5"
+    title: "Properties of Multiplication & Distributivity (Exercise 1C)"
+    hook: "How does the Distributive Property bridge multiplication across brackets? a/b * (c/d + e/f) = (a/b * c/d) + (a/b * e/f)."
+    theory: "Multiplication is closed, commutative, and associative. Multiplicative identity is 1. Zero property: x * 0 = 0. Distributive Property allows expanding or factoring sums to make mental calculations instant."
+    we_ref: "we_ad_distributive"
+    interactive_type: "distributive_visual_grid"
+
+assessment_suite:
+  total_questions: 75
+  source_breakdown:
+    exercise_1a: 30
+    exercise_1b: 13
+    exercise_1c: 27
+    prescribed_board_solved: 5
+  tiers:
+    tier_1_warmup:
+      title: "Warm-Up Drills (Direct Addition, Subtraction, Commutative Fill & Reciprocal Blanks)"
+      count: 31
+      source_exercises:
+        - "Exercise 1A Q1(a-h) [8 questions]"
+        - "Exercise 1A Q2(a-h) [8 questions]"
+        - "Exercise 1B Q1(a-d) [4 questions]"
+        - "Exercise 1C Q5(a-j) [10 questions]"
+        - "Prescribed Board Solved Q3 [1 question]"
+    tier_2_deep_dive:
+      title: "Deep Dive Challenges (Multiplication, Division, Property Identification & Regrouping)"
+      count: 30
+      source_exercises:
+        - "Exercise 1A Q3(a-f) [6 questions]"
+        - "Exercise 1A Q4(a-f) [6 questions]"
+        - "Exercise 1B Q2(a-d) [4 questions]"
+        - "Exercise 1B Q3(a-d) [4 questions]"
+        - "Exercise 1C Q4(a-f) [6 questions]"
+        - "Prescribed Board Solved Q1(i-iii) [3 questions]"
+        - "Prescribed Board Solved Q2 [1 question]"
+    tier_3_boss:
+      title: "Boss Challenge (Multi-Step Expression Simplification, Algebraic Verifications & Distributivity)"
+      count: 14
+      source_exercises:
+        - "Exercise 1A Q5(a, b) [2 questions]"
+        - "Exercise 1B Q4 [1 question]"
+        - "Exercise 1C Q1(a-d) [4 questions]"
+        - "Exercise 1C Q2(a-d) [4 questions]"
+        - "Exercise 1C Q3(a-c) [3 questions]"
