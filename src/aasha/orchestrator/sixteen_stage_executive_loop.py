@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
+            "NEXT_PRIORITY": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
         }
 
         self.validate_20_field_report(report)

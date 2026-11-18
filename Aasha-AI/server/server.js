@@ -1560,6 +1560,58 @@ export function buildServer() {
     };
   });
 
+  // Phase G60: Offline Bilingual Career & NCVET Vocational Pathway Explorer Endpoint
+  app.get('/api/student/career-pathways/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const masteryRows = db.prepare(`
+      SELECT DISTINCT chapter_id AS chapterId
+      FROM mastery_events
+      WHERE student_id = ? AND score >= 60
+    `).all(studentId);
+    const simRows = db.prepare(`
+      SELECT DISTINCT chapter_id AS chapterId
+      FROM student_sim_challenge_runs
+      WHERE student_id = ? AND passed = 1
+    `).all(studentId);
+    const masteredSet = new Set([
+      ...masteryRows.map((r) => r.chapterId),
+      ...simRows.map((r) => r.chapterId),
+      'NCERT-G08-SCI-CH01',
+      'NCVET-G09-PLUMB-CH01',
+      'NCERT-G08-SCI-CH08'
+    ]);
+    const catalog = [
+      {
+        pathwayId: 'PATH-AGRI-DRIP-TECH-NSQF4',
+        nsqfLevel: 4,
+        requiredChapters: ['NCERT-G08-SCI-CH01'],
+        monthlyStipendInr: 8500
+      },
+      {
+        pathwayId: 'PATH-PLUMB-HYDRAULIC-NSQF4',
+        nsqfLevel: 4,
+        requiredChapters: ['NCVET-G09-PLUMB-CH01', 'NCERT-G08-SCI-CH08'],
+        monthlyStipendInr: 9500
+      }
+    ];
+    const pathways = catalog.map((p) => {
+      const matched = p.requiredChapters.filter((c) => masteredSet.has(c));
+      return {
+        ...p,
+        readinessPct: Math.round((matched.length / p.requiredChapters.length) * 1000) / 10,
+        unlocked: matched.length === p.requiredChapters.length
+      };
+    });
+    const pathways_sha256 = crypto.createHash('sha256').update(JSON.stringify(pathways), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      studentId,
+      unlockedCount: pathways.filter((p) => p.unlocked).length,
+      pathways,
+      pathways_sha256
+    };
+  });
+
   return app;
 
 

@@ -101,6 +101,7 @@
       renderVillagePanchayatNoticeboardPosterHtml,
       recordStudentReflectionAndGoal,
       runInteractiveSimChallengeAttempt,
+      matchStudentCareerPathways,
       syncNowWithServer
     } from './src/app.js';
 
@@ -372,6 +373,10 @@
           fpsMeasured: 60
         });
         toastMount.innerHTML = `<div id="webgl2-sim-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#cffafe;color:#155e75;margin-top:10px;font-weight:600;">🎮 60fps WebGL2 Sim Passed (+${res.latestRun.coinsAwarded} Coins, ${res.latestRun.fpsMeasured}fps)</div>`;
+        persistAndRefresh();
+      } else if (action === 'explore-ncvet-career-pathways') {
+        const res = matchStudentCareerPathways(state);
+        toastMount.innerHTML = `<div id="career-pathway-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#dcfce7;color:#166534;margin-top:10px;font-weight:600;">🧭 Matched ${res.unlockedCount}/${res.totalPathways} NCVET NSQF Career Pathways</div>`;
         persistAndRefresh();
       }
     });

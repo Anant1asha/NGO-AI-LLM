@@ -60,7 +60,10 @@ import {
   renderStudentReflectionAndGoalPlannerCard,
   getInteractiveWebGl2ChallengePresets,
   runInteractiveSimChallengeAttempt,
-  renderInteractiveWebGl2SandboxCard
+  renderInteractiveWebGl2SandboxCard,
+  getNcvetCareerPathwayCatalog,
+  matchStudentCareerPathways,
+  renderNcvetCareerPathwayExplorerCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -817,6 +820,25 @@ try {
   const getSimBody = await getSimRes.json();
   assert.equal(getSimBody.count, 1);
   assert.equal(getSimBody.runs_sha256.length, 64);
+
+  // Verify G60 Offline Bilingual Career & NCVET Vocational Pathway Explorer
+  const careerCatalog = getNcvetCareerPathwayCatalog();
+  assert.equal(careerCatalog.length, 4);
+  const careerMatch = matchStudentCareerPathways({
+    studentId: 'STU-GN-101',
+    masteredChapters: ['NCERT-G08-SCI-CH01', 'NCVET-G09-PLUMB-CH01', 'NCERT-G08-SCI-CH08']
+  });
+  assert.equal(careerMatch.ok, true);
+  assert.ok(careerMatch.unlockedCount >= 2);
+  const careerCardHtml = renderNcvetCareerPathwayExplorerCard({ studentId: 'STU-GN-101' });
+  assert.ok(careerCardHtml.includes('id="ncvet-career-pathway-explorer-card"'));
+
+  const getCareerRes = await fetch(`${baseUrl}/api/student/career-pathways/STU-GN-101`);
+  assert.equal(getCareerRes.status, 200);
+  const getCareerBody = await getCareerRes.json();
+  assert.equal(getCareerBody.status, 'ok');
+  assert.ok(getCareerBody.unlockedCount >= 2);
+  assert.equal(getCareerBody.pathways_sha256.length, 64);
 } finally {
   await app.close();
 }

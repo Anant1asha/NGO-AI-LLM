@@ -137,6 +137,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderVillagePanchayatPosterCard(cohortSummary)}
       ${renderStudentReflectionAndGoalPlannerCard(cohortSummary)}
       ${renderInteractiveWebGl2SandboxCard(cohortSummary)}
+      ${renderNcvetCareerPathwayExplorerCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2258,6 +2259,94 @@ export function renderInteractiveWebGl2SandboxCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#164e63;">
         Presets: <strong>${presets.length} High-Fidelity 60fps Labs</strong> • Completed: <strong>${passedCount} / ${runs.length} Runs</strong> • Hardware: <code>4GB+ RAM 5G WebGL2</code> • Cap: <strong>✅ &lt; 20 MiB / Child HTML</strong>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G60: Offline Bilingual Career & NCVET Vocational Pathway Explorer
+export function getNcvetCareerPathwayCatalog() {
+  return [
+    {
+      pathwayId: "PATH-AGRI-DRIP-TECH-NSQF4",
+      nsqfLevel: 4,
+      titleBilingual: "सूक्ष्म सिंचाई और स्मार्ट कृषि तकनीशियन / Micro-Irrigation & Precision Agri Technician (NSQF-4)",
+      requiredChapters: ["NCERT-G08-SCI-CH01"],
+      monthlyStipendInr: 8500,
+      careerTrack: "NCVET Agriculture & Rural Enterprise"
+    },
+    {
+      pathwayId: "PATH-PLUMB-HYDRAULIC-NSQF4",
+      nsqfLevel: 4,
+      titleBilingual: "प्रमाणित प्लंबिंग और हाइड्रोलिक सिस्टम तकनीशियन / Certified Plumbing & Hydraulic Technician (NSQF-4)",
+      requiredChapters: ["NCVET-G09-PLUMB-CH01", "NCERT-G08-SCI-CH08"],
+      monthlyStipendInr: 9500,
+      careerTrack: "NCVET Construction & Water Systems"
+    },
+    {
+      pathwayId: "PATH-MATH-ACCOUNTING-NSQF4",
+      nsqfLevel: 4,
+      titleBilingual: "ग्रामीण डिजिटल लेखा और सूक्ष्म-वित्त सहायक / Rural Digital Accounting & Micro-Finance Associate (NSQF-4)",
+      requiredChapters: ["NCERT-G06-MATH-CH07", "NCERT-G07-MATH-CH01"],
+      monthlyStipendInr: 9000,
+      careerTrack: "BFSI & Cooperative Accounting"
+    },
+    {
+      pathwayId: "PATH-STEM-LAB-APPRENTICE-NSQF5",
+      nsqfLevel: 5,
+      titleBilingual: "जूनियर STEM सिमुलेशन और प्रयोगशाला सहायक / Junior STEM Simulation & Lab Apprentice (NSQF-5)",
+      requiredChapters: ["NCERT-G08-SCI-CH08", "NCERT-G06-MATH-CH07"],
+      monthlyStipendInr: 11000,
+      careerTrack: "ITI & Polytechnic STEM Track"
+    }
+  ];
+}
+
+export function matchStudentCareerPathways(state = {}) {
+  const studentId = String(state.studentId || "STU-DEFAULT").trim();
+  const masteredSet = new Set(Array.isArray(state.masteredChapters) ? state.masteredChapters : ["NCERT-G08-SCI-CH01", "NCVET-G09-PLUMB-CH01", "NCERT-G08-SCI-CH08"]);
+  if (Array.isArray(state.simChallengeRuns)) {
+    for (const r of state.simChallengeRuns) {
+      if (r && r.passed && r.chapterId) masteredSet.add(r.chapterId);
+    }
+  }
+  const catalog = getNcvetCareerPathwayCatalog();
+  const pathways = catalog.map((item) => {
+    const matched = item.requiredChapters.filter((ch) => masteredSet.has(ch));
+    const readinessPct = Math.round((matched.length / item.requiredChapters.length) * 1000) / 10;
+    return {
+      ...item,
+      matchedChapters: matched,
+      readinessPct,
+      unlocked: matched.length === item.requiredChapters.length
+    };
+  });
+  const unlockedCount = pathways.filter((p) => p.unlocked).length;
+  return {
+    ok: true,
+    studentId,
+    masteredChaptersCount: masteredSet.size,
+    unlockedCount,
+    totalPathways: pathways.length,
+    pathways
+  };
+}
+
+export function renderNcvetCareerPathwayExplorerCard(stateOrSummary = {}) {
+  const res = matchStudentCareerPathways(stateOrSummary);
+  return `
+    <section id="ncvet-career-pathway-explorer-card" aria-label="Bilingual Career and NCVET Vocational Pathway Explorer"
+             style="padding:14px;border-radius:12px;background:#f0fdf4;border:1px solid #bbf7d0;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#166534;">🧭 कौशल और करियर मार्गदर्शिका / NCVET Vocational &amp; Career Pathway Explorer (G60)</h3>
+        <button type="button" id="btn-explore-career-pathways" data-action="explore-ncvet-career-pathways"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#15803d;color:#ffffff;font-weight:700;cursor:pointer;">
+          🎓 Match NCVET &amp; ITI Career Tracks / करियर ट्रैक देखें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#14532d;">
+        Unlocked Tracks: <strong>${res.unlockedCount} / ${res.totalPathways} NSQF Level 4–5 Pathways</strong> • Mastered Inputs: <strong>${res.masteredChaptersCount} Chapters</strong> • Offline-First: <code>0 External URLs</code>
       </p>
     </section>
   `.trim();

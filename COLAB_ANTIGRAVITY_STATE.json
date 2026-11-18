@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
+  "next_focus_unit": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -68,8 +68,8 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "last_updated_utc": "2026-11-18T02:57:42Z",
-  "active_focus_unit": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
-  "last_completed_focus_unit": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
-  "sw_merkle_root": "21b95a35ac32302681e189726455c3b5dd904e8c7498cd0adc6ffd536381cc47"
+  "last_updated_utc": "2026-11-18T06:44:23Z",
+  "active_focus_unit": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
+  "last_completed_focus_unit": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
+  "sw_merkle_root": "ba2f800cb1075c4011222a615076f6cc0f36bb8b163c769f820fcfc31f538f06"
 }
