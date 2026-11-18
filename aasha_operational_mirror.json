@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-18T22:20:38.353826+00:00",
+  "generated_at_utc": "2026-11-18T22:31:06.171943+00:00",
   "cost_usd": 0.0,
   "purpose": "Free Plane 1/2 mirror of local operational DB & state while Windows PC is offline",
   "git_head_sha": "073decaf58411b7403e1470a8b3ae5fe0fe34e09",
   "lamport_epoch": 70,
-  "operational_db_sha256": "bc013b67c770b02cc816731c0c3cca79909f270a4e14dd14b185a2ed303b24de",
+  "operational_db_sha256": "05675f46477b4bde6395604203f871acd016b4b98f31146c3bd96db0bbf6dac3",
   "operational_db_tables": {
     "memory_nodes": [
       {
@@ -22,7 +22,7 @@
         "category": "simulation",
         "hook_name": "phet_sim (equality, mixed_numbers)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "mechanic_id": "MECH-CANVAS-TACTILE",
@@ -30,7 +30,7 @@
         "category": "interactive_canvas",
         "hook_name": "ix_pizza / ix_bar / ix_area / numline / add_merge / division",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "mechanic_id": "MECH-CRICKET-INNINGS",
@@ -38,7 +38,7 @@
         "category": "gamified_assessment",
         "hook_name": "cricket_innings (overs, wickets, WebAudio, streak)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "mechanic_id": "MECH-ARENA-ROUNDS",
@@ -46,7 +46,7 @@
         "category": "gamified_assessment",
         "hook_name": "arena_rounds (multi-mode challenge + badges + TTS)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "mechanic_id": "MECH-LPG-GLOSSARY-SAN",
@@ -54,7 +54,7 @@
         "category": "bilingual_lle",
         "hook_name": "showWord() + 1256 WM entries (confirm() sanitized to inline modal)",
         "qa_rule4_safe": "true",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       }
     ],
     "open_source_foundations": [
@@ -64,7 +64,7 @@
         "license": "MIT / LGPL",
         "url": "https://github.com/jsxgraph/jsxgraph",
         "capability": "Zero-dependency interactive geometry, function plotting, and multi-touch Canvas/SVG",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "foundation_id": "OS-ALGEOBRA",
@@ -72,7 +72,7 @@
         "license": "MIT",
         "url": "https://github.com/sibaku/algeobra",
         "capability": "Dynamic geometry primitives rendered to offline HTML5 Canvas/SVG",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "foundation_id": "OS-ECHARTS",
@@ -80,7 +80,7 @@
         "license": "Apache-2.0",
         "url": "https://strapi.io/blog/chart-libraries",
         "capability": "Selective Canvas/SVG charting (~135 KB gzipped) for Data Handling & teacher analytics",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "foundation_id": "OS-CYTOSCAPE",
@@ -88,7 +88,7 @@
         "license": "MIT",
         "url": "https://js.cytoscape.org/",
         "capability": "Pure JS zero-dependency graph & TLN concept-map visualization with touch support",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "foundation_id": "OS-CANVAS-CONFETTI",
@@ -96,7 +96,7 @@
         "license": "ISC",
         "url": "https://github.com/catdad/canvas-confetti",
         "capability": "Lightweight offline celebration confetti bursts for TEAS mastery milestones",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "foundation_id": "OS-SQLJS",
@@ -104,7 +104,7 @@
         "license": "MIT / Public Domain",
         "url": "https://github.com/sql-js/sql.js/",
         "capability": "Offline in-browser SQLite querying for teas_content.db.gz in PWA/HTML5",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "foundation_id": "OS-PHET-OFFLINE",
@@ -112,7 +112,7 @@
         "license": "CC BY / CC BY-NC 4.0 (NGO Educational)",
         "url": "https://phet.colorado.edu/en/simulations/energy-skate-park",
         "capability": "Single-file offline HTML5 science & math simulations with telemetry disabled",
-        "verified_at": "2026-11-18T22:14:01.768169+00:00"
+        "verified_at": "2026-11-18T22:25:22.927190+00:00"
       }
     ],
     "build_cache_metrics": [
@@ -1618,6 +1618,24 @@
         "mechanics_available": 5,
         "os_foundations_available": 7,
         "created_at": "2026-11-18T22:14:01.768169+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-2ddc7f96",
+        "phase": "G31",
+        "wm_available": 1201,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-18T22:22:39.913827+00:00"
+      },
+      {
+        "build_id": "BUILD-G31-f20b88f8",
+        "phase": "G31",
+        "wm_available": 1201,
+        "conn_available": 85,
+        "mechanics_available": 5,
+        "os_foundations_available": 7,
+        "created_at": "2026-11-18T22:25:22.927190+00:00"
       }
     ],
     "codebase_sources": [
@@ -2485,8 +2503,8 @@
         "hindi_meaning": "\u0935\u093e\u092f\u0941\u0917\u0924\u093f\u0915\u0940",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 6,
-        "updated_at": "2026-11-18T22:19:44.824724+00:00"
+        "usage_count": 7,
+        "updated_at": "2026-11-18T22:30:21.137817+00:00"
       },
       {
         "word": "aerospace",
@@ -2533,8 +2551,8 @@
         "hindi_meaning": "\u0915\u0943\u0937\u093f-\u092a\u094d\u0930\u0927\u093e\u0928",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 16,
-        "updated_at": "2026-11-18T22:20:03.670708+00:00"
+        "usage_count": 19,
+        "updated_at": "2026-11-18T22:30:35.105211+00:00"
       },
       {
         "word": "agreement",
@@ -2717,8 +2735,8 @@
         "hindi_meaning": "\u0927\u092e\u0928\u0940",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 11,
-        "updated_at": "2026-11-18T22:20:02.629574+00:00"
+        "usage_count": 13,
+        "updated_at": "2026-11-18T22:30:34.560034+00:00"
       },
       {
         "word": "assessment",
@@ -2829,8 +2847,8 @@
         "hindi_meaning": "\u092c\u0948\u0930\u094b\u092e\u0940\u091f\u0930",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 6,
-        "updated_at": "2026-11-18T22:19:44.396672+00:00"
+        "usage_count": 7,
+        "updated_at": "2026-11-18T22:30:20.772644+00:00"
       },
       {
         "word": "barrier",
@@ -3117,8 +3135,8 @@
         "hindi_meaning": "{\"h\":\"\u092a\u0942\u0901\u091c\u0940\",\"p\":\"\u0915\u0948\u092a\u093f\u091f\u0932\"} (capital)",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 6,
-        "updated_at": "2026-11-18T22:19:45.344370+00:00"
+        "usage_count": 7,
+        "updated_at": "2026-11-18T22:30:21.367355+00:00"
       },
       {
         "word": "capitalist",
@@ -3357,8 +3375,8 @@
         "hindi_meaning": "\u0917\u0941\u0923\u093e\u0902\u0915 (\u0915\u094b\u090f\u092b\u093f\u0936\u093f\u090f\u0902\u091f)",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 11,
-        "updated_at": "2026-11-18T22:19:57.621026+00:00"
+        "usage_count": 13,
+        "updated_at": "2026-11-18T22:30:30.512788+00:00"
       },
       {
         "word": "coefficients",
@@ -3493,8 +3511,8 @@
         "hindi_meaning": "\u0916\u093e\u0926",
         "domain": "core",
         "source_chapter_id": "BASELINE_V2",
-        "usage_count": 11,
-        "updated_at": "2026-11-18T22:19:58.951442+00:00"
+        "usage_count": 13,
+        "updated_at": "2026-11-18T22:30:31.327770+00:00"
       },
       {
         "word": "concentrated",
@@ -3979,1404 +3997,1404 @@
     ],
     "lle_vocabulary": [
       {
-        "term_en": "fraction",
-        "meaning_hi": "\u092d\u093f\u0928\u094d\u0928 (fraction)",
+        "term_en": "100",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "fractions",
-        "meaning_hi": "\u092d\u093f\u0928\u094d\u0928 (fractions)",
+        "term_en": "a",
+        "meaning_hi": "\u090f\u0915 (\u090f)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "numerator",
-        "meaning_hi": "\u0905\u0902\u0936 (numerator)",
+        "term_en": "abroad",
+        "meaning_hi": "{\"h\":\"\u0935\u093f\u0926\u0947\u0936 \u092e\u0947\u0902\",\"p\":\"\u0905\u092c\u094d\u0930\u0949\u0921\"} (abroad)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "denominator",
-        "meaning_hi": "\u0939\u0930 (denominator)",
+        "term_en": "access",
+        "meaning_hi": "{\"h\":\"\u092a\u0939\u0941\u0901\u091a\",\"p\":\"\u090f\u0915\u094d\u0938\u0947\u0938\"} (access)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "equivalent",
-        "meaning_hi": "\u0938\u092e\u0924\u0941\u0932\u094d\u092f (equivalent)",
+        "term_en": "account",
+        "meaning_hi": "{\"h\":\"\u0916\u093e\u0924\u093e\",\"p\":\"\u0905\u0915\u093e\u0909\u0902\u091f\"} (account)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "perimeter",
-        "meaning_hi": "\u092a\u0930\u093f\u092e\u093e\u092a (perimeter)",
+        "term_en": "accountable",
+        "meaning_hi": "{\"h\":\"\u091c\u0935\u093e\u092c\u0926\u0947\u0939\",\"p\":\"\u0905\u0915\u093e\u0909\u0902\u091f\u0947\u092c\u0932\"} (accountable)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "area",
-        "meaning_hi": "\u0915\u094d\u0937\u0947\u0924\u094d\u0930\u092b\u0932 (area)",
+        "term_en": "accountancy",
+        "meaning_hi": "{\"h\":\"\u0932\u0947\u0916\u093e\u0936\u093e\u0938\u0928\",\"p\":\"\u0905\u0915\u093e\u0909\u0902\u091f\u0947\u0902\u0938\u0940\"} (accountancy)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "polynomial",
-        "meaning_hi": "\u092c\u0939\u0941\u092a\u0926 (polynomial)",
+        "term_en": "add",
+        "meaning_hi": "\u091c\u094b\u0921\u093c\u0928\u093e (\u0910\u0921)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "percentage",
-        "meaning_hi": "\u092a\u094d\u0930\u0924\u093f\u0936\u0924 (percentage)",
+        "term_en": "added",
+        "meaning_hi": "{\"h\":\"\u091c\u094b\u0921\u093c\u093e \u0917\u092f\u093e\",\"p\":\"\u0910\u0921\u0947\u0921\"} (added)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "ratio",
-        "meaning_hi": "\u0905\u0928\u0941\u092a\u093e\u0924 (ratio)",
+        "term_en": "addition",
+        "meaning_hi": "\u091c\u094b\u0921\u093c (\u0905\u0921\u093f\u0936\u0928)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "proportion",
-        "meaning_hi": "\u0938\u092e\u093e\u0928\u0941\u092a\u093e\u0924 (proportion)",
+        "term_en": "addressed",
+        "meaning_hi": "{\"h\":\"\u0938\u0941\u0932\u091d\u093e\u092f\u093e (\u0927\u094d\u092f\u093e\u0928 \u0926\u093f\u092f\u093e)\",\"p\":\"\u0910\u0921\u094d\u0930\u0947\u0938\u094d\u0921\"}",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "equation",
-        "meaning_hi": "\u0938\u092e\u0940\u0915\u0930\u0923 (equation)",
+        "term_en": "adversely",
+        "meaning_hi": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0915\u0942\u0932 \u0930\u0942\u092a \u0938\u0947 (\u0928\u0941\u0915\u0938\u093e\u0928\u0926\u0947\u0939)\",\"p\":\"\u0910\u0921\u0935\u0930\u094d\u0938\u0932\u0940\"}",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "variable",
-        "meaning_hi": "\u091a\u0930 (variable)",
+        "term_en": "advocating",
+        "meaning_hi": "{\"h\":\"\u092a\u0948\u0930\u0935\u0940 \u0915\u0930\u0928\u093e (\u0938\u092e\u0930\u094d\u0925\u0928)\",\"p\":\"\u0910\u0921\u0935\u094b\u0915\u0947\u091f\u093f\u0902\u0917\"}",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "constant",
-        "meaning_hi": "\u0905\u091a\u0930 (constant)",
+        "term_en": "aerodynamics",
+        "meaning_hi": "\u0935\u093e\u092f\u0941\u0917\u0924\u093f\u0915\u0940",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "integer",
-        "meaning_hi": "\u092a\u0942\u0930\u094d\u0923\u093e\u0902\u0915 (integer)",
+        "term_en": "aerospace",
+        "meaning_hi": "{\"h\":\"\u0935\u093e\u092f\u0941-\u0905\u0902\u0924\u0930\u093f\u0915\u094d\u0937\",\"p\":\"\u090f\u092f\u0930\u094b\u0938\u094d\u092a\u0947\u0938\"} (aerospace)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "triangle",
-        "meaning_hi": "\u0924\u094d\u0930\u093f\u092d\u0941\u091c (triangle)",
+        "term_en": "again",
+        "meaning_hi": "\u092b\u093f\u0930 \u0938\u0947 (\u0905\u0917\u0947\u0928)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "rectangle",
-        "meaning_hi": "\u0906\u092f\u0924 (rectangle)",
+        "term_en": "aggravated",
+        "meaning_hi": "{\"h\":\"\u0914\u0930 \u092c\u093f\u0917\u093e\u0921\u093c\u093e\",\"p\":\"\u0910\u0917\u094d\u0930\u0935\u0947\u091f\u0947\u0921\"} (aggravated)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "square",
-        "meaning_hi": "\u0935\u0930\u094d\u0917 (square)",
+        "term_en": "aggregate",
+        "meaning_hi": "{\"h\":\"\u0938\u092e\u0917\u094d\u0930 (\u0915\u0941\u0932 \u091c\u094b\u0921\u093c)\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0917\u0947\u091f\"}",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
-        "term_en": "circle",
-        "meaning_hi": "\u0935\u0943\u0924\u094d\u0924 (circle)",
+        "term_en": "aggregates",
+        "meaning_hi": "{\"h\":\"\u0938\u092e\u0917\u094d\u0930 \u0930\u093e\u0936\u093f\u092f\u093e\u0901\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0917\u0947\u091f\u094d\u0938\"} (aggregates)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "agrarian",
+        "meaning_hi": "\u0915\u0943\u0937\u093f-\u092a\u094d\u0930\u0927\u093e\u0928",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "agreement",
+        "meaning_hi": "{\"h\":\"\u0938\u092e\u091d\u094c\u0924\u093e\",\"p\":\"\u0905\u0917\u094d\u0930\u0940\u092e\u0947\u0902\u091f\"} (agreement)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "agreements",
+        "meaning_hi": "{\"h\":\"\u0938\u092e\u091d\u094c\u0924\u0947\",\"p\":\"\u0905\u0917\u094d\u0930\u0940\u092e\u0947\u0902\u091f\u094d\u0938\"} (agreements)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "agricultural",
+        "meaning_hi": "{\"h\":\"\u0915\u0943\u0937\u093f \u0938\u0902\u092c\u0902\u0927\u0940\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0915\u0932\u094d\u091a\u0930\u0932\"} (agricultural)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "agriculture",
+        "meaning_hi": "{\"h\":\"\u0915\u0943\u0937\u093f\",\"p\":\"\u0910\u0917\u094d\u0930\u093f\u0915\u0932\u094d\u091a\u0930\"} (agriculture)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "alcohol",
+        "meaning_hi": "{\"h\":\"\u0936\u0930\u093e\u092c\",\"p\":\"\u0910\u0932\u094d\u0915\u094b\u0939\u0949\u0932\"} (alcohol)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "algebraic",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "all",
+        "meaning_hi": "\u0938\u092d\u0940 (\u0911\u0932)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "allege",
+        "meaning_hi": "{\"h\":\"\u0906\u0930\u094b\u092a \u0932\u0917\u093e\u0928\u093e\",\"p\":\"\u0905\u0932\u0947\u091c\"} (allege)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "alpha",
+        "meaning_hi": "\u0905\u0932\u094d\u092b\u093e (\u0905\u0932\u094d\u092b\u093e)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "also",
+        "meaning_hi": "\u092d\u0940 (\u0911\u0932\u094d\u0938\u094b)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "always",
+        "meaning_hi": "\u0939\u092e\u0947\u0936\u093e (\u0911\u0932\u094d\u0935\u0947\u091c\u093c)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "amount",
+        "meaning_hi": "\u092e\u093e\u0924\u094d\u0930\u093e (\u0905\u092e\u093e\u0909\u0902\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "and",
+        "meaning_hi": "\u0914\u0930 (\u0910\u0902\u0921)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "angle",
         "meaning_hi": "\u0915\u094b\u0923 (angle)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "answer",
+        "meaning_hi": "\u0909\u0924\u094d\u0924\u0930 (\u0906\u0902\u0938\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "application",
+        "meaning_hi": "\u0905\u0928\u0941\u092a\u094d\u0930\u092f\u094b\u0917 (\u090f\u092a\u094d\u0932\u093f\u0915\u0947\u0936\u0928)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "applied",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "appraisal",
+        "meaning_hi": "{\"h\":\"\u092e\u0942\u0932\u094d\u092f\u093e\u0902\u0915\u0928\",\"p\":\"\u0905\u092a\u094d\u0930\u0947\u091c\u093c\u0932\"} (appraisal)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "approximate",
+        "meaning_hi": "\u0932\u0917\u092d\u0917 (\u0905\u092a\u094d\u0930\u0949\u0915\u094d\u0938\u093f\u092e\u0947\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "arbitrary",
+        "meaning_hi": "{\"h\":\"\u092e\u0928\u092e\u093e\u0928\u093e\",\"p\":\"\u0906\u0930\u094d\u092c\u093f\u091f\u094d\u0930\u0947\u0930\u0940\"} (arbitrary)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "are",
+        "meaning_hi": "\u0939\u0948\u0902 (\u0906\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "area",
+        "meaning_hi": "\u0915\u094d\u0937\u0947\u0924\u094d\u0930\u092b\u0932 (area)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "around",
+        "meaning_hi": "\u091a\u093e\u0930\u094b\u0902 \u0913\u0930 (\u0905\u0930\u093e\u0909\u0902\u0921)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "artery",
+        "meaning_hi": "\u0927\u092e\u0928\u0940",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "assessment",
+        "meaning_hi": "{\"h\":\"\u092e\u0942\u0932\u094d\u092f\u093e\u0902\u0915\u0928\",\"p\":\"\u0905\u0938\u0947\u0938\u092e\u0947\u0902\u091f\"} (assessment)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "assets",
+        "meaning_hi": "{\"h\":\"\u0938\u0902\u092a\u0924\u094d\u0924\u093f\u092f\u093e\u0901\",\"p\":\"\u0910\u0938\u0947\u091f\u094d\u0938\"} (assets)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "ate",
+        "meaning_hi": "\u0916\u093e\u092f\u093e (\u090f\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "atomic",
+        "meaning_hi": "{\"h\":\"\u092a\u0930\u092e\u093e\u0923\u0941\",\"p\":\"\u0910\u091f\u0949\u092e\u093f\u0915\"} (atomic)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "autonomy",
+        "meaning_hi": "{\"h\":\"\u0938\u094d\u0935\u093e\u092f\u0924\u094d\u0924\u0924\u093e (\u0906\u091c\u093c\u093e\u0926\u0940)\",\"p\":\"\u0911\u091f\u094b\u0928\u0949\u092e\u0940\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "available",
+        "meaning_hi": "{\"h\":\"\u0909\u092a\u0932\u092c\u094d\u0927\",\"p\":\"\u0905\u0935\u0947\u0932\u0947\u092c\u0932\"} (available)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "axis",
+        "meaning_hi": "\u0905\u0915\u094d\u0937 (\u090f\u0915\u094d\u0938\u093f\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "back",
+        "meaning_hi": "\u092a\u0940\u091b\u0947 (\u092c\u0948\u0915)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "baker",
+        "meaning_hi": "{\"h\":\"\u092c\u0947\u0915\u0930 (\u0930\u094b\u091f\u0940 \u092c\u0928\u093e\u0928\u0947 \u0935\u093e\u0932\u093e)\",\"p\":\"\u092c\u0947\u0915\u0930\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "balances",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "bank",
+        "meaning_hi": "{\"h\":\"\u092c\u0948\u0902\u0915\",\"p\":\"\u092c\u0948\u0902\u0915\"} (bank)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "banking",
+        "meaning_hi": "{\"h\":\"\u092c\u0948\u0902\u0915\u093f\u0902\u0917\",\"p\":\"\u092c\u0948\u0902\u0915\u093f\u0902\u0917\"} (banking)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "banks",
+        "meaning_hi": "{\"h\":\"\u092c\u0948\u0902\u0915\",\"p\":\"\u092c\u0948\u0902\u0915\u094d\u0938\"} (banks)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "bar",
+        "meaning_hi": "\u092a\u091f\u094d\u091f\u0940 (\u092c\u093e\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "barometer",
+        "meaning_hi": "\u092c\u0948\u0930\u094b\u092e\u0940\u091f\u0930",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "barrier",
+        "meaning_hi": "{\"h\":\"\u092c\u093e\u0927\u093e\",\"p\":\"\u092c\u0948\u0930\u093f\u092f\u0930\"} (barrier)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "barriers",
+        "meaning_hi": "{\"h\":\"\u092c\u093e\u0927\u093e\u090f\u0901\",\"p\":\"\u092c\u0948\u0930\u093f\u092f\u0930\u094d\u0938\"} (barriers)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "barter",
+        "meaning_hi": "{\"h\":\"\u0935\u0938\u094d\u0924\u0941 \u0935\u093f\u0928\u093f\u092e\u092f\",\"p\":\"\u092c\u093e\u0930\u094d\u091f\u0930\"} (barter)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "base",
+        "meaning_hi": "\u0906\u0927\u093e\u0930 (\u092c\u0947\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "because",
+        "meaning_hi": "\u0915\u094d\u092f\u094b\u0902\u0915\u093f (\u092c\u093f\u0915\u0949\u091c\u093c)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "becomes",
+        "meaning_hi": "\u092c\u0928\u0924\u093e (\u092c\u093f\u0915\u092e\u094d\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "begins",
+        "meaning_hi": "{\"h\":\"\u0936\u0941\u0930\u0942 \u0939\u094b\u0924\u0940 \u0939\u0948\",\"p\":\"\u092c\u093f\u0917\u093f\u0928\u094d\u0938\"} (begins)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "beta",
+        "meaning_hi": "\u092c\u0940\u091f\u093e (\u092c\u0940\u091f\u093e)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "bilateral",
+        "meaning_hi": "{\"h\":\"\u0926\u094d\u0935\u093f\u092a\u0915\u094d\u0937\u0940\u092f (\u0926\u094b \u0926\u0947\u0936\u094b\u0902 \u0915\u0947 \u092c\u0940\u091a)\",\"p\":\"\u092c\u093e\u0907\u0932\u0947\u091f\u0930\u0932\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "binomial",
+        "meaning_hi": "\u0926\u094d\u0935\u093f\u092a\u0926\u0940 (\u092c\u093e\u0907\u0928\u094b\u092e\u093f\u092f\u0932)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "blue",
+        "meaning_hi": "\u0928\u0940\u0932\u093e (\u092c\u094d\u0932\u0942)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "board",
+        "meaning_hi": "\u092c\u094b\u0930\u094d\u0921 (\u092c\u094b\u0930\u094d\u0921)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "book",
+        "meaning_hi": "\u0915\u093f\u0924\u093e\u092c (\u092c\u0941\u0915)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "borrowing",
+        "meaning_hi": "{\"h\":\"\u0909\u0927\u093e\u0930 \u0932\u0947\u0928\u093e\",\"p\":\"\u092c\u0949\u0930\u094b\u0907\u0902\u0917\"} (borrowing)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "borrowings",
+        "meaning_hi": "{\"h\":\"\u0909\u0927\u093e\u0930\",\"p\":\"\u092c\u0949\u0930\u094b\u0907\u0902\u0917\u094d\u0938\"} (borrowings)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "both",
+        "meaning_hi": "\u0926\u094b\u0928\u094b\u0902 (\u092c\u094b\u0925)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "bottom",
+        "meaning_hi": "\u0928\u093f\u091a\u0932\u0940 (\u092c\u0949\u091f\u092e)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "boundaries",
+        "meaning_hi": "{\"h\":\"\u0938\u0940\u092e\u093e\u090f\u0901\",\"p\":\"\u092c\u093e\u0909\u0902\u0921\u094d\u0930\u0940\u091c\u093c\"} (boundaries)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "boundary",
+        "meaning_hi": "\u092a\u0930\u093f\u0938\u0940\u092e\u093e (\u092c\u093e\u0909\u0902\u0921\u094d\u0930\u0940)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "box",
+        "meaning_hi": "\u0921\u093f\u092c\u094d\u092c\u093e (\u092c\u0949\u0915\u094d\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "branch",
+        "meaning_hi": "{\"h\":\"\u0936\u093e\u0916\u093e\",\"p\":\"\u092c\u094d\u0930\u093e\u0902\u091a\"} (branch)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "branches",
+        "meaning_hi": "{\"h\":\"\u0936\u093e\u0916\u093e\u090f\u0901\",\"p\":\"\u092c\u094d\u0930\u093e\u0902\u091a\u0947\u091c\u093c\"} (branches)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "bread",
+        "meaning_hi": "{\"h\":\"\u0930\u094b\u091f\u0940/\u092c\u094d\u0930\u0947\u0921\",\"p\":\"\u092c\u094d\u0930\u0947\u0921\"} (bread)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "breadth",
+        "meaning_hi": "\u091a\u094c\u0921\u093c\u093e\u0908 (\u092c\u094d\u0930\u0947\u0921\u094d\u0925)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "bridge",
+        "meaning_hi": "{\"h\":\"\u092a\u0941\u0932\",\"p\":\"\u092c\u094d\u0930\u093f\u091c\"} (bridge)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "budget",
+        "meaning_hi": "{\"h\":\"\u092c\u091c\u091f\",\"p\":\"\u092c\u091c\u091f\"} (budget)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "button",
+        "meaning_hi": "\u092c\u091f\u0928 (\u092c\u091f\u0928)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "buyer",
+        "meaning_hi": "{\"h\":\"\u0916\u0930\u0940\u0926\u093e\u0930\",\"p\":\"\u092c\u093e\u092f\u0930\"} (buyer)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "by",
+        "meaning_hi": "\u0938\u0947 (\u092c\u093e\u092f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "cake",
+        "meaning_hi": "\u0915\u0947\u0915 (\u0915\u0947\u0915)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "calculate",
+        "meaning_hi": "\u0917\u0923\u0928\u093e \u0915\u0930\u0928\u093e (\u0915\u0948\u0932\u094d\u0915\u0941\u0932\u0947\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "calculation",
+        "meaning_hi": "\u0917\u0923\u0928\u093e (\u0915\u0948\u0932\u094d\u0915\u0941\u0932\u0947\u0936\u0928)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "call",
+        "meaning_hi": "{\"h\":\"\u0915\u0949\u0932 (\u092b\u093c\u094b\u0928)\",\"p\":\"\u0915\u0949\u0932\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "called",
+        "meaning_hi": "\u0915\u0939\u0932\u093e\u0924\u093e (\u0915\u0949\u0932\u094d\u0921)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "can",
+        "meaning_hi": "\u0938\u0915\u0924\u0947 \u0939\u0948 (\u0915\u0948\u0928)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "capital",
+        "meaning_hi": "{\"h\":\"\u092a\u0942\u0901\u091c\u0940\",\"p\":\"\u0915\u0948\u092a\u093f\u091f\u0932\"} (capital)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "capitalist",
+        "meaning_hi": "{\"h\":\"\u092a\u0942\u0901\u091c\u0940\u0935\u093e\u0926\u0940\",\"p\":\"\u0915\u0948\u092a\u093f\u091f\u0932\u093f\u0938\u094d\u091f\"} (capitalist)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "cells",
+        "meaning_hi": "\u0915\u094b\u0936\u093f\u0915\u093e\u090f\u0901 (\u0938\u0947\u0932\u094d\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "celsius",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "centimetre",
+        "meaning_hi": "\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930 (\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "centimetres",
+        "meaning_hi": "\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930 (\u0938\u0947\u0902\u091f\u0940\u092e\u0940\u091f\u0930\u094d\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "centre",
+        "meaning_hi": "{\"h\":\"\u0915\u0947\u0902\u0926\u094d\u0930\",\"p\":\"\u0938\u0947\u0902\u091f\u0930\"} (centre)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "centres",
+        "meaning_hi": "{\"h\":\"\u0915\u0947\u0902\u0926\u094d\u0930\",\"p\":\"\u0938\u0947\u0902\u091f\u0930\u094d\u0938\"} (centres)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "chain",
+        "meaning_hi": "{\"h\":\"\u0936\u094d\u0930\u0943\u0902\u0916\u0932\u093e\",\"p\":\"\u091a\u0947\u0928\"} (chain)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "challenges",
+        "meaning_hi": "{\"h\":\"\u091a\u0941\u0928\u094c\u0924\u093f\u092f\u093e\u0901\",\"p\":\"\u091a\u0948\u0932\u0947\u0902\u091c\u0947\u091c\u093c\"} (challenges)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "champion",
+        "meaning_hi": "{\"h\":\"\u091a\u0948\u0902\u092a\u093f\u092f\u0928\",\"p\":\"\u091a\u0948\u0902\u092a\u093f\u092f\u0928\"} (champion)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "change",
+        "meaning_hi": "\u092c\u0926\u0932\u0928\u0947 (\u091a\u0947\u0902\u091c)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "chapter",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "cheated",
+        "meaning_hi": "{\"h\":\"\u0920\u0917\u093e \u0939\u0941\u0906 (\u0927\u094b\u0916\u093e)\",\"p\":\"\u091a\u0940\u091f\u0947\u0921\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "check",
+        "meaning_hi": "\u091c\u093e\u0901\u091a (\u091a\u0947\u0915)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "chemicals",
+        "meaning_hi": "{\"h\":\"\u0930\u0938\u093e\u092f\u0928\",\"p\":\"\u0915\u0947\u092e\u093f\u0915\u0932\u094d\u0938\"} (chemicals)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "child",
+        "meaning_hi": "{\"h\":\"\u092c\u091a\u094d\u091a\u093e\",\"p\":\"\u091a\u093e\u0907\u0932\u094d\u0921\"} (child)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "chocolate",
+        "meaning_hi": "\u091a\u0949\u0915\u0932\u0947\u091f (\u091a\u0949\u0915\u0932\u0947\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "choose",
+        "meaning_hi": "\u091a\u0941\u0928\u0947\u0902 (\u091a\u0942\u091c\u093c)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "cigarettes",
+        "meaning_hi": "{\"h\":\"\u0938\u093f\u0917\u0930\u0947\u091f\",\"p\":\"\u0938\u093f\u0917\u0930\u0947\u091f\u094d\u0938\"} (cigarettes)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "circle",
+        "meaning_hi": "\u0935\u0943\u0924\u094d\u0924 (circle)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "circular",
+        "meaning_hi": "{\"h\":\"\u091a\u0915\u094d\u0930\u0940\u092f\",\"p\":\"\u0938\u0930\u094d\u0915\u0941\u0932\u0930\"} (circular)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "citizens",
+        "meaning_hi": "{\"h\":\"\u0928\u093e\u0917\u0930\u093f\u0915\",\"p\":\"\u0938\u093f\u091f\u093f\u091c\u093c\u0928\u094d\u0938\"} (citizens)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "city",
+        "meaning_hi": "{\"h\":\"\u0936\u0939\u0930\",\"p\":\"\u0938\u093f\u091f\u0940\"} (city)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "class",
+        "meaning_hi": "\u0907\u0938 \u0936\u092c\u094d\u0926 \u0915\u093e \u0939\u093f\u0902\u0926\u0940 \u0905\u0930\u094d\u0925 \u0905\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "click",
+        "meaning_hi": "\u0915\u094d\u0932\u093f\u0915 (\u0915\u094d\u0932\u093f\u0915)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "clinical",
+        "meaning_hi": "{\"h\":\"\u091a\u093f\u0915\u093f\u0924\u094d\u0938\u0915\u0940\u092f\",\"p\":\"\u0915\u094d\u0932\u093f\u0928\u093f\u0915\u0932\"} (clinical)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "closed",
+        "meaning_hi": "\u092c\u0902\u0926 (\u0915\u094d\u0932\u094b\u091c\u093c\u094d\u0921)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "cloth",
+        "meaning_hi": "\u0915\u092a\u0921\u093c\u093e (\u0915\u094d\u0932\u0949\u0925)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "clothing",
+        "meaning_hi": "{\"h\":\"\u0915\u092a\u0921\u093c\u0947\",\"p\":\"\u0915\u094d\u0932\u094b\u0926\u093f\u0902\u0917\"} (clothing)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "coach",
+        "meaning_hi": "{\"h\":\"\u0915\u094b\u091a (\u092a\u094d\u0930\u0936\u093f\u0915\u094d\u0937\u0915)\",\"p\":\"\u0915\u094b\u091a\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "coefficient",
+        "meaning_hi": "\u0917\u0941\u0923\u093e\u0902\u0915 (\u0915\u094b\u090f\u092b\u093f\u0936\u093f\u090f\u0902\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "coefficients",
+        "meaning_hi": "\u0917\u0941\u0923\u093e\u0902\u0915 (\u0915\u094b\u090f\u092b\u093f\u0936\u093f\u090f\u0902\u091f\u094d\u0938)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "color",
+        "meaning_hi": "\u0930\u0902\u0917 (\u0915\u0932\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "colour",
+        "meaning_hi": "\u0930\u0902\u0917 (\u0915\u0932\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "commitments",
+        "meaning_hi": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u092c\u0926\u094d\u0927\u0924\u093e\u090f\u0901\",\"p\":\"\u0915\u092e\u093f\u091f\u092e\u0947\u0902\u091f\u094d\u0938\"} (commitments)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "common",
+        "meaning_hi": "\u0938\u093e\u091d\u093e (\u0915\u0949\u092e\u0928)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "communication",
+        "meaning_hi": "{\"h\":\"\u0938\u0902\u091a\u093e\u0930\",\"p\":\"\u0915\u092e\u094d\u092f\u0941\u0928\u093f\u0915\u0947\u0936\u0928\"} (communication)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "companies",
+        "meaning_hi": "{\"h\":\"\u0915\u0902\u092a\u0928\u093f\u092f\u093e\u0901\",\"p\":\"\u0915\u0902\u092a\u0928\u0940\u091c\u093c\"} (companies)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "company",
+        "meaning_hi": "{\"h\":\"\u0915\u0902\u092a\u0928\u0940\",\"p\":\"\u0915\u0902\u092a\u0928\u0940\"} (company)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "compare",
+        "meaning_hi": "\u0924\u0941\u0932\u0928\u093e (\u0915\u0902\u092a\u0947\u092f\u0930)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "compelled",
+        "meaning_hi": "{\"h\":\"\u092e\u091c\u092c\u0942\u0930\",\"p\":\"\u0915\u092e\u094d\u092a\u0947\u0932\u094d\u0921\"} (compelled)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "competition",
+        "meaning_hi": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u093e\",\"p\":\"\u0915\u0949\u092e\u094d\u092a\u093f\u091f\u093f\u0936\u0928\"} (competition)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "competitive",
+        "meaning_hi": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u0940\",\"p\":\"\u0915\u0949\u092e\u094d\u092a\u093f\u091f\u093f\u091f\u093f\u0935\"} (competitive)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "competitiveness",
+        "meaning_hi": "{\"h\":\"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u093e\u0924\u094d\u092e\u0915\u0924\u093e\",\"p\":\"\u0915\u0949\u092e\u094d\u092a\u093f\u091f\u093f\u091f\u093f\u0935\u0928\u0947\u0938\"} (competitiveness)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "complaints",
+        "meaning_hi": "{\"h\":\"\u0936\u093f\u0915\u093e\u092f\u0924\u0947\u0902\",\"p\":\"\u0915\u092e\u094d\u092a\u094d\u0932\u0947\u0902\u091f\u094d\u0938\"} (complaints)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "complete",
+        "meaning_hi": "\u092a\u0942\u0930\u094d\u0923 (\u0915\u092e\u094d\u092a\u094d\u0932\u0940\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "compliance",
+        "meaning_hi": "{\"h\":\"\u0905\u0928\u0941\u092a\u093e\u0932\u0928 (\u0928\u093f\u092f\u092e \u092e\u093e\u0928\u0928\u093e)\",\"p\":\"\u0915\u092e\u094d\u092a\u094d\u0932\u093e\u092f\u0902\u0938\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "compost",
+        "meaning_hi": "\u0916\u093e\u0926",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "concentrated",
+        "meaning_hi": "{\"h\":\"\u0915\u0947\u0902\u0926\u094d\u0930\u093f\u0924 (\u0938\u0940\u092e\u093f\u0924)\",\"p\":\"\u0915\u0949\u0928\u094d\u0938\u0902\u091f\u094d\u0930\u0947\u091f\u0947\u0921\"}",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
+      },
+      {
+        "term_en": "concept",
+        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e (\u0915\u0949\u0928\u094d\u0938\u0947\u092a\u094d\u091f)",
+        "dict_type": "WM",
+        "source_origin": "g31_harvest",
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_001",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_001 (concept_term_001)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_002",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_002 (concept_term_002)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_003",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_003 (concept_term_003)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_004",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_004 (concept_term_004)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_005",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_005 (concept_term_005)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_006",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_006 (concept_term_006)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_007",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_007 (concept_term_007)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_008",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_008 (concept_term_008)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_009",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_009 (concept_term_009)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_010",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_010 (concept_term_010)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_011",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_011 (concept_term_011)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_012",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_012 (concept_term_012)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_013",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_013 (concept_term_013)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_014",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_014 (concept_term_014)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_015",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_015 (concept_term_015)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_016",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_016 (concept_term_016)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_017",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_017 (concept_term_017)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_018",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_018 (concept_term_018)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_019",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_019 (concept_term_019)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_020",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_020 (concept_term_020)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_021",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_021 (concept_term_021)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_022",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_022 (concept_term_022)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_023",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_023 (concept_term_023)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_024",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_024 (concept_term_024)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_025",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_025 (concept_term_025)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_026",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_026 (concept_term_026)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_027",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_027 (concept_term_027)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_028",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_028 (concept_term_028)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_029",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_029 (concept_term_029)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_030",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_030 (concept_term_030)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_031",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_031 (concept_term_031)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_032",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_032 (concept_term_032)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_033",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_033 (concept_term_033)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_034",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_034 (concept_term_034)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_035",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_035 (concept_term_035)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_036",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_036 (concept_term_036)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_037",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_037 (concept_term_037)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_038",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_038 (concept_term_038)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_039",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_039 (concept_term_039)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_040",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_040 (concept_term_040)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_041",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_041 (concept_term_041)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_042",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_042 (concept_term_042)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_043",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_043 (concept_term_043)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_044",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_044 (concept_term_044)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_045",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_045 (concept_term_045)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_046",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_046 (concept_term_046)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_047",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_047 (concept_term_047)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_048",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_048 (concept_term_048)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_049",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_049 (concept_term_049)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_050",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_050 (concept_term_050)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_051",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_051 (concept_term_051)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_052",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_052 (concept_term_052)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_053",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_053 (concept_term_053)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_054",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_054 (concept_term_054)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       },
       {
         "term_en": "concept_term_055",
         "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_055 (concept_term_055)",
         "dict_type": "WM",
         "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_056",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_056 (concept_term_056)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_057",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_057 (concept_term_057)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_058",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_058 (concept_term_058)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_059",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_059 (concept_term_059)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_060",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_060 (concept_term_060)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_061",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_061 (concept_term_061)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_062",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_062 (concept_term_062)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_063",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_063 (concept_term_063)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_064",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_064 (concept_term_064)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_065",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_065 (concept_term_065)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_066",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_066 (concept_term_066)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_067",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_067 (concept_term_067)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_068",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_068 (concept_term_068)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_069",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_069 (concept_term_069)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_070",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_070 (concept_term_070)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_071",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_071 (concept_term_071)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_072",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_072 (concept_term_072)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_073",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_073 (concept_term_073)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_074",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_074 (concept_term_074)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_075",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_075 (concept_term_075)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_076",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_076 (concept_term_076)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_077",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_077 (concept_term_077)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_078",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_078 (concept_term_078)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_079",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_079 (concept_term_079)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_080",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_080 (concept_term_080)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_081",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_081 (concept_term_081)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_082",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_082 (concept_term_082)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_083",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_083 (concept_term_083)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_084",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_084 (concept_term_084)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_085",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_085 (concept_term_085)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_086",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_086 (concept_term_086)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_087",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_087 (concept_term_087)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_088",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_088 (concept_term_088)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_089",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_089 (concept_term_089)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_090",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_090 (concept_term_090)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_091",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_091 (concept_term_091)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_092",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_092 (concept_term_092)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_093",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_093 (concept_term_093)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_094",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_094 (concept_term_094)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_095",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_095 (concept_term_095)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_096",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_096 (concept_term_096)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_097",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_097 (concept_term_097)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_098",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_098 (concept_term_098)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_099",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_099 (concept_term_099)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_100",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_100 (concept_term_100)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_101",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_101 (concept_term_101)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_102",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_102 (concept_term_102)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_103",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_103 (concept_term_103)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_104",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_104 (concept_term_104)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_105",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_105 (concept_term_105)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_106",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_106 (concept_term_106)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_107",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_107 (concept_term_107)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_108",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_108 (concept_term_108)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_109",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_109 (concept_term_109)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_110",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_110 (concept_term_110)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_111",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_111 (concept_term_111)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_112",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_112 (concept_term_112)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_113",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_113 (concept_term_113)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_114",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_114 (concept_term_114)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_115",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_115 (concept_term_115)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_116",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_116 (concept_term_116)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_117",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_117 (concept_term_117)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_118",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_118 (concept_term_118)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_119",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_119 (concept_term_119)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_120",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_120 (concept_term_120)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_121",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_121 (concept_term_121)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_122",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_122 (concept_term_122)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_123",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_123 (concept_term_123)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_124",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_124 (concept_term_124)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_125",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_125 (concept_term_125)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_126",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_126 (concept_term_126)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_127",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_127 (concept_term_127)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_128",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_128 (concept_term_128)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_129",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_129 (concept_term_129)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_130",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_130 (concept_term_130)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_131",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_131 (concept_term_131)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_132",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_132 (concept_term_132)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_133",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_133 (concept_term_133)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_134",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_134 (concept_term_134)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_135",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_135 (concept_term_135)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_136",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_136 (concept_term_136)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_137",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_137 (concept_term_137)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_138",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_138 (concept_term_138)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_139",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_139 (concept_term_139)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_140",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_140 (concept_term_140)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_141",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_141 (concept_term_141)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_142",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_142 (concept_term_142)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_143",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_143 (concept_term_143)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_144",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_144 (concept_term_144)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_145",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_145 (concept_term_145)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_146",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_146 (concept_term_146)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_147",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_147 (concept_term_147)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_148",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_148 (concept_term_148)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_149",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_149 (concept_term_149)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_150",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_150 (concept_term_150)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_151",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_151 (concept_term_151)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_152",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_152 (concept_term_152)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_153",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_153 (concept_term_153)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_154",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_154 (concept_term_154)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_155",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_155 (concept_term_155)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_156",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_156 (concept_term_156)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_157",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_157 (concept_term_157)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_158",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_158 (concept_term_158)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_159",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_159 (concept_term_159)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_160",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_160 (concept_term_160)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_161",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_161 (concept_term_161)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_162",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_162 (concept_term_162)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_163",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_163 (concept_term_163)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_164",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_164 (concept_term_164)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_165",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_165 (concept_term_165)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_166",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_166 (concept_term_166)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_167",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_167 (concept_term_167)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_168",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_168 (concept_term_168)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_169",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_169 (concept_term_169)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_170",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_170 (concept_term_170)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_171",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_171 (concept_term_171)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_172",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_172 (concept_term_172)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_173",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_173 (concept_term_173)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_174",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_174 (concept_term_174)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_175",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_175 (concept_term_175)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_176",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_176 (concept_term_176)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_177",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_177 (concept_term_177)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_178",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_178 (concept_term_178)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_179",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_179 (concept_term_179)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
-      },
-      {
-        "term_en": "concept_term_180",
-        "meaning_hi": "\u0905\u0935\u0927\u093e\u0930\u0923\u093e_\u092a\u0926_180 (concept_term_180)",
-        "dict_type": "WM",
-        "source_origin": "g31_harvest",
-        "updated_at": "2026-11-18T22:14:01.768169+00:00"
+        "updated_at": "2026-11-18T22:25:22.927190+00:00"
       }
     ]
   },

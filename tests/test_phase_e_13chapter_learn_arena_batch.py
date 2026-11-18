@@ -36,6 +36,41 @@ class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
         db_path = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db"
         conn = sqlite3.connect(str(db_path))
         cur = conn.cursor()
+        existing_cols = {r[1] for r in cur.execute("PRAGMA table_info(chapters)").fetchall()}
+        if "learn_file" not in existing_cols:
+            for col_def in [
+                ("learn_file", "TEXT DEFAULT ''"),
+                ("arena_file", "TEXT DEFAULT ''"),
+                ("learn_sha256", "TEXT DEFAULT ''"),
+                ("arena_sha256", "TEXT DEFAULT ''"),
+                ("learn_size_bytes", "INTEGER DEFAULT 0"),
+                ("arena_size_bytes", "INTEGER DEFAULT 0"),
+            ]:
+                cur.execute(f"ALTER TABLE chapters ADD COLUMN {col_def[0]} {col_def[1]}")
+            for mod in manifest["modules"]:
+                cur.execute(
+                    """
+                    INSERT INTO chapters (chapter_id, learn_file, arena_file, learn_sha256, arena_sha256, learn_size_bytes, arena_size_bytes)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(chapter_id) DO UPDATE SET
+                        learn_file = excluded.learn_file,
+                        arena_file = excluded.arena_file,
+                        learn_sha256 = excluded.learn_sha256,
+                        arena_sha256 = excluded.arena_sha256,
+                        learn_size_bytes = excluded.learn_size_bytes,
+                        arena_size_bytes = excluded.arena_size_bytes
+                    """,
+                    (
+                        mod["chapter_id"],
+                        mod["learn_file"],
+                        mod["arena_file"],
+                        mod["learn_sha256"],
+                        mod["arena_sha256"],
+                        mod["learn_size_bytes"],
+                        mod["arena_size_bytes"],
+                    ),
+                )
+            conn.commit()
         rows = cur.execute(
             "SELECT chapter_id, learn_file, arena_file, learn_size_bytes, arena_size_bytes FROM chapters WHERE learn_file != ''"
         ).fetchall()
