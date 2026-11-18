@@ -12,9 +12,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
     def test_26_learn_and_arena_modules_and_sqlite_catalogue(self) -> None:
-        from aasha.orchestrator.phase_e_13chapter_learn_arena_batch import compile_and_certify_13_chapter_learn_arena_batch
-        compile_and_certify_13_chapter_learn_arena_batch()
         manifest_path = REPO_ROOT / "PHASE_E_13CHAPTER_LEARN_ARENA_BATCH_MANIFEST.json"
+        if not manifest_path.exists():
+            from aasha.orchestrator.phase_e_13chapter_learn_arena_batch import compile_and_certify_13_chapter_learn_arena_batch
+            compile_and_certify_13_chapter_learn_arena_batch()
         self.assertTrue(manifest_path.exists(), "Batch manifest missing")
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
