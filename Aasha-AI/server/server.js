@@ -1703,6 +1703,85 @@ export function buildServer() {
     };
   });
 
+  // Phase G62: Offline Spaced-Repetition Deck Scheduler & Home Revision Bell Endpoints
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS student_spaced_repetition_cards (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      card_id TEXT NOT NULL,
+      student_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      term_bilingual TEXT NOT NULL,
+      quality_rating INTEGER NOT NULL DEFAULT 5,
+      repetitions INTEGER NOT NULL DEFAULT 1,
+      interval_days INTEGER NOT NULL DEFAULT 1,
+      ease_factor REAL NOT NULL DEFAULT 2.5,
+      leitner_box INTEGER NOT NULL DEFAULT 2,
+      next_review_iso TEXT NOT NULL,
+      card_sha256 TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/spaced-repetition/review', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const cardId = String(body.cardId || 'CARD-LLE-FORCE-PRESSURE-01').trim();
+    const chapterId = String(body.chapterId || 'NCERT-G08-SCI-CH08').trim();
+    const termBilingual = String(body.termBilingual || 'दाब (Pressure) = बल / क्षेत्रफल').trim();
+    if (!studentId) {
+      return reply.code(400).send({ error: 'studentId is required' });
+    }
+    const qualityRating = Math.max(0, Math.min(5, Number(body.qualityRating ?? 5)));
+    const repetitions = qualityRating >= 3 ? Number(body.repetitions ?? 1) : 0;
+    const intervalDays = Math.max(1, Number(body.intervalDays ?? (repetitions > 1 ? 3 : 1)));
+    const easeFactor = Math.max(1.3, Number(body.easeFactor ?? 2.6));
+    const leitnerBox = Math.max(1, Math.min(5, repetitions + 1));
+    const nextReviewIso = String(body.nextReviewIso || new Date(Date.now() + intervalDays * 86400000).toISOString().slice(0, 10));
+    const updatedAt = new Date().toISOString();
+    const cardSha256 = crypto.createHash('sha256')
+      .update(`${studentId}|${cardId}|${chapterId}|${qualityRating}|${intervalDays}|${easeFactor}|${nextReviewIso}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO student_spaced_repetition_cards
+        (card_id, student_id, chapter_id, term_bilingual, quality_rating, repetitions, interval_days, ease_factor, leitner_box, next_review_iso, card_sha256, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(cardId, studentId, chapterId, termBilingual, qualityRating, repetitions, intervalDays, easeFactor, leitnerBox, nextReviewIso, cardSha256, updatedAt);
+    return {
+      status: 'ok',
+      studentId,
+      cardId,
+      chapterId,
+      qualityRating,
+      intervalDays,
+      easeFactor,
+      leitnerBox,
+      nextReviewIso,
+      card_sha256: cardSha256
+    };
+  });
+
+  app.get('/api/student/spaced-repetition/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const cards = db.prepare(`
+      SELECT card_id AS cardId, student_id AS studentId, chapter_id AS chapterId,
+             term_bilingual AS termBilingual, quality_rating AS qualityRating,
+             repetitions, interval_days AS intervalDays, ease_factor AS easeFactor,
+             leitner_box AS leitnerBox, next_review_iso AS nextReviewIso,
+             card_sha256 AS cardSha256, updated_at AS updatedAt
+      FROM student_spaced_repetition_cards
+      WHERE student_id = ?
+      ORDER BY id DESC
+    `).all(studentId);
+    const deck_sha256 = crypto.createHash('sha256').update(JSON.stringify(cards), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      studentId,
+      count: cards.length,
+      cards,
+      deck_sha256
+    };
+  });
+
   return app;
 
 

@@ -66,7 +66,10 @@ import {
   renderNcvetCareerPathwayExplorerCard,
   bookmarkStudentDoubtOffline,
   resolveQueuedStudentDoubt,
-  renderOfflineDoubtNotebookQueueCard
+  renderOfflineDoubtNotebookQueueCard,
+  scheduleSpacedRepetitionReview,
+  getDueHomeRevisionDeck,
+  renderSpacedRepetitionHomeRevisionCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -890,6 +893,39 @@ try {
   assert.equal(getDoubtBody.count, 1);
   assert.equal(getDoubtBody.openCount, 0);
   assert.equal(getDoubtBody.queue_sha256.length, 64);
+
+  // Verify G62 Offline Spaced-Repetition Deck Scheduler & Home Revision Bell
+  const srState = { studentId: 'STU-GN-101', tokenBalance: 20, spacedRepetitionDeck: [] };
+  const srRes = scheduleSpacedRepetitionReview(srState, {
+    studentId: 'STU-GN-101',
+    cardId: 'CARD-LLE-FORCE-01',
+    qualityRating: 5,
+    reviewedAtIso: '2026-11-18T00:00:00Z'
+  });
+  assert.equal(srRes.ok, true);
+  assert.equal(srRes.updatedCard.leitnerBox, 2);
+  assert.equal(srState.tokenBalance, 25);
+  const dueDeck = getDueHomeRevisionDeck(srState, '2026-11-20');
+  assert.equal(dueDeck.dueCount, 1);
+  const srCardHtml = renderSpacedRepetitionHomeRevisionCard(srState);
+  assert.ok(srCardHtml.includes('id="spaced-repetition-home-revision-card"'));
+
+  const postSrRes = await fetch(`${baseUrl}/api/student/spaced-repetition/review`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      studentId: 'STU-GN-101',
+      cardId: 'CARD-LLE-FORCE-01',
+      chapterId: 'NCERT-G08-SCI-CH08',
+      qualityRating: 5
+    })
+  });
+  assert.equal(postSrRes.status, 200);
+  const getSrRes = await fetch(`${baseUrl}/api/student/spaced-repetition/STU-GN-101`);
+  assert.equal(getSrRes.status, 200);
+  const getSrBody = await getSrRes.json();
+  assert.equal(getSrBody.count, 1);
+  assert.equal(getSrBody.deck_sha256.length, 64);
 } finally {
   await app.close();
 }

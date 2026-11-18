@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G62_OFFLINE_SPACED_REPETITION_DECK_SCHEDULER_AND_HOME_REVISION_BELL",
+  "next_focus_unit": "G63_OFFLINE_FAMILY_PROGRESS_CERTIFICATE_AND_BILINGUAL_AUDIO_CELEBRATION_CARD",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-18T10:48:21Z",
-  "active_focus_unit": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
-  "last_completed_focus_unit": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
-  "sw_merkle_root": "9fe43174063e1aa25b2b70979e97b6a8b8fb6fd78e17473dea7b85d1af03a5cf"
+  "last_updated_utc": "2026-11-18T15:13:32Z",
+  "active_focus_unit": "G62_OFFLINE_SPACED_REPETITION_DECK_SCHEDULER_AND_HOME_REVISION_BELL",
+  "last_completed_focus_unit": "G62_OFFLINE_SPACED_REPETITION_DECK_SCHEDULER_AND_HOME_REVISION_BELL",
+  "sw_merkle_root": "21cda46eb4e07f0c035bab47a8dcab6f3cb7dd8df7d549af805e6ebebb3e4f93"
 }

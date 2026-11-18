@@ -139,6 +139,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderInteractiveWebGl2SandboxCard(cohortSummary)}
       ${renderNcvetCareerPathwayExplorerCard(cohortSummary)}
       ${renderOfflineDoubtNotebookQueueCard(cohortSummary)}
+      ${renderSpacedRepetitionHomeRevisionCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2441,6 +2442,103 @@ export function renderOfflineDoubtNotebookQueueCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#713f12;">
         Open Doubts: <strong>${openCount} Queued for Peer Vidya Seva</strong> • Resolved: <strong>${resolvedCount}</strong> • Mode: <code>UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G62: Offline Spaced-Repetition Deck Scheduler & Home Revision Bell (Leitner / SM-2)
+export function scheduleSpacedRepetitionReview(state = {}, reviewInput = {}) {
+  if (!state || typeof state !== "object") {
+    throw new Error("Valid state object is required");
+  }
+  if (!Array.isArray(state.spacedRepetitionDeck)) {
+    state.spacedRepetitionDeck = [];
+  }
+  const studentId = String(reviewInput.studentId || state.studentId || "STU-DEFAULT").trim();
+  const cardId = String(reviewInput.cardId || "CARD-LLE-FORCE-PRESSURE-01").trim();
+  const chapterId = String(reviewInput.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const termBilingual = String(reviewInput.termBilingual || "दाब (Pressure) = बल / क्षेत्रफल (Force / Area)").trim();
+  const qualityRating = Math.max(0, Math.min(5, Number(reviewInput.qualityRating ?? 5)));
+  const existing = state.spacedRepetitionDeck.find((c) => c.cardId === cardId && c.studentId === studentId);
+  const prevRepetitions = existing ? Number(existing.repetitions ?? 0) : 0;
+  const prevInterval = existing ? Number(existing.intervalDays ?? 1) : 1;
+  const prevEase = existing ? Number(existing.easeFactor ?? 2.5) : 2.5;
+
+  let repetitions = qualityRating >= 3 ? prevRepetitions + 1 : 0;
+  let intervalDays = 1;
+  if (repetitions === 1) {
+    intervalDays = 1;
+  } else if (repetitions === 2) {
+    intervalDays = 3;
+  } else if (repetitions > 2) {
+    intervalDays = Math.max(1, Math.round(prevInterval * prevEase));
+  }
+  const easeDelta = 0.1 - (5 - qualityRating) * (0.08 + (5 - qualityRating) * 0.02);
+  const easeFactor = Math.max(1.3, Math.round((prevEase + easeDelta) * 100) / 100);
+  const leitnerBox = Math.max(1, Math.min(5, repetitions + 1));
+
+  const baseDate = reviewInput.reviewedAtIso ? new Date(reviewInput.reviewedAtIso) : new Date();
+  const nextDate = new Date(baseDate.getTime() + intervalDays * 86400000);
+  const nextReviewIso = nextDate.toISOString().slice(0, 10);
+  const coinsAwarded = qualityRating >= 4 ? 5 : 0;
+
+  const updatedCard = {
+    cardId,
+    studentId,
+    chapterId,
+    termBilingual,
+    qualityRating,
+    repetitions,
+    intervalDays,
+    easeFactor,
+    leitnerBox,
+    nextReviewIso,
+    studyEnvironment: "UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE",
+    coinsAwarded
+  };
+  if (existing) {
+    Object.assign(existing, updatedCard);
+  } else {
+    state.spacedRepetitionDeck.push(updatedCard);
+  }
+  if (coinsAwarded > 0) {
+    state.tokenBalance = Number(state.tokenBalance ?? 0) + coinsAwarded;
+  }
+  return {
+    ok: true,
+    totalCards: state.spacedRepetitionDeck.length,
+    updatedCard
+  };
+}
+
+export function getDueHomeRevisionDeck(state = {}, referenceDateIso = null) {
+  const deck = Array.isArray(state.spacedRepetitionDeck) ? state.spacedRepetitionDeck : [];
+  const refIso = String(referenceDateIso || new Date().toISOString().slice(0, 10));
+  const dueCards = deck.filter((c) => !c.nextReviewIso || c.nextReviewIso <= refIso);
+  return {
+    referenceDateIso: refIso,
+    totalDeckSize: deck.length,
+    dueCount: dueCards.length,
+    dueCards
+  };
+}
+
+export function renderSpacedRepetitionHomeRevisionCard(stateOrSummary = {}) {
+  const dueInfo = getDueHomeRevisionDeck(stateOrSummary);
+  return `
+    <section id="spaced-repetition-home-revision-card" aria-label="Offline Spaced-Repetition Deck Scheduler and Home Revision Bell"
+             style="padding:14px;border-radius:12px;background:#fdf4ff;border:1px solid #f5d0fe;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#701a75;">🔔 अंतराल पुनरावृत्ति और गृह स्वाध्याय घंटी / Spaced-Repetition &amp; Home Revision Bell (G62)</h3>
+        <button type="button" id="btn-run-spaced-repetition-review" data-action="run-spaced-repetition-review"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#a21caf;color:#ffffff;font-weight:700;cursor:pointer;">
+          🧠 Review SM-2 Flashcard / पुनरावृत्ति करें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#4a044e;">
+        Deck Size: <strong>${dueInfo.totalDeckSize} Bilingual LLE Cards</strong> • Due Today: <strong>${dueInfo.dueCount}</strong> • Algorithm: <code>Leitner + SM-2 Offline</code>
       </p>
     </section>
   `.trim();
