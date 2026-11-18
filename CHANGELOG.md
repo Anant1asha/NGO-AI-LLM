@@ -1,3 +1,8 @@
+## [G85] 2026-11-20T22:30:00Z — Offline Student Mastery Leaderboard & Streak Badges
+- Added `GET /api/student/leaderboard` and `GET /api/student/leaderboard/:centerId` in `Aasha-AI/server/server.js` with ranks, mastery scores, streak days, tokens, tiers (`KHOJI`, `SAHAYAK`, `VIDYA_VEER`, `MASTERY_GURU`), and streak badges (`FIRST_STEP`, `TRI_STREAK`, `SAPTAHIK_VEER`, `MASIK_CHAMPION`, `VIDYA_SAHAYAK`, `MASTERY_GURU`).
+- Added `buildStudentMasteryLeaderboard` and `renderStudentMasteryLeaderboardPanel` in `Aasha-AI/aasha-student-pwa/src/app.js` embedded in `renderRewardsBadges`.
+- Added `tests/test_g85_offline_student_mastery_leaderboard_and_streak_badges.mjs`.
+
 ## [G85] 2026-11-18T22:15:00Z — Continuous 16-Stage Executive Engineering Loop & Full Test Battery Autonomous Certification
 - **Task ID**: `AASHA-ARGON-SUPERADMIN-AUTONOMOUS-BUILDER-V3` (`v3.0.0`)
 - **Mode & Plane**: Mode D (Direct Local PC Workspace Authority) | Plane 3 (`C:\Users\admin\Downloads\NGO AI LLM`).

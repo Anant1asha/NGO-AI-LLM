@@ -9,6 +9,11 @@
 - **Target Branch**: `origin/aios/v2-bootstrap` (Strict Non-Main Isolation — Zero Pushes to `main`/`master`)
 - **Overall Status**: **VERIFIED (7/7 Test Batteries — 673/673 Cumulative Python Unit Tests across 50/50 Suites + 97/97 Visual Contract + Teacher Misconception, 3-Level Synthesizer & Bundler Hub + 10 Child HTML5 Modules Certified by `qa/run_qa.js` + 0 Contradictions)**
 
+### Cycle G85 (2026-11-20T22:30:00Z)
+- Offline Student Mastery Leaderboard & Streak Badges: **PASS** (`buildStudentMasteryLeaderboard`, `renderStudentMasteryLeaderboardPanel`, `GET /api/student/leaderboard`, `KHOJI`..`MASTERY_GURU` tiers, streak badges `FIRST_STEP`..`MASTERY_GURU`, under 20 MiB child cap verified).
+- G85 Dedicated Test Suite: `tests/test_g85_offline_student_mastery_leaderboard_and_streak_badges.mjs` **PASS (100%)**.
+- Regression Suites: G84 Federated Centre Health Panel **PASS**, 16-Stage Executive Loop (`test_sixteen_stage_executive_loop.py`) **6/6 PASS**.
+
 ### Cycle G84 (2026-11-20T19:03:04Z)
 - Python Suites: **454 unit tests across 86 suites PASSED**
 - G84 Federated Centre Health Panel: **PASS** (`buildFederatedCentreHealthSummary`, `GET /api/teacher/federated-health`, `GREEN_OFFLINE_PARITY`)

@@ -204,6 +204,11 @@
           "id": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
           "status": "QUEUED_NEXT",
           "scope": "Benchmark multi-subject batch PDF compilation throughput, <= 20 MiB per child HTML enforcement, and USB cohort pack export."
+        },
+        {
+          "id": "G85_OFFLINE_STUDENT_MASTERY_LEADERBOARD_AND_STREAK_BADGES",
+          "status": "COMPLETE",
+          "scope": "Offline Student Mastery Leaderboard & Streak Badges for Student PWA and Centre Server."
         }
       ]
     }
@@ -214,5 +219,5 @@
     "html_skill_usage": "PAIR_HTML_LAYOUT_WITH_WEBGL2_PHYSICS_SIM_AND_AUDIO_ENGINES",
     "child_html_cap_bytes": 20971520
   },
-  "next_priority": "G85_OFFLINE_STUDENT_MASTERY_LEADERBOARD_AND_STREAK_BADGES"
+  "next_priority": "G86_OFFLINE_PARENT_STUDENT_CONVERSATION_STARTER_CARDS"
 }

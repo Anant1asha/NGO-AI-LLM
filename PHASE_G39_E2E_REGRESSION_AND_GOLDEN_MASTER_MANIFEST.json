@@ -2,7 +2,7 @@
   "schema_version": "6.0.0",
   "phase": "G39_GOLDEN_MASTER_RC",
   "title": "End-to-End 17-Module QA Regression Gate & December 31, 2026 MVP Golden Master Release Candidate Seal",
-  "generated_at_utc": "2026-11-18T22:44:25.525556+00:00",
+  "generated_at_utc": "2026-11-18T22:49:41.600351+00:00",
   "regression_matrix": {
     "modules_audited": 43,
     "all_passed_28_of_28": false,
@@ -46,7 +46,7 @@
         "checks_total": 32,
         "size_bytes": 105063,
         "under_20mib": true,
-        "sha256": "0f28a423932a9b948544d2987db031db4767c835cf0b7713f1a3c4ba460803f1"
+        "sha256": "9f17084db1e95cf1926a2240451b3bba995e18046bdf91b3caef1bfe077f925c"
       },
       {
         "file": "NCVET_PSSCIVE_L3_IT_DataEntry_Arena.html",
@@ -121,8 +121,8 @@
       {
         "file": "NCVET_PSSCIVE_L4_Food_SolarDehydrator_Learning.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g36_ncvet_psscive_pack\\NCVET_PSSCIVE_L4_Food_SolarDehydrator_Learning.html",
-        "passed": false,
-        "checks_passed": 36,
+        "passed": true,
+        "checks_passed": 37,
         "checks_total": 37,
         "size_bytes": 549843,
         "under_20mib": true,
@@ -151,8 +151,8 @@
       {
         "file": "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
-        "passed": true,
-        "checks_passed": 32,
+        "passed": false,
+        "checks_passed": 31,
         "checks_total": 32,
         "size_bytes": 105243,
         "under_20mib": true,
@@ -171,8 +171,8 @@
       {
         "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Arena.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G07-MATH-CH11-PERIMETER-AREA_Arena.html",
-        "passed": true,
-        "checks_passed": 38,
+        "passed": false,
+        "checks_passed": 37,
         "checks_total": 38,
         "size_bytes": 1422703,
         "under_20mib": true,
@@ -181,8 +181,8 @@
       {
         "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
-        "passed": true,
-        "checks_passed": 32,
+        "passed": false,
+        "checks_passed": 31,
         "checks_total": 32,
         "size_bytes": 105369,
         "under_20mib": true,
@@ -231,8 +231,8 @@
       {
         "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Arena.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G09-SCI-CH08-FORCE-MOTION_Arena.html",
-        "passed": true,
-        "checks_passed": 38,
+        "passed": false,
+        "checks_passed": 37,
         "checks_total": 38,
         "size_bytes": 1423186,
         "under_20mib": true,
@@ -241,8 +241,8 @@
       {
         "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
-        "passed": true,
-        "checks_passed": 32,
+        "passed": false,
+        "checks_passed": 31,
         "checks_total": 32,
         "size_bytes": 105266,
         "under_20mib": true,
@@ -251,8 +251,8 @@
       {
         "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
-        "passed": true,
-        "checks_passed": 37,
+        "passed": false,
+        "checks_passed": 36,
         "checks_total": 37,
         "size_bytes": 549426,
         "under_20mib": true,
@@ -301,8 +301,8 @@
       {
         "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
-        "passed": false,
-        "checks_passed": 31,
+        "passed": true,
+        "checks_passed": 32,
         "checks_total": 32,
         "size_bytes": 105107,
         "under_20mib": true,
@@ -421,8 +421,8 @@
       {
         "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
         "rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
-        "passed": false,
-        "checks_passed": 31,
+        "passed": true,
+        "checks_passed": 32,
         "checks_total": 32,
         "size_bytes": 105344,
         "under_20mib": true,
@@ -454,7 +454,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 177
+      "build_cache_records": 179
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G40_CONTINUOUS_FIELD_TELEMETRY_SENTINEL_AND_TEACHER_AUTHORING_PACK: Execute Continuous Offline Field Telemetry Sentinel & Teacher Authoring Template Pack."
