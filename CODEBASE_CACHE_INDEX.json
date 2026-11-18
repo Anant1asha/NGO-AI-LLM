@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-18T21:57:37.400128+00:00",
+  "generated_at_utc": "2026-11-18T22:08:48.402890+00:00",
   "drive_cache_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
   "total_cached_assets": 49,
   "archive_file": "aasha_codebase_cache_pack.tar.gz",
-  "archive_bytes": 85537,
-  "archive_sha256": "7d3d59035d2b5496e216d95f78d104331787981e64447d7b7ff676d072da1814",
+  "archive_bytes": 85531,
+  "archive_sha256": "c9d186bcf5ff3a8f09a4a7ad0026028d812b1194cb5288759d89adc64f09b65c",
   "assets": [
     {
       "asset_id": "AVR-P301-HTML",

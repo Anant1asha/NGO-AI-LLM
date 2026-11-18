@@ -1,7 +1,7 @@
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
-  "generated_at_utc": "2026-11-18T22:00:34.581788+00:00",
+  "generated_at_utc": "2026-11-18T22:11:05.184086+00:00",
   "sqlite_10pack_catalogue": {
     "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db",
     "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db.gz",
@@ -9,9 +9,9 @@
     "tln_nodes_exported": 30,
     "wm_vocabulary_exported": 1201,
     "raw_db_bytes": 462848,
-    "gzip_db_bytes": 56457,
+    "gzip_db_bytes": 56449,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "d8f9e045486f6ad4fa094b9dfbf3d16957af222032eacc73fdf0e822437ee739"
+    "gzip_sha256": "19b8211bb034b180f79f56115f6d62a2641170bb9c40c860a40bf6dab790e750"
   },
   "facilitator_bridge": {
     "hotspotClusters": 2,
@@ -20,7 +20,7 @@
     "dashboardValid": true,
     "flashcardValid": true,
     "signedPackValid": true,
-    "integrityHash": "fnv1a32:d46a76b1"
+    "integrityHash": "fnv1a32:effe9fd4"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
@@ -29,14 +29,14 @@
     "qa_total": 32,
     "size_bytes": 105063,
     "under_20mib": true,
-    "sha256": "36aa75136d77ec5ab867e60c79fc28a23cbf33755894af30822037668b33ba05",
+    "sha256": "0f28a423932a9b948544d2987db031db4767c835cf0b7713f1a3c4ba460803f1",
     "compounding_db": {
       "db_path": "aasha_operational.db",
       "wm_rows_stored": 1201,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 157
+      "build_cache_records": 164
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."

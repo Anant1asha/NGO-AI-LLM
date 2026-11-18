@@ -11,10 +11,10 @@ node_modules/
 venv/
 env/
 .pytest_cache/
-dist/
-build/
-work/
-state/
+/dist/
+/build/
+/work/
+/state/
 external_sources/
 New_repo_web/
 AASHA_OpenSource_Codebase_Cache/
