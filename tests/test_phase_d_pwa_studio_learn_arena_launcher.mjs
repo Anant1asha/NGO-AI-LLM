@@ -63,7 +63,10 @@ import {
   renderInteractiveWebGl2SandboxCard,
   getNcvetCareerPathwayCatalog,
   matchStudentCareerPathways,
-  renderNcvetCareerPathwayExplorerCard
+  renderNcvetCareerPathwayExplorerCard,
+  bookmarkStudentDoubtOffline,
+  resolveQueuedStudentDoubt,
+  renderOfflineDoubtNotebookQueueCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -839,6 +842,54 @@ try {
   assert.equal(getCareerBody.status, 'ok');
   assert.ok(getCareerBody.unlockedCount >= 2);
   assert.equal(getCareerBody.pathways_sha256.length, 64);
+
+  // Verify G61 Offline Bilingual Doubt Notebook & Peer Mentor Resolution Queue
+  const doubtState = { studentId: 'STU-GN-101', tokenBalance: 40, doubtNotebookQueue: [] };
+  const bRes = bookmarkStudentDoubtOffline(doubtState, {
+    studentId: 'STU-GN-101',
+    chapterId: 'NCERT-G08-SCI-CH08',
+    conceptTag: 'pressure-area-inverse'
+  });
+  assert.equal(bRes.ok, true);
+  assert.equal(bRes.totalQueued, 1);
+  const rRes = resolveQueuedStudentDoubt(doubtState, {
+    doubtId: bRes.latestDoubt.doubtId,
+    resolvedBy: 'PEER-MENTOR-STU-102',
+    sevaCoinsAwarded: 15
+  });
+  assert.equal(rRes.ok, true);
+  assert.equal(rRes.remainingOpenCount, 0);
+  assert.equal(doubtState.tokenBalance, 55);
+  const dCard = renderOfflineDoubtNotebookQueueCard(doubtState);
+  assert.ok(dCard.includes('id="offline-doubt-notebook-queue-card"'));
+
+  const postDoubtRes = await fetch(`${baseUrl}/api/student/doubt-queue`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      doubtId: 'DOUBT-TEST-101',
+      studentId: 'STU-GN-101',
+      chapterId: 'NCERT-G08-SCI-CH08',
+      doubtTextBilingual: 'Why does pressure increase with smaller area?'
+    })
+  });
+  assert.equal(postDoubtRes.status, 200);
+  const resolveDoubtRes = await fetch(`${baseUrl}/api/student/doubt-queue/resolve`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      doubtId: 'DOUBT-TEST-101',
+      resolvedBy: 'PEER-MENTOR-STU-102',
+      sevaCoinsAwarded: 15
+    })
+  });
+  assert.equal(resolveDoubtRes.status, 200);
+  const getDoubtRes = await fetch(`${baseUrl}/api/student/doubt-queue/STU-GN-101`);
+  assert.equal(getDoubtRes.status, 200);
+  const getDoubtBody = await getDoubtRes.json();
+  assert.equal(getDoubtBody.count, 1);
+  assert.equal(getDoubtBody.openCount, 0);
+  assert.equal(getDoubtBody.queue_sha256.length, 64);
 } finally {
   await app.close();
 }

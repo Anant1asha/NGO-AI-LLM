@@ -138,6 +138,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderStudentReflectionAndGoalPlannerCard(cohortSummary)}
       ${renderInteractiveWebGl2SandboxCard(cohortSummary)}
       ${renderNcvetCareerPathwayExplorerCard(cohortSummary)}
+      ${renderOfflineDoubtNotebookQueueCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2347,6 +2348,99 @@ export function renderNcvetCareerPathwayExplorerCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#14532d;">
         Unlocked Tracks: <strong>${res.unlockedCount} / ${res.totalPathways} NSQF Level 4–5 Pathways</strong> • Mastered Inputs: <strong>${res.masteredChaptersCount} Chapters</strong> • Offline-First: <code>0 External URLs</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G61: Offline Bilingual Doubt Notebook & Peer Mentor Resolution Queue
+export function bookmarkStudentDoubtOffline(state = {}, doubtInput = {}) {
+  if (!state || typeof state !== "object") {
+    throw new Error("Valid state object is required");
+  }
+  if (!Array.isArray(state.doubtNotebookQueue)) {
+    state.doubtNotebookQueue = [];
+  }
+  const studentId = String(doubtInput.studentId || state.studentId || "STU-DEFAULT").trim();
+  const chapterId = String(doubtInput.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const conceptTag = String(doubtInput.conceptTag || "pressure-area-inverse").trim();
+  const doubtTextBilingual = String(
+    doubtInput.doubtTextBilingual ||
+    "क्षेत्रफल घटने पर दाब क्यों बढ़ता है? / Why does pressure increase when contact area decreases?"
+  ).trim();
+  const priority = String(doubtInput.priority || "HIGH").toUpperCase();
+  const doubtId = `DOUBT-${state.doubtNotebookQueue.length + 1}-${chapterId}`;
+  const payloadStr = `${doubtId}|${studentId}|${chapterId}|${conceptTag}|${doubtTextBilingual}`;
+  let h = 2166136261;
+  for (let i = 0; i < payloadStr.length; i++) {
+    h ^= payloadStr.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  const doubtDigest = h.toString(16).padStart(8, "0").repeat(8);
+  const item = {
+    doubtId,
+    studentId,
+    chapterId,
+    conceptTag,
+    doubtTextBilingual,
+    priority,
+    studyEnvironment: "UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE",
+    status: "QUEUED_FOR_PEER_VIDYA_SEVA",
+    resolvedBy: null,
+    resolutionNoteBilingual: null,
+    sevaCoinsAwarded: 0,
+    doubtDigest
+  };
+  state.doubtNotebookQueue.push(item);
+  return {
+    ok: true,
+    totalQueued: state.doubtNotebookQueue.filter((d) => d.status !== "RESOLVED_OFFLINE").length,
+    latestDoubt: item
+  };
+}
+
+export function resolveQueuedStudentDoubt(state = {}, resolution = {}) {
+  if (!state || !Array.isArray(state.doubtNotebookQueue)) {
+    return { ok: false, reason: "EMPTY_DOUBT_QUEUE" };
+  }
+  const target = state.doubtNotebookQueue.find((d) =>
+    resolution.doubtId ? d.doubtId === resolution.doubtId : d.status !== "RESOLVED_OFFLINE"
+  );
+  if (!target) {
+    return { ok: false, reason: "DOUBT_NOT_FOUND" };
+  }
+  target.status = "RESOLVED_OFFLINE";
+  target.resolvedBy = String(resolution.resolvedBy || "PEER-MENTOR-STU-102").trim();
+  target.resolutionNoteBilingual = String(
+    resolution.resolutionNoteBilingual ||
+    "P = F / A सूत्र में क्षेत्रफल (A) हर में है, इसलिए कम क्षेत्रफल पर दाब अधिक होता है। / Since area (A) is in the denominator of P = F / A, smaller area yields higher pressure."
+  ).trim();
+  target.sevaCoinsAwarded = Number(resolution.sevaCoinsAwarded ?? 15);
+  state.tokenBalance = Number(state.tokenBalance ?? 0) + target.sevaCoinsAwarded;
+  return {
+    ok: true,
+    resolvedDoubt: target,
+    remainingOpenCount: state.doubtNotebookQueue.filter((d) => d.status !== "RESOLVED_OFFLINE").length
+  };
+}
+
+export function renderOfflineDoubtNotebookQueueCard(stateOrSummary = {}) {
+  const queue = Array.isArray(stateOrSummary.doubtNotebookQueue) ? stateOrSummary.doubtNotebookQueue : [];
+  const openCount = queue.filter((d) => d.status !== "RESOLVED_OFFLINE").length;
+  const resolvedCount = queue.filter((d) => d.status === "RESOLVED_OFFLINE").length;
+  return `
+    <section id="offline-doubt-notebook-queue-card" aria-label="Offline Bilingual Doubt Notebook and Peer Mentor Resolution Queue"
+             style="padding:14px;border-radius:12px;background:#fefce8;border:1px solid #fde047;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#854d0e;">❓ स्वाध्याय शंका पुस्तिका और सहपाठी समाधान / Offline Doubt Notebook &amp; Peer Mentor Queue (G61)</h3>
+        <button type="button" id="btn-bookmark-offline-doubt" data-action="bookmark-offline-doubt"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#ca8a04;color:#ffffff;font-weight:700;cursor:pointer;">
+          📌 Bookmark Home Study Doubt / शंका दर्ज करें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#713f12;">
+        Open Doubts: <strong>${openCount} Queued for Peer Vidya Seva</strong> • Resolved: <strong>${resolvedCount}</strong> • Mode: <code>UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE</code>
       </p>
     </section>
   `.trim();

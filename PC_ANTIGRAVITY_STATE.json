@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
+  "next_focus_unit": "G62_OFFLINE_SPACED_REPETITION_DECK_SCHEDULER_AND_HOME_REVISION_BELL",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-18T06:44:23Z",
-  "active_focus_unit": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
-  "last_completed_focus_unit": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
-  "sw_merkle_root": "ba2f800cb1075c4011222a615076f6cc0f36bb8b163c769f820fcfc31f538f06"
+  "last_updated_utc": "2026-11-18T10:48:21Z",
+  "active_focus_unit": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
+  "last_completed_focus_unit": "G61_OFFLINE_BILINGUAL_DOUBT_NOTEBOOK_AND_PEER_MENTOR_RESOLUTION_QUEUE",
+  "sw_merkle_root": "9fe43174063e1aa25b2b70979e97b6a8b8fb6fd78e17473dea7b85d1af03a5cf"
 }

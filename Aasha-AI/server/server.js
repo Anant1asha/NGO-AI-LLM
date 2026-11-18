@@ -1612,6 +1612,97 @@ export function buildServer() {
     };
   });
 
+  // Phase G61: Offline Bilingual Doubt Notebook & Peer Mentor Resolution Queue Endpoints
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS student_doubt_queue (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      doubt_id TEXT NOT NULL UNIQUE,
+      student_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      concept_tag TEXT NOT NULL,
+      doubt_text_bilingual TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'QUEUED_FOR_PEER_VIDYA_SEVA',
+      resolved_by TEXT,
+      resolution_note_bilingual TEXT,
+      seva_coins_awarded INTEGER NOT NULL DEFAULT 0,
+      doubt_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/doubt-queue', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const chapterId = String(body.chapterId || 'NCERT-G08-SCI-CH08').trim();
+    const conceptTag = String(body.conceptTag || 'pressure-area-inverse').trim();
+    const doubtTextBilingual = String(body.doubtTextBilingual || '').trim();
+    if (!studentId || !doubtTextBilingual) {
+      return reply.code(400).send({ error: 'studentId and doubtTextBilingual are required' });
+    }
+    const createdAt = new Date().toISOString();
+    const doubtId = String(body.doubtId || `DOUBT-${Date.now()}-${chapterId}`);
+    const doubtSha256 = crypto.createHash('sha256')
+      .update(`${doubtId}|${studentId}|${chapterId}|${conceptTag}|${doubtTextBilingual}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO student_doubt_queue (doubt_id, student_id, chapter_id, concept_tag, doubt_text_bilingual, doubt_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `).run(doubtId, studentId, chapterId, conceptTag, doubtTextBilingual, doubtSha256, createdAt);
+    return {
+      status: 'ok',
+      doubtId,
+      studentId,
+      chapterId,
+      queueStatus: 'QUEUED_FOR_PEER_VIDYA_SEVA',
+      doubt_sha256: doubtSha256
+    };
+  });
+
+  app.post('/api/student/doubt-queue/resolve', async (request, reply) => {
+    const body = request.body || {};
+    const doubtId = String(body.doubtId || '').trim();
+    const resolvedBy = String(body.resolvedBy || 'PEER-MENTOR-STU-102').trim();
+    const resolutionNoteBilingual = String(body.resolutionNoteBilingual || 'Resolved via Peer Vidya Seva').trim();
+    if (!doubtId) {
+      return reply.code(400).send({ error: 'doubtId is required' });
+    }
+    const sevaCoinsAwarded = Number(body.sevaCoinsAwarded ?? 15);
+    db.prepare(`
+      UPDATE student_doubt_queue
+      SET status = 'RESOLVED_OFFLINE', resolved_by = ?, resolution_note_bilingual = ?, seva_coins_awarded = ?
+      WHERE doubt_id = ?
+    `).run(resolvedBy, resolutionNoteBilingual, sevaCoinsAwarded, doubtId);
+    return {
+      status: 'ok',
+      doubtId,
+      queueStatus: 'RESOLVED_OFFLINE',
+      resolvedBy,
+      sevaCoinsAwarded
+    };
+  });
+
+  app.get('/api/student/doubt-queue/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const doubts = db.prepare(`
+      SELECT doubt_id AS doubtId, student_id AS studentId, chapter_id AS chapterId,
+             concept_tag AS conceptTag, doubt_text_bilingual AS doubtTextBilingual,
+             status, resolved_by AS resolvedBy, resolution_note_bilingual AS resolutionNoteBilingual,
+             seva_coins_awarded AS sevaCoinsAwarded, doubt_sha256 AS doubtSha256, created_at AS createdAt
+      FROM student_doubt_queue
+      WHERE student_id = ?
+      ORDER BY id DESC
+    `).all(studentId);
+    const queue_sha256 = crypto.createHash('sha256').update(JSON.stringify(doubts), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      studentId,
+      count: doubts.length,
+      openCount: doubts.filter((d) => d.status !== 'RESOLVED_OFFLINE').length,
+      doubts,
+      queue_sha256
+    };
+  });
+
   return app;
 
 
