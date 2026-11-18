@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
+  "next_focus_unit": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-17T23:25:17Z",
-  "active_focus_unit": "G58_OFFLINE_STUDENT_SELF_REFLECTION_JOURNAL_AND_GOAL_PLANNER",
-  "last_completed_focus_unit": "G58_OFFLINE_STUDENT_SELF_REFLECTION_JOURNAL_AND_GOAL_PLANNER",
-  "sw_merkle_root": "602b332067bb3b99bb9770241a09b6af813c0585785d4f5f8df0a74c18c67fcd"
+  "last_updated_utc": "2026-11-18T02:57:42Z",
+  "active_focus_unit": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
+  "last_completed_focus_unit": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
+  "sw_merkle_root": "21b95a35ac32302681e189726455c3b5dd904e8c7498cd0adc6ffd536381cc47"
 }

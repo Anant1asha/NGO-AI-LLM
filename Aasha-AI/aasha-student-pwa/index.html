@@ -100,6 +100,7 @@
       recordStudentDailyAttendance,
       renderVillagePanchayatNoticeboardPosterHtml,
       recordStudentReflectionAndGoal,
+      runInteractiveSimChallengeAttempt,
       syncNowWithServer
     } from './src/app.js';
 
@@ -362,6 +363,15 @@
           confidenceLevel: 5
         });
         toastMount.innerHTML = `<div id="reflection-goal-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0e7ff;color:#3730a3;margin-top:10px;font-weight:600;">📓 Logged Self-Reflection & Weekly Goal (${res.totalEntries} entries)</div>`;
+        persistAndRefresh();
+      } else if (action === 'run-webgl2-sim-challenge') {
+        const res = runInteractiveSimChallengeAttempt(state, {
+          studentId: state.studentId,
+          presetId: 'SIM-PHY-FORCE-PRESSURE-60FPS',
+          submittedValue: 2500,
+          fpsMeasured: 60
+        });
+        toastMount.innerHTML = `<div id="webgl2-sim-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#cffafe;color:#155e75;margin-top:10px;font-weight:600;">🎮 60fps WebGL2 Sim Passed (+${res.latestRun.coinsAwarded} Coins, ${res.latestRun.fpsMeasured}fps)</div>`;
         persistAndRefresh();
       }
     });

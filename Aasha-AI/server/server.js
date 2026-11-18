@@ -1488,6 +1488,78 @@ export function buildServer() {
     };
   });
 
+  // Phase G59: Offline Interactive 60fps WebGL2/Canvas Physics & Math Sandbox Challenge Endpoints
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS student_sim_challenge_runs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id TEXT NOT NULL,
+      preset_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      submitted_value REAL NOT NULL,
+      accuracy_pct REAL NOT NULL,
+      fps_measured INTEGER NOT NULL DEFAULT 60,
+      passed INTEGER NOT NULL DEFAULT 1,
+      coins_awarded INTEGER NOT NULL DEFAULT 10,
+      run_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/sim-challenge-run', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const presetId = String(body.presetId || 'SIM-PHY-FORCE-PRESSURE-60FPS').trim();
+    const chapterId = String(body.chapterId || 'NCERT-G08-SCI-CH08').trim();
+    if (!studentId) {
+      return reply.code(400).send({ error: 'studentId is required' });
+    }
+    const submittedValue = Number(body.submittedValue ?? 2500);
+    const accuracyPct = Math.max(0, Math.min(100, Number(body.accuracyPct ?? 100)));
+    const fpsMeasured = Math.max(30, Math.min(120, Number(body.fpsMeasured ?? 60)));
+    const passed = body.passed === false ? 0 : 1;
+    const coinsAwarded = passed ? Number(body.coinsAwarded ?? 10) : 0;
+    const createdAt = new Date().toISOString();
+    const runSha256 = crypto.createHash('sha256')
+      .update(`${studentId}|${presetId}|${chapterId}|${submittedValue}|${accuracyPct}|${fpsMeasured}|${passed}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO student_sim_challenge_runs (student_id, preset_id, chapter_id, submitted_value, accuracy_pct, fps_measured, passed, coins_awarded, run_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(studentId, presetId, chapterId, submittedValue, accuracyPct, fpsMeasured, passed, coinsAwarded, runSha256, createdAt);
+    return {
+      status: 'ok',
+      studentId,
+      presetId,
+      chapterId,
+      accuracyPct,
+      fpsMeasured,
+      passed: Boolean(passed),
+      coinsAwarded,
+      run_sha256: runSha256
+    };
+  });
+
+  app.get('/api/student/sim-challenge-runs/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const runs = db.prepare(`
+      SELECT student_id AS studentId, preset_id AS presetId, chapter_id AS chapterId,
+             submitted_value AS submittedValue, accuracy_pct AS accuracyPct,
+             fps_measured AS fpsMeasured, passed, coins_awarded AS coinsAwarded,
+             run_sha256 AS runSha256, created_at AS createdAt
+      FROM student_sim_challenge_runs
+      WHERE student_id = ?
+      ORDER BY id DESC
+    `).all(studentId);
+    const runs_sha256 = crypto.createHash('sha256').update(JSON.stringify(runs), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      studentId,
+      count: runs.length,
+      runs,
+      runs_sha256
+    };
+  });
+
   return app;
 
 

@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G59_OFFLINE_INTERACTIVE_WEBGL2_PHYSICS_AND_MATH_SANDBOX_CHALLENGE_PACK",
+            "NEXT_PRIORITY": "G60_OFFLINE_BILINGUAL_CAREER_AND_NCVET_VOCATIONAL_PATHWAY_EXPLORER",
         }
 
         self.validate_20_field_report(report)

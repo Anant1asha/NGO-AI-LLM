@@ -57,7 +57,10 @@ import {
   recordStudentReflectionAndGoal,
   evaluateWeeklyGoalProgress,
   registerOptionalStyleExpansionPack,
-  renderStudentReflectionAndGoalPlannerCard
+  renderStudentReflectionAndGoalPlannerCard,
+  getInteractiveWebGl2ChallengePresets,
+  runInteractiveSimChallengeAttempt,
+  renderInteractiveWebGl2SandboxCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -779,6 +782,41 @@ try {
   const getReflBody = await getReflRes.json();
   assert.equal(getReflBody.count, 1);
   assert.equal(getReflBody.journal_sha256.length, 64);
+
+  // Verify G59 Offline Interactive 60fps WebGL2/Canvas Physics & Math Sandbox Challenge Pack
+  const presets = getInteractiveWebGl2ChallengePresets();
+  assert.equal(presets.length, 4);
+  const simState = { studentId: 'STU-GN-101', tokenBalance: 50, simChallengeRuns: [] };
+  const simRes = runInteractiveSimChallengeAttempt(simState, {
+    studentId: 'STU-GN-101',
+    presetId: 'SIM-PHY-FORCE-PRESSURE-60FPS',
+    submittedValue: 2500,
+    fpsMeasured: 60
+  });
+  assert.equal(simRes.ok, true);
+  assert.equal(simRes.latestRun.passed, true);
+  assert.equal(simState.tokenBalance, 60);
+  const simCardHtml = renderInteractiveWebGl2SandboxCard(simState);
+  assert.ok(simCardHtml.includes('id="interactive-webgl2-sandbox-card"'));
+
+  const postSimRes = await fetch(`${baseUrl}/api/student/sim-challenge-run`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      studentId: 'STU-GN-101',
+      presetId: 'SIM-PHY-FORCE-PRESSURE-60FPS',
+      chapterId: 'NCERT-G08-SCI-CH08',
+      submittedValue: 2500,
+      accuracyPct: 100,
+      fpsMeasured: 60
+    })
+  });
+  assert.equal(postSimRes.status, 200);
+  const getSimRes = await fetch(`${baseUrl}/api/student/sim-challenge-runs/STU-GN-101`);
+  assert.equal(getSimRes.status, 200);
+  const getSimBody = await getSimRes.json();
+  assert.equal(getSimBody.count, 1);
+  assert.equal(getSimBody.runs_sha256.length, 64);
 } finally {
   await app.close();
 }
