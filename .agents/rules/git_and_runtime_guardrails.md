@@ -1,4 +1,5 @@
 ---
+trigger: always_on
 description: Universal Git staging, bundle push safeguards, branch protections, and cross-platform runtime execution invariants.
 globs: "**/*"
 ---

@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-17T15:51:32.434363+00:00",
+  "generated_at_utc": "2026-11-17T20:48:02.063903+00:00",
   "drive_cache_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
-  "total_cached_assets": 48,
+  "total_cached_assets": 49,
   "archive_file": "aasha_codebase_cache_pack.tar.gz",
-  "archive_bytes": 72755,
-  "archive_sha256": "75ce0bc18b9e66e674585ca72c3684c5cfb0b3dfec82a058d301c917b5a35469",
+  "archive_bytes": 72955,
+  "archive_sha256": "26cee0b2a0ad67415b85ce21d185c7df3d394cfea56ab6f118ec9f74445e7a24",
   "assets": [
     {
       "asset_id": "AVR-P301-HTML",
@@ -181,6 +181,22 @@
         "html5",
         "tactile",
         "avr-p311"
+      ]
+    },
+    {
+      "asset_id": "AVR-P312-HTML",
+      "name": "AVR-P312-particle-diffusion (1).html",
+      "category": "interactive_visual_mechanic",
+      "license": "AASHA-Apache-2.0-Cleanroom",
+      "local_rel_path": "vendor_cache\\AVR-P312-particle-diffusion (1).html",
+      "sha256": "41b5b7cac942a49ecb6f1118f74588e76d8a089f239365e4ae09fd42dd85de61",
+      "byte_size": 2507,
+      "tags": [
+        "avr",
+        "offline",
+        "html5",
+        "tactile",
+        "avr-p312"
       ]
     },
     {
