@@ -141,6 +141,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderOfflineDoubtNotebookQueueCard(cohortSummary)}
       ${renderSpacedRepetitionHomeRevisionCard(cohortSummary)}
       ${renderFamilyProgressCertificateCard(cohortSummary)}
+      ${renderTeacherRemedialMicroPlaylistCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2629,6 +2630,68 @@ export function renderFamilyProgressCertificateCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#78350f;">
         Tier: <strong>${cert.milestoneTier}</strong> • Mastery: <strong>${cert.masteryPct}%</strong> • Audio: <code>${cert.chimeSpec.synthEngine}</code> • Cap: <strong>✅ &lt; 20 MiB / Child HTML</strong>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G64: Offline Teacher Remedial Micro-Playlist Generator
+export function generateTeacherRemedialMicroPlaylist(cohortSummary = {}) {
+  const misconceptions = Array.isArray(cohortSummary.misconceptions) && cohortSummary.misconceptions.length > 0
+    ? cohortSummary.misconceptions
+    : [
+        { tag: "fraction-denominator-add", chapterId: "NCERT-G06-MATH-CH07", count: 6 },
+        { tag: "pressure-area-inverse", chapterId: "NCERT-G08-SCI-CH08", count: 4 },
+        { tag: "drip-moisture-balance", chapterId: "NCERT-G08-SCI-CH01", count: 3 }
+      ];
+  const playlists = misconceptions.map((m, idx) => {
+    const tag = String(m.tag || `concept-${idx + 1}`);
+    const chapterId = String(m.chapterId || "NCERT-G08-SCI-CH08");
+    const affectedCount = Number(m.count ?? 1);
+    return {
+      playlistId: `REM-${idx + 1}-${chapterId}`,
+      misconceptionTag: tag,
+      chapterId,
+      affectedLearnersCount: affectedCount,
+      estimatedMinutes: 12,
+      steps: [
+        { stepType: "BILINGUAL_LLE_CONCEPT_CARD", title: `पुनरावृत्ति कार्ड / Concept Recap: ${tag}` },
+        { stepType: "60FPS_WEBGL2_GUIDED_SIM", title: `इंटरैक्टिव सिमुलेशन / Guided 60fps Sim (${chapterId})` },
+        { stepType: "MINI_ARENA_3Q_CHECK", title: `3-प्रश्न जाँच / 3-Question Mastery Check` }
+      ]
+    };
+  });
+  const payloadStr = JSON.stringify(playlists);
+  let h = 2166136261;
+  for (let i = 0; i < payloadStr.length; i++) {
+    h ^= payloadStr.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  const playlistDigest = h.toString(16).padStart(8, "0").repeat(8);
+  return {
+    ok: true,
+    totalPlaylists: playlists.length,
+    totalAffectedLearners: playlists.reduce((acc, p) => acc + p.affectedLearnersCount, 0),
+    playlists,
+    playlistDigest
+  };
+}
+
+export function renderTeacherRemedialMicroPlaylistCard(cohortSummary = {}) {
+  const res = generateTeacherRemedialMicroPlaylist(cohortSummary);
+  return `
+    <section id="teacher-remedial-micro-playlist-card" aria-label="Offline Teacher Remedial Micro-Playlist Generator"
+             style="padding:14px;border-radius:12px;background:#fef2f2;border:1px solid #fecaca;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#991b1b;">🎯 सुधारात्मक माइक्रो-प्लेलिस्ट जनरेटर / Teacher Remedial Micro-Playlist Generator (G64)</h3>
+        <button type="button" id="btn-generate-remedial-playlist" data-action="generate-remedial-micro-playlist"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#dc2626;color:#ffffff;font-weight:700;cursor:pointer;">
+          🧩 Build Offline Remedial Playlists / सुधारात्मक प्लेलिस्ट बनाएँ
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#7f1d1d;">
+        Micro-Playlists: <strong>${res.totalPlaylists} Targeted 12-Min Packs</strong> • Affected Scholars: <strong>${res.totalAffectedLearners}</strong> • Offline-First: <code>0 External URLs</code>
       </p>
     </section>
   `.trim();

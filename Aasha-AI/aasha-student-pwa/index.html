@@ -105,6 +105,7 @@
       bookmarkStudentDoubtOffline,
       scheduleSpacedRepetitionReview,
       renderFamilyProgressCertificateHtml,
+      generateTeacherRemedialMicroPlaylist,
       syncNowWithServer
     } from './src/app.js';
 
@@ -397,6 +398,9 @@
         a.download = 'aasha_family_progress_certificate.html';
         a.click();
         toastMount.innerHTML = `<div id="family-cert-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#fef3c7;color:#92400e;margin-top:10px;font-weight:600;">🏆 Exported Offline Family Progress Certificate</div>`;
+      } else if (action === 'generate-remedial-micro-playlist') {
+        const res = generateTeacherRemedialMicroPlaylist(state.cohortSummary || {});
+        toastMount.innerHTML = `<div id="remedial-playlist-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#fee2e2;color:#991b1b;margin-top:10px;font-weight:600;">🎯 Generated ${res.totalPlaylists} Offline Remedial Micro-Playlists (${res.totalAffectedLearners} learners)</div>`;
       }
     });
 

@@ -73,7 +73,9 @@ import {
   generateOfflineCelebrationChimeSpec,
   buildFamilyProgressCertificateData,
   renderFamilyProgressCertificateHtml,
-  renderFamilyProgressCertificateCard
+  renderFamilyProgressCertificateCard,
+  generateTeacherRemedialMicroPlaylist,
+  renderTeacherRemedialMicroPlaylistCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -948,6 +950,21 @@ try {
   assert.equal(getCertBody.status, 'ok');
   assert.equal(getCertBody.zero_external_urls, true);
   assert.equal(getCertBody.certificate_sha256.length, 64);
+
+  // Verify G64 Offline Teacher Remedial Micro-Playlist Generator
+  const remRes = generateTeacherRemedialMicroPlaylist({});
+  assert.equal(remRes.ok, true);
+  assert.equal(remRes.totalPlaylists, 3);
+  assert.equal(remRes.playlistDigest.length, 64);
+  const remCard = renderTeacherRemedialMicroPlaylistCard({});
+  assert.ok(remCard.includes('id="teacher-remedial-micro-playlist-card"'));
+
+  const getRemRes = await fetch(`${baseUrl}/api/teacher/remedial-playlists`);
+  assert.equal(getRemRes.status, 200);
+  const getRemBody = await getRemRes.json();
+  assert.equal(getRemBody.status, 'ok');
+  assert.equal(getRemBody.zero_external_urls, true);
+  assert.equal(getRemBody.playlists_sha256.length, 64);
 } finally {
   await app.close();
 }

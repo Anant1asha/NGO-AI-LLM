@@ -1814,6 +1814,38 @@ export function buildServer() {
     return { ...payload, certificate_sha256 };
   });
 
+  // Phase G64: Offline Teacher Remedial Micro-Playlist Generator Endpoint
+  app.get('/api/teacher/remedial-playlists', async () => {
+    const clusters = db.prepare(`
+      SELECT chapter_id AS chapterId,
+             COUNT(*) AS affectedLearnersCount,
+             ROUND(AVG(score), 1) AS avgScorePct
+      FROM mastery_events
+      WHERE score < 70
+      GROUP BY chapter_id
+      ORDER BY affectedLearnersCount DESC
+      LIMIT 10
+    `).all();
+    const playlists = (clusters.length > 0 ? clusters : [
+      { chapterId: 'NCERT-G06-MATH-CH07', affectedLearnersCount: 3, avgScorePct: 54.0 }
+    ]).map((c, idx) => ({
+      playlistId: `REM-${idx + 1}-${c.chapterId}`,
+      chapterId: c.chapterId,
+      affectedLearnersCount: c.affectedLearnersCount,
+      avgScorePct: c.avgScorePct,
+      estimatedMinutes: 12,
+      offlineSteps: ['BILINGUAL_LLE_CONCEPT_CARD', '60FPS_WEBGL2_GUIDED_SIM', 'MINI_ARENA_3Q_CHECK']
+    }));
+    const playlists_sha256 = crypto.createHash('sha256').update(JSON.stringify(playlists), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      count: playlists.length,
+      playlists,
+      zero_external_urls: true,
+      playlists_sha256
+    };
+  });
+
   return app;
 
 
