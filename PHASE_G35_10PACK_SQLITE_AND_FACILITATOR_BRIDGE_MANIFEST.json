@@ -1,7 +1,7 @@
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
-  "generated_at_utc": "2026-11-18T22:11:05.184086+00:00",
+  "generated_at_utc": "2026-11-18T22:36:08.240027+00:00",
   "sqlite_10pack_catalogue": {
     "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db",
     "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db.gz",
@@ -9,9 +9,9 @@
     "tln_nodes_exported": 30,
     "wm_vocabulary_exported": 1201,
     "raw_db_bytes": 462848,
-    "gzip_db_bytes": 56449,
+    "gzip_db_bytes": 56444,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "19b8211bb034b180f79f56115f6d62a2641170bb9c40c860a40bf6dab790e750"
+    "gzip_sha256": "bb7e237650bd876074a962b7721d66bc21912b2532fd7159267da626e4e965ab"
   },
   "facilitator_bridge": {
     "hotspotClusters": 2,
@@ -20,7 +20,7 @@
     "dashboardValid": true,
     "flashcardValid": true,
     "signedPackValid": true,
-    "integrityHash": "fnv1a32:effe9fd4"
+    "integrityHash": "fnv1a32:63e1e812"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
@@ -36,7 +36,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 164
+      "build_cache_records": 174
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."
