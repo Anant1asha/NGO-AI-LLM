@@ -14,6 +14,7 @@ import importlib.util
 import json
 import sqlite3
 import subprocess
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
@@ -303,9 +304,14 @@ def run_phase_g35_cycle(repo_root: Path | str = ".") -> Dict[str, Any]:
             "Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."
         ),
     }
-    (root / "PHASE_G35_10PACK_SQLITE_AND_FACILITATOR_BRIDGE_MANIFEST.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    manifest_path = root / "PHASE_G35_10PACK_SQLITE_AND_FACILITATOR_BRIDGE_MANIFEST.json"
+    manifest_text = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
+    for attempt in range(5):
+        try:
+            manifest_path.write_text(manifest_text, encoding="utf-8")
+            break
+        except OSError:
+            time.sleep(0.2)
     return manifest
 
 

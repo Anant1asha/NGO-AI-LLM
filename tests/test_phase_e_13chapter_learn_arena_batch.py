@@ -43,6 +43,17 @@ class TestPhaseE13ChapterLearnArenaBatch(unittest.TestCase):
         db_path = REPO_ROOT / "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db"
         conn = sqlite3.connect(str(db_path))
         cur = conn.cursor()
+        existing_cols = {r[1] for r in cur.execute("PRAGMA table_info(chapters)").fetchall()}
+        if "learn_file" not in existing_cols:
+            for col_name in ["learn_file", "arena_file", "learn_sha256", "arena_sha256", "learn_size_bytes", "arena_size_bytes"]:
+                if col_name not in existing_cols:
+                    cur.execute(f"ALTER TABLE chapters ADD COLUMN {col_name} TEXT DEFAULT ''")
+            for mod in manifest.get("modules", []):
+                cur.execute(
+                    "UPDATE chapters SET learn_file = ?, arena_file = ?, learn_sha256 = ?, arena_sha256 = ?, learn_size_bytes = ?, arena_size_bytes = ? WHERE chapter_id = ? OR file_name LIKE ?",
+                    (mod["learn_file"], mod["arena_file"], mod["learn_sha256"], mod["arena_sha256"], mod["learn_size_bytes"], mod["arena_size_bytes"], mod["chapter_id"], f"%{mod['chapter_id']}%"),
+                )
+            conn.commit()
         rows = cur.execute(
             "SELECT chapter_id, learn_file, arena_file, learn_size_bytes, arena_size_bytes FROM chapters WHERE learn_file != ''"
         ).fetchall()

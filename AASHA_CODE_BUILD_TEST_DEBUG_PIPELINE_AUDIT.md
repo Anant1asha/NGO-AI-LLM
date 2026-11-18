@@ -1,5 +1,5 @@
 # AASHA Code-Build-Test-Debug Pipeline Audit
-Generated: `2026-11-17T15:32:06.205442+00:00`
+Generated: `2026-11-18T18:25:03.471428+00:00`
 
 - **Build & Synthesis**: `FrontendCodeSynthesizer`, `SixAgentV5EngineSynthesizer`, `sqlite_exporter.py`, `bundler.py`, `HydrogenArgonSwarmRouter` (`scripts/aasha_continuous_loop.mjs --swarm`).
 - **Test & QA**: `61` Python test suites, `97` Visual Contract assertions, `qa/run_qa.js` (`28` checks with Node VM DOM shim), `lint_staged_secrets.mjs`.

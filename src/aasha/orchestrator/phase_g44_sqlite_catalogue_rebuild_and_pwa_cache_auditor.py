@@ -61,7 +61,13 @@ def rebuild_teas_sqlite_gzip_catalogue(repo_root: Path) -> Dict[str, Any]:
                 file_name TEXT NOT NULL,
                 domain TEXT NOT NULL,
                 size_bytes INTEGER NOT NULL,
-                sha256 TEXT NOT NULL
+                sha256 TEXT NOT NULL,
+                learn_file TEXT DEFAULT '',
+                arena_file TEXT DEFAULT '',
+                learn_size_bytes INTEGER DEFAULT 0,
+                arena_size_bytes INTEGER DEFAULT 0,
+                learn_sha256 TEXT DEFAULT '',
+                arena_sha256 TEXT DEFAULT ''
             );
             CREATE TABLE tln_nodes (
                 node_id TEXT PRIMARY KEY,
@@ -81,7 +87,7 @@ def rebuild_teas_sqlite_gzip_catalogue(repo_root: Path) -> Dict[str, Any]:
             ch_id = hp.stem
             domain = "NCVET-PSSCIVE" if "NCVET" in hp.name else "STEM"
             conn.execute(
-                "INSERT INTO chapters VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO chapters (chapter_id, file_name, domain, size_bytes, sha256) VALUES (?, ?, ?, ?, ?)",
                 (ch_id, hp.name, domain, hp.stat().st_size, _sha256_file(hp)),
             )
             for n_i in range(1, 4):
@@ -95,6 +101,31 @@ def rebuild_teas_sqlite_gzip_catalogue(repo_root: Path) -> Dict[str, Any]:
             conn.execute("INSERT OR REPLACE INTO vocabulary VALUES (?, ?, 'WM')", (k, v))
         for k, v in conn_dict.items():
             conn.execute("INSERT OR REPLACE INTO vocabulary VALUES (?, ?, 'CONN')", (k, v))
+        phase_e_manifest = repo_root / "PHASE_E_13CHAPTER_LEARN_ARENA_BATCH_MANIFEST.json"
+        if phase_e_manifest.exists():
+            try:
+                e_data = json.loads(phase_e_manifest.read_text(encoding="utf-8"))
+                for mod in e_data.get("modules", []):
+                    conn.execute(
+                        """
+                        UPDATE chapters
+                           SET learn_file = ?, arena_file = ?, learn_sha256 = ?, arena_sha256 = ?,
+                               learn_size_bytes = ?, arena_size_bytes = ?
+                         WHERE chapter_id = ? OR file_name LIKE ?
+                        """,
+                        (
+                            mod.get("learn_file", ""),
+                            mod.get("arena_file", ""),
+                            mod.get("learn_sha256", ""),
+                            mod.get("arena_sha256", ""),
+                            mod.get("learn_size_bytes", 0),
+                            mod.get("arena_size_bytes", 0),
+                            mod.get("chapter_id", ""),
+                            f"%{mod.get('chapter_id', '')}%",
+                        ),
+                    )
+            except Exception:
+                pass
         conn.commit()
 
         ch_cnt = conn.execute("SELECT COUNT(*) FROM chapters").fetchone()[0]

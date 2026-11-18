@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
   "phase": "W6_INDEPENDENT_CERTIFICATION",
-  "generated_at_utc": "2026-11-17T15:32:16.537662+00:00",
-  "git_head": "c8817009ed550b0001e0549b0e5d44a767e5883c",
+  "generated_at_utc": "2026-11-18T18:25:11.410044+00:00",
+  "git_head": "c30183eb19998e8480982c53282c09ef6611beb0",
   "git_branch": "aios/v2-bootstrap",
   "github_push_note": "Offline sandbox cannot push directly; commits packaged in aasha_aios_v2_bootstrap_full.bundle on Google Drive.",
   "priority_1_w1_w5_verification": {
-    "cached_assets_sha256_verified": 48,
-    "cached_assets_total": 48,
+    "cached_assets_sha256_verified": 49,
+    "cached_assets_total": 49,
     "assets_mismatched": [],
     "def004_sanitized_replay": {
       "Chapter3_LPG_Learning.html": {

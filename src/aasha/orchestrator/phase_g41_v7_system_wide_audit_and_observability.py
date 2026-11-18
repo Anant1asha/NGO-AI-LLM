@@ -12,6 +12,7 @@ import hashlib
 import json
 import sqlite3
 import subprocess
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
@@ -190,7 +191,13 @@ def generate_w1_w2_v7_deliverables(repo_root: Path) -> Dict[str, str]:
     hashes: Dict[str, str] = {}
     for filename, payload in deliverables.items():
         out_path = repo_root / filename
-        out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        payload_text = json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
+        for attempt in range(5):
+            try:
+                out_path.write_text(payload_text, encoding="utf-8")
+                break
+            except OSError:
+                time.sleep(0.2)
         hashes[filename] = _sha256_file(out_path)
     return hashes
 
@@ -343,7 +350,12 @@ def run_phase_g41_cycle(repo_root: Path | str = ".") -> Dict[str, Any]:
             "Implement deterministic multi-centre SQLite cohort delta merge and NCVET/PSSCIVE teacher rubric validator."
         ),
     }
-    (root / "PHASE_G41_V7_SYSTEM_WIDE_AUDIT_MANIFEST.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    manifest_path = root / "PHASE_G41_V7_SYSTEM_WIDE_AUDIT_MANIFEST.json"
+    manifest_text = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
+    for attempt in range(5):
+        try:
+            manifest_path.write_text(manifest_text, encoding="utf-8")
+            break
+        except OSError:
+            time.sleep(0.2)
     return manifest

@@ -50,13 +50,13 @@ class TestPhaseGStudioWebCliLearnArenaBridge(unittest.TestCase):
             cfg_yaml.write_text(
                 f"""
 pipeline:
-  template_path: "{PIPELINE_ROOT / 'template/v5-engine-template.html'}"
-  defaults_path: "{PIPELINE_ROOT / 'config/defaults_expanded_v2.json'}"
-  schema_path: "{PIPELINE_ROOT / 'schema/chapter_spec.schema.json'}"
-  qa_runner: "{PIPELINE_ROOT / 'qa/run_qa.js'}"
-  work_dir: "{tp / 'work'}"
-  output_dir: "{tp / 'out'}"
-  jobs_dir: "{tp / 'jobs'}"
+  template_path: "{(PIPELINE_ROOT / 'template/v5-engine-template.html').as_posix()}"
+  defaults_path: "{(PIPELINE_ROOT / 'config/defaults_expanded_v2.json').as_posix()}"
+  schema_path: "{(PIPELINE_ROOT / 'schema/chapter_spec.schema.json').as_posix()}"
+  qa_runner: "{(PIPELINE_ROOT / 'qa/run_qa.js').as_posix()}"
+  work_dir: "{(tp / 'work').as_posix()}"
+  output_dir: "{(tp / 'out').as_posix()}"
+  jobs_dir: "{(tp / 'jobs').as_posix()}"
 """,
                 encoding="utf-8",
             )
