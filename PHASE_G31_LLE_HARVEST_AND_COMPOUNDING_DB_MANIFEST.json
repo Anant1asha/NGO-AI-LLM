@@ -1,7 +1,7 @@
 {
   "phase": "G31",
   "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
-  "generated_at_utc": "2026-11-18T21:57:30.856450+00:00",
+  "generated_at_utc": "2026-11-18T22:08:32.069812+00:00",
   "lle_harvest": {
     "expanded_config_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/config/defaults_expanded_v2.json",
     "wm_count": 1201,
@@ -26,7 +26,7 @@
     "conn_rows_stored": 85,
     "reusable_mechanics_stored": 5,
     "open_source_foundations_stored": 7,
-    "build_cache_records": 154
+    "build_cache_records": 159
   },
   "open_source_foundations_count": 7,
   "reusable_mechanics_count": 5,
@@ -34,21 +34,21 @@
     "swarm_final_state": "CERTIFIED_CHECKPOINT",
     "transitions": [
       {
-        "timestamp_utc": "2026-11-18T21:57:13.923592+00:00",
+        "timestamp_utc": "2026-11-18T22:08:19.580994+00:00",
         "from": "HYDROGEN_ORCHESTRATE",
         "to": "ARGON_EXECUTE",
         "reason": "Contract validated; dispatching Argon specialist",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       },
       {
-        "timestamp_utc": "2026-11-18T21:57:14.225431+00:00",
+        "timestamp_utc": "2026-11-18T22:08:20.028228+00:00",
         "from": "ARGON_EXECUTE",
         "to": "HYDROGEN_INDEPENDENT_QA",
         "reason": "Argon finished; switching to Hydrogen independent QA",
         "task_id": "G31-ENRICHED-SYNTHESIS"
       },
       {
-        "timestamp_utc": "2026-11-18T21:57:30.854687+00:00",
+        "timestamp_utc": "2026-11-18T22:08:32.068185+00:00",
         "from": "HYDROGEN_INDEPENDENT_QA",
         "to": "CERTIFIED_CHECKPOINT",
         "reason": "Independent QA passed",

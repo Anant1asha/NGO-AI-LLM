@@ -107,7 +107,7 @@ def sync_experience_registry_and_dom_smoke_gate(repo_root: Path) -> Dict[str, An
 
     return {
         "certified_chapters_count": len(verified_chapters),
-        "all_13_chapters_qa_passed": all(c["qa_passed"] and c["checks_passed"] == 28 for c in verified_chapters),
+        "all_13_chapters_qa_passed": all(c["qa_passed"] and c["checks_passed"] == c["checks_total"] and c["checks_passed"] >= 28 for c in verified_chapters),
         "certified_avr_count": len(certified_avr),
         "registry_sha256": _sha256_file(reg_path),
     }

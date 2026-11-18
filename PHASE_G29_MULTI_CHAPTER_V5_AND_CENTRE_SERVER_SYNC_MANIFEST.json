@@ -397,9 +397,9 @@
     "tln_nodes_exported": 16,
     "wm_vocabulary_exported": 296,
     "raw_db_bytes": 188416,
-    "gzip_db_bytes": 15415,
+    "gzip_db_bytes": 15409,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "663e4a312d32a35b16c25e58c52936a3039e6f03526ba9e60eb49b1ec0b088fe"
+    "gzip_sha256": "c82dbe5b6f2cad9f6fc37663f605b8c6f6bdf3ef0eeafd8c496279088830a36f"
   },
   "centre_server_fastify_store_sync": {
     "serverHealthStatus": "ok",
@@ -416,7 +416,7 @@
     "cohortPackLocalValid": true,
     "cohortPackServerStatus": "ingested",
     "cohortPackReconciledOrders": 1,
-    "cohortPackIntegrityHash": "fnv1a32:57659207",
+    "cohortPackIntegrityHash": "fnv1a32:dc77c659",
     "snapshotLocalValid": true,
     "snapshotBackupStatus": "backed_up",
     "snapshotRestoredChaptersCount": 3,
@@ -437,6 +437,6 @@
       "final_violations": [],
       "passed": true
     },
-    "sha256": "c6cc7ccb1011bf5b8c468463e02909c997bae8dd759c5da1fed10cd38fb26cd7"
+    "sha256": "5784d4a6e837bf33f459418e7dd08a4ebe6d35dc6bcc82ca24aac27601359951"
   }
 }
