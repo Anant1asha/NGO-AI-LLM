@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-18T22:06:56.604357+00:00",
+  "generated_at_utc": "2026-11-18T22:20:38.353826+00:00",
   "total_phase_manifests": 44,
   "total_python_test_suites": 86,
   "status_counts": {
@@ -158,7 +158,7 @@
       "task_id": "G28",
       "title": "Swarm Clarity: AASHA AIOS Multi-Agent Swarm Orchestrator Loop (DESIGN_LEARNING -> BUILD -> CODE -> TEST -> DEBUG -> FIX -> GAMIFIED_TEAS_ECOSYSTEM)",
       "manifest_file": "PHASE_G28_SWARM_CLARITY_AIOS_ORCHESTRATOR_MANIFEST.json",
-      "manifest_sha256": "5ccb177ebaa97f882f5529cbe68b265679fc11235e371ecfa82f720613367fde",
+      "manifest_sha256": "738cc5e6a7d24e5bcec482b0413d2e4809aeeda7a946d60eca19a36059a8c453",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 46
     },
@@ -166,7 +166,7 @@
       "task_id": "G29",
       "title": "Multi-Chapter Schoolbook TLN-to-HTML5 Batch Synthesis, Dual-Output SQLite Catalogue Export & Centre Server + Student PWA TEAS Store Redemption Sync Verification",
       "manifest_file": "PHASE_G29_MULTI_CHAPTER_V5_AND_CENTRE_SERVER_SYNC_MANIFEST.json",
-      "manifest_sha256": "2fe6b05d8c86deef8a355ecc68bfce68c388920220331f575238b0bf77b57de0",
+      "manifest_sha256": "6dc43369b2c9e6cf4e75e1767e053c8edcf9aff5a351652f43c6acdefec41dae",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": 47
     },
@@ -190,7 +190,7 @@
       "task_id": "G31",
       "title": "Expanded LLE Harvest (LPG+Cricket+Repo), Reusable Mechanics, Open-Source Registry & Compounding Local DB",
       "manifest_file": "PHASE_G31_LLE_HARVEST_AND_COMPOUNDING_DB_MANIFEST.json",
-      "manifest_sha256": "57b90cb698ae4a7133a41dfdad6d26017b49c0de21250e3308c78af4f96119ec",
+      "manifest_sha256": "43aae297adbc066e339f8cfaf9b687b880d6ef463c45077087d8246d1d14d523",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -198,7 +198,7 @@
       "task_id": "G33",
       "title": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST",
       "manifest_file": "PHASE_G33_BACKLOG_EXECUTION_MANIFEST.json",
-      "manifest_sha256": "02a9f9bca205e4d36c8f23a5ce05fa96c10eeb5dd6051ebf4a6831a99fdfcf48",
+      "manifest_sha256": "83b0dbaff3cb700c6af557e7f0cbcfa8f8eb9c458c0969dc11456fb672f75ebc",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -206,7 +206,7 @@
       "task_id": "G34",
       "title": "PHASE_G34_10CHAPTER_GAMIFIED_UPGRADE_MANIFEST",
       "manifest_file": "PHASE_G34_10CHAPTER_GAMIFIED_UPGRADE_MANIFEST.json",
-      "manifest_sha256": "8f9d769261b80514e87ca8c97e81e74dc5eb5cb2a5f7d3d4a5ab87b21bc0d244",
+      "manifest_sha256": "98470558cf6f740c3ab6afc97ec43ddc9857256f690cdc3148946c8a5526712f",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -214,7 +214,7 @@
       "task_id": "G35",
       "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
       "manifest_file": "PHASE_G35_10PACK_SQLITE_AND_FACILITATOR_BRIDGE_MANIFEST.json",
-      "manifest_sha256": "a16cf095dbecc1c3220155f118c37f2fa7806e97f2aa44604f60a45f58bb8cc8",
+      "manifest_sha256": "cf48a4b5236d8b02146579fa741b415d25a7b1b19233b1f9ce864cd2f65b2cea",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -222,7 +222,7 @@
       "task_id": "G36",
       "title": "NCVET/PSSCIVE Vocational Job-Role Simulators & Offline OTA Delta-Packager",
       "manifest_file": "PHASE_G36_NCVET_VOCATIONAL_AND_OTA_DELTA_MANIFEST.json",
-      "manifest_sha256": "dfbf08b82aa4102026c9ebe5703cddb76ebd8382ee0bf56cb53571d124c1b0e3",
+      "manifest_sha256": "65294f7736551b26ae2e62314cd4c93b58333d76093d2246b0569c401919c45d",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -230,7 +230,7 @@
       "task_id": "G37",
       "title": "Experience Registry Sync (13 Certified Chapters + 21 AVR), DOM Smoke Gate & Dec 31 2026 MVP Release Candidate Certification",
       "manifest_file": "PHASE_G37_MVP_RELEASE_CANDIDATE_MANIFEST.json",
-      "manifest_sha256": "8df5a0b4124b78e66220a875c9e9bb7fa0ef0a5be476c32f6e6c579edee6141d",
+      "manifest_sha256": "c43d438188be1fdea53101c90d080c97c012787c0e06009ba0dff3055ef6e2c1",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
@@ -238,7 +238,7 @@
       "task_id": "G38",
       "title": "100-Learner Multi-Centre Rural Cohort Offline Field Pilot & Double-Entry TEAS Ledger Audit",
       "manifest_file": "PHASE_G38_100LEARNER_FIELD_PILOT_MANIFEST.json",
-      "manifest_sha256": "aed18ae999cee857641a88215ac56d46b6703056c6fd554234a323be5a35ffe4",
+      "manifest_sha256": "8fc6bd116fc1cf2bb80e1f35c86218b38ff28a5af1f70b7102da6972d2d87dd0",
       "status": "LIVE_VERIFIED_PASS",
       "verified_chunk_count": null
     },
