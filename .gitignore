@@ -13,9 +13,21 @@ env/
 .pytest_cache/
 dist/
 build/
+output/
+**/output/
 work/
 state/
+raw_source_vault/
+vendor_cache/
 external_sources/
+gemini-web2api/
+agent/
+graphify-out/
+**/*.egg-info/
+Aasha-AI/server/*.db
+Aasha-AI/Aasha-Learning-Impact-Ecosystem-v0.3-full-repo/
+**/staging_pdfs/
+**/scratch/
 New_repo_web/
 AASHA_OpenSource_Codebase_Cache/
 agent/skills/html-anything/examples/
@@ -24,3 +36,45 @@ Aasha-AI/server/aasha_local.db
 *.db-journal
 *.db-wal
 *.db-shm
+
+# OS & Cloud Sync Engine Metadata (Prevents Windows command line overflow)
+desktop.ini
+Desktop.ini
+.DS_Store
+Thumbs.db
+.tmp.driveupload/
+* (*)*
+*.gdoc
+*.odt
+*.gsheet
+*.gprj
+**/.chrome_temp_*
+**/jobs/*.json
+**/*.bak
+**/.env
+**/.env.*
+!**/.env.example
+
+# Compressed Artifacts
+*.zip
+*.tar.gz
+*.gz
+*.db.bak
+
+# Local Agent Caches & Ephemeral Directories
+.llm_cache/
+.serena/logs/
+.serena/cache/
+.serena/desktop.ini
+.worktrees/
+router_usage.json
+
+# Ephemeral Agent Preview Workspaces
+.agents/teamwork_preview_*
+.agents/explorer_*
+.agents/auditor_*
+.agents/challenger_*
+.agents/reviewer_*
+.agents/worker_*
+.agents/test_writer_*
+.agents/spec_miner_*
