@@ -1,18 +1,18 @@
 # AASHA AIOS Sprint Verification Report
 
-- **Timestamp**: `2026-11-18 17:02:45 UTC`
+- **Timestamp**: `2026-11-18 18:33:21 UTC`
 - **Mode**: `QUICK (Static Linters Only)`
-- **Execution Time**: `25.35s`
+- **Execution Time**: `60.63s`
 - **Overall Status**: ✅ **SPRINT CERTIFIED (PASS)**
 
 ## Scorecard
 
 | Pillar | Check | Target Invariant | Result | Latency |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pillar 4: Zero Secrets** | Pre-Commit Secret Scanner (`SEC-002`) | No uninsulated tokens or private credentials staged | ✅ PASS | `448ms` |
-| **Branch Protection Invariant** | Pre-Push Hook & Branch Isolation Audit (`SEC-003`) | Both repos strictly on aios/v2-bootstrap, 0 pushes to master/main enforced via hooks | ✅ PASS | `2960ms` |
-| **Pillar 5: 4-Tier Memory Health** | 4-Tier Persistent Memory Synchronization Audit (`MEM-001`) | Serena local semantic, Mem0 episodic, SQLite knowledge, AST graph fully synchronized | ✅ PASS | `7109ms` |
-| **Pillar 6: Laya System 1 Router** | Laya System 1 Pre-Router Classification & Zero-Token Bleed Suite (`LAYA-001`) | All 4 paths verified on CPU (<1ms) with 0 LLM API tokens consumed | ✅ PASS | `14833ms` |
+| **Pillar 4: Zero Secrets** | Pre-Commit Secret Scanner (`SEC-002`) | No uninsulated tokens or private credentials staged | ✅ PASS | `1237ms` |
+| **Branch Protection Invariant** | Pre-Push Hook & Branch Isolation Audit (`SEC-003`) | Both repos strictly on aios/v2-bootstrap, 0 pushes to master/main enforced via hooks | ✅ PASS | `8592ms` |
+| **Pillar 5: 4-Tier Memory Health** | 4-Tier Persistent Memory Synchronization Audit (`MEM-001`) | Serena local semantic, Mem0 episodic, SQLite knowledge, AST graph fully synchronized | ✅ PASS | `34868ms` |
+| **Pillar 6: Laya System 1 Router** | Laya System 1 Pre-Router Classification & Zero-Token Bleed Suite (`LAYA-001`) | All 4 paths verified on CPU (<1ms) with 0 LLM API tokens consumed | ✅ PASS | `15927ms` |
 
 ---
 
@@ -72,7 +72,7 @@ Checking Sub Repo (Aasha-AI) remotes... origin URL: https://github.com/Anant1ash
        ॥ AASHA AIOS 4-Tier Memory Synchronization Engine ॥       
 ================================================================
 • Project         : NGO AI LLM
-• Timestamp       : 2026-11-18T17:02:30.959Z
+• Timestamp       : 2026-11-18T18:33:04.961Z
 • Overall Status  : ✅ FULLY SYNCHRONIZED & HEALTHY
 ----------------------------------------------------------------
 [Tier 1] Serena MCP Local Semantic Memory
@@ -104,28 +104,28 @@ Checking Sub Repo (Aasha-AI) remotes... origin URL: https://github.com/Anant1ash
 
 ```
 Python Env) ---
-✅ PASS | [Indic Bilingual Query] -> lle-indic (expected: lle-indic) | Source: fast_indic_regex (0.78ms)
-✅ PASS | [Vision / Multimodal Request] -> vision (expected: vision) | Source: multimodal_marker (0.16ms)
-✅ PASS | [Coding / Simulation Task] -> coding (expected: coding) | Source: in_memory_heuristic (0.63ms)
-✅ PASS | [Assessment & Misconception Generation] -> assessment (expected: assessment) | Source: in_memory_heuristic (0.16ms)
-✅ PASS | [Pedagogical Curriculum Design] -> design (expected: design) | Source: in_memory_heuristic (0.14ms)
+✅ PASS | [Indic Bilingual Query] -> lle-indic (expected: lle-indic) | Source: fast_indic_regex (0.91ms)
+✅ PASS | [Vision / Multimodal Request] -> vision (expected: vision) | Source: multimodal_marker (0.28ms)
+✅ PASS | [Coding / Simulation Task] -> coding (expected: coding) | Source: in_memory_heuristic (0.76ms)
+✅ PASS | [Assessment & Misconception Generation] -> assessment (expected: assessment) | Source: in_memory_heuristic (0.35ms)
+✅ PASS | [Pedagogical Curriculum Design] -> design (expected: design) | Source: in_memory_heuristic (0.17ms)
 ✅ PASS | [Conceptual Economic Analysis] -> analysis (expected: analysis) | Source: in_memory_heuristic (0.10ms)
 Path 1 Result: 6/6 matched expectations.
 
 --- PATH 2: Full System 1 Adaptive Routing (Daemon or Resilient Fallback) ---
-✅ PASS | [Indic Bilingual Query] -> lle-indic (expected: lle-indic) | Source: lru_cache (0.05ms)
-✅ PASS | [Vision / Multimodal Request] -> vision (expected: vision) | Source: lru_cache (0.04ms)
-✅ PASS | [Coding / Simulation Task] -> coding (expected: coding) | Source: in_memory_heuristic (57.54ms)
-✅ PASS | [Assessment & Misconception Generation] -> assessment (expected: assessment) | Source: in_memory_heuristic (2.64ms)
-✅ PASS | [Pedagogical Curriculum Design] -> design (expected: design) | Source: in_memory_heuristic (0.22ms)
-✅ PASS | [Conceptual Economic Analysis] -> analysis (expected: analysis) | Source: in_memory_heuristic (0.09ms)
+✅ PASS | [Indic Bilingual Query] -> lle-indic (expected: lle-indic) | Source: lru_cache (0.04ms)
+✅ PASS | [Vision / Multimodal Request] -> vision (expected: vision) | Source: lru_cache (0.03ms)
+✅ PASS | [Coding / Simulation Task] -> coding (expected: coding) | Source: in_memory_heuristic (59.01ms)
+✅ PASS | [Assessment & Misconception Generation] -> assessment (expected: assessment) | Source: in_memory_heuristic (0.25ms)
+✅ PASS | [Pedagogical Curriculum Design] -> design (expected: design) | Source: in_memory_heuristic (0.63ms)
+✅ PASS | [Conceptual Economic Analysis] -> analysis (expected: analysis) | Source: in_memory_heuristic (0.10ms)
 Path 2 Result: 6/6 matched expectations.
 
 --- PATH 3: Supervisor Fault Injection & Auto-Respawn Recovery ---
-✅ PASS | [Fault Recovery] -> assessment (expected: assessment) | Supervisor State: STARTING (0.07ms)
+✅ PASS | [Fault Recovery] -> assessment (expected: assessment) | Supervisor State: STARTING (0.10ms)
 
 --- PATH 4: Burst Concurrency (30 Parallel Queries) ---
-✅ PASS | 30/30 concurrent queries resolved in 0.31ms (30/30 matched)
+✅ PASS | 30/30 concurrent queries resolved in 0.33ms (30/30 matched)
 
 ═══════════════════════════════════════════════════
 All 4 Laya System 1 classification paths verified!
