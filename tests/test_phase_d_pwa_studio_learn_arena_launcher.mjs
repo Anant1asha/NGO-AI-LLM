@@ -78,7 +78,9 @@ import {
   renderTeacherRemedialMicroPlaylistCard,
   buildVillageScienceFairExhibits,
   renderVillageScienceFairShowcaseHtml,
-  renderVillageScienceFairShowcaseCard
+  renderVillageScienceFairShowcaseCard,
+  inspectChildHtmlAssetBudget,
+  renderChildHtmlAssetBudgetInspectorCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -985,6 +987,21 @@ try {
   assert.equal(getFairBody.status, 'ok');
   assert.equal(getFairBody.zero_external_urls, true);
   assert.equal(getFairBody.showcase_sha256.length, 64);
+
+  // Verify G66 Per-Child HTML5 Video/Audio/WebGL2 Asset Size Budget Inspector
+  const bRes = inspectChildHtmlAssetBudget({ chapterId: 'NCERT-G08-SCI-CH08' });
+  assert.equal(bRes.ok, true);
+  assert.equal(bRes.capScope, 'PER_INDIVIDUAL_CHILD_OUTPUT_HTML_FILE_ONLY');
+  assert.equal(bRes.maxChildHtmlBytes, 20971520);
+  const bCard = renderChildHtmlAssetBudgetInspectorCard({});
+  assert.ok(bCard.includes('id="child-html-asset-budget-inspector-card"'));
+
+  const getBudgetRes = await fetch(`${baseUrl}/api/system/child-html-budget`);
+  assert.equal(getBudgetRes.status, 200);
+  const getBudgetBody = await getBudgetRes.json();
+  assert.equal(getBudgetBody.status, 'ok');
+  assert.equal(getBudgetBody.all_within_20mib_cap, true);
+  assert.equal(getBudgetBody.budget_sha256.length, 64);
 } finally {
   await app.close();
 }

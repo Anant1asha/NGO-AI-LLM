@@ -107,6 +107,7 @@
       renderFamilyProgressCertificateHtml,
       generateTeacherRemedialMicroPlaylist,
       renderVillageScienceFairShowcaseHtml,
+      inspectChildHtmlAssetBudget,
       syncNowWithServer
     } from './src/app.js';
 
@@ -410,6 +411,9 @@
         a.download = 'aasha_village_science_fair_showcase.html';
         a.click();
         toastMount.innerHTML = `<div id="science-fair-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0f2fe;color:#0369a1;margin-top:10px;font-weight:600;">🔬 Exported Offline Village Science Fair Showcase</div>`;
+      } else if (action === 'inspect-child-html-budget') {
+        const b = inspectChildHtmlAssetBudget({});
+        toastMount.innerHTML = `<div id="child-html-budget-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#f1f5f9;color:#0f172a;margin-top:10px;font-weight:600;">📦 ${b.chapterId}: ${b.totalChildHtmlMiB} MiB / 20 MiB (${b.status})</div>`;
       }
     });
 

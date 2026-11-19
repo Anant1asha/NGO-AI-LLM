@@ -1870,6 +1870,44 @@ export function buildServer() {
     };
   });
 
+  // Phase G66: Offline Per-Child HTML5 Video, Audio & WebGL2 Asset Size Budget Inspector Endpoint
+  app.get('/api/system/child-html-budget', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const MAX_CHILD_HTML_BYTES = 20971520; // Strictly per individual child output HTML file
+    const scanDirs = [
+      path.resolve(process.cwd(), 'Aasha-AI/aasha-student-pwa'),
+      path.resolve(process.cwd(), 'AASHA_Visual_Mass_Harvest_Phase3')
+    ];
+    const htmlFiles = [];
+    for (const dir of scanDirs) {
+      if (fs.existsSync(dir)) {
+        for (const entry of fs.readdirSync(dir)) {
+          if (entry.endsWith('.html')) {
+            const fullPath = path.join(dir, entry);
+            const sizeBytes = fs.statSync(fullPath).size;
+            htmlFiles.push({
+              file: entry,
+              sizeBytes,
+              within20MiBChildCap: sizeBytes <= MAX_CHILD_HTML_BYTES
+            });
+          }
+        }
+      }
+    }
+    const allPass = htmlFiles.every((f) => f.within20MiBChildCap);
+    const budget_sha256 = crypto.createHash('sha256').update(JSON.stringify(htmlFiles), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      cap_scope: 'PER_INDIVIDUAL_CHILD_OUTPUT_HTML_FILE_ONLY',
+      max_child_html_bytes: MAX_CHILD_HTML_BYTES,
+      checked_html_count: htmlFiles.length,
+      all_within_20mib_cap: allPass,
+      htmlFiles,
+      budget_sha256
+    };
+  });
+
   return app;
 
 

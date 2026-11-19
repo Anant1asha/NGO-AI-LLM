@@ -143,6 +143,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderFamilyProgressCertificateCard(cohortSummary)}
       ${renderTeacherRemedialMicroPlaylistCard(cohortSummary)}
       ${renderVillageScienceFairShowcaseCard(cohortSummary)}
+      ${renderChildHtmlAssetBudgetInspectorCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2785,6 +2786,51 @@ export function renderVillageScienceFairShowcaseCard(cohortSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#0c4a6e;">
         Exhibits: <strong>${data.totalExhibits} 60fps WebGL2 Projects</strong> • Centre: <code>${data.centerId}</code> • Offline-First: <code>0 External URLs</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G66: Offline Chapter Video, Audio & WebGL2 Asset Size Budget Inspector (20 MiB per-child-HTML cap only)
+export function inspectChildHtmlAssetBudget(moduleSpec = {}) {
+  const MAX_CHILD_HTML_BYTES = 20971520; // Strictly 20 MiB per individual child output HTML file
+  const chapterId = String(moduleSpec.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const baseEngineBytes = Number(moduleSpec.baseEngineBytes ?? 680000);
+  const webgl2SimBytes = Number(moduleSpec.webgl2SimBytes ?? 1450000);
+  const embeddedVideoBytes = Number(moduleSpec.embeddedVideoBytes ?? 4200000);
+  const bilingualAudioBytes = Number(moduleSpec.bilingualAudioBytes ?? 950000);
+  const totalChildHtmlBytes = baseEngineBytes + webgl2SimBytes + embeddedVideoBytes + bilingualAudioBytes;
+  const remainingHeadroomBytes = Math.max(0, MAX_CHILD_HTML_BYTES - totalChildHtmlBytes);
+  const withinPerChildHtmlCap = totalChildHtmlBytes <= MAX_CHILD_HTML_BYTES;
+  return {
+    ok: withinPerChildHtmlCap,
+    chapterId,
+    capScope: "PER_INDIVIDUAL_CHILD_OUTPUT_HTML_FILE_ONLY",
+    maxChildHtmlBytes: MAX_CHILD_HTML_BYTES,
+    totalChildHtmlBytes,
+    totalChildHtmlMiB: Math.round((totalChildHtmlBytes / (1024 * 1024)) * 100) / 100,
+    remainingHeadroomBytes,
+    remainingHeadroomMiB: Math.round((remainingHeadroomBytes / (1024 * 1024)) * 100) / 100,
+    targetHardware: "4GB_RAM_5G_SMARTPHONE_60FPS_WEBGL2",
+    status: withinPerChildHtmlCap ? "PASS_UNDER_20MIB_CHILD_HTML_CAP" : "FAIL_EXCEEDS_20MIB_CHILD_HTML_CAP"
+  };
+}
+
+export function renderChildHtmlAssetBudgetInspectorCard(cohortSummary = {}) {
+  const b = inspectChildHtmlAssetBudget(cohortSummary.childHtmlSample || {});
+  return `
+    <section id="child-html-asset-budget-inspector-card" aria-label="Per-Child HTML5 Video, Audio and WebGL2 Size Budget Inspector"
+             style="padding:14px;border-radius:12px;background:#f8fafc;border:1px solid #cbd5e1;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#0f172a;">📦 20 MiB चाइल्ड HTML वीडियो/ऑडियो बजट निरीक्षक / Child HTML5 Asset Budget Inspector (G66)</h3>
+        <button type="button" id="btn-inspect-child-html-budget" data-action="inspect-child-html-budget"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#334155;color:#ffffff;font-weight:700;cursor:pointer;">
+          📏 Inspect 20 MiB Child HTML Budget / फ़ाइल आकार जाँचें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#334155;">
+        Sample (${b.chapterId}): <strong>${b.totalChildHtmlMiB} MiB / 20.0 MiB</strong> (${b.remainingHeadroomMiB} MiB creative headroom) • Scope: <code>${b.capScope}</code>
       </p>
     </section>
   `.trim();

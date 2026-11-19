@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G66_OFFLINE_CHAPTER_VIDEO_AND_AUDIO_ASSET_SIZE_BUDGET_INSPECTOR",
+            "NEXT_PRIORITY": "G67_OFFLINE_MULTILINGUAL_VOICE_GLOSSARY_PRONUNCIATION_DRILL_PACK",
         }
 
         self.validate_20_field_report(report)
