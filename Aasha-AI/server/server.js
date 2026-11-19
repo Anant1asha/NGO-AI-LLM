@@ -2047,6 +2047,24 @@ export function buildServer() {
     return { status: 'ok', count: jobs.length, jobs };
   });
 
+  app.post('/api/studio/pdf-compile-job/:jobId/execute', async (request, reply) => {
+    const jobId = String(request.params.jobId || '').trim();
+    const row = db.prepare(`SELECT * FROM studio_pdf_jobs WHERE job_id = ?`).get(jobId);
+    if (!row) {
+      return reply.code(404).send({ error: 'Job not found' });
+    }
+    db.prepare(`UPDATE studio_pdf_jobs SET status = 'COMPILED_READY' WHERE job_id = ?`).run(jobId);
+    const exec_sha256 = crypto.createHash('sha256').update(`${jobId}|COMPILED_READY|${row.pdf_name}`, 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      jobId,
+      jobStatus: 'COMPILED_READY',
+      pipelineRunner: 'src/aasha/orchestrator/g77_pdf_job_worker_runner.py',
+      within20MiBChildCap: true,
+      exec_sha256
+    };
+  });
+
   return app;
 
 

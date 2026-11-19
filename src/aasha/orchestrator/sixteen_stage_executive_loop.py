@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G77_OFFLINE_TEACHER_PDF_JOB_WORKER_RUNNER_AND_STATUS_STREAM",
+            "NEXT_PRIORITY": "G78_OFFLINE_STUDENT_MASTERY_SYNC_FOR_CUSTOM_PDF_MODULES",
         }
 
         self.validate_20_field_report(report)

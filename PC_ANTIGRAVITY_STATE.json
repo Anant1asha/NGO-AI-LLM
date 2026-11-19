@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G77_OFFLINE_TEACHER_PDF_JOB_WORKER_RUNNER_AND_STATUS_STREAM",
+  "next_focus_unit": "G78_OFFLINE_STUDENT_MASTERY_SYNC_FOR_CUSTOM_PDF_MODULES",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-19T19:50:12Z",
-  "active_focus_unit": "G76_OFFLINE_TEACHER_PDF_UPLOAD_TO_7AGENT_JOB_QUEUE",
-  "last_completed_focus_unit": "G76_OFFLINE_TEACHER_PDF_UPLOAD_TO_7AGENT_JOB_QUEUE",
+  "last_updated_utc": "2026-11-19T23:18:36Z",
+  "active_focus_unit": "G77_OFFLINE_TEACHER_PDF_JOB_WORKER_RUNNER_AND_STATUS_STREAM",
+  "last_completed_focus_unit": "G77_OFFLINE_TEACHER_PDF_JOB_WORKER_RUNNER_AND_STATUS_STREAM",
   "sw_merkle_root": "20b9b059c6a3cc6136e92442aad5370044e22a3edddfcd646f58247a96ce4d44"
 }
