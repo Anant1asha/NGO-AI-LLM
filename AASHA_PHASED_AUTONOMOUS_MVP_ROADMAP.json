@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T08:08:55Z",
+  "updated_at_utc": "2026-11-19T11:10:10Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -157,8 +157,13 @@
         },
         {
           "id": "G71_LEGACY_46_HTML_MODULES_WM_AND_ZERO_EXT_URL_REMEDIATION",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Upgrade the 46 legacy output HTML modules (< 1,000 WM) with the compounding WM dictionary and audit/remove any external URLs across legacy output builds."
+        },
+        {
+          "id": "G72_PHASE_E_26_CHAPTERS_RECOMPILE_WITH_G70_MULTI_GENRE_ENGINE",
+          "status": "QUEUED_NEXT",
+          "scope": "Recompile the full 13-chapter (26 Learn & Arena modules) curriculum pack using the G70 multi-genre 60fps Matter.js/PixiJS/JSXGraph/ECharts engine and compounding WM."
         }
       ]
     }

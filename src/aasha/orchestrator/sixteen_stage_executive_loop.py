@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G71_LEGACY_46_HTML_MODULES_WM_AND_ZERO_EXT_URL_REMEDIATION",
+            "NEXT_PRIORITY": "G72_PHASE_E_26_CHAPTERS_RECOMPILE_WITH_G70_MULTI_GENRE_ENGINE",
         }
 
         self.validate_20_field_report(report)
