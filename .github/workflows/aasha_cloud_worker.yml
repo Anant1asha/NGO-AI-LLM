@@ -1,0 +1,98 @@
+name: AASHA AIOS Mode A Autonomous Cloud Worker
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Autonomous hourly cadence (24 runs/day in the background)
+    - cron: '0 * * * *'
+  push:
+    branches:
+      - master
+      - aios/v2-bootstrap
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
+concurrency:
+  group: aasha-cloud-worker-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  cloud_worker:
+    name: Autonomous Loop & Chapter Compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Unified Repository (aios/v2-bootstrap)
+        uses: actions/checkout@v4
+        with:
+          ref: aios/v2-bootstrap
+          fetch-depth: 0
+
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install System & Python Dependencies
+        timeout-minutes: 5
+        run: |
+          python -m pip install --upgrade pip
+          pip install pymupdf pypdf pytest pillow requests pydantic
+
+      - name: Install Node Dependencies (Root, Server, & Student PWA)
+        timeout-minutes: 5
+        run: |
+          npm install --ignore-scripts
+          if [ -f "Aasha-AI/server/package.json" ]; then
+            npm --prefix Aasha-AI/server install --ignore-scripts
+          fi
+          if [ -f "Aasha-AI/aasha-student-pwa/package.json" ]; then
+            npm --prefix Aasha-AI/aasha-student-pwa install --ignore-scripts
+          fi
+
+      - name: Configure Cloud Worker Git Identity
+        run: |
+          git config --global user.name "AASHA AIOS Autonomous Cloud Worker"
+          git config --global user.email "cloud-worker@aasha-aios.org"
+
+      - name: Run Core 7-Agent PDF-to-HTML5 & Orchestrator Verification
+        timeout-minutes: 5
+        env:
+          PYTHONPATH: "src:Aasha-AI/src"
+        run: |
+          python3 -m unittest \
+            tests.test_core_pipeline_e2e_pdf_to_html5 \
+            tests.test_g67_compounding_wm_engine \
+            tests.test_g68_multi_genre_arena_router \
+            tests.test_g70_multi_genre_chapter_compiler \
+            tests.test_g71_legacy_html_remediation \
+            tests.test_g72_phase_e_26_chapter_recompiler \
+            tests.test_g73_g74_g75_raw_vault_pipeline \
+            tests.test_sixteen_stage_executive_loop
+          node tests/test_phase_fg_offline_pwa_sw_precache.mjs
+
+      - name: Execute 16-Stage Continuous Engineering Loop (Mode A)
+        timeout-minutes: 10
+        env:
+          AASHA_EXECUTION_MODE: "Mode A (Autonomous Cloud Worker - GitHub Actions)"
+          NODE_ENV: test
+          MEMO0_OFFLINE: "1"
+          ALLOW_PAID_GEMINI_FALLBACK: "false"
+        run: |
+          node scripts/aasha_continuous_loop.mjs --once --16-stage --audit-only
+
+      - name: Audit Zero Secrets & Verify Branch Pushes
+        timeout-minutes: 2
+        run: |
+          npm run lint:secrets
+          echo "Cloud worker execution cycle verified on aios/v2-bootstrap."
