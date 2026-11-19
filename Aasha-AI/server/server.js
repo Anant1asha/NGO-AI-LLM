@@ -1908,6 +1908,26 @@ export function buildServer() {
     };
   });
 
+  // Phase G68: Multi-Genre Arena Theme Router & Experience Registry Catalog Endpoint
+  app.get('/api/catalogue/arena-themes', async () => {
+    const genres = [
+      { genreId: 'GENRE-PHY-MATTERJS-LAB', themeName: 'Sunlit Virtual Physics Lab', engine: 'PixiJS_WebGL2_MatterJS_60fps' },
+      { genreId: 'GENRE-MATH-MANIPULATIVE-PUZZLE', themeName: 'Tactile Geometric Studio', engine: 'PixiJS_WebGL2_JSXGraph_60fps' },
+      { genreId: 'GENRE-CRICKET-STRATEGY-ARENA', themeName: 'Daylight Stadium Tactical Pitch', engine: 'PixiJS_WebGL2_60fps_Sports_Arena' },
+      { genreId: 'GENRE-ESCAPE-QUEST-ATLAS', themeName: 'Cartographer Expedition & Escape Room', engine: 'PixiJS_WebGL2_ECharts_MapAtlas_60fps' },
+      { genreId: 'GENRE-VOCATIONAL-FINANCE-RIG', themeName: 'Workshop & Enterprise Control Deck', engine: 'PixiJS_WebGL2_MatterJS_Rig_60fps' }
+    ];
+    const themes_sha256 = crypto.createHash('sha256').update(JSON.stringify(genres), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      single_theme_monoculture_disabled: true,
+      svg_only_learn_default_disabled: true,
+      genre_count: genres.length,
+      genres,
+      themes_sha256
+    };
+  });
+
   return app;
 
 

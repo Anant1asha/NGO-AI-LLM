@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
+  "next_focus_unit": "G69_BENTO_STUDENT_PWA_UI_OVERHAUL_AND_CANVAS_SCRATCHPAD",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -68,8 +68,8 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "last_updated_utc": "2026-11-19T07:41:13Z",
-  "active_focus_unit": "G67_COMPOUNDING_WM_AUTOSAVE_AND_DOMAIN_PACK_DISBURSEMENT_ENGINE",
-  "last_completed_focus_unit": "G67_COMPOUNDING_WM_AUTOSAVE_AND_DOMAIN_PACK_DISBURSEMENT_ENGINE",
-  "sw_merkle_root": "aa087a2087ac47a7166cdafa940d6470516854e7d929e321515d5cd2b05162ad"
+  "last_updated_utc": "2026-11-19T07:45:39Z",
+  "active_focus_unit": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
+  "last_completed_focus_unit": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
+  "sw_merkle_root": "bfc1081a5441fe4e2bf6a5214b19d4e72e745ae69a4c2b53daf2e47a4e2aed12"
 }

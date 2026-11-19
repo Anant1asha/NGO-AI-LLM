@@ -144,6 +144,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderTeacherRemedialMicroPlaylistCard(cohortSummary)}
       ${renderVillageScienceFairShowcaseCard(cohortSummary)}
       ${renderChildHtmlAssetBudgetInspectorCard(cohortSummary)}
+      ${renderMultiGenreArenaRouterCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2831,6 +2832,72 @@ export function renderChildHtmlAssetBudgetInspectorCard(cohortSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#334155;">
         Sample (${b.chapterId}): <strong>${b.totalChildHtmlMiB} MiB / 20.0 MiB</strong> (${b.remainingHeadroomMiB} MiB creative headroom) • Scope: <code>${b.capScope}</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G68: Multi-Genre Arena Theme Router & Competitor-Grade UI/UX Bento + Finger Scratchpad
+export function resolveMultiGenreArenaTheme(chapterId = "", domain = "") {
+  const cid = String(chapterId || "").toUpperCase();
+  const dom = String(domain || "").toLowerCase();
+  if (cid.includes("CRICKET") || dom.includes("sport")) {
+    return {
+      genreId: "GENRE-CRICKET-STRATEGY-ARENA",
+      themeName: "Daylight Stadium Tactical Pitch",
+      engine: "PixiJS_WebGL2_60fps_Sports_Arena",
+      foundations: ["F02", "F19", "F20"],
+      includesFingerScratchpad: true
+    };
+  }
+  if (cid.includes("MATH") || cid.includes("FRAC") || dom.includes("math")) {
+    return {
+      genreId: "GENRE-MATH-MANIPULATIVE-PUZZLE",
+      themeName: "Tactile Geometric Studio",
+      engine: "PixiJS_WebGL2_JSXGraph_60fps",
+      foundations: ["F06", "F23", "F24", "F25", "F26", "F27"],
+      includesFingerScratchpad: true
+    };
+  }
+  if (cid.includes("PLUMB") || cid.includes("NCVET") || dom.includes("voc")) {
+    return {
+      genreId: "GENRE-VOCATIONAL-FINANCE-RIG",
+      themeName: "Workshop & Enterprise Control Deck",
+      engine: "PixiJS_WebGL2_MatterJS_Rig_60fps",
+      foundations: ["F15", "F16", "F17", "F18"],
+      includesFingerScratchpad: true
+    };
+  }
+  if (cid.includes("PALAMPUR") || cid.includes("GEO") || dom.includes("social")) {
+    return {
+      genreId: "GENRE-ESCAPE-QUEST-ATLAS",
+      themeName: "Cartographer Expedition & Escape Room",
+      engine: "PixiJS_WebGL2_ECharts_MapAtlas_60fps",
+      foundations: ["F01", "F09", "F10", "F12", "F13", "F14"],
+      includesFingerScratchpad: true
+    };
+  }
+  return {
+    genreId: "GENRE-PHY-MATTERJS-LAB",
+    themeName: "Sunlit Virtual Physics Lab",
+    engine: "PixiJS_WebGL2_MatterJS_60fps",
+    foundations: ["F04", "F07", "F08", "F21"],
+    includesFingerScratchpad: true
+  };
+}
+
+export function renderMultiGenreArenaRouterCard(cohortSummary = {}) {
+  const sampleSci = resolveMultiGenreArenaTheme("NCERT-G08-SCI-CH08", "science");
+  const sampleMath = resolveMultiGenreArenaTheme("NCERT-G06-MATH-CH07", "math");
+  return `
+    <section id="multi-genre-arena-router-card" aria-label="Multi-Genre Arena Theme Router and Finger Scratchpad"
+             style="padding:14px;border-radius:12px;background:#eef2ff;border:1px solid #a5b4fc;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#312e81;">🎨 बहु-शैली गेम व सिमुलेशन राउटर / Multi-Genre Arena &amp; Scratchpad Engine (G68)</h3>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#1e1b4b;">
+        Science: <strong>${sampleSci.themeName}</strong> (<code>${sampleSci.engine}</code>) • Math: <strong>${sampleMath.themeName}</strong> (<code>${sampleMath.engine}</code>) • Finger Scratchpad: <strong>✅ Enabled</strong>
       </p>
     </section>
   `.trim();
