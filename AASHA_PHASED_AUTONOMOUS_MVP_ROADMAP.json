@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T14:36:39Z",
+  "updated_at_utc": "2026-11-19T15:06:59Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -169,6 +169,21 @@
           "id": "G73_STUDENT_PWA_LAUNCHER_ROUTING_FOR_G72_26_MODULE_PACK",
           "status": "QUEUED_NEXT",
           "scope": "Wire the Student PWA Learn & Arena Launcher and Centre Server catalogue directly to the G72 26-module 60fps multi-genre pack."
+        },
+        {
+          "id": "G73_MODULAR_RAW_SOURCE_VAULT_AND_REGISTRY_EXPANSION",
+          "status": "COMPLETE",
+          "scope": "Modular raw_source_vault/{mit_bsd_ccby,gpl_isolated} + LICENSE-AUDIT.json + registry.json + beyond-SVG multimedia indexing."
+        },
+        {
+          "id": "G74_UPSTREAM_RAW_REPO_HARVESTER_FOR_PC_AND_COLAB",
+          "status": "COMPLETE",
+          "scope": "scripts/harvest_upstream_raw_assets.sh for Perseus, Scratch, PhET, PixiJS, Matter.js, and isolated GCompris/Sugarizer."
+        },
+        {
+          "id": "G75_IIFE_AND_BASE64_MULTIMEDIA_INLINE_BUNDLER",
+          "status": "COMPLETE",
+          "scope": "src/aasha/orchestrator/raw_vault_bundler.py for IIFE JS + 3D GLB/sprites/shaders/video/audio/SVG inline bundling <= 20 MiB per child HTML."
         }
       ]
     }

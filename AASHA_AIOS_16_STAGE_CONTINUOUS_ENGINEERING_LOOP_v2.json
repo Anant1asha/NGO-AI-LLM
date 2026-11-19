@@ -189,7 +189,7 @@
     ],
     "rule": "Report actual code changes and verified outcomes, not merely agent activity or generated reports."
   },
-  "updated_at_utc": "2026-11-19T07:54:44Z",
+  "updated_at_utc": "2026-11-19T15:06:59Z",
   "wm_compounding_policy": {
     "mode": "CORE_CUMULATIVE_WM_PLUS_DOMAIN_SPECIFIC_MODULE_CONTEXT_PACK",
     "autosave_new_terms": true,
@@ -232,5 +232,15 @@
     "compounding_experience_per_build": true,
     "external_repos_skills_plugins_mcps": "FREELY_COMBINABLE_TOOLBELT_EXPANSIONS_NEVER_FORCED_DEFAULTS",
     "user_prototypes_role": "EXAMPLES_AND_MINIMUM_BASELINES_NOT_CEILINGS"
+  },
+  "research_scrape_and_harvest_policy": {
+    "owners": [
+      "CHIEF_RESEARCHER",
+      "CHIEF_MARKET_PLANNER"
+    ],
+    "mandatory_vault_target": "raw_source_vault/",
+    "harvest_script": "scripts/harvest_upstream_raw_assets.sh",
+    "beyond_svg_multimedia": true,
+    "compounding_local_resource_base": true
   }
 }

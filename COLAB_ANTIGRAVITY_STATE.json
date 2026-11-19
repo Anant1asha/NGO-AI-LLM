@@ -68,8 +68,8 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "last_updated_utc": "2026-11-19T14:36:39Z",
-  "active_focus_unit": "G72_PHASE_E_26_CHAPTERS_RECOMPILE_WITH_G70_MULTI_GENRE_ENGINE",
-  "last_completed_focus_unit": "G72_PHASE_E_26_CHAPTERS_RECOMPILE_WITH_G70_MULTI_GENRE_ENGINE",
+  "last_updated_utc": "2026-11-19T15:06:59Z",
+  "active_focus_unit": "G75_IIFE_AND_BASE64_MULTIMEDIA_INLINE_BUNDLER",
+  "last_completed_focus_unit": "G75_IIFE_AND_BASE64_MULTIMEDIA_INLINE_BUNDLER",
   "sw_merkle_root": "1830ea14a5679e115a3034062b04a426023f5cfdf96f3c75ac73ce63692a9fdb"
 }

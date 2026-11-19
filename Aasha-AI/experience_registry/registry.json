@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-11-16T12:10:41.799107+00:00",
+  "last_updated": "2026-11-19T15:06:59Z",
   "foundations": [
     {
       "id": "F01",
@@ -3395,7 +3395,7 @@
   "certified_chapters_v5": [
     {
       "chapter_id": "NCERT-G06-MATH-CH07-FRACTIONS",
-      "title": "NCERT Class 6 Math Ch 07 — Fractions (भिन्न)",
+      "title": "NCERT Class 6 Math Ch 07 \u2014 Fractions (\u092d\u093f\u0928\u094d\u0928)",
       "file": "NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
       "avr_mechanic": "AVR-P301",
       "curriculum": "NCERT",
@@ -3407,7 +3407,7 @@
     },
     {
       "chapter_id": "NCERT-G07-MATH-CH11-PERIMETER-AREA",
-      "title": "NCERT Class 7 Math Ch 11 — Perimeter & Area (परिमाप और क्षेत्रफल)",
+      "title": "NCERT Class 7 Math Ch 11 \u2014 Perimeter & Area (\u092a\u0930\u093f\u092e\u093e\u092a \u0914\u0930 \u0915\u094d\u0937\u0947\u0924\u094d\u0930\u092b\u0932)",
       "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
       "avr_mechanic": "AVR-P303",
       "curriculum": "NCERT",
@@ -3419,7 +3419,7 @@
     },
     {
       "chapter_id": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES",
-      "title": "NCERT Class 8 Math Ch 08 — Comparing Quantities (राशियों की तुलना)",
+      "title": "NCERT Class 8 Math Ch 08 \u2014 Comparing Quantities (\u0930\u093e\u0936\u093f\u092f\u094b\u0902 \u0915\u0940 \u0924\u0941\u0932\u0928\u093e)",
       "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
       "avr_mechanic": "AVR-P320",
       "curriculum": "NCERT",
@@ -3431,7 +3431,7 @@
     },
     {
       "chapter_id": "NCERT-G09-SCI-CH08-FORCE-MOTION",
-      "title": "NCERT Class 9 Science Ch 08 — Force & Motion (बल तथा गति)",
+      "title": "NCERT Class 9 Science Ch 08 \u2014 Force & Motion (\u092c\u0932 \u0924\u0925\u093e \u0917\u0924\u093f)",
       "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
       "avr_mechanic": "AVR-P319",
       "curriculum": "NCERT",
@@ -3443,7 +3443,7 @@
     },
     {
       "chapter_id": "NCERT-G09-SCI-CH10-WORK-ENERGY",
-      "title": "NCERT Class 9 Science Ch 10 — Work & Energy (कार्य तथा ऊर्जा)",
+      "title": "NCERT Class 9 Science Ch 10 \u2014 Work & Energy (\u0915\u093e\u0930\u094d\u092f \u0924\u0925\u093e \u090a\u0930\u094d\u091c\u093e)",
       "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
       "avr_mechanic": "AVR-P317",
       "curriculum": "NCERT",
@@ -3455,7 +3455,7 @@
     },
     {
       "chapter_id": "NCERT-G10-MATH-CH02-POLYNOMIALS",
-      "title": "NCERT Class 10 Math Ch 02 — Polynomials (बहुपद)",
+      "title": "NCERT Class 10 Math Ch 02 \u2014 Polynomials (\u092c\u0939\u0941\u092a\u0926)",
       "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
       "avr_mechanic": "AVR-P309",
       "curriculum": "NCERT",
@@ -3467,7 +3467,7 @@
     },
     {
       "chapter_id": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS",
-      "title": "NCERT Class 10 Science Ch 06 — Life Processes (जैव प्रक्रम)",
+      "title": "NCERT Class 10 Science Ch 06 \u2014 Life Processes (\u091c\u0948\u0935 \u092a\u094d\u0930\u0915\u094d\u0930\u092e)",
       "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
       "avr_mechanic": "AVR-P305",
       "curriculum": "NCERT",
@@ -3479,7 +3479,7 @@
     },
     {
       "chapter_id": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW",
-      "title": "NCERT Class 10 Science Ch 12 — Electricity & Ohm's Law (विद्युत)",
+      "title": "NCERT Class 10 Science Ch 12 \u2014 Electricity & Ohm's Law (\u0935\u093f\u0926\u094d\u092f\u0941\u0924)",
       "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
       "avr_mechanic": "AVR-P314",
       "curriculum": "NCERT",
@@ -3491,7 +3491,7 @@
     },
     {
       "chapter_id": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER",
-      "title": "NCVET PSSCIVE L3 IT — Digital Village Ledger (डिजिटल ग्राम बहीखाता)",
+      "title": "NCVET PSSCIVE L3 IT \u2014 Digital Village Ledger (\u0921\u093f\u091c\u093f\u091f\u0932 \u0917\u094d\u0930\u093e\u092e \u092c\u0939\u0940\u0916\u093e\u0924\u093e)",
       "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
       "avr_mechanic": "AVR-P315",
       "curriculum": "NCVET/PSSCIVE",
@@ -3503,7 +3503,7 @@
     },
     {
       "chapter_id": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA",
-      "title": "NCVET PSSCIVE L4 Agri — Precision Drip Jal Seva (सूक्ष्म सिंचाई जल सेवा)",
+      "title": "NCVET PSSCIVE L4 Agri \u2014 Precision Drip Jal Seva (\u0938\u0942\u0915\u094d\u0937\u094d\u092e \u0938\u093f\u0902\u091a\u093e\u0908 \u091c\u0932 \u0938\u0947\u0935\u093e)",
       "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
       "avr_mechanic": "AVR-P316",
       "curriculum": "NCVET/PSSCIVE",
@@ -3515,7 +3515,7 @@
     },
     {
       "chapter_id": "NCVET-PSSCIVE-L3-IT-DOMESTIC-DATA-ENTRY",
-      "title": "NCVET / PSSCIVE Level 3 — Domestic Data Entry & Digital Village Ledger",
+      "title": "NCVET / PSSCIVE Level 3 \u2014 Domestic Data Entry & Digital Village Ledger",
       "file": "NCVET_PSSCIVE_L3_IT_DataEntry_v5.html",
       "avr_mechanic": "AVR-P315",
       "curriculum": "NCVET/PSSCIVE",
@@ -3527,7 +3527,7 @@
     },
     {
       "chapter_id": "NCVET-PSSCIVE-L4-AGRI-SOLAR-DRIP-TECHNICIAN",
-      "title": "NCVET / PSSCIVE Level 4 — Solar Micro-Irrigation & Jal Seva Technician",
+      "title": "NCVET / PSSCIVE Level 4 \u2014 Solar Micro-Irrigation & Jal Seva Technician",
       "file": "NCVET_PSSCIVE_L4_Agri_SolarDrip_v5.html",
       "avr_mechanic": "AVR-P316",
       "curriculum": "NCVET/PSSCIVE",
@@ -3539,7 +3539,7 @@
     },
     {
       "chapter_id": "NCVET-PSSCIVE-L4-FOOD-SOLAR-DEHYDRATOR-OPERATOR",
-      "title": "NCVET / PSSCIVE Level 4 — Rural Solar Food Dehydrator Unit Operator",
+      "title": "NCVET / PSSCIVE Level 4 \u2014 Rural Solar Food Dehydrator Unit Operator",
       "file": "NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5.html",
       "avr_mechanic": "AVR-P320",
       "curriculum": "NCVET/PSSCIVE",
@@ -3698,5 +3698,39 @@
       "sha256": "1a6fa6a8accb54965590a97e1e8e8a766794dfabee705ba45fe8008079180c89",
       "status": "CERTIFIED"
     }
-  ]
+  ],
+  "raw_source_vault_index": {
+    "mit_bsd_ccby": {
+      "Khan/perseus": {
+        "license": "MIT",
+        "path": "raw_source_vault/mit_bsd_ccby/packages/quiz-widgets/perseus-widgets"
+      },
+      "scratchfoundation/scratch-gui": {
+        "license": "BSD-3-Clause",
+        "path": "raw_source_vault/mit_bsd_ccby/packages/games/scratch-libraries"
+      },
+      "phetsims/scenery-and-sims": {
+        "license": "MIT",
+        "path": "raw_source_vault/mit_bsd_ccby/packages/sims"
+      },
+      "pixijs/pixijs": {
+        "license": "MIT",
+        "path": "raw_source_vault/mit_bsd_ccby/assets/sprites-3d-shaders"
+      },
+      "liabru/matter-js": {
+        "license": "MIT",
+        "path": "raw_source_vault/mit_bsd_ccby/packages/sims"
+      }
+    },
+    "gpl_isolated": {
+      "gcompris/GCompris-qt": {
+        "license": "GPL-3.0",
+        "path": "raw_source_vault/gpl_isolated/gcompris"
+      },
+      "llaske/sugarizer": {
+        "license": "Apache-2.0/GPL-3.0",
+        "path": "raw_source_vault/gpl_isolated/sugarizer"
+      }
+    }
+  }
 }

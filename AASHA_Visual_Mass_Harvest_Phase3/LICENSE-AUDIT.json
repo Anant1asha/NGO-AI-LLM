@@ -3,5 +3,20 @@
   "bundled_third_party_assets": false,
   "note": "Source repositories are pattern references; no source code/assets were copied into AASHA artifacts.",
   "geoGebra": "separate license audit required",
-  "phET": "source license/dependency audit required before any direct reuse"
+  "phET": "source license/dependency audit required before any direct reuse",
+  "raw_source_vault": {
+    "mit_bsd_ccby_path": "raw_source_vault/mit_bsd_ccby",
+    "gpl_isolated_path": "raw_source_vault/gpl_isolated",
+    "gpl_isolation_enforced": true,
+    "supported_multimedia": [
+      "3D GLB/GLTF",
+      "WebGL2/WGSL Shaders",
+      "PNG/WebP Sprite Sheets",
+      "MP4/WebM Video",
+      "OGG/MP3/WAV Audio",
+      "SVG Vectors",
+      "Raw JS/TS Widgets"
+    ],
+    "updated_at_utc": "2026-11-19T15:06:59Z"
+  }
 }
