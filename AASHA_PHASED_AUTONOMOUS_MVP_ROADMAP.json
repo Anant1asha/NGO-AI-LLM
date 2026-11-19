@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T07:34:19Z",
+  "updated_at_utc": "2026-11-19T07:41:13Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -137,12 +137,12 @@
         },
         {
           "id": "G67_COMPOUNDING_WM_AUTOSAVE_AND_DOMAIN_PACK_DISBURSEMENT_ENGINE",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Auto-extract and save new English-Hindi WM terms per chapter into aasha_operational.db + defaults_expanded_v2.json, and disburse Core Cumulative WM + Domain-Specific Module Context Pack into every compiled HTML5 build."
         },
         {
           "id": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
-          "status": "QUEUED",
+          "status": "QUEUED_NEXT",
           "scope": "Replace single-theme Arena boilerplate with a Multi-Genre Game & Visual Theme Router drawing from the 27 Experience Registry foundations, 21 AVR mechanics, and MIT engines (PixiJS, Matter.js, JSXGraph, ECharts) on 4GB+ RAM 5G smartphones."
         }
       ]
