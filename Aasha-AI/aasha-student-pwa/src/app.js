@@ -145,6 +145,8 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderVillageScienceFairShowcaseCard(cohortSummary)}
       ${renderChildHtmlAssetBudgetInspectorCard(cohortSummary)}
       ${renderMultiGenreArenaRouterCard(cohortSummary)}
+      ${renderBentoStudentDashboardGrid(cohortSummary)}
+      ${renderArenaCanvasScratchpadWidget(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2899,6 +2901,59 @@ export function renderMultiGenreArenaRouterCard(cohortSummary = {}) {
       <p style="margin:0;font-size:0.88rem;color:#1e1b4b;">
         Science: <strong>${sampleSci.themeName}</strong> (<code>${sampleSci.engine}</code>) • Math: <strong>${sampleMath.themeName}</strong> (<code>${sampleMath.engine}</code>) • Finger Scratchpad: <strong>✅ Enabled</strong>
       </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G69: Mobile-First Bento Student PWA UI Overhaul & Offline Canvas2D Finger-Drawing Scratchpad
+export function buildBentoStudentTiles(stateOrSummary = {}) {
+  const masteryPct = Number(stateOrSummary.masteryPct ?? 88.5);
+  const tokenBalance = Number(stateOrSummary.tokenBalance ?? 120);
+  const streakDays = Number(stateOrSummary.streakDays ?? 7);
+  return [
+    { tileId: "BENTO-LEARN-60FPS", title: "📘 60fps WebGL2 Labs", metric: "13 Chapters", accent: "#0ea5e9" },
+    { tileId: "BENTO-ARENA-GENRES", title: "🎮 5-Genre Arena", metric: "Matter.js + PixiJS", accent: "#8b5cf6" },
+    { tileId: "BENTO-MASTERY-STREAK", title: "🔥 Home Study Streak", metric: `${streakDays}d • ${masteryPct}%`, accent: "#10b981" },
+    { tileId: "BENTO-SEVA-COINS", title: "🪙 Aasha Seva Coins", metric: `${tokenBalance} Coins`, accent: "#f59e0b" }
+  ];
+}
+
+export function renderBentoStudentDashboardGrid(stateOrSummary = {}) {
+  const tiles = buildBentoStudentTiles(stateOrSummary);
+  const tilesHtml = tiles.map((t) => `
+    <div data-bento-tile="${t.tileId}" style="padding:12px;border-radius:14px;background:#ffffff;border:2px solid ${t.accent};box-shadow:0 2px 8px rgba(15,23,42,0.06);">
+      <div style="font-size:0.82rem;font-weight:700;color:#475569;">${t.title}</div>
+      <div style="font-size:1.05rem;font-weight:800;color:#0f172a;margin-top:4px;">${t.metric}</div>
+    </div>
+  `).join("");
+  return `
+    <section id="bento-student-dashboard-grid" aria-label="Mobile-First Bento Student Dashboard Grid"
+             style="padding:14px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="margin:0;font-size:1rem;color:#0f172a;">🧩 बेंटो विद्यार्थी डैशबोर्ड / Mobile-First Bento Learning Grid (G69)</h3>
+      </header>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+        ${tilesHtml}
+      </div>
+    </section>
+  `.trim();
+}
+
+export function renderArenaCanvasScratchpadWidget(stateOrSummary = {}) {
+  const strokeColor = String(stateOrSummary.scratchpadColor || "#0f766e");
+  return `
+    <section id="arena-canvas-scratchpad-widget" aria-label="Offline Canvas2D Finger-Drawing Scratchpad"
+             style="padding:14px;border-radius:14px;background:#ffffff;border:1px solid #cbd5e1;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#0f172a;">✏️ रफ़ कार्य स्क्रैचपैड / Offline Finger-Drawing Scratchpad (G69)</h3>
+        <button type="button" id="btn-clear-canvas-scratchpad" data-action="clear-canvas-scratchpad"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#0f766e;color:#ffffff;font-weight:700;cursor:pointer;">
+          🧹 Clear Scratchpad / स्लेट साफ़ करें
+        </button>
+      </header>
+      <canvas id="aasha-finger-scratchpad-canvas" width="480" height="180" data-stroke-color="${strokeColor}"
+              style="width:100%;max-width:480px;height:180px;border:2px dashed #94a3b8;border-radius:10px;background:#fefce8;touch-action:none;"></canvas>
     </section>
   `.trim();
 }

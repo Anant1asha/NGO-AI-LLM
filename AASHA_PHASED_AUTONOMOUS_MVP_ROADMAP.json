@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T07:45:39Z",
+  "updated_at_utc": "2026-11-19T07:54:44Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -147,8 +147,13 @@
         },
         {
           "id": "G69_BENTO_STUDENT_PWA_UI_OVERHAUL_AND_CANVAS_SCRATCHPAD",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Refactor Student PWA dashboard into a clean mobile-first bento grid with an interactive Canvas2D finger-drawing scratchpad and chapter-level PixiJS/Matter.js launch."
+        },
+        {
+          "id": "G70_CHAPTER_BUNDLE_WITH_INLINED_MATTERJS_PIXIJS_AND_CUMULATIVE_WM",
+          "status": "QUEUED_NEXT",
+          "scope": "Compile full multi-genre 60fps Matter.js/PixiJS/JSXGraph Learn & Arena child HTML5 modules with Core Cumulative WM + Domain-Specific Pack (< 20 MiB per child HTML)."
         }
       ]
     }

@@ -1928,6 +1928,50 @@ export function buildServer() {
     };
   });
 
+  // Phase G69: Offline Bento UI & Finger-Drawing Scratchpad Snapshot Endpoints
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS student_scratchpad_snapshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      stroke_count INTEGER NOT NULL DEFAULT 0,
+      snapshot_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/scratchpad-snapshot', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const chapterId = String(body.chapterId || 'NCERT-G06-MATH-CH07').trim();
+    const strokeCount = Math.max(0, Number(body.strokeCount ?? 0));
+    if (!studentId) {
+      return reply.code(400).send({ error: 'studentId is required' });
+    }
+    const createdAt = new Date().toISOString();
+    const snapshotSha256 = crypto.createHash('sha256')
+      .update(`${studentId}|${chapterId}|${strokeCount}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO student_scratchpad_snapshots (student_id, chapter_id, stroke_count, snapshot_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?)
+    `).run(studentId, chapterId, strokeCount, snapshotSha256, createdAt);
+    return { status: 'ok', studentId, chapterId, strokeCount, snapshot_sha256: snapshotSha256 };
+  });
+
+  app.get('/api/student/scratchpad-snapshot/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const snapshots = db.prepare(`
+      SELECT student_id AS studentId, chapter_id AS chapterId, stroke_count AS strokeCount,
+             snapshot_sha256 AS snapshotSha256, created_at AS createdAt
+      FROM student_scratchpad_snapshots
+      WHERE student_id = ?
+      ORDER BY id DESC
+      LIMIT 10
+    `).all(studentId);
+    return { status: 'ok', studentId, count: snapshots.length, snapshots };
+  });
+
   return app;
 
 

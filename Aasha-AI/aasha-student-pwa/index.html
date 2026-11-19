@@ -414,6 +414,13 @@
       } else if (action === 'inspect-child-html-budget') {
         const b = inspectChildHtmlAssetBudget({});
         toastMount.innerHTML = `<div id="child-html-budget-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#f1f5f9;color:#0f172a;margin-top:10px;font-weight:600;">📦 ${b.chapterId}: ${b.totalChildHtmlMiB} MiB / 20 MiB (${b.status})</div>`;
+      } else if (action === 'clear-canvas-scratchpad') {
+        const cvs = document.getElementById('aasha-finger-scratchpad-canvas');
+        if (cvs && cvs.getContext) {
+          const ctx = cvs.getContext('2d');
+          ctx.clearRect(0, 0, cvs.width, cvs.height);
+        }
+        toastMount.innerHTML = `<div id="scratchpad-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#ecfdf5;color:#065f46;margin-top:10px;font-weight:600;">🧹 Cleared Offline Finger Scratchpad</div>`;
       }
     });
 

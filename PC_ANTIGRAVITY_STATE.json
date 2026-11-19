@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G69_BENTO_STUDENT_PWA_UI_OVERHAUL_AND_CANVAS_SCRATCHPAD",
+  "next_focus_unit": "G70_CHAPTER_BUNDLE_WITH_INLINED_MATTERJS_PIXIJS_AND_CUMULATIVE_WM",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -78,8 +78,8 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-19T07:45:39Z",
-  "active_focus_unit": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
-  "last_completed_focus_unit": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
-  "sw_merkle_root": "bfc1081a5441fe4e2bf6a5214b19d4e72e745ae69a4c2b53daf2e47a4e2aed12"
+  "last_updated_utc": "2026-11-19T07:54:44Z",
+  "active_focus_unit": "G69_BENTO_STUDENT_PWA_UI_OVERHAUL_AND_CANVAS_SCRATCHPAD",
+  "last_completed_focus_unit": "G69_BENTO_STUDENT_PWA_UI_OVERHAUL_AND_CANVAS_SCRATCHPAD",
+  "sw_merkle_root": "3b4e29664e30887dbd71f28d04ba15b05805242317c3acb505611d0e2917e338"
 }

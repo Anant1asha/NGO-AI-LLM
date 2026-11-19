@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G69_BENTO_STUDENT_PWA_UI_OVERHAUL_AND_CANVAS_SCRATCHPAD",
+            "NEXT_PRIORITY": "G70_CHAPTER_BUNDLE_WITH_INLINED_MATTERJS_PIXIJS_AND_CUMULATIVE_WM",
         }
 
         self.validate_20_field_report(report)
