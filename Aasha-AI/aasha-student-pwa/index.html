@@ -106,6 +106,7 @@
       scheduleSpacedRepetitionReview,
       renderFamilyProgressCertificateHtml,
       generateTeacherRemedialMicroPlaylist,
+      renderVillageScienceFairShowcaseHtml,
       syncNowWithServer
     } from './src/app.js';
 
@@ -401,6 +402,14 @@
       } else if (action === 'generate-remedial-micro-playlist') {
         const res = generateTeacherRemedialMicroPlaylist(state.cohortSummary || {});
         toastMount.innerHTML = `<div id="remedial-playlist-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#fee2e2;color:#991b1b;margin-top:10px;font-weight:600;">🎯 Generated ${res.totalPlaylists} Offline Remedial Micro-Playlists (${res.totalAffectedLearners} learners)</div>`;
+      } else if (action === 'export-village-science-fair-showcase') {
+        const fairHtml = renderVillageScienceFairShowcaseHtml(state.cohortSummary || {});
+        const blob = new Blob([fairHtml], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'aasha_village_science_fair_showcase.html';
+        a.click();
+        toastMount.innerHTML = `<div id="science-fair-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0f2fe;color:#0369a1;margin-top:10px;font-weight:600;">🔬 Exported Offline Village Science Fair Showcase</div>`;
       }
     });
 

@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G65_OFFLINE_SEASONAL_VILLAGE_SCIENCE_FAIR_SHOWCASE_BUILDER",
+  "next_focus_unit": "G66_OFFLINE_CHAPTER_VIDEO_AND_AUDIO_ASSET_SIZE_BUDGET_INSPECTOR",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -68,8 +68,8 @@
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "last_updated_utc": "2026-11-18T23:07:31Z",
-  "active_focus_unit": "G64_OFFLINE_TEACHER_REMEDIAL_MICRO_PLAYLIST_GENERATOR",
-  "last_completed_focus_unit": "G64_OFFLINE_TEACHER_REMEDIAL_MICRO_PLAYLIST_GENERATOR",
-  "sw_merkle_root": "642a0853b7514b21315388c60a27eeafc2d3699b49a282449be5fc43f15f178d"
+  "last_updated_utc": "2026-11-19T02:30:53Z",
+  "active_focus_unit": "G65_OFFLINE_SEASONAL_VILLAGE_SCIENCE_FAIR_SHOWCASE_BUILDER",
+  "last_completed_focus_unit": "G65_OFFLINE_SEASONAL_VILLAGE_SCIENCE_FAIR_SHOWCASE_BUILDER",
+  "sw_merkle_root": "a7ac00e3f9c423781187e0171e1306681f979908eda47cbfa5fc165f087565ed"
 }

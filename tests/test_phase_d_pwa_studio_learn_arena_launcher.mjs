@@ -75,7 +75,10 @@ import {
   renderFamilyProgressCertificateHtml,
   renderFamilyProgressCertificateCard,
   generateTeacherRemedialMicroPlaylist,
-  renderTeacherRemedialMicroPlaylistCard
+  renderTeacherRemedialMicroPlaylistCard,
+  buildVillageScienceFairExhibits,
+  renderVillageScienceFairShowcaseHtml,
+  renderVillageScienceFairShowcaseCard
 } from '../Aasha-AI/aasha-student-pwa/src/app.js';
 
 // 1. Verify Student PWA Learn & Arena Dual Catalogue & Modal Switching
@@ -965,6 +968,23 @@ try {
   assert.equal(getRemBody.status, 'ok');
   assert.equal(getRemBody.zero_external_urls, true);
   assert.equal(getRemBody.playlists_sha256.length, 64);
+
+  // Verify G65 Offline Seasonal Village Science Fair Showcase Builder
+  const fairData = buildVillageScienceFairExhibits({ centerId: 'CENTER-UP-GN-01' });
+  assert.equal(fairData.ok, true);
+  assert.equal(fairData.totalExhibits, 3);
+  assert.equal(fairData.showcaseDigest.length, 64);
+  const fairHtml = renderVillageScienceFairShowcaseHtml({});
+  assert.ok(fairHtml.includes('Village Science Fair Showcase'));
+  const fairCard = renderVillageScienceFairShowcaseCard({});
+  assert.ok(fairCard.includes('id="village-science-fair-showcase-card"'));
+
+  const getFairRes = await fetch(`${baseUrl}/api/teacher/science-fair-showcase`);
+  assert.equal(getFairRes.status, 200);
+  const getFairBody = await getFairRes.json();
+  assert.equal(getFairBody.status, 'ok');
+  assert.equal(getFairBody.zero_external_urls, true);
+  assert.equal(getFairBody.showcase_sha256.length, 64);
 } finally {
   await app.close();
 }

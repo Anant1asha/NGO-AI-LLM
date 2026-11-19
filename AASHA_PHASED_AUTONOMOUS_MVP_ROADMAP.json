@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-18T23:07:31Z",
+  "updated_at_utc": "2026-11-19T02:30:53Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -127,8 +127,13 @@
         },
         {
           "id": "G65_OFFLINE_SEASONAL_VILLAGE_SCIENCE_FAIR_SHOWCASE_BUILDER",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Package student 60fps WebGL2 simulations and bilingual project posters into a printable & offline-browsable Village Science Fair Showcase."
+        },
+        {
+          "id": "G66_OFFLINE_CHAPTER_VIDEO_AND_AUDIO_ASSET_SIZE_BUDGET_INSPECTOR",
+          "status": "QUEUED_NEXT",
+          "scope": "Inspect per-child HTML5 module byte budgets (strictly <= 20 MiB per child HTML file) for rich animations, WebGL2 sims, and embedded video/audio on 4GB+ RAM 5G smartphones."
         }
       ]
     }
