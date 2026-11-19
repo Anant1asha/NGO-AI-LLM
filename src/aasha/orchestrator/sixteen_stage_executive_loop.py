@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G67_OFFLINE_MULTILINGUAL_VOICE_GLOSSARY_PRONUNCIATION_DRILL_PACK",
+            "NEXT_PRIORITY": "G67_COMPOUNDING_WM_AUTOSAVE_AND_DOMAIN_PACK_DISBURSEMENT_ENGINE",
         }
 
         self.validate_20_field_report(report)

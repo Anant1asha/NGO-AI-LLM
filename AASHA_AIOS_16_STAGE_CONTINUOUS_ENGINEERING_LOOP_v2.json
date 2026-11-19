@@ -188,5 +188,26 @@
       "NOT_APPLICABLE"
     ],
     "rule": "Report actual code changes and verified outcomes, not merely agent activity or generated reports."
+  },
+  "updated_at_utc": "2026-11-19T07:34:19Z",
+  "wm_compounding_policy": {
+    "mode": "CORE_CUMULATIVE_WM_PLUS_DOMAIN_SPECIFIC_MODULE_CONTEXT_PACK",
+    "autosave_new_terms": true,
+    "reuse_existing_terms_at_disbursement": true,
+    "compounding_stores": [
+      "aasha_operational.db",
+      "Aasha-AI/aasha-pipeline-with-master-json/config/defaults_expanded_v2.json"
+    ]
+  },
+  "multi_genre_game_and_visual_policy": {
+    "forbid_single_theme_monoculture": true,
+    "pair_html_skills_with_real_engines": true,
+    "target_hardware": "4GB_RAM_5G_SMARTPHONE_60FPS_WEBGL2",
+    "max_child_html_bytes": 20971520,
+    "foundation_sources": [
+      "Aasha-AI/experience_registry/registry.json (27 foundations)",
+      "AASHA_Visual_Mass_Harvest_Phase3 (21 AVR mechanics)",
+      "MIT/Apache open-source engines (PixiJS, Matter.js, melonJS, JSXGraph, ECharts)"
+    ]
   }
 }

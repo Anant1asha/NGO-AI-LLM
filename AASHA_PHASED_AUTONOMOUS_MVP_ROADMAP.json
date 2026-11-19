@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T06:33:15Z",
+  "updated_at_utc": "2026-11-19T07:34:19Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -136,11 +136,22 @@
           "scope": "Inspect per-child HTML5 module byte budgets (strictly <= 20 MiB per child HTML file) for rich animations, WebGL2 sims, and embedded video/audio on 4GB+ RAM 5G smartphones."
         },
         {
-          "id": "G67_OFFLINE_MULTILINGUAL_VOICE_GLOSSARY_PRONUNCIATION_DRILL_PACK",
+          "id": "G67_COMPOUNDING_WM_AUTOSAVE_AND_DOMAIN_PACK_DISBURSEMENT_ENGINE",
           "status": "QUEUED_NEXT",
-          "scope": "Add offline WebSpeech + WebAudio phonetic pronunciation drills for bilingual English/Hindi LLE STEM vocabulary in the Student PWA and Centre Server."
+          "scope": "Auto-extract and save new English-Hindi WM terms per chapter into aasha_operational.db + defaults_expanded_v2.json, and disburse Core Cumulative WM + Domain-Specific Module Context Pack into every compiled HTML5 build."
+        },
+        {
+          "id": "G68_MULTI_GENRE_ARENA_THEME_ROUTER_AND_GAME_ENGINE_UPGRADE",
+          "status": "QUEUED",
+          "scope": "Replace single-theme Arena boilerplate with a Multi-Genre Game & Visual Theme Router drawing from the 27 Experience Registry foundations, 21 AVR mechanics, and MIT engines (PixiJS, Matter.js, JSXGraph, ECharts) on 4GB+ RAM 5G smartphones."
         }
       ]
     }
+  },
+  "architecture_rules": {
+    "wm_disbursement": "CORE_CUMULATIVE_WM_PLUS_DOMAIN_SPECIFIC_PACK_WITH_AUTOSAVE",
+    "game_theme_diversity": "MULTI_GENRE_EXPERIENCE_REGISTRY_AND_OPEN_SOURCE_ENGINES",
+    "html_skill_usage": "PAIR_HTML_LAYOUT_WITH_WEBGL2_PHYSICS_SIM_AND_AUDIO_ENGINES",
+    "child_html_cap_bytes": 20971520
   }
 }
