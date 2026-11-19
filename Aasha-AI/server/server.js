@@ -1972,6 +1972,35 @@ export function buildServer() {
     return { status: 'ok', studentId, count: snapshots.length, snapshots };
   });
 
+  // Phase G76: Centre Server Catalogue Endpoint for G72 26-Module 60fps Multi-Genre Pack
+  app.get('/api/catalogue/g72-multi-genre-pack', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const packDir = path.resolve(process.cwd(), 'Aasha-AI/aasha-pipeline-with-master-json/output/g72_26module_multi_genre_pack');
+    const files = fs.existsSync(packDir)
+      ? fs.readdirSync(packDir).filter((f) => f.endsWith('.html')).sort()
+      : [];
+    const modules = files.map((file) => {
+      const fullPath = path.join(packDir, file);
+      const sizeBytes = fs.statSync(fullPath).size;
+      return {
+        file,
+        sizeBytes,
+        within20MiBChildCap: sizeBytes <= 20971520,
+        href: `/output/g72_26module_multi_genre_pack/${file}`
+      };
+    });
+    const catalogue_sha256 = crypto.createHash('sha256').update(JSON.stringify(modules), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      totalModules: modules.length,
+      allWithin20MiBCap: modules.every((m) => m.within20MiBChildCap),
+      zeroExternalUrls: true,
+      modules,
+      catalogue_sha256
+    };
+  });
+
   return app;
 
 

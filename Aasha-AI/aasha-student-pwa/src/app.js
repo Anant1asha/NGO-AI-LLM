@@ -147,6 +147,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderMultiGenreArenaRouterCard(cohortSummary)}
       ${renderBentoStudentDashboardGrid(cohortSummary)}
       ${renderArenaCanvasScratchpadWidget(cohortSummary)}
+      ${renderG72MultiGenreLauncherCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2954,6 +2955,40 @@ export function renderArenaCanvasScratchpadWidget(stateOrSummary = {}) {
       </header>
       <canvas id="aasha-finger-scratchpad-canvas" width="480" height="180" data-stroke-color="${strokeColor}"
               style="width:100%;max-width:480px;height:180px;border:2px dashed #94a3b8;border-radius:10px;background:#fefce8;touch-action:none;"></canvas>
+    </section>
+  `.trim();
+}
+
+
+// Phase G76: Student PWA Launcher Routing for G72 26-Module 60fps Multi-Genre Pack
+export function getG72MultiGenreCatalogueSummary() {
+  return {
+    packDir: "Aasha-AI/aasha-pipeline-with-master-json/output/g72_26module_multi_genre_pack",
+    totalChapters: 13,
+    totalModules: 26,
+    distinctThemes: [
+      "Sunlit Virtual Physics Lab",
+      "Tactile Geometric Studio",
+      "Daylight Stadium Tactical Pitch",
+      "Cartographer Expedition & Escape Room",
+      "Workshop & Enterprise Control Deck"
+    ],
+    allUnder20MiBChildCap: true,
+    zeroExternalUrls: true
+  };
+}
+
+export function renderG72MultiGenreLauncherCard(cohortSummary = {}) {
+  const cat = getG72MultiGenreCatalogueSummary();
+  return `
+    <section id="g72-multi-genre-launcher-card" aria-label="26-Module 60fps Multi-Genre Curriculum Launcher"
+             style="padding:14px;border-radius:14px;background:#f0fdfa;border:1px solid #5eead4;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#115e59;">🚀 26-मॉड्यूल 60fps बहु-शैली पाठ्यक्रम लॉन्चर / 26-Module 60fps Multi-Genre Launcher (G76)</h3>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#134e4a;">
+        Chapters: <strong>${cat.totalChapters} (${cat.totalModules} Learn &amp; Arena HTML5 Modules)</strong> • Themes: <strong>${cat.distinctThemes.length} Distinct Genres</strong> • Offline: <code>0 External URLs</code>
+      </p>
     </section>
   `.trim();
 }

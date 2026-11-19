@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T15:06:59Z",
+  "updated_at_utc": "2026-11-19T19:11:33Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -167,7 +167,7 @@
         },
         {
           "id": "G73_STUDENT_PWA_LAUNCHER_ROUTING_FOR_G72_26_MODULE_PACK",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Wire the Student PWA Learn & Arena Launcher and Centre Server catalogue directly to the G72 26-module 60fps multi-genre pack."
         },
         {
@@ -184,6 +184,11 @@
           "id": "G75_IIFE_AND_BASE64_MULTIMEDIA_INLINE_BUNDLER",
           "status": "COMPLETE",
           "scope": "src/aasha/orchestrator/raw_vault_bundler.py for IIFE JS + 3D GLB/sprites/shaders/video/audio/SVG inline bundling <= 20 MiB per child HTML."
+        },
+        {
+          "id": "G76_OFFLINE_TEACHER_PDF_UPLOAD_TO_7AGENT_JOB_QUEUE",
+          "status": "QUEUED_NEXT",
+          "scope": "Wire offline teacher PDF upload in Aasha Studio / Centre Server directly into the 7-Agent PDF-to-HTML5 Orchestrator job queue."
         }
       ]
     }

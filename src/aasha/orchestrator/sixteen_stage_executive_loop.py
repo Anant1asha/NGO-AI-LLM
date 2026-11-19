@@ -338,7 +338,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G73_STUDENT_PWA_LAUNCHER_ROUTING_FOR_G72_26_MODULE_PACK",
+            "NEXT_PRIORITY": "G76_OFFLINE_TEACHER_PDF_UPLOAD_TO_7AGENT_JOB_QUEUE",
         }
 
         self.validate_20_field_report(report)
