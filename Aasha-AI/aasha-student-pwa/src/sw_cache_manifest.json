@@ -5,10 +5,10 @@
   "generated_at_utc": "2026-11-16T12:11:37.070492+00:00",
   "total_assets": 54,
   "certified_html5_modules_count": 21,
-  "total_precache_bytes": 27994887,
+  "total_precache_bytes": 28012866,
   "under_20mib_ceiling": true,
   "zero_external_urls": true,
-  "merkle_root_sha256": "8203e96469074f8d674df4b035733fb3d4dd16b649cee31879eb57023a59d346",
+  "merkle_root_sha256": "2adf94e34a74ddf03923b60f1593351a334b4152debf2ca99e7691cb3fc0dd09",
   "assets": [
     {
       "rel_path": "AASHA_Visual_Mass_Harvest_Phase3/E2E_Regression_G39_Golden_Master_Hub_v5.html",
@@ -62,8 +62,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L3_IT_DataEntry_v5.html",
-      "size_bytes": 96460,
-      "sha256": "00e9cb4f2b7fd0d7a4b9f0673c1627fa1352bc38551834c67a071b6d2079a1e6"
+      "size_bytes": 97843,
+      "sha256": "67c4db07dd45ac1dbcadcfab758a47a8170c88932964c7519869cd63fbd652ba"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L4_Agri_SolarDrip_Arena.html",
@@ -77,8 +77,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L4_Agri_SolarDrip_v5.html",
-      "size_bytes": 96344,
-      "sha256": "9c141ab618c119b0e5c8b8d4af1391c4ee3ef1e66e79d9f386905e451c042970"
+      "size_bytes": 97727,
+      "sha256": "20762903d4a182933a9979cd038f1499274b7a9eacac9d8b4fa149920e8d7b76"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L4_Food_SolarDehydrator_Arena.html",
@@ -92,8 +92,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g36_ncvet_psscive_pack/NCVET_PSSCIVE_L4_Food_SolarDehydrator_v5.html",
-      "size_bytes": 96317,
-      "sha256": "60f07bcc2b1a56af03e51c84fac154528aedaa9be548e9ac6c683cc5fd397e4d"
+      "size_bytes": 97700,
+      "sha256": "11d42d7d9d866cb37a2a433feaa0245620df454c5bae5cea00f2563188bddd24"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G06-MATH-CH07-FRACTIONS_Arena.html",
@@ -102,8 +102,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G06-MATH-CH07-FRACTIONS_Interactive_v5.html",
-      "size_bytes": 124473,
-      "sha256": "74e26841b54c832df04df63ca4ad249dea7e4143968b4f8bdb764b3ef8120345"
+      "size_bytes": 125856,
+      "sha256": "14ebb755f9869d66909630505961514b33f86a8b9b74cf04d3376969ee77266e"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G06-MATH-CH07-FRACTIONS_Learning.html",
@@ -117,8 +117,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G07-MATH-CH11-PERIMETER-AREA_Interactive_v5.html",
-      "size_bytes": 126324,
-      "sha256": "842a8d44db472c76783c18153d2716591fb8b07781a36efbfcef9343ec98eaee"
+      "size_bytes": 127707,
+      "sha256": "0a4339ec4477f6e828edc6f38bc4e8c4ad3d07980a621a051ee1817c3ebabb09"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G07-MATH-CH11-PERIMETER-AREA_Learning.html",
@@ -132,8 +132,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Interactive_v5.html",
-      "size_bytes": 124093,
-      "sha256": "2c27d6aeda2de1e13def89f8353f62260a9c549eb228d04d4fe176051de02931"
+      "size_bytes": 125476,
+      "sha256": "0048c75f8f2522e23e8f205d3be3ef9248d26d85b9f602a7dd9c396c66419f12"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Learning.html",
@@ -147,8 +147,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G09-SCI-CH08-FORCE-MOTION_Interactive_v5.html",
-      "size_bytes": 123086,
-      "sha256": "f972f3d565771f9ce333eb67c35ae1d35e518291d25bd79f8a87d4507c1a155f"
+      "size_bytes": 124469,
+      "sha256": "f9eca9816e54370cce773564e5e9f0209eca5bcf3161af081629d65e752f6305"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
@@ -162,8 +162,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G09-SCI-CH10-WORK-ENERGY_Interactive_v5.html",
-      "size_bytes": 126013,
-      "sha256": "0e2aae36f9a57740ca60f67663801c913d1bf4857feb9ff0dd0aacf17514aa90"
+      "size_bytes": 127396,
+      "sha256": "718d5abb5d200212346fd63cafd4d79dd8c4c10632a64fb2d75e7b5857427354"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G09-SCI-CH10-WORK-ENERGY_Learning.html",
@@ -177,8 +177,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-MATH-CH02-POLYNOMIALS_Interactive_v5.html",
-      "size_bytes": 124944,
-      "sha256": "41da24de33ccc83ca7f9cb509a60a70ff9b177789b0b4256469bb13a84a89f02"
+      "size_bytes": 126327,
+      "sha256": "785c7f1fea02d837f07720559f4c91442a76e8123467eb7b456799e3c368ad91"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-MATH-CH02-POLYNOMIALS_Learning.html",
@@ -192,8 +192,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Interactive_v5.html",
-      "size_bytes": 125447,
-      "sha256": "952ac483708ef1c5573269227058e82e821333c9c49f8866f425cc60ee71d2b8"
+      "size_bytes": 126830,
+      "sha256": "ab395def38a6f7921bb8eca84c03e34344c35e5f3001bb0bb53b26ea6b6f79b0"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Learning.html",
@@ -207,8 +207,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Interactive_v5.html",
-      "size_bytes": 123068,
-      "sha256": "adced167b762e244827e668eb3f98c2ab3a5259fc9ba10dbdd442c050faf9383"
+      "size_bytes": 124451,
+      "sha256": "e8cb2718ec9af8bfdd9e3c9c0c02cb7af5e8f6c1c47f3fd1e8ef55e67ebffb2c"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html",
@@ -222,8 +222,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Interactive_v5.html",
-      "size_bytes": 127002,
-      "sha256": "fcc2abe9f9093c25a7c0f5a45d9d46ec5385e98f9c63745184bcaca8c4ace154"
+      "size_bytes": 128385,
+      "sha256": "ad346940e97a22f3a45dd9d76827a4944ac3d894cc46ec6fbfc52f6a1c058268"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html",
@@ -237,8 +237,8 @@
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Interactive_v5.html",
-      "size_bytes": 125433,
-      "sha256": "4e757adf1a422312cdba57ed586c0dbe1d3a7ce8c40fb3431a67ce755b6cbaac"
+      "size_bytes": 126816,
+      "sha256": "b5875e524e04c42c5d7cc3ca9d2c3eff62b6515a817b6173b3556e3aaed229f5"
     },
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html",
