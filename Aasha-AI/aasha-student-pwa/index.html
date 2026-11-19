@@ -105,6 +105,7 @@
       bookmarkStudentDoubtOffline,
       scheduleSpacedRepetitionReview,
       renderFamilyProgressCertificateHtml,
+      queuePdfFor7AgentCompilation,
       generateTeacherRemedialMicroPlaylist,
       renderVillageScienceFairShowcaseHtml,
       inspectChildHtmlAssetBudget,
@@ -421,6 +422,10 @@
           ctx.clearRect(0, 0, cvs.width, cvs.height);
         }
         toastMount.innerHTML = `<div id="scratchpad-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#ecfdf5;color:#065f46;margin-top:10px;font-weight:600;">🧹 Cleared Offline Finger Scratchpad</div>`;
+      } else if (action === 'queue-studio-pdf-compile') {
+        const res = queuePdfFor7AgentCompilation(state, { pdfName: 'Chapter_Uploaded.pdf', subject: 'science', grade: 8, board: 'NCERT' });
+        toastMount.innerHTML = `<div id="pdf-queue-toast" role="status" style="min-height:44px;padding:10px 14px;border-radius:10px;background:#e0e7ff;color:#312e81;margin-top:10px;font-weight:600;">📄 Queued ${res.latestJob.jobId} (${res.latestJob.assignedThemeName})</div>`;
+        persistAndRefresh();
       }
     });
 

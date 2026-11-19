@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T19:11:33Z",
+  "updated_at_utc": "2026-11-19T19:50:12Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -187,8 +187,13 @@
         },
         {
           "id": "G76_OFFLINE_TEACHER_PDF_UPLOAD_TO_7AGENT_JOB_QUEUE",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Wire offline teacher PDF upload in Aasha Studio / Centre Server directly into the 7-Agent PDF-to-HTML5 Orchestrator job queue."
+        },
+        {
+          "id": "G77_OFFLINE_TEACHER_PDF_JOB_WORKER_RUNNER_AND_STATUS_STREAM",
+          "status": "QUEUED_NEXT",
+          "scope": "Execute queued studio_pdf_jobs through the 7-Agent PDF-to-HTML5 Orchestrator and stream stage progress back to Aasha Studio."
         }
       ]
     }

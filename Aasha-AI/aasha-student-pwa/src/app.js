@@ -148,6 +148,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderBentoStudentDashboardGrid(cohortSummary)}
       ${renderArenaCanvasScratchpadWidget(cohortSummary)}
       ${renderG72MultiGenreLauncherCard(cohortSummary)}
+      ${renderStudioPdfTo7AgentQueueCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -2988,6 +2989,63 @@ export function renderG72MultiGenreLauncherCard(cohortSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#134e4a;">
         Chapters: <strong>${cat.totalChapters} (${cat.totalModules} Learn &amp; Arena HTML5 Modules)</strong> • Themes: <strong>${cat.distinctThemes.length} Distinct Genres</strong> • Offline: <code>0 External URLs</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G76: Offline Teacher PDF Upload -> 7-Agent PDF-to-HTML5 Orchestrator Job Queue
+export function queuePdfFor7AgentCompilation(state = {}, pdfInput = {}) {
+  if (!state || typeof state !== "object") {
+    throw new Error("Valid state object is required");
+  }
+  if (!Array.isArray(state.studioPdfJobs)) {
+    state.studioPdfJobs = [];
+  }
+  const pdfName = String(pdfInput.pdfName || "Chapter_Uploaded.pdf").trim();
+  const subject = String(pdfInput.subject || "science").trim().toLowerCase();
+  const grade = Number(pdfInput.grade ?? 8);
+  const board = String(pdfInput.board || "NCERT").trim().toUpperCase();
+  const jobId = `PDFJOB-${state.studioPdfJobs.length + 1}-${board}-G${grade}`;
+  const genreTheme = resolveMultiGenreArenaTheme(pdfName, subject);
+  const job = {
+    jobId,
+    pdfName,
+    subject,
+    grade,
+    board,
+    assignedGenreId: genreTheme.genreId,
+    assignedThemeName: genreTheme.themeName,
+    assignedEngine: genreTheme.engine,
+    pipelineAgents: ["IngestAgent", "AnalysisAgent", "DesignAgent", "LLEAgent", "AssessmentAgent", "LearnArenaAssembler", "QAAgent"],
+    wmCompoundingEnabled: true,
+    maxChildHtmlBytes: 20971520,
+    status: "QUEUED_FOR_7AGENT_ORCHESTRATOR",
+    createdAtIso: new Date().toISOString()
+  };
+  state.studioPdfJobs.push(job);
+  return {
+    ok: true,
+    totalJobs: state.studioPdfJobs.length,
+    latestJob: job
+  };
+}
+
+export function renderStudioPdfTo7AgentQueueCard(stateOrSummary = {}) {
+  const jobs = Array.isArray(stateOrSummary.studioPdfJobs) ? stateOrSummary.studioPdfJobs : [];
+  return `
+    <section id="studio-pdf-7agent-queue-card" aria-label="Offline Teacher PDF Upload to 7-Agent Orchestrator Job Queue"
+             style="padding:14px;border-radius:14px;background:#eef2ff;border:1px solid #818cf8;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#312e81;">📄 अध्यापक PDF से 7-एजेंट HTML5 संकलक कतार / Teacher PDF $\rightarrow$ 7-Agent Compiler Queue</h3>
+        <button type="button" id="btn-queue-studio-pdf-compile" data-action="queue-studio-pdf-compile"
+                style="min-width:44px;min-height:44px;padding:6px 12px;border-radius:8px;border:none;background:#4338ca;color:#ffffff;font-weight:700;cursor:pointer;">
+          ⚙️ Queue Chapter PDF for 7-Agent Build / PDF संकलित करें
+        </button>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#1e1b4b;">
+        Queued PDF Jobs: <strong>${jobs.length}</strong> • Pipeline: <code>7-Agent + Compounding WM + 5-Genre 60fps</code> • Cap: <strong>✅ &lt; 20 MiB / Child HTML</strong>
       </p>
     </section>
   `.trim();

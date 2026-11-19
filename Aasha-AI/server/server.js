@@ -2001,6 +2001,52 @@ export function buildServer() {
     };
   });
 
+  // Phase G76: Offline Teacher PDF Upload -> 7-Agent Orchestrator Job Queue Endpoints
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS studio_pdf_jobs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      job_id TEXT NOT NULL UNIQUE,
+      pdf_name TEXT NOT NULL,
+      subject TEXT NOT NULL,
+      grade INTEGER NOT NULL DEFAULT 8,
+      board TEXT NOT NULL DEFAULT 'NCERT',
+      status TEXT NOT NULL DEFAULT 'QUEUED_FOR_7AGENT_ORCHESTRATOR',
+      job_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/studio/pdf-compile-job', async (request, reply) => {
+    const body = request.body || {};
+    const pdfName = String(body.pdfName || '').trim();
+    if (!pdfName) {
+      return reply.code(400).send({ error: 'pdfName is required' });
+    }
+    const subject = String(body.subject || 'science').trim().toLowerCase();
+    const grade = Math.max(1, Math.min(12, Number(body.grade ?? 8)));
+    const board = String(body.board || 'NCERT').trim().toUpperCase();
+    const createdAt = new Date().toISOString();
+    const jobId = String(body.jobId || `PDFJOB-${Date.now()}-${board}-G${grade}`);
+    const jobSha256 = crypto.createHash('sha256')
+      .update(`${jobId}|${pdfName}|${subject}|${grade}|${board}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO studio_pdf_jobs (job_id, pdf_name, subject, grade, board, job_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `).run(jobId, pdfName, subject, grade, board, jobSha256, createdAt);
+    return { status: 'ok', jobId, pdfName, subject, grade, board, queueStatus: 'QUEUED_FOR_7AGENT_ORCHESTRATOR', job_sha256: jobSha256 };
+  });
+
+  app.get('/api/studio/pdf-compile-jobs', async () => {
+    const jobs = db.prepare(`
+      SELECT job_id AS jobId, pdf_name AS pdfName, subject, grade, board, status, job_sha256 AS jobSha256, created_at AS createdAt
+      FROM studio_pdf_jobs
+      ORDER BY id DESC
+      LIMIT 25
+    `).all();
+    return { status: 'ok', count: jobs.length, jobs };
+  });
+
   return app;
 
 
