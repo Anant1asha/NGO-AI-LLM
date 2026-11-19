@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T07:54:44Z",
+  "updated_at_utc": "2026-11-19T08:08:55Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -152,8 +152,13 @@
         },
         {
           "id": "G70_CHAPTER_BUNDLE_WITH_INLINED_MATTERJS_PIXIJS_AND_CUMULATIVE_WM",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Compile full multi-genre 60fps Matter.js/PixiJS/JSXGraph Learn & Arena child HTML5 modules with Core Cumulative WM + Domain-Specific Pack (< 20 MiB per child HTML)."
+        },
+        {
+          "id": "G71_LEGACY_46_HTML_MODULES_WM_AND_ZERO_EXT_URL_REMEDIATION",
+          "status": "QUEUED_NEXT",
+          "scope": "Upgrade the 46 legacy output HTML modules (< 1,000 WM) with the compounding WM dictionary and audit/remove any external URLs across legacy output builds."
         }
       ]
     }
