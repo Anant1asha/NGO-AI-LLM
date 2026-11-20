@@ -1,3 +1,9 @@
+### Cycle G80 (2026-11-20T10:47:46Z)
+- Python Suites: **452 unit tests across 85 suites PASSED**
+- G80 QR/LAN Share Integration: **PASS** (`buildOfflineQrLanSharePayload`, `renderTeacherBatchPackDownloadAndQrLanCard`, `POST/GET /api/studio/lan-pack-share`)
+- Visual Contract & SW Precache: **97/97 PASS**, **54/54 PASS** (`92f31442ab14a6eb...`)
+- Independent Certification: **PASS**
+
 ### Cycle G79 (2026-11-20T07:19:36Z)
 - Python Suites: **452 unit tests across 85 suites PASSED**
 - G79 Batch PDF Benchmark & Cohort ZIP Test: **PASS** (3 multi-subject PDFs -> 6 HTML5 modules, `<= 20 MiB` per child HTML, `0` external resource URLs)

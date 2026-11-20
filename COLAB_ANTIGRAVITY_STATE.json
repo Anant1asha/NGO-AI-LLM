@@ -61,14 +61,14 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 66,
+  "lamport_epoch": 67,
   "vector_clock": {
-    "plane_1_drive": 66,
+    "plane_1_drive": 67,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at_utc": "2026-11-20T07:19:36Z",
-  "last_cycle_id": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
-  "next_priority": "G80_TEACHER_STUDIO_BATCH_PACK_DOWNLOAD_AND_QR_LAN_SHARE"
+  "updated_at_utc": "2026-11-20T10:47:46Z",
+  "last_cycle_id": "G80_TEACHER_STUDIO_BATCH_PACK_DOWNLOAD_AND_QR_LAN_SHARE",
+  "next_priority": "G81_STUDENT_PWA_OFFLINE_LAN_PACK_IMPORT_AND_VERIFY"
 }

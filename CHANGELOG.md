@@ -1,3 +1,8 @@
+## [G80] 2026-11-20T10:47:46Z — Teacher Studio Batch Pack Download & Offline QR/LAN Share
+- Added `studio_lan_pack_shares` SQLite table and `POST /api/studio/lan-pack-share` + `GET /api/studio/lan-pack-share/:shareId` in `Aasha-AI/server/server.js`.
+- Added `buildOfflineQrLanSharePayload` and `renderTeacherBatchPackDownloadAndQrLanCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+- Added `tests/test_g80_teacher_batch_pack_qr_lan_share.mjs` and refreshed `sw_cache_manifest.json` (`54/54` assets).
+
 ## [G79] 2026-11-20T07:19:36Z — End-to-End Batch PDF Benchmark & Cohort Offline Pack Export
 - Added `src/aasha/orchestrator/g79_batch_pdf_benchmark_and_cohort_pack.py` (`run_batch_pdf_benchmark`, `build_cohort_offline_pack_zip`).
 - Added `studio_batch_benchmarks` SQLite table and `POST /api/studio/batch-pdf-benchmark` + `GET /api/sync/export-custom-pdf-cohort-pack` in `Aasha-AI/server/server.js`.

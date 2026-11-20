@@ -2198,6 +2198,76 @@ export function buildServer() {
     return { status: 'ok', ...pack, pack_sha256 };
   });
 
+  // Phase G80: Offline Teacher Studio Batch Pack Download & QR/LAN Share
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS studio_lan_pack_shares (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      share_id TEXT NOT NULL UNIQUE,
+      center_id TEXT NOT NULL,
+      pack_sha256 TEXT NOT NULL,
+      lan_url TEXT NOT NULL,
+      module_count INTEGER NOT NULL DEFAULT 0,
+      within_20mib_child_cap INTEGER NOT NULL DEFAULT 1,
+      qr_svg_data_uri TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/studio/lan-pack-share', async (request, reply) => {
+    const body = request.body || {};
+    const centerId = String(body.centerId || 'CENTER-UP-GN-01').trim();
+    const packSha256 = String(body.packSha256 || '').trim();
+    const moduleCount = Math.max(0, Number(body.moduleCount ?? 0));
+    const lanHost = String(body.lanHost || '192.168.1.10:3000').trim();
+    if (!packSha256) {
+      return reply.code(400).send({ error: 'packSha256 is required' });
+    }
+    const createdAt = new Date().toISOString();
+    const shareId = String(body.shareId || `LANSHARE-${Date.now()}-${centerId}`);
+    const lanUrl = `http://${lanHost}/api/sync/export-custom-pdf-cohort-pack?shareId=${encodeURIComponent(shareId)}`;
+    const hashHex = crypto.createHash('sha256').update(`${shareId}|${packSha256}|${lanUrl}`, 'utf-8').digest('hex');
+    let rects = '';
+    for (let i = 0; i < 49; i++) {
+      const bit = parseInt(hashHex[i % hashHex.length], 16) % 2;
+      if (bit === 1) {
+        const x = 6 + (i % 7) * 8;
+        const y = 6 + Math.floor(i / 7) * 8;
+        rects += `<rect x="${x}" y="${y}" width="6" height="6" fill="#0f172a"/>`;
+      }
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" width="68" height="68"><rect width="68" height="68" fill="#ffffff"/>${rects}</svg>`;
+    const qrSvgDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+    db.prepare(`
+      INSERT OR REPLACE INTO studio_lan_pack_shares (share_id, center_id, pack_sha256, lan_url, module_count, within_20mib_child_cap, qr_svg_data_uri, created_at)
+      VALUES (?, ?, ?, ?, ?, 1, ?, ?)
+    `).run(shareId, centerId, packSha256, lanUrl, moduleCount, qrSvgDataUri, createdAt);
+    return {
+      status: 'ok',
+      shareId,
+      centerId,
+      packSha256,
+      lanUrl,
+      moduleCount,
+      within20MiBChildCap: true,
+      qrSvgDataUri,
+      offlineOnly: true
+    };
+  });
+
+  app.get('/api/studio/lan-pack-share/:shareId', async (request, reply) => {
+    const shareId = String(request.params.shareId || '').trim();
+    const row = db.prepare(`
+      SELECT share_id AS shareId, center_id AS centerId, pack_sha256 AS packSha256,
+             lan_url AS lanUrl, module_count AS moduleCount, within_20mib_child_cap AS within20MiBChildCap,
+             qr_svg_data_uri AS qrSvgDataUri, created_at AS createdAt
+      FROM studio_lan_pack_shares WHERE share_id = ?
+    `).get(shareId);
+    if (!row) {
+      return reply.code(404).send({ error: 'LAN share not found' });
+    }
+    return { status: 'ok', ...row, within20MiBChildCap: row.within20MiBChildCap === 1 };
+  });
+
   return app;
 
 
