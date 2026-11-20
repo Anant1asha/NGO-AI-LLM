@@ -1,3 +1,9 @@
+### Cycle G84 (2026-11-20T19:03:04Z)
+- Python Suites: **454 unit tests across 86 suites PASSED**
+- G84 Federated Centre Health Panel: **PASS** (`buildFederatedCentreHealthSummary`, `GET /api/teacher/federated-health`, `GREEN_OFFLINE_PARITY`)
+- Visual Contract & SW Precache: **97/97 PASS**, **54/54 PASS** (`76b22772a42c4f8d...`)
+- Independent Certification: **PASS**
+
 ### Cycle G83 (2026-11-20T18:22:01Z)
 - Python Suites: **454 unit tests across 86 suites PASSED**
 - G83 Federated CRDT Delta Merge & HTTP: **PASS** (`merge_federated_centre_deltas`, `POST /api/sync/federated-delta-merge`, `GET /api/sync/federated-delta-status`)

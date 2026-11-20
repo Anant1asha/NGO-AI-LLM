@@ -1,3 +1,8 @@
+## [G84] 2026-11-20T19:03:04Z — Teacher Studio Federated Centre Health & Parity Panel
+- Added `GET /api/teacher/federated-health` in `Aasha-AI/server/server.js` aggregating Lamport epoch, merged records, PDF jobs, LAN shares, and 20 MiB cap parity.
+- Added `buildFederatedCentreHealthSummary` and `renderTeacherFederatedCentreHealthPanel` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+- Added `tests/test_g84_federated_centre_health_panel.mjs` and refreshed `sw_cache_manifest.json` (`54/54` assets).
+
 ## [G83] 2026-11-20T18:22:01Z — Multi-Centre Federated Offline Sync, CRDT Delta Merge & Windows Git Policy Parity
 - Hardened `.gitignore` (`.venv/`, `.serena_venv/`, `.pytest_cache/`, `aasha_local.db`, `*.bundle`) and added `.agents/rules/git_windows_staging_policy.md` & `.superbrain/rules/git-windows-staging-policy.md`.
 - Added `src/aasha/orchestrator/g83_federated_centre_delta_sync.py` (`merge_federated_centre_deltas`) with high-water-mark CRDT reconciliation and `<= 20 MiB` per-child HTML enforcement.
