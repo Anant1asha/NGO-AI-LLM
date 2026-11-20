@@ -80,5 +80,17 @@ class TestSixteenStageExecutiveLoop(unittest.TestCase):
         self.assertEqual(rep_blk["CERTIFICATION"]["verdict"], "BLOCK")
 
 
+    def test_expanded_executive_plan_blueprint_and_parallel_lanes(self) -> None:
+        orch = Executive16StageLoopOrchestrator(".")
+        req = TaskExecutionRequest(objective_id="G85-PLAN-TEST", title="Verify expanded executive /plan blueprint")
+        plan = orch.build_executive_execution_plan(req)
+        self.assertEqual(plan["schema_version"], "aasha.executive.plan.v2")
+        self.assertEqual(len(plan["parallel_execution_lanes"]), 5)
+        self.assertEqual(len(plan["stage_gates"]), 16)
+        self.assertTrue(plan["hard_invariants"]["windows_safe_git_pathspec"])
+        rep = orch.execute_16_stage_cycle(req)
+        self.assertIn("executive_plan_v2", rep["IMPLEMENTATION_DETAILS"])
+
+
 if __name__ == "__main__":
     unittest.main()

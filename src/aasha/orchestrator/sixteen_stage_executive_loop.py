@@ -195,6 +195,50 @@ class Executive16StageLoopOrchestrator:
             "reason": "All coding, integration, defect remediation, security, and independent QA checks verified complete.",
         }
 
+    def build_executive_execution_plan(self, req: TaskExecutionRequest) -> Dict[str, Any]:
+        """
+        Expanded /plan Executive Blueprint for Stages 01-16:
+        Produces conflict-free officer write-scope locks, 5 parallel execution lanes,
+        stage-level acceptance gates, and Windows/Colab safe git governance.
+        """
+        stage_gates: Dict[str, Dict[str, Any]] = {}
+        for st_meta in CANONICAL_16_STAGES:
+            sid = st_meta["id"]
+            applicable, reason = self.evaluate_stage_applicability(sid, req.task_profile)
+            stage_gates[sid] = {
+                "owner": st_meta["owner"],
+                "applicable": applicable,
+                "reason": reason,
+                "acceptance_gate": st_meta["output"],
+            }
+        return {
+            "schema_version": "aasha.executive.plan.v2",
+            "objective_id": req.objective_id,
+            "task_profile": req.task_profile,
+            "swarm_write_locks": {
+                "CHIEF_RESEARCHER": ["docs/", "Aasha-AI/experience_registry/"],
+                "CHIEF_DEVELOPER": ["src/aasha/orchestrator/", "Aasha-AI/server/", "Aasha-AI/aasha-student-pwa/"],
+                "CHIEF_TESTER_DEBUGGER": ["tests/", "VERIFICATION_REPORT.md"],
+                "CHIEF_SECURITY_PRIVACY": [".gitignore", "scripts/lint_staged_secrets.mjs"],
+                "SUPER_ADMIN_AIOS": ["AASHA_PHASED_AUTONOMOUS_MVP_ROADMAP.json", "PC_ANTIGRAVITY_STATE.json", "COLAB_ANTIGRAVITY_STATE.json", "CHANGELOG.md"],
+            },
+            "parallel_execution_lanes": [
+                {"lane": "LANE_1_OBSERVE_RECONCILE_AUDIT", "stages": ["STAGE_01_OBSERVE", "STAGE_02_RECONCILE", "STAGE_03_AUDIT", "STAGE_04_PRIORITIZE"]},
+                {"lane": "LANE_2_RESOURCE_AND_ARCHITECTURE", "stages": ["STAGE_05_RESEARCH_AND_RESOURCE_DISCOVERY", "STAGE_06_ARCHITECTURE_AND_DETAILED_PLANNING"]},
+                {"lane": "LANE_3_BUILD_AND_INTEGRATE", "stages": ["STAGE_07_BUILD_AND_CODE", "STAGE_08_INTEGRATE_AND_COMPLETE"]},
+                {"lane": "LANE_4_DEBUG_TEST_SECURITY_CERTIFY", "stages": ["STAGE_09_DEBUG_AND_DEFECT_REMEDIATION", "STAGE_10_COMPREHENSIVE_TESTING", "STAGE_11_SECURITY_AND_PRIVACY_HARDENING", "STAGE_12_QUALITY_AND_PERFORMANCE_OPTIMIZATION", "STAGE_13_INDEPENDENT_VERIFICATION_AND_CERTIFICATION"]},
+                {"lane": "LANE_5_RECORD_GIT_BUNDLE_REPEAT", "stages": ["STAGE_14_RECORD_AND_LEARN", "STAGE_15_GIT_AND_ARTIFACT_GOVERNANCE", "STAGE_16_REPEAT_AND_CONTINUOUS_IMPROVEMENT"]},
+            ],
+            "hard_invariants": {
+                "child_html_max_bytes": 20971520,
+                "zero_external_urls": True,
+                "independent_qa_required": True,
+                "repair_limit": self.MAX_REPAIR_LIMIT,
+                "windows_safe_git_pathspec": True,
+            },
+            "stage_gates": stage_gates,
+        }
+
     def execute_16_stage_cycle(self, req: Optional[TaskExecutionRequest] = None) -> Dict[str, Any]:
         start_ts = datetime.now(timezone.utc).isoformat()
         if req is None:
@@ -219,8 +263,9 @@ class Executive16StageLoopOrchestrator:
                 unresolved_work=[],
             )
 
-        # Safeguard 2 check upfront
+        # Safeguard 2 check upfront + Expanded /plan Executive Blueprint
         indep_qa = self.enforce_independent_qa_certification(req.builder_agent_id, req.verifier_agent_id)
+        exec_plan = self.build_executive_execution_plan(req)
 
         # Verify HTML5 < 20 MiB invariant across output packs
         html_files = sorted(
@@ -280,6 +325,7 @@ class Executive16StageLoopOrchestrator:
                 "laya_system1_prerouter": "4/4 paths verified, 0 token bleed",
                 "backward_compatible_12_to_16_map": True,
                 "three_engineering_safeguards_enforced": True,
+                "executive_plan_v2": exec_plan,
             },
             "FILES_CREATED": req.files_created,
             "FILES_MODIFIED": req.files_modified,
@@ -338,7 +384,7 @@ class Executive16StageLoopOrchestrator:
             },
             "PENDING_APPROVALS": [],
             "UNRESOLVED_WORK": req.unresolved_work,
-            "NEXT_PRIORITY": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
+            "NEXT_PRIORITY": "G85_OFFLINE_STUDENT_MASTERY_LEADERBOARD_AND_STREAK_BADGES",
         }
 
         self.validate_20_field_report(report)
