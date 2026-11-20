@@ -1,3 +1,9 @@
+### Cycle G83 (2026-11-20T18:22:01Z)
+- Python Suites: **454 unit tests across 86 suites PASSED**
+- G83 Federated CRDT Delta Merge & HTTP: **PASS** (`merge_federated_centre_deltas`, `POST /api/sync/federated-delta-merge`, `GET /api/sync/federated-delta-status`)
+- Visual Contract & SW Precache: **97/97 PASS**, **54/54 PASS** (`75a508aabe5b3d94...`)
+- Independent Certification: **PASS**
+
 ### Cycle G82 (2026-11-20T17:49:48Z)
 - Python Suites: **452 unit tests across 85 suites PASSED**
 - G82 Parent Progress QR & Teacher Digest: **PASS** (`buildParentProgressQrCard`, `GET /api/student/parent-progress-qr/:studentId`, `GET /api/teacher/offline-digest/:centerId`)

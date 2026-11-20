@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-20T17:49:48Z",
+  "updated_at_utc": "2026-11-20T18:22:01Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -214,5 +214,5 @@
     "html_skill_usage": "PAIR_HTML_LAYOUT_WITH_WEBGL2_PHYSICS_SIM_AND_AUDIO_ENGINES",
     "child_html_cap_bytes": 20971520
   },
-  "next_priority": "G83_MULTI_CENTRE_FEDERATED_OFFLINE_SYNC_AND_DELTA_MERGE"
+  "next_priority": "G84_TEACHER_STUDIO_FEDERATED_CENTRE_HEALTH_PANEL"
 }

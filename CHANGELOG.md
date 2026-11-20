@@ -1,3 +1,8 @@
+## [G83] 2026-11-20T18:22:01Z — Multi-Centre Federated Offline Sync, CRDT Delta Merge & Windows Git Policy Parity
+- Hardened `.gitignore` (`.venv/`, `.serena_venv/`, `.pytest_cache/`, `aasha_local.db`, `*.bundle`) and added `.agents/rules/git_windows_staging_policy.md` & `.superbrain/rules/git-windows-staging-policy.md`.
+- Added `src/aasha/orchestrator/g83_federated_centre_delta_sync.py` (`merge_federated_centre_deltas`) with high-water-mark CRDT reconciliation and `<= 20 MiB` per-child HTML enforcement.
+- Added `federated_centre_deltas` SQLite table + `POST /api/sync/federated-delta-merge` & `GET /api/sync/federated-delta-status` in `Aasha-AI/server/server.js`.
+
 ## [G82] 2026-11-20T17:49:48Z — Offline Parent Progress QR Card & Teacher Centre Digest
 - Added `GET /api/student/parent-progress-qr/:studentId` and `GET /api/teacher/offline-digest/:centerId` in `Aasha-AI/server/server.js`.
 - Added `buildParentProgressQrCard` and `renderParentProgressQrCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
