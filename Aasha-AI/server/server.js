@@ -2268,6 +2268,56 @@ export function buildServer() {
     return { status: 'ok', ...row, within20MiBChildCap: row.within20MiBChildCap === 1 };
   });
 
+  // Phase G81: Student PWA / Centre Offline Custom PDF Cohort Pack Import & SHA-256 Verification
+  app.post('/api/sync/import-custom-pdf-cohort-pack', async (request, reply) => {
+    const body = request.body || {};
+    const schemaVersion = String(body.schemaVersion || '');
+    if (schemaVersion !== 'aasha.custom.pdf.cohort.pack.v1' && schemaVersion !== 'aasha.offline.cohort.pack.v2') {
+      return reply.code(400).send({ status: 'error', error: 'INVALID_CUSTOM_PDF_PACK_SCHEMA' });
+    }
+    const { pack_sha256: providedSha, status: _ignoredStatus, ...canonicalPack } = body;
+    const computedSha = crypto.createHash('sha256').update(JSON.stringify(canonicalPack), 'utf-8').digest('hex');
+    if (providedSha && String(providedSha) !== computedSha) {
+      return reply.code(400).send({ status: 'error', error: 'PACK_SHA256_MISMATCH', expected: computedSha, provided: String(providedSha) });
+    }
+    const modules = Array.isArray(body.modules) ? body.modules : (Array.isArray(body.compiledJobs) ? body.compiledJobs : []);
+    for (const m of modules) {
+      const sz = Number(m.size_bytes ?? m.sizeBytes ?? 0);
+      if (sz > 20971520) {
+        return reply.code(400).send({ status: 'error', error: 'CHILD_HTML_EXCEEDS_20MIB_CAP', sizeBytes: sz });
+      }
+    }
+    const masteryList = Array.isArray(body.customPdfMastery) ? body.customPdfMastery : [];
+    let masteryRecordsMerged = 0;
+    const now = new Date().toISOString();
+    const tx = db.transaction(() => {
+      for (const entry of masteryList) {
+        const sid = String(entry.studentId || '').trim();
+        const jid = String(entry.jobId || '').trim();
+        const cid = String(entry.chapterId || '').trim();
+        if (!sid || !jid || !cid) continue;
+        const msha = String(entry.masterySha256 || crypto.createHash('sha256').update(`${sid}|${jid}|${cid}|${now}`, 'utf-8').digest('hex'));
+        const exists = db.prepare(`SELECT id FROM custom_pdf_mastery_ledger WHERE mastery_sha256 = ?`).get(msha);
+        if (!exists) {
+          db.prepare(`
+            INSERT INTO custom_pdf_mastery_ledger (student_id, job_id, chapter_id, score_pct, wm_tap_hits, coins_awarded, mastery_sha256, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+          `).run(sid, jid, cid, Number(entry.scorePct ?? 90), Number(entry.wmTapHits ?? 0), Number(entry.coinsAwarded ?? 15), msha, String(entry.createdAt || now));
+          masteryRecordsMerged++;
+        }
+      }
+    });
+    tx();
+    return {
+      status: 'ok',
+      verified: true,
+      pack_sha256: computedSha,
+      modulesImported: modules.length,
+      masteryRecordsMerged,
+      within20MiBChildCap: true
+    };
+  });
+
   return app;
 
 

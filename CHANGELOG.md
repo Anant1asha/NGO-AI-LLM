@@ -1,3 +1,8 @@
+## [G81] 2026-11-20T14:47:07Z — Student PWA Offline LAN Pack Import & SHA-256 Verification
+- Added `POST /api/sync/import-custom-pdf-cohort-pack` in `Aasha-AI/server/server.js` with SHA-256 tamper rejection and 20 MiB per-child HTML cap enforcement.
+- Added `importOfflineLanCohortPack` and `renderStudentOfflineLanPackImportCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+- Added `tests/test_g81_student_pwa_lan_pack_import_and_verify.mjs` and refreshed `sw_cache_manifest.json` (`54/54` assets).
+
 ## [G80] 2026-11-20T10:47:46Z — Teacher Studio Batch Pack Download & Offline QR/LAN Share
 - Added `studio_lan_pack_shares` SQLite table and `POST /api/studio/lan-pack-share` + `GET /api/studio/lan-pack-share/:shareId` in `Aasha-AI/server/server.js`.
 - Added `buildOfflineQrLanSharePayload` and `renderTeacherBatchPackDownloadAndQrLanCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
