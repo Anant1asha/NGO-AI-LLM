@@ -1,3 +1,8 @@
+## [G79] 2026-11-20T07:19:36Z — End-to-End Batch PDF Benchmark & Cohort Offline Pack Export
+- Added `src/aasha/orchestrator/g79_batch_pdf_benchmark_and_cohort_pack.py` (`run_batch_pdf_benchmark`, `build_cohort_offline_pack_zip`).
+- Added `studio_batch_benchmarks` SQLite table and `POST /api/studio/batch-pdf-benchmark` + `GET /api/sync/export-custom-pdf-cohort-pack` in `Aasha-AI/server/server.js`.
+- Guarded `file_name` column in `phase_e_13chapter_learn_arena_batch.py` and updated G35/G43/G44/gap_v7_01 compounding WM assertions (`>= 1129`).
+
 # AASHA AIOS Persistent Change Ledger
 Governed by Section 16 of the AASHA AIOS Continuous Engineering Task Specification.
 

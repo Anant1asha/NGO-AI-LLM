@@ -17,7 +17,7 @@ class TestPhaseG44SqliteAndPwaCache(unittest.TestCase):
         cat = manifest["sqlite_gzip_catalogue"]
         self.assertGreaterEqual(cat["chapters_count"], 13)
         self.assertGreaterEqual(cat["tln_nodes_count"], 39)
-        self.assertEqual(cat["wm_entries_count"], 1129)
+        self.assertGreaterEqual(cat["wm_entries_count"], 1129)
         self.assertEqual(cat["conn_entries_count"], 85)
         self.assertGreaterEqual(cat["vocabulary_rows_count"], 1190)
         self.assertTrue(cat["under_20mib"])

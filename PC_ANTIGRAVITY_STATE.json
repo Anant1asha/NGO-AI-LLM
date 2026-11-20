@@ -34,7 +34,7 @@
     "master",
     "HEAD"
   ],
-  "next_focus_unit": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
+  "next_focus_unit": "100% Phases A-F Completed",
   "adhikarana_locus": {
     "plane_1_drive_bridge": "1Xgtf699BHe2yKdw6ne1ilihXsgP6WMxD",
     "plane_2_colab_cloud": "1XPLBrKkB_nzrEWNUq3Z2plxnnq1VUJk2",
@@ -65,9 +65,9 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 65,
+  "lamport_epoch": 66,
   "vector_clock": {
-    "plane_1_drive": 65,
+    "plane_1_drive": 66,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
@@ -78,8 +78,7 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "last_updated_utc": "2026-11-20T02:52:28Z",
-  "active_focus_unit": "G78_OFFLINE_STUDENT_MASTERY_SYNC_FOR_CUSTOM_PDF_MODULES",
-  "last_completed_focus_unit": "G78_OFFLINE_STUDENT_MASTERY_SYNC_FOR_CUSTOM_PDF_MODULES",
-  "sw_merkle_root": "f6ea8b6db20aee5bbc9b7c5ad005eaa78b9cddf0d08a0f89d32a259ef7088eb9"
+  "updated_at_utc": "2026-11-20T07:19:36Z",
+  "last_cycle_id": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
+  "next_priority": "G80_TEACHER_STUDIO_BATCH_PACK_DOWNLOAD_AND_QR_LAN_SHARE"
 }

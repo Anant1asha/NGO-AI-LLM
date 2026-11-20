@@ -1025,25 +1025,45 @@ def compile_and_certify_13_chapter_learn_arena_batch() -> dict[str, Any]:
         if col_def[0] not in existing_cols:
             cur.execute(f"ALTER TABLE chapters ADD COLUMN {col_def[0]} {col_def[1]}")
 
+    has_file_name = "file_name" in existing_cols
     for r in results:
-        cur.execute(
-            """
-            UPDATE chapters
-               SET learn_file = ?, arena_file = ?, learn_sha256 = ?, arena_sha256 = ?,
-                   learn_size_bytes = ?, arena_size_bytes = ?
-             WHERE chapter_id = ? OR file_name LIKE ?
-            """,
-            (
-                r["learn_file"],
-                r["arena_file"],
-                r["learn_sha256"],
-                r["arena_sha256"],
-                r["learn_size_bytes"],
-                r["arena_size_bytes"],
-                r["chapter_id"],
-                f"%{r['chapter_id']}%",
-            ),
-        )
+        if has_file_name:
+            cur.execute(
+                """
+                UPDATE chapters
+                   SET learn_file = ?, arena_file = ?, learn_sha256 = ?, arena_sha256 = ?,
+                       learn_size_bytes = ?, arena_size_bytes = ?
+                 WHERE chapter_id = ? OR file_name LIKE ?
+                """,
+                (
+                    r["learn_file"],
+                    r["arena_file"],
+                    r["learn_sha256"],
+                    r["arena_sha256"],
+                    r["learn_size_bytes"],
+                    r["arena_size_bytes"],
+                    r["chapter_id"],
+                    f"%{r['chapter_id']}%",
+                ),
+            )
+        else:
+            cur.execute(
+                """
+                UPDATE chapters
+                   SET learn_file = ?, arena_file = ?, learn_sha256 = ?, arena_sha256 = ?,
+                       learn_size_bytes = ?, arena_size_bytes = ?
+                 WHERE chapter_id = ?
+                """,
+                (
+                    r["learn_file"],
+                    r["arena_file"],
+                    r["learn_sha256"],
+                    r["arena_sha256"],
+                    r["learn_size_bytes"],
+                    r["arena_size_bytes"],
+                    r["chapter_id"],
+                ),
+            )
     conn.commit()
     conn.close()
 

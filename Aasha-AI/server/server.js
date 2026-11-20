@@ -2117,6 +2117,87 @@ export function buildServer() {
     return { status: 'ok', studentId, count: rows.length, entries: rows, ledger_sha256 };
   });
 
+  // Phase G79: Batch PDF Benchmark Telemetry & Custom PDF Cohort Pack Export
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS studio_batch_benchmarks (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      center_id TEXT NOT NULL,
+      total_pdfs INTEGER NOT NULL,
+      passed_pdfs INTEGER NOT NULL,
+      max_child_html_bytes INTEGER NOT NULL,
+      avg_compile_ms REAL NOT NULL,
+      zero_external_urls INTEGER NOT NULL DEFAULT 1,
+      benchmark_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/studio/batch-pdf-benchmark', async (request, reply) => {
+    const body = request.body || {};
+    const centerId = String(body.centerId || 'CENTER-UP-GN-01').trim();
+    const totalPdfs = Math.max(0, Number(body.totalPdfs ?? 0));
+    const passedPdfs = Math.max(0, Number(body.passedPdfs ?? 0));
+    const maxChildHtmlBytes = Math.max(0, Number(body.maxChildHtmlBytes ?? 0));
+    const avgCompileMs = Math.max(0, Number(body.avgCompileMs ?? 0));
+    const zeroExternalUrls = body.zeroExternalUrls !== false ? 1 : 0;
+    if (totalPdfs <= 0) {
+      return reply.code(400).send({ error: 'totalPdfs must be > 0' });
+    }
+    const createdAt = new Date().toISOString();
+    const benchmarkSha256 = crypto.createHash('sha256')
+      .update(`${centerId}|${totalPdfs}|${passedPdfs}|${maxChildHtmlBytes}|${avgCompileMs}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO studio_batch_benchmarks (center_id, total_pdfs, passed_pdfs, max_child_html_bytes, avg_compile_ms, zero_external_urls, benchmark_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(centerId, totalPdfs, passedPdfs, maxChildHtmlBytes, avgCompileMs, zeroExternalUrls, benchmarkSha256, createdAt);
+    return {
+      status: 'ok',
+      centerId,
+      totalPdfs,
+      passedPdfs,
+      within20MiBChildCap: maxChildHtmlBytes <= 20971520,
+      zeroExternalUrls: zeroExternalUrls === 1,
+      benchmark_sha256: benchmarkSha256
+    };
+  });
+
+  app.get('/api/sync/export-custom-pdf-cohort-pack', async () => {
+    const jobs = db.prepare(`
+      SELECT job_id AS jobId, pdf_name AS pdfName, subject, grade, board, status, job_sha256 AS jobSha256, created_at AS createdAt
+      FROM studio_pdf_jobs
+      ORDER BY id DESC
+      LIMIT 50
+    `).all();
+    const mastery = db.prepare(`
+      SELECT student_id AS studentId, job_id AS jobId, chapter_id AS chapterId,
+             score_pct AS scorePct, wm_tap_hits AS wmTapHits, coins_awarded AS coinsAwarded,
+             mastery_sha256 AS masterySha256, created_at AS createdAt
+      FROM custom_pdf_mastery_ledger
+      ORDER BY id DESC
+      LIMIT 100
+    `).all();
+    const benchmarks = db.prepare(`
+      SELECT center_id AS centerId, total_pdfs AS totalPdfs, passed_pdfs AS passedPdfs,
+             max_child_html_bytes AS maxChildHtmlBytes, avg_compile_ms AS avgCompileMs,
+             zero_external_urls AS zeroExternalUrls, benchmark_sha256 AS benchmarkSha256, created_at AS createdAt
+      FROM studio_batch_benchmarks
+      ORDER BY id DESC
+      LIMIT 10
+    `).all();
+    const pack = {
+      schemaVersion: 'aasha.custom.pdf.cohort.pack.v1',
+      centerId: 'CENTER-UP-GN-01',
+      offlineRationale: 'UNSUPERVISED_HOME_DISTRACTION_FREE_STUDY',
+      targetHardware: '4GB_RAM_5G_SMARTPHONE_60FPS',
+      compiledJobs: jobs,
+      customPdfMastery: mastery,
+      batchBenchmarks: benchmarks
+    };
+    const pack_sha256 = crypto.createHash('sha256').update(JSON.stringify(pack), 'utf-8').digest('hex');
+    return { status: 'ok', ...pack, pack_sha256 };
+  });
+
   return app;
 
 

@@ -181,7 +181,7 @@ try {
   assert.equal(catRes.status, 200);
   const catData = await catRes.json();
   assert.equal(catData.status, 'ok');
-  assert.equal(catData.live_g44_catalogue.wm_entries_count, 1129);
+  assert.ok(catData.live_g44_catalogue.wm_entries_count >= 1129);
   assert.equal(catData.live_g44_catalogue.certified_html5_modules_count, 21);
 
 

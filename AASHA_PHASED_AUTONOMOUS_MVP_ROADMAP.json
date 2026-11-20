@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-20T02:52:28Z",
+  "updated_at_utc": "2026-11-20T07:19:36Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -213,5 +213,6 @@
     "game_theme_diversity": "MULTI_GENRE_EXPERIENCE_REGISTRY_AND_OPEN_SOURCE_ENGINES",
     "html_skill_usage": "PAIR_HTML_LAYOUT_WITH_WEBGL2_PHYSICS_SIM_AND_AUDIO_ENGINES",
     "child_html_cap_bytes": 20971520
-  }
+  },
+  "next_priority": "G80_TEACHER_STUDIO_BATCH_PACK_DOWNLOAD_AND_QR_LAN_SHARE"
 }

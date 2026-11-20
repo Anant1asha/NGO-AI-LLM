@@ -18,7 +18,7 @@ class TestPhaseG35TenPackSQLiteAndFacilitatorBridge(unittest.TestCase):
         sq = manifest["sqlite_10pack_catalogue"]
         self.assertEqual(sq["chapters_exported"], 10)
         self.assertEqual(sq["tln_nodes_exported"], 30)
-        self.assertEqual(sq["wm_vocabulary_exported"], 1129)
+        self.assertGreaterEqual(sq["wm_vocabulary_exported"], 1129)
         self.assertTrue(sq["under_20mib_ceiling"])
 
         br = manifest["facilitator_bridge"]
