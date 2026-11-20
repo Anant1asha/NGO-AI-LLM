@@ -19,6 +19,7 @@ else
 fi
 
 # Remove Windows / Google Drive Desktop desktop.ini files inside .git that break git ref resolution
+git config core.longpaths true
 find .git -iname "desktop.ini" -delete 2>/dev/null || true
 
 git fetch "$BUNDLE_PATH" "refs/heads/$TARGET_BRANCH"

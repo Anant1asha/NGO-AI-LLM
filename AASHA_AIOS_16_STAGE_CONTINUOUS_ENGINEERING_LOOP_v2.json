@@ -242,5 +242,15 @@
     "harvest_script": "scripts/harvest_upstream_raw_assets.sh",
     "beyond_svg_multimedia": true,
     "compounding_local_resource_base": true
+  },
+  "windows_git_pathspec_rule": {
+    "rule_id": "WIN_GIT_LONGPATHS_AND_PATHSPEC_01",
+    "enforced": true,
+    "require_core_longpaths": true,
+    "forbid_long_cli_git_add_args": true,
+    "required_helper": "scripts/safe_git_add_and_commit.sh",
+    "required_git_flag": "git add --pathspec-from-file=-",
+    "clean_desktop_ini_in_dot_git": true,
+    "doc_ref": "docs/WINDOWS_GIT_LONGPATHS_AND_PATHSPEC_RULE.md"
   }
 }
