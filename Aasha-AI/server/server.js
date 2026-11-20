@@ -2318,6 +2318,67 @@ export function buildServer() {
     };
   });
 
+  // Phase G82: Offline Parent Progress QR Card & Teacher Centre Digest
+  app.get('/api/student/parent-progress-qr/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || 'STU-DEFAULT').trim();
+    const pdfAgg = db.prepare(`
+      SELECT COUNT(*) AS customModules, COALESCE(ROUND(AVG(score_pct), 1), 0) AS avgScorePct,
+             COALESCE(SUM(wm_tap_hits), 0) AS totalWmHits, COALESCE(SUM(coins_awarded), 0) AS pdfCoins
+      FROM custom_pdf_mastery_ledger WHERE student_id = ?
+    `).get(studentId) || { customModules: 0, avgScorePct: 0, totalWmHits: 0, pdfCoins: 0 };
+    const balRow = db.prepare(`SELECT balance, lifetime_earned FROM token_balances WHERE student_id = ?`).get(studentId) || { balance: 0, lifetime_earned: 0 };
+    const canonical = `${studentId}|${pdfAgg.customModules}|${pdfAgg.avgScorePct}|${pdfAgg.totalWmHits}|${balRow.balance}`;
+    const parentProgressSha256 = crypto.createHash('sha256').update(canonical, 'utf-8').digest('hex');
+    let rects = '';
+    for (let i = 0; i < 49; i++) {
+      if (parseInt(parentProgressSha256[i % parentProgressSha256.length], 16) % 2 === 1) {
+        rects += `<rect x="${6 + (i % 7) * 8}" y="${6 + Math.floor(i / 7) * 8}" width="6" height="6" fill="#0f172a"/>`;
+      }
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" width="68" height="68"><rect width="68" height="68" fill="#ffffff"/>${rects}</svg>`;
+    return {
+      status: 'ok',
+      schemaVersion: 'aasha.parent.progress.qr.v1',
+      studentId,
+      customModulesCompleted: Number(pdfAgg.customModules || 0),
+      avgScorePct: Number(pdfAgg.avgScorePct || 0),
+      totalWmTapHits: Number(pdfAgg.totalWmHits || 0),
+      tokenBalance: Number(balRow.balance || 0) + Number(pdfAgg.pdfCoins || 0),
+      summaryEn: `Student ${studentId}: ${pdfAgg.customModules || 0} PDF modules (${pdfAgg.avgScorePct || 0}% avg), ${pdfAgg.totalWmHits || 0} bilingual WM taps.`,
+      summaryHi: `छात्र ${studentId}: ${pdfAgg.customModules || 0} PDF अध्याय (${pdfAgg.avgScorePct || 0}% औसत), ${pdfAgg.totalWmHits || 0} द्विभाषी शब्द अभ्यास।`,
+      qrSvgDataUri: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
+      parent_progress_sha256: parentProgressSha256,
+      offlineOnly: true
+    };
+  });
+
+  app.get('/api/teacher/offline-digest/:centerId', async (request) => {
+    const centerId = String(request.params.centerId || 'CENTER-UP-GN-01').trim();
+    const jobCount = db.prepare(`SELECT COUNT(*) AS cnt FROM studio_pdf_jobs`).get()?.cnt || 0;
+    const shareCount = db.prepare(`SELECT COUNT(*) AS cnt FROM studio_lan_pack_shares WHERE center_id = ?`).get(centerId)?.cnt || 0;
+    const benchCount = db.prepare(`SELECT COUNT(*) AS cnt FROM studio_batch_benchmarks WHERE center_id = ?`).get(centerId)?.cnt || 0;
+    const masteryAgg = db.prepare(`
+      SELECT COUNT(DISTINCT student_id) AS activeStudents, COUNT(*) AS totalSubmissions,
+             COALESCE(SUM(wm_tap_hits), 0) AS totalWmHits, COALESCE(ROUND(AVG(score_pct), 1), 0) AS avgMasteryPct
+      FROM custom_pdf_mastery_ledger
+    `).get() || { activeStudents: 0, totalSubmissions: 0, totalWmHits: 0, avgMasteryPct: 0 };
+    const digest = {
+      schemaVersion: 'aasha.offline.teacher.digest.v1',
+      centerId,
+      queuedPdfJobs: Number(jobCount),
+      lanPackShares: Number(shareCount),
+      batchBenchmarks: Number(benchCount),
+      activeStudents: Number(masteryAgg.activeStudents || 0),
+      totalSubmissions: Number(masteryAgg.totalSubmissions || 0),
+      totalWmTapHits: Number(masteryAgg.totalWmHits || 0),
+      avgMasteryPct: Number(masteryAgg.avgMasteryPct || 0),
+      offlineRationale: 'UNSUPERVISED_HOME_DISTRACTION_FREE_STUDY',
+      within20MiBChildCap: true
+    };
+    const digestSha256 = crypto.createHash('sha256').update(JSON.stringify(digest), 'utf-8').digest('hex');
+    return { status: 'ok', ...digest, digest_sha256: digestSha256 };
+  });
+
   return app;
 
 

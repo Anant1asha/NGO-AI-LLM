@@ -1,3 +1,8 @@
+## [G82] 2026-11-20T17:49:48Z — Offline Parent Progress QR Card & Teacher Centre Digest
+- Added `GET /api/student/parent-progress-qr/:studentId` and `GET /api/teacher/offline-digest/:centerId` in `Aasha-AI/server/server.js`.
+- Added `buildParentProgressQrCard` and `renderParentProgressQrCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+- Added `tests/test_g82_parent_progress_qr_and_teacher_digest.mjs` and refreshed `sw_cache_manifest.json` (`54/54` assets).
+
 ## [G81] 2026-11-20T14:47:07Z — Student PWA Offline LAN Pack Import & SHA-256 Verification
 - Added `POST /api/sync/import-custom-pdf-cohort-pack` in `Aasha-AI/server/server.js` with SHA-256 tamper rejection and 20 MiB per-child HTML cap enforcement.
 - Added `importOfflineLanCohortPack` and `renderStudentOfflineLanPackImportCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.

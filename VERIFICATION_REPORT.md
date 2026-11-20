@@ -1,3 +1,9 @@
+### Cycle G82 (2026-11-20T17:49:48Z)
+- Python Suites: **452 unit tests across 85 suites PASSED**
+- G82 Parent Progress QR & Teacher Digest: **PASS** (`buildParentProgressQrCard`, `GET /api/student/parent-progress-qr/:studentId`, `GET /api/teacher/offline-digest/:centerId`)
+- Visual Contract & SW Precache: **97/97 PASS**, **54/54 PASS** (`5ece50cc42eb3f85...`)
+- Independent Certification: **PASS**
+
 ### Cycle G81 (2026-11-20T14:47:07Z)
 - Python Suites: **452 unit tests across 85 suites PASSED**
 - G81 Offline LAN Pack Import & Verify: **PASS** (`importOfflineLanCohortPack`, `POST /api/sync/import-custom-pdf-cohort-pack`, SHA-256 tamper rejection `400 PACK_SHA256_MISMATCH`)

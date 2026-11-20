@@ -61,14 +61,14 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 68,
+  "lamport_epoch": 69,
   "vector_clock": {
-    "plane_1_drive": 68,
+    "plane_1_drive": 69,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at_utc": "2026-11-20T14:47:07Z",
-  "last_cycle_id": "G81_STUDENT_PWA_OFFLINE_LAN_PACK_IMPORT_AND_VERIFY",
-  "next_priority": "G82_PARENT_PROGRESS_QR_CARD_AND_OFFLINE_TEACHER_DIGEST"
+  "updated_at_utc": "2026-11-20T17:49:48Z",
+  "last_cycle_id": "G82_PARENT_PROGRESS_QR_CARD_AND_OFFLINE_TEACHER_DIGEST",
+  "next_priority": "G83_MULTI_CENTRE_FEDERATED_OFFLINE_SYNC_AND_DELTA_MERGE"
 }
