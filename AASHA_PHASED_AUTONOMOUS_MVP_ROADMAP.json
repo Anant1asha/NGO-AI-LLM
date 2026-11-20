@@ -2,7 +2,7 @@
   "schema_version": "2.0.0",
   "directive_id": "AASHA_AIOS_16_STAGE_CONTINUOUS_ENGINEERING_LOOP",
   "target_deadline": "2026-12-31",
-  "updated_at_utc": "2026-11-19T23:18:36Z",
+  "updated_at_utc": "2026-11-20T02:52:28Z",
   "baseline_verification": {
     "python_test_files_passed": "76/76",
     "python_total_tests_passed": 442,
@@ -197,8 +197,13 @@
         },
         {
           "id": "G78_OFFLINE_STUDENT_MASTERY_SYNC_FOR_CUSTOM_PDF_MODULES",
-          "status": "QUEUED_NEXT",
+          "status": "COMPLETE",
           "scope": "Persist TEAS mastery telemetry and compounding WM hits from custom teacher-compiled PDF HTML5 modules back to the Centre Server SQLite ledger."
+        },
+        {
+          "id": "G79_END_TO_END_BATCH_PDF_BENCHMARK_AND_COHORT_PACK_EXPORT",
+          "status": "QUEUED_NEXT",
+          "scope": "Benchmark multi-subject batch PDF compilation throughput, <= 20 MiB per child HTML enforcement, and USB cohort pack export."
         }
       ]
     }

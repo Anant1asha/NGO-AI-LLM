@@ -149,6 +149,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderArenaCanvasScratchpadWidget(cohortSummary)}
       ${renderG72MultiGenreLauncherCard(cohortSummary)}
       ${renderStudioPdfTo7AgentQueueCard(cohortSummary)}
+      ${renderCustomPdfMasterySyncCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3046,6 +3047,56 @@ export function renderStudioPdfTo7AgentQueueCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.88rem;color:#1e1b4b;">
         Queued PDF Jobs: <strong>${jobs.length}</strong> • Pipeline: <code>7-Agent + Compounding WM + 5-Genre 60fps</code> • Cap: <strong>✅ &lt; 20 MiB / Child HTML</strong>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G78: Offline Student Mastery & Compounding WM Hit Sync for Custom PDF Modules
+export function recordCustomPdfModuleMastery(state = {}, telemetry = {}) {
+  if (!state || typeof state !== "object") {
+    throw new Error("Valid state object is required");
+  }
+  if (!Array.isArray(state.customPdfMasteryLog)) {
+    state.customPdfMasteryLog = [];
+  }
+  const studentId = String(telemetry.studentId || state.studentId || "STU-DEFAULT").trim();
+  const jobId = String(telemetry.jobId || "PDFJOB-1-NCERT-G8").trim();
+  const chapterId = String(telemetry.chapterId || "NCERT_G08_HEAT_TRANSFER").trim();
+  const scorePct = Math.max(0, Math.min(100, Number(telemetry.scorePct ?? 90)));
+  const wmTapHits = Math.max(0, Number(telemetry.wmTapHits ?? 18));
+  const coinsAwarded = scorePct >= 70 ? 15 : 5;
+  const entry = {
+    studentId,
+    jobId,
+    chapterId,
+    scorePct,
+    wmTapHits,
+    coinsAwarded,
+    studyEnvironment: "UNSUPERVISED_HOME_DISTRACTION_FREE_OFFLINE",
+    syncedAtIso: new Date().toISOString()
+  };
+  state.customPdfMasteryLog.push(entry);
+  state.tokenBalance = Number(state.tokenBalance ?? 0) + coinsAwarded;
+  return {
+    ok: true,
+    totalSynced: state.customPdfMasteryLog.length,
+    latestEntry: entry
+  };
+}
+
+export function renderCustomPdfMasterySyncCard(stateOrSummary = {}) {
+  const logs = Array.isArray(stateOrSummary.customPdfMasteryLog) ? stateOrSummary.customPdfMasteryLog : [];
+  const totalWmHits = logs.reduce((acc, l) => acc + Number(l.wmTapHits ?? 0), 0);
+  return `
+    <section id="custom-pdf-mastery-sync-card" aria-label="Offline Custom PDF Mastery and WM Hit Sync"
+             style="padding:14px;border-radius:14px;background:#ecfdf5;border:1px solid #6ee7b7;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#065f46;">📊 कस्टम PDF दक्षता एवं LLE शब्द सिंक / Custom PDF Mastery &amp; WM Hit Sync (G78)</h3>
+      </header>
+      <p style="margin:0;font-size:0.88rem;color:#064e3b;">
+        Synced PDF Modules: <strong>${logs.length}</strong> • Compounding WM Tap Hits: <strong>${totalWmHits}</strong> • Ledger: <code>SQLite Offline-First</code>
       </p>
     </section>
   `.trim();

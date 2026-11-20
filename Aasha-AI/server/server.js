@@ -2065,6 +2065,58 @@ export function buildServer() {
     };
   });
 
+  // Phase G78: Offline Student Mastery & Compounding WM Hit Sync for Custom PDF Modules
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS custom_pdf_mastery_ledger (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id TEXT NOT NULL,
+      job_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      score_pct REAL NOT NULL,
+      wm_tap_hits INTEGER NOT NULL DEFAULT 0,
+      coins_awarded INTEGER NOT NULL DEFAULT 15,
+      mastery_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/custom-pdf-mastery', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const jobId = String(body.jobId || '').trim();
+    const chapterId = String(body.chapterId || '').trim();
+    if (!studentId || !jobId || !chapterId) {
+      return reply.code(400).send({ error: 'studentId, jobId, and chapterId are required' });
+    }
+    const scorePct = Math.max(0, Math.min(100, Number(body.scorePct ?? 90)));
+    const wmTapHits = Math.max(0, Number(body.wmTapHits ?? 0));
+    const coinsAwarded = scorePct >= 70 ? 15 : 5;
+    const createdAt = new Date().toISOString();
+    const masterySha256 = crypto.createHash('sha256')
+      .update(`${studentId}|${jobId}|${chapterId}|${scorePct}|${wmTapHits}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO custom_pdf_mastery_ledger (student_id, job_id, chapter_id, score_pct, wm_tap_hits, coins_awarded, mastery_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(studentId, jobId, chapterId, scorePct, wmTapHits, coinsAwarded, masterySha256, createdAt);
+    return { status: 'ok', studentId, jobId, chapterId, scorePct, wmTapHits, coinsAwarded, mastery_sha256: masterySha256 };
+  });
+
+  app.get('/api/student/custom-pdf-mastery/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const rows = db.prepare(`
+      SELECT student_id AS studentId, job_id AS jobId, chapter_id AS chapterId,
+             score_pct AS scorePct, wm_tap_hits AS wmTapHits, coins_awarded AS coinsAwarded,
+             mastery_sha256 AS masterySha256, created_at AS createdAt
+      FROM custom_pdf_mastery_ledger
+      WHERE student_id = ?
+      ORDER BY id DESC
+      LIMIT 25
+    `).all(studentId);
+    const ledger_sha256 = crypto.createHash('sha256').update(JSON.stringify(rows), 'utf-8').digest('hex');
+    return { status: 'ok', studentId, count: rows.length, entries: rows, ledger_sha256 };
+  });
+
   return app;
 
 
