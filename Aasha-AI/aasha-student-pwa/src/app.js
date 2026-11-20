@@ -154,6 +154,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderStudentOfflineLanPackImportCard(cohortSummary)}
       ${renderParentProgressQrCard(cohortSummary)}
       ${renderTeacherFederatedCentreHealthPanel(cohortSummary)}
+      ${renderOfflineLeaderboardAndStreakCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3307,6 +3308,36 @@ export function renderTeacherFederatedCentreHealthPanel(cohortSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.86rem;color:#134e4a;">
         Active Centres: <strong>${h.centresCount}</strong> • Lamport Epoch: <strong>${h.maxLamportEpoch}</strong> • Merged Records: <strong>${h.recordsMerged}</strong> • Cap: <strong>✅ &lt;= 20 MiB / Child HTML</strong>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G85: Offline Student Mastery Leaderboard & Bilingual Streak Badges
+export function computeStudentStreakBadges(state = {}) {
+  const logs = Array.isArray(state.customPdfMasteryLog) ? state.customPdfMasteryLog : [];
+  const mods = logs.length;
+  const avgScore = mods ? Math.round(logs.reduce((a, l) => a + Number(l.scorePct ?? 0), 0) / mods) : 0;
+  const totalWmHits = logs.reduce((a, l) => a + Number(l.wmTapHits ?? 0), 0);
+  const badges = ["BRONZE_LEARNER"];
+  if (mods >= 2 || avgScore >= 80) badges.push("SILVER_SCHOLAR");
+  if (mods >= 3 && avgScore >= 90) badges.push("GOLD_CHALLENGER");
+  if (totalWmHits >= 25) badges.push("BILINGUAL_WM_MASTER");
+  return { ok: true, modulesCompleted: mods, avgScorePct: avgScore, totalWmHits, badges, offlineOnly: true };
+}
+
+export function renderOfflineLeaderboardAndStreakCard(stateOrSummary = {}) {
+  const s = computeStudentStreakBadges(stateOrSummary);
+  return `
+    <section id="offline-leaderboard-streak-card" aria-label="Offline Student Mastery Leaderboard and Streak Badges"
+             style="padding:14px;border-radius:14px;background:#fff7ed;border:1px solid #fb923c;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#9a3412;">🏆 ऑफ़लाइन दक्षता लीडरबोर्ड एवं बैज / Offline Leaderboard &amp; Streak Badges (G85)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#7c2d12;">
+        Modules: <strong>${s.modulesCompleted}</strong> • Avg Mastery: <strong>${s.avgScorePct}%</strong> • Bilingual WM Taps: <strong>${s.totalWmHits}</strong><br/>
+        Earned Badges: <code>${s.badges.join(" · ")}</code>
       </p>
     </section>
   `.trim();

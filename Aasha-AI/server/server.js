@@ -2499,6 +2499,39 @@ export function buildServer() {
     return { status: 'ok', ...payload, health_sha256 };
   });
 
+  // Phase G85: Offline Student Mastery Leaderboard & Bilingual Streak Badges
+  app.get('/api/student/offline-leaderboard/:centerId', async (request) => {
+    const centerId = String(request.params.centerId || 'CENTER-UP-GN-01').trim();
+    const rows = db.prepare(`
+      SELECT student_id AS studentId,
+             COUNT(*) AS modulesCompleted,
+             ROUND(AVG(score_pct), 1) AS avgScorePct,
+             COALESCE(SUM(wm_tap_hits), 0) AS totalWmHits,
+             COALESCE(SUM(coins_awarded), 0) AS totalCoins
+      FROM custom_pdf_mastery_ledger
+      GROUP BY student_id
+      ORDER BY (AVG(score_pct) * COUNT(*) + SUM(wm_tap_hits) * 2 + SUM(coins_awarded)) DESC, student_id ASC
+      LIMIT 25
+    `).all();
+    const rankedStudents = rows.map((r, idx) => {
+      const badges = ['BRONZE_LEARNER'];
+      if (Number(r.modulesCompleted) >= 2 || Number(r.avgScorePct) >= 80) badges.push('SILVER_SCHOLAR');
+      if (Number(r.modulesCompleted) >= 3 && Number(r.avgScorePct) >= 90) badges.push('GOLD_CHALLENGER');
+      if (Number(r.totalWmHits) >= 25) badges.push('BILINGUAL_WM_MASTER');
+      return { rank: idx + 1, ...r, badges };
+    });
+    const leaderboard_sha256 = crypto.createHash('sha256').update(JSON.stringify({ centerId, rankedStudents }), 'utf-8').digest('hex');
+    return {
+      status: 'ok',
+      schemaVersion: 'aasha.offline.leaderboard.v1',
+      centerId,
+      studentCount: rankedStudents.length,
+      rankedStudents,
+      offlineOnly: true,
+      leaderboard_sha256
+    };
+  });
+
   return app;
 
 

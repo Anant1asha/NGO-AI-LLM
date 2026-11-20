@@ -1,3 +1,9 @@
+### Cycle G85 (2026-11-20T22:58:52Z)
+- Python Suites: **457 unit tests across 87 suites PASSED**
+- G85 Offline Leaderboard & Streak Badges: **PASS** (`5/5` syntax checks, `compute_offline_cohort_leaderboard_and_streaks`, `GET /api/student/offline-leaderboard/:centerId`)
+- Visual Contract & SW Precache: **97/97 PASS**, **54/54 PASS** (`492a6b900e173e9b...`)
+- Independent Certification: **PASS**
+
 ### Cycle G84 (2026-11-20T19:03:04Z)
 - Python Suites: **454 unit tests across 86 suites PASSED**
 - G84 Federated Centre Health Panel: **PASS** (`buildFederatedCentreHealthSummary`, `GET /api/teacher/federated-health`, `GREEN_OFFLINE_PARITY`)

@@ -1,3 +1,8 @@
+## [G85] 2026-11-20T22:58:52Z — Offline Student Mastery Leaderboard & Bilingual Streak Badges
+- Executed under `aasha.executive.plan.v2` 4-Subphase Coding & Build Contract (`5/5` live syntax checks).
+- Added `src/aasha/orchestrator/g85_offline_leaderboard_and_streaks.py` (`compute_offline_cohort_leaderboard_and_streaks`).
+- Added `GET /api/student/offline-leaderboard/:centerId` in `Aasha-AI/server/server.js` and `computeStudentStreakBadges` + `renderOfflineLeaderboardAndStreakCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G84] 2026-11-20T19:03:04Z — Teacher Studio Federated Centre Health & Parity Panel
 - Added `GET /api/teacher/federated-health` in `Aasha-AI/server/server.js` aggregating Lamport epoch, merged records, PDF jobs, LAN shares, and 20 MiB cap parity.
 - Added `buildFederatedCentreHealthSummary` and `renderTeacherFederatedCentreHealthPanel` in `Aasha-AI/aasha-student-pwa/src/app.js`.
