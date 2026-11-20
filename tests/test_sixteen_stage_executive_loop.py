@@ -92,5 +92,22 @@ class TestSixteenStageExecutiveLoop(unittest.TestCase):
         self.assertIn("executive_plan_v2", rep["IMPLEMENTATION_DETAILS"])
 
 
+    def test_coding_and_build_execution_contract_and_syntax_check(self) -> None:
+        orch = Executive16StageLoopOrchestrator(".")
+        req = TaskExecutionRequest(
+            objective_id="G85-BUILD-CONTRACT",
+            title="Verify 4-subphase coding & build contract + real syntax verification",
+            files_modified=["src/aasha/orchestrator/sixteen_stage_executive_loop.py"],
+        )
+        plan = orch.build_executive_execution_plan(req)
+        contract = plan["coding_and_build_execution_contract"]
+        self.assertEqual(len(contract["mandatory_subphases"]), 4)
+        self.assertTrue(contract["require_real_syntax_compile_check"])
+        rep = orch.execute_16_stage_cycle(req)
+        bcheck = rep["IMPLEMENTATION_DETAILS"]["build_syntax_verification"]
+        self.assertTrue(bcheck["build_syntax_ok"])
+        self.assertEqual(bcheck["files_syntax_checked"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
