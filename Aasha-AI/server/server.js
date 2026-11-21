@@ -2618,6 +2618,38 @@ export function buildServer() {
     };
   });
 
+  // Phase G88: Offline Teacher Remedial Worksheet Print & QR Sync
+  app.get('/api/teacher/remedial-worksheet-print/:chapterId', async (request) => {
+    const chapterId = String(request.params.chapterId || 'SCI_CH08').trim();
+    const flagged = db.prepare(`
+      SELECT student_id AS studentId, score_pct AS scorePct, wm_tap_hits AS wmTapHits
+      FROM custom_pdf_mastery_ledger
+      WHERE chapter_id = ? AND score_pct < 70
+      ORDER BY score_pct ASC
+      LIMIT 50
+    `).all(chapterId);
+    const worksheetSha = crypto.createHash('sha256')
+      .update(`${chapterId}|${flagged.length}|${JSON.stringify(flagged)}`, 'utf-8')
+      .digest('hex');
+    let rects = '';
+    for (let i = 0; i < 49; i++) {
+      if (parseInt(worksheetSha[i % worksheetSha.length], 16) % 2 === 1) {
+        rects += `<rect x="${6 + (i % 7) * 8}" y="${6 + Math.floor(i / 7) * 8}" width="6" height="6" fill="#0f172a"/>`;
+      }
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" width="68" height="68"><rect width="68" height="68" fill="#ffffff"/>${rects}</svg>`;
+    return {
+      status: 'ok',
+      schemaVersion: 'aasha.remedial.worksheet.print.v1',
+      chapterId,
+      studentsFlaggedCount: flagged.length,
+      flaggedStudents: flagged,
+      qrSvgDataUri: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
+      worksheet_sha256: worksheetSha,
+      offlineOnly: true
+    };
+  });
+
   return app;
 
 

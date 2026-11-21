@@ -1,3 +1,7 @@
+## [G88] 2026-11-21T10:35:03Z — Offline Teacher Remedial Worksheet Print & QR Sync
+- Added `build_printable_remedial_worksheet_pack` in `src/aasha/orchestrator/g88_remedial_worksheet_print_qr.py`.
+- Added `GET /api/teacher/remedial-worksheet-print/:chapterId` in `Aasha-AI/server/server.js` and `buildTeacherRemedialPrintQrPayload` + `renderTeacherRemedialWorksheetPrintCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G87] 2026-11-21T06:53:47Z — Offline NCVET Apprenticeship & Skill Portfolio Export
 - Added `export_offline_ncvet_skill_portfolio` in `src/aasha/orchestrator/g87_ncvet_skill_portfolio_exporter.py`.
 - Added `GET /api/student/:id/ncvet-apprenticeship-export` in `Aasha-AI/server/server.js` and `buildNcvetApprenticeshipPortfolioExport` + `renderNcvetApprenticeshipPortfolioCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
