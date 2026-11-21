@@ -2650,6 +2650,67 @@ export function buildServer() {
     };
   });
 
+  // Phase G89: Offline Solar OTA Delta Bundle Verifier
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS solar_ota_delta_receipts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      delta_id TEXT NOT NULL UNIQUE,
+      center_id TEXT NOT NULL,
+      chunk_count INTEGER NOT NULL DEFAULT 0,
+      max_child_bytes INTEGER NOT NULL DEFAULT 0,
+      verified INTEGER NOT NULL DEFAULT 1,
+      ota_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/sync/verify-solar-ota-delta', async (request, reply) => {
+    const body = request.body || {};
+    const centerId = String(body.centerId || 'CENTER-UP-GN-01').trim();
+    const chunks = Array.isArray(body.chunks) ? body.chunks : [];
+    if (chunks.length === 0) {
+      return reply.code(400).send({ error: 'chunks array is required' });
+    }
+    let maxChildBytes = 0;
+    for (const c of chunks) {
+      const sz = Number(c.sizeBytes ?? c.size_bytes ?? 0);
+      if (sz > 20971520) {
+        return reply.code(400).send({ error: 'CHILD_HTML_EXCEEDS_20MIB_CAP', sizeBytes: sz });
+      }
+      if (sz > maxChildBytes) maxChildBytes = sz;
+    }
+    const deltaId = String(body.deltaId || `OTA-${Date.now()}-${centerId}`).trim();
+    const createdAt = new Date().toISOString();
+    const otaSha256 = crypto.createHash('sha256')
+      .update(`${deltaId}|${centerId}|${chunks.length}|${maxChildBytes}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT OR REPLACE INTO solar_ota_delta_receipts (delta_id, center_id, chunk_count, max_child_bytes, verified, ota_sha256, created_at)
+      VALUES (?, ?, ?, ?, 1, ?, ?)
+    `).run(deltaId, centerId, chunks.length, maxChildBytes, otaSha256, createdAt);
+    return {
+      status: 'ok',
+      deltaId,
+      centerId,
+      chunkCount: chunks.length,
+      maxChildBytes,
+      within20MiBCap: true,
+      verified: true,
+      ota_sha256: otaSha256
+    };
+  });
+
+  app.get('/api/sync/solar-ota-status/:centerId', async (request) => {
+    const centerId = String(request.params.centerId || 'CENTER-UP-GN-01').trim();
+    const receipts = db.prepare(`
+      SELECT delta_id AS deltaId, center_id AS centerId, chunk_count AS chunkCount,
+             max_child_bytes AS maxChildBytes, verified, ota_sha256 AS otaSha256, created_at AS createdAt
+      FROM solar_ota_delta_receipts WHERE center_id = ?
+      ORDER BY id DESC LIMIT 25
+    `).all(centerId);
+    return { status: 'ok', centerId, count: receipts.length, receipts };
+  });
+
   return app;
 
 

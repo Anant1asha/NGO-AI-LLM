@@ -1,3 +1,8 @@
+## [G89] 2026-11-21T14:50:36Z — Offline Solar OTA Delta Bundle Verifier
+- Added `verify_solar_ota_delta_bundle` in `src/aasha/orchestrator/g89_solar_ota_delta_verifier.py`.
+- Added `solar_ota_delta_receipts` SQLite table + `POST /api/sync/verify-solar-ota-delta` & `GET /api/sync/solar-ota-status/:centerId` in `Aasha-AI/server/server.js`.
+- Added `verifySolarOtaDeltaManifest` and `renderSolarOtaDeltaVerifierCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G88] 2026-11-21T10:35:03Z — Offline Teacher Remedial Worksheet Print & QR Sync
 - Added `build_printable_remedial_worksheet_pack` in `src/aasha/orchestrator/g88_remedial_worksheet_print_qr.py`.
 - Added `GET /api/teacher/remedial-worksheet-print/:chapterId` in `Aasha-AI/server/server.js` and `buildTeacherRemedialPrintQrPayload` + `renderTeacherRemedialWorksheetPrintCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.

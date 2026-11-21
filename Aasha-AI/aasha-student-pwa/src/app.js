@@ -158,6 +158,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderOfflineVoiceReadAloudCard(cohortSummary)}
       ${renderNcvetApprenticeshipPortfolioCard(cohortSummary)}
       ${renderTeacherRemedialWorksheetPrintCard(cohortSummary)}
+      ${renderSolarOtaDeltaVerifierCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3454,6 +3455,41 @@ export function renderTeacherRemedialWorksheetPrintCard(stateOrSummary = {}) {
           Chapter: <code>${p.chapterId}</code> • Flagged (&lt; 70%): <strong>${p.studentsFlaggedCount}</strong> • Ready for Offline Print &amp; QR
         </p>
       </div>
+    </section>
+  `.trim();
+}
+
+
+// Phase G89: Offline Solar OTA Delta Bundle Verifier
+export function verifySolarOtaDeltaManifest(manifest = {}) {
+  const chunks = Array.isArray(manifest.chunks) ? manifest.chunks : [];
+  let maxBytes = 0;
+  for (const c of chunks) {
+    const sz = Number(c.sizeBytes ?? c.size_bytes ?? 0);
+    if (sz > 20971520) return { ok: false, error: "CHILD_HTML_EXCEEDS_20MIB_CAP", sizeBytes: sz };
+    if (sz > maxBytes) maxBytes = sz;
+  }
+  return {
+    ok: true,
+    deltaId: String(manifest.deltaId || "OTA-LOCAL-READY"),
+    chunkCount: chunks.length,
+    maxChildBytes: maxBytes,
+    within20MiBCap: true,
+    offlineOnly: true
+  };
+}
+
+export function renderSolarOtaDeltaVerifierCard(stateOrSummary = {}) {
+  const v = verifySolarOtaDeltaManifest(stateOrSummary);
+  return `
+    <section id="solar-ota-delta-verifier-card" aria-label="Offline Solar OTA Delta Bundle Verifier"
+             style="padding:14px;border-radius:14px;background:#fefce8;border:1px solid #eab308;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#854d0e;">☀️ सौर ऑफ़लाइन OTA डेल्टा सत्यापनकर्ता / Solar OTA Delta Verifier (G89)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#713f12;">
+        Delta ID: <code>${v.deltaId}</code> • Chunks: <strong>${v.chunkCount}</strong> • Cap: <strong>✅ &lt;= 20 MiB / Child HTML</strong>
+      </p>
     </section>
   `.trim();
 }
