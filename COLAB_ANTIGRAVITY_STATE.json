@@ -61,14 +61,14 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 76,
+  "lamport_epoch": 77,
   "vector_clock": {
-    "plane_1_drive": 76,
+    "plane_1_drive": 77,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at_utc": "2026-11-21T14:50:36Z",
-  "last_cycle_id": "G89_OFFLINE_SOLAR_OTA_DELTA_BUNDLE_VERIFIER",
-  "next_priority": "G90_DEC_2026_MVP_E2E_SYSTEM_CERTIFICATION_HARNESS"
+  "updated_at_utc": "2026-11-21T19:00:25Z",
+  "last_cycle_id": "G90_DEC_2026_MVP_E2E_SYSTEM_CERTIFICATION_HARNESS",
+  "next_priority": "G91_PRODUCTION_MULTI_BOARD_CURRICULUM_PACK_EXPAND_AND_AUDIT"
 }

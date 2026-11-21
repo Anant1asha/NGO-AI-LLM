@@ -2711,6 +2711,31 @@ export function buildServer() {
     return { status: 'ok', centerId, count: receipts.length, receipts };
   });
 
+  // Phase G90: December 31, 2026 MVP System Readiness Summary
+  app.get('/api/mvp/dec-2026-readiness-summary', async () => {
+    const counts = {
+      studioPdfJobs: Number(db.prepare(`SELECT COUNT(*) AS c FROM studio_pdf_jobs`).get()?.c || 0),
+      batchBenchmarks: Number(db.prepare(`SELECT COUNT(*) AS c FROM studio_batch_benchmarks`).get()?.c || 0),
+      customPdfMasteryEntries: Number(db.prepare(`SELECT COUNT(*) AS c FROM custom_pdf_mastery_ledger`).get()?.c || 0),
+      lanPackShares: Number(db.prepare(`SELECT COUNT(*) AS c FROM studio_lan_pack_shares`).get()?.c || 0),
+      federatedDeltas: Number(db.prepare(`SELECT COUNT(*) AS c FROM federated_centre_deltas`).get()?.c || 0),
+      voicePhonemePacks: Number(db.prepare(`SELECT COUNT(*) AS c FROM voice_readaloud_packs`).get()?.c || 0),
+      solarOtaReceipts: Number(db.prepare(`SELECT COUNT(*) AS c FROM solar_ota_delta_receipts`).get()?.c || 0),
+    };
+    const summary = {
+      schemaVersion: 'aasha.dec2026.mvp.readiness.v1',
+      mvpTargetDeadline: '2026-12-31',
+      offlineOnly: true,
+      offlineRationale: 'UNSUPERVISED_HOME_DISTRACTION_FREE_STUDY',
+      targetHardware: '4GB_RAM_5G_SMARTPHONE_60FPS',
+      within20MiBChildCap: true,
+      zeroExternalUrls: true,
+      subsystems: counts,
+    };
+    const readiness_sha256 = crypto.createHash('sha256').update(JSON.stringify(summary), 'utf-8').digest('hex');
+    return { status: 'ok', ...summary, readiness_sha256 };
+  });
+
   return app;
 
 

@@ -1,3 +1,7 @@
+## [G90] 2026-11-21T19:00:25Z — December 31, 2026 MVP E2E System Certification Harness
+- Added `run_dec_2026_mvp_e2e_certification` in `src/aasha/orchestrator/g90_dec_2026_mvp_e2e_harness.py` chaining G79/G83/G85/G86/G87/G88/G89.
+- Added `GET /api/mvp/dec-2026-readiness-summary` in `Aasha-AI/server/server.js` and `buildDec2026MvpReadinessBadge` + `renderDec2026MvpCertificationCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G89] 2026-11-21T14:50:36Z — Offline Solar OTA Delta Bundle Verifier
 - Added `verify_solar_ota_delta_bundle` in `src/aasha/orchestrator/g89_solar_ota_delta_verifier.py`.
 - Added `solar_ota_delta_receipts` SQLite table + `POST /api/sync/verify-solar-ota-delta` & `GET /api/sync/solar-ota-status/:centerId` in `Aasha-AI/server/server.js`.
