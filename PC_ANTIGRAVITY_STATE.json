@@ -65,9 +65,9 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 73,
+  "lamport_epoch": 74,
   "vector_clock": {
-    "plane_1_drive": 73,
+    "plane_1_drive": 74,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
@@ -78,7 +78,7 @@
     "dirty_count": 0,
     "dirty_files_sample": []
   },
-  "updated_at_utc": "2026-11-21T03:16:52Z",
-  "last_cycle_id": "G86_OFFLINE_VOICE_READALOUD_PHONEME_PACK_INTEGRATION",
-  "next_priority": "G87_OFFLINE_NCVET_APPRENTICESHIP_SKILL_PORTFOLIO_EXPORT"
+  "updated_at_utc": "2026-11-21T06:53:47Z",
+  "last_cycle_id": "G87_OFFLINE_NCVET_APPRENTICESHIP_SKILL_PORTFOLIO_EXPORT",
+  "next_priority": "G88_OFFLINE_TEACHER_REMEDIAL_WORKSHEET_PRINT_AND_QR_SYNC"
 }

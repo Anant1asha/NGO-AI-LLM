@@ -2578,6 +2578,46 @@ export function buildServer() {
     return { status: 'ok', offlineOnly: true, ...row };
   });
 
+  // Phase G87: Offline NCVET Apprenticeship & Skill Portfolio Export
+  app.get('/api/student/:id/ncvet-apprenticeship-export', async (request) => {
+    const studentId = String(request.params.id || 'STU-DEFAULT').trim();
+    const rows = db.prepare(`
+      SELECT chapter_id AS chapterId, score_pct AS scorePct, wm_tap_hits AS wmTapHits
+      FROM custom_pdf_mastery_ledger WHERE student_id = ?
+    `).all(studentId);
+    const completed = rows.filter((r) => Number(r.scorePct || 0) >= 70);
+    const avgScore = completed.length
+      ? Math.round((completed.reduce((a, r) => a + Number(r.scorePct || 0), 0) / completed.length) * 10) / 10
+      : 0;
+    const totalWm = rows.reduce((a, r) => a + Number(r.wmTapHits || 0), 0);
+    const nsqfCredits = Math.round((completed.length * 1.5 + Math.min(totalWm, 100) * 0.02) * 100) / 100;
+    const readinessStatus = completed.length >= 2 && avgScore >= 80 ? 'APPRENTICE_READY' : 'TRAINING_IN_PROGRESS';
+    const exportSha = crypto.createHash('sha256')
+      .update(`${studentId}|${completed.length}|${avgScore}|${nsqfCredits}|${readinessStatus}`, 'utf-8')
+      .digest('hex');
+    let rects = '';
+    for (let i = 0; i < 49; i++) {
+      if (parseInt(exportSha[i % exportSha.length], 16) % 2 === 1) {
+        rects += `<rect x="${6 + (i % 7) * 8}" y="${6 + Math.floor(i / 7) * 8}" width="6" height="6" fill="#0f172a"/>`;
+      }
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" width="68" height="68"><rect width="68" height="68" fill="#ffffff"/>${rects}</svg>`;
+    return {
+      status: 'ok',
+      schemaVersion: 'aasha.ncvet.apprenticeship.export.v1',
+      studentId,
+      targetTrade: 'Solar Pump Technician (NSQF L3-L4)',
+      modulesCertified: completed.length,
+      avgMasteryPct: avgScore,
+      bilingualWmTaps: totalWm,
+      nsqfCreditsEarned: nsqfCredits,
+      readinessStatus,
+      qrSvgDataUri: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
+      export_sha256: exportSha,
+      offlineOnly: true
+    };
+  });
+
   return app;
 
 

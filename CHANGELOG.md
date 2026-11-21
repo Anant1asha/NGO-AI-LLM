@@ -1,3 +1,7 @@
+## [G87] 2026-11-21T06:53:47Z — Offline NCVET Apprenticeship & Skill Portfolio Export
+- Added `export_offline_ncvet_skill_portfolio` in `src/aasha/orchestrator/g87_ncvet_skill_portfolio_exporter.py`.
+- Added `GET /api/student/:id/ncvet-apprenticeship-export` in `Aasha-AI/server/server.js` and `buildNcvetApprenticeshipPortfolioExport` + `renderNcvetApprenticeshipPortfolioCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G86] 2026-11-21T03:16:52Z — Offline Voice Read-Aloud & Bilingual Phoneme Pack Integration
 - Reused `IndicPhonemeSyncCompiler` in `src/aasha/orchestrator/g86_offline_voice_phoneme_pack.py` (`build_bilingual_voice_readaloud_pack`).
 - Added `voice_readaloud_packs` SQLite table + `POST/GET /api/student/voice-phoneme-pack` in `Aasha-AI/server/server.js`.

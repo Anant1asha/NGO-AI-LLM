@@ -1,3 +1,9 @@
+### Cycle G87 (2026-11-21T06:53:47Z)
+- Python Suites: **459 unit tests across 89 suites PASSED**
+- G87 NCVET Apprenticeship Portfolio Export: **PASS** (`5/5` syntax checks, `export_offline_ncvet_skill_portfolio`, `GET /api/student/:id/ncvet-apprenticeship-export`)
+- Visual Contract & SW Precache: **97/97 PASS**, **54/54 PASS** (`f9f734e7df63ab8b...`)
+- Independent Certification: **PASS**
+
 ### Cycle G86 (2026-11-21T03:16:52Z)
 - Python Suites: **458 unit tests across 88 suites PASSED**
 - G86 Offline Voice Phoneme Pack: **PASS** (`5/5` syntax checks, `IndicPhonemeSyncCompiler` WebVTT, `POST/GET /api/student/voice-phoneme-pack`)

@@ -156,6 +156,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderTeacherFederatedCentreHealthPanel(cohortSummary)}
       ${renderOfflineLeaderboardAndStreakCard(cohortSummary)}
       ${renderOfflineVoiceReadAloudCard(cohortSummary)}
+      ${renderNcvetApprenticeshipPortfolioCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3370,6 +3371,46 @@ export function renderOfflineVoiceReadAloudCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.86rem;color:#86198f;">
         Chapter: <code>${pack.chapterId}</code> • WebVTT Phoneme Cues Ready: <strong>${pack.cues.length}</strong> • Mode: <strong>100% Offline WebSpeech + Phoneme Fallback</strong>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G87: Offline NCVET Apprenticeship & Skill Portfolio Export
+export function buildNcvetApprenticeshipPortfolioExport(stateOrSummary = {}) {
+  const studentId = String(stateOrSummary.studentId || "STU-DEFAULT").trim();
+  const logs = Array.isArray(stateOrSummary.customPdfMasteryLog) ? stateOrSummary.customPdfMasteryLog : [];
+  const completed = logs.filter((l) => Number(l.scorePct ?? 0) >= 70);
+  const avgScore = completed.length
+    ? Math.round((completed.reduce((a, l) => a + Number(l.scorePct ?? 0), 0) / completed.length) * 10) / 10
+    : 0;
+  const totalWm = logs.reduce((a, l) => a + Number(l.wmTapHits ?? 0), 0);
+  const nsqfCreditsEarned = Math.round((completed.length * 1.5 + Math.min(totalWm, 100) * 0.02) * 100) / 100;
+  const readinessStatus = completed.length >= 2 && avgScore >= 80 ? "APPRENTICE_READY" : "TRAINING_IN_PROGRESS";
+  return {
+    ok: true,
+    studentId,
+    targetTrade: "Solar Pump Technician (NSQF L3-L4)",
+    modulesCertified: completed.length,
+    avgMasteryPct: avgScore,
+    nsqfCreditsEarned,
+    readinessStatus,
+    offlineOnly: true
+  };
+}
+
+export function renderNcvetApprenticeshipPortfolioCard(stateOrSummary = {}) {
+  const p = buildNcvetApprenticeshipPortfolioExport(stateOrSummary);
+  return `
+    <section id="ncvet-apprenticeship-portfolio-card" aria-label="Offline NCVET Apprenticeship Skill Portfolio"
+             style="padding:14px;border-radius:14px;background:#f8fafc;border:1px solid #94a3b8;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#0f172a;">🛠️ NCVET प्रशिक्षुता एवं कौशल पोर्टफोलियो / NCVET Apprenticeship Portfolio (G87)</h3>
+        <span style="padding:3px 10px;border-radius:999px;background:#334155;color:#ffffff;font-size:0.78rem;font-weight:700;">${p.readinessStatus}</span>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#334155;">
+        Trade: <strong>${p.targetTrade}</strong> • NSQF Credits: <strong>${p.nsqfCreditsEarned}</strong> • Certified Modules: <strong>${p.modulesCertified}</strong>
       </p>
     </section>
   `.trim();
