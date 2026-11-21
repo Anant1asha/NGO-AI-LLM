@@ -2,13 +2,13 @@
   "schema_version": "2.1.0",
   "cache_version": "aasha-student-pwa-v2.2",
   "learn_arena_count": 26,
-  "generated_at_utc": "2026-11-20T22:57:42.148056+00:00",
+  "generated_at_utc": "2026-11-21T03:15:43.915449+00:00",
   "total_assets": 54,
   "certified_html5_modules_count": 21,
-  "total_precache_bytes": 28376259,
+  "total_precache_bytes": 28377984,
   "under_20mib_ceiling": true,
   "zero_external_urls": true,
-  "merkle_root_sha256": "058a53ea8543d9dc7dd01730d1c8b9cf7afba3365270a074a4ee5699206bfdc6",
+  "merkle_root_sha256": "602aebc9f59b2ddd3f3fcc5ee88f530cb6fd1f9291bbe85a31446a9c1f014054",
   "assets": [
     {
       "rel_path": "AASHA_Visual_Mass_Harvest_Phase3/E2E_Regression_G39_Golden_Master_Hub_v5.html",
@@ -43,7 +43,7 @@
     {
       "rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
       "size_bytes": 105107,
-      "sha256": "9d71a50c8bed077454055b016a8960c3a91eeb9b72ed45690088369ae7d56642"
+      "sha256": "f5fb9fc0899e61990d8b772f6126f3fbf12087b9c03af9381934ed7b9ca1ad40"
     },
     {
       "rel_path": "AASHA_Visual_Mass_Harvest_Phase3/V7_System_Wide_Audit_And_Argon_Swarm_Observability_Hub_v5.html",
@@ -248,7 +248,7 @@
     {
       "rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db.gz",
       "size_bytes": 48121,
-      "sha256": "9bd978874c39e7781055c867005bda3081ba6132440beb1363f1c78009afd86a"
+      "sha256": "e02b5524ebf767d027710b04f668ed6bec45f2a938778a753cbde82e1432d620"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/index.html",
@@ -258,12 +258,12 @@
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/public/teas_content.db.gz",
       "size_bytes": 48121,
-      "sha256": "9bd978874c39e7781055c867005bda3081ba6132440beb1363f1c78009afd86a"
+      "sha256": "e02b5524ebf767d027710b04f668ed6bec45f2a938778a753cbde82e1432d620"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/app.js",
-      "size_bytes": 189060,
-      "sha256": "3665aaeb937f1df7e132782225df34c4615d9bdb0f7c1fe99289a1f9725648a0"
+      "size_bytes": 190785,
+      "sha256": "394045621837ac9fa8ceea9b28fea1d98065592d295a13eb85f096b24d347391"
     },
     {
       "rel_path": "Aasha-AI/aasha-student-pwa/src/rewards.js",

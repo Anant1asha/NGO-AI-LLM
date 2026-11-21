@@ -1,3 +1,8 @@
+## [G86] 2026-11-21T03:16:52Z — Offline Voice Read-Aloud & Bilingual Phoneme Pack Integration
+- Reused `IndicPhonemeSyncCompiler` in `src/aasha/orchestrator/g86_offline_voice_phoneme_pack.py` (`build_bilingual_voice_readaloud_pack`).
+- Added `voice_readaloud_packs` SQLite table + `POST/GET /api/student/voice-phoneme-pack` in `Aasha-AI/server/server.js`.
+- Added `buildOfflineVoiceReadAloudCues` and `renderOfflineVoiceReadAloudCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G85] 2026-11-20T22:58:52Z — Offline Student Mastery Leaderboard & Bilingual Streak Badges
 - Executed under `aasha.executive.plan.v2` 4-Subphase Coding & Build Contract (`5/5` live syntax checks).
 - Added `src/aasha/orchestrator/g85_offline_leaderboard_and_streaks.py` (`compute_offline_cohort_leaderboard_and_streaks`).

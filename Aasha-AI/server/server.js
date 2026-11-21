@@ -2532,6 +2532,52 @@ export function buildServer() {
     };
   });
 
+  // Phase G86: Offline Voice Read-Aloud & Bilingual Phoneme Pack Storage
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS voice_readaloud_packs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      chapter_id TEXT NOT NULL UNIQUE,
+      language TEXT NOT NULL DEFAULT 'hi-IN',
+      cue_count INTEGER NOT NULL DEFAULT 0,
+      webvtt_content TEXT NOT NULL,
+      pack_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/voice-phoneme-pack', async (request, reply) => {
+    const body = request.body || {};
+    const chapterId = String(body.chapterId || '').trim();
+    if (!chapterId) {
+      return reply.code(400).send({ error: 'chapterId is required' });
+    }
+    const language = String(body.language || 'hi-IN').trim();
+    const cueCount = Math.max(0, Number(body.cueCount ?? 0));
+    const webvttContent = String(body.webvttContent || 'WEBVTT\n');
+    const createdAt = new Date().toISOString();
+    const packSha256 = crypto.createHash('sha256')
+      .update(`${chapterId}|${language}|${cueCount}|${webvttContent}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT OR REPLACE INTO voice_readaloud_packs (chapter_id, language, cue_count, webvtt_content, pack_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).run(chapterId, language, cueCount, webvttContent, packSha256, createdAt);
+    return { status: 'ok', chapterId, language, cueCount, offlineOnly: true, pack_sha256: packSha256 };
+  });
+
+  app.get('/api/student/voice-phoneme-pack/:chapterId', async (request, reply) => {
+    const chapterId = String(request.params.chapterId || '').trim();
+    const row = db.prepare(`
+      SELECT chapter_id AS chapterId, language, cue_count AS cueCount,
+             webvtt_content AS webvttContent, pack_sha256 AS packSha256, created_at AS createdAt
+      FROM voice_readaloud_packs WHERE chapter_id = ?
+    `).get(chapterId);
+    if (!row) {
+      return reply.code(404).send({ error: 'Voice phoneme pack not found' });
+    }
+    return { status: 'ok', offlineOnly: true, ...row };
+  });
+
   return app;
 
 

@@ -155,6 +155,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderParentProgressQrCard(cohortSummary)}
       ${renderTeacherFederatedCentreHealthPanel(cohortSummary)}
       ${renderOfflineLeaderboardAndStreakCard(cohortSummary)}
+      ${renderOfflineVoiceReadAloudCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3338,6 +3339,37 @@ export function renderOfflineLeaderboardAndStreakCard(stateOrSummary = {}) {
       <p style="margin:0;font-size:0.86rem;color:#7c2d12;">
         Modules: <strong>${s.modulesCompleted}</strong> • Avg Mastery: <strong>${s.avgScorePct}%</strong> • Bilingual WM Taps: <strong>${s.totalWmHits}</strong><br/>
         Earned Badges: <code>${s.badges.join(" · ")}</code>
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G86: Offline Voice Read-Aloud & Bilingual Phoneme Pack Integration
+export function buildOfflineVoiceReadAloudCues(chapterId = "NCERT-G08-SCI-CH08", terms = []) {
+  const list = Array.isArray(terms) ? terms : [];
+  const cues = list.map((t, idx) => ({
+    index: idx + 1,
+    en: String(t.en || ""),
+    hi: String(t.hi || ""),
+    lang: "hi-IN",
+    startMs: idx * 1200,
+    endMs: (idx + 1) * 1200
+  }));
+  return { ok: true, chapterId, language: "hi-IN", cues, offlineOnly: true, zeroExternalUrls: true };
+}
+
+export function renderOfflineVoiceReadAloudCard(stateOrSummary = {}) {
+  const chapterId = String(stateOrSummary.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const pack = buildOfflineVoiceReadAloudCues(chapterId, stateOrSummary.voiceTerms || [{ en: "Force", hi: "बल" }]);
+  return `
+    <section id="offline-voice-readaloud-card" aria-label="Offline Bilingual Voice Read-Aloud Pack"
+             style="padding:14px;border-radius:14px;background:#fdf4ff;border:1px solid #e879f9;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#701a75;">🔊 ऑफ़लाइन द्विभाषी वाचन एवं ध्वनि पैक / Offline Voice Read-Aloud (${pack.language}) (G86)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#86198f;">
+        Chapter: <code>${pack.chapterId}</code> • WebVTT Phoneme Cues Ready: <strong>${pack.cues.length}</strong> • Mode: <strong>100% Offline WebSpeech + Phoneme Fallback</strong>
       </p>
     </section>
   `.trim();
