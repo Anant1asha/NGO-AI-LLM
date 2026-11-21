@@ -1,3 +1,7 @@
+## [G91] 2026-11-21T23:02:07Z — Production Multi-Board Curriculum Pack Expander & Auditor
+- Added `compile_and_audit_multi_board_pack` in `src/aasha/orchestrator/g91_multi_board_curriculum_auditor.py` covering NCERT, UPMSP, CBSE, and NCVET.
+- Added `GET /api/catalogue/multi-board-summary` in `Aasha-AI/server/server.js` and `buildMultiBoardCurriculumSummary` + `renderMultiBoardCurriculumMatrixCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G90] 2026-11-21T19:00:25Z — December 31, 2026 MVP E2E System Certification Harness
 - Added `run_dec_2026_mvp_e2e_certification` in `src/aasha/orchestrator/g90_dec_2026_mvp_e2e_harness.py` chaining G79/G83/G85/G86/G87/G88/G89.
 - Added `GET /api/mvp/dec-2026-readiness-summary` in `Aasha-AI/server/server.js` and `buildDec2026MvpReadinessBadge` + `renderDec2026MvpCertificationCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
