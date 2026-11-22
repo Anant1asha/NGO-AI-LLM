@@ -1,0 +1,22 @@
+{
+  "git.smartCommitChanges": "tracked",
+  "git.untrackedChanges": "separate",
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": false,
+  "git.openDiffOnClick": true,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.venv/**": true,
+    "**/*.bundle": true,
+    "**/graphify-out/cache/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/*.bundle": true,
+    "**/graphify-out": true
+  }
+}

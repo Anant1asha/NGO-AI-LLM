@@ -24,3 +24,22 @@ Aasha-AI/server/aasha_local.db
 *.db-journal
 *.db-wal
 *.db-shm
+
+# Windows OS & Google Drive Metadata
+desktop.ini
+Desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# Google Drive Sync Duplicate Conflicts
+* (*)*
+* (1)*
+* (2)*
+
+# Cloud Office shortcuts & temporary archives
+*.gdoc
+*.gsheet
+*.gslides
+*.gdraw
+*.gtable
+*.zip

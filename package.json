@@ -5,6 +5,8 @@
   "description": "AASHA Learning & Impact Ecosystem — Unified Root Orchestrator",
   "scripts": {
     "audit:identity": "node scripts/audit_identity.mjs",
+    "safe:commit": "node scripts/safe_commit_and_push.mjs",
+    "safe:push": "node scripts/safe_commit_and_push.mjs --push",
     "lint:superbrain": "node scripts/lint_superbrain_parity.mjs",
     "lint:superbrain:py": "python scripts/lint_superbrain_parity.py",
     "lint:secrets": "node scripts/lint_staged_secrets.mjs",
