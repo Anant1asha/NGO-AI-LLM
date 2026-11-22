@@ -22,9 +22,16 @@
 | **Visual Contract Strict Suite (97/97 Assertions)** | **PASS (100%)** |
 | **10 Critical QA Rules on Teacher Misconception, 3-Level Synth & Bundler Hub HTML5 (node qa/run_qa.js)** | **PASS (100%)** |
 | **Ecosystem Multi-Repo Runner (65/65 Pipeline + 21/21 Phase-3 AVR + HTML5 Bundles <20MiB)** | **PASS (100%)** |
-| **GAP-V7-01 Live Fastify HTTP Server Integration (9/9 Endpoints)** | **PASS (100%)** |
+| **GAP-V7-01 Live Fastify HTTP Server Integration (14/14 Endpoints)** | **PASS (100%)** |
 | **SEC-001 Zero-Secret Static Scanner** | **PASS (100%)** |
 | **Anti-Contradiction Grounding Oracle & Zero-Approval Autonomous Gate (0 Hallucinations / 0 Contradictions)** | **PASS (100%)** |
+| **Laya System 1 Router Dual-Path Test Suite (4/4 Paths + 30/30 Burst Concurrency in 0.42ms, 0 Paid Tokens)** | **PASS (100%)** |
+| **Master E2E Multi-Chapter Verification Harness (48/48 Checks across 8 Modules, < 20 MiB)** | **PASS (100%)** |
+| **L-Truth Ground Truth Benchmark (13/13 Chapters, 100/100 Score, 0 Spoilers, 0 Rule Breaks)** | **PASS (100%)** |
+| **Concurrency Wiring Test Battery (OI-002 / RG-001: 6/6 Scenarios, Max 2 Bounded Workers, 0 Race Conditions)** | **PASS (100%)** |
+| **Fault Injection Hardening Test Suite (OI-003: 10/10 Scenarios, 2 Repair Bounds, Quarantine & Downstream Block)** | **PASS (100%)** |
+| **Billing Observability & Reserve Whitening Test Suite (OI-001: 6/6 Scenarios, Live USD Ledger & $10 Cap)** | **PASS (100%)** |
+| **Superbrain Instruction Parity & Parity Linter (69/69 Checks Passed)** | **PASS (100%)** |
 
 ## 3. Queued Next Focus Unit
 - **Next Phase**: `PHASE_G_CONTINUOUS_AUTONOMOUS_EVOLUTION`
