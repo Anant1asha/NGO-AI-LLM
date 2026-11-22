@@ -2904,6 +2904,53 @@ export function buildServer() {
     return { status: 'ok', chapterId, count: broadcasts.length, broadcasts };
   });
 
+  // Phase G95: Offline Student Peer Challenge & Arena Invite
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS peer_arena_challenges (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      invite_code TEXT NOT NULL UNIQUE,
+      challenger_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      genre_id TEXT NOT NULL,
+      target_score_pct REAL NOT NULL DEFAULT 85,
+      challenge_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/peer-arena-challenge', async (request, reply) => {
+    const body = request.body || {};
+    const challengerId = String(body.challengerId || '').trim();
+    const chapterId = String(body.chapterId || '').trim();
+    if (!challengerId || !chapterId) {
+      return reply.code(400).send({ error: 'challengerId and chapterId are required' });
+    }
+    const genreId = String(body.genreId || 'GENRE-CRICKET-STRATEGY-ARENA').trim();
+    const targetScorePct = Math.max(50, Math.min(100, Number(body.targetScorePct ?? 85)));
+    const createdAt = new Date().toISOString();
+    const inviteCode = `ARENA-${chapterId.slice(0, 8).toUpperCase()}-${Date.now().toString().slice(-4)}`;
+    const challengeSha256 = crypto.createHash('sha256')
+      .update(`${inviteCode}|${challengerId}|${chapterId}|${genreId}|${targetScorePct}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT OR REPLACE INTO peer_arena_challenges (invite_code, challenger_id, chapter_id, genre_id, target_score_pct, challenge_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `).run(inviteCode, challengerId, chapterId, genreId, targetScorePct, challengeSha256, createdAt);
+    return { status: 'ok', inviteCode, challengerId, chapterId, genreId, targetScorePct, offlineOnly: true, challenge_sha256: challengeSha256 };
+  });
+
+  app.get('/api/student/peer-arena-challenges/:chapterId', async (request) => {
+    const chapterId = String(request.params.chapterId || '').trim();
+    const challenges = db.prepare(`
+      SELECT invite_code AS inviteCode, challenger_id AS challengerId, chapter_id AS chapterId,
+             genre_id AS genreId, target_score_pct AS targetScorePct,
+             challenge_sha256 AS challengeSha256, created_at AS createdAt
+      FROM peer_arena_challenges WHERE chapter_id = ?
+      ORDER BY id DESC LIMIT 25
+    `).all(chapterId);
+    return { status: 'ok', chapterId, count: challenges.length, challenges };
+  });
+
   return app;
 
 

@@ -164,6 +164,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderTeacherCopilotLessonPrepCard(cohortSummary)}
       ${renderStudentDoubtJournalCard(cohortSummary)}
       ${renderTeacherDoubtBroadcastCard(cohortSummary)}
+      ${renderOfflinePeerArenaChallengeCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3651,6 +3652,38 @@ export function renderTeacherDoubtBroadcastCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.86rem;color:#15803d;">
         Chapter: <code>${b.chapterId}</code> • Doubts Resolved: <strong>${b.doubtsResolvedCount}</strong> • Bilingual Offline Clarification Ready
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G95: Offline Student Peer Challenge & Arena Invite
+export function buildOfflinePeerArenaInvite(stateOrSummary = {}) {
+  const challengerId = String(stateOrSummary.challengerId || stateOrSummary.studentId || "STU-DEFAULT").trim();
+  const chapterId = String(stateOrSummary.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const targetScorePct = Math.max(50, Math.min(100, Number(stateOrSummary.targetScorePct ?? 85)));
+  const inviteCode = `ARENA-${chapterId.slice(0, 8).toUpperCase()}-60FPS`;
+  return {
+    ok: true,
+    challengerId,
+    chapterId,
+    targetScorePct,
+    inviteCode,
+    offlineOnly: true
+  };
+}
+
+export function renderOfflinePeerArenaChallengeCard(stateOrSummary = {}) {
+  const inv = buildOfflinePeerArenaInvite(stateOrSummary);
+  return `
+    <section id="offline-peer-arena-challenge-card" aria-label="Offline Student Peer Arena Challenge"
+             style="padding:14px;border-radius:14px;background:#faf5ff;border:1px solid #c084fc;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#6b21a8;">🎮 ऑफ़लाइन सहपाठी एरीना चुनौती / Offline Peer Arena Challenge (G95)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#581c87;">
+        Invite Code: <code>${inv.inviteCode}</code> • Target Mastery: <strong>${inv.targetScorePct}%</strong> • 60fps Offline LAN/QR Duel Ready
       </p>
     </section>
   `.trim();

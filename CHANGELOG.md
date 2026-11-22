@@ -1,3 +1,8 @@
+## [G95] 2026-11-22T14:42:57Z — Offline Student Peer Challenge & Arena Invite
+- Added `create_offline_peer_arena_challenge` in `src/aasha/orchestrator/g95_peer_arena_challenge.py`.
+- Added `peer_arena_challenges` SQLite table + `POST /api/student/peer-arena-challenge` & `GET /api/student/peer-arena-challenges/:chapterId` in `Aasha-AI/server/server.js`.
+- Added `buildOfflinePeerArenaInvite` and `renderOfflinePeerArenaChallengeCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G94] 2026-11-22T10:38:19Z — Offline Teacher Doubt Resolution & Classroom Broadcast
 - Added `build_offline_teacher_doubt_broadcast` in `src/aasha/orchestrator/g94_teacher_doubt_broadcast.py`.
 - Added `teacher_classroom_broadcasts` SQLite table + `POST/GET /api/teacher/doubt-broadcast` in `Aasha-AI/server/server.js`.
