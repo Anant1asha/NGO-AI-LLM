@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AASHA — शिक्षक फील्ड नियंत्रण पटल (Field Dashboard)</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 16px; background: #f8fafc; color: #0f172a; }
+.card { background: white; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 12px; }
+.status-pill { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; background: #dcfce7; color: #15803d; }
+.mesh-node { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<h1>AASHA — शिक्षक फील्ड डैशबोर्ड (Offline Classroom Mesh)</h1>
+<div class="card">
+  <h2>नेटवर्क स्थिति: <span class="status-pill">100% ऑफ़लाइन P2P मेश सक्रिय</span></h2>
+  <p>इंटरनेट की आवश्यकता: 0 KB | कक्षा उपकरण सिंक: सक्रिय</p>
+</div>
+<div class="card" id="mesh-nodes">
+  <h3>सक्रिय विद्यार्थी उपकरण (Synced Student Peers)</h3>
+  <div class="mesh-node"><span>विद्यार्थी 1 (Student 1)</span><span>दक्षता: 88% (भिन्न)</span></div>
+  <div class="mesh-node"><span>विद्यार्थी 2 (Student 2)</span><span>दक्षता: 92% (दाब एवं बल)</span></div>
+</div>
+</body>
+</html>

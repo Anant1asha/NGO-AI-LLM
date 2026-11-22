@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AASHA — NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS</title>
+<style>
+:root { --primary: #2563eb; --bg: #f8fafc; --text: #1e293b; }
+body { margin: 0; padding: 12px; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+.tap-target { min-height: 44px; min-width: 44px; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: white; margin: 6px 0; touch-action: manipulation; }
+.sim-container { width: 100%; max-height: 320px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+.bilingual-tag { font-size: 0.85em; color: #64748b; }
+</style>
+<script>
+
+// AASHA Adaptive Student Mastery Twin (Zero-Network Vanilla Web Component)
+class AashaMasteryTwin extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.p_l = 0.2;
+    this.p_t = 0.15;
+    this.p_s = 0.1;
+    this.p_g = 0.2;
+    this.b = 1.0;
+    this.a = 1.2;
+    this.history = [];
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  recordResponse(isCorrect) {
+    const p = this.p_l;
+    let post = isCorrect ? (p * (1 - this.p_s)) / (p * (1 - this.p_s) + (1 - p) * this.p_g)
+                         : (p * this.p_s) / (p * this.p_s + (1 - p) * (1 - this.p_g));
+    this.p_l = post + (1 - post) * this.p_t;
+    this.history.push(isCorrect);
+    this.render();
+    this.dispatchEvent(new CustomEvent('mastery-update', { detail: { mastery: this.p_l, isMastered: this.p_l >= 0.85 } }));
+  }
+
+  render() {
+    const pct = Math.round(this.p_l * 100);
+    const color = pct >= 85 ? '#16a34a' : (pct >= 50 ? '#f59e0b' : '#dc2626');
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host { display: block; font-family: system-ui, sans-serif; padding: 10px; background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .bar-bg { width: 100%; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden; margin-top: 6px; }
+        .bar-fill { height: 100%; width: ${pct}%; background: ${color}; transition: width 0.3s; }
+        .label { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; }
+      </style>
+      <div class="label">
+        <span>दक्षता स्तर (Mastery Level)</span>
+        <span>${pct}%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill"></div></div>
+    `;
+  }
+}
+customElements.define('aasha-mastery-twin', AashaMasteryTwin);
+
+</script>
+</head>
+<body>
+<header><h1>AASHA: NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS</h1></header>
+<main>
+<aasha-mastery-twin></aasha-mastery-twin>
+
+<div class="sim-container" data-tap-select="true"><svg viewBox='0 0 400 200'><rect width='400' height='200' fill='#f8fafc'/></svg></div>
+<section id="tln-nodes">
+<div class="tln-card"><h3>Core Concept & Representation <span class="bilingual-tag">(मूल अवधारणा और निरूपण)</span></h3><p>Introduction to unit partitions.</p></div><div class="tln-card"><h3>Comparison & Fractions on Number Line <span class="bilingual-tag">(तुलना और संख्या रेखा पर भिन्न)</span></h3><p>Ordering and scaling fractions.</p></div><div class="tln-card"><h3>Operations & Real-World Application <span class="bilingual-tag">(संक्रियाएँ और व्यावहारिक अनुप्रयोग)</span></h3><p>Addition, subtraction and field sharing.</p></div><div class="tln-card"><h3>Synthesis & Agricultural Water Allocation <span class="bilingual-tag">(संश्लेषण और जल सेवा आवंटन)</span></h3><p>Flow rate and volume fractions.</p></div>
+</section>
+<section id="assessments">
+<div class="teas-card" data-node="NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS_TLN_01"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div><div class="teas-card" data-node="NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS_TLN_02"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div><div class="teas-card" data-node="NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS_TLN_03"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div><div class="teas-card" data-node="NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS_TLN_04"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div>
+</section>
+</main>
+<script>
+console.log("AASHA Child Module Loaded: NCERT-G10-MATH-CH03-PAIR-LINEAR-EQUATIONS");
+</script>
+</body>
+</html>

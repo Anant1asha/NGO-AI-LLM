@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AASHA — NCERT-G06-MATH-CH07-FRACTIONS</title>
+<style>
+:root { --primary: #2563eb; --bg: #f8fafc; --text: #1e293b; }
+body { margin: 0; padding: 12px; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+.tap-target { min-height: 44px; min-width: 44px; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: white; margin: 6px 0; touch-action: manipulation; }
+.sim-container { width: 100%; max-height: 320px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+.bilingual-tag { font-size: 0.85em; color: #64748b; }
+</style>
+<script>
+
+// AASHA Adaptive Student Mastery Twin (Zero-Network Vanilla Web Component)
+class AashaMasteryTwin extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.p_l = 0.2;
+    this.p_t = 0.15;
+    this.p_s = 0.1;
+    this.p_g = 0.2;
+    this.b = -1.0;
+    this.a = 1.2;
+    this.history = [];
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  recordResponse(isCorrect) {
+    const p = this.p_l;
+    let post = isCorrect ? (p * (1 - this.p_s)) / (p * (1 - this.p_s) + (1 - p) * this.p_g)
+                         : (p * this.p_s) / (p * this.p_s + (1 - p) * (1 - this.p_g));
+    this.p_l = post + (1 - post) * this.p_t;
+    this.history.push(isCorrect);
+    this.render();
+    this.dispatchEvent(new CustomEvent('mastery-update', { detail: { mastery: this.p_l, isMastered: this.p_l >= 0.85 } }));
+  }
+
+  render() {
+    const pct = Math.round(this.p_l * 100);
+    const color = pct >= 85 ? '#16a34a' : (pct >= 50 ? '#f59e0b' : '#dc2626');
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host { display: block; font-family: system-ui, sans-serif; padding: 10px; background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .bar-bg { width: 100%; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden; margin-top: 6px; }
+        .bar-fill { height: 100%; width: ${pct}%; background: ${color}; transition: width 0.3s; }
+        .label { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; }
+      </style>
+      <div class="label">
+        <span>दक्षता स्तर (Mastery Level)</span>
+        <span>${pct}%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill"></div></div>
+    `;
+  }
+}
+customElements.define('aasha-mastery-twin', AashaMasteryTwin);
+
+</script>
+<script>
+
+// AASHA Indic Web Audio Formant Synthesizer (<6 KB Standalone)
+class AashaAudioNarrator extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.audioCtx = null;
+    this.phonemes = {"fraction": {"track_id": "PH_FRAC", "term_en": "fraction", "term_hi": "\u092d\u093f\u0928\u094d\u0928", "duration_ms": 450, "formant_frequencies": [500, 1500, 2500], "viseme_id": "VIS_FR"}, "numerator": {"track_id": "PH_NUM", "term_en": "numerator", "term_hi": "\u0905\u0902\u0936", "duration_ms": 500, "formant_frequencies": [400, 1800, 2600], "viseme_id": "VIS_AN"}, "denominator": {"track_id": "PH_DEN", "term_en": "denominator", "term_hi": "\u0939\u0930", "duration_ms": 400, "formant_frequencies": [600, 1200, 2400], "viseme_id": "VIS_HA"}, "pressure": {"track_id": "PH_PRES", "term_en": "pressure", "term_hi": "\u0926\u093e\u092c", "duration_ms": 420, "formant_frequencies": [350, 1700, 2500], "viseme_id": "VIS_DA"}, "force": {"track_id": "PH_FORCE", "term_en": "force", "term_hi": "\u092c\u0932", "duration_ms": 380, "formant_frequencies": [450, 1600, 2400], "viseme_id": "VIS_BA"}, "irrigation": {"track_id": "PH_IRR", "term_en": "irrigation", "term_hi": "\u0938\u093f\u0902\u091a\u093e\u0908", "duration_ms": 550, "formant_frequencies": [420, 1900, 2700], "viseme_id": "VIS_SI"}, "flow_rate": {"track_id": "PH_FLOW", "term_en": "flow rate", "term_hi": "\u092a\u094d\u0930\u0935\u093e\u0939 \u0926\u0930", "duration_ms": 480, "formant_frequencies": [500, 1400, 2300], "viseme_id": "VIS_PR"}, "polynomial": {"track_id": "PH_POLY", "term_en": "polynomial", "term_hi": "\u092c\u0939\u0941\u092a\u0926", "duration_ms": 520, "formant_frequencies": [480, 1550, 2450], "viseme_id": "VIS_BAH"}};
+    this.currentRate = 1.0;
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  initAudio() {
+    if (!this.audioCtx) {
+      this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  }
+
+  speakTerm(termKey) {
+    this.initAudio();
+    const p = this.phonemes[termKey] || this.phonemes['fraction'];
+    const now = this.audioCtx.currentTime;
+    const dur = (p.duration_ms / 1000) / this.currentRate;
+
+    // Glottal pulse oscillator
+    const osc = this.audioCtx.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(130, now);
+    osc.frequency.exponentialRampToValueAtTime(110, now + dur);
+
+    // Resonant Formant Filters (F1, F2, F3)
+    const f1 = this.audioCtx.createBiquadFilter();
+    f1.type = 'bandpass';
+    f1.frequency.setValueAtTime(p.formant_frequencies[0], now);
+    f1.Q.setValueAtTime(5, now);
+
+    const f2 = this.audioCtx.createBiquadFilter();
+    f2.type = 'bandpass';
+    f2.frequency.setValueAtTime(p.formant_frequencies[1], now);
+    f2.Q.setValueAtTime(7, now);
+
+    const gainNode = this.audioCtx.createGain();
+    gainNode.gain.setValueAtTime(0.01, now);
+    gainNode.gain.linearRampToValueAtTime(0.3, now + 0.05);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, now + dur);
+
+    osc.connect(f1);
+    osc.connect(f2);
+    f1.connect(gainNode);
+    f2.connect(gainNode);
+    gainNode.connect(this.audioCtx.destination);
+
+    osc.start(now);
+    osc.stop(now + dur);
+    this.highlightViseme(p.viseme_id);
+  }
+
+  highlightViseme(visemeId) {
+    const label = this.shadowRoot.getElementById('viseme-label');
+    if (label) {
+      label.textContent = `🔊 उच्चारण: [${visemeId}]`;
+      setTimeout(() => { label.textContent = '🔊 आवाज़ चालू (Audio Ready)'; }, 1200);
+    }
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host { display: inline-flex; align-items: center; gap: 8px; font-family: system-ui, sans-serif; }
+        .btn-audio { min-width: 44px; min-height: 44px; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #eff6ff; color: #1e40af; cursor: pointer; font-size: 14px; font-weight: 600; }
+        .btn-audio:active { background: #dbeafe; }
+        .rate-select { min-height: 44px; padding: 6px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; }
+        #viseme-label { font-size: 12px; color: #64748b; }
+      </style>
+      <button class="btn-audio" id="speak-btn">🔊 सुनें (Listen)</button>
+      <select class="rate-select" id="rate-select">
+        <option value="0.75">0.75x (धीमा)</option>
+        <option value="1.0" selected>1.0x (सामान्य)</option>
+        <option value="1.25">1.25x (तेज़)</option>
+      </select>
+      <span id="viseme-label">🔊 आवाज़ चालू (Audio Ready)</span>
+    `;
+
+    this.shadowRoot.getElementById('speak-btn').addEventListener('click', () => {
+      this.speakTerm('fraction');
+    });
+    this.shadowRoot.getElementById('rate-select').addEventListener('change', (e) => {
+      this.currentRate = parseFloat(e.target.value);
+    });
+  }
+}
+customElements.define('aasha-audio-narrator', AashaAudioNarrator);
+
+
+// AASHA Classroom P2P Mesh Synchronization Script
+class AashaClassroomMesh {
+  constructor(classroomId = 'AASHA_ROOM_DEFAULT') {
+    this.channel = new BroadcastChannel(`aasha_p2p_${classroomId}`);
+    this.peers = new Set();
+    this.localClock = 1;
+    this.initChannel();
+  }
+
+  initChannel() {
+    this.channel.onmessage = (event) => {
+      const { type, delta } = event.data;
+      if (type === 'MASTERY_DELTA' && delta) {
+        console.log('[P2P-Mesh] Received remote mastery delta:', delta);
+        window.dispatchEvent(new CustomEvent('p2p-delta-received', { detail: delta }));
+      }
+    };
+  }
+
+  broadcastMastery(studentId, nodeId, masteryProb) {
+    this.localClock += 1;
+    const delta = {
+      student_id: studentId,
+      node_id: nodeId,
+      mastery_prob: masteryProb,
+      lamport_clock: this.localClock,
+      timestamp: Date.now()
+    };
+    this.channel.postMessage({ type: 'MASTERY_DELTA', delta });
+  }
+}
+window.aashaClassroomMesh = new AashaClassroomMesh();
+
+</script>
+</head>
+<body>
+<header>
+<aasha-audio-narrator></aasha-audio-narrator>
+<h1>AASHA: NCERT-G06-MATH-CH07-FRACTIONS</h1></header>
+<main>
+<aasha-mastery-twin></aasha-mastery-twin>
+
+<div class="sim-container" data-tap-select="true"><svg viewBox='0 0 400 200'><rect width='400' height='200' fill='#f8fafc'/></svg></div>
+<section id="tln-nodes">
+<div class="tln-card"><h3>Core Concept & Representation <span class="bilingual-tag">(मूल अवधारणा और निरूपण)</span></h3><p>Introduction to unit partitions.</p></div><div class="tln-card"><h3>Comparison & Fractions on Number Line <span class="bilingual-tag">(तुलना और संख्या रेखा पर भिन्न)</span></h3><p>Ordering and scaling fractions.</p></div><div class="tln-card"><h3>Operations & Real-World Application <span class="bilingual-tag">(संक्रियाएँ और व्यावहारिक अनुप्रयोग)</span></h3><p>Addition, subtraction and field sharing.</p></div><div class="tln-card"><h3>Synthesis & Agricultural Water Allocation <span class="bilingual-tag">(संश्लेषण और जल सेवा आवंटन)</span></h3><p>Flow rate and volume fractions.</p></div>
+</section>
+<section id="assessments">
+<div class="teas-card" data-node="NCERT-G06-MATH-CH07-FRACTIONS_TLN_01"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div><div class="teas-card" data-node="NCERT-G06-MATH-CH07-FRACTIONS_TLN_02"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div><div class="teas-card" data-node="NCERT-G06-MATH-CH07-FRACTIONS_TLN_03"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div><div class="teas-card" data-node="NCERT-G06-MATH-CH07-FRACTIONS_TLN_04"><p>दिए गए भिन्न का सही मान पहचानें:</p><button class="tap-target" data-correct="True">Option A (Correct)</button><button class="tap-target" data-correct="False">Option B (Distractor)</button><button class="tap-target" data-correct="False">Option C (Distractor)</button><button class="tap-target" data-correct="False">Option D (Distractor)</button></div>
+</section>
+</main>
+<script>
+console.log("AASHA Child Module Loaded: NCERT-G06-MATH-CH07-FRACTIONS");
+</script>
+</body>
+</html>
