@@ -13,3 +13,5 @@ alwaysApply: true
 - **Transients Ignored**: Keep `.venv/`, `.serena_venv/`, `.pytest_cache/`, `Aasha-AI/server/aasha_local.db`, and `*.bundle` strictly in `.gitignore`.
 - **ESM Loader Protocol**: Run root server integration tests via `node --loader ./tests/esm_offline_server_loader.mjs`.
 - **Secret Scan**: Always run `node scripts/lint_staged_secrets.mjs` prior to commit.
+- **IDE GUI Commit Guard**: Enforce `.vscode/settings.json` with `"git.smartCommitChanges": "tracked"` to prevent the IDE from passing expanded file argument lists to `git.exe` on Windows.
+- **Universal Safe Staging**: Use `npm run safe:commit` and `npm run safe:push` (`scripts/safe_commit_and_push.mjs`) to stage tracked changes via pathspec (`git add -u`) and push cleanly across Windows, Linux, and Colab without buffer overflow.

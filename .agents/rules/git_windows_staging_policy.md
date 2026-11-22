@@ -47,3 +47,27 @@ globs: "**/*"
 
 ## 7. Mandatory Pre-Commit Secret Scan
 - Always execute `node scripts/lint_staged_secrets.mjs` before committing.
+
+## 8. IDE UI Source Control & GUI Commit Invariant (.vscode/settings.json)
+- **GUI Commit Failure Prevention**:
+  To prevent Antigravity IDE / VS Code from crashing with `The filename or extension is too long` when clicking the UI **Commit** button:
+  - Configure `.vscode/settings.json`:
+    ```json
+    {
+      "git.smartCommitChanges": "tracked",
+      "git.untrackedChanges": "separate",
+      "git.enableSmartCommit": true
+    }
+    ```
+  - `"git.smartCommitChanges": "tracked"` forces the IDE to invoke `git commit -a`, which stages tracked changes internally within Git's native C engine with **zero file path CLI arguments**.
+  - `"git.untrackedChanges": "separate"` isolates untracked files from accidental bulk staging.
+
+## 9. Universal Safe Commit & Push Commands (Windows & Colab)
+- **Cross-Platform Staging & Push Engine (`scripts/safe_commit_and_push.mjs`)**:
+  Instead of manual multi-step git operations, use the automated wrapper commands:
+  ```bash
+  npm run safe:commit   # Stages via pathspec (git add -u), scans secrets, commits
+  npm run safe:push     # Stages, scans secrets, commits, and pushes to origin
+  ```
+  - Compatible with Windows PowerShell, Git Bash, Linux, and Colab environments.
+  - Automatically sanitizes `.git` lock artifacts, verifies `core.longpaths true`, and avoids argument expansion.
