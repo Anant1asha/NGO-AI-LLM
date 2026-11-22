@@ -1,3 +1,8 @@
+## [G92] 2026-11-22T02:53:36Z — Offline Teacher Copilot Lesson Prep from Custom PDF
+- Added `generate_offline_lesson_prep_from_pdf` in `src/aasha/orchestrator/g92_teacher_copilot_lesson_prep.py` using `IngestAgent`.
+- Added `teacher_lesson_prep_plans` SQLite table + `POST /api/teacher/lesson-prep-from-pdf` & `GET /api/teacher/lesson-prep/:chapterId` in `Aasha-AI/server/server.js`.
+- Added `buildTeacherCopilotLessonPrep` and `renderTeacherCopilotLessonPrepCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G91] 2026-11-21T23:02:07Z — Production Multi-Board Curriculum Pack Expander & Auditor
 - Added `compile_and_audit_multi_board_pack` in `src/aasha/orchestrator/g91_multi_board_curriculum_auditor.py` covering NCERT, UPMSP, CBSE, and NCVET.
 - Added `GET /api/catalogue/multi-board-summary` in `Aasha-AI/server/server.js` and `buildMultiBoardCurriculumSummary` + `renderMultiBoardCurriculumMatrixCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.

@@ -2756,6 +2756,53 @@ export function buildServer() {
     return { status: 'ok', ...payload, catalogue_sha256 };
   });
 
+  // Phase G92: Offline Teacher Copilot Lesson Prep from Custom PDF
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS teacher_lesson_prep_plans (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      chapter_id TEXT NOT NULL UNIQUE,
+      subject TEXT NOT NULL DEFAULT 'science',
+      grade INTEGER NOT NULL DEFAULT 8,
+      duration_minutes INTEGER NOT NULL DEFAULT 30,
+      key_terms_json TEXT NOT NULL,
+      prep_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/teacher/lesson-prep-from-pdf', async (request, reply) => {
+    const body = request.body || {};
+    const chapterId = String(body.chapterId || '').trim();
+    if (!chapterId) {
+      return reply.code(400).send({ error: 'chapterId is required' });
+    }
+    const subject = String(body.subject || 'science').trim().toLowerCase();
+    const grade = Math.max(1, Math.min(12, Number(body.grade ?? 8)));
+    const keyTerms = Array.isArray(body.keyTerms) ? body.keyTerms.map(String) : [];
+    const createdAt = new Date().toISOString();
+    const prepSha256 = crypto.createHash('sha256')
+      .update(`${chapterId}|${subject}|${grade}|${JSON.stringify(keyTerms)}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT OR REPLACE INTO teacher_lesson_prep_plans (chapter_id, subject, grade, duration_minutes, key_terms_json, prep_sha256, created_at)
+      VALUES (?, ?, ?, 30, ?, ?, ?)
+    `).run(chapterId, subject, grade, JSON.stringify(keyTerms), prepSha256, createdAt);
+    return { status: 'ok', chapterId, subject, grade, durationMinutes: 30, keyTerms, offlineOnly: true, prep_sha256: prepSha256 };
+  });
+
+  app.get('/api/teacher/lesson-prep/:chapterId', async (request, reply) => {
+    const chapterId = String(request.params.chapterId || '').trim();
+    const row = db.prepare(`
+      SELECT chapter_id AS chapterId, subject, grade, duration_minutes AS durationMinutes,
+             key_terms_json AS keyTermsJson, prep_sha256 AS prepSha256, created_at AS createdAt
+      FROM teacher_lesson_prep_plans WHERE chapter_id = ?
+    `).get(chapterId);
+    if (!row) {
+      return reply.code(404).send({ error: 'Lesson prep plan not found' });
+    }
+    return { status: 'ok', offlineOnly: true, ...row, keyTerms: JSON.parse(row.keyTermsJson || '[]') };
+  });
+
   return app;
 
 

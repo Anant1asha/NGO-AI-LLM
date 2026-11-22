@@ -161,6 +161,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderSolarOtaDeltaVerifierCard(cohortSummary)}
       ${renderDec2026MvpCertificationCard(cohortSummary)}
       ${renderMultiBoardCurriculumMatrixCard(cohortSummary)}
+      ${renderTeacherCopilotLessonPrepCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3551,6 +3552,34 @@ export function renderMultiBoardCurriculumMatrixCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.86rem;color:#5b21b6;">
         Boards: <strong>${s.boards.join(" · ")}</strong> • Cap: <strong>✅ &lt;= 20 MiB / Child HTML</strong> • Zero External URLs
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G92: Offline Teacher Copilot Lesson Prep from Custom PDF
+export function buildTeacherCopilotLessonPrep(stateOrSummary = {}) {
+  const chapterId = String(stateOrSummary.chapterId || "NCERT-G08-SCI-CH08").trim();
+  return {
+    ok: true,
+    chapterId,
+    durationMinutes: 30,
+    segmentsCount: 4,
+    offlineOnly: true
+  };
+}
+
+export function renderTeacherCopilotLessonPrepCard(stateOrSummary = {}) {
+  const p = buildTeacherCopilotLessonPrep(stateOrSummary);
+  return `
+    <section id="teacher-copilot-lesson-prep-card" aria-label="Offline Teacher Copilot Lesson Prep"
+             style="padding:14px;border-radius:14px;background:#fff1f2;border:1px solid #fb7185;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#9f1239;">👩‍🏫 ऑफ़लाइन शिक्षक पाठ योजना / Teacher Copilot Lesson Prep (G92)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#881337;">
+        Chapter: <code>${p.chapterId}</code> • Duration: <strong>${p.durationMinutes} min</strong> • Segments: <strong>${p.segmentsCount}</strong> (Hook, Bilingual WM, Activity, Exit Ticket)
       </p>
     </section>
   `.trim();
