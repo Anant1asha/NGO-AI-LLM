@@ -2,7 +2,7 @@
   "schema_version": "6.0.0",
   "phase": "G39_GOLDEN_MASTER_RC",
   "title": "End-to-End 17-Module QA Regression Gate & December 31, 2026 MVP Golden Master Release Candidate Seal",
-  "generated_at_utc": "2026-11-22T17:52:40.620608+00:00",
+  "generated_at_utc": "2026-11-22T18:09:19.794178+00:00",
   "regression_matrix": {
     "modules_audited": 43,
     "all_passed_28_of_28": true,
@@ -445,16 +445,16 @@
     "swarm_state": "CERTIFIED_CHECKPOINT",
     "qa_passed": 32,
     "qa_total": 32,
-    "size_bytes": 109483,
+    "size_bytes": 108301,
     "under_20mib": true,
-    "sha256": "21f035d547d6df0840477e35b07d3a0d0e4a4aaa742da0deb1b980a7e2d2b613",
+    "sha256": "775dd15db3e8b444ce6a76d565ffc72d1a0135882274e239c633f2b47439c052",
     "compounding_db": {
       "db_path": "aasha_operational.db",
       "wm_rows_stored": 1236,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 188
+      "build_cache_records": 189
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G40_CONTINUOUS_FIELD_TELEMETRY_SENTINEL_AND_TEACHER_AUTHORING_PACK: Execute Continuous Offline Field Telemetry Sentinel & Teacher Authoring Template Pack."

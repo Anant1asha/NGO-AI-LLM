@@ -1,6 +1,6 @@
 {
   "phase": "G34",
-  "generated_at_utc": "2026-11-22T17:42:34.660428+00:00",
+  "generated_at_utc": "2026-11-22T18:15:01.831148+00:00",
   "phonetic_lle_closure": {
     "wm_total": 1236,
     "phonetics_completed": 107,
@@ -11,7 +11,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 184
+      "build_cache_records": 193
     }
   },
   "g3_10chapter_pack_upgrade": {
@@ -42,7 +42,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 109815,
+        "size_bytes": 108633,
         "under_20mib": true
       },
       {

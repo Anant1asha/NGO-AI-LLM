@@ -1,7 +1,7 @@
 {
   "phase": "G38",
   "title": "100-Learner Multi-Centre Rural Cohort Offline Field Pilot & Double-Entry TEAS Ledger Audit",
-  "generated_at_utc": "2026-11-22T17:45:25.603784+00:00",
+  "generated_at_utc": "2026-11-22T18:23:07.724967+00:00",
   "field_pilot_100_learners": {
     "centres_count": 4,
     "learners_simulated": 100,
@@ -15,7 +15,7 @@
     "double_entry_conserved": true,
     "hotspot_chapters_detected": 3,
     "cohort_pack_verified": true,
-    "cohort_pack_hash": "fnv1a32:b2d77f0b"
+    "cohort_pack_hash": "fnv1a32:b2e10d6b"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
@@ -31,7 +31,7 @@
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 187
+      "build_cache_records": 196
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G39_END_TO_END_REGRESSION_SUITE_AND_WINDOWS_COLAB_FINAL_SYNC_GATE: Execute full 60-suite Python + Visual Contract + 16-Module QA regression gate and tag December 31 2026 MVP Release Candidate."

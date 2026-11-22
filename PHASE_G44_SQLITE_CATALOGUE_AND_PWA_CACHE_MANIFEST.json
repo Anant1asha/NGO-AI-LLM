@@ -1,35 +1,35 @@
 {
   "schema_version": "7.0.0",
   "phase": "G44_SQLITE_GZIP_CATALOGUE_REBUILD_AND_PWA_CACHE_AUDITOR",
-  "generated_at_utc": "2026-11-16T12:11:37.071388+00:00",
+  "generated_at_utc": "2026-11-22T18:23:09.340308+00:00",
   "sqlite_gzip_catalogue": {
-    "db_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db",
-    "gzip_rel_path": "Aasha-AI/aasha-pipeline-with-master-json/output/g3_10chapter_pack/teas_content.db.gz",
+    "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db",
+    "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db.gz",
     "chapters_count": 39,
     "tln_nodes_count": 117,
-    "wm_entries_count": 1129,
+    "wm_entries_count": 1236,
     "conn_entries_count": 85,
-    "vocabulary_rows_count": 1204,
-    "raw_db_bytes": 180224,
-    "gzip_db_bytes": 46259,
-    "gzip_sha256": "52d6a7658d2d8bd70188d777bcb5c256bc76452e51cfd3fc778ff4e284acd1ac",
+    "vocabulary_rows_count": 1311,
+    "raw_db_bytes": 192512,
+    "gzip_db_bytes": 52706,
+    "gzip_sha256": "dfe3a96696dd09a7426b36ee724985c2c3876d12bd1ff0c14623b8993426dba4",
     "under_20mib": true
   },
   "html5_hub_and_pwa_cache": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/SQLite_Gzip_Catalogue_And_PWA_Cache_Auditor_Hub_v5.html",
     "swarm_state": "CERTIFIED_CHECKPOINT",
-    "qa_passed": 28,
-    "qa_total": 28,
-    "size_bytes": 97666,
+    "qa_passed": 32,
+    "qa_total": 32,
+    "size_bytes": 109715,
     "under_20mib": true,
-    "sha256": "7c83e0a6b4d20910661e1d45c7fec04e668a68764700a715d12c4dacc0ff4b23",
+    "sha256": "fece26b5607132e5803dfc899d66f690c56f272cac5752735defb30500421998",
     "sw_cache_manifest": {
-      "rel_path": "Aasha-AI/aasha-student-pwa/src/sw_cache_manifest.json",
+      "rel_path": "Aasha-AI\\aasha-student-pwa\\src\\sw_cache_manifest.json",
       "total_assets": 54,
       "certified_html5_modules_count": 21,
-      "total_precache_bytes": 27920637,
+      "total_precache_bytes": 28309104,
       "under_20mib_ceiling": true,
-      "merkle_root_sha256": "37718e5039f1ab5a16e0c8070eba2a76a04cce3687bcbbd2d4c245496cff5ef6"
+      "merkle_root_sha256": "cad6781bd36f2b4f15e879ef9a5876248a0e4b328d80d4ffcb4533c5c5a9ee5b"
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G45_OFFLINE_TEACHER_REMEDIATION_WORKSHEET_GENERATOR_AND_COHORT_EXPORT: Generate printable/offline bilingual teacher remediation worksheets from top misconception hotspots."

@@ -24,6 +24,8 @@
     "harvest:vendor": "node scripts/harvest_engine.mjs --vendor",
     "n8n:check": "node scripts/n8n_headless_client.mjs --check",
     "test:browser": "node scripts/verify_prestack_assets_browser.mjs",
+    "hachi": "node scripts/hachi_bridge.mjs",
+    "hachi:mcp": "powershell -Command \"packages\\hachi\\.venv\\Scripts\\python.exe -m hachi.mcp_server\"",
 
     "start": "node scripts/aasha_root_orchestrator.js",
     "orchestrator": "node scripts/aasha_root_orchestrator.js",
