@@ -162,6 +162,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderDec2026MvpCertificationCard(cohortSummary)}
       ${renderMultiBoardCurriculumMatrixCard(cohortSummary)}
       ${renderTeacherCopilotLessonPrepCard(cohortSummary)}
+      ${renderStudentDoubtJournalCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3580,6 +3581,47 @@ export function renderTeacherCopilotLessonPrepCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.86rem;color:#881337;">
         Chapter: <code>${p.chapterId}</code> • Duration: <strong>${p.durationMinutes} min</strong> • Segments: <strong>${p.segmentsCount}</strong> (Hook, Bilingual WM, Activity, Exit Ticket)
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G93: Offline Student Doubt Journal & Zero-Spoiler Socratic Peer Hint Card
+export function recordOfflineStudentDoubt(state = {}, doubt = {}) {
+  if (!state || typeof state !== "object") {
+    throw new Error("Valid state object is required");
+  }
+  if (!Array.isArray(state.studentDoubtJournal)) {
+    state.studentDoubtJournal = [];
+  }
+  const studentId = String(doubt.studentId || state.studentId || "STU-DEFAULT").trim();
+  const chapterId = String(doubt.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const doubtText = String(doubt.doubtText || "").trim();
+  if (!doubtText) return { ok: false, error: "EMPTY_DOUBT_TEXT" };
+  const entry = {
+    studentId,
+    chapterId,
+    doubtText,
+    socraticHintEn: `Zero-Spoiler Socratic Hint: Check how key terms interact in ${chapterId}.`,
+    socraticHintHi: `त्वरित संकेत: ${chapterId} के मुख्य शब्दों के संबंध को फिर से देखें।`,
+    zeroSpoiler: true,
+    createdAtIso: new Date().toISOString()
+  };
+  state.studentDoubtJournal.push(entry);
+  return { ok: true, totalDoubts: state.studentDoubtJournal.length, latestEntry: entry };
+}
+
+export function renderStudentDoubtJournalCard(stateOrSummary = {}) {
+  const list = Array.isArray(stateOrSummary.studentDoubtJournal) ? stateOrSummary.studentDoubtJournal : [];
+  return `
+    <section id="student-doubt-journal-card" aria-label="Offline Student Doubt Journal and Socratic Hints"
+             style="padding:14px;border-radius:14px;background:#f0f9ff;border:1px solid #38bdf8;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#0c4a6e;">❓ ऑफ़लाइन शंका डायरी एवं संकेत / Offline Doubt Journal &amp; Hints (G93)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#0369a1;">
+        Logged Offline Doubts: <strong>${list.length}</strong> • Zero-Spoiler Socratic Hint Engine Active
       </p>
     </section>
   `.trim();

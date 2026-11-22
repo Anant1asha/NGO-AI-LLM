@@ -2803,6 +2803,62 @@ export function buildServer() {
     return { status: 'ok', offlineOnly: true, ...row, keyTerms: JSON.parse(row.keyTermsJson || '[]') };
   });
 
+  // Phase G93: Offline Student Doubt Journal & Zero-Spoiler Socratic Peer Hint Card
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS student_doubt_journal (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_id TEXT NOT NULL,
+      chapter_id TEXT NOT NULL,
+      doubt_text TEXT NOT NULL,
+      socratic_hint_en TEXT NOT NULL,
+      socratic_hint_hi TEXT NOT NULL,
+      doubt_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/student/doubt-journal', async (request, reply) => {
+    const body = request.body || {};
+    const studentId = String(body.studentId || '').trim();
+    const chapterId = String(body.chapterId || '').trim();
+    const doubtText = String(body.doubtText || '').trim();
+    if (!studentId || !chapterId || !doubtText) {
+      return reply.code(400).send({ error: 'studentId, chapterId, and doubtText are required' });
+    }
+    const hintEn = `Re-check the core principle in ${chapterId} using bilingual WM terms before selecting your answer.`;
+    const hintHi = `उत्तर चुनने से पहले ${chapterId} के मुख्य सिद्धांत को द्विभाषी शब्द-अर्थ के साथ फिर से देखें।`;
+    const createdAt = new Date().toISOString();
+    const doubtSha256 = crypto.createHash('sha256')
+      .update(`${studentId}|${chapterId}|${doubtText}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO student_doubt_journal (student_id, chapter_id, doubt_text, socratic_hint_en, socratic_hint_hi, doubt_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `).run(studentId, chapterId, doubtText, hintEn, hintHi, doubtSha256, createdAt);
+    return {
+      status: 'ok',
+      studentId,
+      chapterId,
+      socraticHintEn: hintEn,
+      socraticHintHi: hintHi,
+      zeroSpoiler: true,
+      offlineOnly: true,
+      doubt_sha256: doubtSha256
+    };
+  });
+
+  app.get('/api/student/doubt-journal/:studentId', async (request) => {
+    const studentId = String(request.params.studentId || '').trim();
+    const entries = db.prepare(`
+      SELECT student_id AS studentId, chapter_id AS chapterId, doubt_text AS doubtText,
+             socratic_hint_en AS socraticHintEn, socratic_hint_hi AS socraticHintHi,
+             doubt_sha256 AS doubtSha256, created_at AS createdAt
+      FROM student_doubt_journal WHERE student_id = ?
+      ORDER BY id DESC LIMIT 25
+    `).all(studentId);
+    return { status: 'ok', studentId, count: entries.length, entries };
+  });
+
   return app;
 
 

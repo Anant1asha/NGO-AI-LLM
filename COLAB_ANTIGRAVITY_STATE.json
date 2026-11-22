@@ -61,14 +61,14 @@
   },
   "approval_mode": "AUTONOMOUS_ZERO_HIL_CRYPTO_PROOF",
   "human_approval_required": false,
-  "lamport_epoch": 79,
+  "lamport_epoch": 80,
   "vector_clock": {
-    "plane_1_drive": 79,
+    "plane_1_drive": 80,
     "plane_2_colab": 1,
     "plane_3_local_ide": 1
   },
   "git_commit_sha": "f5ba5b2b146ba5160778dace9dfb2d3b98193598",
-  "updated_at_utc": "2026-11-22T02:53:36Z",
-  "last_cycle_id": "G92_OFFLINE_TEACHER_COPILOT_LESSON_PREP_FROM_CUSTOM_PDF",
-  "next_priority": "G93_OFFLINE_STUDENT_DOUBT_JOURNAL_AND_PEER_HINT_CARD"
+  "updated_at_utc": "2026-11-22T06:41:02Z",
+  "last_cycle_id": "G93_OFFLINE_STUDENT_DOUBT_JOURNAL_AND_PEER_HINT_CARD",
+  "next_priority": "G94_OFFLINE_TEACHER_DOUBT_RESOLUTION_AND_CLASSROOM_BROADCAST"
 }

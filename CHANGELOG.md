@@ -1,3 +1,8 @@
+## [G93] 2026-11-22T06:41:02Z — Offline Student Doubt Journal & Zero-Spoiler Socratic Peer Hint Card
+- Added `create_offline_doubt_entry_and_socratic_hint` in `src/aasha/orchestrator/g93_student_doubt_journal_and_hints.py`.
+- Added `student_doubt_journal` SQLite table + `POST/GET /api/student/doubt-journal` in `Aasha-AI/server/server.js`.
+- Added `recordOfflineStudentDoubt` and `renderStudentDoubtJournalCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G92] 2026-11-22T02:53:36Z — Offline Teacher Copilot Lesson Prep from Custom PDF
 - Added `generate_offline_lesson_prep_from_pdf` in `src/aasha/orchestrator/g92_teacher_copilot_lesson_prep.py` using `IngestAgent`.
 - Added `teacher_lesson_prep_plans` SQLite table + `POST /api/teacher/lesson-prep-from-pdf` & `GET /api/teacher/lesson-prep/:chapterId` in `Aasha-AI/server/server.js`.
