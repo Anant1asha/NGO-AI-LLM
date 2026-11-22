@@ -60,11 +60,7 @@ if (existsSync(secretScanner)) {
 
 // 7. Atomic commit
 console.log(`📝 Committing: "${commitMsg}"...`);
-try {
-  run(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`);
-} catch {
-  console.log('ℹ️ No staged changes to commit or working tree clean.');
-}
+run(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, { allowFailure: true });
 
 // 8. Push if requested
 if (shouldPush) {
