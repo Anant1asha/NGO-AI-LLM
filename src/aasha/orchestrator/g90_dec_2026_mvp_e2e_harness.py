@@ -54,15 +54,15 @@ def run_dec_2026_mvp_e2e_certification(
     ncvet = export_offline_ncvet_skill_portfolio("STU-MVP-01", mastery_rows[:2])
     remedial = build_printable_remedial_worksheet_pack("SCI_CH08", mastery_rows)
 
-    ota_chunks = [
-        {
-            "chunk_id": "MVP-CHUNK-01",
+    ota_chunks = []
+    for idx, r in enumerate(batch_report["results"], start=1):
+        content_text = Path(r["learn_html_path"]).read_text(encoding="utf-8")
+        ota_chunks.append({
+            "chunk_id": f"MVP-CHUNK-{idx:02d}",
             "size_bytes": Path(r["learn_html_path"]).stat().st_size,
-            "content": Path(r["learn_html_path"]).read_text(encoding="utf-8"),
-            "sha256": hashlib.sha256(Path(r["learn_html_path"]).read_bytes()).hexdigest(),
-        }
-        for r in batch_report["results"]
-    ]
+            "content": content_text,
+            "sha256": hashlib.sha256(content_text.encode("utf-8")).hexdigest(),
+        })
     ota_verify = verify_solar_ota_delta_bundle("CENTER-UP-GN-01", ota_chunks)
     federated = merge_federated_centre_deltas([
         {"centerId": "CENTER-UP-GN-01", "lamportEpoch": 30, "customPdfMastery": mastery_rows},

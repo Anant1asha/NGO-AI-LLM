@@ -8,7 +8,7 @@ alwaysApply: true
 
 - **Pathspec-Only Staging**: Never pass file lists as CLI arguments to `git add`; use `git add -u`, directory pathspecs (`git add scripts/ tests/ Aasha-AI/`), or `git add --pathspec-from-file=-`.
 - **Ignored Paths**: Never use broad `git add .` over directories containing ignored build outputs (`Aasha-AI/aasha-pipeline-with-master-json/output`). Set `git config advice.addIgnoredFile false`.
-- **Windows Longpaths & Ref Hygiene**: Always enforce `git config core.longpaths true` and clean `.git/**/desktop.ini` before bundle sync or push.
+- **Windows Longpaths & Ref Hygiene**: Always enforce `git config core.longpaths true` and recursively purge `.git/**/desktop.ini` before bundle fetch or push to prevent ref parser errors (`refs/heads/aios/desktop.ini`).
 - **Index Lock Contention**: Safely clear stale `.git/index.lock` on Windows only after verifying no active `git.exe` processes are running.
 - **Transients Ignored**: Keep `.venv/`, `.serena_venv/`, `.pytest_cache/`, `Aasha-AI/server/aasha_local.db`, and `*.bundle` strictly in `.gitignore`.
 - **ESM Loader Protocol**: Run root server integration tests via `node --loader ./tests/esm_offline_server_loader.mjs`.

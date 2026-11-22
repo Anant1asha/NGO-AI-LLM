@@ -11,15 +11,24 @@ if [ -n "${1:-}" ]; then
   BUNDLE_PATH="$1"
 elif [ -f "$COLAB_BUNDLE" ]; then
   BUNDLE_PATH="$COLAB_BUNDLE"
+elif [ -f "G:/My Drive/NGO AI LLM/aasha_aios_v2_bootstrap_full.bundle" ]; then
+  BUNDLE_PATH="G:/My Drive/NGO AI LLM/aasha_aios_v2_bootstrap_full.bundle"
 elif [ -f "$LOCAL_BUNDLE" ]; then
   BUNDLE_PATH="$LOCAL_BUNDLE"
 else
-  echo "Bundle not found at $COLAB_BUNDLE or $LOCAL_BUNDLE" >&2
-  exit 1
+  # Auto-resolve latest numbered bundle by modification time
+  LATEST_BUNDLE=$(ls -t *.bundle 2>/dev/null | head -n 1 || true)
+  if [ -n "$LATEST_BUNDLE" ] && [ -f "$LATEST_BUNDLE" ]; then
+    BUNDLE_PATH="./$LATEST_BUNDLE"
+  else
+    echo "Bundle not found at $COLAB_BUNDLE or $LOCAL_BUNDLE" >&2
+    exit 1
+  fi
 fi
 
 # Remove Windows / Google Drive Desktop desktop.ini files inside .git that break git ref resolution
 git config core.longpaths true
+git config advice.addIgnoredFile false
 find .git -iname "desktop.ini" -delete 2>/dev/null || true
 
 # Fetch bundle head

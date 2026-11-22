@@ -27,9 +27,12 @@ globs: "**/*"
   - Rely on `git add -u` for tracked changes, followed by explicit single-file adds for newly created tests/modules.
 
 ## 4. Google Drive & File Watcher Lock Hygiene
-- **Clean Google Drive `desktop.ini` artifacts inside `.git`**:
-  - Before `git fetch`, `git merge`, or `git push` on Windows:
+- **Purge Google Drive `desktop.ini` artifacts inside `.git`**:
+  - Before any `git fetch`, `git bundle`, `git merge`, or `git push` on Windows:
     `find .git -iname "desktop.ini" -delete 2>/dev/null || true`
+    or in PowerShell:
+    `Get-ChildItem -Path ".git" -Filter "desktop.ini" -Recurse -Force | Remove-Item -Force`
+  - Prevents Git ref parser failures (`fatal: bad object refs/heads/aios/desktop.ini`).
 - **Windows `.git/index.lock` Contention**:
   - If a background task, IDE file watcher, or antivirus process leaves a stale `.git/index.lock`, verify that no `git.exe` process is actively writing before removing the lock:
     `if (!(Get-Process git -ErrorAction SilentlyContinue)) { Remove-Item -Force .git/index.lock -ErrorAction SilentlyContinue }`
