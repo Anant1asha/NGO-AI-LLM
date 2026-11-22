@@ -2859,6 +2859,51 @@ export function buildServer() {
     return { status: 'ok', studentId, count: entries.length, entries };
   });
 
+  // Phase G94: Offline Teacher Doubt Resolution & Classroom Broadcast
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS teacher_classroom_broadcasts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      chapter_id TEXT NOT NULL,
+      doubts_resolved_count INTEGER NOT NULL DEFAULT 0,
+      clarification_en TEXT NOT NULL,
+      clarification_hi TEXT NOT NULL,
+      broadcast_sha256 TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
+
+  app.post('/api/teacher/doubt-broadcast', async (request, reply) => {
+    const body = request.body || {};
+    const chapterId = String(body.chapterId || '').trim();
+    const clarificationEn = String(body.clarificationEn || '').trim();
+    const clarificationHi = String(body.clarificationHi || '').trim();
+    if (!chapterId || !clarificationEn || !clarificationHi) {
+      return reply.code(400).send({ error: 'chapterId, clarificationEn, and clarificationHi are required' });
+    }
+    const doubtsResolvedCount = Math.max(0, Number(body.doubtsResolvedCount ?? 0));
+    const createdAt = new Date().toISOString();
+    const broadcastSha256 = crypto.createHash('sha256')
+      .update(`${chapterId}|${doubtsResolvedCount}|${clarificationEn}|${clarificationHi}|${createdAt}`, 'utf-8')
+      .digest('hex');
+    db.prepare(`
+      INSERT INTO teacher_classroom_broadcasts (chapter_id, doubts_resolved_count, clarification_en, clarification_hi, broadcast_sha256, created_at)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).run(chapterId, doubtsResolvedCount, clarificationEn, clarificationHi, broadcastSha256, createdAt);
+    return { status: 'ok', chapterId, doubtsResolvedCount, offlineOnly: true, broadcast_sha256: broadcastSha256 };
+  });
+
+  app.get('/api/teacher/doubt-broadcast/:chapterId', async (request) => {
+    const chapterId = String(request.params.chapterId || '').trim();
+    const broadcasts = db.prepare(`
+      SELECT chapter_id AS chapterId, doubts_resolved_count AS doubtsResolvedCount,
+             clarification_en AS clarificationEn, clarification_hi AS clarificationHi,
+             broadcast_sha256 AS broadcastSha256, created_at AS createdAt
+      FROM teacher_classroom_broadcasts WHERE chapter_id = ?
+      ORDER BY id DESC LIMIT 25
+    `).all(chapterId);
+    return { status: 'ok', chapterId, count: broadcasts.length, broadcasts };
+  });
+
   return app;
 
 

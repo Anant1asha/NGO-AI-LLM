@@ -1,3 +1,8 @@
+## [G94] 2026-11-22T10:38:19Z — Offline Teacher Doubt Resolution & Classroom Broadcast
+- Added `build_offline_teacher_doubt_broadcast` in `src/aasha/orchestrator/g94_teacher_doubt_broadcast.py`.
+- Added `teacher_classroom_broadcasts` SQLite table + `POST/GET /api/teacher/doubt-broadcast` in `Aasha-AI/server/server.js`.
+- Added `buildTeacherDoubtBroadcast` and `renderTeacherDoubtBroadcastCard` in `Aasha-AI/aasha-student-pwa/src/app.js`.
+
 ## [G93] 2026-11-22T06:41:02Z — Offline Student Doubt Journal & Zero-Spoiler Socratic Peer Hint Card
 - Added `create_offline_doubt_entry_and_socratic_hint` in `src/aasha/orchestrator/g93_student_doubt_journal_and_hints.py`.
 - Added `student_doubt_journal` SQLite table + `POST/GET /api/student/doubt-journal` in `Aasha-AI/server/server.js`.

@@ -163,6 +163,7 @@ export function renderTeacherCohortDashboard(cohortSummary = {}) {
       ${renderMultiBoardCurriculumMatrixCard(cohortSummary)}
       ${renderTeacherCopilotLessonPrepCard(cohortSummary)}
       ${renderStudentDoubtJournalCard(cohortSummary)}
+      ${renderTeacherDoubtBroadcastCard(cohortSummary)}
     </section>
   `.trim();
 }
@@ -3622,6 +3623,34 @@ export function renderStudentDoubtJournalCard(stateOrSummary = {}) {
       </header>
       <p style="margin:0;font-size:0.86rem;color:#0369a1;">
         Logged Offline Doubts: <strong>${list.length}</strong> • Zero-Spoiler Socratic Hint Engine Active
+      </p>
+    </section>
+  `.trim();
+}
+
+
+// Phase G94: Offline Teacher Doubt Resolution & Classroom Broadcast
+export function buildTeacherDoubtBroadcast(stateOrSummary = {}) {
+  const chapterId = String(stateOrSummary.chapterId || "NCERT-G08-SCI-CH08").trim();
+  const doubtsResolvedCount = Math.max(0, Number(stateOrSummary.doubtsResolvedCount ?? 0));
+  return {
+    ok: true,
+    chapterId,
+    doubtsResolvedCount,
+    offlineOnly: true
+  };
+}
+
+export function renderTeacherDoubtBroadcastCard(stateOrSummary = {}) {
+  const b = buildTeacherDoubtBroadcast(stateOrSummary);
+  return `
+    <section id="teacher-doubt-broadcast-card" aria-label="Offline Teacher Doubt Resolution Broadcast"
+             style="padding:14px;border-radius:14px;background:#f0fdf4;border:1px solid #86efac;margin-top:14px;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="margin:0;font-size:1rem;color:#166534;">📢 कक्षा शंका समाधान प्रसारण / Teacher Doubt Broadcast (G94)</h3>
+      </header>
+      <p style="margin:0;font-size:0.86rem;color:#15803d;">
+        Chapter: <code>${b.chapterId}</code> • Doubts Resolved: <strong>${b.doubtsResolvedCount}</strong> • Bilingual Offline Clarification Ready
       </p>
     </section>
   `.trim();
