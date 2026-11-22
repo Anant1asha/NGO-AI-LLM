@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-11-18T22:33:11.718954+00:00",
+  "generated_at_utc": "2026-11-22T17:40:41.342354+00:00",
   "drive_cache_folder_id": "1B2Au3mwU-ZU1A1UTJtZfCVZrKdnV-2xI",
   "total_cached_assets": 49,
   "archive_file": "aasha_codebase_cache_pack.tar.gz",
-  "archive_bytes": 85525,
-  "archive_sha256": "49c3959b65e44a4088b9d50d15895acd31b9d1ecf73ddfae2e23a56af81bae75",
+  "archive_bytes": 90469,
+  "archive_sha256": "b113f012a178f13e5d9f41a66b5eda1902a1016be81a1b8c349a4ab19a6c1b96",
   "assets": [
     {
       "asset_id": "AVR-P301-HTML",
@@ -695,8 +695,8 @@
       "category": "lle_dictionary",
       "license": "AASHA-Apache-2.0",
       "local_rel_path": "vendor_cache\\defaults_expanded_v2.json",
-      "sha256": "f7edd5b46ff1e2cdce403e2ef888bdb1d77186086a564173c04190967b75197e",
-      "byte_size": 104835,
+      "sha256": "7431d70c42c79f60e335bf1ef814dce4fc657477a861d7ceeafbfdc50fc0f69c",
+      "byte_size": 109212,
       "tags": [
         "lle",
         "hindi",
@@ -754,8 +754,8 @@
       "category": "centre_server",
       "license": "AASHA-Apache-2.0",
       "local_rel_path": "vendor_cache\\server.js",
-      "sha256": "2bfdc522d48e4e8a4e92bc5efeb9773eac8747396d33a281fc44f776707572c0",
-      "byte_size": 109174,
+      "sha256": "b214e1644a168b73d743247436a880c1805b3edc8bc7ee437ed3eb5d21663fb7",
+      "byte_size": 135780,
       "tags": [
         "fastify",
         "sqlite",

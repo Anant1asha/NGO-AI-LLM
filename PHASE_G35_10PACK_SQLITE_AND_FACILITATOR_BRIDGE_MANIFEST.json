@@ -1,17 +1,17 @@
 {
   "phase": "G35",
   "title": "10-Pack Dual-Output SQLite Catalogue Export (10 Chapters + 1,129 WM) & Studio/PWA Facilitator Remediation Bridge",
-  "generated_at_utc": "2026-11-18T22:36:08.240027+00:00",
+  "generated_at_utc": "2026-11-22T17:42:43.204229+00:00",
   "sqlite_10pack_catalogue": {
     "db_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db",
     "gzip_rel_path": "Aasha-AI\\aasha-pipeline-with-master-json\\output\\g3_10chapter_pack\\teas_content.db.gz",
     "chapters_exported": 10,
     "tln_nodes_exported": 30,
-    "wm_vocabulary_exported": 1201,
-    "raw_db_bytes": 462848,
-    "gzip_db_bytes": 56444,
+    "wm_vocabulary_exported": 1236,
+    "raw_db_bytes": 475136,
+    "gzip_db_bytes": 57971,
     "under_20mib_ceiling": true,
-    "gzip_sha256": "bb7e237650bd876074a962b7721d66bc21912b2532fd7159267da626e4e965ab"
+    "gzip_sha256": "7b15b8a2d5c9ff3f44fa75a071de7e50dc1787342f54362c839c46a13f4f5a9b"
   },
   "facilitator_bridge": {
     "hotspotClusters": 2,
@@ -20,23 +20,23 @@
     "dashboardValid": true,
     "flashcardValid": true,
     "signedPackValid": true,
-    "integrityHash": "fnv1a32:63e1e812"
+    "integrityHash": "fnv1a32:d48c80f7"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
     "swarm_state": "CERTIFIED_CHECKPOINT",
     "qa_passed": 32,
     "qa_total": 32,
-    "size_bytes": 105063,
+    "size_bytes": 109652,
     "under_20mib": true,
-    "sha256": "0f28a423932a9b948544d2987db031db4767c835cf0b7713f1a3c4ba460803f1",
+    "sha256": "bb3054a2f0fb8a0a654e99aec098afb1a744fd9b2b819d132ab9468deb1a339c",
     "compounding_db": {
       "db_path": "aasha_operational.db",
-      "wm_rows_stored": 1201,
+      "wm_rows_stored": 1236,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 174
+      "build_cache_records": 185
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G36_MULTI_BOARD_NCVET_VOCATIONAL_SIMULATOR_AND_OFFLINE_OTA_DELTA_PACKAGER: Compile NCVET/PSSCIVE Vocational Role Simulators with Offline Delta-Pack OTA Verification."

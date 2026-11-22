@@ -1,17 +1,17 @@
 {
   "phase": "G34",
-  "generated_at_utc": "2026-11-18T22:35:49.707258+00:00",
+  "generated_at_utc": "2026-11-22T17:42:34.660428+00:00",
   "phonetic_lle_closure": {
-    "wm_total": 1201,
-    "phonetics_completed": 72,
+    "wm_total": 1236,
+    "phonetics_completed": 107,
     "wm_with_phonetic_pct": 100.0,
     "compounding_db": {
       "db_path": "aasha_operational.db",
-      "wm_rows_stored": 1201,
+      "wm_rows_stored": 1236,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 173
+      "build_cache_records": 184
     }
   },
   "g3_10chapter_pack_upgrade": {
@@ -24,7 +24,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105243,
+        "size_bytes": 109832,
         "under_20mib": true
       },
       {
@@ -33,7 +33,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105369,
+        "size_bytes": 109958,
         "under_20mib": true
       },
       {
@@ -42,7 +42,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105226,
+        "size_bytes": 109815,
         "under_20mib": true
       },
       {
@@ -51,7 +51,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105266,
+        "size_bytes": 109855,
         "under_20mib": true
       },
       {
@@ -60,7 +60,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105299,
+        "size_bytes": 109888,
         "under_20mib": true
       },
       {
@@ -69,7 +69,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105107,
+        "size_bytes": 109696,
         "under_20mib": true
       },
       {
@@ -78,7 +78,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105645,
+        "size_bytes": 110234,
         "under_20mib": true
       },
       {
@@ -87,7 +87,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105543,
+        "size_bytes": 110132,
         "under_20mib": true
       },
       {
@@ -96,7 +96,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105426,
+        "size_bytes": 110015,
         "under_20mib": true
       },
       {
@@ -105,7 +105,7 @@
         "swarm_state": "CERTIFIED_CHECKPOINT",
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 105344,
+        "size_bytes": 109933,
         "under_20mib": true
       }
     ]

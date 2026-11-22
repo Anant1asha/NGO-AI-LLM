@@ -1,8 +1,8 @@
 {
   "phase": "G33",
-  "generated_at_utc": "2026-11-18T22:33:42.974149+00:00",
+  "generated_at_utc": "2026-11-22T17:40:49.864486+00:00",
   "backlog_01_node_vm_lle": {
-    "wm_count": 1201,
+    "wm_count": 1236,
     "conn_count": 85,
     "sources_harvested": [
       {
@@ -18,19 +18,19 @@
     ],
     "compounding_db": {
       "db_path": "aasha_operational.db",
-      "wm_rows_stored": 1201,
+      "wm_rows_stored": 1236,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 172
+      "build_cache_records": 183
     }
   },
   "backlog_02_g3_fractions_upgrade": {
     "swarm_final_state": "CERTIFIED_CHECKPOINT",
     "qa_checks_passed": 32,
     "qa_checks_total": 32,
-    "size_bytes": 104639,
+    "size_bytes": 108841,
     "under_20mib_ceiling": true,
-    "sha256": "c92077e00b90112ff2774b4d0bbc736c8894663a7ce6b92c40f4282698e5ad5e"
+    "sha256": "716a311a5e4c4002859ae79402e5ac6cf1890cfe0269fc52193a7b20dbe980b8"
   }
 }
