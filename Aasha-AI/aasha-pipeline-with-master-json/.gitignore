@@ -30,12 +30,10 @@ work/*
 !jobs/.gitkeep
 !.llm_cache/.gitkeep
 
-# Output artifacts: ignore temporary/scratch files, allow tracked chapter packs & releases
-output/*.tmp
-output/*.log
-output/temp/*
-output/tmp/*
-!output/**/.gitkeep
+# Output artifacts: ignore ad-hoc pipeline test outputs, but track official release packs
+output/*
+!output/g*/
+!output/.gitkeep
 
 # Secrets
 .env
