@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import io
+import os
 import subprocess
 import sys
 import tempfile
@@ -14,7 +15,7 @@ PIPELINE_ROOT = REPO_ROOT / "Aasha-AI" / "aasha-pipeline-with-master-json"
 PIPELINE_SRC = PIPELINE_ROOT / "src"
 SRC_ROOT = REPO_ROOT / "src"
 
-for p in (str(PIPELINE_SRC), str(SRC_ROOT)):
+for p in (str(REPO_ROOT), str(PIPELINE_SRC), str(SRC_ROOT)):
     if p not in sys.path:
         sys.path.insert(0, p)
 if "aasha" in sys.modules and hasattr(sys.modules["aasha"], "__path__"):
@@ -29,7 +30,7 @@ from tests.test_learn_arena_e2e_pipeline import _make_minimal_pdf
 
 class TestPhaseGStudioWebCliLearnArenaBridge(unittest.TestCase):
     def test_cli_single_learn_arena_build(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
             tp = Path(tmp)
             pdf_path = tp / "Class7_Symmetry_Lab.pdf"
             _make_minimal_pdf(
@@ -49,17 +50,19 @@ class TestPhaseGStudioWebCliLearnArenaBridge(unittest.TestCase):
             cfg_yaml.write_text(
                 f"""
 pipeline:
-  template_path: "{PIPELINE_ROOT / 'template/v5-engine-template.html'}"
-  defaults_path: "{PIPELINE_ROOT / 'config/defaults_expanded_v2.json'}"
-  schema_path: "{PIPELINE_ROOT / 'schema/chapter_spec.schema.json'}"
-  qa_runner: "{PIPELINE_ROOT / 'qa/run_qa.js'}"
-  work_dir: "{tp / 'work'}"
-  output_dir: "{tp / 'out'}"
-  jobs_dir: "{tp / 'jobs'}"
+  template_path: "{(PIPELINE_ROOT / 'template/v5-engine-template.html').as_posix()}"
+  defaults_path: "{(PIPELINE_ROOT / 'config/defaults_expanded_v2.json').as_posix()}"
+  schema_path: "{(PIPELINE_ROOT / 'schema/chapter_spec.schema.json').as_posix()}"
+  qa_runner: "{(PIPELINE_ROOT / 'qa/run_qa.js').as_posix()}"
+  work_dir: "{(tp / 'work').as_posix()}"
+  output_dir: "{(tp / 'out').as_posix()}"
+  jobs_dir: "{(tp / 'jobs').as_posix()}"
 """,
                 encoding="utf-8",
             )
 
+            run_env = os.environ.copy()
+            run_env["PYTHONPATH"] = os.pathsep.join([str(REPO_ROOT), str(PIPELINE_SRC), str(SRC_ROOT)])
             proc = subprocess.run(
                 [
                     sys.executable,
@@ -78,7 +81,7 @@ pipeline:
                     "--config",
                     str(cfg_yaml),
                 ],
-                env={"PYTHONPATH": f"{PIPELINE_SRC}:{SRC_ROOT}"},
+                env=run_env,
                 capture_output=True,
                 text=True,
                 check=True,
@@ -88,7 +91,7 @@ pipeline:
             self.assertTrue((tp / "out" / "Class7_Symmetry_Lab_Arena.html").exists())
 
     def test_flask_web_upload_and_dual_preview_download_endpoints(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
             tp = Path(tmp)
             pdf_path = tp / "Class8_Sound_Waves.pdf"
             _make_minimal_pdf(
