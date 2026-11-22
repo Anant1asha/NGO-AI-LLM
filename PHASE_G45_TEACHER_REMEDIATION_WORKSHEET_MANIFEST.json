@@ -1,11 +1,11 @@
 {
   "schema_version": "7.0.0",
   "phase": "G45_OFFLINE_TEACHER_REMEDIATION_WORKSHEET_AND_COHORT_EXPORT",
-  "generated_at_utc": "2026-11-22T18:23:27.576519+00:00",
+  "generated_at_utc": "2026-11-22T18:58:20.941617+00:00",
   "remediation_worksheets": {
     "rel_path": "Aasha-AI\\experience_registry\\remediation_worksheets_v1.json",
     "total_worksheets": 3,
-    "sha256": "59d8895c123e11762b9ca909197935f13c0dc21c5f7e6623f7c099112b68e002"
+    "sha256": "04ae9da51653080fcdcbf56abc28d785385ba7e457396112e559fc3ba6c8385d"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/Teacher_Remediation_Worksheet_And_Cohort_Export_Hub_v5.html",

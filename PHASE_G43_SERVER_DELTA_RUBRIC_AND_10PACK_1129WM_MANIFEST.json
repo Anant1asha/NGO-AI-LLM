@@ -1,7 +1,7 @@
 {
   "schema_version": "7.0.0",
   "phase": "G43_SERVER_DELTA_RUBRIC_API_AND_10PACK_1129WM_UPGRADE",
-  "generated_at_utc": "2026-11-22T18:22:44.855090+00:00",
+  "generated_at_utc": "2026-11-22T18:57:33.741798+00:00",
   "ten_chapter_pack_upgrade": {
     "modules_upgraded": 30,
     "wm_entries_per_module": 1236,
@@ -24,9 +24,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108650,
+        "size_bytes": 137919,
         "under_20mib": true,
-        "sha256": "7d2f852186a3bdd22906ef18a3eadc7dd3c44c0d8173be0692afefbe8173a57b"
+        "sha256": "abb519bbd78a53f50b384b9bf4b6dd020c6604c0f11d762ba5e5ecc33e3dfc8c"
       },
       {
         "file": "NCERT-G06-MATH-CH07-FRACTIONS_Learning.html",
@@ -54,9 +54,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108776,
+        "size_bytes": 139770,
         "under_20mib": true,
-        "sha256": "0883778ad8938d34115b5cae853307cb6f454d586fd1bd72717ba0f2ca6b65db"
+        "sha256": "9d21b55711f717ba1eab6d6ee2fede41fb9e0e09ba5c359bbf8b3d8d313d4453"
       },
       {
         "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Learning.html",
@@ -84,9 +84,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108633,
+        "size_bytes": 137539,
         "under_20mib": true,
-        "sha256": "bcc8a2c8ee33ac7bc6db2dc2e0637e66aad4379a5f2780f5d223e4ee28ffc18a"
+        "sha256": "6bb6bc2c4002996279d7f5c31ba6f08ee1ea8e976a08dcf487530d398118c16d"
       },
       {
         "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Learning.html",
@@ -114,9 +114,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108673,
+        "size_bytes": 136532,
         "under_20mib": true,
-        "sha256": "f258bc9201e98b3eb0d1705f19925c1ae0b49790203e51c96b7503591d4aeaac"
+        "sha256": "7e8ea7a2613a772a49bb2ac45a68386067e9250e645605ae2954960a4a16825f"
       },
       {
         "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
@@ -144,9 +144,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108706,
+        "size_bytes": 139459,
         "under_20mib": true,
-        "sha256": "2480c51673271643ebbdf32471191c8dac88d687389448b2c182ee8fcddd177d"
+        "sha256": "2f4f98041377a32188c939b10b6500e6e041923d0e921598dd608e42a557412c"
       },
       {
         "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Learning.html",
@@ -174,9 +174,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108514,
+        "size_bytes": 138390,
         "under_20mib": true,
-        "sha256": "327616ba36f05144af6927c39bdb6313c705cd4075399a27fe71f52efdabdfad"
+        "sha256": "bd0d8d26611168ec0493bf97b053587a2259dcf670b77b31b49e494ee711b5b8"
       },
       {
         "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Learning.html",
@@ -204,9 +204,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 109052,
+        "size_bytes": 138893,
         "under_20mib": true,
-        "sha256": "d53046b4d66e6575a2714977580721728d90d6578ed3f285159577a1ac60adec"
+        "sha256": "eb290fad053e01ad306a6a2fe6f9e683c43bbfb276d964c49ce37515bc9bbd50"
       },
       {
         "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Learning.html",
@@ -234,9 +234,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108950,
+        "size_bytes": 136514,
         "under_20mib": true,
-        "sha256": "e15180b2c6302a13fd2ce4dcbdbd218e1af62af6c44307a3f80cd04836fece7a"
+        "sha256": "48d036ec10b11f8b9303bf3c55dc66b0e7626695a0a8d486e17431851b3ecce3"
       },
       {
         "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html",
@@ -264,9 +264,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108833,
+        "size_bytes": 140448,
         "under_20mib": true,
-        "sha256": "0b45ab441aa0ec74ea729278b03867b6a499a6e42dc9a4d870cb28a15baaf9d4"
+        "sha256": "21d4b91fb63f9a64ff8d1da207031f9929e611bf01d687d5c5165e66ac4e0433"
       },
       {
         "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html",
@@ -294,9 +294,9 @@
         "conn_entries": 85,
         "qa_passed": 32,
         "qa_total": 32,
-        "size_bytes": 108751,
+        "size_bytes": 138879,
         "under_20mib": true,
-        "sha256": "d8ec15a52e1cbfdfaa5d21b80ceabb57071d21691989ce089ffc6d62468795a5"
+        "sha256": "a7d50977e610dd1de6405136c28d599cb5a3dd9aa18d5d76cf2c82c7464ad706"
       },
       {
         "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html",

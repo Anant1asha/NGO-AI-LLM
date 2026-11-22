@@ -25,12 +25,17 @@ Thumbs.db
 
 # Project artifacts
 jobs/*
-output/*
 .llm_cache/*
 work/*
 !jobs/.gitkeep
-!output/.gitkeep
 !.llm_cache/.gitkeep
+
+# Output artifacts: ignore temporary/scratch files, allow tracked chapter packs & releases
+output/*.tmp
+output/*.log
+output/temp/*
+output/tmp/*
+!output/**/.gitkeep
 
 # Secrets
 .env
