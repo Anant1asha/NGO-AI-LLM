@@ -2,7 +2,7 @@
   "schema_version": "6.0.0",
   "phase": "G39_GOLDEN_MASTER_RC",
   "title": "End-to-End 17-Module QA Regression Gate & December 31, 2026 MVP Golden Master Release Candidate Seal",
-  "generated_at_utc": "2026-11-18T23:04:59.475453+00:00",
+  "generated_at_utc": "2026-11-22T17:52:40.620608+00:00",
   "regression_matrix": {
     "modules_audited": 43,
     "all_passed_28_of_28": true,
@@ -14,9 +14,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 114085,
+        "size_bytes": 118287,
         "under_20mib": true,
-        "sha256": "61ec9e5be4b578e9a98fd34dd93ae1704b5e9e0f8ddc38db4bc10939c4147fd6"
+        "sha256": "0cf0c0d189e783342f0bd65290376d0a8ad2097ce9107530e36953bdd7b76b78"
       },
       {
         "file": "Field_Pilot_100Learner_TEAS_Audit_Hub_v5.html",
@@ -24,9 +24,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105109,
+        "size_bytes": 109698,
         "under_20mib": true,
-        "sha256": "0dfd2d3752054c7e08ead57564574071dee18e0688a6678c353d48ba03687f00"
+        "sha256": "749f16b290a598781a68539f20836d2f47ff4e1f73185f12b187f18819fb1982"
       },
       {
         "file": "MVP_Release_Candidate_G37_Certification_Hub_v5.html",
@@ -34,9 +34,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105287,
+        "size_bytes": 109876,
         "under_20mib": true,
-        "sha256": "5669b29a9ddd62b2b08e8c24c97d1d407fa9cd313566debac8213806d5eff061"
+        "sha256": "139f5c56ab767c32aec77eb51d5b3057ddf73d18a1b8183f23061502a48fafe5"
       },
       {
         "file": "TenPack_SQLite_Studio_Facilitator_Bridge_Hub_v5.html",
@@ -44,9 +44,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105063,
+        "size_bytes": 109652,
         "under_20mib": true,
-        "sha256": "9f17084db1e95cf1926a2240451b3bba995e18046bdf91b3caef1bfe077f925c"
+        "sha256": "bb3054a2f0fb8a0a654e99aec098afb1a744fd9b2b819d132ab9468deb1a339c"
       },
       {
         "file": "NCVET_PSSCIVE_L3_IT_DataEntry_Arena.html",
@@ -74,9 +74,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105278,
+        "size_bytes": 109867,
         "under_20mib": true,
-        "sha256": "d64f7db91f5935414c4a3f6905d48a2e07b403919c5b284f78309ed544e3c142"
+        "sha256": "757b28b153a7b7defcbdd9519d0e5b4e89e07497a0bd023964ea54586a2c5662"
       },
       {
         "file": "NCVET_PSSCIVE_L4_Agri_SolarDrip_Arena.html",
@@ -104,9 +104,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105162,
+        "size_bytes": 109751,
         "under_20mib": true,
-        "sha256": "a5eadc2e80e6a3e18a4393de5723e17352432f882e7947f1426b2fe928e04842"
+        "sha256": "b64c35c0d0aca2e6f757618631310fe5c21c7b0ce3a782c05e40bfcfcd618025"
       },
       {
         "file": "NCVET_PSSCIVE_L4_Food_SolarDehydrator_Arena.html",
@@ -134,9 +134,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105135,
+        "size_bytes": 109724,
         "under_20mib": true,
-        "sha256": "ef6ccde3faf37e5ddc207a10a5887bad1bc9e1d415d0e455a0d407bed1636d8e"
+        "sha256": "7b312c2a117e1375d268defe706798a7be1f64bfee2c99c99ff9feaaaeb1bf54"
       },
       {
         "file": "NCERT-G06-MATH-CH07-FRACTIONS_Arena.html",
@@ -154,9 +154,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105243,
+        "size_bytes": 109832,
         "under_20mib": true,
-        "sha256": "c6bde6ab1e46f2c5b28e96116f927d0544455128ba88dda64fe55bb0acbe60d1"
+        "sha256": "bf57dc028bb445ea327e8d59a840f37ab3d1724c8d214b12a534303cd5ecac0f"
       },
       {
         "file": "NCERT-G06-MATH-CH07-FRACTIONS_Learning.html",
@@ -184,9 +184,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105369,
+        "size_bytes": 109958,
         "under_20mib": true,
-        "sha256": "0e0d1f8538ea7d4b91acc28f9cf610b44aebfdbfce3efed3f11d7e52acfcb833"
+        "sha256": "d13187fb13a4744117115a1fdcb651d4ec8290bc0f64a83565b92175414f2407"
       },
       {
         "file": "NCERT-G07-MATH-CH11-PERIMETER-AREA_Learning.html",
@@ -214,9 +214,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105226,
+        "size_bytes": 109815,
         "under_20mib": true,
-        "sha256": "7067d9aac215ba59476580b454c49f4f2450f225b0561d2dbbdb0c1f6a5f5eb5"
+        "sha256": "bffbe744495ce973026c11683a23790eb969dd0d2fcb32299e872832ee0e0499"
       },
       {
         "file": "NCERT-G08-MATH-CH08-COMPARING-QUANTITIES_Learning.html",
@@ -244,9 +244,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105266,
+        "size_bytes": 109855,
         "under_20mib": true,
-        "sha256": "1f01f20733a4ee832a43a044c945df2dfcb0cdc86b2890b0aa9450d5ee5a3cee"
+        "sha256": "2dd1d52a0f08662dbebc767849ea77ec348496130a592c4a5cd55ab6f12fbcb6"
       },
       {
         "file": "NCERT-G09-SCI-CH08-FORCE-MOTION_Learning.html",
@@ -274,9 +274,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105299,
+        "size_bytes": 109888,
         "under_20mib": true,
-        "sha256": "add70c27b705724ebe3e88ed8491a092e06efbdfb59ef8426b0d528d640fbadd"
+        "sha256": "4f4c3aa8a56033b83743da259070bb485d179924895f3b5680b967c11e44fce3"
       },
       {
         "file": "NCERT-G09-SCI-CH10-WORK-ENERGY_Learning.html",
@@ -304,9 +304,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105107,
+        "size_bytes": 109696,
         "under_20mib": true,
-        "sha256": "fb159493671c1e08cb6dd11e6522a381213560494394b26c82888a1a331306cb"
+        "sha256": "3a527b568a44759480de28a8a2d2cad342bdf1ce706d4ac55d836d9ac6f8cd27"
       },
       {
         "file": "NCERT-G10-MATH-CH02-POLYNOMIALS_Learning.html",
@@ -334,9 +334,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105645,
+        "size_bytes": 110234,
         "under_20mib": true,
-        "sha256": "72cf0bd2492c437c5185cb14752f9f0689139681728237dd12b481c4979ca9c8"
+        "sha256": "7be821cbd471e26c094fa713adae3337a618b38478e9320a0155adeb40d228a6"
       },
       {
         "file": "NCERT-G10-SCI-CH06-LIFE-PROCESSES-PHOTOSYNTHESIS_Learning.html",
@@ -364,9 +364,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105543,
+        "size_bytes": 110132,
         "under_20mib": true,
-        "sha256": "29a0788f10c81b43411d2d6da0e208d4f5b2ea5e6339f55033339c0a81b03a5a"
+        "sha256": "1b432aaaa6a704cd42ed240a9e0933e05251b8bf28d14c6ee3a2db0fe6f2412f"
       },
       {
         "file": "NCERT-G10-SCI-CH12-ELECTRICITY-OHMS-LAW_Learning.html",
@@ -394,9 +394,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105426,
+        "size_bytes": 110015,
         "under_20mib": true,
-        "sha256": "627fe9cb408e32ad0556b12c4cfc1b68f288966f65e47f02e124b88f105f19a8"
+        "sha256": "4e86781f56325db3329099edc8e4fcda4911cb421cd64c53402c09ab49fb1141"
       },
       {
         "file": "NCVET-PSSCIVE-L3-IT-DIGITAL-VILLAGE-LEDGER_Learning.html",
@@ -424,9 +424,9 @@
         "passed": true,
         "checks_passed": 32,
         "checks_total": 32,
-        "size_bytes": 105344,
+        "size_bytes": 109933,
         "under_20mib": true,
-        "sha256": "6549709a72625d51c76a513debfa979dea4228eb95798926d8ea264cefb124a1"
+        "sha256": "f68256d516939699ac5917a6d9aa72e2298304a33d0bdb5b6f81af8f9ddfb000"
       },
       {
         "file": "NCVET-PSSCIVE-L4-AGRI-PRECISION-DRIP-JAL-SEVA_Learning.html",
@@ -445,16 +445,16 @@
     "swarm_state": "CERTIFIED_CHECKPOINT",
     "qa_passed": 32,
     "qa_total": 32,
-    "size_bytes": 104894,
+    "size_bytes": 109483,
     "under_20mib": true,
-    "sha256": "48a29352667f6ac5e3ffd604b815b3082e9c46b7f1a160ed8d2c4fe1ccd44943",
+    "sha256": "21f035d547d6df0840477e35b07d3a0d0e4a4aaa742da0deb1b980a7e2d2b613",
     "compounding_db": {
       "db_path": "aasha_operational.db",
-      "wm_rows_stored": 1201,
+      "wm_rows_stored": 1236,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 180
+      "build_cache_records": 188
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G40_CONTINUOUS_FIELD_TELEMETRY_SENTINEL_AND_TEACHER_AUTHORING_PACK: Execute Continuous Offline Field Telemetry Sentinel & Teacher Authoring Template Pack."

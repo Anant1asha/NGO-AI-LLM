@@ -1,28 +1,28 @@
 {
   "phase": "G37",
   "title": "Experience Registry Sync (13 Certified Chapters + 21 AVR), DOM Smoke Gate & Dec 31 2026 MVP Release Candidate Certification",
-  "generated_at_utc": "2026-11-18T22:40:39.768086+00:00",
+  "generated_at_utc": "2026-11-22T17:45:14.711148+00:00",
   "experience_registry_sync": {
     "certified_chapters_count": 13,
     "all_13_chapters_qa_passed": true,
     "certified_avr_count": 21,
-    "registry_sha256": "d4be5714730b8c6506b5389fda2a128f03d4381f4a6d6b3169d04451ff7a4eb5"
+    "registry_sha256": "3722e2edf64e8577a9133d03f6d9189bee0bbe47b414c0a81417a3e4b36b6264"
   },
   "html5_hub": {
     "html_rel_path": "AASHA_Visual_Mass_Harvest_Phase3/MVP_Release_Candidate_G37_Certification_Hub_v5.html",
     "swarm_state": "CERTIFIED_CHECKPOINT",
     "qa_passed": 32,
     "qa_total": 32,
-    "size_bytes": 105287,
+    "size_bytes": 109876,
     "under_20mib": true,
-    "sha256": "5669b29a9ddd62b2b08e8c24c97d1d407fa9cd313566debac8213806d5eff061",
+    "sha256": "139f5c56ab767c32aec77eb51d5b3057ddf73d18a1b8183f23061502a48fafe5",
     "compounding_db": {
       "db_path": "aasha_operational.db",
-      "wm_rows_stored": 1201,
+      "wm_rows_stored": 1236,
       "conn_rows_stored": 85,
       "reusable_mechanics_stored": 5,
       "open_source_foundations_stored": 7,
-      "build_cache_records": 175
+      "build_cache_records": 186
     }
   },
   "next_focus_unit": "PHASE_G_CHUNK_G38_RURAL_COHORT_FIELD_PILOT_SIMULATION_AND_TEAS_LEDGER_AUDIT: Simulate 100-Learner Multi-Centre Offline Field Pilot, Cohort Order Pack Reconciliation & TEAS Audit."
