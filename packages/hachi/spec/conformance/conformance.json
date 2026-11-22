@@ -1,0 +1,49 @@
+{
+  "fixtures": [
+    {
+      "file": "fixtures/01-minimal.og",
+      "assertions": [
+        {"path": "meta.title", "equals": "Minimal Skill"},
+        {"path": "meta.version", "equals": "1.0.0"},
+        {"path": "meta.author", "equals": "conformance-suite"},
+        {"path": "meta.scope", "equals": "all"},
+        {"path": "nodes[0].name", "equals": "hello"},
+        {"path": "nodes[0].role", "equals": "skill"},
+        {"path": "nodes[0].scope", "equals": "all"},
+        {"path": "nodes[0].dense", "contains": "greet"},
+        {"path": "nodes[0].full", "contains": "welcome"},
+        {"path": "index[0].node_id", "equals": "hello"},
+        {"path": "index[0].node_type", "equals": "skill"},
+        {"path": "index[0].scope", "equals": "all"}
+      ]
+    },
+    {
+      "file": "fixtures/02-full-node.og",
+      "assertions": [
+        {"path": "meta.title", "equals": "Full Node Fixture"},
+        {"path": "nodes[0].name", "equals": "full_example"},
+        {"path": "nodes[0].dense", "contains": "conformance"},
+        {"path": "nodes[0].full", "contains": "exercises every tag type"},
+        {"path": "nodes[0].warning", "contains": "conformance test"},
+        {"path": "nodes[0].note", "contains": "optional block"},
+        {"path": "nodes[0].example", "contains": "conformance check"},
+        {"path": "nodes[0].traverse.priority", "equals": "high"},
+        {"path": "nodes[0].requires[0]", "equals": "hello"},
+        {"path": "nodes[0].steps[0]", "contains": "dense"}
+      ]
+    },
+    {
+      "file": "fixtures/03-scoped.og",
+      "assertions": [
+        {"path": "meta.title", "equals": "Scoped Skill Fixture"},
+        {"path": "nodes[0].name", "equals": "public_action"},
+        {"path": "nodes[0].scope", "equals": "all"},
+        {"path": "nodes[1].name", "equals": "restricted_step"},
+        {"path": "nodes[1].scope", "equals": "orchestrator"},
+        {"path": "nodes[1].dense", "contains": "orchestrator"},
+        {"path": "index[0].scope", "equals": "all"},
+        {"path": "index[1].scope", "equals": "orchestrator"}
+      ]
+    }
+  ]
+}

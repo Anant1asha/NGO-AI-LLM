@@ -1,0 +1,60 @@
+services:
+  hachi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hachi
+    ports:
+      - "8787:8787"
+    restart: unless-stopped
+    secrets:
+      - gateway_api_token
+    environment:
+      HACHI_GATEWAY_API_TOKEN_FILE: /run/secrets/gateway_api_token
+    # Named volumes (not host bind mounts) target the non-root user's home: a named volume
+    # initialises from the image dir it covers, inheriting the `hachi` ownership the
+    # Dockerfile sets, so uid 10001 can write. The paths match platformdirs for that user.
+    volumes:
+      - hachi-config:/home/hachi/.config/hachi
+      - hachi-data:/home/hachi/.local/share/hachi
+      - hachi-state:/home/hachi/.local/state/hachi
+      - hachi-cache:/home/hachi/.cache/hachi
+    command: ["hachi", "gateway", "--host", "0.0.0.0", "--port", "8787", "--runtime"]
+    healthcheck:
+      # Hit the unauthenticated /readiness endpoint; 200 = ready, 503 = not ready.
+      # urlopen raises on non-2xx or connection-refused (exit non-zero = unhealthy);
+      # returns normally on HTTP 200 (exit 0 = healthy). Uses stdlib only — curl is
+      # not present in python:3.12-slim.
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8787/readiness', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hachi-frontend
+    depends_on:
+      hachi:
+        condition: service_healthy
+    secrets:
+      - gateway_api_token
+    ports:
+      - "5173:5173"
+    restart: unless-stopped
+    environment:
+      HACHI_GATEWAY_BASE_URL: http://hachi:8787
+      HACHI_GATEWAY_AUTH_HEADER_FILE: /run/secrets/gateway_api_token
+
+volumes:
+  hachi-config:
+  hachi-data:
+  hachi-state:
+  hachi-cache:
+
+secrets:
+  gateway_api_token:
+    file: ./.hachi/gateway_api_token.txt

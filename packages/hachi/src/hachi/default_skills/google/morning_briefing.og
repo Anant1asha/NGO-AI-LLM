@@ -1,0 +1,24 @@
+::meta
+  title: Morning Briefing
+  version: 1.0.0
+  domain: productivity|scheduling|email|weather
+
+::index
+  # node-id          | type  | scope | conf | keywords
+  morning_briefing    | skill | all   | 1.0  | morning, briefing, start day, daily summary, schedule, daily digest, calendar
+
+::node[morning_briefing]
+->[:role=skill]
+->[:requires=core_weather]
+->[:keywords=morning, briefing, start day, daily summary, schedule, daily digest, calendar]
+
+::dense
+Executive morning brief: Calendar agenda + Gmail VIPs + weather. Synthesized daily digest.
+
+::steps
+1. Call the native Google Calendar tool to fetch the user's agenda for the current day.
+2. Call the native Gmail tool to search the inbox for unread emails received in the last 12 hours from VIPs or containing keywords like "urgent", "blocker", or "ASAP".
+3. Call the `fetch_weather` tool (from the general skills) to get the local forecast.
+4. Synthesize all retrieved data into a clean, highly formatted Markdown document.
+5. Present the Daily Briefing to the user, highlighting immediate action items at the top.
+6. Call `core_suspend_workflow` with the reason: "Waiting for the user to review the morning briefing."

@@ -1,0 +1,27 @@
+::meta
+  title: Weekly Review
+  version: 1.0.0
+  domain: notion|productivity|retrospective
+
+::index
+  # node-id       | type  | scope | conf | keywords
+  weekly_review    | skill | all   | 1.0  | weekly review, progress, productivity, accomplishments, notion, retrospective, weekly wins
+
+::node[weekly_review]
+->[:role=skill]
+->[:requires=notion_brain_dump]
+->[:keywords=weekly review, progress, productivity, accomplishments, notion, retrospective, weekly wins]
+
+::dense
+Synthesizes completed Notion tasks into a weekly wins report; optionally posts to Slack.
+
+::steps
+1. Request the ID of the user's main Tasks database in Notion.
+2. Call `notion_database_query` to fetch all tasks marked with status "Done" within the last 7 days.
+3. Synthesize the completed tasks into a professional, categorized Markdown document (e.g., "Engineering Wins", "Admin", "Planning").
+4. Call `notion_page_create` to save this document into the user's "Journal" or "Reviews" Notion database.
+5. Ask the user: "Would you like me to DM this summary to your manager or team channel on Slack?"
+6. If the user says yes, use the Slack tool to dispatch the summary.
+
+::assertions
+assert database_id != "" "A Notion database ID is required to fetch completed tasks."

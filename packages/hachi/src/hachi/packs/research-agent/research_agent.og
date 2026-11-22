@@ -1,0 +1,76 @@
+::meta
+  title: Research Agent
+  version: 1.0.0
+  domain: research|knowledge|web|memory
+
+::index
+  # node-id                    | type  | scope | conf | keywords
+  research_agent                | skill | all   | 1.0  | research, investigate, web search, summarize, deep research, look up
+  research_agent_sources        | skill | all   | 0.9  | source tracking, artifact node, evidence edge, citation, reference
+  research_agent_synthesize     | skill | all   | 0.9  | synthesis, summarize findings, write report, conclusions, research report
+  research_agent_background_job | skill | all   | 0.8  | long-running research, background job, async research, durable queue
+
+::node[research_agent]
+->[:role=skill]
+->[:traverse=priority:high]
+->[:requires=research_agent_sources]
+->[:requires=research_agent_synthesize]
+->[:keywords=research, investigate, web search, summarize, deep research, look up, find info]
+
+::traverse
+  priority    = high
+  entry       = research_agent
+  depth-limit = 3
+
+::dense
+Deep-research assistant: searches web, summarizes sources, writes artifact nodes with evidence edges.
+
+::steps
+1. Clarify the research question and depth (quick summary vs. deep dive).
+2. Use browse_web to search for sources; collect ≥3 primary sources for deep dives.
+3. For each source, run research_agent_sources to record the artifact node.
+4. After collecting sources, run research_agent_synthesize to write a structured report.
+5. Write the findings as a fact memory node via memory_write_node.
+
+::assertions
+assert browse_web.read "Research agent requires browse_web.read scope."
+
+::node[research_agent_sources]
+->[:role=skill]
+->[:keywords=source tracking, artifact node, evidence edge, citation, reference, source material]
+
+::dense
+Record a researched source as an artifact memory node with an evidence edge to the research topic.
+
+::full
+Use memory_write_node to record the source:
+- role: artifact
+- edges: ["->[:evidence=<source-url>]", "->[:about=<topic-slug>]"]
+- dense: One-sentence summary of the source's key finding.
+
+::node[research_agent_synthesize]
+->[:role=skill]
+->[:keywords=synthesis, summarize findings, write report, conclusions, research report, summary]
+
+::dense
+Synthesize collected sources into a structured research report with key findings and caveats.
+
+::full
+Structure the report:
+1. Summary (2-3 sentences): direct answer to the research question.
+2. Sources (bullets): each source artifact with its key finding.
+3. Gaps: what wasn't found or needs follow-up.
+Write the final report as a fact memory node with role=artifact and edges back to source artifacts.
+
+::node[research_agent_background_job]
+->[:role=skill]
+->[:keywords=long-running research, background job, async research, durable queue]
+
+::dense
+Run deep research as a background job for topics requiring extensive web browsing.
+
+::full
+Queue a long-running research task:
+1. Use schedule_task to queue the research with estimated_cost <= $0.25.
+2. On job completion, the agent posts a Telegram notification with a 3-sentence summary.
+3. Full report is written to memory as an artifact node.

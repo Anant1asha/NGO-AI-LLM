@@ -1,0 +1,32 @@
+::meta
+  title: Core Universal Translator
+  version: 1.0.0
+  domain: language|translation|localization
+
+::index
+  # node-id         | type  | scope | conf | keywords
+  core_translator    | skill | all   | 1.0  | translate, language, translation, polyglot, mymemory, localization, interpret
+
+::node[core_translator]
+->[:role=skill]
+->[:keywords=translate, language, translation, polyglot, mymemory, localization, interpret]
+
+::api[translate_text]
+method=GET
+endpoint=https://api.mymemory.translated.net/get?q={text}&langpair={source}|{target}
+schema={"text": "string", "source": "string", "target": "string"}
+description=Translates text from a source language to a target language. Use 2-letter ISO language codes (e.g., 'en', 'fr', 'es', 'ja').
+
+::dense
+Universal translator via MyMemory. Always use for translations — higher fidelity than LLM alone.
+
+::steps
+1. Extract the text to be translated, the source language, and the target language from the user's request.
+2. If the source language is unknown, attempt to infer it and convert it to a 2-letter ISO code (e.g., 'en').
+3. Call `translate_text` with the correctly formatted `source` and `target` codes (e.g., "en" and "es").
+4. Extract the `translatedText` from the `responseData` object in the JSON payload.
+5. Present the translation elegantly to the user.
+
+::assertions
+assert text != "" "Text must be provided for translation."
+assert source != target "Source and target languages must be different."

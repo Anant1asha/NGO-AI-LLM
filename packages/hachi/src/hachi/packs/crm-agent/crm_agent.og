@@ -1,0 +1,70 @@
+::meta
+  title: CRM Agent
+  version: 1.0.0
+  domain: contacts|relationships|memory|communication
+
+::index
+  # node-id                 | type  | scope | conf | keywords
+  crm_agent                  | skill | all   | 1.0  | crm, contacts, relationship, catch me up, who is, track contact
+  crm_agent_capture          | skill | all   | 0.9  | capture interaction, log meeting, remember conversation, interaction log
+  crm_agent_resume_pack      | skill | all   | 0.9  | catch me up on, who is X, context pack, person history, relationship context
+  crm_agent_enrich           | skill | all   | 0.8  | enrich contact, find email history, people node, involves edge
+
+::node[crm_agent]
+->[:role=skill]
+->[:traverse=priority:high]
+->[:requires=crm_agent_capture]
+->[:requires=crm_agent_resume_pack]
+->[:keywords=crm, contacts, relationship, catch me up, who is, track contact, contact management]
+
+::traverse
+  priority    = high
+  entry       = crm_agent
+  depth-limit = 3
+
+::dense
+Contact tracker: person nodes, interaction log, "catch me up on X" resume packs.
+
+::steps
+1. On "catch me up on <person>", run crm_agent_resume_pack to build a context pack from memory.
+2. After any meeting or email exchange, run crm_agent_capture to log the interaction.
+3. Use crm_agent_enrich to pull additional context from Gmail history.
+
+::node[crm_agent_capture]
+->[:role=skill]
+->[:keywords=capture interaction, log meeting, remember conversation, interaction log, record meeting]
+
+::dense
+Log an interaction with a contact as a person memory node with an episode edge.
+
+::full
+Use memory_write_node to write an episode node:
+- role: event
+- edges: ["->[:involves=<person-slug>]", "->[:about=<topic-slug>]"]
+- dense: One-sentence summary of the interaction (date, key outcome).
+Also update the person node: role=person, dense updated with latest known role/context.
+
+::node[crm_agent_resume_pack]
+->[:role=skill]
+->[:keywords=catch me up on, who is X, context pack, person history, relationship context, last contact]
+
+::dense
+Build a memory resume pack for a named person: recent interactions, role, topics discussed.
+
+::full
+Steps:
+1. Search memory for person slug via memory_search "<person-name>".
+2. Walk Stage-C graph from the person node (involves edges → related topics, decisions).
+3. Return a resume pack: person summary, last 3 interactions, open topics.
+
+::node[crm_agent_enrich]
+->[:role=skill]
+->[:keywords=enrich contact, find email history, people node, involves edge, gmail history]
+
+::dense
+Enrich a contact's person node with Gmail interaction history (last 5 threads).
+
+::full
+1. Search Gmail for threads from/to <email> (last 30 days).
+2. For each thread, extract subject + outcome (1 sentence).
+3. Append each as an interaction episode node linked to the person node.

@@ -1,0 +1,414 @@
+/* interactive.css — CSS-driven hover/focus states for interactive elements that
+   previously tracked hover via useState + onMouseEnter/onMouseLeave. Replacing
+   the JS toggle with a real :hover pseudo-class means the state also applies
+   correctly to focus-visible keyboard users and doesn't need a render per
+   pointer move. Where an element also has an active/selected data state, that
+   is expressed via [aria-current="page"] or a class so hover never overrides it. */
+
+/* Sidebar / settings nav items: active wins over hover */
+.hachi-nav-item:hover {
+  background: var(--hachi-cream);
+}
+.hachi-nav-item[aria-current='page'],
+.hachi-nav-item[aria-current='page']:hover {
+  background: var(--hachi-brand-tint);
+}
+
+.hachi-settings-navbtn:hover {
+  background: var(--hachi-cream);
+}
+.hachi-settings-navbtn[aria-current='page'],
+.hachi-settings-navbtn[aria-current='page']:hover {
+  background: var(--hachi-brand-tint);
+}
+
+/* Sidebar search / palette button */
+.hachi-sidebar-search-btn {
+  background: var(--hachi-canvas);
+}
+.hachi-sidebar-search-btn:hover {
+  background: var(--hachi-cream);
+}
+
+/* Sidebar operator-view toggle row */
+.hachi-sidebar-operator-toggle:hover {
+  background: var(--hachi-cream);
+}
+
+/* Budget widget */
+.hachi-budget-widget {
+  border: 0.5px solid var(--hachi-line);
+}
+.hachi-budget-widget:hover {
+  border-color: #d3c8b4;
+}
+
+/* Shared clickable-card treatment (ui/Card, ui/RunCard) */
+.hachi-card-clickable:hover {
+  border-color: var(--hachi-brand);
+}
+
+/* ui/Button variants */
+.hachi-btn-primary {
+  background: var(--hachi-brand-hover);
+}
+.hachi-btn-primary:hover:not(:disabled) {
+  background: var(--hachi-brand-active);
+}
+
+.hachi-btn-secondary {
+  background: transparent;
+}
+.hachi-btn-secondary:hover:not(:disabled) {
+  background: var(--hachi-trust-tint);
+}
+
+.hachi-btn-ghost {
+  color: var(--text-muted);
+}
+.hachi-btn-ghost:hover:not(:disabled) {
+  color: var(--text-default);
+}
+
+.hachi-btn-danger {
+  background: var(--hachi-danger);
+}
+.hachi-btn-danger:hover:not(:disabled) {
+  background: #a83226;
+}
+
+/* Generic per-instance hover helpers: the caller supplies the hover treatment
+   via CSS custom properties, real :hover does the toggling. */
+.hachi-ghost-icon-btn:hover {
+  background: var(--hover-bg);
+  color: var(--hover-color);
+}
+
+.hachi-text-btn:hover:not(:disabled) {
+  background: var(--hover-bg, initial);
+  color: var(--hover-color, inherit);
+  border-color: var(--hover-border-color, inherit);
+}
+
+/* Review-screen thumbs up/down: base + hover only apply when not selected —
+   an inline `background` (set when aria-pressed) always wins over these since
+   inline style specificity beats any class-based rule, hover included. */
+.hachi-rating-btn {
+  background: var(--hachi-canvas);
+}
+.hachi-rating-btn:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-setup-btn:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-chip-remove-btn:hover {
+  color: var(--hachi-danger);
+}
+
+/* Skills screen */
+/* Base required so :hover can override it (BB-76). */
+.hachi-ghost-icon-btn-bg {
+  background: transparent;
+}
+.hachi-ghost-icon-btn-bg:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-underline-on-hover:hover {
+  text-decoration: underline;
+}
+
+.hachi-kennel-add-btn {
+  background: var(--hachi-canvas);
+}
+.hachi-kennel-add-btn:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-browse-kennel-btn {
+  background: transparent;
+}
+.hachi-browse-kennel-btn:hover {
+  background: var(--hachi-trust-tint);
+}
+
+/* Integrations screen */
+.hachi-int-primary-btn:hover:not(:disabled) {
+  background: var(--hachi-cream);
+}
+
+.hachi-disconnect-btn:hover:not(:disabled) {
+  background: var(--hachi-cream);
+}
+
+.hachi-cancel-btn {
+  background: transparent;
+}
+.hachi-cancel-btn:hover:not(:disabled) {
+  background: var(--hachi-trust-tint);
+}
+
+.hachi-mcp-submit-btn {
+  background: var(--hachi-brand-hover);
+  color: var(--hachi-canvas);
+}
+.hachi-mcp-submit-btn:disabled {
+  background: var(--hachi-muted);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.hachi-mcp-submit-btn:hover:not(:disabled) {
+  background: var(--hachi-brand-active);
+}
+
+/* OG explorer */
+.hachi-og-tree-row:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-og-chip:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-spend-cap-display-btn:hover {
+  border-color: var(--hachi-trust);
+}
+
+/* Run screen */
+.hachi-stop-run-btn:hover {
+  background: var(--hachi-trust-tint);
+}
+
+.hachi-open-conversation-btn:hover {
+  opacity: 0.85;
+}
+
+/* LeashPrompt (in-context permission ask) */
+/* Resting backgrounds live in the class so :hover can override them (BB-76). */
+.hachi-leash-decline-btn {
+  background: transparent;
+}
+.hachi-leash-decline-btn:hover {
+  background: var(--hachi-trust-tint, #E4EAF3);
+}
+
+.hachi-leash-allow-once-btn {
+  background: transparent;
+}
+.hachi-leash-allow-once-btn:hover {
+  background: var(--hachi-brand-tint, #FBE7E0);
+}
+
+/* High-risk Decline: solid trust is the dominant safe-default action. */
+.hachi-leash-decline-high-btn {
+  background: var(--hachi-trust);
+  color: var(--hachi-canvas);
+}
+.hachi-leash-decline-high-btn:hover {
+  opacity: 0.9;
+}
+
+/* Ghost tertiary next to outlined "Decline" and solid "Allow once" — the hairline
+ * border carries it, so the fill is the card beneath. Base rule required: without
+ * it the UA paints ButtonFace grey. See BB-76. */
+.hachi-leash-always-btn {
+  background: transparent;
+}
+
+.hachi-leash-always-btn:hover {
+  background: var(--hachi-cream, #F3E9D2);
+}
+
+/* SetupWizard */
+.hachi-safety-option {
+  border: 1px solid var(--hachi-line);
+}
+.hachi-safety-option:hover {
+  border-color: #d3c8b4;
+}
+
+.hachi-connect-row {
+  border: 1px solid var(--hachi-line);
+}
+.hachi-connect-row:hover {
+  border-color: #d3c8b4;
+}
+
+/* KennelConsent */
+.hachi-kennel-browse-row:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-kennel-browse-add-btn {
+  background: var(--hachi-surface);
+}
+.hachi-kennel-browse-add-btn:hover {
+  background: var(--hachi-cream);
+}
+
+/* Integrations MCP delete / confirm-delete button */
+.hachi-mcp-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--hachi-muted);
+}
+.hachi-mcp-delete-btn:hover:not(:disabled):not([data-confirm='true']) {
+  background: var(--hachi-cream);
+}
+.hachi-mcp-delete-btn[data-confirm='true'] {
+  background: var(--hachi-danger-tint);
+  border: 0.5px solid var(--hachi-danger);
+  color: var(--hachi-danger);
+}
+
+/* Home screen */
+.hachi-decline-btn-risk:hover {
+  opacity: 0.9;
+}
+.hachi-decline-btn-safe:hover {
+  background: var(--hachi-trust-tint);
+}
+.hachi-allow-btn-risk:hover {
+  background: var(--hachi-brand-tint);
+}
+.hachi-allow-btn-safe:hover {
+  background: var(--hachi-brand-active);
+}
+
+.hachi-runcard-home:hover {
+  border-color: #d3c8b4;
+}
+
+/* "+ N more waiting on the leash →" overflow button on Home screen.
+ * Looks like a link but is a <button> for semantic correctness (it triggers
+ * navigation, not a URL). Base background must be here so :hover can add
+ * text-decoration without fighting a higher-specificity inline value (BB-76). */
+.hachi-more-approvals-link {
+  background: transparent;
+  border: none;
+  color: var(--hachi-trust);
+  font: 500 13px var(--font-body);
+  cursor: pointer;
+  padding: 6px 4px;
+  display: block;
+}
+.hachi-more-approvals-link:hover {
+  text-decoration: underline;
+}
+
+.hachi-home-ask-input:focus {
+  border-color: var(--hachi-brand);
+  box-shadow: 0 0 0 2px var(--hachi-brand-tint);
+}
+
+.hachi-ask-hachi-btn:hover {
+  background: #A8351E;
+}
+
+.hachi-starter-chip:hover {
+  background: var(--hachi-cream);
+}
+
+/* Authoring screen */
+.hachi-auth-target-row:hover {
+  background: var(--hachi-cream);
+}
+
+/* Work screen */
+.hachi-retry-btn:hover {
+  background: var(--hachi-brand-hover);
+}
+
+.hachi-danger-outline-btn:hover {
+  background: var(--hachi-danger-tint);
+}
+
+.hachi-pause-resume-btn:hover {
+  background: var(--hachi-cream);
+}
+
+/* Approvals screen */
+.hachi-allow-once-approvals-safe:hover {
+  background: var(--hachi-brand-hover);
+}
+
+.hachi-go-settings-link:hover {
+  opacity: 0.8;
+}
+
+/* Conversation screen */
+.hachi-session-delete-btn:hover {
+  background: var(--hachi-danger-tint);
+  color: var(--hachi-danger);
+}
+
+.hachi-attachment-remove-btn:hover {
+  background: var(--hachi-cream);
+  color: var(--hachi-ink);
+}
+
+.hachi-voice-option:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-starter-pill:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-slash-item:hover {
+  background: var(--hachi-cream);
+}
+
+.hachi-composer-attach-btn:hover:not(:disabled) {
+  background: var(--hachi-cream);
+  color: var(--hachi-ink);
+}
+
+/* Base background is load-bearing: a <button> with no background declared falls
+ * through to the UA stylesheet, which paints ButtonFace (#F0F0F0 cold grey) —
+ * jarring on the warm bone canvas. See BB-76. */
+.hachi-composer-voice-btn {
+  background: transparent;
+}
+
+.hachi-composer-voice-btn:hover {
+  background: var(--hachi-cream);
+  color: var(--hachi-ink);
+}
+
+/* Session title — a heading that doubles as the recents-menu trigger. It carries a
+ * persistent hairline so users can SEE there is a session picker here: NN/g's
+ * clickability research finds hover-only cues are weak signifiers that "reduce target
+ * discoverability", while a border is a strong one. Fill stays empty at rest, so the
+ * control is legible without shouting; hover adds cream, and open takes the dropdown's
+ * own skin (surface + same hairline) so trigger and panel read as one object. */
+.hachi-session-title-btn {
+  background: transparent;
+  border: 0.5px solid var(--hachi-line);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.hachi-session-title-btn:hover {
+  background: var(--hachi-cream);
+}
+
+/* Keyed off the ARIA state so the visual and the a11y state can never drift.
+ * Must follow :hover — equal specificity, so source order decides, and the open
+ * styling should hold even while the pointer is over the trigger. */
+.hachi-session-title-btn[aria-expanded='true'] {
+  background: var(--hachi-surface);
+  border-color: var(--hachi-line);
+}
+
+/* Scroll-to-latest pill (JumpToLatest) — base required so :hover can override (BB-76). */
+.hachi-jump-pill {
+  background: var(--hachi-surface);
+  color: var(--hachi-ink);
+  transition: background var(--dur-fast) var(--ease);
+}
+.hachi-jump-pill:hover {
+  background: var(--hachi-cream);
+}

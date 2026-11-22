@@ -1,0 +1,462 @@
+/* responsive.css — mobile-first overrides for the Hachi shell and approval-monitoring screens.
+   Breakpoint: 768px (phones). Desktop layout is completely unchanged above this threshold.
+   All tokens are var(--hachi-*) to match the existing styling approach. */
+
+/* ── Shell: mobile top-bar and drawer overlay ── */
+
+@media (max-width: 767px) {
+  /* The drawer itself slides in from the left.
+     Always mounted so the transform transition fires. Closed: off-screen + invisible
+     (visibility keeps it out of the tab order). Open: on-screen. */
+  .hachi-sidebar-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 200;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.22s var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
+                visibility 0s linear 0.22s;
+  }
+  .hachi-sidebar-drawer[data-open='true'] {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.22s var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
+                visibility 0s linear 0s;
+  }
+
+  /* Backdrop: always mounted, fades in/out with opacity */
+  .hachi-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 199;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+  }
+  .hachi-drawer-backdrop[data-open='true'] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile top-bar: always visible, holds hamburger + brand title */
+  .hachi-topbar {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    padding: 0 16px;
+    background: var(--hachi-surface);
+    border-bottom: 0.5px solid var(--hachi-line);
+    flex-shrink: 0;
+    gap: 12px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hachi-topbar-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--hachi-ink);
+    flex: 1;
+  }
+
+  /* Hamburger button */
+  .hachi-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: var(--hachi-ink);
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+  }
+
+  .hachi-hamburger:hover {
+    background: var(--hachi-cream);
+  }
+
+  /* GovernanceBar: wrap items on narrow widths */
+  .hachi-governance-bar {
+    height: auto !important;
+    min-height: 28px;
+    flex-wrap: wrap;
+    padding: 4px 12px !important;
+    gap: 8px !important;
+    row-gap: 4px;
+  }
+
+  /* Home: reduce padding */
+  .hachi-home-header {
+    padding: 0 16px !important;
+    flex-wrap: wrap;
+    height: auto !important;
+    min-height: 56px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-home-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Run cards grid: single column on mobile */
+  .hachi-run-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* On-watch / Finished recently: stack instead of 2-col */
+  .hachi-two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Approvals header */
+  .hachi-approvals-header {
+    padding: 0 16px !important;
+    flex-wrap: wrap;
+    height: auto !important;
+    min-height: 56px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-approvals-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Approval card action buttons: stack on very narrow */
+  .hachi-approval-actions {
+    flex-wrap: wrap;
+  }
+
+  .hachi-approval-actions button {
+    min-height: 44px;
+  }
+
+  /* Conversation header */
+  .hachi-conv-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Conversation composer */
+  .hachi-composer-wrap {
+    padding: 12px 16px 18px !important;
+  }
+
+  /* Conversation transcript padding */
+  .hachi-transcript-inner {
+    padding: 0 16px !important;
+  }
+
+  /* ── Settings ── */
+
+  .hachi-settings-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-settings-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Spend-cap row: stack the two SpendCapInput side-by-side inputs */
+  .hachi-spend-cap-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .hachi-spend-cap-row > * {
+    flex: unset !important;
+    width: 100% !important;
+  }
+
+  /* ── Integrations ── */
+
+  .hachi-int-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-int-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Integration cards: collapse 2-col to 1-col */
+  .hachi-int-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* MCP table: hide fixed-width columns, show only server name + status on mobile */
+  .hachi-mcp-table-header span:nth-child(n+3) {
+    display: none !important;
+  }
+
+  .hachi-mcp-server-row > span:nth-child(n+2) {
+    display: none !important;
+  }
+
+  /* Show status (first fixed span) but shrink it */
+  .hachi-mcp-table-header span:nth-child(2) {
+    display: inline !important;
+    width: auto !important;
+  }
+
+  .hachi-mcp-server-row > span:nth-child(2) {
+    display: inline-flex !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ── SetupWizard ── */
+
+  .hachi-setup-backdrop {
+    padding: 12px !important;
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+  }
+
+  .hachi-setup-panel {
+    width: min(540px, 92vw) !important;
+    max-height: calc(100dvh - 24px);
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  .hachi-setup-body {
+    overflow-y: auto !important;
+    min-height: 0 !important;
+    flex: 1 !important;
+  }
+
+  /* ── Memory ── */
+
+  .hachi-mem-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Search box: let it grow to fill the row when wrapping */
+  .hachi-mem-search {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hachi-mem-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Fact cards: collapse 2-col to 1-col */
+  .hachi-fact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Skills ── */
+
+  .hachi-skills-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-skills-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Installed skills: 2-col → 1-col */
+  .hachi-skills-installed-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Kennel: 3-col → 1-col on mobile */
+  .hachi-skills-kennel-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── OG Explorer ── */
+
+  .hachi-og-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-og-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Stat cards: 4-col → 2-col on mobile */
+  .hachi-og-stat-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Two-panel area: force full-width stacking
+     (flex-wrap:wrap is already set; we just tighten the basis so each panel
+     goes full-width instead of trying to share the row at min 440px) */
+  .hachi-og-panels > * {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* ── Authoring ── */
+
+  .hachi-auth-header {
+    padding: 0 16px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hachi-auth-body {
+    padding: 16px 16px 64px !important;
+  }
+
+  /* Two-column grid (260px left + right): stack to single column */
+  .hachi-auth-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Run / Operator ── */
+
+  .hachi-run-header {
+    padding: 0 12px !important;
+    height: auto !important;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    gap: 8px !important;
+    row-gap: 6px !important;
+  }
+
+  /* Body: stack left panel above terminal on mobile */
+  .hachi-run-body {
+    flex-direction: column !important;
+  }
+
+  /* Left panel: fixed 312px → full width, reduced height */
+  .hachi-run-left {
+    width: 100% !important;
+    flex-shrink: unset !important;
+    border-right: none !important;
+    border-bottom: 0.5px solid var(--hachi-line) !important;
+    max-height: 240px !important;
+    padding: 16px 16px 20px !important;
+  }
+
+  /* T28.1 — Conversation header: the absolute-positioned status span overlaps the
+     session-title button at 375px. De-absolute it so the header wraps naturally. */
+  .hachi-conv-header > span[data-status] {
+    position: static !important;
+    transform: none !important;
+    margin-left: auto;
+  }
+
+  /* T28.1 — same fix for the Home header status span */
+  .hachi-home-header > span[data-status] {
+    position: static !important;
+    transform: none !important;
+    margin-left: auto;
+  }
+
+  /* T28.2 — Home ask row: stack input + button vertically on narrow viewports */
+  .hachi-home-ask-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .hachi-home-ask-form > button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* T28.3 — Work spend stat grid: 4-col → 2-col on mobile */
+  .hachi-spend-stat-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ── Tablet (481px–767px): 2-col kennel instead of fully collapsed ── */
+@media (min-width: 481px) and (max-width: 767px) {
+  .hachi-skills-kennel-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* OG stat cards: 2x2 on tablet is fine — already set above */
+
+  /* Run left panel: a bit more height on wider phones */
+  .hachi-run-left {
+    max-height: 280px !important;
+  }
+}
+
+/* Hide top-bar on desktop */
+@media (min-width: 768px) {
+  .hachi-topbar {
+    display: none;
+  }
+
+  .hachi-drawer-backdrop {
+    display: none;
+  }
+}
+
+/* ── Large desktop (>=1440px): let fixed 2-col card grids use the extra
+   width instead of leaving it empty either side of a capped column count. ── */
+@media (min-width: 1440px) {
+  .hachi-int-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  .hachi-fact-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  .hachi-skills-installed-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}

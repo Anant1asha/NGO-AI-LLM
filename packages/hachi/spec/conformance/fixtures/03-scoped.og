@@ -1,0 +1,32 @@
+::meta
+  title: Scoped Skill Fixture
+  version: 1.0.0
+  author: conformance-suite
+  domain: test|rbac
+  scope: all
+
+::index
+  # node-id        | type  | scope        | conf | keywords
+  public_action    | skill | all          | 1.0  | public, open, unrestricted
+  restricted_step  | skill | orchestrator | 0.90 | restricted, orchestrator, privileged
+
+::node[public_action]
+->[:role=skill]
+->[:scope=all]
+->[:keywords=public, open, unrestricted]
+::dense
+public_action|available to all agent roles
+::full
+This node is visible to every agent role including worker and orchestrator.
+Scope is set to "all" so no role-based filtering applies.
+
+::node[restricted_step]
+->[:role=skill]
+->[:scope=orchestrator]
+->[:keywords=restricted, orchestrator, privileged]
+::dense
+restricted_step|orchestrator-only|hidden from worker agents
+::full
+This node is restricted to the orchestrator role.
+Worker agents must not see this node in their filtered view.
+It represents a privileged operation that requires elevated trust.

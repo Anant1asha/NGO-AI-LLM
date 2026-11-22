@@ -1,0 +1,19 @@
+::meta
+  title: Minimal Skill
+  version: 1.0.0
+  author: conformance-suite
+  domain: test
+  scope: all
+
+::index
+  # node-id | type  | scope | conf | keywords
+  hello     | skill | all   | 1.0  | greet, hello, welcome
+
+::node[hello]
+->[:role=skill]
+->[:scope=all]
+->[:keywords=greet, hello, welcome]
+::dense
+greet|hello|welcome user by name
+::full
+The simplest possible skill. Greets the user by name and returns a welcome message.

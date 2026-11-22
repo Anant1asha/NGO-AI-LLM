@@ -1,0 +1,45 @@
+::meta
+  title: Full Node Fixture
+  version: 1.0.0
+  author: conformance-suite
+  domain: test|conformance
+  scope: all
+
+::index
+  # node-id   | type  | scope | conf | keywords
+  full_example | skill | all   | 0.95 | example, full, tags, conformance
+
+::node[full_example]
+->[:role=skill]
+->[:scope=all]
+->[:keywords=example, full, tags, conformance]
+->[:requires=hello]
+::dense
+full_example|all-tags|conformance fixture exercising every node-level block type
+::full
+This node exercises every tag type defined in the ObjectGraph spec.
+It is used by the conformance suite to verify that a parser populates
+all fields correctly from a single source file.
+::steps
+1. Read the ::dense block to get the compressed summary.
+2. Read the ::full block for complete details.
+3. Check ::warning before executing any side effects.
+4. Execute the ::steps in order.
+5. Validate outcome against ::assertion conditions.
+::warning
+Never use this fixture in production — it is a conformance test only.
+::note
+This fixture deliberately includes every optional block type.
+::example
+A parser that reads this file and omits any block fails the conformance check.
+::assertion
+dense_present: the ::dense block must not be empty
+steps_ordered: steps must be returned as an ordered list
+warning_present: the ::warning block must not be empty
+::edges
+->[:requires] hello
+->[:calls] external-system
+::traverse
+priority=high
+entry=full_example
+depth=1

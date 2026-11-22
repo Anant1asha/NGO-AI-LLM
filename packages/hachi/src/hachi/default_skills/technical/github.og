@@ -1,0 +1,33 @@
+::meta
+  title: Core GitHub
+  version: 1.0.0
+  domain: development|github|issue-tracking
+
+::index
+  # node-id    | type  | scope | conf | keywords
+  core_github   | skill | all   | 1.0  | github, issue, bug, repo, productivity, pull request, repository, issue tracker, bug report, deploy, deployment, ci, pipeline, devops
+
+::node[core_github]
+->[:role=skill]
+->[:requires_auth=github_personal_token]
+->[:keywords=github, issue, bug, repo, productivity, pull request, repository, issue tracker, bug report, deploy, deployment, ci, pipeline, devops]
+
+::api[create_github_issue]
+method=POST
+endpoint=https://api.github.com/repos/{owner}/{repo}/issues
+headers={"Authorization": "token {github_personal_token}", "Accept": "application/vnd.github.v3+json", "User-Agent": "Hachi-Agent"}
+schema={"owner": "string", "repo": "string", "title": "string", "body": "string"}
+description=Creates a new issue in a GitHub repository.
+
+::dense
+Creates GitHub issues via personal token. Operates on a single designated repository.
+
+::steps
+1. Identify the target repository owner, repository name, issue title, and body.
+2. If any parameters are missing, politely ask the user to clarify them before proceeding.
+3. Call `create_github_issue`.
+4. Return the HTML URL of the created issue so the user can click it.
+
+::assertions
+assert repo != "" "A target repository name is required."
+assert title != "" "An issue title is required."

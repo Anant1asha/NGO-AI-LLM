@@ -1,0 +1,5881 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Hachi Gateway",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/integrations": {
+      "get": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Get Integrations",
+        "description": "List all connectors with their auth_type, configured, connected, and status fields.\n\nIssue 5: the Tavily/search connector entry also carries ``fallback_active``\n(True when no web_search provider is registered, so browse_web/Playwright is the\nactive fallback). The frontend reads this off GET /integrations to show a\n\"web search unavailable \u2014 using Playwright fallback\" notice. Computed here so\nGET /integrations and the POST /credentials response agree.",
+        "operationId": "get_integrations_integrations_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Integrations Integrations Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/integrations/{connector_id}/oauth/start": {
+      "post": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Post Oauth Start",
+        "description": "Begin the OAuth2 flow for the given connector.\n\nReturns ``{\"authorization_url\": \"<provider-authorize-url>\"}`` so the\nfrontend can open it in a popup window.\n\nReturns HTTP 404 for unknown connectors, HTTP 409 when the connector's\nclient credentials (env vars) are not configured on this machine.",
+        "operationId": "post_oauth_start_integrations__connector_id__oauth_start_post",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Oauth Start Integrations  Connector Id  Oauth Start Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/integrations/{connector_id}/disconnect": {
+      "post": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Post Disconnect",
+        "description": "Revoke and delete stored OAuth2 tokens for a connector.\n\nReturns ``{\"connected\": false, \"connector_id\": \"<id>\", ...status...}``.\nReturns HTTP 404 for unknown connectors.",
+        "operationId": "post_disconnect_integrations__connector_id__disconnect_post",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Disconnect Integrations  Connector Id  Disconnect Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/integrations/{connector_id}/credentials": {
+      "post": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Post Credentials",
+        "description": "Store apikey credentials for a connector.\n\nBody: ``{\"fields\": {\"<key>\": \"<value>\", ...}}``\n\nOnly keys declared in the connector's ``credential_fields`` are accepted.\nReturns the updated connector status dict (same shape as ``GET /integrations``\nentries) so the frontend can update the card immediately without re-fetching.\n\nReturns HTTP 400 for invalid connector id format.\nReturns HTTP 404 for unknown connectors.\nReturns HTTP 422 for undeclared field keys or empty values.",
+        "operationId": "post_credentials_integrations__connector_id__credentials_post",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Credentials Integrations  Connector Id  Credentials Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Delete Credentials",
+        "description": "Clear all stored apikey credentials for a connector.\n\nReturns the updated connector status dict.\n\nReturns HTTP 400 for invalid connector id format.\nReturns HTTP 404 for unknown connectors.\nReturns HTTP 422 if the connector is not an apikey connector.",
+        "operationId": "delete_credentials_integrations__connector_id__credentials_delete",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Credentials Integrations  Connector Id  Credentials Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/integrations/{connector_id}/credentials/test": {
+      "post": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Post Credentials Test",
+        "description": "Validate a connector's stored credentials with a bounded live probe.\n\nIssue 6b (contract C-CREDTEST). Returns ``{\"ok\": bool, \"message\": str}``.\nNever echoes the secret and never raises \u2014 a failed or timed-out probe yields\n``ok: false`` with a short message. Connectors without a cheap probe report\n``ok: true`` with a \"stored; live test not available\" message so the UI still\nconfirms the credential was saved.",
+        "operationId": "post_credentials_test_integrations__connector_id__credentials_test_post",
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Credentials Test Integrations  Connector Id  Credentials Test Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/integrations/oauth/callback": {
+      "get": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Get Oauth Callback",
+        "description": "OAuth2 callback \u2014 provider redirects the user's browser popup here.\n\nValidates the CSRF state, exchanges the code for tokens, stores them,\nthen returns a small HTML page that:\n- postMessages ``{type: \"hachi_oauth_done\", id: \"<id>\", ok: true/false}``\n  to the opener (the Hachi frontend).\n- Closes the popup window.\n\nThis route is intentionally NOT protected by the Bearer auth dependency\nbecause the provider redirects the user's browser here directly.\nCSRF protection is provided by the ``state`` parameter.",
+        "operationId": "get_oauth_callback_integrations_oauth_callback_get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Code"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "State"
+            }
+          },
+          {
+            "name": "error",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Error"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Oauth Callback Integrations Oauth Callback Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Get Root",
+        "operationId": "get_root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Root  Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Get Health",
+        "operationId": "get_health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/readiness": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Get Readiness",
+        "operationId": "get_readiness_readiness_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadinessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/capabilities": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Get Capabilities",
+        "operationId": "get_capabilities_capabilities_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Capabilities Capabilities Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/models": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Get Models",
+        "operationId": "get_models_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Models Models Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/capabilities/{cap_id}/enabled": {
+      "put": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Put Capability Enabled",
+        "description": "Toggle a capability on/off and persist to global config.",
+        "operationId": "put_capability_enabled_capabilities__cap_id__enabled_put",
+        "parameters": [
+          {
+            "name": "cap_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cap Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapabilityToggleRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Capability Enabled Capabilities  Cap Id  Enabled Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Create Session",
+        "operationId": "create_session_sessions_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionCreateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "List Sessions",
+        "operationId": "list_sessions_sessions_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response List Sessions Sessions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}": {
+      "get": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Get Session",
+        "operationId": "get_session_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Session Sessions  Session Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Delete Session",
+        "operationId": "delete_session_sessions__session_id__delete",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionCloseResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/messages": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Post Message",
+        "operationId": "post_message_sessions__session_id__messages_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionMessageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Get Session Messages",
+        "description": "Return the durable message transcript for *session_id*.\n\nSourced from the SQLite ``messages`` table so it works for historical\nsessions that are no longer active.  Messages are returned in chronological\norder (oldest first).\n\nReturns::\n\n    {\n      \"session_id\": \"<id>\",\n      \"messages\": [\n        {\"id\": <int>, \"role\": \"user\"|\"assistant\"|\"tool\",\n         \"content\": \"...\", \"tool_name\": null|\"...\", \"timestamp\": \"<iso>\"},\n        ...\n      ]\n    }\n\nHTTP 404 when *session_id* is unknown or has no persisted messages.",
+        "operationId": "get_session_messages_sessions__session_id__messages_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 200,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Session Messages Sessions  Session Id  Messages Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/interrupt": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Interrupt Session",
+        "description": "Cancel the in-progress turn for a live session.\n\nDelivers a cancellation signal to the session's ``ExecutionLoop`` via\n``ExecutionLoop.cancel()`` (a thread-safe ``threading.Event``). The current\nLLM chunk and any in-progress tool call finish first; the loop exits cleanly\nat the top of the following iteration, preserving message-history integrity.\n\nReturns ``{\"interrupted\": true}`` when the signal was delivered to a live\nsession, ``{\"interrupted\": false}`` when the session is not live or no\nin-process runtime is attached (safe \u2014 never raises a 5xx).",
+        "operationId": "interrupt_session_sessions__session_id__interrupt_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionInterruptResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/cleanup-empty": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Cleanup Empty Sessions",
+        "description": "Delete all empty sessions (no messages) from the SQLite store.\n\nSafe to call at any time.  Sessions that are currently booting (in-memory\nbut with no messages yet) are not affected \u2014 they have no DB row yet.\n\nReturns:\n    ``{\"removed\": <count>}`` \u2014 the number of rows deleted.",
+        "operationId": "cleanup_empty_sessions_sessions_cleanup_empty_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Cleanup Empty Sessions Sessions Cleanup Empty Post"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/permissions/always-allow": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Post Always Allow",
+        "description": "Persist a standing always-allow rule for the given request+action pair.\n\nThe frontend sends ``session_id = \"current\"`` as a sentinel; the backend\nresolves it to the active session or persists the rule globally.\n\nBody: ``{\"request\": \"<tool/path>\", \"action\": \"<operation>\"}``",
+        "operationId": "post_always_allow_sessions__session_id__permissions_always_allow_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlwaysAllowRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Always Allow Sessions  Session Id  Permissions Always Allow Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/events": {
+      "get": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Get Session Events",
+        "operationId": "get_session_events_sessions__session_id__events_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "After"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionEventsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/stream": {
+      "get": {
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Stream Session Events",
+        "description": "Server-Sent Events stream of runtime events \u2014 replaces client polling.\n\nPushes events as they arrive, then closes after ``max_idle_cycles`` idle\npolls (an EventSource auto-reconnects, so this stays cheap and robust).\nClients resume with the last ``id`` they saw via the ``after`` query param.",
+        "operationId": "stream_session_events_sessions__session_id__stream_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "After"
+            }
+          },
+          {
+            "name": "poll_interval",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "maximum": 10.0,
+              "minimum": 0.0,
+              "default": 1.0,
+              "title": "Poll Interval"
+            }
+          },
+          {
+            "name": "max_idle_cycles",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 600,
+              "minimum": 1,
+              "default": 30,
+              "title": "Max Idle Cycles"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/events": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Runtime Events",
+        "operationId": "get_runtime_events_runtime_events_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Runtime Events Runtime Events Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/mcp/inventory": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Mcp Inventory",
+        "operationId": "get_mcp_inventory_runtime_mcp_inventory_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Mcp Inventory Runtime Mcp Inventory Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/mcp/register": {
+      "post": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Post Mcp Register",
+        "description": "Register a new MCP server and bring it online without a gateway restart.\n\nBody (stdio transport):\n    ``{\"name\": \"...\", \"command\": \"npx\", \"args\": \"...\", \"env_vars\": {}}``\n\nBody (sse / http transport):\n    ``{\"name\": \"...\", \"transport\": \"sse\"|\"http\", \"url\": \"https://...\", \"headers\": {}}``",
+        "operationId": "post_mcp_register_runtime_mcp_register_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/McpRegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Mcp Register Runtime Mcp Register Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/mcp/{name}/enable": {
+      "post": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Post Mcp Enable",
+        "description": "Enable the named MCP server (persists ``enabled=true`` to settings.toml).\n\nReturns ``{\"ok\": true}`` on success, HTTP 404 if the server is unknown.",
+        "operationId": "post_mcp_enable_runtime_mcp__name__enable_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Mcp Enable Runtime Mcp  Name  Enable Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/mcp/{name}/disable": {
+      "post": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Post Mcp Disable",
+        "description": "Disable the named MCP server (persists ``enabled=false`` to settings.toml).\n\nReturns ``{\"ok\": true}`` on success, HTTP 404 if the server is unknown.",
+        "operationId": "post_mcp_disable_runtime_mcp__name__disable_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Mcp Disable Runtime Mcp  Name  Disable Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/mcp/{name}": {
+      "delete": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Delete Mcp Server",
+        "description": "Remove a registered MCP server from settings.toml.\n\nReturns ``{\"ok\": true}`` on success, HTTP 404 if the server is unknown.",
+        "operationId": "delete_mcp_server_runtime_mcp__name__delete",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Mcp Server Runtime Mcp  Name  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/secrets": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Secrets",
+        "description": "List user-managed credential names (``cred:`` prefix stripped, values never returned).",
+        "operationId": "get_secrets_runtime_secrets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Secrets Runtime Secrets Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Post Secret",
+        "description": "Store a user-managed credential as ``cred:<name>`` in the secret store.",
+        "operationId": "post_secret_runtime_secrets_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SecretStoreRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Secret Runtime Secrets Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runtime/secrets/{name}": {
+      "delete": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Delete Secret",
+        "description": "Delete ``cred:<name>`` (idempotent; system keys are silently ignored).",
+        "operationId": "delete_secret_runtime_secrets__name__delete",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Secret Runtime Secrets  Name  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/jobs/active": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Active Jobs",
+        "operationId": "get_active_jobs_jobs_active_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Active Jobs Jobs Active Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/jobs/failed": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Failed Jobs",
+        "operationId": "get_failed_jobs_jobs_failed_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Failed Jobs Jobs Failed Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/permissions/audit": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Permission Audit",
+        "operationId": "get_permission_audit_permissions_audit_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Permission Audit Permissions Audit Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/subagents/reports": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Subagent Reports",
+        "operationId": "get_subagent_reports_subagents_reports_get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "recent delegation",
+              "title": "Query"
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 10,
+              "title": "Top K"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Subagent Reports Subagents Reports Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/schedules": {
+      "get": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Get Schedules",
+        "operationId": "get_schedules_schedules_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Schedules Schedules Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/schedules/{schedule_id}": {
+      "delete": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Delete Schedule",
+        "operationId": "delete_schedule_schedules__schedule_id__delete",
+        "parameters": [
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Schedule Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Schedule Schedules  Schedule Id  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/schedules/{schedule_id}/enabled": {
+      "put": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Put Schedule Enabled",
+        "operationId": "put_schedule_enabled_schedules__schedule_id__enabled_put",
+        "parameters": [
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Schedule Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScheduleToggleRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Schedule Enabled Schedules  Schedule Id  Enabled Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/schedules/{schedule_id}/run-now": {
+      "post": {
+        "tags": [
+          "runtime"
+        ],
+        "summary": "Post Schedule Run Now",
+        "description": "Force-trigger a schedule immediately, regardless of its next-run time.\n\nDispatches in the background (does not block on the agent turn); returns\n``{\"ok\": true, \"schedule_id\": ...}`` once dispatch is confirmed, or\n``{\"ok\": false, ...}`` if the schedule id is unknown or scheduling is\nunavailable (no active session).",
+        "operationId": "post_schedule_run_now_schedules__schedule_id__run_now_post",
+        "parameters": [
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Schedule Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Schedule Run Now Schedules  Schedule Id  Run Now Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Get Config",
+        "operationId": "get_config_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Config Config Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/provider": {
+      "put": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Put Provider",
+        "operationId": "put_provider_config_provider_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProviderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Provider Config Provider Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/provider/validate": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Provider Validate",
+        "operationId": "post_provider_validate_config_provider_validate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProviderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Provider Validate Config Provider Validate Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/permissions": {
+      "put": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Put Permissions",
+        "operationId": "put_permissions_config_permissions_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Permissions Config Permissions Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/memory": {
+      "put": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Put Memory",
+        "operationId": "put_memory_config_memory_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Memory Config Memory Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/limits": {
+      "put": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Put Limits",
+        "description": "Persist per-task and daily spend caps.\n\nBody: ``{\"per_task_cap_usd\": 1.0, \"daily_cap_usd\": 5.0}``",
+        "operationId": "put_limits_config_limits_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LimitsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Limits Config Limits Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/permissions/folders": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Allowed Folder",
+        "description": "Append a folder path to the allowed_paths list and persist to device-permissions.og.",
+        "operationId": "post_allowed_folder_config_permissions_folders_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllowedFolderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Allowed Folder Config Permissions Folders Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Delete Allowed Folder",
+        "description": "Remove a folder path from the allowed_paths list and persist to device-permissions.og.",
+        "operationId": "delete_allowed_folder_config_permissions_folders_delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllowedFolderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Allowed Folder Config Permissions Folders Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/permissions/commands": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Allowed Command",
+        "description": "Append a command to the allowed_commands list and persist to device-permissions.og.",
+        "operationId": "post_allowed_command_config_permissions_commands_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllowedCommandRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Allowed Command Config Permissions Commands Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Delete Allowed Command",
+        "description": "Remove a command from the allowed_commands list and persist to device-permissions.og.",
+        "operationId": "delete_allowed_command_config_permissions_commands_delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllowedCommandRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Allowed Command Config Permissions Commands Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/providers": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Get Providers",
+        "description": "Return all configured providers (secrets masked).",
+        "operationId": "get_providers_config_providers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Providers Config Providers Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Provider",
+        "description": "Add a new named provider.",
+        "operationId": "post_provider_config_providers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProviderUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Provider Config Providers Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/providers/{name}": {
+      "put": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Put Provider Named",
+        "description": "Update (or create) a named provider.",
+        "operationId": "put_provider_named_config_providers__name__put",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProviderUpsertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Provider Named Config Providers  Name  Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Delete Provider",
+        "description": "Remove a named provider.",
+        "operationId": "delete_provider_config_providers__name__delete",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Provider Config Providers  Name  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/providers/{name}/test-connection": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Provider Test",
+        "description": "Best-effort connectivity test for a provider.",
+        "operationId": "post_provider_test_config_providers__name__test_connection_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Provider Test Config Providers  Name  Test Connection Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/providers/probe": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Provider Probe",
+        "description": "Probe an unsaved provider spec: connectivity + available models.\n\nReturns ``{ok, detail, models}`` so the add/edit dialog can verify a key\nand populate a model picker before the provider is saved.",
+        "operationId": "post_provider_probe_config_providers_probe_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProviderUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Provider Probe Config Providers Probe Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/routing": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Get Routing",
+        "description": "Return the capability routing matrix (synthesized when absent).",
+        "operationId": "get_routing_config_routing_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Routing Config Routing Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Put Routing",
+        "description": "Persist the capability routing matrix (hot-reload \u2014 no restart).",
+        "operationId": "put_routing_config_routing_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoutingUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Put Routing Config Routing Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/routing/validate": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Routing Validate",
+        "description": "Validate a routing config without persisting it.\n\nReturns ``{\"ok\": true, \"issues\": [], \"warnings\": []}`` on success or\n``{\"ok\": false, \"issues\": [...], \"warnings\": [...]}`` on failure.\nAlways returns HTTP 200 \u2014 the ``ok`` field signals validity.",
+        "operationId": "post_routing_validate_config_routing_validate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoutingUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Routing Validate Config Routing Validate Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/routing/rollback": {
+      "post": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Post Routing Rollback",
+        "description": "Restore the last-known-good routing config.",
+        "operationId": "post_routing_rollback_config_routing_rollback_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Routing Rollback Config Routing Rollback Post"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/routing/audit": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Get Routing Audit",
+        "description": "Return recent routing-change audit records (newest first).",
+        "operationId": "get_routing_audit_config_routing_audit_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Routing Audit Config Routing Audit Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/models/all": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Get Models All",
+        "description": "Return model ids per configured provider.",
+        "operationId": "get_models_all_config_models_all_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Models All Config Models All Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/setup": {
+      "get": {
+        "tags": [
+          "setup"
+        ],
+        "summary": "Get Setup",
+        "operationId": "get_setup_setup_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Setup Setup Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/setup/apply": {
+      "post": {
+        "tags": [
+          "setup"
+        ],
+        "summary": "Post Setup Apply",
+        "operationId": "post_setup_apply_setup_apply_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetupApplyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Setup Apply Setup Apply Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/chat/completions": {
+      "post": {
+        "tags": [
+          "openai"
+        ],
+        "summary": "Openai Chat Completions",
+        "operationId": "openai_chat_completions_v1_chat_completions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpenAIChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Openai Chat Completions V1 Chat Completions Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/models": {
+      "get": {
+        "tags": [
+          "openai"
+        ],
+        "summary": "Openai Models",
+        "operationId": "openai_models_v1_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Openai Models V1 Models Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/channels/{channel}/inbound": {
+      "post": {
+        "tags": [
+          "channels"
+        ],
+        "summary": "Channel Inbound",
+        "operationId": "channel_inbound_channels__channel__inbound_post",
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Channel"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChannelInboundRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Channel Inbound Channels  Channel  Inbound Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/approvals": {
+      "get": {
+        "tags": [
+          "approvals"
+        ],
+        "summary": "Get Approvals",
+        "description": "List all pending permission requests.\n\nReturns:\n    A JSON object ``{\"pending\": [...]}`` with every unresolved request\n    from the approval registry.  Each entry includes ``expiresAt``\n    (MED-021) \u2014 an ISO-8601 timestamp so that the frontend countdown\n    timer can render.",
+        "operationId": "get_approvals_approvals_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Approvals Approvals Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/approvals/{request_id}": {
+      "post": {
+        "tags": [
+          "approvals"
+        ],
+        "summary": "Post Approval Decision",
+        "description": "Resolve a pending permission request.\n\nArgs:\n    request_id: The opaque ID from the pending-request list.\n    payload: ``{\"action\": \"approve\"|\"deny\"|\"allow_once\", \"rationale\": \"...\"}``\n\nReturns:\n    ``{\"resolved\": true}`` on success.\n\nRaises:\n    404: When ``request_id`` is not found in the registry.\n    422: When ``action`` is not a valid :class:`PermissionDecision` action.",
+        "operationId": "post_approval_decision_approvals__request_id__post",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Request Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApprovalActionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Approval Decision Approvals  Request Id  Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/skills": {
+      "get": {
+        "tags": [
+          "skills"
+        ],
+        "summary": "Get Skills",
+        "description": "Return the .og skill inventory list.",
+        "operationId": "get_skills_skills_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Skills Skills Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/skills/kennel": {
+      "get": {
+        "tags": [
+          "skills"
+        ],
+        "summary": "Get Kennel",
+        "description": "Return the available skills catalogue (kennel) for browsing and installation.",
+        "operationId": "get_kennel_skills_kennel_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Kennel Skills Kennel Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/skills/add": {
+      "post": {
+        "tags": [
+          "skills"
+        ],
+        "summary": "Post Skill Add",
+        "description": "Install a skill from the kennel by id.\n\nBody: ``{\"kennel_id\": \"...\"}``",
+        "operationId": "post_skill_add_skills_add_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillAddRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Skill Add Skills Add Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/memory": {
+      "get": {
+        "tags": [
+          "memory"
+        ],
+        "summary": "Get Memory",
+        "description": "Return grouped memory facts, blocked items, and proposed changes.",
+        "operationId": "get_memory_memory_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Memory Memory Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/memory/recall": {
+      "get": {
+        "tags": [
+          "memory"
+        ],
+        "summary": "Get Memory Recall",
+        "description": "Return semantic memory recall hits for the given query.",
+        "operationId": "get_memory_recall_memory_recall_get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "title": "Query"
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 8,
+              "title": "Top K"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Memory Recall Memory Recall Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/memory/facts": {
+      "post": {
+        "tags": [
+          "memory"
+        ],
+        "summary": "Post Memory Fact",
+        "description": "Add a fact to a vault collection.\n\nBody: ``{\"group\": \"user_profile\", \"text\": \"...\"}``\nReturns: ``{\"id\": \"<fact_id>\"}``",
+        "operationId": "post_memory_fact_memory_facts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryFactAddRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Memory Fact Memory Facts Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/memory/facts/{fact_id}": {
+      "delete": {
+        "tags": [
+          "memory"
+        ],
+        "summary": "Delete Memory Fact",
+        "description": "Delete a fact from the vault by its content-hash id.\n\nReturns: ``{\"ok\": true}``",
+        "operationId": "delete_memory_fact_memory_facts__fact_id__delete",
+        "parameters": [
+          {
+            "name": "fact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Fact Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Memory Fact Memory Facts  Fact Id  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/og/graph": {
+      "get": {
+        "tags": [
+          "og"
+        ],
+        "summary": "Get Og Graph",
+        "description": "Return the ObjectGraph node graph with per-pass token estimates.",
+        "operationId": "get_og_graph_og_graph_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Og Graph Og Graph Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/authoring/targets": {
+      "get": {
+        "tags": [
+          "authoring"
+        ],
+        "summary": "Get Authoring Targets",
+        "description": "List editable .og and config files in the workspace.",
+        "operationId": "get_authoring_targets_authoring_targets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Authoring Targets Authoring Targets Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/authoring/targets/{name}": {
+      "get": {
+        "tags": [
+          "authoring"
+        ],
+        "summary": "Get Authoring Target",
+        "description": "Return the source text for a single editable target.",
+        "operationId": "get_authoring_target_authoring_targets__name__get",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Authoring Target Authoring Targets  Name  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/authoring/targets/{name}/generate": {
+      "post": {
+        "tags": [
+          "authoring"
+        ],
+        "summary": "Post Authoring Generate",
+        "description": "Generate a proposed patch for the named target via the LLM (G1-T2 / CRIT-002).\n\nRuns the blocking LLM call off the event loop via anyio.to_thread.run_sync.\nReturns a real unified diff (old vs proposed) and the proposed content.\nPending content is stored server-side so /apply can write it without\nthe client having to re-send the full body.\n\nBody: ``{\"prompt\": \"describe the change you want\"}``\nResponse: ``{\"diff\": [[\"\" | \"add\" | \"del\", \"<line>\"], ...]}``",
+        "operationId": "post_authoring_generate_authoring_targets__name__generate_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthoringGenerateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Authoring Generate Authoring Targets  Name  Generate Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/authoring/targets/{name}/apply": {
+      "post": {
+        "tags": [
+          "authoring"
+        ],
+        "summary": "Post Authoring Apply",
+        "description": "Apply the pending patch to the target and trigger a skill-engine re-index.",
+        "operationId": "post_authoring_apply_authoring_targets__name__apply_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Authoring Apply Authoring Targets  Name  Apply Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/authoring/targets/{name}/revert": {
+      "post": {
+        "tags": [
+          "authoring"
+        ],
+        "summary": "Post Authoring Revert",
+        "description": "Revert the most recently applied patch for the target.",
+        "operationId": "post_authoring_revert_authoring_targets__name__revert_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Authoring Revert Authoring Targets  Name  Revert Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/authoring/targets/{name}/source": {
+      "post": {
+        "tags": [
+          "authoring"
+        ],
+        "summary": "Post Authoring Save Source",
+        "description": "Persist manually edited .og content for the named target.\n\nValidates the target name (path-traversal guard), parses the content as a\nvalid ObjectGraph for .og files (returns 4xx on parse failure without overwriting),\nand writes atomically.\n\nBody: ``{\"content\": \"<full .og text>\"}``\nResponse: ``{\"ok\": true, \"name\": \"<target-name>\"}``",
+        "operationId": "post_authoring_save_source_authoring_targets__name__source_post",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthoringSourceSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Authoring Save Source Authoring Targets  Name  Source Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/spend": {
+      "get": {
+        "tags": [
+          "spend"
+        ],
+        "summary": "Get Spend",
+        "description": "Return per-turn token/cost rows, compaction events, and model totals.",
+        "operationId": "get_spend_spend_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Spend Spend Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/spend/daily": {
+      "get": {
+        "tags": [
+          "spend"
+        ],
+        "summary": "Get Spend Daily",
+        "description": "Return today's accumulated spend from the daily ledger plus configured caps.",
+        "operationId": "get_spend_daily_spend_daily_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Spend Daily Spend Daily Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runs": {
+      "get": {
+        "tags": [
+          "runs"
+        ],
+        "summary": "List recent durable runs",
+        "description": "Return recent durable runs across all sessions the caller owns, newest first.",
+        "operationId": "get_runs_runs_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Runs Runs Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runs/{run_id}": {
+      "get": {
+        "tags": [
+          "runs"
+        ],
+        "summary": "Get a durable run by ID",
+        "description": "Return a single RunState by run_id.  404 if not found.",
+        "operationId": "get_run_runs__run_id__get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Run Runs  Run Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "runs"
+        ],
+        "summary": "Cancel a durable run",
+        "description": "Cancel a durable run (sets status to CANCELLED and disarms its wait).\n\nIdempotent: cancelling an already-terminal run returns 200 with the\ncurrent status.",
+        "operationId": "delete_run_runs__run_id__delete",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete Run Runs  Run Id  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/runs/{run_id}/wake": {
+      "post": {
+        "tags": [
+          "runs"
+        ],
+        "summary": "Wake a WAITING run",
+        "description": "Wake a WAITING run by resolving its wait condition.\n\nThe run transitions WAITING\u2192RUNNING and the resumed turn is started in the\nbackground via the job queue (durable, survives restart).\n\nReturns ``{\"status\": \"waking\", \"run_id\": \"...\"}`` immediately; the actual\nresume happens asynchronously.  If the run is not WAITING, returns 409.",
+        "operationId": "post_run_wake_runs__run_id__wake_post",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Post Run Wake Runs  Run Id  Wake Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/files": {
+      "post": {
+        "tags": [
+          "files"
+        ],
+        "summary": "Upload a file attachment",
+        "description": "Ingest a multipart file upload into the managed attachment store.\n\nValidates type and size BEFORE storage.  Returns :class:`FileMeta` JSON.\nA ``file.uploaded`` event is emitted after storage so the reactive\nextract-and-index pipeline fires asynchronously via the JobRegistry.",
+        "operationId": "upload_file_files_post",
+        "parameters": [
+          {
+            "name": "media_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Media Type"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_file_files_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Upload File Files Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "files"
+        ],
+        "summary": "List all file attachments",
+        "description": "Return all stored file metadata records, newest first.",
+        "operationId": "list_files_files_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response List Files Files Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/files/{file_id}": {
+      "get": {
+        "tags": [
+          "files"
+        ],
+        "summary": "Get file metadata",
+        "description": "Return the :class:`FileMeta` record for a single *file_id*.",
+        "operationId": "get_file_meta_files__file_id__get",
+        "parameters": [
+          {
+            "name": "file_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "File Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get File Meta Files  File Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/files/{file_id}/content": {
+      "get": {
+        "tags": [
+          "files"
+        ],
+        "summary": "Stream raw file content",
+        "description": "Stream the raw bytes of the stored blob for *file_id*.\n\nQuarantined files are NOT served (404).",
+        "operationId": "get_file_content_files__file_id__content_get",
+        "parameters": [
+          {
+            "name": "file_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "File Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get File Content Files  File Id  Content Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/voice/transcribe": {
+      "post": {
+        "tags": [
+          "voice"
+        ],
+        "summary": "Transcribe audio via STT provider",
+        "description": "Transcribe a multipart audio upload to text via the configured STT backend.",
+        "operationId": "route_voice_transcribe_voice_transcribe_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_route_voice_transcribe_voice_transcribe_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Route Voice Transcribe Voice Transcribe Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/voice/speak": {
+      "post": {
+        "tags": [
+          "voice"
+        ],
+        "summary": "Synthesize text via TTS provider",
+        "description": "Synthesize text to audio via the configured TTS backend.\n\nUses :func:`~hachi.gateway.voice_endpoints.speak_stream` to pipe bytes\nthrough a generator so the first bytes reach the client before the full\nclip is produced (FIX P1).  Falls back to the buffered path automatically\nfor providers that don't support streaming.",
+        "operationId": "route_voice_speak_voice_speak_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoiceSpeakBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Route Voice Speak Voice Speak Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/voice/config": {
+      "get": {
+        "tags": [
+          "voice"
+        ],
+        "summary": "Get voice configuration",
+        "description": "Return the current voice provider config summary for the UI.",
+        "operationId": "route_voice_config_voice_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Route Voice Config Voice Config Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "voice"
+        ],
+        "summary": "Update voice configuration",
+        "description": "Persist voice config fields and return the updated summary.",
+        "operationId": "route_voice_set_config_voice_config_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Patch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Route Voice Set Config Voice Config Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interactions": {
+      "get": {
+        "tags": [
+          "interactions"
+        ],
+        "summary": "Get Interactions",
+        "description": "Return interaction_log rows newest-first, optionally scoped to one session.\n\nOwnership rules (mirrors ``list_sessions``):\n- If ``session_id`` is supplied: ownership-check that session before querying.\n- If not supplied: return rows across all sessions owned by the caller\n  (legacy NULL-owner sessions included for back-compat); no-auth returns all.\n\nArgs:\n    session_id: Optional session filter.\n    limit: Maximum rows to return (1\u2013500; default 100).",
+        "operationId": "get_interactions_interactions_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InteractionListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interactions/{interaction_id}/rating": {
+      "put": {
+        "tags": [
+          "interactions"
+        ],
+        "summary": "Put Interaction Rating",
+        "description": "Set the thumbs-up / thumbs-down rating (and optional notes) for a turn.\n\nOwnership check: looks up the row's ``session_id`` first, then verifies the\ncaller owns that session before allowing the write.\n\nReturns 404 if ``interaction_id`` does not exist.",
+        "operationId": "put_interaction_rating_interactions__interaction_id__rating_put",
+        "parameters": [
+          {
+            "name": "interaction_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Interaction Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RatingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AllowedCommandRequest": {
+        "properties": {
+          "command": {
+            "type": "string",
+            "title": "Command"
+          }
+        },
+        "type": "object",
+        "required": [
+          "command"
+        ],
+        "title": "AllowedCommandRequest",
+        "description": "Body for POST /config/permissions/commands (G1-T3)."
+      },
+      "AllowedFolderRequest": {
+        "properties": {
+          "path": {
+            "type": "string",
+            "title": "Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "title": "AllowedFolderRequest",
+        "description": "Body for POST /config/permissions/folders (G1-T3)."
+      },
+      "AlwaysAllowRequest": {
+        "properties": {
+          "request": {
+            "type": "string",
+            "title": "Request"
+          },
+          "action": {
+            "type": "string",
+            "title": "Action"
+          }
+        },
+        "type": "object",
+        "required": [
+          "request",
+          "action"
+        ],
+        "title": "AlwaysAllowRequest",
+        "description": "Body for POST /sessions/{id}/permissions/always-allow (G1-T4)."
+      },
+      "ApprovalActionRequest": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "title": "Action"
+          },
+          "rationale": {
+            "type": "string",
+            "title": "Rationale",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "title": "ApprovalActionRequest",
+        "description": "Body for POST /approvals/{request_id} (UC-PERM-006)."
+      },
+      "AuthoringGenerateRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt"
+        ],
+        "title": "AuthoringGenerateRequest",
+        "description": "Body for POST /authoring/targets/{name}/generate (G1-T2 / CRIT-002)."
+      },
+      "AuthoringSourceSaveRequest": {
+        "properties": {
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "AuthoringSourceSaveRequest",
+        "description": "Body for POST /authoring/targets/{name}/source (CONTRACT-AUTHORING-SAVE)."
+      },
+      "Body_route_voice_transcribe_voice_transcribe_post": {
+        "properties": {
+          "audio": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Audio"
+          }
+        },
+        "type": "object",
+        "required": [
+          "audio"
+        ],
+        "title": "Body_route_voice_transcribe_voice_transcribe_post"
+      },
+      "Body_upload_file_files_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_file_files_post"
+      },
+      "CapabilityToggleRequest": {
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          }
+        },
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "title": "CapabilityToggleRequest",
+        "description": "Body for PUT /capabilities/{id}/enabled."
+      },
+      "ChannelInboundRequest": {
+        "properties": {
+          "sender_id": {
+            "type": "string",
+            "title": "Sender Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "sender_name": {
+            "type": "string",
+            "title": "Sender Name",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "sender_id",
+          "text"
+        ],
+        "title": "ChannelInboundRequest"
+      },
+      "GatewayEventPayload": {
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "title": "Sequence"
+          },
+          "event_type": {
+            "type": "string",
+            "title": "Event Type"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Payload"
+          },
+          "time": {
+            "type": "string",
+            "title": "Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sequence",
+          "event_type",
+          "payload",
+          "time"
+        ],
+        "title": "GatewayEventPayload"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service"
+          },
+          "protocol_version": {
+            "type": "string",
+            "title": "Protocol Version"
+          },
+          "time": {
+            "type": "string",
+            "title": "Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "service",
+          "protocol_version",
+          "time"
+        ],
+        "title": "HealthResponse"
+      },
+      "InteractionListResponse": {
+        "properties": {
+          "interactions": {
+            "items": {
+              "$ref": "#/components/schemas/InteractionRecord"
+            },
+            "type": "array",
+            "title": "Interactions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "interactions"
+        ],
+        "title": "InteractionListResponse",
+        "description": "Response for ``GET /interactions``."
+      },
+      "InteractionRecord": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "turn_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Turn Id"
+          },
+          "ts": {
+            "type": "string",
+            "title": "Ts"
+          },
+          "user_input": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User Input"
+          },
+          "agent_output": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Output"
+          },
+          "tool_calls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tool Calls"
+          },
+          "memory_hits": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Memory Hits"
+          },
+          "model_used": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Used"
+          },
+          "token_cost": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Token Cost"
+          },
+          "tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tokens"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rating"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "session_id",
+          "ts"
+        ],
+        "title": "InteractionRecord",
+        "description": "One row from ``interaction_log`` \u2014 the per-turn eval ground truth.\n\n``tool_calls`` and ``memory_hits`` are decoded JSON arrays (lists of strings).\nNumeric fields are optional because they may be NULL for older rows."
+      },
+      "LimitsRequest": {
+        "properties": {
+          "per_task_cap_usd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Per Task Cap Usd"
+          },
+          "daily_cap_usd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Daily Cap Usd"
+          }
+        },
+        "type": "object",
+        "title": "LimitsRequest",
+        "description": "Body for PUT /config/limits (G1-T3)."
+      },
+      "McpRegisterRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "transport": {
+            "type": "string",
+            "title": "Transport",
+            "default": "stdio"
+          },
+          "command": {
+            "type": "string",
+            "title": "Command",
+            "default": ""
+          },
+          "args": {
+            "type": "string",
+            "title": "Args",
+            "default": ""
+          },
+          "env_vars": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Env Vars"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "default": ""
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Headers"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "McpRegisterRequest",
+        "description": "Body for POST /runtime/mcp/register (G1-T5 / CONTRACT-MCP).\n\nSupports three transport kinds:\n  - ``stdio`` (default): requires ``command`` + optional ``args`` / ``env_vars``.\n  - ``sse``:             requires ``url`` + optional ``headers`` / ``env_vars``.\n  - ``http``:            requires ``url`` + optional ``headers`` / ``env_vars``."
+      },
+      "MemoryFactAddRequest": {
+        "properties": {
+          "group": {
+            "type": "string",
+            "title": "Group"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "group",
+          "text"
+        ],
+        "title": "MemoryFactAddRequest",
+        "description": "Body for POST /memory/facts."
+      },
+      "MemoryRequest": {
+        "properties": {
+          "memory": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Memory"
+          }
+        },
+        "type": "object",
+        "required": [
+          "memory"
+        ],
+        "title": "MemoryRequest"
+      },
+      "OpenAIChatRequest": {
+        "properties": {
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/OpenAIMessage"
+            },
+            "type": "array",
+            "title": "Messages"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "stream": {
+            "type": "boolean",
+            "title": "Stream",
+            "default": false
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "messages"
+        ],
+        "title": "OpenAIChatRequest"
+      },
+      "OpenAIMessage": {
+        "properties": {
+          "role": {
+            "type": "string",
+            "title": "Role"
+          },
+          "content": {
+            "title": "Content"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "role"
+        ],
+        "title": "OpenAIMessage"
+      },
+      "PermissionsRequest": {
+        "properties": {
+          "permissions": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Permissions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "permissions"
+        ],
+        "title": "PermissionsRequest"
+      },
+      "ProviderRequest": {
+        "properties": {
+          "provider": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Provider"
+          }
+        },
+        "type": "object",
+        "required": [
+          "provider"
+        ],
+        "title": "ProviderRequest"
+      },
+      "ProviderUpsertRequest": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind",
+            "default": "anthropic"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "default": ""
+          },
+          "base_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Url"
+          },
+          "allowed_models": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allowed Models"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Headers"
+          },
+          "api_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Api Key"
+          }
+        },
+        "type": "object",
+        "title": "ProviderUpsertRequest",
+        "description": "Body for POST /config/providers (add) and PUT /config/providers/{name} (update)."
+      },
+      "RatingRequest": {
+        "properties": {
+          "rating": {
+            "type": "string",
+            "enum": [
+              "up",
+              "down"
+            ],
+            "title": "Rating"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rating"
+        ],
+        "title": "RatingRequest",
+        "description": "Body for ``PUT /interactions/{interaction_id}/rating``."
+      },
+      "RatingResponse": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "title": "Ok"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ok"
+        ],
+        "title": "RatingResponse",
+        "description": "Response for ``PUT /interactions/{interaction_id}/rating``."
+      },
+      "ReadinessResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "ready": {
+            "type": "boolean",
+            "title": "Ready"
+          },
+          "blockers": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Blockers"
+          },
+          "checks": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Checks"
+          },
+          "active_connections": {
+            "type": "integer",
+            "title": "Active Connections"
+          },
+          "time": {
+            "type": "string",
+            "title": "Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "ready",
+          "blockers",
+          "active_connections",
+          "time"
+        ],
+        "title": "ReadinessResponse"
+      },
+      "RoutingUpdateRequest": {
+        "properties": {
+          "default_model": {
+            "type": "string",
+            "title": "Default Model"
+          },
+          "capabilities": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Capabilities"
+          }
+        },
+        "type": "object",
+        "required": [
+          "default_model"
+        ],
+        "title": "RoutingUpdateRequest",
+        "description": "Body for PUT /config/routing."
+      },
+      "ScheduleToggleRequest": {
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          }
+        },
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "title": "ScheduleToggleRequest"
+      },
+      "SecretStoreRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[\\w.\\-]+$",
+            "title": "Name"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Value"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "value"
+        ],
+        "title": "SecretStoreRequest",
+        "description": "Body for POST /runtime/secrets."
+      },
+      "SessionCloseResponse": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "closed": {
+            "type": "boolean",
+            "title": "Closed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "closed"
+        ],
+        "title": "SessionCloseResponse"
+      },
+      "SessionCreateRequest": {
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "surface": {
+            "type": "string",
+            "title": "Surface"
+          },
+          "protocol_version": {
+            "type": "string",
+            "title": "Protocol Version",
+            "default": "1.0"
+          },
+          "capabilities": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Capabilities"
+          }
+        },
+        "type": "object",
+        "required": [
+          "client_id",
+          "surface"
+        ],
+        "title": "SessionCreateRequest"
+      },
+      "SessionCreateResponse": {
+        "properties": {
+          "accepted": {
+            "type": "boolean",
+            "title": "Accepted"
+          },
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "protocol_version": {
+            "type": "string",
+            "title": "Protocol Version"
+          },
+          "server_capabilities": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Server Capabilities"
+          }
+        },
+        "type": "object",
+        "required": [
+          "accepted",
+          "session_id",
+          "protocol_version",
+          "server_capabilities"
+        ],
+        "title": "SessionCreateResponse"
+      },
+      "SessionEventsResponse": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/GatewayEventPayload"
+            },
+            "type": "array",
+            "title": "Events"
+          },
+          "next_sequence": {
+            "type": "integer",
+            "title": "Next Sequence"
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "events",
+          "next_sequence"
+        ],
+        "title": "SessionEventsResponse"
+      },
+      "SessionInterruptResponse": {
+        "properties": {
+          "interrupted": {
+            "type": "boolean",
+            "title": "Interrupted"
+          }
+        },
+        "type": "object",
+        "required": [
+          "interrupted"
+        ],
+        "title": "SessionInterruptResponse",
+        "description": "Response for POST /sessions/{session_id}/interrupt (P1-4)."
+      },
+      "SessionMessageRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "attachment_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Attachment Ids",
+            "default": []
+          },
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt"
+        ],
+        "title": "SessionMessageRequest"
+      },
+      "SessionMessageResponse": {
+        "properties": {
+          "response": {
+            "type": "string",
+            "title": "Response"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "response"
+        ],
+        "title": "SessionMessageResponse"
+      },
+      "SetupApplyRequest": {
+        "properties": {
+          "plan": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Plan"
+          }
+        },
+        "type": "object",
+        "required": [
+          "plan"
+        ],
+        "title": "SetupApplyRequest"
+      },
+      "SkillAddRequest": {
+        "properties": {
+          "kennel_id": {
+            "type": "string",
+            "title": "Kennel Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kennel_id"
+        ],
+        "title": "SkillAddRequest",
+        "description": "Body for POST /skills/add (G1-T6)."
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VoiceSpeakBody": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 8000,
+            "title": "Text"
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "format": {
+            "type": "string",
+            "title": "Format",
+            "default": "mp3"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "openai",
+                  "elevenlabs"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "VoiceSpeakBody",
+        "description": "Body for POST /voice/speak."
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

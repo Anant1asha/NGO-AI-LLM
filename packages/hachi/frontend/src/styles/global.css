@@ -1,0 +1,97 @@
+/* global.css — keyframes + scrollbar + resets ported from prototype <style> block (lines 14–29) */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--hachi-canvas); font-family: var(--font-body); }
+
+/* Global keyboard focus indicator — WCAG 2.4.7 Focus Visible (AA) */
+:focus-visible {
+  outline: 2px solid var(--hachi-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes hachiBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes hachiFade {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hachiPop {
+  from { opacity: 0; transform: scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Voice waveform bars (dictate + push-to-talk) */
+@keyframes hachiVoice {
+  0%, 100% { transform: scaleY(0.32); }
+  50%      { transform: scaleY(1); }
+}
+
+@keyframes hm-breathe {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-1.5px); }
+}
+
+@keyframes hm-blink {
+  0%, 92%, 100% { background: #16151A; }
+  94%, 97.5%    { background: #F3E9D2; }
+}
+
+@keyframes hm-loop {
+  to { stroke-dashoffset: -260; }
+}
+
+@keyframes hachi-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@keyframes ogflow {
+  to { stroke-dashoffset: -18; }
+}
+
+@keyframes hm-zfloat {
+  0%   { opacity: 0; transform: translateY(3px) scale(.9); }
+  35%  { opacity: .95; }
+  100% { opacity: 0; transform: translateY(-10px) scale(1.1); }
+}
+
+.hachi-scroll::-webkit-scrollbar { width: 11px; height: 11px; }
+.hachi-scroll::-webkit-scrollbar-thumb {
+  background: var(--hachi-line);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+.hachi-scroll::-webkit-scrollbar-thumb:hover {
+  background: #d3c8b4;
+  background-clip: padding-box;
+}
+
+/* Visually hidden but still reachable by screen readers (standard sr-only pattern) */
+.hachi-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* WCAG 2.3.3 / 2.2.2 — stop all animation/transition/scroll motion for users who ask for it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,26 @@
+::meta
+  title: Travel Organizer
+  version: 1.0.0
+  domain: travel|calendar|email
+
+::index
+  # node-id          | type  | scope | conf | keywords
+  travel_organizer    | skill | all   | 1.0  | travel, flight, hotel, itinerary, booking, trip, calendar
+
+::node[travel_organizer]
+->[:role=skill]
+->[:requires=core_flight_radar, core_weather]
+->[:keywords=travel, flight, hotel, itinerary, booking, trip, calendar]
+
+::dense
+Extracts flight/hotel bookings from Gmail and creates precise Google Calendar events.
+
+::steps
+1. Search the user's Gmail inbox for recently received flight confirmations, train tickets, or hotel bookings.
+2. For each relevant email, intelligently extract:
+   - Departure and Arrival DateTime (ensure correct timezones).
+   - Flight/Train numbers and Hotel Addresses.
+   - Booking reference codes (PNR).
+3. Call the native Google Calendar tool to create precise time-blocked events for the travel transit.
+4. Inject the booking references and addresses directly into the Calendar event's description field.
+5. Output a confirmed itinerary summary to the terminal.

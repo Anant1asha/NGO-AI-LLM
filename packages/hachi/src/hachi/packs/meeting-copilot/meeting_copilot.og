@@ -1,0 +1,145 @@
+::meta
+  title: Meeting Copilot
+  version: 1.0.0
+  domain: calendar|meetings|collaboration|memory
+
+::index
+  # node-id                | type  | scope | conf | keywords
+  meeting_copilot           | skill | all   | 1.0  | meeting, prep, debrief, notes, agenda, calendar, minutes, google calendar
+  meeting_copilot_prep      | skill | all   | 0.95 | pre-meeting brief, attendee context, email history, calendar prep, meeting context
+  meeting_copilot_debrief   | skill | all   | 0.95 | post-meeting, meeting minutes, action items, debrief, decisions, next steps, meeting summary
+  meeting_copilot_episode   | skill | all   | 0.85 | save meeting memory, meeting episode, meeting note, remember meeting, meeting record
+
+::node[meeting_copilot]
+->[:role=skill]
+->[:traverse=priority:high]
+->[:requires=meeting_copilot_prep]
+->[:requires=meeting_copilot_debrief]
+->[:keywords=meeting, prep, debrief, notes, agenda, calendar, minutes, google calendar, meeting copilot, brief]
+
+::traverse
+  priority = high
+  entry    = meeting_copilot
+  depth-limit = 3
+
+::dense
+Calendar-event copilot: pre-meeting context briefs from Gmail + post-meeting minutes + episode memory write.
+
+::steps
+1. Ask the user: "Prep for an upcoming meeting, or debrief a recent one?"
+2. If "Prep": run `meeting_copilot_prep`.
+3. If "Debrief": run `meeting_copilot_debrief`, then run `meeting_copilot_episode`.
+
+
+::node[meeting_copilot_prep]
+->[:role=skill]
+->[:keywords=pre-meeting brief, attendee context, email history, calendar prep, meeting context, briefing, before meeting]
+
+::dense
+Builds a pre-meeting brief from the calendar event: attendees, recent email threads, open action items.
+
+::full
+Pre-meeting briefing workflow:
+
+1. Ask for the meeting name or time; fetch the matching Calendar event (Calendar tool: `get_event`).
+2. Extract all attendee email addresses from the event.
+3. For each attendee:
+   a. Search Gmail for the 3 most recent threads with that person (Gmail tool: `search_messages`,
+      query="from:<email> OR to:<email>", max_results=3).
+   b. Check memory for any stored `person` node for this attendee (known role, past interactions).
+4. Retrieve any open action items from memory tagged with this attendee's name or the meeting topic.
+5. Fetch the current weather for the meeting location if it is an in-person event (`core_weather`).
+6. Synthesize into a structured brief:
+
+   ## Meeting Brief: <event_title>
+   **When**: <date/time> | **Location**: <location or "Remote">
+
+   ### Attendees
+   - <name> (<email>) — <role if known> | Last contact: <date>
+
+   ### Recent Context
+   <3-line summary of most relevant email threads per attendee>
+
+   ### Open Action Items
+   <any unresolved items tagged to these attendees>
+
+   ### Today's Conditions (if in-person)
+   <weather one-liner>
+
+7. Present the brief; do not save anything to memory at this stage.
+
+::assertions
+assert calendar.read "Meeting prep requires calendar.read scope."
+assert gmail.read "Meeting prep requires gmail.read scope to retrieve email context."
+
+
+::node[meeting_copilot_debrief]
+->[:role=skill]
+->[:keywords=post-meeting, meeting minutes, action items, debrief, decisions, next steps, meeting summary, structured minutes]
+
+::dense
+Structures raw meeting notes into professional minutes (Decisions / Action Items / Next Steps) + saves to Drive.
+
+::full
+Post-meeting debrief workflow:
+
+1. Ask the user to paste or dictate their raw, unstructured meeting notes.
+2. Structure them using the following schema:
+
+   ## Meeting Minutes: <event_title> — <date>
+
+   ### Attendees Present
+   <list>
+
+   ### Decisions Made
+   - <decision 1>
+   - <decision 2>
+
+   ### Action Items
+   | Owner | Task | Due Date |
+   |-------|------|----------|
+   | <name> | <task> | <date or "TBD"> |
+
+   ### Key Discussion Points
+   <2–4 bullet summary>
+
+   ### Next Steps
+   - <next step 1>
+
+3. Create a Google Doc in the user's "Meeting Notes" Drive folder with the structured minutes
+   (Drive tool: `create_document`, title="<event_title> — <date>").
+4. Draft a Gmail message to all attendees with the minutes summary + Drive doc link
+   (Gmail tool: `create_draft`). Do NOT send — save to Drafts for user review.
+5. Notify the user: "Minutes saved to Drive and draft created for your review."
+
+::assertions
+assert drive.write "Debrief requires drive.write scope to save minutes."
+assert gmail.read "Debrief requires gmail.read to fetch attendee list from the calendar event."
+
+
+::node[meeting_copilot_episode]
+->[:role=skill]
+->[:keywords=save meeting memory, meeting episode, meeting note, remember meeting, meeting record, episode node]
+
+::dense
+Writes a structured episode node to memory so the meeting is permanently retrievable in future sessions.
+
+::full
+After debrief, persist the meeting as a memory episode:
+
+1. Collect from the debrief output:
+   - event_title, event_date, attendees (names + emails), decisions, action_items (list of {owner, task, due}), drive_doc_url.
+2. For each attendee, upsert a `person` memory node (if not already present from Inbox Sentinel):
+   - attributes: { email, last_meeting: <date>, meeting_count: <increment> }
+3. Write an `episode` memory node via `memory_write_episode`:
+   - title = "<event_title> — <date>"
+   - participants = [attendee emails]
+   - decisions = [decision strings]
+   - action_items = [{ owner, task, due }]
+   - evidence = "drive:<drive_doc_url>"
+   - tags = ["meeting", <event_title (slugified)>]
+4. Confirm to the user: "This meeting has been saved to your memory graph and will be
+   retrievable in future sessions."
+
+This episode node enables queries like "What did we decide in the Q2 planning meeting?"
+and "What action items do I owe Alice?"

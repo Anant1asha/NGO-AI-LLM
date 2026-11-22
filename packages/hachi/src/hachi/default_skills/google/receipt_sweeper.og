@@ -1,0 +1,23 @@
+::meta
+  title: Receipt Sweeper
+  version: 1.0.0
+  domain: email|finance|organization
+
+::index
+  # node-id        | type  | scope | conf | keywords
+  receipt_sweeper   | skill | all   | 1.0  | receipts, invoices, expenses, inbox zero, taxes, receipt, invoice, expense, gmail archive
+
+::node[receipt_sweeper]
+->[:role=skill]
+->[:keywords=receipts, invoices, expenses, inbox zero, taxes, receipt, invoice, expense, gmail archive]
+
+::dense
+Batch-processes Gmail receipts/invoices → Google Drive folders. Maintains inbox zero.
+
+::steps
+1. Search the Gmail inbox using queries like "receipt", "invoice", "payment confirmed", or specific vendor names (e.g., "Uber Receipts").
+2. For each matching email, check if it contains a PDF attachment or HTML receipt.
+3. If a PDF exists, download the attachment.
+4. Call the Google Drive tool to upload the PDF into a designated "Financials/Receipts" folder, automatically renaming the file to include the date and vendor name.
+5. Archive the processed email in Gmail to maintain Inbox Zero.
+6. Present a batch processing report showing how many receipts were secured.

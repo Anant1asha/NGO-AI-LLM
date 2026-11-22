@@ -1,0 +1,26 @@
+::meta
+  title: Project Kickoff
+  version: 1.0.0
+  domain: notion|slack|project-management
+
+::index
+  # node-id        | type  | scope | conf | keywords
+  project_kickoff   | skill | all   | 1.0  | new project, kickoff, setup, template, notion, slack channel, project setup
+
+::node[project_kickoff]
+->[:role=skill]
+->[:keywords=new project, kickoff, setup, template, notion, slack channel, project setup]
+
+::dense
+Creates Notion wiki + Slack channel + team invites for a new project in one workflow.
+
+::steps
+1. Ask the user for the Project Name, a brief description, and the emails/handles of the core team members.
+2. Call `notion_page_create` to generate a "Master Project Wiki" page. Structure the page body with standard headings: "Goals", "Milestones", "Resources", and "Action Items".
+3. Call `slack_create_channel` to instantly provision a new channel named `#proj-[name]`.
+4. Call `slack_invite_users` to add the provided team members to the new channel.
+5. Send an automated welcome message to the new Slack channel containing the link to the generated Notion Wiki.
+6. Confirm successful project initialization to the user.
+
+::assertions
+assert project_name != "" "A project name is required to initialize the workspace."

@@ -1,0 +1,27 @@
+/* Hachi · typography
+ * Two weights only: regular 400, medium 500. Sentence case everywhere; never ALL CAPS.
+ * Wordmark is lowercase "hachi". */
+:root {
+  /* — families — */
+  --font-display: "General Sans", "Hanken Grotesk", "Mont", system-ui, sans-serif;
+  --font-body:    "Inter", "Geist", system-ui, -apple-system, sans-serif;
+  --font-mono:    "JetBrains Mono", "Berkeley Mono", ui-monospace, "SF Mono", monospace;
+
+  /* — weights (only these two) — */
+  --weight-regular: 400;
+  --weight-medium:  500;
+
+  /* — type scale (size / line-height) — */
+  --type-display-size: 38px;  --type-display-lh: 42px;  /* display & hero */
+  --type-heading-size: 24px;  --type-heading-lh: 30px;  /* section headings */
+  --type-body-size:    16px;  --type-body-lh:    26px;  /* product body */
+  --type-small-size:   13px;  --type-small-lh:   20px;  /* captions / meta */
+  --type-mono-size:    13px;  --type-mono-lh:    22px;  /* CLI / TUI / code */
+
+  /* — semantic roles — */
+  --text-display:  var(--weight-medium) var(--type-display-size)/var(--type-display-lh) var(--font-display);
+  --text-heading:  var(--weight-medium) var(--type-heading-size)/var(--type-heading-lh) var(--font-display);
+  --text-body:     var(--weight-regular) var(--type-body-size)/var(--type-body-lh) var(--font-body);
+  --text-small:    var(--weight-regular) var(--type-small-size)/var(--type-small-lh) var(--font-body);
+  --text-mono:     var(--weight-regular) var(--type-mono-size)/var(--type-mono-lh) var(--font-mono);
+}

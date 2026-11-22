@@ -1,0 +1,29 @@
+::meta
+  title: Urgent Escalator
+  version: 1.0.0
+  domain: slack|monitoring|alerting
+
+::index
+  # node-id           | type  | scope | conf | keywords
+  urgent_escalator     | skill | all   | 1.0  | urgent, emergency, escalation, slack alert, monitor, alert, escalate, pager
+
+::node[urgent_escalator]
+->[:role=skill]
+->[:requires=dnd_coordinator]
+->[:keywords=urgent, emergency, escalation, slack alert, monitor, alert, escalate, pager]
+
+::dense
+Monitors Slack for urgent messages; escalates via alert/SMS when user is away from keyboard.
+
+::steps
+1. Enter a continuous monitoring loop checking specific Slack channels or Direct Messages.
+2. Use the LLM to parse incoming messages for critical flags:
+   - Contains "@[User's Name]".
+   - Contains keywords like "URGENT", "P0", "Production down", or "Blocker".
+   - Originates from a designated VIP list (e.g., the CEO's Slack ID).
+3. If a critical message is detected, immediately trigger an escalation alert to the user.
+4. If the user doesn't respond in the terminal within 2 minutes, optionally trigger a secondary action (e.g., sending an SMS if an SMS tool is available).
+5. Suspend the workflow briefly before resuming the monitoring loop.
+
+::assertions
+assert monitor_targets != "" "Specify which channels or users to monitor."

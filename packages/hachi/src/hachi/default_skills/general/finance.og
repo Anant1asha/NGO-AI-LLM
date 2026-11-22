@@ -1,0 +1,31 @@
+::meta
+  title: Core Finance (Crypto)
+  version: 1.0.0
+  domain: finance|crypto|market-data
+
+::index
+  # node-id     | type  | scope | conf | keywords
+  core_finance   | skill | all   | 1.0  | crypto, bitcoin, price, finance, market, cryptocurrency, coin, btc, eth, market cap, financial, financial data, stock, portfolio, shares, investment
+
+::node[core_finance]
+->[:role=skill]
+->[:requires=core_currency]
+->[:keywords=crypto, bitcoin, price, finance, market, cryptocurrency, coin, btc, eth, market cap, financial, financial data, stock, portfolio, shares, investment]
+
+::api[fetch_crypto_price]
+method=GET
+endpoint=https://api.coingecko.com/api/v3/simple/price?ids={coin_id}&vs_currencies=usd&include_24hr_change=true
+schema={"coin_id": "string"}
+description=Fetches the current real-time USD price and 24h change for a cryptocurrency (use exact ID like 'bitcoin', 'ethereum').
+
+::dense
+Live crypto prices via CoinGecko. Shows USD price and 24h change. Use for BTC, ETH, altcoins.
+
+::steps
+1. Identify the cryptocurrency requested (e.g., 'bitcoin' for BTC).
+2. Call `fetch_crypto_price` passing the full coin name in lowercase as the `coin_id`.
+3. Parse the USD price and the 24-hour percentage change from the response.
+4. Format the output elegantly (e.g., "$64,320.50 (↑ 2.4%)").
+
+::assertions
+assert coin_id != "" "A valid cryptocurrency ID is required."

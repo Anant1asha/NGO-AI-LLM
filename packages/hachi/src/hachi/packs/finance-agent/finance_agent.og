@@ -1,0 +1,81 @@
+::meta
+  title: Finance Agent
+  version: 1.0.0
+  domain: finance|budget|categorize|read-only
+
+::index
+  # node-id              | type  | scope | conf | keywords
+  finance_agent           | skill | all   | 1.0  | finance, budget, transactions, categorize spending, monthly review
+  finance_gate            | skill | all   | 1.0  | no money movement, read only, never transfer, never pay, financial safety
+  finance_categorize      | skill | all   | 0.9  | categorize transaction, tag expense, spending category, receipt
+  finance_monthly_rollup  | skill | all   | 0.9  | monthly report, spending summary, budget rollup, totals by category
+
+::node[finance_agent]
+->[:role=skill]
+->[:traverse=priority:high]
+->[:requires=finance_gate]
+->[:requires=finance_categorize]
+->[:requires=finance_monthly_rollup]
+->[:keywords=finance, budget, transactions, categorize spending, monthly review, expense tracker]
+
+::traverse
+  priority    = high
+  entry       = finance_agent
+  depth-limit = 3
+
+::dense
+Transaction categorizer: reads and tags spending from Sheets. READ-ONLY — never moves money.
+
+::steps
+1. ALWAYS check finance_gate first — confirm the operation is read/categorize only.
+2. Read transaction data from the configured Google Sheet via read_spreadsheet.
+3. For each uncategorized transaction, run finance_categorize.
+4. On "monthly review" or "how did I spend", run finance_monthly_rollup.
+
+::assertions
+assert sheets.read "Finance agent requires sheets.read scope."
+
+::node[finance_gate]
+->[:role=skill]
+->[:traverse=priority:high]
+->[:keywords=no money movement, read only, never transfer, never pay, financial safety, gate]
+
+::dense
+Hard safety gate: finance agent NEVER initiates payments, transfers, or any write operation against financial accounts.
+
+::full
+HARD RULE — this check must pass before any finance operation:
+- ALLOWED: read transaction data, categorize, tag, summarize, generate reports.
+- BLOCKED: initiate transfers, payments, standing orders, account mutations of any kind.
+- If the user requests a money movement: respond "I can categorize and report but cannot
+  move money. Please do that directly in your bank app."
+- If any tool call would write to a financial account: REFUSE and explain the scope limit.
+This constraint is gate-enforced at the permission layer — finance scopes are read-only.
+
+::node[finance_categorize]
+->[:role=skill]
+->[:keywords=categorize transaction, tag expense, spending category, receipt, label transaction]
+
+::dense
+Categorize a single transaction using the user's category vocabulary (from memory or Sheets header row).
+
+::full
+1. Read the transaction: date, merchant, amount, current category (if any).
+2. Check memory for known merchants via memory_search "<merchant>".
+3. Assign category from the vocabulary (Food/Transport/Utilities/Entertainment/Other or user-defined).
+4. Update the row in Sheets via update_spreadsheet (category column only).
+5. Write a fact memory node for new merchants: role=fact, edges=["->[:about=finance]"].
+
+::node[finance_monthly_rollup]
+->[:role=skill]
+->[:keywords=monthly report, spending summary, budget rollup, totals by category, monthly review]
+
+::dense
+Aggregate categorized transactions into a monthly spending report by category.
+
+::full
+1. Read all rows for the target month from the Google Sheet.
+2. Group by category; sum amounts.
+3. Compare to the previous month (if available).
+4. Return a formatted report: category | this month | last month | delta %.
+5. Write the monthly summary as a fact node in memory: role=fact, project_slug=finance-monthly.

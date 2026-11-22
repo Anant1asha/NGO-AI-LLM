@@ -1,0 +1,30 @@
+::meta
+  title: Core Network Intelligence
+  version: 1.0.0
+  domain: networking|security|geolocation
+
+::index
+  # node-id      | type  | scope | conf | keywords
+  core_network    | skill | all   | 1.0  | ip, network, location, isp, timezone, lookup, ip address, geolocation, connectivity
+
+::node[core_network]
+->[:role=skill]
+->[:keywords=ip, network, location, isp, timezone, lookup, ip address, geolocation, connectivity]
+
+::api[lookup_ip]
+method=GET
+endpoint=https://ipapi.co/{ip_address}/json/
+schema={"ip_address": "string"}
+description=Looks up geographical and network information for a specific public IPv4 or IPv6 address.
+
+::dense
+IP geolocation + ISP lookup via ipapi.co. City, country, org, timezone in one call.
+
+::steps
+1. Extract the IP address from the user's prompt.
+2. Call `lookup_ip`.
+3. Parse the JSON to extract the City, Country, ISP, and Organization.
+4. Present the data in a clean, structured list.
+
+::assertions
+assert ip_address != "" "An IP address is required for lookup."

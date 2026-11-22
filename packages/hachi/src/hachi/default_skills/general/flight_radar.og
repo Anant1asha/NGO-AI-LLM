@@ -1,0 +1,32 @@
+::meta
+  title: Core Flight Radar
+  version: 1.0.0
+  domain: aviation|tracking|real-time
+
+::index
+  # node-id          | type  | scope | conf | keywords
+  core_flight_radar   | skill | all   | 1.0  | flight, radar, planes, aviation, tracking, airspace, airplane, flight status, air traffic
+
+::node[core_flight_radar]
+->[:role=skill]
+->[:keywords=flight, radar, planes, aviation, tracking, airspace, airplane, flight status, air traffic]
+
+::api[fetch_local_airspace]
+method=GET
+endpoint=https://opensky-network.org/api/states/all?lamin={lamin}&lomin={lomin}&lamax={lamax}&lomax={lomax}
+schema={"lamin": "number", "lomin": "number", "lamax": "number", "lomax": "number"}
+description=Fetches real-time vector states of commercial flights within a specific bounding box (latitude/longitude min and max).
+
+::dense
+Live aviation tracking via OpenSky Network. Returns aircraft callsigns, positions, altitudes.
+
+::steps
+1. Identify the city or region the user is asking about.
+2. Determine a rough latitude/longitude bounding box for that region (lamin, lomin, lamax, lomax).
+3. Call `fetch_local_airspace`.
+4. The response contains an array in the `states` field. Each sub-array represents an aircraft (Index 1 is callsign, Index 2 is origin country, Index 5 is longitude, Index 6 is latitude, Index 7 is altitude).
+5. Calculate how many planes are in the bounding box and list the most prominent callsigns and their origin countries.
+6. Present the airspace radar summary to the user.
+
+::assertions
+assert lamin != 0 "A valid bounding box must be provided to prevent massive payload sizes."

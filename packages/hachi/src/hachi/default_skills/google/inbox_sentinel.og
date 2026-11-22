@@ -1,0 +1,23 @@
+::meta
+  title: Inbox Sentinel
+  version: 1.0.0
+  domain: email|productivity|focus
+
+::index
+  # node-id         | type  | scope | conf | keywords
+  inbox_sentinel     | skill | all   | 1.0  | deep work, focus mode, triage, monitor inbox, gmail triage, email filter, email inbox, inbox, unread email, email management, gmail inbox
+
+::node[inbox_sentinel]
+->[:role=skill]
+->[:keywords=deep work, focus mode, triage, monitor inbox, gmail triage, email filter, email inbox, inbox, unread email, email management, gmail inbox]
+
+::dense
+Autonomous Gmail triage loop for focus sessions: classifies urgency, labels, drafts deferrals.
+
+::steps
+1. Enter a monitoring loop. Check the Gmail inbox for new unread messages.
+2. For each message, use the LLM to classify its urgency.
+3. If classified as 'Routine' (newsletters, internal chatter): apply a "Triage" label and mark as read.
+4. If classified as 'Important but not Urgent': draft a polite "I am currently heads-down in focus mode but will review this at 4 PM" reply and save it to Gmail Drafts.
+5. If classified as 'CRITICAL' (e.g., server down, CEO request): immediately dispatch an alert via the Slack tool to the user's private channel.
+6. Use `core_suspend_workflow` to sleep for 15 minutes before repeating the loop, unless the user terminates the focus mode.

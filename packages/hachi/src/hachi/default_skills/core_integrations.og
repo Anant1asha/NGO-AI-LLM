@@ -1,0 +1,31 @@
+::meta
+  title: Core Native Integrations
+  version: 1.0.0
+  domain: integrations|native-sdk|platform
+
+::index
+  # node-id          | type               | scope | conf | keywords
+  google_workspace    | native_integration | all   | 1.0  | google, workspace, drive, docs, gmail, calendar, native SDK, google workspace, oauth
+  slack               | native_integration | all   | 1.0  | slack, native, chat, messages, slack bot
+  notion              | native_integration | all   | 1.0  | notion, native, databases, pages, notion api
+
+::node[google_workspace]
+->[:role=native_integration]
+->[:keywords=google, workspace, drive, docs, gmail, calendar, native SDK, google workspace, oauth]
+
+::dense
+Enables heavy Python native SDKs for Google Workspace (Drive, Docs, Gmail, Calendar).
+
+::node[slack]
+->[:role=native_integration]
+->[:keywords=slack, native, chat, messages, slack bot]
+
+::dense
+Enables the native Slack Python SDK for messaging and channel operations.
+
+::node[notion]
+->[:role=native_integration]
+->[:keywords=notion, native, databases, pages, notion api]
+
+::dense
+Enables the native Notion Python SDK for database and page operations.

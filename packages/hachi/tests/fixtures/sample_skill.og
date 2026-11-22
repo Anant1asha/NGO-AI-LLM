@@ -1,0 +1,72 @@
+# ============================================================
+#  Test fixture: deployment skills (deterministic, self-contained)
+# ============================================================
+
+::meta
+  title: Deployment Skills
+  version: 1.0.0
+  author: hachi-tests
+  domain: deployment|devops
+  scope: all
+
+::index
+  # node-id        | type  | scope        | conf | keywords
+  deploy_to_prod   | skill | all          | 0.99 | deploy, production, release, ship
+  run_tests        | skill | all          | 0.95 | test, pytest, verify
+  secret_rotation  | skill | orchestrator | 0.80 | secret, rotate, credentials
+
+::node[deploy_to_prod]
+->[:role=skill]
+->[:scope=all]
+->[:keywords=deploy, production, release, ship]
+->[:requires=run_tests]
+::dense
+deploy|prod|requires green tests|tag release|push
+::warning
+Never deploy to production with failing tests or uncommitted changes.
+::full
+Deploying to production is a multi-step process that must be done carefully.
+First ensure the working tree is clean and all tests pass. Then tag the release
+with a semantic version, build the artifact, and push it through the deploy
+pipeline. Monitor the rollout and be ready to roll back if health checks fail.
+This full block is intentionally verbose to represent real skill content that
+would otherwise be dumped into the context window on every single load.
+::steps
+1. Verify the working tree is clean.
+2. Run the full test suite and confirm it is green.
+3. Tag the release with a semantic version.
+4. Build and push the artifact through the deploy pipeline.
+5. Monitor health checks and roll back on failure.
+::code[lang=bash]
+git status --porcelain
+pytest -q
+git tag -a "v$VERSION" -m "release"
+::assertion
+tests_pass: the full test suite exits 0
+clean_tree: git status reports no uncommitted changes
+::edges
+->[:requires] run_tests
+
+::node[run_tests]
+->[:role=skill]
+->[:scope=all]
+->[:keywords=test, pytest, verify]
+::dense
+run|pytest -q|all green before proceeding
+::full
+Run the complete automated test suite and confirm every single test passes
+before relying on the result. Treat any failure as a hard stop signal.
+::steps
+1. Install dev dependencies.
+2. Run pytest quietly.
+3. Confirm zero failures.
+
+::node[secret_rotation]
+->[:role=skill]
+->[:scope=orchestrator]
+->[:keywords=secret, rotate, credentials]
+::dense
+rotate|secrets|orchestrator-only
+::full
+Rotate production secrets on a fixed cadence. Restricted to the orchestrator
+role because it touches privileged credential stores.

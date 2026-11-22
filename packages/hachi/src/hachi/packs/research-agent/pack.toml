@@ -1,0 +1,16 @@
+id = "research-agent"
+semver = "1.0.0"
+min_agent_version = "0.1.0"
+description = "Deep-research assistant: searches web, summarizes sources, writes artifact nodes with evidence edges."
+author = "Hachi Team"
+
+scopes = [
+    "browse_web.read",
+    "memory.write",
+]
+
+fs_paths = []
+
+[schedule_budget]
+max_runs_per_day = 24
+max_cost_per_run = 0.25

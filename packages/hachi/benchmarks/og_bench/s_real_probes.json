@@ -1,0 +1,288 @@
+{
+  "corpus": "S-real",
+  "description": "Retrieval quality probe set for the shipped default_skills library (P2-03a). Frozen at tag a54d242. Query types: K=keyword, P=paraphrase, I=intent, N=negative.",
+  "version": "1.0.0",
+  "probes": [
+    {
+      "id": "k001",
+      "type": "K",
+      "query": "currency exchange",
+      "expected": [
+        "core_currency"
+      ]
+    },
+    {
+      "id": "k002",
+      "type": "K",
+      "query": "weather forecast",
+      "expected": [
+        "core_weather"
+      ]
+    },
+    {
+      "id": "k003",
+      "type": "K",
+      "query": "translate text",
+      "expected": [
+        "core_translator"
+      ]
+    },
+    {
+      "id": "k004",
+      "type": "K",
+      "query": "github pull request",
+      "expected": [
+        "core_github"
+      ]
+    },
+    {
+      "id": "k005",
+      "type": "K",
+      "query": "slack standup",
+      "expected": [
+        "daily_standup"
+      ]
+    },
+    {
+      "id": "k006",
+      "type": "K",
+      "query": "qr code generate",
+      "expected": [
+        "core_qr_creator"
+      ]
+    },
+    {
+      "id": "k007",
+      "type": "K",
+      "query": "flight status",
+      "expected": [
+        "core_flight_radar"
+      ]
+    },
+    {
+      "id": "k008",
+      "type": "K",
+      "query": "math calculation",
+      "expected": [
+        "core_math_engine"
+      ]
+    },
+    {
+      "id": "k009",
+      "type": "K",
+      "query": "notion project",
+      "expected": [
+        "project_kickoff",
+        "notion_brain_dump"
+      ]
+    },
+    {
+      "id": "k010",
+      "type": "K",
+      "query": "email inbox",
+      "expected": [
+        "inbox_sentinel",
+        "morning_briefing"
+      ]
+    },
+    {
+      "id": "k011",
+      "type": "K",
+      "query": "dictionary lookup",
+      "expected": [
+        "core_dictionary"
+      ]
+    },
+    {
+      "id": "k012",
+      "type": "K",
+      "query": "financial data",
+      "expected": [
+        "core_finance"
+      ]
+    },
+    {
+      "id": "k013",
+      "type": "K",
+      "query": "network diagnostics",
+      "expected": [
+        "core_network"
+      ]
+    },
+    {
+      "id": "k014",
+      "type": "K",
+      "query": "wiki search",
+      "expected": [
+        "core_wiki"
+      ]
+    },
+    {
+      "id": "k015",
+      "type": "K",
+      "query": "meeting notes",
+      "expected": [
+        "meeting_copilot"
+      ]
+    },
+    {
+      "id": "k016",
+      "type": "K",
+      "query": "urgent escalation",
+      "expected": [
+        "urgent_escalator"
+      ]
+    },
+    {
+      "id": "p001",
+      "type": "P",
+      "query": "convert dollars to euros",
+      "expected": [
+        "core_currency"
+      ]
+    },
+    {
+      "id": "p002",
+      "type": "P",
+      "query": "what is the temperature outside",
+      "expected": [
+        "core_weather"
+      ]
+    },
+    {
+      "id": "p003",
+      "type": "P",
+      "query": "translate this to Spanish",
+      "expected": [
+        "core_translator"
+      ]
+    },
+    {
+      "id": "p004",
+      "type": "P",
+      "query": "open a PR on GitHub",
+      "expected": [
+        "core_github"
+      ]
+    },
+    {
+      "id": "p005",
+      "type": "P",
+      "query": "post the daily standup to Slack",
+      "expected": [
+        "daily_standup"
+      ]
+    },
+    {
+      "id": "p006",
+      "type": "P",
+      "query": "create a scannable QR",
+      "expected": [
+        "core_qr_creator"
+      ]
+    },
+    {
+      "id": "p007",
+      "type": "P",
+      "query": "look up my flight",
+      "expected": [
+        "core_flight_radar"
+      ]
+    },
+    {
+      "id": "p008",
+      "type": "P",
+      "query": "solve this equation",
+      "expected": [
+        "core_math_engine"
+      ]
+    },
+    {
+      "id": "p009",
+      "type": "P",
+      "query": "kick off a new project in Notion",
+      "expected": [
+        "project_kickoff"
+      ]
+    },
+    {
+      "id": "p010",
+      "type": "P",
+      "query": "triage my emails",
+      "expected": [
+        "inbox_sentinel"
+      ]
+    },
+    {
+      "id": "i001",
+      "type": "I",
+      "query": "check the weather in London",
+      "expected": [
+        "core_weather"
+      ]
+    },
+    {
+      "id": "i002",
+      "type": "I",
+      "query": "send a standup to Slack",
+      "expected": [
+        "daily_standup"
+      ]
+    },
+    {
+      "id": "i003",
+      "type": "I",
+      "query": "look up the word serendipity",
+      "expected": [
+        "core_dictionary"
+      ]
+    },
+    {
+      "id": "i004",
+      "type": "I",
+      "query": "what flights depart from JFK today",
+      "expected": [
+        "core_flight_radar"
+      ]
+    },
+    {
+      "id": "i005",
+      "type": "I",
+      "query": "review my morning emails",
+      "expected": [
+        "inbox_sentinel",
+        "morning_briefing"
+      ]
+    },
+    {
+      "id": "n001",
+      "type": "N",
+      "query": "xyzzyplugh quixotic frobnicator gadget not in library",
+      "expected": []
+    },
+    {
+      "id": "n002",
+      "type": "N",
+      "query": "xyzzy portal hyperspace",
+      "expected": []
+    },
+    {
+      "id": "n003",
+      "type": "N",
+      "query": "quantum flux capacitor calibration",
+      "expected": []
+    },
+    {
+      "id": "n004",
+      "type": "N",
+      "query": "cook recipe pasta carbonara",
+      "expected": []
+    },
+    {
+      "id": "n005",
+      "type": "N",
+      "query": "play a video game strategy",
+      "expected": []
+    }
+  ]
+}

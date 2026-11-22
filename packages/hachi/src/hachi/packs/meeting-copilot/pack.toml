@@ -1,0 +1,17 @@
+id = "meeting-copilot"
+semver = "1.0.0"
+min_agent_version = "0.1.0"
+description = "Calendar-event copilot: pre-meeting context briefs from Gmail history, and post-meeting structured minutes saved to Drive."
+author = "Hachi Team"
+
+scopes = [
+    "calendar.read",
+    "gmail.read",
+    "drive.write",
+]
+
+fs_paths = []
+
+[schedule_budget]
+max_runs_per_day = 0   # on-demand only — no scheduled fires
+max_cost_per_run = 0.10

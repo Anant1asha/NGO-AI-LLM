@@ -1,0 +1,86 @@
+/* Hachi · colors
+ * Torii red is the single brand accent — used sparingly (mark + primary actions).
+ * Cream/bone carry the warmth; ink carries the words. Flat, warm, premium. */
+:root {
+  /* — brand — */
+  --hachi-brand:        #D64933;  /* torii red — mark, primary buttons, key accents */
+  --hachi-brand-hover:  #C23E2C;
+  --hachi-brand-tint:   #FBE7E0;  /* subtle red bg / focus ring */
+
+  /* — ink + neutrals — */
+  --hachi-ink:          #1C1A20;  /* text, the dog's eyes */
+  --hachi-muted:        #8A8580;  /* secondary text */
+  --hachi-line:         #E2D9C9;  /* 0.5px hairline borders */
+
+  /* — surfaces (light) — */
+  --hachi-canvas:       #FBF7EF;  /* bone — page canvas */
+  --hachi-surface:      #FFFDF8;  /* cards */
+  --hachi-cream:        #F3E9D2;  /* urajiro — warm surfaces, inline code */
+
+  /* — accent + states — */
+  --hachi-trust:        #2F4B7C;  /* navy — links, secondary, idle "listening" */
+  --hachi-working:      #E0922E;  /* amber — in progress */
+  --hachi-success:      #3F9D6B;  /* green — done */
+  --hachi-danger:       #C0392B;  /* destructive — distinct from brand red */
+
+  /* — status pill tints (tinted bg / same-family text) — */
+  --hachi-working-tint: #FBEBD6;
+  --hachi-trust-tint:   #E4EAF3;
+  --hachi-success-tint: #DEF0E6;
+  --hachi-danger-tint:  #F6DEDB;
+
+  /* — semantic aliases — */
+  --text-default:       var(--hachi-ink);
+  --text-muted:         var(--hachi-muted);
+  --text-on-brand:      var(--hachi-canvas);
+  --text-link:          var(--hachi-trust);
+  --surface-page:       var(--hachi-canvas);
+  --surface-card:       var(--hachi-surface);
+  --surface-cream:      var(--hachi-cream);
+  --border-hairline:    var(--hachi-line);
+  --focus-ring:         var(--hachi-brand-tint);
+  --accent:             var(--hachi-brand);
+  --accent-hover:       var(--hachi-brand-hover);
+
+  color-scheme: light;
+}
+
+/* — dark mode — red stays the anchor in both modes — */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hachi-brand:        #E25A44;  /* red lifts on dark */
+    --hachi-brand-hover:  #D64933;
+    --hachi-brand-tint:   #3A211C;
+
+    --hachi-ink:          #FBF7EF;  /* ink becomes bone */
+    --hachi-muted:        #9C968C;
+    --hachi-line:         #322F38;
+
+    --hachi-canvas:       #16151A;
+    --hachi-surface:      #201E25;
+    --hachi-cream:        #2A2730;
+
+    --hachi-working-tint: #34281A;
+    --hachi-trust-tint:   #1E2735;
+    --hachi-success-tint: #182A22;
+    --hachi-danger-tint:  #321E1C;
+
+    color-scheme: dark;
+  }
+}
+
+/* — explicit theme scopes (override the media query when set on an ancestor) — */
+[data-theme="light"] {
+  --hachi-brand: #D64933; --hachi-brand-hover: #C23E2C; --hachi-brand-tint: #FBE7E0;
+  --hachi-ink: #1C1A20; --hachi-muted: #8A8580; --hachi-line: #E2D9C9;
+  --hachi-canvas: #FBF7EF; --hachi-surface: #FFFDF8; --hachi-cream: #F3E9D2;
+  --hachi-working-tint:#FBEBD6; --hachi-trust-tint:#E4EAF3; --hachi-success-tint:#DEF0E6; --hachi-danger-tint:#F6DEDB;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --hachi-brand: #E25A44; --hachi-brand-hover: #D64933; --hachi-brand-tint: #3A211C;
+  --hachi-ink: #FBF7EF; --hachi-muted: #9C968C; --hachi-line: #322F38;
+  --hachi-canvas: #16151A; --hachi-surface: #201E25; --hachi-cream: #2A2730;
+  --hachi-working-tint:#34281A; --hachi-trust-tint:#1E2735; --hachi-success-tint:#182A22; --hachi-danger-tint:#321E1C;
+  color-scheme: dark;
+}

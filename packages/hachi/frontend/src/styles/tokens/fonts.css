@@ -1,0 +1,7 @@
+/* Hachi · fonts
+ * General Sans (display/headings) — Fontshare, the specified brand face.
+ * Inter (product UI / body) — Google Fonts.
+ * JetBrains Mono (CLI / TUI / code) — Google Fonts.
+ * All CDN-linked (not self-hosted binaries). See readme → Caveats. */
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap");

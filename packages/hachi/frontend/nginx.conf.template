@@ -1,0 +1,30 @@
+# nginx site config TEMPLATE — ${GATEWAY_TARGET} and ${GATEWAY_TOKEN} are filled in at
+# container start by the stock nginx envsubst-on-templates step (only those two env vars
+# are substituted; nginx's own $uri/$host are left intact). See docker-entrypoint.sh.
+server {
+    listen 5173;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # SPA client-side routing: serve index.html for any path that isn't a real file
+    # or the /api proxy, so deep links (TanStack Router) resolve.
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # REST + SSE → gateway. The trailing slash on proxy_pass strips the /api prefix
+    # (mirrors the dev Vite proxy rewrite: /api/sessions → <gateway>/sessions). The
+    # bearer token is injected here so the browser never holds it; SSE works because
+    # the streamed body is never buffered.
+    location /api/ {
+        proxy_pass ${GATEWAY_TARGET}/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header Authorization "Bearer ${GATEWAY_TOKEN}";
+        proxy_set_header Connection "";
+        proxy_buffering off;
+        proxy_cache off;
+        proxy_read_timeout 1h;
+    }
+}

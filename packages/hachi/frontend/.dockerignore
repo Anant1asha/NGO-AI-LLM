@@ -1,0 +1,8 @@
+# Keep the frontend build context small (the root .dockerignore does NOT apply to the
+# ./frontend build context). node_modules is reinstalled from the lockfile inside the image.
+node_modules
+dist
+.vite
+*.log
+Dockerfile
+.dockerignore

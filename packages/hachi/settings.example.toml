@@ -1,0 +1,417 @@
+# settings.example.toml — Hachi configuration reference
+#
+# Copy to ~/.config/hachi/settings.toml (Linux/macOS) or
+#   %APPDATA%\hachi\settings.toml (Windows) for global settings, OR
+#   <project>/.hachi/settings.toml for project-local overrides.
+#
+# NEVER commit the real settings.toml — it may contain API keys and is
+# listed in .gitignore. Commit this example file instead.
+#
+# Keys marked [SENSITIVE] resolve credentials; treat them like passwords.
+# Keys marked [OPTIONAL] have safe built-in defaults and can be omitted.
+# All sections are optional — absent sections use the documented defaults.
+
+# ---------------------------------------------------------------------------
+# [meta] — file identity
+# ---------------------------------------------------------------------------
+[meta]
+# type: int, default: 1, effect: schema version for forward-compat checks.
+config_version = 1
+# type: bool, default: false, effect: set by the migration wizard; do not edit.
+imported_from_legacy = false
+
+# ---------------------------------------------------------------------------
+# [provider] — primary LLM provider
+# ---------------------------------------------------------------------------
+[provider]
+# type: str, default: "anthropic"
+# effect: selects the LLM backend.
+# choices: "anthropic" | "openai-compatible" | "openrouter" | "groq"
+#          | "together" | "deepseek" | "ollama"
+kind = "anthropic"
+
+# type: str, default: "claude-haiku-4-5"
+# effect: model id sent to the provider.
+model = "claude-haiku-4-5"
+
+# type: str | null, default: null
+# effect: base URL for OpenAI-compatible / self-hosted endpoints.
+# [OPTIONAL] base_url = "https://api.example.com/v1"
+
+# [SENSITIVE] type: str | null, default: null
+# effect: name of the environment variable that holds the API key.
+# api_key_env = "ANTHROPIC_API_KEY"
+
+# [SENSITIVE] type: str | null, default: null
+# effect: direct reference to a stored secret (use api_key_env instead when possible).
+# api_key_ref = null
+
+# type: list[str], default: []
+# effect: when non-empty, only these model ids are accepted via /model or --model.
+# allowed_models = ["claude-haiku-4-5", "claude-sonnet-4-5"]
+
+# type: dict[str, str], default: {}
+# effect: extra HTTP headers forwarded to the provider (e.g. tenant id, gateway auth).
+# [SENSITIVE] headers = { "X-Tenant-Id" = "acme", "Authorization" = "Bearer tok_…" }
+
+# ---------------------------------------------------------------------------
+# [providers.<name>] — named additional providers for multi-model routing
+# ---------------------------------------------------------------------------
+# Register extra providers here; reference them in [routing.capabilities].
+# [providers.openai]
+# kind = "openai-compatible"
+# model = "gpt-4.1-mini"
+# api_key_env = "OPENAI_API_KEY"   # [SENSITIVE]
+
+# [providers.ollama]
+# kind = "ollama"
+# base_url = "http://localhost:11434"
+# model = "llama3.1:8b"
+
+# ---------------------------------------------------------------------------
+# [agent] — agent identity and per-turn limits
+# ---------------------------------------------------------------------------
+[agent]
+# type: str, default: ""
+# effect: display name shown in the TUI header and web UI.
+name = "Hachi"
+
+# type: str, default: ""
+# effect: system-prompt persona prefix injected on every session.
+persona = ""
+
+# type: int, default: 8192
+# effect: maximum tokens the model may generate per turn.
+max_tokens = 8192
+
+# type: float, default: 0.0
+# effect: sampling temperature (0 = deterministic, 1 = max creative).
+temperature = 0.0
+
+# ---------------------------------------------------------------------------
+# [permissions] — access-control tier
+# ---------------------------------------------------------------------------
+[permissions]
+# type: str, default: "guided"
+# effect: selects the PermissionGate enforcement level.
+# choices: "sandbox" | "guided" | "unrestricted"
+# "sandbox"      — read-only; no shell or write access.
+# "guided"       — agent may write inside workspace; shell commands need approval.
+# "unrestricted" — full tool access with no confirmation prompts.
+tier = "guided"
+
+[permissions.ask_before]
+# type: bool, default: true
+# effect: pause before a single task exceeds the per-task cost cap.
+spend_over_threshold = true
+
+# type: bool, default: true
+# effect: pause before any tool sends data off-machine (network egress).
+network_egress = true
+
+# type: bool, default: true
+# effect: pause before deleting files.
+delete_files = true
+
+# ---------------------------------------------------------------------------
+# [limits] — cost and token safety caps (null = no cap)
+# ---------------------------------------------------------------------------
+[limits]
+# type: float | null, default: null
+# effect: rolling calendar-day total spend cap in USD; session is blocked when reached.
+max_daily_cost_usd = null          # e.g. 5.0
+
+# type: float | null, default: null
+# effect: per-session cumulative spend cap in USD.
+max_session_cost_usd = null        # e.g. 1.0
+
+# type: float | null, default: null
+# effect: per-turn spend cap in USD; turn is aborted when exceeded.
+max_turn_cost_usd = null           # e.g. 0.10
+
+# type: int | null, default: null
+# effect: per-session token limit (input + output combined).
+max_session_tokens = null          # e.g. 200000
+
+# type: int | null, default: null
+# effect: per-turn token limit.
+max_turn_tokens = null             # e.g. 8192
+
+# ---------------------------------------------------------------------------
+# [memory] — session and semantic memory backends
+# ---------------------------------------------------------------------------
+[memory]
+# type: bool, default: true
+# effect: persist conversation transcripts in SQLite (sessions.db).
+enable_session_history = true
+
+# type: bool, default: true
+# effect: index facts into ChromaDB for semantic recall.
+enable_semantic_memory = true
+
+# type: str, default: "chroma"
+# effect: vector store backend.
+# choices: "chroma" | "in_memory" | "fts5_only"
+backend = "chroma"
+
+# type: bool, default: false
+# effect: enable FTS5 index merged via RRF with Chroma results (experimental).
+graph = false
+
+# type: float | null, default: 0.85
+# effect: cosine-distance ceiling [0,2] for per-turn recall; results above it are
+# dropped so unrelated facts are not injected. Set to null to disable the filter.
+recall_distance_max = 0.85
+
+# type: int, default: 1000
+# effect: soft cap on the core_memory collection; oldest entries are pruned past this
+# so long-lived installs do not accumulate unbounded noise.
+core_memory_max_entries = 1000
+
+# ---------------------------------------------------------------------------
+# [voice] — speech-to-text and text-to-speech
+# ---------------------------------------------------------------------------
+[voice]
+# type: str | null, default: null (falls back to HACHI_STT_MODEL env var)
+# effect: Whisper-compatible model name for speech-to-text.
+stt_model = "whisper-1"
+
+# type: str | null, default: null (falls back to HACHI_STT_BASE_URL env var)
+# effect: base URL for the STT endpoint.
+stt_base_url = null
+
+# [SENSITIVE] type: str | null, default: null
+# effect: env var name holding the STT API key.
+stt_api_key_env = "OPENAI_API_KEY"
+
+# type: str, default: "openai"
+# effect: STT provider selector. Currently only "openai" (OpenAI-compat) is supported.
+stt_provider = "openai"
+
+# type: str | null, default: null
+# effect: TTS model name (e.g. "tts-1", "tts-1-hd").
+tts_model = "tts-1"
+
+# type: str | null, default: null
+# effect: base URL for the TTS endpoint.
+tts_base_url = null
+
+# [SENSITIVE] type: str | null, default: null
+# effect: env var name holding the TTS API key.
+tts_api_key_env = "OPENAI_API_KEY"
+
+# type: str | null, default: null
+# effect: default TTS voice name (e.g. "alloy", "nova", "echo").
+tts_voice = "alloy"
+
+# type: str, default: "openai"
+# effect: TTS provider. "openai" = OpenAI-compat endpoints; "elevenlabs" = ElevenLabs.
+tts_provider = "openai"
+
+# [SENSITIVE] type: str | null, default: null
+# effect: env var holding the ElevenLabs API key (only used when tts_provider = "elevenlabs").
+elevenlabs_api_key_env = null
+
+# type: str | null, default: null
+# effect: ElevenLabs voice id (only used when tts_provider = "elevenlabs").
+elevenlabs_voice_id = null
+
+# type: str, default: "eleven_turbo_v2_5"
+# effect: ElevenLabs model id. Defaults to the low-latency turbo model; use
+# "eleven_multilingual_v2" for higher quality at the cost of latency.
+elevenlabs_model = "eleven_turbo_v2_5"
+
+# ---------------------------------------------------------------------------
+# [search] — web-search connector
+# ---------------------------------------------------------------------------
+[search]
+# type: str | null, default: null
+# effect: provider name. Set to "tavily" to enable web_search / extract_url tools.
+# Requires TAVILY_API_KEY in the environment.
+provider = null                    # e.g. "tavily"
+
+# type: int, default: 10
+# effect: maximum outbound search/extract calls per agent turn (0 = unlimited).
+max_calls_per_turn = 10
+
+# type: float, default: 300.0
+# effect: in-session search result cache TTL in seconds (0 = disable cache).
+cache_ttl_seconds = 300.0
+
+# type: int, default: 60
+# effect: sliding-window rate-limit: max calls within window_seconds.
+window_max_calls = 60
+
+# type: float, default: 3600.0
+# effect: duration of the sliding-window in seconds.
+window_seconds = 3600.0
+
+# ---------------------------------------------------------------------------
+# [files] — file attachment platform
+# ---------------------------------------------------------------------------
+[files]
+# type: int, default: 52428800 (50 MB)
+# effect: hard upload ceiling in bytes.
+max_size_bytes = 52428800
+
+# type: list[str], default: []
+# effect: MIME base-type allowlist (e.g. ["text/plain", "application/pdf"]).
+# Empty = allow all types.
+allowed_types = []
+
+# type: str, default: "local"
+# effect: storage backend. "s3" / "gcs" are future seams; only "local" is active.
+storage_backend = "local"
+
+# type: str, default: "noop"
+# effect: virus-scan hook. "clamav" / "cloudmersive" are future seams.
+scan_hook = "noop"
+
+# type: bool, default: true
+# effect: index extracted text into the "attachments" Chroma collection for RAG.
+index_on_extract = true
+
+# ---------------------------------------------------------------------------
+# [routing] — multi-model capability routing
+# ---------------------------------------------------------------------------
+[routing]
+# type: str, default: "claude-haiku-4-5"
+# effect: fallback model id when no capability-specific override matches.
+default_model = "claude-haiku-4-5"
+
+# type: bool, default: false
+# effect: when true, derive smart-default capability routing from the model registry.
+auto = false
+
+# type: dict[str, list[str]], default: {}
+# effect: ordered candidate model-id lists per capability name.
+# [routing.capabilities]
+# reasoning   = ["claude-sonnet-4-5", "claude-haiku-4-5"]
+# code        = ["claude-sonnet-4-5"]
+# vision      = ["claude-haiku-4-5"]
+
+# type: list, default: []
+# effect: extra ModelDescriptor dicts to register (highest precedence in the registry).
+model_overrides = []
+
+[routing.resilience]
+# type: int, default: 3
+# effect: maximum retry attempts before giving up.
+max_attempts = 3
+
+# type: float, default: 0.5
+# effect: exponential-backoff base in seconds.
+backoff_base_s = 0.5
+
+# type: float, default: 60.0
+# effect: per-attempt timeout in seconds.
+timeout_s = 60.0
+
+# type: int, default: 5
+# effect: consecutive failures before the circuit breaker opens.
+breaker_threshold = 5
+
+# type: float, default: 30.0
+# effect: cooldown in seconds before the breaker re-closes.
+breaker_cooldown_s = 30.0
+
+# ---------------------------------------------------------------------------
+# [events] — event-bus funnel (experimental)
+# ---------------------------------------------------------------------------
+[events]
+# type: bool, default: false
+# effect: when true, runtime events flow through the EventBus singleton.
+# The two standard subscribers (TUI read-models + SSE) are still registered;
+# output is back-compat identical.
+bus_funnel = false
+
+# ---------------------------------------------------------------------------
+# [jobs] — durable background job handlers
+# ---------------------------------------------------------------------------
+[jobs]
+# type: bool, default: false
+# effect: when true, background jobs (memory writes, title generation, etc.) use
+# named handlers that survive process restarts.
+durable_handlers = false
+
+# type: int, default: 1
+# effect: worker-thread count for the job queue (seam for future parallelism).
+worker_count = 1
+
+# ---------------------------------------------------------------------------
+# [observability] — distributed tracing and metrics
+# ---------------------------------------------------------------------------
+[observability]
+# type: bool, default: false
+# effect: master switch — enable tracing on gateway boot.
+enabled = false
+
+# type: str, default: "console"
+# effect: trace exporter. choices: "console" | "otlp" | "langfuse"
+exporter = "console"
+
+# type: str | null, default: null
+# effect: OTLP exporter endpoint URL (falls back to OTEL_EXPORTER_OTLP_ENDPOINT env var).
+endpoint = null
+
+# type: bool, default: false
+# effect: also initialise the Prometheus-compatible metrics facade when tracing is on.
+metrics_enabled = false
+
+# ---------------------------------------------------------------------------
+# [channels] — inbound messaging channels
+# ---------------------------------------------------------------------------
+[channels.telegram]
+# type: list[str], default: []
+# effect: Telegram chat ids allowed to reach the agent. Empty = no restriction
+# (any user who messages the bot can talk to it — only safe for private bots).
+# [SENSITIVE] allowlist = ["-1001234567890", "987654321"]
+allowlist = []
+
+# ---------------------------------------------------------------------------
+# [capabilities] — optional integration toggles
+# ---------------------------------------------------------------------------
+# Each key maps to a CapabilityState with fields: enabled (bool), configured (bool),
+# and optionally secret_ref (str).  The built-in capabilities are listed below.
+
+[capabilities.google]
+# type: bool, default: false
+# effect: enable Google Workspace tools (Gmail, Calendar, Drive, Contacts, Tasks, Meet).
+enabled = false
+configured = false
+
+[capabilities.notion]
+# type: bool, default: false
+# effect: enable Notion read/write tools.
+enabled = false
+configured = false
+
+[capabilities.slack]
+# type: bool, default: false
+# effect: enable Slack messaging tools.
+enabled = false
+configured = false
+
+# ---------------------------------------------------------------------------
+# [mcp_servers] — Model Context Protocol server registrations
+# ---------------------------------------------------------------------------
+# Each sub-table defines one MCP server. The key is a free-form server name.
+# Recognised fields (all optional unless noted):
+#   command      — shell command to launch the server (POSIX array recommended).
+#   args         — argument list passed to command.
+#   env          — extra environment variables for the server process.
+#   timeout_s    — connection timeout in seconds (default: 30).
+#   enabled      — bool; set to false to disable without deleting the entry.
+#
+# Example: local filesystem server
+# [mcp_servers.filesystem]
+# command = "npx"
+# args    = ["-y", "@modelcontextprotocol/server-filesystem", "/home/user/docs"]
+# enabled = true
+#
+# Example: remote HTTP server
+# [mcp_servers.remote_notes]
+# command = "curl"
+# args    = ["--no-buffer", "https://notes-mcp.example.com/sse"]
+# timeout_s = 60
+# enabled = true

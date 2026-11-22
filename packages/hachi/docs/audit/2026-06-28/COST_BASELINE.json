@@ -1,0 +1,131 @@
+{
+  "audit_date": "2026-06-28",
+  "query_under_test": "What is my name? My name is Aditya",
+  "environment": {
+    "provider_kind": "openai-compatible",
+    "provider_model_configured": "gpt-4.1-mini",
+    "routing_default_model": "gpt-4o-mini",
+    "effective_chat_model_before_fix": "gpt-4o",
+    "effective_chat_model_after_fix": "gpt-4o-mini",
+    "root_cause_config_line": "routing.capabilities.reasoning = [\"gpt-4o\"]",
+    "prompt_caching_on_this_path": "none \u2014 Hachi's cache_control is Anthropic-only; OpenAI auto-cache was invisible (cached_tokens unparsed) and partly defeated by the time header in the system message"
+  },
+  "tokenizer": "o200k_base (gpt-4o family, via tiktoken)",
+  "fixed_context_breakdown_trivial_turn": {
+    "cacheable_system_brain_og_tokens": 2527,
+    "core_tool_schemas_tokens_before": 3856,
+    "core_tool_count_before": 23,
+    "core_tool_count_after": 19,
+    "total_fixed_system_tokens_before": 6383,
+    "bare_user_message_tokens": 10,
+    "overhead_multiple_vs_bare_message": 638,
+    "biggest_core_tools_tokens": {
+      "delegate_task": 527,
+      "save_skill": 520,
+      "load_skill": 259,
+      "core_save_user_profile": 243,
+      "check_skill_assertions": 212
+    }
+  },
+  "measurements": {
+    "trivial_turn_before": {
+      "main_model": "gpt-4o",
+      "input_tokens": 5958,
+      "output_tokens": 7,
+      "cache_read_tokens": 0,
+      "cache_creation_tokens": 0,
+      "main_call_cost_usd": 0.014965,
+      "title_call": {
+        "model": "gpt-4.1-mini",
+        "input_tokens": 114,
+        "cost_usd": 5.5e-05
+      },
+      "llm_calls_per_user_turn": 2,
+      "turn_total_cost_usd": 0.01502
+    },
+    "trivial_turn_after": {
+      "main_model": "gpt-4o-mini",
+      "input_tokens": 5037,
+      "output_tokens": 7,
+      "main_call_cost_usd": 0.00076,
+      "title_call": {
+        "model": "gpt-4.1-mini",
+        "input_tokens": 114,
+        "cost_usd": 5.5e-05
+      },
+      "turn_total_cost_usd": 0.000815,
+      "tokens_trimmed_by_lazy_tools": 921,
+      "cache_metrics_event_emitted": true
+    },
+    "per_turn_cost_reduction_x": 19.7,
+    "reported_0.06_session_real_ledger": {
+      "session_id": "bd4a3740ee2a4c48",
+      "title": "User Name Inquiry and Profile Update Offer",
+      "messages": 4,
+      "total_tokens": 24216,
+      "total_cost_usd": 0.0651,
+      "model": "gpt-4o",
+      "interpretation": "2 user turns + tool fan-out, all on gpt-4o with zero caching",
+      "projected_cost_after_fixes_usd": 0.0033
+    }
+  },
+  "daily_spend_ledger_usd": {
+    "2026-06-24": 0.0071,
+    "2026-06-25": 0.5271,
+    "2026-06-26": 0.1504,
+    "2026-06-27": 1.135,
+    "2026-06-28": 1.3947
+  },
+  "model_pricing_usd_per_mtok": {
+    "gpt-4o": {
+      "input": 2.5,
+      "output": 10.0,
+      "cache_read_mult": 0.5
+    },
+    "gpt-4o-mini": {
+      "input": 0.15,
+      "output": 0.6,
+      "cache_read_mult": 0.5
+    },
+    "gpt-4.1-mini": {
+      "input": 0.4,
+      "output": 1.6,
+      "cache_read_mult": 0.5
+    },
+    "claude-haiku-4-5": {
+      "input": 1.0,
+      "output": 5.0,
+      "cache_read_mult": 0.1
+    },
+    "claude-opus-4-8": {
+      "input_before_fix": 15.0,
+      "output_before_fix": 75.0,
+      "input_after_fix": 5.0,
+      "output_after_fix": 25.0
+    }
+  },
+  "success_criteria": {
+    "cost_per_trivial_turn_target_usd": 0.005,
+    "cost_per_trivial_turn_before_usd": 0.01502,
+    "cost_per_trivial_turn_after_usd": 0.000815,
+    "target_met": true,
+    "context_tokens_target": 500,
+    "context_tokens_after": 5037,
+    "context_tokens_target_met": false,
+    "context_tokens_note": "~5K is brain.og (2.5K) + 19 tool schemas (~2.9K). The <500 target is unrealistic for a tool-using agent; the dominant cost levers (model + caching + tool trim) were addressed. Further brain/schema compression is on the roadmap.",
+    "cache_observability": "per-request cache_metrics event now emitted (hit_rate + fresh/cache_read/cache_creation/output split + cost_if_no_cache + cost_if_fully_cached); cumulative cache_hit_rate added to the usage snapshot"
+  },
+  "runs": [
+    {
+      "label": "offline",
+      "method": "offline",
+      "system_tokens": 3146,
+      "tool_tokens": 2519,
+      "user_tokens": 8,
+      "total_tokens": 5673,
+      "core_tool_count": 18,
+      "brain_content_bytes": 12586,
+      "tool_json_bytes": 10079
+    }
+  ]
+}

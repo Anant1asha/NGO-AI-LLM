@@ -1,0 +1,93 @@
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+.eggs/
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+.venv/
+venv/
+myvenv/
+env/
+ENV/
+
+# ==========================================
+# IDE & Editor
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ==========================================
+# OS Files
+# ==========================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.import_linter_cache/
+
+# ==========================================
+# Hachi Runtime (user-generated, not source)
+# ==========================================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.html
+!frontend/index.html
+
+# ==========================================
+# Environment & Secrets
+# ==========================================
+.env
+.env.local
+*.pem
+*.key
+credentials.json
+token.json
+
+# ==========================================
+# Hachi user settings (contain credentials)
+# ==========================================
+settings.toml
+**/.hachi/settings.toml
+# Local Docker self-host runtime dir — holds the gateway token secret the compose recipe
+# reads (./.hachi/gateway_api_token.txt). Never commit it.
+.hachi/
+
+# Claude Design handoff bundle (reference only)
+.design-bundle/
+.claude/skills/ui-ux-pro-max/
+.claude/skills/banner-design/
+.claude/skills/brand/
+.claude/skills/design/
+.claude/skills/design-system/
+.claude/skills/ui-styling/
+.claude/skills/slides/
+
+
+node_modules/
+frontend/.vite/

@@ -1,0 +1,30 @@
+::meta
+  title: Core Currency Converter
+  version: 1.0.0
+  domain: finance|currency|forex
+
+::index
+  # node-id       | type  | scope | conf | keywords
+  core_currency    | skill | all   | 1.0  | currency, convert, exchange rate, forex, money, fx, fiat
+
+::node[core_currency]
+->[:role=skill]
+->[:keywords=currency, convert, exchange rate, forex, money, fx, fiat]
+
+::api[convert_currency]
+method=GET
+endpoint=https://api.frankfurter.app/latest?amount={amount}&from={base}&to={target}
+schema={"amount": "number", "base": "string", "target": "string"}
+description=Converts fiat currency using real-time European Central Bank rates. Requires 3-letter currency codes (e.g., USD, EUR, JPY).
+
+::dense
+Real-time FX via Frankfurter (ECB rates). Use 3-letter ISO codes: USD, EUR, JPY.
+
+::steps
+1. Determine the source amount, base currency code, and target currency code.
+2. Call `convert_currency`.
+3. Extract the converted rate from the `rates` dictionary in the JSON payload.
+4. Provide a clear conversion statement to the user.
+
+::assertions
+assert base != target "Base and target currencies must be different."

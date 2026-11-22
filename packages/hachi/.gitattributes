@@ -1,0 +1,5 @@
+# Append-only logs conflict on every parallel branch because each inserts entries
+# at the same anchor. A union merge keeps both sides' added lines, which is the
+# right semantic for a chronological log.
+docs/bug-bank.md merge=union
+docs/DECISIONS.md merge=union

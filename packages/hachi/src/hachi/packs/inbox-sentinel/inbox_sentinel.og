@@ -1,0 +1,129 @@
+::meta
+  title: Inbox Sentinel
+  version: 1.0.0
+  domain: email|productivity|focus|memory
+
+::index
+  # node-id                    | type  | scope | conf | keywords
+  inbox_sentinel                | skill | all   | 1.0  | deep work, focus mode, triage, monitor inbox, gmail triage, email filter
+  inbox_sentinel_triage_rules   | skill | all   | 0.9  | urgency classification, priority email, vip sender, critical alert
+  inbox_sentinel_person_memo    | skill | all   | 0.85 | remember sender, person node, contact memory, who emails me, track sender
+  inbox_sentinel_draft_approval | skill | all   | 0.9  | draft reply, approve draft, send email, deferral message, focus reply
+
+::node[inbox_sentinel]
+->[:role=skill]
+->[:traverse=priority:high]
+->[:requires=inbox_sentinel_triage_rules]
+->[:requires=inbox_sentinel_person_memo]
+->[:requires=inbox_sentinel_draft_approval]
+->[:keywords=deep work, focus mode, triage, monitor inbox, gmail triage, email filter, sentinel, email guard]
+
+::traverse
+  priority = high
+  entry    = inbox_sentinel
+  depth-limit = 3
+
+::dense
+Autonomous Gmail triage loop: classifies urgency, labels, drafts deferrals, records senders as person nodes.
+
+::steps
+1. Enter a 15-minute monitoring cycle using `core_suspend_workflow`.
+2. Fetch all unread Gmail messages (Gmail tool: `search_messages`, query="is:unread").
+3. For each message, run `inbox_sentinel_triage_rules` to classify urgency.
+4. After classifying, run `inbox_sentinel_person_memo` to record the sender.
+5. Based on urgency class, run `inbox_sentinel_draft_approval`.
+6. Repeat until the user ends the focus session.
+
+::assertions
+assert gmail.read "Inbox Sentinel requires gmail.read scope."
+assert gmail.write "Inbox Sentinel requires gmail.write scope to save drafts."
+
+
+::node[inbox_sentinel_triage_rules]
+->[:role=skill]
+->[:keywords=urgency classification, priority email, vip sender, critical alert, routine, triage label]
+
+::dense
+Classifies each email as CRITICAL / Important / Routine using sender + subject + snippet heuristics.
+
+::full
+Urgency classification rules:
+
+CRITICAL (escalate immediately to Slack):
+- Sender is in the user's VIP list (CEO, direct manager, key clients)
+- Subject or snippet contains: "urgent", "down", "outage", "blocker", "ASAP", "P0", "incident"
+- Sender domain matches a known client domain AND subject contains "contract" or "renewal"
+
+Important-but-not-urgent (draft deferral, do NOT send yet):
+- Known colleague or professional contact
+- Subject references a project the user is involved in
+- Contains a question directed at the user
+
+Routine (label and archive):
+- Newsletters, marketing, promotional
+- GitHub notifications that are not @mentions
+- Receipt / order confirmation emails
+- Internal "FYI" threads with no action items
+
+Output: { "class": "CRITICAL"|"important"|"routine", "reason": "<one-line explanation>", "sender": "<email>", "subject": "<subject>" }
+
+::assertions
+assert email.sender != "" "Sender address required for triage."
+
+
+::node[inbox_sentinel_person_memo]
+->[:role=skill]
+->[:keywords=remember sender, person node, contact memory, who emails me, track sender, store contact]
+
+::dense
+Records email sender as a memory person node with role, domain, and last-seen timestamp.
+
+::full
+After triaging each email, write the sender to memory as a person node:
+
+1. Extract: sender_name, sender_email, sender_domain, subject_snippet.
+2. Infer relationship category:
+   - "colleague" if domain matches the user's own domain
+   - "client" if listed in VIP list or flagged CRITICAL
+   - "vendor" if domain is a known SaaS tool or supplier
+   - "unknown" otherwise
+3. Call `memory_write_node` with:
+   - node_type = "person"
+   - name = sender_name or sender_email
+   - attributes: { email: sender_email, domain: sender_domain, category: <inferred>, last_seen: <ISO timestamp>, triage_class: <from triage step> }
+4. If a person node for this email already exists, update `last_seen` and increment `email_count`.
+
+This builds a contact graph over time that improves future triage accuracy.
+
+
+::node[inbox_sentinel_draft_approval]
+->[:role=skill]
+->[:keywords=draft reply, approve draft, send email, deferral message, focus reply, draft approval]
+
+::dense
+Creates deferral drafts for important emails and escalates critical ones; never auto-sends.
+
+::full
+Handling by urgency class:
+
+CRITICAL:
+1. Immediately send a Slack alert to the user's private channel (Slack tool: `post_message`):
+   "🚨 CRITICAL email from <sender>: <subject>. Review now."
+2. Apply Gmail label "CRITICAL" to the thread.
+3. Do NOT draft a reply — the user must handle this personally.
+
+Important-but-not-urgent:
+1. Draft a polite deferral reply using Gmail Drafts (do NOT send):
+   "Hi <first_name>, thanks for reaching out. I'm currently in a deep-work focus session
+   and will review and respond to your message by end of day. — <user_name>"
+2. Apply Gmail label "Sentinel/Deferred".
+3. Notify the user in TUI: "Draft saved for <sender> — review before sending."
+4. The user must explicitly approve before the draft is sent.
+
+Routine:
+1. Apply Gmail label "Sentinel/Triaged".
+2. Mark as read.
+3. No reply drafted.
+
+::assertions
+assert slack.send "CRITICAL escalation requires slack.send scope."

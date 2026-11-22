@@ -1,0 +1,42 @@
+/* Hachi · base reset & element defaults
+ * Sets the warm canvas, body type, link color, selection, focus ring. */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-default);
+  font: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  color: var(--text-default);
+  margin: 0;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+code, kbd, pre, samp {
+  font-family: var(--font-mono);
+  font-size: var(--type-mono-size);
+}
+
+::selection {
+  background: var(--hachi-brand-tint);
+  color: var(--text-default);
+}
+
+/* Functional focus ring — the only allowed "glow". */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--hachi-brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

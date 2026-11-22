@@ -1,0 +1,13 @@
+Hachi
+Copyright 2026 Open Gigantic
+
+This product includes software developed at Open Gigantic
+(https://github.com/OpenGigantic).
+
+The ObjectGraph (.og) file format specification (spec/) and the accompanying paper
+(arXiv:2604.27820) are separate works licensed under Creative Commons
+Attribution 4.0 International (CC BY 4.0).
+
+Third-party components are used under their own licenses; see the dependency
+declarations in pyproject.toml and uv.lock. The full dependency tree of this
+release has been checked to contain no copyleft (GPL / AGPL / SSPL) licenses.

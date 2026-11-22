@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "brand",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "python", "-m", "http.server", "8099", "--directory", "docs/brand"],
+      "port": 8099
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "--prefix", "frontend", "dev"],
+      "port": 5173,
+      "autoPort": false
+    }
+  ]
+}

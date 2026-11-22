@@ -1,0 +1,130 @@
+::meta
+  title: Career Management Agent Pack
+  version: 1.0.0
+  domain: career|jobs|networking|negotiation
+
+::index
+  # node-id          | type  | scope | conf | keywords
+  career_audit        | skill | all   | 1.0  | career, audit, trajectory, skills inventory, gap analysis, self-assessment
+  job_search_prep     | skill | all   | 1.0  | job search, resume, LinkedIn, interview prep, job application, career change
+  negotiate_offer     | skill | all   | 1.0  | salary negotiation, offer, counter-offer, market rate, compensation
+  networking_plan     | skill | all   | 1.0  | networking, outreach, contacts, professional network, LinkedIn connections
+
+::node[career_audit]
+->[:role=skill]
+->[:keywords=career, audit, trajectory, skills inventory, gap analysis, self-assessment]
+
+::dense
+Career trajectory audit: skills inventory, gap analysis, strengths/weaknesses map.
+
+::full
+A structured audit of the user's current career position. Covers role history,
+skills inventory (technical and soft), gap analysis versus target roles, and a
+strengths/weaknesses map. Output is a prioritised action list.
+
+::steps
+1. Ask the user for their current role, years of experience, and target role/level.
+2. Collect their top 5-10 skills and any certifications or education.
+3. Research the target role's typical requirements (use knowledge or ask user to paste a JD).
+4. Identify skill gaps: list skills required by the target that the user lacks or is weak in.
+5. Rate current skills against market expectations (beginner / proficient / expert).
+6. Produce a gap analysis table: skill | current level | required level | priority.
+7. Summarise strengths to highlight and gaps to address in order of impact.
+
+::assertions
+assert target_role != "" "A target role must be specified to perform a meaningful gap analysis."
+assert current_role != "" "The user's current role is required as the baseline."
+
+::edges
+->[:leads_to] job_search_prep
+->[:leads_to] networking_plan
+
+::node[job_search_prep]
+->[:role=skill]
+->[:requires=career_audit]
+->[:keywords=job search, resume, LinkedIn, interview prep, job application, career change]
+
+::dense
+Job-search readiness: resume review, LinkedIn optimisation, interview prep checklist.
+
+::full
+End-to-end job-search preparation covering three pillars: resume tailoring, LinkedIn
+profile optimisation, and interview readiness. Each pillar produces concrete
+deliverables the user can act on immediately.
+
+::steps
+1. Resume review: ask the user to paste their resume or describe its structure.
+   Check: strong summary, quantified achievements, ATS-friendly formatting, no gaps unexplained.
+2. LinkedIn optimisation: headline (role + value prop), About section (first-person, keywords),
+   Featured section (projects/posts), Skills endorsements.
+3. Target company list: help user identify 10-20 target employers using criteria they provide.
+4. Application tracker: recommend a simple spreadsheet schema (company, role, date, status, contact).
+5. Interview prep: generate 10 behavioural questions relevant to the target role; coach STAR answers.
+6. Technical prep (if applicable): identify key topics and suggest a 2-week prep schedule.
+7. Produce a weekly job-search action plan with daily time blocks.
+
+::assertions
+assert resume_content != "" "Resume content or description is required for review."
+
+::edges
+->[:requires] career_audit
+->[:leads_to] negotiate_offer
+
+::node[negotiate_offer]
+->[:role=skill]
+->[:keywords=salary negotiation, offer, counter-offer, market rate, compensation]
+
+::dense
+Offer negotiation: market rate research, counter-offer draft, risk/walk-away assessment.
+
+::full
+A structured negotiation assistant for evaluating and countering job offers. Covers
+market rate benchmarking, total-compensation breakdown, counter-offer drafting, and
+risk assessment so the user enters the conversation with data and confidence.
+
+::steps
+1. Collect the offer details: base salary, bonus, equity, benefits, location, start date.
+2. Research market rate: ask for role, level, location, and company size; provide benchmark bands
+   from knowledge (Levels.fyi, Glassdoor, Payscale ranges) or ask user to supply data.
+3. Total-compensation analysis: convert equity and bonus to annual equivalent for apples-to-apples.
+4. Identify negotiation levers: base, signing bonus, equity, remote flexibility, title, PTO.
+5. Draft a counter-offer email: polite, data-backed, specific number, one clear ask.
+6. Risk assessment: is this company known for rescinding offers? What is the user's walk-away number?
+7. Prepare for the verbal negotiation call: script opening lines and anticipated pushback responses.
+
+::assertions
+assert offer_base_salary != "" "The offered base salary is required to benchmark against market rate."
+assert target_role != "" "The role and level are required for accurate market benchmarking."
+
+::edges
+->[:requires] job_search_prep
+
+::node[networking_plan]
+->[:role=skill]
+->[:keywords=networking, outreach, contacts, professional network, LinkedIn connections]
+
+::dense
+Systematic networking: identify targets, draft outreach, track contacts, follow-up cadence.
+
+::full
+A repeatable networking system that turns cold connections into warm relationships.
+Covers target identification, personalised outreach templates, CRM-lite tracking,
+and a follow-up cadence that keeps the pipeline active without feeling pushy.
+
+::steps
+1. Define networking goals: job referrals, industry intelligence, mentorship, or partnerships.
+2. Map existing network: first-degree connections in target companies or roles.
+3. Identify 20 high-value targets: LinkedIn search by role + company, alumni networks, Slack communities.
+4. Tier contacts: T1 (warm, high value) / T2 (cold, high value) / T3 (warm, lower priority).
+5. Draft personalised outreach messages: reference a specific piece of their work, keep it under 100 words,
+   end with one low-friction ask (15-min call, quick question, etc.).
+6. Build a tracking spreadsheet: name | company | tier | last contact | next action | notes.
+7. Follow-up cadence: T1 every 2 weeks, T2 monthly, T3 quarterly. Reconnect before applying.
+8. Value-add strategy: share articles, congratulate on promotions, make introductions.
+
+::assertions
+assert networking_goal != "" "A clear networking goal is required to identify the right targets."
+
+::edges
+->[:supports] job_search_prep
+->[:requires] career_audit

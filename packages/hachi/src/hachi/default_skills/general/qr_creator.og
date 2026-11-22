@@ -1,0 +1,26 @@
+::meta
+  title: Core QR Code Creator
+  version: 1.0.0
+  domain: utilities|image|encoding
+
+::index
+  # node-id       | type  | scope | conf | keywords
+  core_qr_creator  | skill | all   | 1.0  | qr code, generate qr, barcode, link to qr, qr, scan
+
+::node[core_qr_creator]
+->[:role=skill]
+->[:keywords=qr code, generate qr, barcode, link to qr, qr, scan]
+
+::dense
+Generates QR code PNG to disk via qrserver.com + curl. Returns saved file path.
+
+::steps
+1. Extract the target data (URL, Wi-Fi password, or text) from the user.
+2. URL-encode the data string so it is safe for a web request.
+3. Construct the API URL: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=[ENCODED_DATA]`
+4. Call the native `run_command` tool to execute: `curl -s -o "qrcode.png" "[API_URL]"`
+5. Confirm to the user that `qrcode.png` has been saved to their current working directory.
+6. (Optional) If the user is on Windows, use `run_command` to execute `start qrcode.png` to open it immediately so they can scan it with their phone.
+
+::assertions
+assert data != "" "Data to encode must be provided by the user."

@@ -1,0 +1,28 @@
+::meta
+  title: Meeting Copilot
+  version: 1.0.0
+  domain: calendar|meetings|collaboration
+
+::index
+  # node-id        | type  | scope | conf | keywords
+  meeting_copilot   | skill | all   | 1.0  | meeting, prep, debrief, notes, agenda, calendar, minutes, google calendar
+
+::node[meeting_copilot]
+->[:role=skill]
+->[:keywords=meeting, prep, debrief, notes, agenda, calendar, minutes, google calendar]
+
+::dense
+Copilot for Calendar events: pre-meeting context briefs and post-meeting structured minutes.
+
+::steps
+1. Ask the user if they need "Prep" or "Debrief" for an upcoming/recent meeting.
+2. If "Prep":
+   a. Fetch the specific calendar event.
+   b. Extract attendee email addresses.
+   c. Use Gmail search to find the 3 most recent email threads involving those attendees.
+   d. Summarize the context and display it to the user.
+3. If "Debrief":
+   a. Ask the user to provide raw, unstructured meeting notes.
+   b. Structure the notes into Professional Meeting Minutes (Decisions, Action Items, Next Steps).
+   c. Create a new Google Doc via the Drive SDK with the structured minutes.
+   d. Draft a Gmail message to all meeting attendees containing the summary and the Google Doc link, saving it to Drafts for user review.

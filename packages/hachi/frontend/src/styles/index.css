@@ -1,0 +1,10 @@
+/* index.css — import order is load-order; must match this sequence exactly */
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/motion.css";
+@import "./tokens/base.css";
+@import "./global.css";
+@import "./interactive.css";
+@import "./responsive.css";

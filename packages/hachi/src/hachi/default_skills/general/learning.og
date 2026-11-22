@@ -1,0 +1,132 @@
+::meta
+  title: Learning and Skill Development Pack
+  version: 1.0.0
+  domain: learning|education|skill-development|study
+
+::index
+  # node-id          | type  | scope | conf | keywords
+  learning_plan       | skill | all   | 1.0  | learning plan, roadmap, curriculum, study schedule, skill development, goal
+  spaced_repetition   | skill | all   | 1.0  | spaced repetition, SRS, Anki, flashcards, memorisation, recall, review schedule
+  study_session       | skill | all   | 1.0  | study session, pomodoro, deep work, focus, notes, review, concentration
+  knowledge_audit     | skill | all   | 1.0  | knowledge audit, gaps, known unknowns, subject map, prerequisite, competency
+
+::node[learning_plan]
+->[:role=skill]
+->[:keywords=learning plan, roadmap, curriculum, study schedule, skill development, goal]
+
+::dense
+Personalised learning roadmap: goal to milestones to weekly schedule with resource list.
+
+::full
+Builds a structured, personalised learning roadmap starting from the user's stated goal
+and current knowledge level. Outputs milestones, a curated resource list, and a
+realistic weekly study schedule calibrated to available time.
+
+::steps
+1. Clarify the learning goal: what skill, by when, and why (career, hobby, certification)?
+2. Assess current level: complete beginner, some exposure, or intermediate?
+3. Run a knowledge audit (see knowledge_audit node) to surface prerequisite gaps.
+4. Break the goal into 3-5 milestones with concrete deliverables (project, certificate, demo).
+5. Curate a resource list: free (YouTube, docs, Coursera audit) vs paid; books vs video vs hands-on.
+6. Estimate total hours and map to a realistic weekly schedule based on user's available time.
+7. Build a 4-week sprint plan: week 1 foundations, week 2-3 core concepts, week 4 project/review.
+8. Define success criteria for each milestone so progress is measurable.
+
+::assertions
+assert learning_goal != "" "A specific learning goal is required to build a roadmap."
+assert available_hours_per_week > 0 "Weekly time commitment is required to schedule the plan."
+
+::edges
+->[:starts_with] knowledge_audit
+->[:uses] study_session
+->[:uses] spaced_repetition
+
+::node[spaced_repetition]
+->[:role=skill]
+->[:keywords=spaced repetition, SRS, Anki, flashcards, memorisation, recall, review schedule]
+
+::dense
+SRS study schedule: card taxonomy, interval design, daily review quotas, deck structure.
+
+::full
+Designs an Anki-style spaced repetition system for any topic. Covers card taxonomy,
+interval scheduling, daily review quotas, and deck architecture to maximise long-term
+retention with minimum review time.
+
+::steps
+1. Identify the topic and the type of knowledge: facts, concepts, procedures, or vocabulary.
+2. Card taxonomy: atomic fact cards (one idea per card), cloze deletions for formulas/code,
+   image occlusion for diagrams, production cards for active recall.
+3. Deck structure: one deck per subject; sub-decks for chapter/module grouping.
+4. Daily quota: new cards = (total cards) / (days until exam); review cards = ~10x new cards.
+5. Interval design: Anki default SM-2 works for most cases; adjust ease factor for hard topics.
+6. Anti-pattern warnings: avoid cards that are too long, too vague, or test recognition not recall.
+7. Bootstrap schedule: day 1 — create 20 seed cards; review daily for 5 days before adding more.
+8. Maintenance: retire mastered cards after 6-month interval; refresh deck before exams.
+
+::assertions
+assert topic != "" "A topic is required to design a spaced repetition deck."
+
+::edges
+->[:supports] study_session
+->[:part_of] learning_plan
+
+::node[study_session]
+->[:role=skill]
+->[:keywords=study session, pomodoro, deep work, focus, notes, review, concentration]
+
+::dense
+Focused study session: pomodoro blocks, active-recall notes, end-of-session review.
+
+::full
+Structures a single focused study session for maximum retention and minimum cognitive
+fatigue. Uses the Pomodoro technique for time-boxing, active-recall note-taking during
+study, and a mandatory review ritual to consolidate memory before the session ends.
+
+::steps
+1. Pre-session setup (5 min): choose ONE topic or chapter; clear distractions; set timer.
+2. Pomodoro block (25 min): read/watch/code actively. Do NOT highlight passively.
+   Take margin notes as questions ("What is X? Why does Y work?").
+3. Break (5 min): stand, walk, no screens. Let consolidation begin.
+4. Second Pomodoro: answer the questions from block 1 from memory before re-reading.
+5. After 2 Pomodoros take a longer break (15-20 min).
+6. End-of-session review (10 min): write a 5-sentence summary from memory (no notes).
+   Check against source; note any gaps.
+7. Add new Anki cards for anything that needed checking.
+8. Log: topic, duration, pages/sections covered, one key insight, one open question.
+
+::assertions
+assert session_topic != "" "A topic or chapter must be set before starting the session."
+
+::edges
+->[:uses] spaced_repetition
+->[:part_of] learning_plan
+
+::node[knowledge_audit]
+->[:role=skill]
+->[:keywords=knowledge audit, gaps, known unknowns, subject map, prerequisite, competency]
+
+::dense
+Knowledge gap map: known/unknown grid, prerequisite chain, confidence scores, priority gaps.
+
+::full
+Surfaces known and unknown gaps in a subject area using a structured self-assessment.
+Produces a competency map with confidence scores and a prioritised list of gaps to
+address, including the prerequisite chain so learning happens in the right order.
+
+::steps
+1. Ask the user to name the subject area and their overall goal (exam, job, project).
+2. Generate a topic tree: break the subject into 10-20 core concepts/skills.
+3. Self-assessment grid: for each concept ask user to rate confidence 1-5.
+4. Categorise knowledge state: known (4-5), shaky (2-3), unknown (1), unknown-unknown (not listed).
+5. Prerequisite chain: identify which unknowns block other unknowns; sequence learning order.
+6. Priority gap list: sort gaps by (blocking_count * inverse_confidence); address top 3 first.
+7. Produce a visual map (text-based tree or table) the user can use as a progress tracker.
+8. Recommend specific resources for the top 3 priority gaps.
+
+::assertions
+assert subject_area != "" "A subject area is required to audit knowledge gaps."
+
+::edges
+->[:feeds_into] learning_plan
+->[:informs] spaced_repetition

@@ -1,0 +1,60 @@
+{
+  "corpus": "S-real",
+  "version": "1.0.0",
+  "suite": "full",
+  "run_date": "2026-07-05",
+  "git_ref": "frontend-review",
+  "engine": "SkillEngine (BM25 + keyword fallback, retrieval v2)",
+  "nodes": 60,
+  "probe_file": "s_real_probes.json",
+  "token": {
+    "baseline_tokens": 12150,
+    "three_pass_tokens": 248,
+    "savings_pct": 0.979588,
+    "p1_tokens": 31,
+    "p2_tokens": 85,
+    "p3_tokens": 132,
+    "threshold": 0.8,
+    "passed": true,
+    "query": "tone"
+  },
+  "m1": {
+    "p_at_1": 0.871,
+    "p_at_5": 1.0,
+    "r_at_5": 1.0,
+    "mrr": 0.9355,
+    "fpr_negative": 0.0,
+    "n_queries": 31,
+    "n_negative": 5,
+    "p5_threshold": 0.8,
+    "fpr_threshold": 0.2,
+    "passed": true,
+    "misses": [],
+    "false_positives": []
+  },
+  "m7": {
+    "p1_rate": 0.871,
+    "p2_rate": 0.129,
+    "p3_rate": 0.0,
+    "n_queries": 31,
+    "pass1_total": 31,
+    "pass2_total": 0,
+    "pass3_total": 0
+  },
+  "m2": {
+    "avg_tokens_pass1": 117.0,
+    "avg_tokens_pass2": 124.2,
+    "avg_tokens_pass3": 205.3,
+    "avg_tokens_total": 446.4,
+    "estimated_usd_per_1k_queries": 1.3393,
+    "n_queries": 31
+  },
+  "m4": {
+    "avg_engine_ms": 0.075,
+    "rtt_estimate_ms": 2400.0,
+    "total_estimate_ms": 2400.1,
+    "rtt_per_pass_ms": 800.0,
+    "n_queries": 31
+  },
+  "passed": true
+}

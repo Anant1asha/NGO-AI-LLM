@@ -1,0 +1,26 @@
+::meta
+  title: Notion Brain Dump
+  version: 1.0.0
+  domain: notion|productivity|note-taking
+
+::index
+  # node-id            | type  | scope | conf | keywords
+  notion_brain_dump     | skill | all   | 1.0  | brain dump, notes, tasks, ideas, organize, notion, note-taking, ideation, capture
+
+::node[notion_brain_dump]
+->[:role=skill]
+->[:keywords=brain dump, notes, tasks, ideas, organize, notion, note-taking, ideation, capture]
+
+::dense
+Structures raw thoughts into typed Notion database entries with auto-assigned tags and priorities.
+
+::steps
+1. Ingest the user's unstructured text input.
+2. Use your internal intelligence to segment the input into distinct items (e.g., separating grocery items from project ideas or urgent tasks).
+3. For each identified item, determine the most logical Notion database it belongs to (e.g., "Tasks", "Journal", "Ideas", "Reading List").
+4. If the user hasn't specified which databases to use, politely ask for the database IDs or names before proceeding.
+5. Loop through the items and call the `notion_database_create_page` tool for each one, structuring the properties (Tags, Status, Title) appropriately.
+6. Provide a concise summary to the user confirming exactly what was saved and where.
+
+::assertions
+assert user_input != "" "The user must provide some thoughts or text to organize."

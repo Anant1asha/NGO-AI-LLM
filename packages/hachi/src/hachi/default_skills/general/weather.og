@@ -1,0 +1,31 @@
+::meta
+  title: Core Weather
+  version: 1.0.0
+  domain: weather|climate|forecasting
+
+::index
+  # node-id    | type  | scope | conf | keywords
+  core_weather  | skill | all   | 1.0  | weather, forecast, temperature, climate, real-time, rain, wttr, conditions
+
+::node[core_weather]
+->[:role=skill]
+->[:keywords=weather, forecast, temperature, climate, real-time, rain, wttr, conditions]
+
+::api[fetch_weather]
+method=GET
+endpoint=https://wttr.in/{location}?format=j1
+schema={"location": "string"}
+description=Fetches real-time global weather data for a specific location.
+
+::dense
+Real-time weather + 3-day forecast via wttr.in. Supports cities, airports, coordinates.
+
+::steps
+1. Extract the location from the user's request. If none is provided, politely ask for one.
+2. Call `fetch_weather` with the location.
+3. Parse the returned JSON, specifically locating the `current_condition` array.
+4. Extract `temp_C` (or `temp_F` if the user is in the US) and `weatherDesc`.
+5. Return a highly readable, JARVIS-style summary.
+
+::assertions
+assert location != "" "A location must be provided to fetch weather data."

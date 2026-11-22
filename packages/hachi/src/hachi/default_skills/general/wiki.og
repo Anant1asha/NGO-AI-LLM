@@ -1,0 +1,31 @@
+::meta
+  title: Core Wiki (Wikipedia)
+  version: 1.0.0
+  domain: knowledge|encyclopedia|reference
+
+::index
+  # node-id  | type  | scope | conf | keywords
+  core_wiki   | skill | all   | 1.0  | wikipedia, search, encyclopedia, summary, who is, what is, knowledge, facts
+
+::node[core_wiki]
+->[:role=skill]
+->[:keywords=wikipedia, search, encyclopedia, summary, who is, what is, knowledge, facts]
+
+::api[fetch_wiki_summary]
+method=GET
+endpoint=https://en.wikipedia.org/api/rest_v1/page/summary/{title}
+schema={"title": "string"}
+fields=title, description, extract, content_urls
+description=Fetches a concise, encyclopedic summary of any topic from Wikipedia. Spaces in the title should be replaced with underscores.
+
+::dense
+Encyclopedia summaries via Wikipedia REST. Primary source for factual who/what questions.
+
+::steps
+1. Format the search topic by replacing spaces with underscores (e.g., 'Albert Einstein' -> 'Albert_Einstein').
+2. Call `fetch_wiki_summary`.
+3. Extract the `extract` field from the JSON response.
+4. Deliver the summary clearly, and offer to provide more details if needed.
+
+::assertions
+assert title != "" "A search title must be provided."

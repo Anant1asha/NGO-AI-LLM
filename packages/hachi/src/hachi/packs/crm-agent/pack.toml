@@ -1,0 +1,17 @@
+id = "crm-agent"
+semver = "1.0.0"
+min_agent_version = "0.1.0"
+description = "Relationship management: tracks contacts, captures interactions, writes person nodes, answers 'catch me up on X'."
+author = "Hachi Team"
+
+scopes = [
+    "contacts.read",
+    "gmail.read",
+    "memory.write",
+]
+
+fs_paths = []
+
+[schedule_budget]
+max_runs_per_day = 48
+max_cost_per_run = 0.05

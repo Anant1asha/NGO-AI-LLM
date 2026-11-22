@@ -1,0 +1,28 @@
+::meta
+  title: Daily Standup
+  version: 1.0.0
+  domain: slack|productivity|scrum
+
+::index
+  # node-id       | type  | scope | conf | keywords
+  daily_standup    | skill | all   | 1.0  | standup, daily update, status, github, notion, slack, scrum, daily standup
+
+::node[daily_standup]
+->[:role=skill]
+->[:keywords=standup, daily update, status, github, notion, slack, scrum, daily standup]
+
+::dense
+Generates standup from GitHub commits + Notion tasks; posts approved update to Slack.
+
+::steps
+1. Call `notion_database_query` to fetch the tasks the user moved to "Done" yesterday, and the tasks planned for "Today".
+2. Call `github_fetch_commits` to retrieve the user's pull requests and commits merged in the last 24 hours.
+3. Synthesize this data into a professional, bulleted standup format:
+   - **What I did yesterday:** [Auto-filled from Notion/GitHub]
+   - **What I'm doing today:** [Auto-filled from Notion]
+   - **Blockers:** [Ask the user if they have any blockers]
+4. Present the drafted update to the user for final approval.
+5. Upon approval, call `slack_send_message` to post the update directly into the designated `#standup` or `#engineering` channel.
+
+::assertions
+assert channel_name != "" "A target Slack channel must be provided for the standup."

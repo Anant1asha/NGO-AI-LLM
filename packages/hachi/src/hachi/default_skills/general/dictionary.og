@@ -1,0 +1,30 @@
+::meta
+  title: Core Dictionary & Thesaurus
+  version: 1.0.0
+  domain: language|reference|vocabulary
+
+::index
+  # node-id         | type  | scope | conf | keywords
+  core_dictionary    | skill | all   | 1.0  | dictionary, definition, synonym, antonym, word, meaning, thesaurus, word meaning
+
+::node[core_dictionary]
+->[:role=skill]
+->[:keywords=dictionary, definition, synonym, antonym, word, meaning, thesaurus, word meaning]
+
+::api[lookup_word]
+method=GET
+endpoint=https://api.dictionaryapi.dev/api/v2/entries/en/{word}
+schema={"word": "string"}
+description=Looks up the complete definition, phonetics, parts of speech, and synonyms for an English word.
+
+::dense
+English dictionary + thesaurus via Free Dictionary API. Definitions, phonetics, synonyms.
+
+::steps
+1. Identify the target word to look up.
+2. Call `lookup_word`.
+3. Parse the JSON array. Extract the phonetic pronunciation, the primary definitions, and any relevant synonyms or antonyms.
+4. Format the output elegantly in Markdown, mimicking a premium dictionary interface.
+
+::assertions
+assert word != "" "A word must be provided for the dictionary lookup."

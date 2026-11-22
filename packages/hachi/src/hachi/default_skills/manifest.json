@@ -1,0 +1,36 @@
+{
+  "core": {
+    "files": [
+      "brain.og",
+      "core_integrations.og"
+    ],
+    "directories": [
+      "general",
+      "roles",
+      "technical"
+    ]
+  },
+  "optional_packs": {
+    "google": {
+      "directories": [
+        "google"
+      ],
+      "required_capability": "google",
+      "description": "Google workspace task packs"
+    },
+    "slack": {
+      "directories": [
+        "slack"
+      ],
+      "required_capability": "slack",
+      "description": "Slack workflow packs"
+    },
+    "notion": {
+      "directories": [
+        "notion"
+      ],
+      "required_capability": "notion",
+      "description": "Notion productivity packs"
+    }
+  }
+}

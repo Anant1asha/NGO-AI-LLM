@@ -1,0 +1,7 @@
+# Commit the guardrails (settings.json, hooks/, launch.json); ignore everything
+# that is personal or runtime state.
+settings.local.json
+worktrees/
+*.lock
+# The one-shot push-approval sentinel (bash_guard.py). Must never be committed.
+.push-approved
